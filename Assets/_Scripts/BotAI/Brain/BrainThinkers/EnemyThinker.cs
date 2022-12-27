@@ -114,12 +114,14 @@ public class EnemyThinker : MonoBehaviour
                     botAI.SwitchAttackType(1);
                     type_1 = true;
                     type_2 = false;
+                    Debug.Log("Melee!");
                 }
                 if (distanceToTarget > botAI.triggerLenght - 1 && !type_2)
                 {
                     botAI.SwitchAttackType(2);
                     type_1 = false;
                     type_2 = true;
+                    Debug.Log("Range!");
                 }
             }              
 
