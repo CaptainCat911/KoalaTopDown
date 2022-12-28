@@ -58,7 +58,7 @@ public class EnemyThinker : MonoBehaviour
     private void FixedUpdate()
     {
         // Если бот нейтрален
-        if (botAI.isNeutral)                        
+        if (botAI.isNeutral || !botAI.isAlive)                        
             return;
 
         // Сбрасываем всякие штуки, если цели нет

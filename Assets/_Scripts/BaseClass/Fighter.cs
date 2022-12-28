@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fighter : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D rb2D;
+    CapsuleCollider2D capsuleCollider2D;
 
     [Header("Параметры")]
     public bool isAlive = true;     // жив
@@ -14,13 +15,14 @@ public class Fighter : MonoBehaviour
     public bool isPlayerOrNPC;      // игрок или нпс (для отображение урона)
 
     public bool hpBarOn;            // хп бар включен
-    HpBar hpBar;             // хп бар
+    HpBar hpBar;                    // хп бар
     
 
     public virtual void Awake()
     {
         currentHealth = maxHealth;
         rb2D = GetComponent<Rigidbody2D>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         floatinText = GameAssets.instance.floatingText;
         if (hpBarOn)
         {
@@ -106,6 +108,8 @@ public class Fighter : MonoBehaviour
     protected virtual void Death()
     {
         isAlive = false;
+        capsuleCollider2D.enabled = false;
+        
         //Debug.Log(transform.name + " died.");
     }
 }

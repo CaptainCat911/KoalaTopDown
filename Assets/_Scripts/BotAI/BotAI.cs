@@ -11,6 +11,7 @@ public class BotAI : Fighter
     [HideInInspector] public SpriteRenderer spriteRenderer;    
     BotAIHitBoxPivot pivot;
     [HideInInspector] public BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
+    [HideInInspector] public BotAIRangeWeaponHolder botAIRangeWeaponHolder;
     BotAIHitbox hitBox;
 
     // Тип бота
@@ -46,6 +47,9 @@ public class BotAI : Fighter
     float timerForColor;
     bool red;
 
+    // Бары
+    public GameObject hpBarGO;
+
     // Дебаг
     public bool debug;
 
@@ -59,6 +63,7 @@ public class BotAI : Fighter
         spriteRenderer = GetComponent<SpriteRenderer>();
         pivot = GetComponentInChildren<BotAIHitBoxPivot>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
+        botAIRangeWeaponHolder = GetComponentInChildren<BotAIRangeWeaponHolder>();
         hitBox = GetComponentInChildren<BotAIHitbox>();
 
         layerTarget = LayerMask.GetMask("Player", "NPC");
@@ -69,6 +74,7 @@ public class BotAI : Fighter
             gameObject.layer = LayerMask.NameToLayer("NPC");                            // слой самого бота
             layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой для оружия
         }
+        hpBarGO = transform.GetChild(0).gameObject;
     }
 
     public override void Start()
@@ -88,6 +94,12 @@ public class BotAI : Fighter
 
     private void Update()
     {
+        // Выбор цвета при получении урона и его сброс
+        SetColorTimer();
+
+        if (!isAlive)
+            return;
+
         // Поворот хитбокса
         if (enemyThinker.target && chasing && targetVisible)
         {
@@ -134,8 +146,7 @@ public class BotAI : Fighter
 
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
-        // Выбор цвета при получении урона и его сброс
-        SetColorTimer();
+
 
         // Дебаг
         if (debug)
@@ -282,7 +293,7 @@ public class BotAI : Fighter
         flipLeft = false;
         flipRight = true;
     }
-    void FaceTargetLeft()                                           // поворот налево
+    void FaceTargetLeft()                                   // поворот налево
     {
         spriteRenderer.flipX = true;
         flipRight = false;
@@ -295,10 +306,21 @@ public class BotAI : Fighter
     {
         base.Death();
         CMCameraShake.Instance.ShakeCamera(deathCameraShake, 0.2f);                             // тряска камеры
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);  // создаем эффект убийства
-        //effect.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        Destroy(effect, 1);                                                                     // уничтожаем эффект через .. сек
-        Destroy(gameObject);
+        if (deathEffect)
+        {
+            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);  // создаем эффект убийства
+            Destroy(effect, 1);                                                                     // уничтожаем эффект через .. сек
+        }        
+        animator.SetTrigger("Death");
+        spriteRenderer.color = Color.white;
+        hpBarGO.SetActive(false);
+        agent.ResetPath();
+        agent.enabled = false;
+        
+        botAIMeleeWeaponHolder.HideWeapons();
+        botAIRangeWeaponHolder.HideWeapons();
+
+        Destroy(gameObject, 0.8f);
     }
 
     void OnDrawGizmosSelected()

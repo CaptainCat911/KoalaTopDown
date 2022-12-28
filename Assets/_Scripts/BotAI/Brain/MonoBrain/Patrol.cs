@@ -17,6 +17,9 @@ public class Patrol : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!enemyThinker.botAI.isAlive)                // (потом сделать по нормальному)
+            return;
+
         if (!enemyThinker.patrolingRandomPosition)
             return;
 
