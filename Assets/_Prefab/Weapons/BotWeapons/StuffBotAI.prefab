@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3786651681049121962}
   - component: {fileID: 3786651681049121957}
   m_Layer: 7
-  m_Name: ImageSwoard
+  m_Name: ImageStuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681049121963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.264, z: 0}
+  m_LocalPosition: {x: 0, y: 0.035, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 36f239f52875c2445b90e56b97e97f7e, type: 3}
+  m_Sprite: {fileID: -534885129, guid: dfded6191b961c94387d25ac20b987aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3786651681873589343
 Transform:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681873589340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.70100015, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0.70100015, z: 0}
   m_LocalScale: {x: 0.3113438, y: 0.1830475, z: 0.20250002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 1479659406406739827}
   - component: {fileID: 5714915020998434831}
   m_Layer: 7
-  m_Name: HummerBotAI
+  m_Name: StuffBotAI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,16 +315,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f380747e3608644a00fe1df2ceef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: "\u041C\u041E\u041B\u041E\u0422 "
+  weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0421\u043A\u0435\u043B\u0435\u0442\u0430"
   hitBox: {fileID: 1630045362412420869}
-  damage: 15
-  pushForce: 20
+  damage: 10
+  pushForce: 10
   radius: 0.7
   cooldown: 1
   layerHit:
     serializedVersion: 2
     m_Bits: 4225
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
   trail: {fileID: 3786651681873589342}
 --- !u!1 &6604417298802685298
 GameObject:
@@ -349,11 +349,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604417298802685298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.20600015, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.022, y: 0.478, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479659406406739827}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}

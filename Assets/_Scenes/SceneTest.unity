@@ -103678,7 +103678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 5674012138522298798, guid: c6acd53833056844db20e471ea526809, type: 3}
+  - {fileID: 5674012138522298798, guid: 6cb64a020102a0c47a3d0bfcf04926c2, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -103850,7 +103850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301797, guid: 180ebcfe7da29ca42a0cff7df07a4641, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.6
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301797, guid: 180ebcfe7da29ca42a0cff7df07a4641, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -104410,7 +104410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8681572942390360749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.85, y: -9.22, z: 0}
+  m_LocalPosition: {x: -20.2, y: -9.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -104454,11 +104454,11 @@ MonoBehaviour:
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
   chaseLeght: 0
-  triggerLenght: 5
+  triggerLenght: 2
   targetVisible: 0
   readyToAttack: 0
-  distanceToAttackMelee: 1
-  distanceToAttackRange: 4
+  distanceToAttackMelee: 4
+  distanceToAttackRange: 0
   distanceToAttack: 1.25
   meleeAttackType: 1
   rangeAttackType: 0

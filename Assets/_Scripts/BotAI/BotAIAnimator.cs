@@ -11,15 +11,20 @@ public class BotAIAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
     }
+    public void CurrentWeaponAttack()
+    {
+        botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();
+    }
+
+    public void RangeWeaponAttack()
+    {
+        botAIMeleeWeaponHolder.currentWeapon.RangeAttack();
+    }
+
 
     public void TrailStatus(int number)
     {
         botAIMeleeWeaponHolder.currentWeapon.TrailOn(number);
-    }
-
-    public void CurrentWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();
     }
 
     public void ResetTriggerAttack()
