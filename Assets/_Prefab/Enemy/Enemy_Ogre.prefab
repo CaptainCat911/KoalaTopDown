@@ -84,8 +84,8 @@ Transform:
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 7882060007139792075}
   - {fileID: 997159988879031335}
+  - {fileID: 7882060007139792075}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -243,8 +243,10 @@ MonoBehaviour:
   animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
+  botAIRangeWeaponHolder: {fileID: 0}
   isNeutral: 0
   isFriendly: 0
+  isEnemy: 1
   layerTarget:
     serializedVersion: 2
     m_Bits: 0
@@ -254,7 +256,7 @@ MonoBehaviour:
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
   chaseLeght: 0
-  triggerLenght: 5
+  triggerLenght: 14
   targetVisible: 0
   readyToAttack: 0
   distanceToAttackMelee: 1.25
@@ -268,6 +270,10 @@ MonoBehaviour:
   deathCameraShake: 5
   flipLeft: 0
   flipRight: 0
+  hpBarGO: {fileID: 0}
+  layerTrigger:
+    serializedVersion: 2
+    m_Bits: 128
   debug: 0
 --- !u!114 &6680555727942464759
 MonoBehaviour:
@@ -341,7 +347,7 @@ Transform:
   - {fileID: 7882060007892174800}
   - {fileID: 718120141}
   m_Father: {fileID: 6680555727942464655}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7882060007139792074
 MonoBehaviour:
@@ -491,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_AnchorMax.x
@@ -571,7 +577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177201, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177201, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_AnchoredPosition.y

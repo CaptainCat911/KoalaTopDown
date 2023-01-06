@@ -17,6 +17,7 @@ public class BotAI : Fighter
     // Тип бота
     public bool isNeutral;                                  // не будет никого атаковать
     public bool isFriendly;                                 // союзный бот
+    public bool isEnemy;                                    // несоюзный бот
 
     // Преследование
     [HideInInspector] public LayerMask layerTarget;         // слой для поиска 
@@ -49,6 +50,9 @@ public class BotAI : Fighter
 
     // Бары
     public GameObject hpBarGO;
+
+    // Для триггера
+    public LayerMask layerTrigger;
 
     // Дебаг
     public bool debug;
@@ -90,6 +94,8 @@ public class BotAI : Fighter
             SwitchAttackType(1);
         if (rangeAttackType)
             SwitchAttackType(2);
+
+        hpBarGO.SetActive(false);
     }
 
     private void Update()
@@ -247,8 +253,6 @@ public class BotAI : Fighter
 
 
 
-
-
     public void ForceBackFire(Vector3 forceDirection, float forceBack)
     {
         Vector2 vec2 = (transform.position - forceDirection).normalized;        // направление отдачи нормализированное
@@ -257,11 +261,37 @@ public class BotAI : Fighter
 
     public override void TakeDamage(int dmg, Vector2 vec2, float pushForce)
     {
+        if (currentHealth == maxHealth)
+        {
+            hpBarGO.SetActive(true);
+            if (isEnemy)
+            {
+                TriggerEnemy();                 // добавляем длину триггера, чтобы агрился если получил урон
+            }
+        }
+
         base.TakeDamage(dmg, vec2, pushForce);
         //animator.SetTrigger("TakeHit");
-        ColorRed(0.05f);
-        if (!isFriendly)
-            triggerLenght = 25;                     // добавляем длину триггера, чтобы агрился если получил урон
+        ColorRed(0.05f);                    
+    }
+
+    // Триггер для противников
+    public void TriggerEnemy()
+    {
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 5, layerTrigger);     // создаем круг в позиции объекта с радиусом
+        foreach (Collider2D coll in collidersHits)
+        {
+            if (coll == null)
+            {
+                continue;
+            }
+
+            if (coll.gameObject.TryGetComponent<BotAI>(out BotAI enemy))        // (потом переделать на скрипт Enemy)
+            {
+                enemy.triggerLenght = 25;                                       // (потом поменять на таргет = плеер)          
+            }
+            collidersHits = null;
+        }
     }
 
 
@@ -300,12 +330,13 @@ public class BotAI : Fighter
         flipLeft = true;
     }
 
-
-
     protected override void Death()
     {
         base.Death();
-        CMCameraShake.Instance.ShakeCamera(deathCameraShake, 0.2f);                             // тряска камеры
+
+        GameManager.instance.enemyCount--;
+
+        CMCameraShake.Instance.ShakeCamera(deathCameraShake, 0.2f);                                 // тряска камеры
         if (deathEffect)
         {
             GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);  // создаем эффект убийства
@@ -316,7 +347,10 @@ public class BotAI : Fighter
         hpBarGO.SetActive(false);
         agent.ResetPath();
         agent.enabled = false;
-        
+
+        //botAIMeleeWeaponHolder.gameObject.SetActive(false);
+        //botAIRangeWeaponHolder.gameObject.SetActive(false);
+
         botAIMeleeWeaponHolder.HideWeapons();
         botAIRangeWeaponHolder.HideWeapons();
 
