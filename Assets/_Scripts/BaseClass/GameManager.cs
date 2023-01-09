@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
     public int keys;                            // ключи
     public int battery;                         // батареи
 
+
     [HideInInspector] public int enemyCount;
-    [HideInInspector] public bool roomStart;
+    
 
 
     private void Awake()
@@ -49,11 +50,6 @@ public class GameManager : MonoBehaviour
             ChatBubble.Clear(gameObject);
             ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi");
         }    
-
-        if (roomStart && enemyCount <= 0)
-        {
-            roomStart = false;
-        }
     }
 
 
@@ -62,5 +58,4 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;
     }
-
 }

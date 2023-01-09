@@ -20,16 +20,11 @@ public class RoomSpawner : MonoBehaviour
 
     void Update()
     {
-/*        if (!GameManager.instance.roomStart && roomStarted )
-        {
-            // тут эффекты всякие
-            Destroy(gameObject, 1);
-        }*/
+
     }
 
     public void RoomStart()
     {
-
         StartCoroutine(RoomStartCoroutine());
         roomStarted = true;
     }
@@ -43,7 +38,6 @@ public class RoomSpawner : MonoBehaviour
         {
             spawner.SetActive(true);
         }
-        yield return new WaitForSeconds(3);
-        GameManager.instance.roomStart = true;
+        yield return new WaitForSeconds(3);        
     }
 }
