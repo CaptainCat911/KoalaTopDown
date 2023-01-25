@@ -278,7 +278,7 @@ public class BotAI : Fighter
     // Триггер для противников
     public void TriggerEnemy()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 5, layerTrigger);     // создаем круг в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 2, layerTrigger);     // создаем круг в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)

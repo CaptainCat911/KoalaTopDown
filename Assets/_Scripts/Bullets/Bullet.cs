@@ -4,8 +4,10 @@ public class Bullet : MonoBehaviour
 {
     [HideInInspector] public int damage;
     [HideInInspector] public float pushForce;
+    public bool isPlayerBullet;
     public GameObject expEffect;
     public LayerMask layerExplousion;
+
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {

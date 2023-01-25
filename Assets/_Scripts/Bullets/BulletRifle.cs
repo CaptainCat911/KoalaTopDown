@@ -8,7 +8,7 @@ public class BulletRifle : Bullet
     {
         if (collision.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
         {
-            Vector2 vec2 = (collision.transform.position - transform.position).normalized;
+            Vector2 vec2 = (collision.transform.position - GameManager.instance.player.transform.position).normalized;
             fighter.TakeDamage(damage, vec2, pushForce);            
         }
         base.OnTriggerEnter2D(collision);               // там пусто пока что
