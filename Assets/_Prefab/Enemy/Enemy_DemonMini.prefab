@@ -187,12 +187,11 @@ MonoBehaviour:
   rb2D: {fileID: 2411289485797020914}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 50
+  maxHealth: 200
   isPlayerOrNPC: 0
   hpBarOn: 1
   agent: {fileID: 0}
   animator: {fileID: 2411289485797020917}
-  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
@@ -437,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1d6c0b25a77404e952e28f6ca7352d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &6760281605144613044
 GameObject:
   m_ObjectHideFlags: 0

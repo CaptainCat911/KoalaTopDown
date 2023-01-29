@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u0410\u0440\u0431\u0430\u043B\u0435\u0442"
   bulletPrefab: {fileID: 5170081587130710907, guid: c673b5371301f7044b3d07003ca4d42b, type: 3}
-  damage: 25
+  damage: 20
+  fireRate: 2
   pushForce: 2
   bulletSpeed: 10
-  fireRate: 2
   forceBackFire: 0
-  recoil: 1
+  recoil: 3
   rayCastWeapon: 0
   layerRayCast:
     serializedVersion: 2

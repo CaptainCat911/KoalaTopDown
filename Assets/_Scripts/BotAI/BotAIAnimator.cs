@@ -3,7 +3,7 @@ using UnityEngine;
 public class BotAIAnimator : MonoBehaviour
 {
     //BotAI botAi;
-    Animator animator;
+    public Animator animator;
     BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
     private void Start()
     {
@@ -13,18 +13,18 @@ public class BotAIAnimator : MonoBehaviour
     }
     public void CurrentWeaponAttack()
     {
-        botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();
+        botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();         // мили атака
     }
 
     public void RangeWeaponAttack()
     {
-        botAIMeleeWeaponHolder.currentWeapon.RangeAttack();
+        botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака
     }
 
 
     public void TrailStatus(int number)
     {
-        botAIMeleeWeaponHolder.currentWeapon.TrailOn(number);
+        botAIMeleeWeaponHolder.currentWeapon.TrailOn(number);       // треил оружия
     }
 
     public void ResetTriggerAttack()

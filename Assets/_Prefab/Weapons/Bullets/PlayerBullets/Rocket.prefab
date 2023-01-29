@@ -245,11 +245,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   pushForce: 0
+  isPlayerBullet: 0
   expEffect: {fileID: 3263829405623792208, guid: 44a16ea2ff4687f4cb651db3a8c41e10, type: 3}
   layerExplousion:
     serializedVersion: 2
     m_Bits: 4225
-  expRadius: 1.5
+  expRadius: 2.5
 --- !u!96 &6759844036914890781
 TrailRenderer:
   serializedVersion: 2

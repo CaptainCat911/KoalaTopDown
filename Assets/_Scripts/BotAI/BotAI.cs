@@ -7,7 +7,7 @@ public class BotAI : Fighter
     EnemyThinker enemyThinker;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Animator animator;
-    [HideInInspector] public Animator animatorWeapon;
+    BotAIAnimator animatorWeapon;
     [HideInInspector] public SpriteRenderer spriteRenderer;    
     BotAIHitBoxPivot pivot;
     [HideInInspector] public BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
@@ -49,7 +49,7 @@ public class BotAI : Fighter
     bool red;
 
     // Ѕары
-    public GameObject hpBarGO;
+    [HideInInspector] public GameObject hpBarGO;
 
     // ƒл€ триггера
     public LayerMask layerTrigger;
@@ -63,7 +63,7 @@ public class BotAI : Fighter
         enemyThinker = GetComponentInChildren<EnemyThinker>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        animatorWeapon = GetComponentInChildren<Animator>();
+        animatorWeapon = GetComponentInChildren<BotAIAnimator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         pivot = GetComponentInChildren<BotAIHitBoxPivot>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
@@ -78,7 +78,7 @@ public class BotAI : Fighter
             gameObject.layer = LayerMask.NameToLayer("NPC");                            // слой самого бота
             layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой дл€ оружи€
         }
-        hpBarGO = transform.GetChild(0).gameObject;
+        hpBarGO = transform.GetChild(0).gameObject;         // находим хп бар (ставлю его в начало иерархии)
     }
 
     public override void Start()
@@ -95,7 +95,7 @@ public class BotAI : Fighter
         if (rangeAttackType)
             SwitchAttackType(2);
 
-        hpBarGO.SetActive(false);
+        hpBarGO.SetActive(false);           // пр€чем хп бар, пока не получим урон
     }
 
     private void Update()
@@ -334,7 +334,7 @@ public class BotAI : Fighter
     {
         base.Death();
 
-        GameManager.instance.enemyCount--;
+        GameManager.instance.enemyCount--;                                                          // -1 к счЄтчику врагов
 
         CMCameraShake.Instance.ShakeCamera(deathCameraShake, 0.2f);                                 // тр€ска камеры
         if (deathEffect)
@@ -342,17 +342,19 @@ public class BotAI : Fighter
             GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);  // создаем эффект убийства
             Destroy(effect, 1);                                                                     // уничтожаем эффект через .. сек
         }        
-        animator.SetTrigger("Death");
-        spriteRenderer.color = Color.white;
-        hpBarGO.SetActive(false);
-        agent.ResetPath();
-        agent.enabled = false;
+        animator.SetTrigger("Death");               // тригер 
+        spriteRenderer.color = Color.white;         // возвращем цвета на белый
+        hpBarGO.SetActive(false);                   // убираем хп бар
+        agent.ResetPath();                          // сбрасываем путь
+        agent.enabled = false;                      // выключаем агента
 
         //botAIMeleeWeaponHolder.gameObject.SetActive(false);
         //botAIRangeWeaponHolder.gameObject.SetActive(false);
 
-        botAIMeleeWeaponHolder.HideWeapons();
+        botAIMeleeWeaponHolder.HideWeapons();       // пр€чем оружи€
         botAIRangeWeaponHolder.HideWeapons();
+        //animatorWeapon.animator.StopPlayback();
+        animatorWeapon.animator.enabled = false;
 
         Destroy(gameObject, 0.8f);
     }
