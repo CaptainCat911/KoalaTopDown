@@ -53,6 +53,14 @@ public class Player : Fighter
         float moveY = Input.GetAxisRaw("Vertical");        
         moveDirection = new Vector2(moveX, moveY).normalized;                       // скорость нормализированная 
 
+
+        // Бросить бомбу (временно здесь)
+        if (Input.GetMouseButton(1))
+        {
+            animator.SetTrigger("ThrowBomb");
+        }
+
+
         // Анимации 
         animator.SetFloat("Speed", movementVector.magnitude);
         //Debug.Log(movementVector.magnitude);

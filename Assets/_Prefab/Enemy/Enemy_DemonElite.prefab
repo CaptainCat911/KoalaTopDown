@@ -643,15 +643,15 @@ MonoBehaviour:
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
   chaseLeght: 0
-  triggerLenght: 14
+  triggerLenght: 5
   targetVisible: 0
   readyToAttack: 0
   distanceToAttackMelee: 1.1
-  distanceToAttackRange: 4
+  distanceToAttackRange: 5
   distanceToAttack: 1
   meleeAttackType: 0
   rangeAttackType: 1
-  twoWeapons: 1
+  twoWeapons: 0
   aimAnglePivot: 0
   deathEffect: {fileID: 7845441016114820387, guid: 63da8428eacb2d64e834aa5b7bf5e82f, type: 3}
   deathCameraShake: 3
