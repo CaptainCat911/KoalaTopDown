@@ -164,7 +164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 956439014551784615, guid: 22c8ab78e1779ee45a625eb29a8be96d, type: 3}
       propertyPath: isEnemyTrigger
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956439014551784615, guid: 22c8ab78e1779ee45a625eb29a8be96d, type: 3}
+      propertyPath: isSingleTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 956439014551784615, guid: 22c8ab78e1779ee45a625eb29a8be96d, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size

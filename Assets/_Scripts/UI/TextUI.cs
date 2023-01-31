@@ -9,6 +9,7 @@ public class TextUI : MonoBehaviour
     public Text key;                // кол-во ключей
     public Text battery;            // кол-во батарей
     public Text weaponName;         // имя оружия
+    public Text bombName;           // имя бомбы
 
 
     void Start()
@@ -16,7 +17,7 @@ public class TextUI : MonoBehaviour
         player = GameManager.instance.player;
     }
    
-    void Update()                                                   // (потом изменить вывод сообщенией)
+    void Update()                                                   // (потом изменить вывод сообщений)
     {
         // HP
         hp.text = player.currentHealth.ToString("0");
@@ -36,5 +37,9 @@ public class TextUI : MonoBehaviour
         // Активное оружие
         if (GameManager.instance.player.weaponHolder.currentWeapon)
             weaponName.text = GameManager.instance.player.weaponHolder.currentWeaponName;
+
+        // Активная бомба
+        if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
+            bombName.text = GameManager.instance.player.bombWeaponHolder.currentWeaponName;
     }
 }

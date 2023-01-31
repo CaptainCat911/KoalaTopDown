@@ -7,8 +7,8 @@ public class WeaponClass : ScriptableObject
     public GameObject bulletPrefab;
     public int damage;
     public float fireRate;
+    public float bulletSpeed;
     public float pushForce;
-    public int bulletSpeed;
     public float forceBackFire;
     public float recoil;
     public bool rayCastWeapon;

@@ -9,6 +9,7 @@ public class Player : Fighter
     NavMeshAgent agent;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public WeaponHolder weaponHolder;
+    [HideInInspector] public BombWeaponHolder bombWeaponHolder;
     HitBoxPivot hitBoxPivot;
 
     // Передвижение
@@ -40,6 +41,7 @@ public class Player : Fighter
         agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponHolder = GetComponentInChildren<WeaponHolder>();
+        bombWeaponHolder = GetComponentInChildren<BombWeaponHolder>();
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
 
         agent.updateRotation = false;               // для навМеш2д
@@ -52,14 +54,6 @@ public class Player : Fighter
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");        
         moveDirection = new Vector2(moveX, moveY).normalized;                       // скорость нормализированная 
-
-
-        // Бросить бомбу (временно здесь)
-        if (Input.GetMouseButton(1))
-        {
-            animator.SetTrigger("ThrowBomb");
-        }
-
 
         // Анимации 
         animator.SetFloat("Speed", movementVector.magnitude);

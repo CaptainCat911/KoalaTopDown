@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bfff81076b41e49a197a73d4bd8167, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  weaponName: "\u0411\u043E\u043C\u0431\u0430"
+  bulletPrefab: {fileID: 2609019957272575851, guid: 4d2fb8ff83338dd4cbf35836436e90ab, type: 3}
+  damage: 50
+  fireRate: 2
+  bulletSpeed: 0.9
+  pushForce: 20
+  forceBackFire: 0
+  recoil: 5
+  rayCastWeapon: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
