@@ -62,7 +62,7 @@ public class SpikeNew : MonoBehaviour
 
     void DamageAll()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapBoxAll(transform.position, new Vector2 (0.5f, 0.5f), 0f);     // создаем квадрат в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapBoxAll(transform.position, new Vector2 (1.5f, 1.5f), 0f);     // создаем квадрат в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)

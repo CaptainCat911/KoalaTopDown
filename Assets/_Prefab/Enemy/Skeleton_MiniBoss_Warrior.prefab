@@ -712,6 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1d6c0b25a77404e952e28f6ca7352d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &8030488130396255869
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +796,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -838535827, guid: 76bd858cf6caeda41af451f917de1483, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9339623, g: 0.5066305, b: 0.5066305, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -904,7 +905,6 @@ MonoBehaviour:
   hpBarOn: 1
   agent: {fileID: 0}
   animator: {fileID: 0}
-  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
@@ -956,12 +956,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
   target: {fileID: 0}
+  patrolingRandomPosition: 0
   positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
-  patrolingRandomPosition: 0
   debug: 0
 --- !u!114 &2263108121307706380
 MonoBehaviour:

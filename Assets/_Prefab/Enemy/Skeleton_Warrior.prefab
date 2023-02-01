@@ -243,12 +243,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
   target: {fileID: 0}
+  patrolingRandomPosition: 0
   positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
-  patrolingRandomPosition: 0
   debug: 0
 --- !u!114 &8197776917632273484
 MonoBehaviour:
@@ -291,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3461818709210713117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0.35, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

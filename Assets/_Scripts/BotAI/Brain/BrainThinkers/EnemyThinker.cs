@@ -5,18 +5,12 @@ using UnityEngine;
 
 public class EnemyThinker : MonoBehaviour
 {
-    [HideInInspector] public BotAI botAI;
+    [HideInInspector] public BotAI botAI;           // ссылка на бота
     public Brain[] brains;
 
     [HideInInspector] public GameObject target;     // цель
     bool isFindTarget;                              // нашли цель
     float distanceToTarget;                         // дистанция до цели
-
-    public Transform[] positionsPoints;
-    [HideInInspector] public int i = 0;    
-    public bool nextPosition;
-    public bool letsGo;
-
     // Поиск цели
     //public float targetFindRadius = 5f;                 // радиус поиска цели                                                               
     float lastTargetFind;                               // время последнего удара (для перезарядки удара)
@@ -26,15 +20,20 @@ public class EnemyThinker : MonoBehaviour
     bool type_1;        // тип оружия мили
     bool type_2;        // тип оружия ренж
 
-    public string textTrigger;
-    bool sayTriggerText;
+
     
     [Header("Поведение")]
     public bool patrolingRandomPosition;
 
+    // Для НПС
+    public Transform[] positionsPoints;
+    [HideInInspector] public int i = 0;
+    public bool nextPosition;
+    public bool letsGo;
+    public string textTrigger;
+    bool sayTriggerText;
 
     //public bool isFriendly;
-
     public bool debug;
     
 
@@ -114,14 +113,14 @@ public class EnemyThinker : MonoBehaviour
                     botAI.SwitchAttackType(1);
                     type_1 = true;
                     type_2 = false;
-                    Debug.Log("Melee!");
+                    //Debug.Log("Melee!");
                 }
                 if (distanceToTarget > botAI.triggerLenght - 1 && !type_2)
                 {
                     botAI.SwitchAttackType(2);
                     type_1 = false;
                     type_2 = true;
-                    Debug.Log("Range!");
+                    //Debug.Log("Range!");
                 }
             }              
 
