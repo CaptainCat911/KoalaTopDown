@@ -240,7 +240,6 @@ MonoBehaviour:
   hpBarOn: 1
   agent: {fileID: 0}
   animator: {fileID: 0}
-  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
@@ -292,12 +291,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
   target: {fileID: 0}
+  patrolingRandomPosition: 0
   positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
-  patrolingRandomPosition: 0
   debug: 0
 --- !u!114 &4531015110473025465
 MonoBehaviour:
@@ -314,7 +313,7 @@ MonoBehaviour:
   lastChange: 0
   cooldownChange: 2
   distancePatrol: 2
-  maxDistancePatrol: 5
+  maxDistancePatrol: 4
 --- !u!1 &9164795926498370944
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1d6c0b25a77404e952e28f6ca7352d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1001 &7404712046326819446
 PrefabInstance:
   m_ObjectHideFlags: 0
