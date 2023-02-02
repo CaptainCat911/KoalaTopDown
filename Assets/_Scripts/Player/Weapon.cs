@@ -109,6 +109,8 @@ public class Weapon : MonoBehaviour
         if (Time.time >= nextTimeToFire)                    // если начинаем стрелять и кд готово
         {
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                                     // вычисляем кд
+           
+            
             if (!rayCastWeapon)
                 FireProjectile();                                                           // выстрел пулей
             if (rayCastWeapon)
