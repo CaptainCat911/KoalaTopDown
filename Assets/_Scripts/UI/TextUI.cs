@@ -9,6 +9,8 @@ public class TextUI : MonoBehaviour
     public Text key;                // кол-во ключей
     public Text battery;            // кол-во батарей
     public Text weaponName;         // имя оружия
+    public Text ammoRangeWeapon;    // кол-во патронов
+    public Text ammoBomb;           // кол-во бомб
     public Text bombName;           // имя бомбы
 
 
@@ -36,10 +38,19 @@ public class TextUI : MonoBehaviour
 
         // Активное оружие
         if (GameManager.instance.player.weaponHolder.currentWeapon)
+        {
             weaponName.text = GameManager.instance.player.weaponHolder.currentWeaponName;
+            if (GameManager.instance.player.weaponHolder.meleeWeapon)
+                ammoRangeWeapon.text = "-";
+            else
+                ammoRangeWeapon.text = GameManager.instance.player.weaponHolder.currentWeapon.ammo.ToString("0");
+        }
 
         // Активная бомба
         if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
+        {
             bombName.text = GameManager.instance.player.bombWeaponHolder.currentWeaponName;
+            ammoBomb.text = GameManager.instance.player.bombWeaponHolder.currentWeapon.ammo.ToString("0");
+        }
     }
 }

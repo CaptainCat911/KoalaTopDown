@@ -37,6 +37,12 @@ public class BotAI : Fighter
     public bool twoWeapons;                                 // если есть 2 оружия
     //public bool switchMelee;
 
+    bool slowed;
+    float maxSpeed;
+
+
+
+
     // Для анимации
     [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота
     public GameObject deathEffect;                          // эффект (потом сделать его в аниматоре (или  нет))
@@ -79,6 +85,8 @@ public class BotAI : Fighter
             layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой для оружия
         }
         hpBarGO = transform.GetChild(0).gameObject;         // находим хп бар (ставлю его в начало иерархии)
+
+        maxSpeed = agent.speed;
     }
 
     public override void Start()
@@ -153,10 +161,19 @@ public class BotAI : Fighter
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
 
+        if (slowed)
+        {
+            if (agent.speed < maxSpeed)
+                agent.speed += 0.005f;
+            else
+                slowed = false;
+        }
+
 
         // Дебаг
         if (debug)
-            Debug.Log(targetVisible);
+            //Debug.Log(targetVisible);
+            Debug.Log(maxSpeed);
     }
 
     public void SwitchAttackType(int type)
@@ -273,6 +290,12 @@ public class BotAI : Fighter
         base.TakeDamage(dmg, vec2, pushForce);
         //animator.SetTrigger("TakeHit");
         ColorRed(0.05f);                    
+    }
+
+    public void SlowSpeed(float slowValue)
+    {
+        agent.speed -= slowValue;
+        slowed = true;
     }
 
     // Триггер для противников

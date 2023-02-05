@@ -14,12 +14,11 @@ public class BombWeaponHolder : MonoBehaviour
     [HideInInspector] public bool fireStart;            // начать стрельбу
     [HideInInspector] public bool attackHitBoxStart;    // начать атаку мечом
     [HideInInspector] public float aimAngle;            // угол поворота для вращения холдера с оружием и хитбоксПивота
-    [HideInInspector] public Vector3 mousePosition;                              // положение мыши
+    [HideInInspector] public Vector3 mousePosition;     // положение мыши
     bool meleeWeapon;                                   // мили оружие или ренж
 
     [HideInInspector] public string currentWeaponName;  // для текста ui
-
-    bool stopAiming;                                    // для дебага
+    
 
     void Start()
     {
@@ -47,21 +46,19 @@ public class BombWeaponHolder : MonoBehaviour
         }
 
         // Поворот оружия
-        if (!stopAiming)
-        {
-            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                        // положение мыши                  
-            Vector3 aimDirection = mousePosition - transform.position;                                  // угол между положением мыши и pivot оружия          
-            aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                     // находим угол в градусах             
-            Quaternion qua1 = Quaternion.Euler(0, 0, aimAngle);                                         // создаем этот угол в Quaternion
-            transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
-            //Debug.Log(aimAngle);
-        }
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                        // положение мыши                  
+        Vector3 aimDirection = mousePosition - transform.position;                                  // угол между положением мыши и pivot оружия          
+        aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                     // находим угол в градусах             
+        Quaternion qua1 = Quaternion.Euler(0, 0, aimAngle);                                         // создаем этот угол в Quaternion
+        transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+        //Debug.Log(aimAngle);
+        
 
         // Выбор оружия
 
         int previousWeapon = selectedWeapon;                    // присваиваем переменной индекс оружия
 
-        if (Input.GetKeyDown(KeyCode.G))                        // смена бомбы
+        if (Input.GetKeyDown(KeyCode.C))                        // смена бомбы
         {
             if (selectedWeapon >= transform.childCount - 1)     // сбрасываем в 0 индекс, если индекс равен кол-ву объекто в иерархии WeaponHolder - 1(?)
                 selectedWeapon = 0;

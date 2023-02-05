@@ -13,18 +13,19 @@ public class BombWeapon : MonoBehaviour
     //Vector3 mousePosition;                  // положение мыши
 
     [Header("Параметры оружия")]
-    bool rayCastWeapon;                     // рейкаст оружие
+    bool rayCastWeapon;                             // рейкаст оружие
     [HideInInspector] public string weaponName;     // название оружия
-    [HideInInspector] public float fireRate;                // скорострельность оружия (10 - 0,1 выстрелов в секунду)
-    [HideInInspector] public float nextTimeToFire;          // для стрельбы (когда стрелять в след раз)
+    [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
+    [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
+    public int ammo;                                // кол-во бомб
 
-/*    GameObject bulletPrefab;                // префаб снаряда
-    float bulletSpeed;                      // скорость снаряда
-    int damage;                             // урон (возможно нужно сделать на снаряде)
-    float pushForce;                        // сила толчка (возможно нужно сделать на снаряде)
-    float forceBackFire;                    // отдача оружия
-    float recoil;                          // разброс стрельбы
-    LayerMask layerRayCast;                 // слои для рейкастов*/
+    /*    GameObject bulletPrefab;                // префаб снаряда
+        float bulletSpeed;                      // скорость снаряда
+        int damage;                             // урон (возможно нужно сделать на снаряде)
+        float pushForce;                        // сила толчка (возможно нужно сделать на снаряде)
+        float forceBackFire;                    // отдача оружия
+        float recoil;                          // разброс стрельбы
+        LayerMask layerRayCast;                 // слои для рейкастов*/
 
     // Для флипа оружия
     bool needFlip;                          // нужен флип (для правильного отображения оружия)    
@@ -85,8 +86,9 @@ public class BombWeapon : MonoBehaviour
             return;                                         // выходим
         }
 
-        if (Time.time >= nextTimeToFire)                    // если начинаем стрелять и кд готово
+        if (Time.time >= nextTimeToFire && ammo > 0)                    // если начинаем стрелять и кд готово
         {
+            ammo--;
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд
             //if (!rayCastWeapon)
             GameManager.instance.player.animator.SetTrigger("ThrowBomb");   // даём тригер аниматору игрока
@@ -115,15 +117,15 @@ public class BombWeapon : MonoBehaviour
     {
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);                            // разброс стрельбы
         firePoint.Rotate(0, 0, randomBulletX);                                                                  // тупо вращаем
-        GameObject bullet = Instantiate(weaponClass.bulletPrefab, firePoint.position, Quaternion.identity);      // создаем префаб снаряда с позицией и поворотом якоря
+        GameObject bullet = Instantiate(weaponClass.bulletPrefab, firePoint.position, Quaternion.identity);     // создаем префаб снаряда с позицией и поворотом якоря
         bullet.GetComponent<Bullet>().damage = weaponClass.damage;                                              // присваиваем урон снаряду
         bullet.GetComponent<Bullet>().pushForce = weaponClass.pushForce;                                        // присваиваем силу толчка снаряду
 
         float dist = Vector3.Distance(transform.position, bombWeaponHolder.mousePosition) - 10f;
-        if (dist < 0.3f)
-            dist = 0.3f;
-        if (dist > 1.3f)
-            dist = 1.3f;
+        if (dist < 0.5f)
+            dist = 0.5f;
+        if (dist > 1.5f)
+            dist = 1.5f;
         //Debug.Log(dist);
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * (weaponClass.bulletSpeed * dist), ForceMode2D.Impulse);    // даём импульс
         player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия

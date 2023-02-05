@@ -15,7 +15,7 @@ public class WeaponHolder : MonoBehaviour
     [HideInInspector] public bool attackHitBoxStart;    // начать атаку мечом
     [HideInInspector] public float aimAngle;            // угол поворота дл€ вращени€ холдера с оружием и хитбоксѕивота
     Vector3 mousePosition;                              // положение мыши
-    bool meleeWeapon;                                   // мили оружие или ренж
+    [HideInInspector] public bool meleeWeapon;                                   // мили оружие или ренж
 
     [HideInInspector] public string currentWeaponName;  // дл€ текста ui
 

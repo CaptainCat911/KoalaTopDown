@@ -13,10 +13,11 @@ public class Weapon : MonoBehaviour
     //Vector3 mousePosition;                  // положение мыши
 
     [Header("Параметры оружия")]
-    bool rayCastWeapon;                     // рейкаст оружие
+    bool rayCastWeapon;                             // рейкаст оружие
     [HideInInspector] public string weaponName;     // название оружия
-    [HideInInspector] public float fireRate;                // скорострельность оружия (10 - 0,1 выстрелов в секунду)
-    [HideInInspector] public float nextTimeToFire;          // для стрельбы (когда стрелять в след раз)
+    [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
+    [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
+    public int ammo;                                // патроны
 
 /*    GameObject bulletPrefab;                // префаб снаряда
     float bulletSpeed;                      // скорость снаряда
@@ -106,8 +107,9 @@ public class Weapon : MonoBehaviour
             return;                                         // выходим
         }
 
-        if (Time.time >= nextTimeToFire)                    // если начинаем стрелять и кд готово
+        if (Time.time >= nextTimeToFire && ammo > 0)                    // если начинаем стрелять и кд готово
         {
+            ammo--;
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                                     // вычисляем кд
            
             

@@ -16,7 +16,10 @@ public class Player : Fighter
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)
     Vector2 movementVector;                             // вектор перещение (добавляем скорость)
     [Header("Параметры перемещения")]
-    public float moveSpeed = 5f;                        // скорость передвижения  
+    public float moveSpeed = 5f;                        // скорость передвижения
+    public float dashForce;                             // сила рывка
+    public float dashRate;                              // как часто можно делать рывок 
+    float nextTimeToDash;                               // когда в следующий раз готов рывок
 
     // Для флипа игрока
     [HideInInspector] public bool needFlip;             // нужен флип (для игрока и оружия)    
@@ -55,8 +58,15 @@ public class Player : Fighter
         float moveY = Input.GetAxisRaw("Vertical");        
         moveDirection = new Vector2(moveX, moveY).normalized;                       // скорость нормализированная 
 
-        // Анимации 
-        animator.SetFloat("Speed", movementVector.magnitude);
+        // Рывок
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextTimeToDash)
+        {
+            nextTimeToDash = Time.time + 1f / dashRate;                 // вычисляем кд
+            Dash();
+        }
+
+            // Анимации 
+            animator.SetFloat("Speed", movementVector.magnitude);
         //Debug.Log(movementVector.magnitude);
 
         // Флип спрайта игрока
@@ -102,6 +112,11 @@ public class Player : Fighter
         /*movementVector = new Vector2(input.x * agent.speed, input.y * agent.speed);                      // создаем вектор куда нужно переместится        
         agent.Move(movementVector * Time.deltaTime);                                                        // перемещаем с учётом дельтаТайм
         Debug.Log(movementVector);*/
+    }
+
+    void Dash()
+    {
+        rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);                // даём импульс
     }
 
 
