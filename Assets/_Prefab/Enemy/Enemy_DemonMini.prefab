@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2411289485797020915}
   - component: {fileID: 2411289485797020918}
   - component: {fileID: 3140556547057668604}
-  - component: {fileID: -6598591734863098280}
   m_Layer: 7
   m_Name: Enemy_DemonMini
   m_TagString: Untagged
@@ -243,29 +242,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
   target: {fileID: 0}
+  lastChange: 0
+  cooldownChange: 2
+  distancePatrol: 2
+  maxDistancePatrol: 4
   positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
-  patrolingRandomPosition: 0
   debug: 0
---- !u!114 &-6598591734863098280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411289485797020924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85648e4e9bc5f1e408c0a6755226c2b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastChange: 0
-  cooldownChange: 2
-  distancePatrol: 2
-  maxDistancePatrol: 5
 --- !u!1 &3509407596432613556
 GameObject:
   m_ObjectHideFlags: 0

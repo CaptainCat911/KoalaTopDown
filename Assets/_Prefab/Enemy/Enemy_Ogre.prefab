@@ -64,7 +64,6 @@ GameObject:
   - component: {fileID: 6680555727942464651}
   - component: {fileID: 6680555727942464654}
   - component: {fileID: 6680555727942464759}
-  - component: {fileID: 3219001412602869493}
   m_Layer: 7
   m_Name: Enemy_Ogre
   m_TagString: Untagged
@@ -240,7 +239,6 @@ MonoBehaviour:
   hpBarOn: 1
   agent: {fileID: 0}
   animator: {fileID: 0}
-  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
@@ -292,29 +290,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
   target: {fileID: 0}
+  lastChange: 0
+  cooldownChange: 2
+  distancePatrol: 2
+  maxDistancePatrol: 4
   positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
-  patrolingRandomPosition: 0
   debug: 0
---- !u!114 &3219001412602869493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6680555727942464644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85648e4e9bc5f1e408c0a6755226c2b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastChange: 0
-  cooldownChange: 2
-  distancePatrol: 2
-  maxDistancePatrol: 5
 --- !u!1 &7882060007139792076
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1d6c0b25a77404e952e28f6ca7352d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1001 &7446508883217912834
 PrefabInstance:
   m_ObjectHideFlags: 0

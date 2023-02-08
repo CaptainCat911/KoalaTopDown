@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class BotAI : Fighter
 {
     // Ссылки
-    EnemyThinker enemyThinker;
+    //EnemyThinker enemyThinker;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Animator animator;
     BotAIAnimator animatorWeapon;
@@ -20,6 +21,7 @@ public class BotAI : Fighter
     public bool isEnemy;                                    // несоюзный бот
 
     // Преследование
+    [HideInInspector] public GameObject target;             // цель
     [HideInInspector] public LayerMask layerTarget;         // слой для поиска 
     [HideInInspector] public LayerMask layerHit;            // слой для оружия
     [HideInInspector] public bool chasing;                  // статус преследования
@@ -66,7 +68,7 @@ public class BotAI : Fighter
     public override void Awake()
     {
         base.Awake();
-        enemyThinker = GetComponentInChildren<EnemyThinker>();
+        //enemyThinker = GetComponentInChildren<EnemyThinker>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         animatorWeapon = GetComponentInChildren<BotAIAnimator>();
@@ -115,9 +117,9 @@ public class BotAI : Fighter
             return;
 
         // Поворот хитбокса
-        if (enemyThinker.target && chasing && targetVisible)
+        if (target && chasing && targetVisible)
         {
-            Vector3 aimDirection = enemyThinker.target.transform.position - pivot.transform.position;               // угол между положением мыши и pivot оружия          
+            Vector3 aimDirection = target.transform.position - pivot.transform.position;               // угол между положением мыши и pivot оружия          
             aimAnglePivot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                            // находим угол в градусах             
             Quaternion qua1 = Quaternion.Euler(0, 0, aimAnglePivot);                                                // создаем этот угол в Quaternion
             pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, qua1, Time.fixedDeltaTime * 5);   // делаем Lerp между weaponHoder и нашим углом
@@ -131,7 +133,7 @@ public class BotAI : Fighter
         }
 
         // поворот спрайта (Flip)       
-        if (enemyThinker.target && targetVisible)                           // (потом chasing заменить на target и ещё это дублируется в хитбокспивот)
+        if (target && targetVisible)                           // (потом chasing заменить на target и ещё это дублируется в хитбокспивот)
         {
             if (Mathf.Abs(aimAnglePivot) > 90 && !flipLeft)
             {
@@ -224,8 +226,46 @@ public class BotAI : Fighter
     }
 
 
-/*    public void ChaseAndAttack(GameObject target)
-    {        
+    public void FindTarget()
+    {
+                                                        // присваиваем время атаки
+        Collider2D[] collidersHitbox = Physics2D.OverlapCircleAll(transform.position, triggerLenght, layerTarget);    // создаем круг в позиции объекта с радиусом 
+        List<GameObject> targets = new List<GameObject>();
+        foreach (Collider2D enObjectBox in collidersHitbox)
+        {
+            if (enObjectBox == null)
+            {
+                continue;
+            }
+
+            if (enObjectBox.gameObject.TryGetComponent(out Fighter fighter))        // ищем скрипт файтер
+            {
+                NavMeshRayCast(fighter.gameObject);
+                float distance = Vector3.Distance(fighter.transform.position, transform.position);   // считаем дистанцию 
+                if (!target)
+                {
+                    if (targetVisible)
+                    {
+                        targets.Add(fighter.gameObject);
+                    }
+                }
+                else
+                {
+                    if (targetVisible && distance < 3)
+                    {
+                        targets.Add(fighter.gameObject);
+                    }
+                }
+            }
+            collidersHitbox = null;                         // сбрасываем все найденные объекты (на самом деле непонятно как это работает)
+        }
+        if (targets.Count > 0)
+            target = targets[Random.Range(0, targets.Count)];
+    }
+
+
+    public void Chase()
+    {
         float distance = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
         if (distance < distanceToAttack && targetVisible)                                       // если дошли до цели и видим её
         {
@@ -236,13 +276,13 @@ public class BotAI : Fighter
                 //Debug.Log("Ready Attack");
             }
         }
-        else 
+        else
         {
             agent.SetDestination(target.transform.position);                                    // перемещаемся к цели
             if (readyToAttack)
                 readyToAttack = false;                                                          // не готов стрелять                
         }
-    }*/
+    }
 
     public void SetDestination(Vector3 destination)
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 public class BotAIAnimator : MonoBehaviour
 {
     //BotAI botAi;
-    public Animator animator;
+    [HideInInspector] public Animator animator;
     BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
     private void Start()
     {

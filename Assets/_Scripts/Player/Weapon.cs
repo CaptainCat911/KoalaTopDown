@@ -87,6 +87,11 @@ public class Weapon : MonoBehaviour
         {
             Flip();
         }
+        
+        if (!flashEffectAnimator)
+        {
+            return;
+        }
 
         // —тирать рендер лазера (возможно стоит переделать)
         if (!singleFlash && Time.time >= nextTimeToFire + 0.1f)

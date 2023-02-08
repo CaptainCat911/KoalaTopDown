@@ -8,12 +8,12 @@ public class EnemyThinker : MonoBehaviour
     [HideInInspector] public BotAI botAI;           // ссылка на бота
     public Brain[] brains;
 
-    [HideInInspector] public GameObject target;     // цель
+    //[HideInInspector] public GameObject target;     // цель
     bool isFindTarget;                              // нашли цель
     float distanceToTarget;                         // дистанци€ до цели
     // ѕоиск цели
     //public float targetFindRadius = 5f;                 // радиус поиска цели                                                               
-    float lastTargetFind;                               // врем€ последнего удара (дл€ перезар€дки удара)
+    float lastTargetFind;                               // врем€ последнего поиска цели
     float cooldownFind = 0.5f;                          // перезард€ка поиска цели
     float cooldownChangeTarget = 2f;                    // перезар€дка смена цели
 
@@ -23,7 +23,11 @@ public class EnemyThinker : MonoBehaviour
 
     
     [Header("ѕоведение")]
-    public bool patrolingRandomPosition;
+    //public bool patrolingRandomPosition;
+    public float lastChange;                            // врем€ последней смены позиции
+    public float cooldownChange;                        // перезард€ка смены позиции
+    public float distancePatrol;                        // дистанци€ дл€ патрулировани€
+    public float maxDistancePatrol;                     // максимальна€ дистанци€ от стартовой позиции
 
     // ƒл€ Ќѕ—
     public Transform[] positionsPoints;
@@ -61,7 +65,7 @@ public class EnemyThinker : MonoBehaviour
             return;
 
         // —брасываем вс€кие штуки, если цели нет
-        if (isFindTarget && !target)
+        if (isFindTarget && !botAI.target)
         {
             isFindTarget = false;
             botAI.chasing = false;                      // преследование отключено            
@@ -76,7 +80,8 @@ public class EnemyThinker : MonoBehaviour
         {
             if (Time.time - lastTargetFind > cooldownFind)  // если кд готово
             {
-                FindTarget();                               // поиск цели
+                lastTargetFind = Time.time;
+                botAI.FindTarget();                               // поиск цели
             }
 
             if (letsGo)
@@ -85,22 +90,23 @@ public class EnemyThinker : MonoBehaviour
             }
             if (!letsGo)
             {
-                patrolingRandomPosition = true;                 // патрулирование            
+                Patrol();
+                //patrolingRandomPosition = true;                 // патрулирование            
             }
         }
         else
         {
             if (Time.time - lastTargetFind > Random.Range(cooldownChangeTarget, cooldownChangeTarget + 2f))  // смен€ем цель, если больше одной цели
             {
-                FindTarget();                               // поиск цели
+                botAI.FindTarget();                               // поиск цели
             }
         }
 
         // ≈сли нашли цель делаем рейкасты и мер€ем дистанцию
-        if (target)                                     // если нашли цель
+        if (botAI.target)                                     // если нашли цель
         {
-            botAI.NavMeshRayCast(target);               // делаем рейкаст
-            distanceToTarget = Vector3.Distance(target.transform.position, botAI.transform.position);   // считаем дистанцию 
+            botAI.NavMeshRayCast(botAI.target);               // делаем рейкаст
+            distanceToTarget = Vector3.Distance(botAI.target.transform.position, botAI.transform.position);   // считаем дистанцию 
         }
 
         // Ћогика если нашли цель и она видима        
@@ -126,15 +132,15 @@ public class EnemyThinker : MonoBehaviour
 
             if (!botAI.chasing)
             {
-                patrolingRandomPosition = false;        // патрулирование 
+                //patrolingRandomPosition = false;        // патрулирование 
                 botAI.chasing = true;                   // преследование включено
                 isFindTarget = true;
             }
         }   
 
-        if (botAI.chasing && target)
+        if (botAI.chasing && botAI.target)
         {
-            brains[1].Think(this);                      // преследуем и аттакуем           
+            ChaseAndAttack();                      // преследуем и аттакуем           
         }
 
 
@@ -149,8 +155,8 @@ public class EnemyThinker : MonoBehaviour
 
         if(debug)
         {
-            Debug.Log(target);
-            //Debug.Log(isFindTarget);
+            Debug.Log(botAI.target);
+            Debug.Log(isFindTarget);
             //Debug.Log(botAI.chasing);
             //Debug.Log(botAI.readyToAttack);
         }
@@ -164,43 +170,7 @@ public class EnemyThinker : MonoBehaviour
     }
 
 
-    void FindTarget()
-    {
-        lastTargetFind = Time.time;                                                 // присваиваем врем€ атаки
-        Collider2D[] collidersHitbox = Physics2D.OverlapCircleAll(transform.position, botAI.triggerLenght, botAI.layerTarget);    // создаем круг в позиции объекта с радиусом 
-        List<GameObject> targets = new List<GameObject>(); 
-        foreach (Collider2D enObjectBox in collidersHitbox)
-        {
-            if (enObjectBox == null)
-            {
-                continue;
-            }
 
-            if (enObjectBox.gameObject.TryGetComponent(out Fighter fighter))        // ищем скрипт файтер
-            {
-                botAI.NavMeshRayCast(fighter.gameObject);
-                float distance = Vector3.Distance(fighter.transform.position, botAI.transform.position);   // считаем дистанцию 
-                if (!target)
-                {
-                    if (botAI.targetVisible)
-                    {
-                        targets.Add(fighter.gameObject);
-                    }
-                }
-                else
-                {
-                    if (botAI.targetVisible && distance < 3)
-                    {
-                        targets.Add(fighter.gameObject);                            
-                    }
-                }       
-            }
-            collidersHitbox = null;                         // сбрасываем все найденные объекты (на самом деле непон€тно как это работает)
-        }
-        if (targets.Count > 0)
-            target = targets[Random.Range(0, targets.Count)];            
-        
-    }
 
     public void GoToPosition(int positionNumber)
     {
@@ -209,6 +179,26 @@ public class EnemyThinker : MonoBehaviour
 
                 }*/
         i = positionNumber;
+    }
+
+    void ChaseAndAttack()
+    {
+        float distance = Vector3.Distance(botAI.transform.position, botAI.target.transform.position);       // считаем дистанцию до цели        
+        if (botAI.targetVisible && distance < botAI.distanceToAttack)
+        {
+            if (!botAI.readyToAttack)
+            {
+                botAI.agent.ResetPath();                                                              // сбрасываем путь            
+                botAI.readyToAttack = true;                                                           // готов стрел€ть
+            }
+        }
+        else
+        {
+            botAI.agent.SetDestination(botAI.target.transform.position);                              // перемещаемс€ к цели
+            if (botAI.readyToAttack)
+                botAI.readyToAttack = false;                                                            // не готов стрел€ть                
+        }
+        //Debug.Log(range); 
     }
 
     public void LetsGo(int go)
@@ -239,9 +229,26 @@ public class EnemyThinker : MonoBehaviour
         sayTriggerText = true;
     }
 
-    void MakeFriendly()
+    void Patrol()
     {
-        
+        if (Time.time - lastChange > Random.Range(cooldownChange, cooldownChange + 2f))        // если кд готово
+        {
+            lastChange = Time.time;
+
+            Vector3 destination = new(botAI.transform.position.x + Random.Range(-distancePatrol, distancePatrol),
+                botAI.transform.position.y + Random.Range(-distancePatrol, distancePatrol), botAI.transform.position.z);    // выбираем случайную позицию
+
+            botAI.SetDestination(destination);                      // идЄм в случайную позицию            
+        }
+
+        float distanceFromStart = Vector3.Distance(botAI.startPosition, botAI.transform.position);  // считаем дистанцию от стартовой позиции до следующей позиции
+
+        if (distanceFromStart > maxDistancePatrol)
+            botAI.SetDestination(botAI.startPosition);      // возвращаемс€ в стартовую позицию        
+    }
+
+    void MakeFriendly()
+    {        
         botAI.gameObject.layer = LayerMask.NameToLayer("NPC");  // слой самого бота
         botAI.layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");    // слой дл€ оружи€
         

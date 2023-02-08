@@ -729,7 +729,6 @@ GameObject:
   - component: {fileID: 8030488130396255858}
   - component: {fileID: 8030488130396255863}
   - component: {fileID: 8030488130396255758}
-  - component: {fileID: 2263108121307706380}
   m_Layer: 7
   m_Name: Skeleton_MiniBoss_Warrior
   m_TagString: Untagged
@@ -956,26 +955,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
   target: {fileID: 0}
-  patrolingRandomPosition: 0
+  lastChange: 0
+  cooldownChange: 2
+  distancePatrol: 2
+  maxDistancePatrol: 4
   positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
   debug: 0
---- !u!114 &2263108121307706380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8030488130396255869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85648e4e9bc5f1e408c0a6755226c2b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastChange: 0
-  cooldownChange: 2
-  distancePatrol: 2
-  maxDistancePatrol: 5

@@ -15,7 +15,8 @@ public class BotAIWeaponMelee : MonoBehaviour
     float lastAttack;                                   // время последнего удара (для перезарядки удара)
     [HideInInspector] public LayerMask layerHit;        // слои для битья (берем из ботАИ)
 
-    public GameObject bulletPrefab;
+    public GameObject bulletPrefab;                     // префаб снаряда для посоха
+    public string attackClass;                          // тип атаки оружия (1 - мили, 2 - ренж, 3 - призыв)
     //public bool demon;
 
     // Треил 
@@ -33,17 +34,43 @@ public class BotAIWeaponMelee : MonoBehaviour
     void Update()
     {
         // Атака
-        if (!weaponHolderMelee.fireStart)                        // если не готовы стрелять
+        if (!weaponHolderMelee.fireStart)                       // если не готовы стрелять
         {
-            return;                                         // выходим
+            return;                                             // выходим
         }
 
-        if (Time.time - lastAttack > cooldown)          // если готовы атаковать и кд готово
+        switch (attackClass)
         {
-            //Debug.Log("Attack!");
-            lastAttack = Time.time;                             // присваиваем время атаки
-            animator.SetTrigger("Hit");
+            case "1":
+                if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
+                {
+                    //Debug.Log("Attack!");
+                    lastAttack = Time.time;                         // присваиваем время атаки
+                    animator.SetTrigger("HitMelee");
+                }
+                break;
+
+            case "2":
+                if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
+                {
+                    //Debug.Log("Attack!");
+                    lastAttack = Time.time;                         // присваиваем время атаки
+                    animator.SetTrigger("HitRange");
+                }
+
+                break;            
+            
+            case "3":
+                if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
+                {
+                    //Debug.Log("Attack!");
+                    lastAttack = Time.time;                         // присваиваем время атаки
+                    animator.SetTrigger("HitSpawn");
+                }
+                break;
         }
+
+
     }
 
     public void MeleeAttack()

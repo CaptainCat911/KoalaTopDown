@@ -20,8 +20,8 @@ public class Patrol : MonoBehaviour
         if (!enemyThinker.botAI.isAlive)                // (потом сделать по нормальному)
             return;
 
-        if (!enemyThinker.patrolingRandomPosition)
-            return;
+/*        if (!enemyThinker.patrolingRandomPosition)
+            return;*/
 
         if (Time.time - lastChange > Random.Range(cooldownChange, cooldownChange + 2f))        // если кд готово
         {

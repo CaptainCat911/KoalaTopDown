@@ -282,7 +282,6 @@ GameObject:
   - component: {fileID: 8105260067676780287}
   - component: {fileID: 8105260067676780282}
   - component: {fileID: 1024313703}
-  - component: {fileID: -3436183003700408338}
   m_Layer: 7
   m_Name: Enemy_Demon
   m_TagString: Untagged
@@ -509,29 +508,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
   target: {fileID: 0}
+  lastChange: 0
+  cooldownChange: 2
+  distancePatrol: 2
+  maxDistancePatrol: 4
   positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
-  patrolingRandomPosition: 0
   debug: 0
---- !u!114 &-3436183003700408338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8105260067676780272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85648e4e9bc5f1e408c0a6755226c2b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastChange: 0
-  cooldownChange: 2
-  distancePatrol: 2
-  maxDistancePatrol: 5
 --- !u!1001 &1153241742
 PrefabInstance:
   m_ObjectHideFlags: 0
