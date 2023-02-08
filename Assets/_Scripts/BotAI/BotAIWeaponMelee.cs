@@ -1,10 +1,12 @@
 using UnityEngine;
-
+using UnityEngine.AI;
 public class BotAIWeaponMelee : MonoBehaviour
 {
     BotAI botAI;
     BotAIMeleeWeaponHolder weaponHolderMelee;   // ссылка на скрипт weaponHolder (дл€ стрельбы)
     Animator animator;
+
+    public bool bossWeapon;
 
     public string weaponName;
     public Transform hitBox;
@@ -18,6 +20,8 @@ public class BotAIWeaponMelee : MonoBehaviour
     public GameObject bulletPrefab;                     // префаб снар€да дл€ посоха
     public string attackClass;                          // тип атаки оружи€ (1 - мили, 2 - ренж, 3 - призыв)
     //public bool demon;
+    public GameObject[] prefabEnemies;                  // массив префабов со скелетами
+    NavMeshAgent agent;                                 // их агент
 
     // “реил 
     public TrailRenderer trail;
@@ -39,38 +43,47 @@ public class BotAIWeaponMelee : MonoBehaviour
             return;                                             // выходим
         }
 
-        switch (attackClass)
+        if (!bossWeapon)
         {
-            case "1":
-                if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
-                {
-                    //Debug.Log("Attack!");
-                    lastAttack = Time.time;                         // присваиваем врем€ атаки
-                    animator.SetTrigger("HitMelee");
-                }
-                break;
-
-            case "2":
-                if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
-                {
-                    //Debug.Log("Attack!");
-                    lastAttack = Time.time;                         // присваиваем врем€ атаки
-                    animator.SetTrigger("HitRange");
-                }
-
-                break;            
-            
-            case "3":
-                if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
-                {
-                    //Debug.Log("Attack!");
-                    lastAttack = Time.time;                         // присваиваем врем€ атаки
-                    animator.SetTrigger("HitSpawn");
-                }
-                break;
+            Attack(attackClass);
         }
+        else
+        {
+            int random = Random.Range(2, 4);
+            if (random == 2)
+                Attack("2");
+            if (random == 3)
+                Attack("3");
+        }
+    }
 
+    public void Attack(string type)
+    {
+        if (Time.time - lastAttack > cooldown)                  // если готовы атаковать и кд готово
+        {
+            lastAttack = Time.time;                             // присваиваем врем€ атаки
 
+            switch (type)
+            {
+                case "1":
+                    {
+                        animator.SetTrigger("HitMelee");
+                    }
+                    break;
+
+                case "2":
+                    {
+                        animator.SetTrigger("HitRange");
+                    }
+                    break;
+
+                case "3":
+                    {
+                        animator.SetTrigger("HitSpawn");
+                    }
+                    break;
+            }
+        }  
     }
 
     public void MeleeAttack()
@@ -109,6 +122,14 @@ public class BotAIWeaponMelee : MonoBehaviour
         }
     }
 
+    public void SpawnAttack()
+    {
+        int ndx = Random.Range(0, prefabEnemies.Length);            // выбираем рандом из массива врагов
+        GameObject go = Instantiate(prefabEnemies[ndx]);            // создаЄм префаб
+        //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
+        agent = go.GetComponent<NavMeshAgent>();                    // находим Ќавћешјгент
+        agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
+    }
 
     public void TrailOn(int number)
     {
@@ -119,7 +140,6 @@ public class BotAIWeaponMelee : MonoBehaviour
             if (number == 0)
                 trail.emitting = false;
         }
-
     }
 
     void OnDrawGizmosSelected()

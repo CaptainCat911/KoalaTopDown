@@ -14,6 +14,7 @@ public class BotAI : Fighter
     [HideInInspector] public BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
     [HideInInspector] public BotAIRangeWeaponHolder botAIRangeWeaponHolder;
     BotAIHitbox hitBox;
+    //public Animator animatorHit;                            // аниматор мили оружия
 
     // Тип бота
     public bool isNeutral;                                  // не будет никого атаковать
@@ -41,9 +42,6 @@ public class BotAI : Fighter
 
     bool slowed;
     float maxSpeed;
-
-
-
 
     // Для анимации
     [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота

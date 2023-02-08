@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f380747e3608644a00fe1df2ceef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossWeapon: 0
   weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0421\u043A\u0435\u043B\u0435\u0442\u0430"
   hitBox: {fileID: 1630045362412420869}
   damage: 60
@@ -325,6 +326,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4225
   bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
+  attackClass: 2
+  prefabEnemies: []
   trail: {fileID: 3786651681873589342}
 --- !u!1 &6604417298802685298
 GameObject:

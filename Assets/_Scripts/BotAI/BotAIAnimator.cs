@@ -21,6 +21,11 @@ public class BotAIAnimator : MonoBehaviour
         botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака
     }
 
+    public void SpawnWeaponAttack()
+    {
+        botAIMeleeWeaponHolder.currentWeapon.SpawnAttack();         // спаун атака
+    }
+
 
     public void TrailStatus(int number)
     {

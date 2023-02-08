@@ -51,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
             //go.GetComponent<BotAI>().triggerLenght = chaseDistance; // устанавливаем преследование за игроком
         enemyCount++;
         GameManager.instance.enemyCount++;
+
         if (enemyCount >= enemysHowMuch)
         {
             Invoke("NextSpawnersOn", 5f);

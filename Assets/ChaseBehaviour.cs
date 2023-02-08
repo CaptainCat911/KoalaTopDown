@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChaseBehaviour : StateMachineBehaviour
 {
     Boss boss;                       // ссылка на бота
+    bool switchType;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -27,7 +28,22 @@ public class ChaseBehaviour : StateMachineBehaviour
 
         if (boss.readyToAttack)
         {
-            animator.SetTrigger("Attack");              // триггер
+            boss.botAIMeleeWeaponHolder.currentWeapon.Attack("2");
+
+
+
+            /*            if (!switchType)
+                        {
+                            boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "2";
+                            switchType = true;
+                        }
+                        if (switchType)
+                        {
+                            boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "3";
+                            switchType = false;
+                        }*/
+
+            //animator.SetTrigger("Attack");              // триггер
         }
     }
 
