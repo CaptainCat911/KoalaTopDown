@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f380747e3608644a00fe1df2ceef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossWeapon: 1
   weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0411\u043E\u0441\u0441\u0430"
   hitBox: {fileID: 1630045362412420869}
   damage: 60
@@ -331,6 +330,9 @@ MonoBehaviour:
   - {fileID: 134668306723687997, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
   - {fileID: 5691226719771854280, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
   - {fileID: 1538151450151263897, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
+  explousionDamage: 20
+  explousionForce: 60
+  explousionRadius: 3
   trail: {fileID: 3786651681873589342}
 --- !u!1 &6604417298802685298
 GameObject:

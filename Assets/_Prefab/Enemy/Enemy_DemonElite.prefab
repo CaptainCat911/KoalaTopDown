@@ -373,7 +373,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.86289185, b: 0, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -423,7 +423,7 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.3
+  m_PointLightInnerRadius: 0.5
   m_PointLightOuterRadius: 2
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -633,6 +633,7 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
     m_Bits: 0
@@ -648,6 +649,7 @@ MonoBehaviour:
   distanceToAttackMelee: 1.1
   distanceToAttackRange: 5
   distanceToAttack: 1
+  distanceToTarget: 0
   meleeAttackType: 0
   rangeAttackType: 1
   twoWeapons: 0
@@ -677,7 +679,6 @@ MonoBehaviour:
   brains:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
-  target: {fileID: 0}
   lastChange: 0
   cooldownChange: 2
   distancePatrol: 2

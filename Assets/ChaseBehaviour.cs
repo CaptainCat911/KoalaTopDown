@@ -7,9 +7,8 @@ public class ChaseBehaviour : StateMachineBehaviour
     Boss boss;                              // ссылка на бота
     public float randomCooldown = 2f;       // перезарядка рандома   
     float lastRandom;                       // время последнего рандома
-    public float сooldown = 2f;       // перезарядка рандома   
+    public float cooldown = 2f;             // перезарядка рандома   
     float lastAttack;                       // время последнего рандома  
-
     int attackNumber;                       // тип атаки
 
 
@@ -39,16 +38,16 @@ public class ChaseBehaviour : StateMachineBehaviour
             
             if (boss.distanceToTarget > 3)
             {
-                int random = Random.Range(1, 4);
-                if (random < 3)
+                int random = Random.Range(1, 7);
+                if (random < 6)
                 {
                     boss.distanceToAttack = 4;
-                    attackNumber = 2;
+                    attackNumber = 2;               // ренж атака
                 }
-                if (random == 3)
+                if (random == 6)
                 {
                     boss.distanceToAttack = 20;
-                    attackNumber = 3;
+                    attackNumber = 3;               // спаун
                 }
             }
             else
@@ -56,13 +55,13 @@ public class ChaseBehaviour : StateMachineBehaviour
                 int random = Random.Range(1, 4);
                 if (random < 3)
                 {
-                    boss.distanceToAttack = 3;
-                    attackNumber = 4;
+                    boss.distanceToAttack = 20;
+                    attackNumber = 4;               // взрыв
                 }
                 if (random == 3)
                 {
-                    boss.distanceToAttack = 4;
-                    attackNumber = 2;
+                    boss.distanceToAttack = 4;      
+                    attackNumber = 2;               // ренж атака
                 }
             }
 
@@ -71,7 +70,7 @@ public class ChaseBehaviour : StateMachineBehaviour
         if (!boss.readyToAttack)
             return;
 
-        if (Time.time - lastAttack > сooldown)              // если готовы атаковать и кд готово
+        if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем время атаки
 

@@ -21,6 +21,11 @@ public class BotAIWeaponMelee : MonoBehaviour
     public GameObject[] prefabEnemies;                  // массив префабов со скелетами
     NavMeshAgent agent;                                 // их агент
 
+    [Header("Параметры взрыва")]
+    public int explousionDamage;
+    public float explousionForce;
+    public float explousionRadius;
+
     // Треил 
     public TrailRenderer trail;
 
@@ -125,7 +130,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void ExplousionAttack()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(hitBox.position, 4, layerHit);     // создаем круг в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(hitBox.position, explousionRadius, layerHit);     // создаем круг в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)
@@ -136,7 +141,7 @@ public class BotAIWeaponMelee : MonoBehaviour
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
                 Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
-                fighter.TakeDamage(1, vec2, 100);
+                fighter.TakeDamage(explousionDamage, vec2, explousionForce);
             }
             collidersHits = null;
         }
