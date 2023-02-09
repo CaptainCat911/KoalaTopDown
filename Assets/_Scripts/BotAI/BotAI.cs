@@ -34,6 +34,7 @@ public class BotAI : Fighter
     public float distanceToAttackMelee;                     // дистанци€ дл€ атакой мили
     public float distanceToAttackRange;                     // дистанци€ дл€ атаки ренж
     [HideInInspector] public float distanceToAttack;        // дистанци€, с которой можно атаковать
+    [HideInInspector] public float distanceToTarget;
 
     public bool meleeAttackType;                            // устанавливаем тип атаки мили
     public bool rangeAttackType;                            // ... ренж
@@ -264,8 +265,8 @@ public class BotAI : Fighter
 
     public void Chase()
     {
-        float distance = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
-        if (distance < distanceToAttack && targetVisible)                                       // если дошли до цели и видим еЄ
+        distanceToTarget = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
+        if (distanceToTarget < distanceToAttack && targetVisible)                                       // если дошли до цели и видим еЄ
         {
             if (!readyToAttack)
             {
@@ -278,7 +279,9 @@ public class BotAI : Fighter
         {
             agent.SetDestination(target.transform.position);                                    // перемещаемс€ к цели
             if (readyToAttack)
-                readyToAttack = false;                                                          // не готов стрел€ть                
+            {
+                readyToAttack = false;                                                          // не готов стрел€ть
+            }
         }
     }
 
@@ -304,6 +307,12 @@ public class BotAI : Fighter
     public void EffectRangeAttackHitBox()
     {
         hitBox.EffectRangeAttack();
+    }
+
+    // јтаки милихолдера
+    public void AttackMeleeHolder(string type)
+    {
+        botAIMeleeWeaponHolder.currentWeapon.Attack(type);
     }
 
 

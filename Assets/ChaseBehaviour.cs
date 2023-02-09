@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ChaseBehaviour : StateMachineBehaviour
 {
-    Boss boss;                       // ссылка на бота
-    bool switchType;
+    Boss boss;                              // ссылка на бота
+    public float randomCooldown = 2f;       // перезарядка рандома   
+    float lastRandom;                       // время последнего рандома
+    public float сooldown = 2f;       // перезарядка рандома   
+    float lastAttack;                       // время последнего рандома  
+
+    int attackNumber;                       // тип атаки
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -26,25 +31,84 @@ public class ChaseBehaviour : StateMachineBehaviour
 
         boss.Chase();                               // преследуем цель
 
-        if (boss.readyToAttack)
+
+
+        if (Time.time - lastRandom > randomCooldown)        // если готовы атаковать и кд готово
         {
-            boss.botAIMeleeWeaponHolder.currentWeapon.Attack("2");
+            lastRandom = Time.time;                         // присваиваем время атаки
+            
+            if (boss.distanceToTarget > 3)
+            {
+                int random = Random.Range(1, 4);
+                if (random < 3)
+                {
+                    boss.distanceToAttack = 4;
+                    attackNumber = 2;
+                }
+                if (random == 3)
+                {
+                    boss.distanceToAttack = 20;
+                    attackNumber = 3;
+                }
+            }
+            else
+            {
+                int random = Random.Range(1, 4);
+                if (random < 3)
+                {
+                    boss.distanceToAttack = 3;
+                    attackNumber = 4;
+                }
+                if (random == 3)
+                {
+                    boss.distanceToAttack = 4;
+                    attackNumber = 2;
+                }
+            }
 
-
-
-            /*            if (!switchType)
-                        {
-                            boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "2";
-                            switchType = true;
-                        }
-                        if (switchType)
-                        {
-                            boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "3";
-                            switchType = false;
-                        }*/
-
-            //animator.SetTrigger("Attack");              // триггер
         }
+
+        if (!boss.readyToAttack)
+            return;
+
+        if (Time.time - lastAttack > сooldown)              // если готовы атаковать и кд готово
+        {
+            lastAttack = Time.time;                         // присваиваем время атаки
+
+
+            if (attackNumber == 2)
+            {
+                animator.SetTrigger("AttackRange");
+            }
+            if (attackNumber == 3)
+            {
+                animator.SetTrigger("AttackSpawn");
+            }
+            if (attackNumber == 4)
+            {
+                animator.SetTrigger("AttackExplousion");
+            }
+        }
+
+
+        /*            if (!switchType)
+                    {
+                        boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "2";
+                        switchType = true;
+                    }
+                    if (switchType)
+                    {
+                        boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "3";
+                        switchType = false;
+                    }*/
+
+
+
+    }
+
+    void Attack(int number)
+    {
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

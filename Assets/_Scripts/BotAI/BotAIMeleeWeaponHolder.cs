@@ -44,11 +44,15 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
         // Стрельба
         if (botAI.readyToAttack && botAI.meleeAttackType)
         {
-            fireStart = true;                       // стреляем
+            //fireStart = true;                       // стреляем
+            botAI.animator.SetBool("Attacking", true);
+            //botAI.animator.SetTrigger("Attack");
         }
         else
         {
-            fireStart = false;                      // не стреляем
+            //fireStart = false;                      // не стреляем
+            botAI.animator.SetBool("Attacking", false);
+            //botAI.animator.ResetTrigger("Attack");
         }
 
         if (botAI.meleeAttackType && !weaponChanged)

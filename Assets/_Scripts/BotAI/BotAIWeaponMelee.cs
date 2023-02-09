@@ -4,9 +4,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 {
     BotAI botAI;
     BotAIMeleeWeaponHolder weaponHolderMelee;   // ссылка на скрипт weaponHolder (дл€ стрельбы)
-    Animator animator;
-
-    public bool bossWeapon;
+    Animator animator;    
 
     public string weaponName;
     public Transform hitBox;
@@ -38,23 +36,12 @@ public class BotAIWeaponMelee : MonoBehaviour
     void Update()
     {
         // јтака
-        if (!weaponHolderMelee.fireStart)                       // если не готовы стрел€ть
+/*        if (!weaponHolderMelee.fireStart)                       // если не готовы стрел€ть
         {
             return;                                             // выходим
-        }
+        }*/
 
-        if (!bossWeapon)
-        {
-            Attack(attackClass);
-        }
-        else
-        {
-            int random = Random.Range(2, 4);
-            if (random == 2)
-                Attack("2");
-            if (random == 3)
-                Attack("3");
-        }
+
     }
 
     public void Attack(string type)
@@ -80,6 +67,11 @@ public class BotAIWeaponMelee : MonoBehaviour
                 case "3":
                     {
                         animator.SetTrigger("HitSpawn");
+                    }
+                    break;
+                case "4":
+                    {
+                        animator.SetTrigger("HitExplousion");
                     }
                     break;
             }
@@ -130,6 +122,27 @@ public class BotAIWeaponMelee : MonoBehaviour
         agent = go.GetComponent<NavMeshAgent>();                    // находим Ќавћешјгент
         agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
     }
+
+    public void ExplousionAttack()
+    {
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(hitBox.position, 4, layerHit);     // создаем круг в позиции объекта с радиусом
+        foreach (Collider2D coll in collidersHits)
+        {
+            if (coll == null)
+            {
+                continue;
+            }
+
+            if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
+            {
+                Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
+                fighter.TakeDamage(1, vec2, 100);
+            }
+            collidersHits = null;
+        }
+    }
+
+
 
     public void TrailOn(int number)
     {
