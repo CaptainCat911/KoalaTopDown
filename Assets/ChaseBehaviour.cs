@@ -5,11 +5,15 @@ using UnityEngine;
 public class ChaseBehaviour : StateMachineBehaviour
 {
     Boss boss;                              // ссылка на бота
-    public float randomCooldown = 2f;       // перезар€дка рандома   
+    public float randomCooldown = 1f;       // перезар€дка рандома   
     float lastRandom;                       // врем€ последнего рандома
-    public float cooldown = 2f;             // перезар€дка рандома   
+    public float cooldownAttack = 2f;       // перезар€дка атаки   
     float lastAttack;                       // врем€ последнего рандома  
     int attackNumber;                       // тип атаки
+
+    // —мена цели
+    float lastTargetChange;                 // врем€ последнего поиска цели
+    float cooldownChange = 4f;              // перезард€ка поиска цели
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -21,6 +25,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // ≈сли нет цели - возвращаемс€ в идле
         if (!boss.target)
         {
             animator.SetTrigger("Idle");            // триггер
@@ -30,8 +35,14 @@ public class ChaseBehaviour : StateMachineBehaviour
 
         boss.Chase();                               // преследуем цель
 
+        // »ногда смен€ем цель
+        if (Time.time - lastTargetChange > cooldownChange && Time.time - lastAttack > cooldownAttack)      // если кд готово
+        {
+            lastTargetChange = Time.time;
+            boss.FindTarget();                                  // поиск цели
+        }
 
-
+        // ѕодготовка типа атаки
         if (Time.time - lastRandom > randomCooldown)        // если готовы атаковать и кд готово
         {
             lastRandom = Time.time;                         // присваиваем врем€ атаки
@@ -64,16 +75,16 @@ public class ChaseBehaviour : StateMachineBehaviour
                     attackNumber = 2;               // ренж атака
                 }
             }
-
         }
 
+        // ≈сли не готовы атаковать - возвращаемс€
         if (!boss.readyToAttack)
             return;
 
-        if (Time.time - lastAttack > cooldown)              // если готовы атаковать и кд готово
+        // ≈сли всЄ готово - атакуем
+        if (Time.time - lastAttack > cooldownAttack)              // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем врем€ атаки
-
 
             if (attackNumber == 2)
             {
@@ -88,21 +99,6 @@ public class ChaseBehaviour : StateMachineBehaviour
                 animator.SetTrigger("AttackExplousion");
             }
         }
-
-
-        /*            if (!switchType)
-                    {
-                        boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "2";
-                        switchType = true;
-                    }
-                    if (switchType)
-                    {
-                        boss.botAIMeleeWeaponHolder.currentWeapon.attackClass = "3";
-                        switchType = false;
-                    }*/
-
-
-
     }
 
     void Attack(int number)

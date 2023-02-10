@@ -27,8 +27,9 @@ public class BotAI : Fighter
     [HideInInspector] public LayerMask layerHit;            // слой дл€ оружи€
     [HideInInspector] public bool chasing;                  // статус преследовани€
     [HideInInspector] public Vector3 startPosition;         // позици€ дл€ охраны
-    public float chaseLeght;                                // дальность преследовани€    
+    //public float chaseLeght;                                // дальность преследовани€ (пока не используетс€)   
     public float triggerLenght;                             // дистанци€ тригера
+    public float distanceToChangeTarget = 3f;               // дистанци€ при которой бот будет мен€ть цель, если целей больше 1
     [HideInInspector] public bool targetVisible;            // видим мы цель или нет
     public bool readyToAttack;                              // можно атаковать
     public float distanceToAttackMelee;                     // дистанци€ дл€ атакой мили
@@ -41,7 +42,8 @@ public class BotAI : Fighter
     public bool twoWeapons;                                 // если есть 2 оружи€
     //public bool switchMelee;
 
-    bool slowed;
+    // «амедление
+    bool slowed;    
     float maxSpeed;
 
     // ƒл€ анимации
@@ -50,6 +52,7 @@ public class BotAI : Fighter
     public float deathCameraShake;                          // мощность тр€ски камеры при убийстве
     [HideInInspector] public bool flipLeft;                  // дл€ флипа
     [HideInInspector] public bool flipRight;                 //    
+    bool pivotZero;
 
     // “аймер дл€ цветов при уроне
     float timerForColor;
@@ -116,7 +119,14 @@ public class BotAI : Fighter
             return;
 
         // ѕоворот хитбокса
-        if (target && chasing && targetVisible)
+        if (pivotZero)
+        {
+            if (flipRight)
+                pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+            if (flipLeft)
+                pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, Quaternion.Euler(0, 0, 180), Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+        }
+        else if (target && chasing && targetVisible)
         {
             Vector3 aimDirection = target.transform.position - pivot.transform.position;               // угол между положением мыши и pivot оружи€          
             aimAnglePivot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                            // находим угол в градусах             
@@ -226,8 +236,7 @@ public class BotAI : Fighter
 
 
     public void FindTarget()
-    {
-                                                        // присваиваем врем€ атаки
+    {                                                        
         Collider2D[] collidersHitbox = Physics2D.OverlapCircleAll(transform.position, triggerLenght, layerTarget);    // создаем круг в позиции объекта с радиусом 
         List<GameObject> targets = new List<GameObject>();
         foreach (Collider2D enObjectBox in collidersHitbox)
@@ -250,7 +259,7 @@ public class BotAI : Fighter
                 }
                 else
                 {
-                    if (targetVisible && distance < 3)
+                    if (targetVisible && distance < 10)
                     {
                         targets.Add(fighter.gameObject);
                     }
@@ -398,6 +407,18 @@ public class BotAI : Fighter
         spriteRenderer.flipX = true;
         flipRight = false;
         flipLeft = true;
+    }
+
+    public void PivotZero(int number)
+    {
+        if (number == 0)
+        {
+            pivotZero = false;
+        }
+        if (number == 1)
+        {
+            pivotZero = true;
+        }
     }
 
     protected override void Death()

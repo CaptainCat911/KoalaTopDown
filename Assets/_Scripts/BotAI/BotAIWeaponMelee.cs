@@ -126,6 +126,7 @@ public class BotAIWeaponMelee : MonoBehaviour
         //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
         agent = go.GetComponent<NavMeshAgent>();                    // находим НавМешАгент
         agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
+        go.GetComponent<BotAI>().target = GameManager.instance.player.gameObject;
     }
 
     public void ExplousionAttack()

@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class BotAIAnimator : MonoBehaviour
 {
-    //BotAI botAi;
+    BotAI botAi;
     [HideInInspector] public Animator animator;
     BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
-    private void Start()
+
+    private void Awake()
     {
-        //botAi = GetComponentInParent<BotAI>();
+        botAi = GetComponentInParent<BotAI>();
         animator = GetComponent<Animator>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
     }
@@ -39,8 +40,13 @@ public class BotAIAnimator : MonoBehaviour
         botAIMeleeWeaponHolder.currentWeapon.TrailOn(number);       // треил оружия
     }
 
-    public void ResetTriggerAttack()
+    public void PivotStatus(int number)
+    {
+        botAi.PivotZero(number);
+    }
+
+/*    public void ResetTriggerAttack()
     {
         animator.ResetTrigger("Hit");
-    }
+    }*/
 }

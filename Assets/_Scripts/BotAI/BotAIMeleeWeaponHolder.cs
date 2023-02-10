@@ -13,6 +13,7 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
     [HideInInspector] public int selectedWeapon = 0;            // индекс оружия (положение в иерархии WeaponHolder)
     [HideInInspector] public bool fireStart;            // начать стрельбу
     bool weaponChanged;                                 // мили или ренж оружие
+    bool attacking;
 
     private void Awake()
     {
@@ -42,15 +43,17 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
     private void Update()
     {
         // Стрельба
-        if (botAI.readyToAttack && botAI.meleeAttackType)
+        if (botAI.readyToAttack && botAI.meleeAttackType && !attacking)
         {
             //fireStart = true;                       // стреляем
+            attacking = true;
             botAI.animator.SetBool("Attacking", true);
             //botAI.animator.SetTrigger("Attack");
         }
-        else
+        else if(!botAI.readyToAttack && attacking)
         {
             //fireStart = false;                      // не стреляем
+            attacking = false;
             botAI.animator.SetBool("Attacking", false);
             //botAI.animator.ResetTrigger("Attack");
         }

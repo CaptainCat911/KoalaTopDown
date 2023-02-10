@@ -98,6 +98,7 @@ public class EnemyThinker : MonoBehaviour
         {
             if (Time.time - lastTargetFind > Random.Range(cooldownChangeTarget, cooldownChangeTarget + 2f))  // сменяем цель, если больше одной цели
             {
+                lastTargetFind = Time.time;
                 botAI.FindTarget();                               // поиск цели
             }
         }
@@ -140,7 +141,7 @@ public class EnemyThinker : MonoBehaviour
 
         if (botAI.chasing && botAI.target)
         {
-            ChaseAndAttack();                      // преследуем и аттакуем           
+            botAI.Chase();                      // преследуем и аттакуем           
         }
 
 
@@ -181,7 +182,7 @@ public class EnemyThinker : MonoBehaviour
         i = positionNumber;
     }
 
-    void ChaseAndAttack()
+/*    void ChaseAndAttack()
     {
         float distance = Vector3.Distance(botAI.transform.position, botAI.target.transform.position);       // считаем дистанцию до цели        
         if (botAI.targetVisible && distance < botAI.distanceToAttack)
@@ -199,7 +200,7 @@ public class EnemyThinker : MonoBehaviour
                 botAI.readyToAttack = false;                                                            // не готов стрелять                
         }
         //Debug.Log(range); 
-    }
+    }*/
 
     public void LetsGo(int go)
     {

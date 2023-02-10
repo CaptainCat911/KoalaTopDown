@@ -9,7 +9,7 @@ public class BotAIHitBoxPivot : MonoBehaviour
     BotAI botAI;
     //public WeaponHolder weaponHolder;
 
-    void Start()
+    void Awake()
     {
         botAI = GetComponentInParent<BotAI>();
         //weaponHolder = GetComponentInParent<WeaponHolder>();

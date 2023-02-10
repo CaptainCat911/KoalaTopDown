@@ -236,18 +236,18 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 10000
+  maxHealth: 5000
   isPlayerOrNPC: 1
-  hpBarOn: 1
+  hpBarOn: 0
   agent: {fileID: 0}
   animator: {fileID: 0}
-  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
   isNeutral: 0
   isFriendly: 1
   isEnemy: 0
+  target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
     m_Bits: 0
@@ -256,13 +256,14 @@ MonoBehaviour:
     m_Bits: 0
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
-  chaseLeght: 0
-  triggerLenght: 4
+  triggerLenght: 5
+  distanceToChangeTarget: 3
   targetVisible: 0
   readyToAttack: 0
-  distanceToAttackMelee: 1
+  distanceToAttackMelee: 1.5
   distanceToAttackRange: 0
   distanceToAttack: 0
+  distanceToTarget: 0
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
@@ -299,16 +300,15 @@ MonoBehaviour:
   brains:
   - {fileID: 11400000, guid: 9a684f82ea2d15b45a67e11d38e98df3, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
-  target: {fileID: 0}
-  positionsPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  lastChange: 0
+  cooldownChange: 2
+  distancePatrol: 2
+  maxDistancePatrol: 4
+  positionsPoints: []
   i: 0
   nextPosition: 0
   letsGo: 0
   textTrigger: 
-  patrolingRandomPosition: 0
   debug: 0
 --- !u!1 &7953966440881097881
 GameObject:
@@ -528,6 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1d6c0b25a77404e952e28f6ca7352d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1001 &466695815
 PrefabInstance:
   m_ObjectHideFlags: 0

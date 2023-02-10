@@ -983,7 +983,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 5000
+  maxHealth: 10000
   isPlayerOrNPC: 0
   hpBarOn: 0
   agent: {fileID: 0}
@@ -1003,11 +1003,11 @@ MonoBehaviour:
     m_Bits: 0
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
-  chaseLeght: 0
   triggerLenght: 0
+  distanceToChangeTarget: 20
   targetVisible: 0
   readyToAttack: 0
-  distanceToAttackMelee: 4
+  distanceToAttackMelee: 5
   distanceToAttackRange: 0
   distanceToAttack: 0
   distanceToTarget: 0
