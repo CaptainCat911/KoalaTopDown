@@ -215,11 +215,11 @@ public class EnemyThinker : MonoBehaviour
         letsGo = !letsGo;
         if (letsGo)
         {
-            botAI.SayText("я за тобой");
+            botAI.SayText("Let's go motherfucka");
         }
         if (!letsGo)
         {
-            botAI.SayText("∆ду здесь");
+            botAI.SayText("Okey, I'll wait");
         }
     }
 

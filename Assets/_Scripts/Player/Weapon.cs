@@ -44,6 +44,13 @@ public class Weapon : MonoBehaviour
     public float cameraAmplitudeShake = 1f; // амплитуда
     public float cameraTimedeShake = 0.1f;  // длительность
 
+    // Звук
+    public bool singleShot;
+    public bool multiShot;
+    bool soundStarted;
+    public AudioSource audioSource;
+    public AudioSource audioSourceTail;
+
     void Awake()
     {
         player = GameManager.instance.player;
@@ -51,21 +58,34 @@ public class Weapon : MonoBehaviour
         weaponName = weaponClass.weaponName;                                    // имя оружия
         rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
 
-/*        layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам
-        if (weaponClass.bulletPrefab)
-            bulletPrefab = weaponClass.bulletPrefab;                                  // тип снаряда (если не рейкаст оружие)
-        bulletSpeed = weaponClass.bulletSpeed;                                  // скорость
-        damage = weaponClass.damage;                                            // урон
-        pushForce = weaponClass.pushForce;                                      // сила толчка
-        fireRate = weaponClass.fireRate;                                        // скорострельность
-        forceBackFire = weaponClass.forceBackFire;                              // сила отдачи
-        recoil = weaponClass.recoil;                                           // разброс стрельбы*/
+        audioSource = GetComponent<AudioSource>();
+
+        if (singleShot)
+        {
+            audioSource.loop = false;
+        }
+        if (multiShot)
+        {
+            audioSource.loop = true;
+        }
+
+        /*        layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам
+                if (weaponClass.bulletPrefab)
+                    bulletPrefab = weaponClass.bulletPrefab;                                  // тип снаряда (если не рейкаст оружие)
+                bulletSpeed = weaponClass.bulletSpeed;                                  // скорость
+                damage = weaponClass.damage;                                            // урон
+                pushForce = weaponClass.pushForce;                                      // сила толчка
+                fireRate = weaponClass.fireRate;                                        // скорострельность
+                forceBackFire = weaponClass.forceBackFire;                              // сила отдачи
+                recoil = weaponClass.recoil;                                           // разброс стрельбы*/
         //flashEffect = weaponClass.flashEffect;                                  // эффект вспышки при выстреле (флэш) 
     }
 
     private void Start()
     {
-        weaponHolder = GetComponentInParent<WeaponHolder>();                    // находим скрипт weaponHolder      
+        weaponHolder = GetComponentInParent<WeaponHolder>();                    // находим скрипт weaponHolder
+
+
     }
 
     private void Update()
@@ -101,6 +121,23 @@ public class Weapon : MonoBehaviour
             if (lineRaycast)
                 lineRaycast.enabled = false;
         }
+
+        // Звук
+        if (multiShot && ammo > 0)
+        {
+            if (weaponHolder.fireStart && !soundStarted)                        // если не готовы стрелять
+            {                
+                audioSource.Play();
+                soundStarted = true;
+            }
+            if (!weaponHolder.fireStart && soundStarted)                        // если не готовы стрелять
+            {                 
+                audioSource.Stop();
+                if (audioSourceTail)
+                    audioSourceTail.Play();
+                soundStarted = false;
+            }
+        }
     }
 
 
@@ -115,16 +152,24 @@ public class Weapon : MonoBehaviour
         if (Time.time >= nextTimeToFire && ammo > 0)                    // если начинаем стрелять и кд готово
         {
             ammo--;
-            nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                                     // вычисляем кд
-           
+            nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                                     // вычисляем кд           
             
             if (!rayCastWeapon)
                 FireProjectile();                                                           // выстрел пулей
             if (rayCastWeapon)
                 FireRayCast();                                                              // выстрел рейкастом
+
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры
+
+            // Флэш
             if (flashEffectAnimator != null)                                                // если флэшэффект есть
                 Flash();
+
+            // Аудио
+            if (singleShot)
+            {
+                audioSource.Play();
+            }
         }
 
         // Находим угол для флипа холдера и спрайта игрока
