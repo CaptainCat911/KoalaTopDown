@@ -197,6 +197,7 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
     m_Bits: 0
@@ -205,13 +206,14 @@ MonoBehaviour:
     m_Bits: 0
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
-  chaseLeght: 0
-  triggerLenght: 14
+  triggerLenght: 5
+  distanceToChangeTarget: 3
   targetVisible: 1
   readyToAttack: 0
   distanceToAttackMelee: 0.9
   distanceToAttackRange: 0
   distanceToAttack: 0.8
+  distanceToTarget: 0
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
@@ -241,7 +243,6 @@ MonoBehaviour:
   brains:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
-  target: {fileID: 0}
   lastChange: 0
   cooldownChange: 2
   distancePatrol: 2

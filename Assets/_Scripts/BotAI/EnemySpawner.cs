@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] prefabEnemies;      // массив префабов с зомби
 
     public bool active;                     // активен или нет
-    //public bool chasePlayer;                // триггер врагов срабатывает сразу
-    //public float chaseDistance;             // дистанция триггера врагов
+    public bool chasePlayer;                // триггер врагов срабатывает сразу
+    public float chaseDistance;             // дистанция триггера врагов
     public float cooldown = 1f;             // перезарядка спауна    
     private float lastSpawn;
     public int enemysHowMuch;
@@ -47,25 +47,25 @@ public class EnemySpawner : MonoBehaviour
         //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
         agent = go.GetComponent<NavMeshAgent>();                    // находим НавМешАгент
         agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
-        //if(chasePlayer)
-            //go.GetComponent<BotAI>().triggerLenght = chaseDistance; // устанавливаем преследование за игроком
-        enemyCount++;
-        GameManager.instance.enemyCount++;
+        if(chasePlayer)
+            go.GetComponent<BotAI>().triggerLenght = chaseDistance; // устанавливаем преследование за игроком
+        //enemyCount++;
+        //GameManager.instance.enemyCount++;
 
         if (enemyCount >= enemysHowMuch)
         {
-            Invoke("NextSpawnersOn", 5f);
-            Destroy(gameObject, 6f);
+            //Invoke("NextSpawnersOn", 5f);
+            //Destroy(gameObject, 6f);
         }
     }
 
-    void NextSpawnersOn()
+/*    void NextSpawnersOn()
     {
         foreach (GameObject spawner in nextSpawners)
         {
             spawner.SetActive(true);
         }
-    }
+    }*/
 
     public void ActivateSpawner()
     {
