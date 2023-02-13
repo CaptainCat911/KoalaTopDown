@@ -5,10 +5,10 @@ using UnityEngine;
 public class ChaseBehaviour : StateMachineBehaviour
 {
     Boss boss;                              // ссылка на бота
-    public float randomCooldown = 1f;       // перезарядка рандома   
-    float lastRandom;                       // время последнего рандома
     public float cooldownAttack = 2f;       // перезарядка атаки   
     float lastAttack;                       // время последнего рандома  
+    float randomCooldown = 1f;              // перезарядка рандома   
+    float lastRandom;                       // время последнего рандома
     int attackNumber;                       // тип атаки
 
     // Смена цели
@@ -52,7 +52,7 @@ public class ChaseBehaviour : StateMachineBehaviour
                 int random = Random.Range(1, 7);
                 if (random < 6)
                 {
-                    boss.distanceToAttack = 4;
+                    boss.distanceToAttack = 6;
                     attackNumber = 2;               // ренж атака
                 }
                 if (random == 6)
@@ -64,15 +64,20 @@ public class ChaseBehaviour : StateMachineBehaviour
             else
             {
                 int random = Random.Range(1, 4);
-                if (random < 3)
+                if (random < 2)
                 {
                     boss.distanceToAttack = 20;
                     attackNumber = 4;               // взрыв
                 }
+                if (random == 2)
+                {
+                    boss.distanceToAttack = 6;      
+                    attackNumber = 2;               // ренж атака
+                }
                 if (random == 3)
                 {
-                    boss.distanceToAttack = 4;      
-                    attackNumber = 2;               // ренж атака
+                    boss.distanceToAttack = 20;
+                    attackNumber = 3;               // спаун
                 }
             }
         }

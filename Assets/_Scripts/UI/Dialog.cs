@@ -16,13 +16,6 @@ public class Dialog : MonoBehaviour
         StartCoroutine(Type());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     IEnumerator Type()
     {
         foreach(char letter in sentences[index].ToCharArray())
@@ -31,4 +24,19 @@ public class Dialog : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
     }
+
+    public void NextSentence()
+    {
+        if(index < sentences.Length - 1)
+        {
+            index++;
+            textDisplay.text = "";
+            StartCoroutine(Type());
+        }
+        else
+        {
+            textDisplay.text = "";
+        }
+    }
+
 }

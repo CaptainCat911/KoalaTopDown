@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 3786651681049121963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.15, y: 0.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1479659406406739827}
   m_RootOrder: 0
@@ -408,8 +408,8 @@ MonoBehaviour:
   swoard: 1
   spear: 0
   hitBox: {fileID: 1630045362412420869}
-  damage: 50
-  pushForce: 20
+  damage: 70
+  pushForce: 30
   radius: 0.8
   cooldown: 0.8
   trail: {fileID: 3786651681873589342}
@@ -437,7 +437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604417298802685298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0.20600015, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0.432, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

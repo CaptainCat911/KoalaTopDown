@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338257986328585604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.233, z: 0}
+  m_LocalPosition: {x: 0.087, y: 0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -140,9 +140,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272269816416803160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -87.53976, y: -42.814026, z: 0}
+  m_LocalPosition: {x: 0.141, y: 0.049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7753724071346979932}
   - {fileID: 7753724072104305833}
@@ -171,10 +171,10 @@ MonoBehaviour:
   swoard: 0
   spear: 1
   hitBox: {fileID: 5298824491185778675}
-  damage: 30
-  pushForce: 10
+  damage: 50
+  pushForce: 20
   radius: 0.5
-  cooldown: 0.5
+  cooldown: 0.6
   trail: {fileID: 7753724072104305832}
 --- !u!1 &7753724071346979933
 GameObject:
@@ -202,8 +202,8 @@ Transform:
   m_GameObject: {fileID: 7753724071346979933}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.185, y: 0.055, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5449055597014660997}
   m_RootOrder: 0
@@ -285,14 +285,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7753724072104305834}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.084, y: 0.319, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.38268274, w: 0.9238798}
+  m_LocalPosition: {x: 0.168, y: 0.407, z: 0}
   m_LocalScale: {x: 0.20250002, y: 0.636687, z: 0.20250002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5449055597014660997}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!212 &7753724072104305839
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ TrailRenderer:
   m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
