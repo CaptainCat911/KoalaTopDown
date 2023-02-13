@@ -10,6 +10,8 @@ public class MeleeWeapon : MonoBehaviour
     public LayerMask layer;                             // слои для битья
 
     public string weaponName;
+    public bool swoard;
+    public bool spear;
     public Transform hitBox;
     public int damage = 10;                             // урон
     public float pushForce = 1;                         // сила толчка
@@ -34,7 +36,10 @@ public class MeleeWeapon : MonoBehaviour
         {
             //Debug.Log("Attack!");
             lastAttack = Time.time;                             // присваиваем время атаки
-            animator.SetTrigger("Hit");
+            if (swoard)
+                animator.SetTrigger("HitSwoard");
+            if (spear)
+                animator.SetTrigger("HitSpear");
         }
     }
 
