@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Ссылки")]
     public Player player;                       // ссылка на игрока    
-    public GameObject gui;   
+    public GameObject gui;                      // гуи
+    public Dialog dialog;                       // диалог менеджер
+    public AmmoPackKoala ammoPack;
     
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;                    // клавиша для действия
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int keys;                            // ключи
     public int battery;                         // батареи
 
+    public bool isPlayerEnactive;
 
     [HideInInspector] public int enemyCount;
     
@@ -50,6 +53,11 @@ public class GameManager : MonoBehaviour
             ChatBubble.Clear(gameObject);
             ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi");
         }    
+    }
+
+    public void StartDialog(int number)
+    {
+        dialog.StartDialog(number);
     }
 
 

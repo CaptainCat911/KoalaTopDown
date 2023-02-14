@@ -12,10 +12,10 @@ public class WeaponHolder : MonoBehaviour
     [HideInInspector] public Weapon currentWeapon;      // текущее оружие 
     [HideInInspector] public int selectedWeapon = 0;    // индекс оружи€ (положение в иерархии WeaponHolder)
     [HideInInspector] public bool fireStart;            // начать стрельбу
-    [HideInInspector] public bool attackHitBoxStart;    // начать атаку мечом
+    
     [HideInInspector] public float aimAngle;            // угол поворота дл€ вращени€ холдера с оружием и хитбоксѕивота
     Vector3 mousePosition;                              // положение мыши
-    [HideInInspector] public bool meleeWeapon;                                   // мили оружие или ренж
+    [HideInInspector] public bool meleeWeapon;          // мили оружие или ренж
 
     [HideInInspector] public string currentWeaponName;  // дл€ текста ui
 
@@ -35,38 +35,42 @@ public class WeaponHolder : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(weapons.Count - 1);
+        if (GameManager.instance.isPlayerEnactive)
+        {
+            fireStart = false;
+            return;
+        }
 
         // —трельба
         if (Input.GetMouseButton(0))
         {
-            if (meleeWeapon)                        // если оружие ближнего бо€
-                attackHitBoxStart = true;           // начинаем атаку хитбоксом
-            else
+            //if (meleeWeapon)                        // если оружие ближнего бо€
+                //attackHitBoxStart = true;           // начинаем атаку хитбоксом
+            //else
                 fireStart = true;                   // стрел€ем
         }
         else
         {
-            if (meleeWeapon)
-                attackHitBoxStart = false;
-            else
+            //if (meleeWeapon)
+                //attackHitBoxStart = false;
+            //else
                 fireStart = false;                  
         }
 
-        // —мена оружи€ на мили
+        // —мена оружи€ ренж или мили
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SelectWeapon();                     // достаЄм огнестрел
-            weaponHolderMelee.HideWeapons();    // пр€чем мили
-            meleeWeapon = false;
-            weaponHolderMelee.rangeWeapon = true;
+            HideWeapons();                          // пр€чем огнестрел
+            weaponHolderMelee.SelectWeapon();       // достаЄм мили
+            meleeWeapon = true;                     // оружие мили
+            weaponHolderMelee.rangeWeapon = false; 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            HideWeapons();                      // пр€чем огнестрел
-            weaponHolderMelee.SelectWeapon();   // достаЄм мили
-            meleeWeapon = true;                 // оружие мили
-            weaponHolderMelee.rangeWeapon = false;
+            SelectWeapon();                         // достаЄм огнестрел
+            weaponHolderMelee.HideWeapons();        // пр€чем мили
+            meleeWeapon = false;                
+            weaponHolderMelee.rangeWeapon = true;   // оружие ренж
         }
 
         if (Input.GetKeyDown(KeyCode.Z))

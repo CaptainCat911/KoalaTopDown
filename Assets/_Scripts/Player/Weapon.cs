@@ -14,10 +14,11 @@ public class Weapon : MonoBehaviour
 
     [Header("Параметры оружия")]
     bool rayCastWeapon;                             // рейкаст оружие
+    public int weaponIndex;
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
-    public int ammo;                                // патроны
+    //public int ammo;                                       // патроны
 
 /*    GameObject bulletPrefab;                // префаб снаряда
     float bulletSpeed;                      // скорость снаряда
@@ -84,8 +85,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         weaponHolder = GetComponentInParent<WeaponHolder>();                    // находим скрипт weaponHolder
-
-
+        //ammo = GameManager.instance.ammoPack.ammoTompson;
     }
 
     private void Update()
@@ -123,7 +123,7 @@ public class Weapon : MonoBehaviour
         }
 
         // Звук
-        if (multiShot && ammo > 0)
+        if (multiShot && GameManager.instance.ammoPack.ammoWeapons[weaponIndex].allAmmo > 0)
         {
             if (weaponHolder.fireStart && !soundStarted)                        // если не готовы стрелять
             {                
@@ -149,10 +149,10 @@ public class Weapon : MonoBehaviour
             return;                                         // выходим
         }
 
-        if (Time.time >= nextTimeToFire && ammo > 0)                    // если начинаем стрелять и кд готово
+        if (Time.time >= nextTimeToFire && GameManager.instance.ammoPack.ammoWeapons[weaponIndex].allAmmo > 0)                    // если начинаем стрелять и кд готово
         {
-            ammo--;
-            nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                                     // вычисляем кд           
+            GameManager.instance.ammoPack.ammoWeapons[weaponIndex].allAmmo--;                           // - патроны (возможно надо переделать на ссылку)
+            nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                         // вычисляем кд           
             
             if (!rayCastWeapon)
                 FireProjectile();                                                           // выстрел пулей

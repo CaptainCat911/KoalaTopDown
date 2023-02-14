@@ -43,7 +43,7 @@ public class TextUI : MonoBehaviour
             if (GameManager.instance.player.weaponHolder.meleeWeapon)
                 ammoRangeWeapon.text = "-";
             else
-                ammoRangeWeapon.text = GameManager.instance.player.weaponHolder.currentWeapon.ammo.ToString("0");
+                ammoRangeWeapon.text = GameManager.instance.ammoPack.ammoWeapons[GameManager.instance.player.weaponHolder.currentWeapon.weaponIndex].allAmmo.ToString("0");
         }
 
         // Активная бомба

@@ -5,14 +5,15 @@ using UnityEngine;
 public class MeleeWeapon : MonoBehaviour
 {
     Player player;
-    WeaponHolder weaponHolder;                          // ссылка на скрипт weaponHolder (для удара)    
+    //WeaponHolder weaponHolder;                          // ссылка на скрипт weaponHolder (для удара)
+    WeaponHolderMelee weaponHolderMelee;
     Animator animator;
     public LayerMask layer;                             // слои для битья
 
     public string weaponName;
     public bool swoard;
     public bool spear;
-    public Transform hitBox;
+    public Transform hitBox;                            // положение хитбокса
     public int damage = 10;                             // урон
     public float pushForce = 1;                         // сила толчка
     public float radius = 1;                            // радиус
@@ -25,14 +26,15 @@ public class MeleeWeapon : MonoBehaviour
     void Start()
     {
         player = GameManager.instance.player;
-        weaponHolder = GameManager.instance.player.weaponHolder;            // находим скрипт weaponHolder
+        //weaponHolder = GameManager.instance.player.weaponHolder;            // находим скрипт weaponHolder
+        weaponHolderMelee = GameManager.instance.player.weaponHolderMelee;      // находим скрипт weaponHolder
         animator = GetComponentInParent<Animator>();        
     }
 
     
     void Update()
     {
-        if (weaponHolder.attackHitBoxStart && Time.time - lastAttack > cooldown)          // если готовы атаковать и кд готово
+        if (weaponHolderMelee.attackHitBoxStart && Time.time - lastAttack > cooldown)          // если готовы атаковать и кд готово
         {
             //Debug.Log("Attack!");
             lastAttack = Time.time;                             // присваиваем время атаки

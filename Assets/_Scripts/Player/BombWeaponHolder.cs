@@ -33,7 +33,11 @@ public class BombWeaponHolder : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(weapons.Count - 1);
+        if (GameManager.instance.isPlayerEnactive)
+        {
+            fireStart = false;
+            return;
+        }
 
         // Стрельба
         if (Input.GetMouseButton(1))

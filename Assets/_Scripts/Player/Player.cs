@@ -9,6 +9,7 @@ public class Player : Fighter
     NavMeshAgent agent;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public WeaponHolder weaponHolder;
+    [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
     [HideInInspector] public BombWeaponHolder bombWeaponHolder;
     HitBoxPivot hitBoxPivot;
 
@@ -44,6 +45,7 @@ public class Player : Fighter
         agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponHolder = GetComponentInChildren<WeaponHolder>();
+        weaponHolderMelee = GetComponentInChildren<WeaponHolderMelee>();
         bombWeaponHolder = GetComponentInChildren<BombWeaponHolder>();
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
 
@@ -53,20 +55,27 @@ public class Player : Fighter
 
     void Update()
     {
+        if (GameManager.instance.isPlayerEnactive)
+        {
+            moveDirection = new Vector2(0, 0).normalized;        // сбрасываем скорость скорость
+            animator.SetFloat("Speed", 0);
+            return;
+        }
+
         // Перемещение и направление
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");        
-        moveDirection = new Vector2(moveX, moveY).normalized;                       // скорость нормализированная 
+        moveDirection = new Vector2(moveX, moveY).normalized;               // скорость нормализированная 
 
         // Рывок
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextTimeToDash)
         {
-            nextTimeToDash = Time.time + 1f / dashRate;                 // вычисляем кд
+            nextTimeToDash = Time.time + 1f / dashRate;                     // вычисляем кд
             Dash();
         }
 
-            // Анимации 
-            animator.SetFloat("Speed", movementVector.magnitude);
+        // Анимации 
+        animator.SetFloat("Speed", movementVector.magnitude);
         //Debug.Log(movementVector.magnitude);
 
         // Флип спрайта игрока
@@ -120,8 +129,6 @@ public class Player : Fighter
     }
 
 
-
-
     // Фукция для ивента анимации (потом как-нибудь сделать по нормальному и через ивент)
 /*    public void AttacHitBox()
     {
@@ -133,10 +140,6 @@ public class Player : Fighter
         hitBox.TrailOn(isOn);
     }
 */
-
-
-
-
 
     // Флип игрока
     void Flip()
@@ -200,5 +203,11 @@ public class Player : Fighter
     {
         ChatBubble.Clear(gameObject);
         ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text);
+    }
+
+    protected override void Death()
+    {
+        base.Death();
+        GameManager.instance.isPlayerEnactive = true;
     }
 }

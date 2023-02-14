@@ -12,6 +12,7 @@ public class WeaponHolderMelee : MonoBehaviour
     [HideInInspector] public MeleeWeapon currentWeapon;     // текущее оружие (пока что толька дл€ текста ui)
     [HideInInspector] public int selectedWeapon = 0;        // индекс оружи€ (положение в иерархии WeaponHolder)   
     [HideInInspector] public bool rangeWeapon = true;       // мили или ренж оружие
+    [HideInInspector] public bool attackHitBoxStart;    // начать атаку мечом
 
     void Start()
     {
@@ -27,7 +28,27 @@ public class WeaponHolderMelee : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(weapons.Count - 1);
+        if (GameManager.instance.isPlayerEnactive)
+        {
+            attackHitBoxStart = false;
+            return;
+        }
+
+        // јтака
+        if (Input.GetMouseButton(0))
+        {
+            //if (meleeWeapon)                        // если оружие ближнего бо€
+                attackHitBoxStart = true;           // начинаем атаку хитбоксом
+            //else
+                //fireStart = true;                   // стрел€ем
+        }
+        else
+        {
+            //if (meleeWeapon)
+                attackHitBoxStart = false;
+            //else
+                //fireStart = false;
+        }
 
         // ¬ыбор оружи€
         if (!rangeWeapon)

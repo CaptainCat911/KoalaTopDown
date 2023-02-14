@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bfff81076b41e49a197a73d4bd8167, type: 3}
+  m_Name: RocketLauncher
+  m_EditorClassIdentifier: 
+  weaponName: "\u0420\u0430\u043A\u0435\u0442\u043D\u0438\u0446\u0430"
+  bulletPrefab: {fileID: 2609019957272575851, guid: a973d9f66c30a584396351f203d6b99c, type: 3}
+  damage: 100
+  pushForce: 20
+  bulletSpeed: 10
+  fireRate: 1
+  forceBackFire: 5
+  recoil: 2
+  rayCastWeapon: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
