@@ -11,10 +11,13 @@ public class GameManager : MonoBehaviour
     public Player player;                       // ссылка на игрока    
     public GameObject gui;                      // гуи
     public Dialog dialog;                       // диалог менеджер
-    public AmmoPackKoala ammoPack;
-    
+    public AmmoPackKoala ammoPack;              // ссылка на аммопак
+    public GameObject magazine;
+    bool openMagazine;
+
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;                    // клавиша для действия
+    public KeyCode keyOpenMagazine;
 
     [Header("Предметы")]
     public int keys;                            // ключи
@@ -52,7 +55,14 @@ public class GameManager : MonoBehaviour
         {
             ChatBubble.Clear(gameObject);
             ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi");
-        }    
+        }
+        
+        if (Input.GetKeyDown(keyOpenMagazine))
+        {
+            isPlayerEnactive = !isPlayerEnactive;
+            openMagazine = !openMagazine;
+            magazine.SetActive(openMagazine);
+        }
     }
 
     public void StartDialog(int number)

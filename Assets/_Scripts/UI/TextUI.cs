@@ -39,11 +39,12 @@ public class TextUI : MonoBehaviour
         // јктивное оружие
         if (GameManager.instance.player.weaponHolder.currentWeapon)
         {
-            weaponName.text = GameManager.instance.player.weaponHolder.currentWeaponName;
-            if (GameManager.instance.player.weaponHolder.meleeWeapon)
-                ammoRangeWeapon.text = "-";
+            weaponName.text = GameManager.instance.player.weaponHolder.currentWeaponName;       // название текущего оружи€
+            if (GameManager.instance.player.weaponHolder.meleeWeapon)                           // если оружие мили
+                ammoRangeWeapon.text = "-";                                                     // выводим "-" в баре патронов
             else
-                ammoRangeWeapon.text = GameManager.instance.ammoPack.ammoWeapons[GameManager.instance.player.weaponHolder.currentWeapon.weaponIndex].allAmmo.ToString("0");
+                ammoRangeWeapon.text = GameManager.instance.ammoPack.ammoWeapons[GameManager.instance.
+                    player.weaponHolder.currentWeapon.weaponIndex].allAmmo.ToString("0");       // находим кол-во патронов текущего оружи€
         }
 
         // јктивна€ бомба

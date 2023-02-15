@@ -3,7 +3,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Ссылки")]                      // почему-то не отображается
-    Player player;    
+    Player player;
+    AmmoPackStore[] ammoWeapons;
     public WeaponClass weaponClass;         // ссылка на класс оружия
     public Transform firePoint;             // якорь для снарядов
     public Transform pivot;                 // якорь weaponHolder (используется для прицеливания)
@@ -55,7 +56,8 @@ public class Weapon : MonoBehaviour
     void Awake()
     {
         player = GameManager.instance.player;
-        
+        ammoWeapons = GameManager.instance.ammoPack.ammoWeapons;
+
         weaponName = weaponClass.weaponName;                                    // имя оружия
         rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
 
@@ -123,7 +125,7 @@ public class Weapon : MonoBehaviour
         }
 
         // Звук
-        if (multiShot && GameManager.instance.ammoPack.ammoWeapons[weaponIndex].allAmmo > 0)
+        if (multiShot && ammoWeapons[weaponIndex].allAmmo > 0)
         {
             if (weaponHolder.fireStart && !soundStarted)                        // если не готовы стрелять
             {                
@@ -149,9 +151,9 @@ public class Weapon : MonoBehaviour
             return;                                         // выходим
         }
 
-        if (Time.time >= nextTimeToFire && GameManager.instance.ammoPack.ammoWeapons[weaponIndex].allAmmo > 0)                    // если начинаем стрелять и кд готово
+        if (Time.time >= nextTimeToFire && ammoWeapons[weaponIndex].allAmmo > 0)            // если начинаем стрелять и кд готово
         {
-            GameManager.instance.ammoPack.ammoWeapons[weaponIndex].allAmmo--;                           // - патроны (возможно надо переделать на ссылку)
+            ammoWeapons[weaponIndex].allAmmo--;                                             // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                         // вычисляем кд           
             
             if (!rayCastWeapon)
