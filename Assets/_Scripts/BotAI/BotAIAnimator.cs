@@ -3,13 +3,13 @@ using UnityEngine;
 public class BotAIAnimator : MonoBehaviour
 {
     BotAI botAi;
-    [HideInInspector] public Animator animator;
+    public Animator animator;
     BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
 
     private void Awake()
     {
         botAi = GetComponentInParent<BotAI>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
     }
     public void CurrentWeaponAttack()
@@ -29,7 +29,7 @@ public class BotAIAnimator : MonoBehaviour
 
     public void ExplousionWeaponAttack()
     {
-        botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();         // взрыв
+        botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();    // взрыв
     }
 
 
@@ -42,11 +42,16 @@ public class BotAIAnimator : MonoBehaviour
 
     public void PivotStatus(int number)
     {
-        botAi.PivotZero(number);
+        botAi.PivotZero(number);            // отключение вращения пивота за целью
     }
 
-/*    public void ResetTriggerAttack()
+    public void StaffFireBall()
     {
-        animator.ResetTrigger("Hit");
-    }*/
+        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("RangeAttack");
+    }
+
+    /*    public void ResetTriggerAttack()
+        {
+            animator.ResetTrigger("Hit");
+        }*/
 }

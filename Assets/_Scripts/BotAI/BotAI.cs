@@ -7,8 +7,8 @@ public class BotAI : Fighter
     // —сылки
     //EnemyThinker enemyThinker;
     [HideInInspector] public NavMeshAgent agent;
-    [HideInInspector] public Animator animator;
-    BotAIAnimator animatorWeapon;
+    public Animator animator;
+    public BotAIAnimator animatorWeapon;
     [HideInInspector] public SpriteRenderer spriteRenderer;    
     BotAIHitBoxPivot pivot;
     [HideInInspector] public BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
@@ -72,8 +72,8 @@ public class BotAI : Fighter
         base.Awake();
         //enemyThinker = GetComponentInChildren<EnemyThinker>();
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-        animatorWeapon = GetComponentInChildren<BotAIAnimator>();
+        //animator = GetComponent<Animator>();
+        //animatorWeapon = GetComponentInChildren<BotAIAnimator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         pivot = GetComponentInChildren<BotAIHitBoxPivot>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
