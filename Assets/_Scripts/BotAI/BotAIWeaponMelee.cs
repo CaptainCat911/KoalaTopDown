@@ -21,7 +21,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     public GameObject[] prefabEnemies;                  // массив префабов со скелетами
     NavMeshAgent agent;                                 // их агент
 
-    [Header("Параметры взрыва")]
+    [Header("Параметры взрыва")]    
     public int explousionDamage;
     public float explousionForce;
     public float explousionRadius;
@@ -31,8 +31,8 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     void Start()
     {
-        botAI = GetComponentInParent<BotAI>();        
-        animator = GetComponentInParent<Animator>();
+        botAI = GetComponentInParent<BotAI>();
+        animator = GetComponentInParent<BotAIAnimator>().GetComponent<Animator>();
         weaponHolderMelee = GetComponentInParent<BotAIMeleeWeaponHolder>();
         layerHit = botAI.layerHit;
     }
@@ -146,6 +146,9 @@ public class BotAIWeaponMelee : MonoBehaviour
             }
             collidersHits = null;
         }
+        GameObject effect = Instantiate(GameAssets.instance.explousionStaffEffect,
+            hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
+        Destroy(effect, 1);                                                             // уничтожаем эффект через .. сек
     }
 
 

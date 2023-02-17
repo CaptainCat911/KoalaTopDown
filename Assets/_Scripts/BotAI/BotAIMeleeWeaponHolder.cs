@@ -43,20 +43,24 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
     private void Update()
     {
         // Стрельба
-        if (botAI.readyToAttack && botAI.meleeAttackType && !attacking)
+        if (!botAI.boss)            // если не босс
         {
-            //fireStart = true;                       // стреляем
-            attacking = true;
-            botAI.animator.SetBool("Attacking", true);
-            //botAI.animator.SetTrigger("Attack");
+            if (botAI.readyToAttack && botAI.meleeAttackType && !attacking)
+            {
+                //fireStart = true;                       // стреляем
+                attacking = true;
+                botAI.animator.SetBool("Attacking", true);
+                //botAI.animator.SetTrigger("Attack");
+            }
+            else if (!botAI.readyToAttack && attacking)
+            {
+                //fireStart = false;                      // не стреляем
+                attacking = false;
+                botAI.animator.SetBool("Attacking", false);
+                //botAI.animator.ResetTrigger("Attack");
+            }
         }
-        else if(!botAI.readyToAttack && attacking)
-        {
-            //fireStart = false;                      // не стреляем
-            attacking = false;
-            botAI.animator.SetBool("Attacking", false);
-            //botAI.animator.ResetTrigger("Attack");
-        }
+
 
         if (botAI.meleeAttackType && !weaponChanged)
         {            

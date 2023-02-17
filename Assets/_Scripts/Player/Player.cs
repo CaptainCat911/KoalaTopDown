@@ -208,6 +208,7 @@ public class Player : Fighter
     protected override void Death()
     {
         base.Death();
+        spriteRenderer.color = Color.white;
         GameManager.instance.isPlayerEnactive = true;
     }
 }

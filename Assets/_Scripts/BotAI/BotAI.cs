@@ -7,8 +7,8 @@ public class BotAI : Fighter
     // Ссылки
     //EnemyThinker enemyThinker;
     [HideInInspector] public NavMeshAgent agent;
-    public Animator animator;
-    public BotAIAnimator animatorWeapon;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public BotAIAnimator animatorWeapon;
     [HideInInspector] public SpriteRenderer spriteRenderer;    
     BotAIHitBoxPivot pivot;
     [HideInInspector] public BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
@@ -17,6 +17,7 @@ public class BotAI : Fighter
     //public Animator animatorHit;                            // аниматор мили оружия
 
     // Тип бота
+    public bool boss;
     public bool isNeutral;                                  // не будет никого атаковать
     public bool isFriendly;                                 // союзный бот
     public bool isEnemy;                                    // несоюзный бот
@@ -72,8 +73,8 @@ public class BotAI : Fighter
         base.Awake();
         //enemyThinker = GetComponentInChildren<EnemyThinker>();
         agent = GetComponent<NavMeshAgent>();
-        //animator = GetComponent<Animator>();
-        //animatorWeapon = GetComponentInChildren<BotAIAnimator>();
+        animator = GetComponent<Animator>();
+        animatorWeapon = GetComponentInChildren<BotAIAnimator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         pivot = GetComponentInChildren<BotAIHitBoxPivot>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
@@ -183,8 +184,10 @@ public class BotAI : Fighter
 
         // Дебаг
         if (debug)
-            //Debug.Log(targetVisible);
-            Debug.Log(maxSpeed);
+        {
+            //Debug.Log(target);
+            Debug.Log(targetVisible);
+        }
     }
 
     public void SwitchAttackType(int type)
@@ -220,7 +223,7 @@ public class BotAI : Fighter
 
 
     public void NavMeshRayCast(GameObject target)
-    {
+    {        
         NavMeshHit hit;
         if (!agent.Raycast(target.transform.position, out hit))
         {
