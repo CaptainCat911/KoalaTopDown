@@ -98,7 +98,7 @@ public class ChaseBehaviour : StateMachineBehaviour
             }
             if (attackNumber == 3)
             {
-                //animator.SetTrigger("AttackSpawn");
+                animator.SetTrigger("AttackSpawn");
             }
             if (attackNumber == 4)
             {

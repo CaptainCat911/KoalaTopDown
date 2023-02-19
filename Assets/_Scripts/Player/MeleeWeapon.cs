@@ -13,6 +13,7 @@ public class MeleeWeapon : MonoBehaviour
     public string weaponName;
     public bool swoard;
     public bool spear;
+    public bool hummer;
     public Transform hitBox;                            // положение хитбокса
     public int damage = 10;                             // урон
     public float pushForce = 1;                         // сила толчка
@@ -42,6 +43,8 @@ public class MeleeWeapon : MonoBehaviour
                 animator.SetTrigger("HitSwoard");
             if (spear)
                 animator.SetTrigger("HitSpear");
+            if (hummer)
+                animator.SetTrigger("HitHummer");
         }
     }
 
