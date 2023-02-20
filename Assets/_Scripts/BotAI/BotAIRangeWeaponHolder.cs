@@ -50,7 +50,7 @@ public class BotAIRangeWeaponHolder : MonoBehaviour
         //Debug.Log(weapons.Count - 1);
 
         // Стрельба
-        if (botAI.readyToAttack && botAI.rangeAttackType)
+        if (botAI.closeToTarget && botAI.rangeAttackType)
         {
             fireStart = true;                   // стреляем
         }

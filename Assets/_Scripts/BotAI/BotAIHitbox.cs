@@ -45,7 +45,7 @@ public class BotAIHitbox : MonoBehaviour
         //Debug.Log(enemy.lastAttack);
 
         // Атака
-        if (botAI.readyToAttack && Time.time - lastAttack > cooldown)               // если готовы атаковать и кд готово
+        if (botAI.closeToTarget && Time.time - lastAttack > cooldown)               // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                                                 // присваиваем время атаки
             botAI.animator.SetTrigger("Attack");                                    // начинаем анимацию атаки

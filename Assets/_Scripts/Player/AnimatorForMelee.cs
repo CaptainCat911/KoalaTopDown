@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class AnimatorForMelee : MonoBehaviour
@@ -10,13 +9,14 @@ public class AnimatorForMelee : MonoBehaviour
         weaponHolderMelee = GetComponentInChildren<WeaponHolderMelee>();
     }
 
-    public void TrailStatus(int number)
-    {
-        weaponHolderMelee.currentWeapon.TrailOn(number);
-    }
 
     public void CurrentWeaponAttack()
     {
         weaponHolderMelee.currentWeapon.MeleeAttack();
+    }
+
+    public void TrailStatus(int number)
+    {
+        weaponHolderMelee.currentWeapon.TrailOn(number);
     }
 }

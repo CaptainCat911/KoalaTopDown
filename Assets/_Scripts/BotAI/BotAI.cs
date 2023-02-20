@@ -32,7 +32,7 @@ public class BotAI : Fighter
     public float triggerLenght;                             // дистанция тригера
     public float distanceToChangeTarget = 3f;               // дистанция при которой бот будет менять цель, если целей больше 1
     [HideInInspector] public bool targetVisible;            // видим мы цель или нет
-    public bool readyToAttack;                              // можно атаковать
+    public bool closeToTarget;                              // можно атаковать
     public float distanceToAttackMelee;                     // дистанция для атакой мили
     public float distanceToAttackRange;                     // дистанция для атаки ренж
     [HideInInspector] public float distanceToAttack;        // дистанция, с которой можно атаковать
@@ -280,19 +280,19 @@ public class BotAI : Fighter
         distanceToTarget = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
         if (distanceToTarget < distanceToAttack && targetVisible)                                       // если дошли до цели и видим её
         {
-            if (!readyToAttack)
+            if (!closeToTarget)
             {
                 agent.ResetPath();                                                              // сбрасываем путь            
-                readyToAttack = true;                                                           // готов стрелять
+                closeToTarget = true;                                                           // готов стрелять
                 //Debug.Log("Ready Attack");
             }
         }
         else
         {
             agent.SetDestination(target.transform.position);                                    // перемещаемся к цели
-            if (readyToAttack)
+            if (closeToTarget)
             {
-                readyToAttack = false;                                                          // не готов стрелять
+                closeToTarget = false;                                                          // не готов стрелять
             }
         }
     }

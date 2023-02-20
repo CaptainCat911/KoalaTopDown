@@ -59,10 +59,15 @@ public class GameManager : MonoBehaviour
         
         if (Input.GetKeyDown(keyOpenMagazine))
         {
-            isPlayerEnactive = !isPlayerEnactive;
-            openMagazine = !openMagazine;
-            magazine.SetActive(openMagazine);
+            OpenCloseMagazine();
         }
+    }
+
+    public void OpenCloseMagazine()
+    {
+        isPlayerEnactive = !isPlayerEnactive;
+        openMagazine = !openMagazine;
+        magazine.SetActive(openMagazine);
     }
 
     public void StartDialog(int number)

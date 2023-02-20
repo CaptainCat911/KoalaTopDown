@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class DialogStore
@@ -11,5 +12,5 @@ public class DialogStore
 	public string[] sentences;              // предложения
 	public string[] characterName;          // имя персонажа, который говорит
 	public GameObject imageNpc;
-
+	public UnityEvent interactAction;
 }

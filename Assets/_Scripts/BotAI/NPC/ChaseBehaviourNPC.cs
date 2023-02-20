@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCChaseBehaviour : StateMachineBehaviour
+public class ChaseBehaviourNPC : StateMachineBehaviour
 {
     NPC boss;                              // ссылка на бота
     public float cooldownAttack = 2f;       // перезарядка атаки   
@@ -35,6 +35,13 @@ public class NPCChaseBehaviour : StateMachineBehaviour
 
         boss.Chase();                               // преследуем цель
         boss.NavMeshRayCast(boss.target);           // делаем рейкаст
+
+        // Если не готовы атаковать - возвращаемся
+        if (!boss.closeToTarget)
+        {
+            animator.SetBool("Running", true);
+            return;
+        }
 
         // Иногда сменяем цель
         if (Time.time - lastTargetChange > cooldownChange && Time.time - lastAttack > cooldownAttack)      // если кд готово
@@ -83,9 +90,6 @@ public class NPCChaseBehaviour : StateMachineBehaviour
             }
         }
 
-        // Если не готовы атаковать - возвращаемся
-        if (!boss.readyToAttack)
-            return;
 
         // Если всё готово - атакуем
         if (Time.time - lastAttack > cooldownAttack)              // если готовы атаковать и кд готово

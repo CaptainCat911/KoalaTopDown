@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class HpBar : MonoBehaviour
 {
-    Slider slider;
-    RectTransform rectTransform;
-    public Gradient gradient;
-    public Image fill;
+    Slider slider;                  // слайдер
+    RectTransform rectTransform;    // область
+    public Gradient gradient;       // цвет (градиент)
+    public Image fill;              // заливка
+    public float sizeHp;
 
     private void Awake()
     {
@@ -16,17 +17,16 @@ public class HpBar : MonoBehaviour
 
     public void SetMaxHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
-        rectTransform.SetWidth(health);
-
-        fill.color = gradient.Evaluate(1f);
+        slider.maxValue = health;               // значение всей шкалы
+        slider.value = health;                  // значение заливки
+        rectTransform.SetWidth(sizeHp);         // установить размер области 
+        fill.color = gradient.Evaluate(1f);     // цвет заливки
     }
 
 
     public void SetHealth(int health)
     {
-        slider.value = health;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        slider.value = health;                                      // значение заливки
+        fill.color = gradient.Evaluate(slider.normalizedValue);     // цвет заливки
     }
 }

@@ -45,14 +45,14 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
         // Стрельба
         if (!botAI.boss)            // если не босс
         {
-            if (botAI.readyToAttack && botAI.meleeAttackType && !attacking)
+            if (botAI.closeToTarget && botAI.meleeAttackType && !attacking)
             {
                 //fireStart = true;                       // стреляем
                 attacking = true;
                 botAI.animator.SetBool("Attacking", true);
                 //botAI.animator.SetTrigger("Attack");
             }
-            else if (!botAI.readyToAttack && attacking)
+            else if (!botAI.closeToTarget && attacking)
             {
                 //fireStart = false;                      // не стреляем
                 attacking = false;

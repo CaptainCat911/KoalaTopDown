@@ -84,7 +84,7 @@ public class ChaseBehaviour : StateMachineBehaviour
         }
 
         // Если не готовы атаковать - возвращаемся
-        if (!boss.readyToAttack)
+        if (!boss.closeToTarget)
             return;
 
         // Если всё готово - атакуем

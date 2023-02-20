@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BotAIAnimator : MonoBehaviour
 {
-    BotAI botAi;
-    [HideInInspector] public Animator animator;
-    BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
+    BotAI botAi;                                    // ссылка на бота
+    [HideInInspector] public Animator animator;     // аниматор
+    BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;  // мили холдер
 
     private void Awake()
     {
@@ -12,6 +12,9 @@ public class BotAIAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
     }
+
+
+    // јтаки
     public void CurrentWeaponAttack()
     {
         botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();         // мили атака
@@ -34,7 +37,7 @@ public class BotAIAnimator : MonoBehaviour
 
 
 
-
+    // “реил и пивот
     public void TrailStatus(int number)
     {
         botAIMeleeWeaponHolder.currentWeapon.TrailOn(number);       // треил оружи€
@@ -46,7 +49,7 @@ public class BotAIAnimator : MonoBehaviour
     }
 
 
-    // Ёффекты дл€ посоха
+    // Ёффекты дл€ атак
     public void StaffFireBall()
     {
         botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("RangeAttack");

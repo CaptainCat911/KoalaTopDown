@@ -70,7 +70,7 @@ public class EnemyThinker : MonoBehaviour
             isFindTarget = false;
             botAI.chasing = false;                      // преследование отключено            
             botAI.targetVisible = false;
-            botAI.readyToAttack = false;
+            botAI.closeToTarget = false;
             botAI.agent.ResetPath();
         }
         

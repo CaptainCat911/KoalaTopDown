@@ -76,7 +76,6 @@ public class MeleeWeapon : MonoBehaviour
             if (number == 0)
                 trail.emitting = false;
         }
-
     }
 
     void OnDrawGizmosSelected()
