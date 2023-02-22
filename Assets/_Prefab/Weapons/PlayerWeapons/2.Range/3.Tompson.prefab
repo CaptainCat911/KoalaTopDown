@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2363293952648459334}
   - component: {fileID: -2066020394001535436}
   m_Layer: 6
-  m_Name: 3
+  m_Name: 3.Tompson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,10 +52,10 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: db7fa94cc34e3484e8a5f4a8c14887d3, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
+  weaponIndex: 3
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
-  ammo: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 0
   lineRenderer: {fileID: 0}

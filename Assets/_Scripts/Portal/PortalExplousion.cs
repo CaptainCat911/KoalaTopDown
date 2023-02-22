@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class PortalExplousion : MonoBehaviour
 {
-    public int damage;
-    public float pushForce;    
-    public float expRadius = 3;
-    public LayerMask layerExplousion;
-    public GameObject expEffect;
-    public BotAI botAI;
+    Animator animator;      
+    SpriteRenderer spriteRenderer;
+
+    public int damage;                  // урон при появлении портала
+    public float pushForce;             // пуш
+    public float expRadius = 3;         // радиус
+    public LayerMask layerExplousion;   // слои для битья
+    public GameObject expEffect;        // эффект взрыва
+    public BotAI targetTeleport;        // бот для портации
+    public GameObject mageHome;         // доми мага
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void StartPortal()
+    {
+        animator.SetTrigger("Start");
+    }
 
     public void Explosion()
     {
@@ -29,13 +44,22 @@ public class PortalExplousion : MonoBehaviour
             collidersHits = null;
         }
 
-        CMCameraShake.Instance.ShakeCamera(3, 0.1f);                                            // тряска камеры
+        CMCameraShake.Instance.ShakeCamera(3, 0.1f);    // тряска камеры
 
         GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
-        Destroy(effect, 0.5f);                                                                  // уничтожаем эффект через .. сек
-        // тут создаём (перемещаем) нпс мага
-        botAI.agent.Warp(transform.position);
-        Destroy(gameObject);                                                                    // уничтожаем пулю
+        Destroy(effect, 0.5f);                          // уничтожаем эффект через .. сек        
+        targetTeleport.agent.Warp(transform.position);  // тут создаём (перемещаем) нпс мага
+        spriteRenderer.enabled = false;                 // выключаем спрайт
+        //Destroy(gameObject);                          // уничтожаем портал
+    }
+
+
+    public void ClosePortal()
+    {
+        GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
+        targetTeleport.agent.Warp(mageHome.transform.position);           // тут создаём (перемещаем) нпс мага
+        Destroy(effect, 0.5f);                          // уничтожаем эффект через .. сек
+        Destroy(gameObject, 0.5f);                            // уничтожаем портал через .. сек
     }
 
     void OnDrawGizmosSelected()

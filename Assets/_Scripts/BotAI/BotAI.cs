@@ -90,6 +90,7 @@ public class BotAI : Fighter
             layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой дл€ оружи€
         }
         hpBarGO = transform.GetChild(0).gameObject;         // находим хп бар (ставлю его в начало иерархии)
+        hpBarGO.SetActive(false);                           // пр€чем хп бар, пока не получим урон
 
         maxSpeed = agent.speed;
     }
@@ -106,9 +107,7 @@ public class BotAI : Fighter
         if (meleeAttackType)
             SwitchAttackType(1);
         if (rangeAttackType)
-            SwitchAttackType(2);
-
-        hpBarGO.SetActive(false);           // пр€чем хп бар, пока не получим урон
+            SwitchAttackType(2);        
     }
 
     private void Update()
@@ -277,6 +276,9 @@ public class BotAI : Fighter
 
     public void Chase()
     {
+        if (isNeutral)
+            return;
+
         distanceToTarget = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
         if (distanceToTarget < distanceToAttack && targetVisible)                                       // если дошли до цели и видим еЄ
         {
