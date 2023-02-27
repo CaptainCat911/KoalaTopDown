@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public KeyCode keyOpenMagazine;
 
     [Header("Предметы")]
+    public int gold;                            // золото
     public int keys;                            // ключи
     public int battery;                         // батареи
 
