@@ -7,5 +7,7 @@ public class AmmoPackStore
 {
     public GameObject weapon;
     public string name;
+    public int goldPriseWeapon;
+    public int goldPriseAmmo;
     public int allAmmo;    
 }

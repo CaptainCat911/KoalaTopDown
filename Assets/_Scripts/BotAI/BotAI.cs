@@ -32,11 +32,12 @@ public class BotAI : Fighter
     public float triggerLenght;                             // дистанция тригера
     public float distanceToChangeTarget = 3f;               // дистанция при которой бот будет менять цель, если целей больше 1
     [HideInInspector] public bool targetVisible;            // видим мы цель или нет
-    public bool closeToTarget;                              // можно атаковать
+    [HideInInspector] public bool closeToTarget;            // можно атаковать
     public float distanceToAttackMelee;                     // дистанция для атакой мили
     public float distanceToAttackRange;                     // дистанция для атаки ренж
     [HideInInspector] public float distanceToAttack;        // дистанция, с которой можно атаковать
     [HideInInspector] public float distanceToTarget;
+    public GameObject itemToSpawn;
 
     public bool meleeAttackType;                            // устанавливаем тип атаки мили
     public bool rangeAttackType;                            // ... ренж
@@ -443,6 +444,8 @@ public class BotAI : Fighter
         hpBarGO.SetActive(false);                   // убираем хп бар
         agent.ResetPath();                          // сбрасываем путь
         agent.enabled = false;                      // выключаем агента
+        if(itemToSpawn)
+            Instantiate(itemToSpawn, transform.position, Quaternion.identity);          // создаем предмет
 
         //botAIMeleeWeaponHolder.gameObject.SetActive(false);
         //botAIRangeWeaponHolder.gameObject.SetActive(false);

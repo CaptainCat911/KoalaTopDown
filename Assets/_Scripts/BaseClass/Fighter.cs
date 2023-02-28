@@ -27,26 +27,22 @@ public class Fighter : MonoBehaviour
         if (hpBarOn)
         {
             hpBar = GetComponentInChildren<HpBar>();
+            hpBar.SetMaxHealth(maxHealth);
+        }
+        if (gameObject.TryGetComponent(out Player player) || gameObject.TryGetComponent(out NPC npc))
+        {
+            isPlayerOrNPC = true;
         }
     }
 
     public virtual void Start()
     {
-        if (gameObject.TryGetComponent(out Player player) || gameObject.TryGetComponent(out NPC npc))
-        {
-            isPlayerOrNPC = true;
-        }
 
-        if (hpBarOn)
-        {
-            hpBar.SetMaxHealth(maxHealth);            
-        }
     }
 
        
     public virtual void TakeDamage(int dmg, Vector2 vec2, float pushForce)
-    {
-        
+    {        
         currentHealth -= dmg;
         if (isPlayerOrNPC)
             ShowDamageOrHeal("-" + dmg.ToString(), true);
@@ -62,7 +58,7 @@ public class Fighter : MonoBehaviour
                 Death();
             }
 
-        if (hpBarOn)
+        if (hpBar)
             hpBar.SetHealth(currentHealth);
     }
 
