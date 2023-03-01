@@ -16,4 +16,3 @@ public class Crate : Fighter
         Destroy(gameObject);                                                                    // уничтожаем пулю
     }
 }
-
