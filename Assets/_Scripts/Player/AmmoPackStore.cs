@@ -5,8 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class AmmoPackStore
 {
-    public GameObject weapon;
     public string name;
+
+    public GameObject weapon;
     public int goldPriseWeapon;
     public int goldPriseAmmo;
     public int allAmmo;    

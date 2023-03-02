@@ -213,7 +213,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -238,7 +238,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 5000
   isPlayerOrNPC: 1
-  hpBarOn: 0
+  hpBarOn: 1
   agent: {fileID: 0}
   animator: {fileID: 0}
   animatorWeapon: {fileID: 0}
@@ -266,6 +266,7 @@ MonoBehaviour:
   distanceToAttackRange: 0
   distanceToAttack: 0
   distanceToTarget: 0
+  itemToSpawn: {fileID: 0}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
