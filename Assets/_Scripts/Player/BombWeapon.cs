@@ -124,8 +124,8 @@ public class BombWeapon : MonoBehaviour
         float dist = Vector3.Distance(transform.position, bombWeaponHolder.mousePosition) - 10f;
         if (dist < 0.3f)
             dist = 0.3f;
-        if (dist > 1.2f)
-            dist = 1.2f;
+        if (dist > 1f)
+            dist = 1f;
         //Debug.Log(dist);
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * (weaponClass.bulletSpeed * (dist + 0.3f)), ForceMode2D.Impulse);    // даём импульс
         player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия

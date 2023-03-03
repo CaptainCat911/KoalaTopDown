@@ -442,20 +442,24 @@ public class BotAI : Fighter
         animator.SetTrigger("Death");               // тригер 
         spriteRenderer.color = Color.white;         // возвращем цвета на белый
         hpBarGO.SetActive(false);                   // убираем хп бар
-        agent.ResetPath();                          // сбрасываем путь
-        agent.enabled = false;                      // выключаем агента
+        agent.ResetPath();                          // сбрасываем путь        
+
         if(itemToSpawn)
             Instantiate(itemToSpawn, transform.position, Quaternion.identity);          // создаем предмет
 
-        //botAIMeleeWeaponHolder.gameObject.SetActive(false);
-        //botAIRangeWeaponHolder.gameObject.SetActive(false);
-
         botAIMeleeWeaponHolder.HideWeapons();       // пр€чем оружи€
         botAIRangeWeaponHolder.HideWeapons();
+        animatorWeapon.animator.enabled = false;    // отключаем аниматор оружи€
         //animatorWeapon.animator.StopPlayback();
-        animatorWeapon.animator.enabled = false;
+        //gameObject.layer = LayerMask.NameToLayer("Item");                            // слой самого бота
 
-        Destroy(gameObject, 0.8f);
+        Invoke("AfterDeath", 0.8f);        
+    }
+
+    void AfterDeath()
+    {
+        agent.enabled = false;                      // выключаем агента
+        Destroy(gameObject);
     }
 
     void OnDrawGizmosSelected()
