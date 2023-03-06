@@ -27,7 +27,7 @@ public class Fighter : MonoBehaviour
         if (hpBarOn)
         {
             hpBar = GetComponentInChildren<HpBar>();
-            hpBar.SetMaxHealth(maxHealth);
+            //hpBar.SetMaxHealth(maxHealth);
         }
         if (gameObject.TryGetComponent(out Player player) || gameObject.TryGetComponent(out NPC npc))
         {
@@ -37,7 +37,10 @@ public class Fighter : MonoBehaviour
 
     public virtual void Start()
     {
-
+        if (hpBarOn)
+        {            
+            hpBar.SetMaxHealth(maxHealth);
+        }
     }
 
        

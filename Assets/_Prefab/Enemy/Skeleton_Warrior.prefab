@@ -188,7 +188,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   isPlayerOrNPC: 0
-  hpBarOn: 1
+  hpBarOn: 0
   agent: {fileID: 0}
   animator: {fileID: 0}
   animatorWeapon: {fileID: 0}
@@ -216,6 +216,7 @@ MonoBehaviour:
   distanceToAttackRange: 4
   distanceToAttack: 1.25
   distanceToTarget: 0
+  itemToSpawn: {fileID: 0}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
