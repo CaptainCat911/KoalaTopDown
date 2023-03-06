@@ -13,7 +13,7 @@ public class PortalExplousion : MonoBehaviour
     public LayerMask layerExplousion;   // слои для битья
     public GameObject expEffect;        // эффект взрыва
     public BotAI targetTeleport;        // бот для портации
-    public GameObject mageHome;         // доми мага
+    public GameObject targetHome;         // домик мага
 
     private void Awake()
     {
@@ -56,8 +56,8 @@ public class PortalExplousion : MonoBehaviour
 
     public void ClosePortal()
     {
-        GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
-        targetTeleport.agent.Warp(mageHome.transform.position);           // тут создаём (перемещаем) нпс мага
+        GameObject effect = Instantiate(expEffect, targetTeleport.transform.position, Quaternion.identity);    // создаем эффект
+        targetTeleport.agent.Warp(targetHome.transform.position);           // тут создаём (перемещаем) нпс мага
         Destroy(effect, 0.5f);                          // уничтожаем эффект через .. сек
         Destroy(gameObject, 0.5f);                            // уничтожаем портал через .. сек
     }

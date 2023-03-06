@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Lava : MonoBehaviour
 {
-    public int damage;                                      // урон
-    public float pushForce;                                 // сила толчка
-    public float cooldown = 3f;                             // перезардяка атаки    
-    float lastAttack;                                       // время последнего удара (для перезарядки удара)    
+    public int damage;                              // урон
+    public float pushForce;                         // сила толчка
+    public float cooldown = 3f;                     // перезардяка атаки    
+    float lastAttack;                               // время последнего удара (для перезарядки удара)    
 
     private void Update()
     {
         if (Time.time - lastAttack > cooldown)
         {
             DamageAll();
-            lastAttack = Time.time;                         // присваиваем время атаки
+            lastAttack = Time.time;                 // присваиваем время атаки
         }
     }
 
