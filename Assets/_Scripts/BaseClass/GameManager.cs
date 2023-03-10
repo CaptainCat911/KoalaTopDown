@@ -76,8 +76,6 @@ public class GameManager : MonoBehaviour
         dialog.StartDialog(number);
     }
 
-
-
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)                      // выполняем при загрузке сцены
     {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;

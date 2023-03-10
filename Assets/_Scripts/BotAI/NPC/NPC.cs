@@ -28,6 +28,11 @@ public class NPC : BotAI
         }
     }
 
+    public void NpcMagazine()
+    {
+        GameManager.instance.OpenCloseMagazine();
+    }
+
 /*    protected override void Death()
     {
         base.Death();
