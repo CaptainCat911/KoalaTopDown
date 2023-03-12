@@ -267,7 +267,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
 --- !u!1 &5674012138522298798
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   hummer: 0
   hitBox: {fileID: 1630045362412420869}
   damage: 100
-  pushForce: 0
+  pushForce: 5
   radius: 1
   cooldown: 0.4
   trail: {fileID: 3786651681873589342}
