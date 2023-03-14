@@ -124,7 +124,7 @@ public class BotAIWeaponMelee : MonoBehaviour
         int ndx = Random.Range(0, prefabEnemies.Length);            // выбираем рандом из массива врагов
         GameObject go = Instantiate(prefabEnemies[ndx]);            // создаЄм префаб
         //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
-        agent = go.GetComponent<NavMeshAgent>();                    // находим Ќавћешјгент
+        agent = go.GetComponentInChildren<NavMeshAgent>();                    // находим Ќавћешјгент
         agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
         go.GetComponent<BotAI>().target = GameManager.instance.player.gameObject;
     }

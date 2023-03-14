@@ -5,21 +5,22 @@ using UnityEngine;
 public class PreFabOptimaser : MonoBehaviour
 {
     
-    public GameObject go;
-    public GameObject point;
+    public GameObject go;           // ссылка на объект оптимизации
+    public GameObject point;        // точка для детектирования входа/выхода коллайдера
+    public GameObject prefab;       // весь префаб
     
 
     private void Awake()
     {
-        go.SetActive(false);
+        DisActiveGo();              // при старте отключаем объект
     }
 
     private void Update()
     {
-        if (!go)
+        if (!go)                        // если объект разрушен    
         {            
-            Destroy(point, 1);
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 1);     // через секунду убираем этот объек с этим скриптом
+            Destroy(prefab, 2);         // через 2 секунды убираем весь префаб
             return;
         }
     }
@@ -28,31 +29,33 @@ public class PreFabOptimaser : MonoBehaviour
     {
         if (go)
         {
-            point.transform.position = go.transform.position;
+            point.transform.position = go.transform.position;       // перемещаем точку с объектом
         }
     }
 
     public void ActiveGo()
     {
-        StartCoroutine(EnterDelay());
+        if (go)
+            go.SetActive(true);
     }
 
     public void DisActiveGo()
     {
-        StartCoroutine(ExitDelay());
+        if (go)
+            go.SetActive(false);
     }
+
+
 
     IEnumerator EnterDelay()
     {
         yield return new WaitForSeconds(1f);
-        if (go)
-            go.SetActive(true);
+
     }
 
     IEnumerator ExitDelay()
     {
         yield return new WaitForSeconds(1f);
-        if (go)
-            go.SetActive(false);
+
     }
 }

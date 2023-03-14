@@ -9,11 +9,11 @@ public class Optimiser : MonoBehaviour
     {
         Debug.Log(collision.name);
 
-        PreFabOptimaser preFabOptimaser = collision.GetComponentInParent<PreFabOptimaser>();
+        PreFabOptimaser preFabOptimaser = collision.GetComponentInChildren<PreFabOptimaser>();      // ищем оптимизатор
         
         if (preFabOptimaser)
         {
-            preFabOptimaser.ActiveGo();
+            preFabOptimaser.ActiveGo();         // если есть - включаем объект
         }       
     }
 
@@ -21,7 +21,7 @@ public class Optimiser : MonoBehaviour
     {
         Debug.Log(collision.name);
 
-        PreFabOptimaser preFabOptimaser = collision.GetComponentInParent<PreFabOptimaser>();
+        PreFabOptimaser preFabOptimaser = collision.GetComponentInChildren<PreFabOptimaser>();
 
         if (preFabOptimaser)
         {
