@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2363293952648459334}
   - component: {fileID: 1106157235044219289}
   m_Layer: 6
-  m_Name: 2
+  m_Name: 2.Revolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: f30a70dd4a5aca741918c4faed0673cb, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
-  weaponIndex: 2
+  weaponIndexForAmmo: 2
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2363293952648459334}
   - component: {fileID: -8225947025363683194}
   m_Layer: 6
-  m_Name: 1
+  m_Name: 1.Mushket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: f21bf5a9ab11a954faa0539f6026552e, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
-  weaponIndex: 1
+  weaponIndexForAmmo: 1
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0

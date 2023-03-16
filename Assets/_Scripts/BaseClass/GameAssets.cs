@@ -6,6 +6,7 @@ public class GameAssets : MonoBehaviour
 {
     public static GameAssets instance;         // инстанс
 
+    [Header("Текст")]
     public Transform chatBubblePrefab;
     public GameObject floatingText;
 

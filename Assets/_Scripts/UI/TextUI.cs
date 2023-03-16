@@ -48,7 +48,7 @@ public class TextUI : MonoBehaviour
                 ammoRangeWeapon.text = "-";                                                     // выводим "-" в баре патронов
             else
                 ammoRangeWeapon.text = GameManager.instance.ammoPack.ammoWeapons[GameManager.instance.
-                    player.weaponHolder.currentWeapon.weaponIndex].allAmmo.ToString("0");       // находим кол-во патронов текущего оружия
+                    player.weaponHolder.currentWeapon.weaponIndexForAmmo].allAmmo.ToString("0");       // находим кол-во патронов текущего оружия
         }
 
         // Активная бомба

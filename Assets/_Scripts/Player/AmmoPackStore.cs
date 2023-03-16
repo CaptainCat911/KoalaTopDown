@@ -6,7 +6,6 @@ using UnityEngine;
 public class AmmoPackStore
 {
     public string name;
-
     public GameObject weapon;
     public int goldPriseWeapon;
     public int goldPriseAmmo;

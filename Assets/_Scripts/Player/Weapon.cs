@@ -14,8 +14,8 @@ public class Weapon : MonoBehaviour
     //Vector3 mousePosition;                  // положение мыши
 
     [Header("Параметры оружия")]
+    public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
     bool rayCastWeapon;                             // рейкаст оружие
-    public int weaponIndex;
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
@@ -46,12 +46,12 @@ public class Weapon : MonoBehaviour
     public float cameraAmplitudeShake = 1f; // амплитуда
     public float cameraTimedeShake = 0.1f;  // длительность
 
-    // Звук
-    public bool singleShot;
-    public bool multiShot;
-    bool soundStarted;
-    public AudioSource audioSource;
-    public AudioSource audioSourceTail;
+    [Header("Звук")]
+    public bool singleShot;                 // одиночный звук
+    public bool multiShot;                  // круговой звук
+    bool soundStarted;                      // звук начался
+    public AudioSource audioSource;         // основной звук
+    public AudioSource audioSourceTail;     // "хвост"
 
     void Awake()
     {
@@ -125,7 +125,7 @@ public class Weapon : MonoBehaviour
         }
 
         // Звук
-        if (multiShot && ammoWeapons[weaponIndex].allAmmo > 0)
+        if (multiShot && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)
         {
             if (weaponHolder.fireStart && !soundStarted)                        // если не готовы стрелять
             {                
@@ -151,9 +151,9 @@ public class Weapon : MonoBehaviour
             return;                                         // выходим
         }
 
-        if (Time.time >= nextTimeToFire && ammoWeapons[weaponIndex].allAmmo > 0)            // если начинаем стрелять и кд готово
+        if (Time.time >= nextTimeToFire && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)     // если начинаем стрелять и кд готово
         {
-            ammoWeapons[weaponIndex].allAmmo--;                                             // - патроны
+            ammoWeapons[weaponIndexForAmmo].allAmmo--;                                      // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                         // вычисляем кд           
             
             if (!rayCastWeapon)
