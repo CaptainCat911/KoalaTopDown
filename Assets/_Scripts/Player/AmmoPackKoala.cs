@@ -6,7 +6,8 @@ public class AmmoPackKoala : MonoBehaviour
 {
     Player player;    
     public AmmoPackStore[] ammoWeapons;     // ссылка на оружие в инвентаре (название, цена, патроны)
-    public GameObject[] buttons;
+    public GameObject[] buttonsBuy;
+    public GameObject[] buttonsSell;
 
     private void Awake()
     {
@@ -46,7 +47,8 @@ public class AmmoPackKoala : MonoBehaviour
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            buttons[index].SetActive(false);
+            buttonsBuy[index].SetActive(false);
+            //buttonsSell[index].SetActive(true);
 
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
 
@@ -66,6 +68,16 @@ public class AmmoPackKoala : MonoBehaviour
             textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
             textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
         } 
+    }
+
+    public void SellRangeWeapon(int index)
+    {
+        buttonsBuy[index].SetActive(true);
+        buttonsSell[index].SetActive(false);
+
+        GameManager.instance.gold += ammoWeapons[index].goldPriseWeapon;            // возвращаем золото 
+
+        //player.weaponHolder.weapons.Remove
     }
 
 
