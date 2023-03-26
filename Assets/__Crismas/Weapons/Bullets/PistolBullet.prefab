@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6aaa6145ff8784e43906742b1dec4812, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 2a30341efed565b429a27c2473ffbfdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   pushForce: 0
+  isPlayerBullet: 0
   expEffect: {fileID: 6838830282863028361, guid: 9bcfbd57f80156d47881a4c5be09b696, type: 3}
   layerExplousion:
     serializedVersion: 2
