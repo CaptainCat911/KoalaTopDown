@@ -20,20 +20,19 @@ public class EnemyThinker : MonoBehaviour
     bool type_1;        // тип оружия мили
     bool type_2;        // тип оружия ренж
 
-
     
     [Header("Поведение")]
     //public bool patrolingRandomPosition;
-    public float lastChange;                            // время последней смены позиции
+    [HideInInspector] public float lastChange;                            // время последней смены позиции
     public float cooldownChange;                        // перезардяка смены позиции
     public float distancePatrol;                        // дистанция для патрулирования
     public float maxDistancePatrol;                     // максимальная дистанция от стартовой позиции
 
     // Для НПС
-    public Transform[] positionsPoints;
+    [HideInInspector] public Transform[] positionsPoints;
     [HideInInspector] public int i = 0;
-    public bool nextPosition;
-    public bool letsGo;
+    [HideInInspector] public bool nextPosition;
+    [HideInInspector] public bool letsGo;
     public string textTrigger;
     bool sayTriggerText;
 
@@ -204,10 +203,14 @@ public class EnemyThinker : MonoBehaviour
 
     public void LetsGo(int go)
     {
-        if (go == 0)
-            letsGo = false;
-        if (go == 1)
-            letsGo = true;
+        //if (!botAI.isFollow)
+        //{
+            if (go == 0)
+                letsGo = false;
+            if (go == 1)
+                letsGo = true;
+        //}
+
     }
 
     public void StayGo()

@@ -21,6 +21,7 @@ public class BotAI : Fighter
     public bool isNeutral;                                  // не будет никого атаковать
     public bool isFriendly;                                 // союзный бот
     public bool isEnemy;                                    // несоюзный бот
+    //public bool isFollow;                                   // следовать
 
     // Преследование
     [HideInInspector] public GameObject target;             // цель
