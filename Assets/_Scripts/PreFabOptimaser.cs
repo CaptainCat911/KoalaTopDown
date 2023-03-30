@@ -10,7 +10,7 @@ public class PreFabOptimaser : MonoBehaviour
     public GameObject prefab;       // весь префаб
     
 
-    private void Awake()
+    private void Start()
     {
         DisActiveGo();              // при старте отключаем объект
     }

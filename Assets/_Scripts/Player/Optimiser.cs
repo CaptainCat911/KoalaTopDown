@@ -7,7 +7,7 @@ public class Optimiser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
+        //Debug.Log(collision.name);
 
         PreFabOptimaser preFabOptimaser = collision.GetComponentInChildren<PreFabOptimaser>();      // ищем оптимизатор
         
@@ -19,7 +19,7 @@ public class Optimiser : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
+        //Debug.Log(collision.name);
 
         PreFabOptimaser preFabOptimaser = collision.GetComponentInChildren<PreFabOptimaser>();
 
