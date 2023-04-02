@@ -335,8 +335,8 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 100
-  isPlayerOrNPC: 0
-  hpBarOn: 0
+  hpBarOn: 1
+  hpBarGO: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 0}
   animatorWeapon: {fileID: 0}
@@ -373,7 +373,6 @@ MonoBehaviour:
   deathCameraShake: 2
   flipLeft: 0
   flipRight: 0
-  hpBarGO: {fileID: 0}
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128

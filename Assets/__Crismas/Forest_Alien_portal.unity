@@ -554,13 +554,14 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 100
-  isPlayerOrNPC: 1
   hpBarOn: 0
+  hpBarGO: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   weaponHolder: {fileID: 0}
   weaponHolderMelee: {fileID: 0}
   bombWeaponHolder: {fileID: 0}
+  hitBoxPivot: {fileID: 0}
   moveDirection: {x: 0, y: 0}
   moveSpeed: 4
   dashForce: 30
@@ -12814,54 +12815,24 @@ MonoBehaviour:
     goldPriseWeapon: 0
     goldPriseAmmo: 0
     allAmmo: 0
-  buttonsBuy:
-  - {fileID: 0}
-  - {fileID: 1495632782}
-  - {fileID: 1143990820}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  ammoBombs:
+  - name: 
+    weapon: {fileID: 2496722168628502743, guid: 7beaa4a9e25d1554cb39a4d268296bce, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    allAmmo: 100
+  - name: 
+    weapon: {fileID: 2496722168628502743, guid: 2c354a554be3a4f4294374c0be638560, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    allAmmo: 50
+  - name: 
+    weapon: {fileID: 2496722168628502743, guid: 8042594601990344d96bc411b584dbd3, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    allAmmo: 20
+  buttonsBuyWeapon: []
+  buttonsBuyBomb:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
