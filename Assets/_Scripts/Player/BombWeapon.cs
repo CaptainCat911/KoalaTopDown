@@ -3,7 +3,8 @@ using UnityEngine;
 public class BombWeapon : MonoBehaviour
 {
     [Header("Ссылки")]                      // почему-то не отображается
-    Player player;    
+    Player player;
+    AmmoPackStore[] ammoBombs;
     public WeaponClass weaponClass;         // ссылка на класс оружия
     public Transform firePoint;             // якорь для снарядов
     public Transform pivot;                 // якорь weaponHolder (используется для прицеливания)
@@ -13,11 +14,11 @@ public class BombWeapon : MonoBehaviour
     //Vector3 mousePosition;                  // положение мыши
 
     [Header("Параметры оружия")]
-    bool rayCastWeapon;                             // рейкаст оружие
+    public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
-    public int ammo;                                // кол-во бомб
+    //public int ammo;                                // кол-во бомб
 
     /*    GameObject bulletPrefab;                // префаб снаряда
         float bulletSpeed;                      // скорость снаряда
@@ -35,9 +36,8 @@ public class BombWeapon : MonoBehaviour
     void Awake()
     {
         player = GameManager.instance.player;
-        
-        weaponName = weaponClass.weaponName;                                    // имя оружия
-        rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
+        ammoBombs = GameManager.instance.ammoPack.ammoBombs;
+        weaponName = weaponClass.weaponName;                                    // имя оружия        
 
 /*        layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам
         if (weaponClass.bulletPrefab)
@@ -86,9 +86,9 @@ public class BombWeapon : MonoBehaviour
             return;                                         // выходим
         }
 
-        if (Time.time >= nextTimeToFire && ammo > 0)                    // если начинаем стрелять и кд готово
+        if (Time.time >= nextTimeToFire && ammoBombs[weaponIndexForAmmo].allAmmo > 0)                    // если начинаем стрелять и кд готово
         {
-            ammo--;
+            ammoBombs[weaponIndexForAmmo].allAmmo--;                        // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд
             //if (!rayCastWeapon)
             GameManager.instance.player.animator.SetTrigger("ThrowBomb");   // даём тригер аниматору игрока

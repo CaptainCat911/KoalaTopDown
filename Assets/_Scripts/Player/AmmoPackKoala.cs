@@ -6,7 +6,9 @@ public class AmmoPackKoala : MonoBehaviour
 {
     Player player;    
     public AmmoPackStore[] ammoWeapons;     // ссылка на оружие в инвентаре (название, цена, патроны)
-    public GameObject[] buttonsBuy;
+    public AmmoPackStore[] ammoBombs;       // ссылка на оружие в инвентаре (название, цена, патроны)
+    public GameObject[] buttonsBuyWeapon;
+    public GameObject[] buttonsBuyBomb;
     public GameObject[] buttonsSell;
 
     private void Awake()
@@ -31,6 +33,12 @@ public class AmmoPackKoala : MonoBehaviour
             {
                 ammoWeapons[index].allAmmo += 20;
             }
+            if (index == 3)                         // томпсон
+            {
+                ammoWeapons[index].allAmmo += 30;
+            }
+
+
         }
         else
         {
@@ -47,7 +55,7 @@ public class AmmoPackKoala : MonoBehaviour
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            buttonsBuy[index].SetActive(false);
+            buttonsBuyWeapon[index].SetActive(false);
             //buttonsSell[index].SetActive(true);
 
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
@@ -72,7 +80,7 @@ public class AmmoPackKoala : MonoBehaviour
 
     public void SellRangeWeapon(int index)
     {
-        buttonsBuy[index].SetActive(true);
+        buttonsBuyWeapon[index].SetActive(true);
         buttonsSell[index].SetActive(false);
 
         GameManager.instance.gold += ammoWeapons[index].goldPriseWeapon;            // возвращаем золото 
@@ -84,13 +92,73 @@ public class AmmoPackKoala : MonoBehaviour
     // Мили оружие
     public void BuyMeleeWeapon(int index)
     {
-        player.weaponHolderMelee.weapons.Add(ammoWeapons[index].weapon);                    // добавляем оружие в список оружий
-        player.weaponHolderMelee.BuyWeapon(player.weaponHolderMelee.weapons.Count - 1);     // создаем его в инвентаре игрока                                                                                
-        //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружия)
-        if (player.weaponHolder.meleeWeapon)
+
+        if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
-            player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
+            buttonsBuyWeapon[index].SetActive(false);                                         // убираем кнопку покупки
+            //buttonsSell[index].SetActive(true);
+
+            GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
+
+            player.weaponHolderMelee.weapons.Add(ammoWeapons[index].weapon);                    // добавляем оружие в список оружий
+            player.weaponHolderMelee.BuyWeapon(player.weaponHolderMelee.weapons.Count - 1);     // создаем его в инвентаре игрока                                                                                
+                                                                                                //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружия)
+            if (player.weaponHolder.meleeWeapon)
+            {
+                player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
+                player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
+            }
+        }
+        else
+        {
+            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
+            textPrefab.GetComponentInChildren<TextMesh>().text = "Недостаточно золота!";
+            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
+            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
+        }
+    }
+
+
+
+    public void BuyBomb(int index)
+    {
+        if (GameManager.instance.gold >= ammoBombs[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
+        {
+            buttonsBuyBomb[index].SetActive(false);
+
+            GameManager.instance.gold -= ammoBombs[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
+
+            player.bombWeaponHolder.weapons.Add(ammoBombs[index].weapon);                 // добавляем оружие в список оружий
+                                                                                          // 
+            player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока                                                                                
+            //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружия)
+
+            player.bombWeaponHolder.selectedWeapon = player.bombWeaponHolder.weapons.Count - 1;
+            player.bombWeaponHolder.SelectWeapon();                                         // выбрать оружие 
+            
+        }
+        else
+        {
+            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
+            textPrefab.GetComponentInChildren<TextMesh>().text = "Недостаточно золота!";
+            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
+            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
+        }
+    }
+
+    public void BuyAmmoBomb(int index)
+    {
+        if (GameManager.instance.gold >= ammoBombs[index].goldPriseAmmo)            // если золота больше чем стоимость оружия
+        {
+            GameManager.instance.gold -= ammoBombs[index].goldPriseAmmo;            // вычитаем из золота стоимость оружия             
+            ammoBombs[index].allAmmo += 1;
+        }
+        else
+        {
+            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
+            textPrefab.GetComponentInChildren<TextMesh>().text = "Недостаточно золота!";
+            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
+            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
         }
     }
 }

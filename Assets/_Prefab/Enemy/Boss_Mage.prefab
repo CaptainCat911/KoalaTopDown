@@ -292,7 +292,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1075158515, guid: 9ee94e43e2aa28149992f9fe04e0553e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.5625, y: 2.96875}
@@ -396,8 +396,8 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 10000
-  isPlayerOrNPC: 0
   hpBarOn: 1
+  hpBarGO: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 0}
   animatorWeapon: {fileID: 0}
@@ -425,6 +425,7 @@ MonoBehaviour:
   distanceToAttackRange: 0
   distanceToAttack: 0
   distanceToTarget: 0
+  itemToSpawn: {fileID: 0}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
@@ -433,7 +434,6 @@ MonoBehaviour:
   deathCameraShake: 0
   flipLeft: 0
   flipRight: 0
-  hpBarGO: {fileID: 0}
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128

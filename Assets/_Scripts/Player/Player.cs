@@ -11,7 +11,7 @@ public class Player : Fighter
     [HideInInspector] public WeaponHolder weaponHolder;
     [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
     [HideInInspector] public BombWeaponHolder bombWeaponHolder;
-    HitBoxPivot hitBoxPivot;
+    [HideInInspector] public HitBoxPivot hitBoxPivot;
 
     // Передвижение
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)

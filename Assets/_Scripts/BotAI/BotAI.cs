@@ -61,9 +61,6 @@ public class BotAI : Fighter
     float timerForColor;
     bool red;
 
-    // Бары
-    [HideInInspector] public GameObject hpBarGO;
-
     // Для триггера
     public LayerMask layerTrigger;
 
@@ -91,9 +88,6 @@ public class BotAI : Fighter
             gameObject.layer = LayerMask.NameToLayer("NPC");                            // слой самого бота
             layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой для оружия
         }
-        hpBarGO = transform.GetChild(0).gameObject;         // находим хп бар (ставлю его в начало иерархии)
-        hpBarGO.SetActive(false);                           // прячем хп бар, пока не получим урон
-
         maxSpeed = agent.speed;
     }
 
@@ -117,7 +111,7 @@ public class BotAI : Fighter
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
 
-        if (!isAlive)
+        if (!isAlive || isNeutral)
             return;
 
         // Поворот хитбокса
@@ -130,10 +124,10 @@ public class BotAI : Fighter
         }
         else if (target && chasing && targetVisible)
         {
-            Vector3 aimDirection = target.transform.position - pivot.transform.position;               // угол между положением мыши и pivot оружия          
+            Vector3 aimDirection = target.transform.position - pivot.transform.position;                            // угол между положением мыши и pivot оружия          
             aimAnglePivot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                            // находим угол в градусах             
             Quaternion qua1 = Quaternion.Euler(0, 0, aimAnglePivot);                                                // создаем этот угол в Quaternion
-            pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, qua1, Time.fixedDeltaTime * 5);   // делаем Lerp между weaponHoder и нашим углом
+            pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, qua1, Time.fixedDeltaTime * 5);    // делаем Lerp между weaponHoder и нашим углом
         }
         else 
         {
@@ -301,6 +295,22 @@ public class BotAI : Fighter
         }
     }
 
+
+
+    public void ResetTarget()
+    {
+        //isFindTarget = false;
+        chasing = false;                    // преследование отключено            
+        targetVisible = false;              // цель не видима
+        closeToTarget = false;              // далеко от цели
+        agent.ResetPath();                  // сбрасываем путь
+        animator.SetFloat("Speed", 0);      // сбрасываем анимацию бега
+    }
+
+
+
+
+
     public void SetDestination(Vector3 destination)
     {
         agent.SetDestination(destination);
@@ -342,8 +352,7 @@ public class BotAI : Fighter
     public override void TakeDamage(int dmg, Vector2 vec2, float pushForce)
     {
         if (currentHealth == maxHealth)
-        {
-            hpBarGO.SetActive(true);
+        {            
             if (isEnemy)
             {
                 TriggerEnemy();                 // добавляем длину триггера, чтобы агрился если получил урон

@@ -51,12 +51,12 @@ public class ChaseBehaviour : StateMachineBehaviour
             if (boss.distanceToTarget > 3)
             {
                 int random = Random.Range(1, 7);
-                if (random < 6)
+                if (random <= 4)
                 {
                     boss.distanceToAttack = 6;
                     attackNumber = 2;               // ренж атака
                 }
-                if (random == 6)
+                if (random > 4)
                 {
                     boss.distanceToAttack = 20;
                     attackNumber = 3;               // спаун

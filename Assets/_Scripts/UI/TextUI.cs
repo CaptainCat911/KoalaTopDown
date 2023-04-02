@@ -55,7 +55,8 @@ public class TextUI : MonoBehaviour
         if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
         {
             bombName.text = GameManager.instance.player.bombWeaponHolder.currentWeaponName;
-            ammoBomb.text = GameManager.instance.player.bombWeaponHolder.currentWeapon.ammo.ToString("0");
+            ammoBomb.text = GameManager.instance.ammoPack.ammoBombs[GameManager.instance.
+                    player.bombWeaponHolder.currentWeapon.weaponIndexForAmmo].allAmmo.ToString("0");       // находим кол-во патронов текущего оружия
         }
     }
 }

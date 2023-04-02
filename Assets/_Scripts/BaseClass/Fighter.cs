@@ -8,14 +8,16 @@ public class Fighter : MonoBehaviour
     CapsuleCollider2D capsuleCollider2D;
 
     [Header("Параметры")]
-    public bool isAlive = true;     // жив
-    public int currentHealth;       
-    public int maxHealth;    
-    GameObject floatinText;         // текст чата
-    public bool isPlayerOrNPC;      // игрок или нпс (для отображение урона)
+    public bool isAlive = true;             // жив здоров
+    public int currentHealth;
+    public int maxHealth;
+    GameObject floatinText;                 // текст чата
+    bool isPlayerOrNPC;                     // игрок или нпс (для отображения урона)
 
-    public bool hpBarOn;            // хп бар включен
-    HpBar hpBar;                    // хп бар
+    // Хп бар
+    public bool hpBarOn;                            // хп бар включен                                    
+    [HideInInspector] public GameObject hpBarGO;    // хп бар объект
+    HpBar hpBar;                                    // хп бар скрипт
     
 
     public virtual void Awake()
@@ -24,11 +26,12 @@ public class Fighter : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         floatinText = GameAssets.instance.floatingText;
+
         if (hpBarOn)
         {
-            hpBar = GetComponentInChildren<HpBar>();
-            //hpBar.SetMaxHealth(maxHealth);
+            hpBarGO = transform.GetChild(0).gameObject;         // находим хп бар (ставлю его в начало иерархии)
         }
+
         if (gameObject.TryGetComponent(out Player player) || gameObject.TryGetComponent(out NPC npc))
         {
             isPlayerOrNPC = true;
@@ -38,14 +41,22 @@ public class Fighter : MonoBehaviour
     public virtual void Start()
     {
         if (hpBarOn)
-        {            
-            hpBar.SetMaxHealth(maxHealth);
+        {
+            hpBar = GetComponentInChildren<HpBar>();            // находим скрипт хп бара
+            hpBar.SetMaxHealth(maxHealth);                      // устанавливаем макс хп            
+            hpBarGO.SetActive(false);                           // прячем хп бар, пока не получим урон
         }
     }
 
        
     public virtual void TakeDamage(int dmg, Vector2 vec2, float pushForce)
-    {        
+    {
+        if (hpBarOn)
+        {
+            if (currentHealth == maxHealth)
+                hpBarGO.SetActive(true);
+        }
+
         currentHealth -= dmg;
         if (isPlayerOrNPC)
             ShowDamageOrHeal("-" + dmg.ToString(), true);
@@ -54,6 +65,7 @@ public class Fighter : MonoBehaviour
 
         rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);
 
+
         //Death
         if (currentHealth <= 0)
             {
@@ -61,7 +73,7 @@ public class Fighter : MonoBehaviour
                 Death();
             }
 
-        if (hpBar)
+        if (hpBarOn)
             hpBar.SetHealth(currentHealth);
     }
 
