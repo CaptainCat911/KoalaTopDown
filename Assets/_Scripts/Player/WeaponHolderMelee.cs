@@ -7,12 +7,20 @@ using System.Collections.Generic;
 
 public class WeaponHolderMelee : MonoBehaviour
 {
+    Player player;
     public WeaponHolder weaponHolder;
     public List<GameObject> weapons;                        // список оружий
     [HideInInspector] public MeleeWeapon currentWeapon;     // текущее оружие (пока что толька для текста ui)
     [HideInInspector] public int selectedWeapon = 0;        // индекс оружия (положение в иерархии WeaponHolder)   
     [HideInInspector] public bool rangeWeapon = true;       // мили или ренж оружие
-    [HideInInspector] public bool attackHitBoxStart;    // начать атаку мечом
+    [HideInInspector] public bool attackHitBoxStart;        // начать атаку мечом
+
+
+
+    private void Awake()
+    {
+        player = GameManager.instance.player;
+    }
 
     void Start()
     {
@@ -106,8 +114,19 @@ public class WeaponHolderMelee : MonoBehaviour
     // Покупка оружия (подбираем оружие)
     public void BuyWeapon(int weaponNumber)
     {
-        GameObject weaponGO = Instantiate(weapons[weaponNumber], (transform.position), transform.rotation);
-        weaponGO.transform.SetParent(transform, true);
-        weaponGO.SetActive(false);
+        if (player.leftFlip)            // если при покупке игрок повёрнут влево
+        {
+            player.hitBoxPivot.transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);   // поворачиваем хитбокспивот
+            GameObject weaponGO = Instantiate(weapons[weaponNumber], (transform.position), transform.rotation);         // создаём оружие в "инвентаре" (в иерархии)
+            weaponGO.transform.SetParent(transform, true);                                                              // этот объект делаем родителем
+            weaponGO.SetActive(false);                                                                                  // отключаем это оружие (для выбора используется SelectWeapon)
+            player.hitBoxPivot.transform.localScale = new Vector3(transform.localScale.x, -1, transform.localScale.z);  // возвращаем хитбокспивот в исходное положение
+        }
+        else
+        {
+            GameObject weaponGO = Instantiate(weapons[weaponNumber], (transform.position), transform.rotation);
+            weaponGO.transform.SetParent(transform, true);
+            weaponGO.SetActive(false);
+        }
     }
 }

@@ -76,6 +76,47 @@ public class GameManager : MonoBehaviour
         dialog.StartDialog(number);
     }
 
+    // Сбрасывать цель ботам и делать их нейтральными
+    public void EnemyResetAndNeutral(bool status)
+    {
+        if (status)
+        {
+            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 20);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
+            foreach (Collider2D coll in collidersHits)
+            {
+                if (coll == null)
+                {
+                    continue;
+                }
+
+                if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
+                {
+                    botAI.ResetTarget();                                        // сбрасываем цель
+                    botAI.isNeutral = true;                                     // делаем нейтральным
+                }
+                collidersHits = null;
+            }
+
+        }
+        if (!status)
+        {
+            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 25);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
+            foreach (Collider2D coll in collidersHits)
+            {
+                if (coll == null)
+                {
+                    continue;
+                }
+
+                if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
+                {
+                    botAI.isNeutral = false;                                     // делаем нейтральным
+                }
+                collidersHits = null;
+            }
+        }
+    }
+
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)                      // выполняем при загрузке сцены
     {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;

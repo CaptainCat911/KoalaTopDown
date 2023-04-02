@@ -38,6 +38,7 @@ public class Dialog : MonoBehaviour
     public void StartDialog(int numberDialog)
     {
         GameManager.instance.isPlayerEnactive = true;               // отключаем управление игроком
+        GameManager.instance.EnemyResetAndNeutral(true);            // сбрасываем ботов
         blackImagesAnim.SetTrigger("In");                           // запускаем чёрные полосы
         sentences = dialogStore[numberDialog].sentences;            // берем предложения из диалга номер numberDialog
         characterName = dialogStore[numberDialog].characterName;    // имя (название) персонажа, который будет говорить
@@ -78,6 +79,7 @@ public class Dialog : MonoBehaviour
             npcImage.SetActive(false);
             blackImagesAnim.SetTrigger("Out");                  // убираем чёрные полосы
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
+            GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
             interactAction.Invoke();                            // вызываем ивент (если есть)
         }
     }

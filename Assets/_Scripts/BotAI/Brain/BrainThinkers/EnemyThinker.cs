@@ -67,10 +67,7 @@ public class EnemyThinker : MonoBehaviour
         if (isFindTarget && !botAI.target)
         {
             isFindTarget = false;
-            botAI.chasing = false;                      // преследование отключено            
-            botAI.targetVisible = false;
-            botAI.closeToTarget = false;
-            botAI.agent.ResetPath();
+            botAI.ResetTarget();
         }
         
 
@@ -168,6 +165,8 @@ public class EnemyThinker : MonoBehaviour
             isFriendly = false;
         }*/
     }
+
+
 
 
 

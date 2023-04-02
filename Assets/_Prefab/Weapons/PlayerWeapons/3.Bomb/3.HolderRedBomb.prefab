@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8917704073564388495}
   - component: {fileID: 7326813472310655043}
   m_Layer: 6
-  m_Name: HolderBlackBomb
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,13 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b892ed92900b16743a5b384add699d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponClass: {fileID: 11400000, guid: 6fe696a86d809794f85129b9d0551ccc, type: 2}
+  weaponClass: {fileID: 11400000, guid: 044a82e4ff17b6040a7c3e6e79c96e38, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
   weaponName: 
   fireRate: 0
   nextTimeToFire: 0
-  ammo: 60
+  ammo: 40
 --- !u!1 &2834671515621810669
 GameObject:
   m_ObjectHideFlags: 0
