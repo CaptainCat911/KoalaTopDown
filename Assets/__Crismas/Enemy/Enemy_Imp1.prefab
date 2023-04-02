@@ -404,17 +404,20 @@ MonoBehaviour:
   rb2D: {fileID: 4817016154119956041}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 70
+  maxHealth: 1
   isPlayerOrNPC: 0
   hpBarOn: 1
   agent: {fileID: 0}
   animator: {fileID: 4817016154119956046}
+  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
+  boss: 0
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
     m_Bits: 0
@@ -423,13 +426,15 @@ MonoBehaviour:
     m_Bits: 0
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
-  chaseLeght: 0
   triggerLenght: 14
+  distanceToChangeTarget: 3
   targetVisible: 1
-  readyToAttack: 0
+  closeToTarget: 0
   distanceToAttackMelee: 0.8
   distanceToAttackRange: 0
   distanceToAttack: 0.7
+  distanceToTarget: 0
+  itemToSpawn: {fileID: 0}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
@@ -459,7 +464,6 @@ MonoBehaviour:
   brains:
   - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
   - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
-  target: {fileID: 0}
   lastChange: 0
   cooldownChange: 2
   distancePatrol: 2

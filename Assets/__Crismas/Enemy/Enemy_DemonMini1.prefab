@@ -186,14 +186,16 @@ MonoBehaviour:
   rb2D: {fileID: 2411289485797020914}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 200
+  maxHealth: 1
   isPlayerOrNPC: 0
   hpBarOn: 1
   agent: {fileID: 0}
   animator: {fileID: 2411289485797020917}
+  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
+  boss: 0
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
@@ -209,11 +211,12 @@ MonoBehaviour:
   triggerLenght: 5
   distanceToChangeTarget: 3
   targetVisible: 1
-  readyToAttack: 0
+  closeToTarget: 0
   distanceToAttackMelee: 0.9
   distanceToAttackRange: 0
   distanceToAttack: 0.8
   distanceToTarget: 0
+  itemToSpawn: {fileID: 0}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
