@@ -20,10 +20,37 @@ public class Dialog : MonoBehaviour
     public GameObject continueButton;       // ссылка на кнопку продолжения     
 
     GameObject npcImage;                    // портрет нпс, с которым говорим
-    public GameObject heroImage;            // портрет героя
+    public GameObject heroImage;            // портрет героя    
+
+    public bool startEvent;                 // состояние этого ивента
+    int dialogeNumber;                      // временная переменная для номера диалога
+    Player player;
+
+
+
+    private void Awake()
+    {
+        player = GameManager.instance.player;
+    }
 
     private void Update()
     {
+        if (startEvent)                 // если ивент начат
+        {
+            if (!player.atTarget)       // если игрок не дошёл до цели
+            {
+                player.Move(dialogStore[dialogeNumber].targetToDialoge.position);       // двигаем игрока к цели[номер диалога]
+            }                
+            if (player.atTarget)        // если дошёл
+            {
+                StartDialog(dialogeNumber);     // начинаем диалог
+                startEvent = false;             // ивент закончился
+            }                
+        }
+
+
+
+
 /*        if (textDisplay.text == sentences[index])       // если написали всё предложение
         {
             continueButton.SetActive(true);             // показываем кнопку продолжения
@@ -35,11 +62,19 @@ public class Dialog : MonoBehaviour
         sentences = dialog.sentences;
     }*/
 
-    public void StartDialog(int numberDialog)
+
+    // Начинаем ивент (вызывается из Gamemanager)
+    public void StartEvent(int numberDialog)
     {
+        startEvent = true;                                          // ивент начат
+        dialogeNumber = numberDialog;                               // номер диалога
         GameManager.instance.isPlayerEnactive = true;               // отключаем управление игроком
         GameManager.instance.EnemyResetAndNeutral(true);            // сбрасываем ботов
         blackImagesAnim.SetTrigger("In");                           // запускаем чёрные полосы
+    }
+
+    public void StartDialog(int numberDialog)
+    {
         sentences = dialogStore[numberDialog].sentences;            // берем предложения из диалга номер numberDialog
         characterName = dialogStore[numberDialog].characterName;    // имя (название) персонажа, который будет говорить
         npcImage = dialogStore[numberDialog].imageNpc;              // его портрет
@@ -78,6 +113,7 @@ public class Dialog : MonoBehaviour
             heroImage.SetActive(false);                         // убираем портреты
             npcImage.SetActive(false);
             blackImagesAnim.SetTrigger("Out");                  // убираем чёрные полосы
+            player.atTarget = false;                            // сбрасываем, что игрок у цели
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
             GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
             interactAction.Invoke();                            // вызываем ивент (если есть)

@@ -5,8 +5,8 @@ using UnityEngine.AI;
 public class Player : Fighter
 {
     // Ссылки    
+    //NavMeshAgent agent;
     [HideInInspector] public Animator animator;
-    NavMeshAgent agent;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public WeaponHolder weaponHolder;
     [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
@@ -33,6 +33,8 @@ public class Player : Fighter
 
     public EnergyShield shield;
 
+    [HideInInspector] public bool atTarget;
+
 
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------\\
@@ -42,23 +44,24 @@ public class Player : Fighter
     {
         base.Start();
         animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponHolder = GetComponentInChildren<WeaponHolder>();
         weaponHolderMelee = GetComponentInChildren<WeaponHolderMelee>();
         bombWeaponHolder = GetComponentInChildren<BombWeaponHolder>();
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
 
-        agent.updateRotation = false;               // для навМеш2д
-        agent.updateUpAxis = false;                 //        
+        //agent.updateRotation = false;               // для навМеш2д
+        //agent.updateUpAxis = false;                 //        
     }
 
     void Update()
     {
+        
         if (GameManager.instance.isPlayerEnactive)
         {
-            moveDirection = new Vector2(0, 0).normalized;        // сбрасываем скорость скорость
-            animator.SetFloat("Speed", 0);
+            moveDirection = new Vector2(0, 0).normalized;       // сбрасываем скорость            
+            //animator.SetFloat("Speed", 0);                      // убираем анимацию бега
             return;
         }
 
@@ -123,23 +126,26 @@ public class Player : Fighter
         Debug.Log(movementVector);*/
     }
 
+    public void Move(Vector2 targetPosition)
+    {
+        float distance = Vector2.Distance(transform.position, targetPosition);
+        if (distance > 0.1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, 3 * Time.deltaTime);
+            animator.SetFloat("Speed", 1);
+            atTarget = false;
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
+            atTarget = true;
+        }
+    }
+
     void Dash()
     {
         rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);                // даём импульс
     }
-
-
-    // Фукция для ивента анимации (потом как-нибудь сделать по нормальному и через ивент)
-/*    public void AttacHitBox()
-    {
-        hitBox.HitBoxAttack();
-    }
-
-    public void TrailHitbox(int isOn)
-    {
-        hitBox.TrailOn(isOn);
-    }
-*/
 
     // Флип игрока
     void Flip()

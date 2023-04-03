@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void StartDialog(int number)
     {
-        dialog.StartDialog(number);
+        dialog.StartEvent(number);
     }
 
     // —брасывать цель ботам и делать их нейтральными
