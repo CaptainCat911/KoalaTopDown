@@ -93,13 +93,13 @@ public class Weapon : MonoBehaviour
     private void Update()
     {
         // Флип оружия
-        if (Mathf.Abs(weaponHolder.aimAngle) > 90 && rightFlip)
+        if (GameManager.instance.player.leftFlip && rightFlip)
         {
             needFlip = true;
             leftFlip = true;
             rightFlip = false;
         }
-        if (Mathf.Abs(weaponHolder.aimAngle) <= 90 && leftFlip)
+        if (GameManager.instance.player.rightFlip && leftFlip)
         {
             needFlip = true;
             rightFlip = true;

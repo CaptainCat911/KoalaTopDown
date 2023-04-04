@@ -43,7 +43,7 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
     private void Update()
     {
         // Стрельба
-        if (!botAI.boss)            // если не босс
+        if (!botAI.newNpcSystem)            // если не босс
         {
             if (botAI.closeToTarget && botAI.meleeAttackType && !attacking)
             {

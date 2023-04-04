@@ -33,7 +33,7 @@ public class Player : Fighter
 
     public EnergyShield shield;
 
-    [HideInInspector] public bool atTarget;
+    
 
 
 
@@ -57,11 +57,11 @@ public class Player : Fighter
 
     void Update()
     {
-        
-        if (GameManager.instance.isPlayerEnactive)
+        //Debug.Log(rightFlip);
+
+        if (GameManager.instance.isPlayerEnactive)              // если игрок не активен
         {
-            moveDirection = new Vector2(0, 0).normalized;       // сбрасываем скорость            
-            //animator.SetFloat("Speed", 0);                      // убираем анимацию бега
+            moveDirection = new Vector2(0, 0).normalized;       // сбрасываем вектор для скорости 
             return;
         }
 
@@ -126,20 +126,29 @@ public class Player : Fighter
         Debug.Log(movementVector);*/
     }
 
-    public void Move(Vector2 targetPosition)
+    public void Move(Vector3 targetPosition, bool moving)
     {
-        float distance = Vector2.Distance(transform.position, targetPosition);
-        if (distance > 0.1f)
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, 3 * Time.deltaTime);   // перемещаем игрока
+
+        if (targetPosition.x > transform.position.x && leftFlip)        // если игрок повернут влево, а цель справа
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, 3 * Time.deltaTime);
-            animator.SetFloat("Speed", 1);
-            atTarget = false;
+            rightFlip = true;   
+            leftFlip = false;
+            Flip();
+            hitBoxPivot.Flip();
         }
+        if (targetPosition.x < transform.position.x && rightFlip)
+        {
+            rightFlip = false;
+            leftFlip = true;
+            Flip();
+            hitBoxPivot.Flip();
+        }
+
+        if (moving)                             // если двигаемся
+            animator.SetFloat("Speed", 1);      
         else
-        {
             animator.SetFloat("Speed", 0);
-            atTarget = true;
-        }
     }
 
     void Dash()

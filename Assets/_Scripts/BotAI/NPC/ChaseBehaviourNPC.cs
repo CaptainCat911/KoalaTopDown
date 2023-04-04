@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChaseBehaviourNPC : StateMachineBehaviour
 {
-    NPC boss;                              // ссылка на бота
+    NPC boss;                               // ссылка на бота
     public float cooldownAttack = 2f;       // перезар€дка атаки   
     float lastAttack;                       // врем€ последнего рандома  
     float randomCooldown = 1f;              // перезар€дка рандома   
@@ -26,7 +26,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // ≈сли нет цели - возвращаемс€ в идле
-        if (!boss.target)
+        if (!boss.target || boss.isNeutral || !boss.isAlive)
         {
             animator.SetTrigger("Idle");            // триггер
             boss.chasing = false;                   // отключаем преследование

@@ -8,7 +8,7 @@ public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;     // ссылка на текст
     public Animator animator;               // ссылка на аниматор
-    public Animator blackImagesAnim;        // аниматор чёрных полос
+    
     public DialogStore[] dialogStore;       // диалоги
 
     public float typingSpeed;               // скорость появления букв
@@ -24,27 +24,29 @@ public class Dialog : MonoBehaviour
 
     public bool startEvent;                 // состояние этого ивента
     int dialogeNumber;                      // временная переменная для номера диалога
-    Player player;
+    
 
 
 
     private void Awake()
     {
-        player = GameManager.instance.player;
+        
     }
 
     private void Update()
     {
         if (startEvent)                 // если ивент начат
         {
-            if (!player.atTarget)       // если игрок не дошёл до цели
-            {
-                player.Move(dialogStore[dialogeNumber].targetToDialoge.position);       // двигаем игрока к цели[номер диалога]
+            if (!GameManager.instance.playerAtTarget && dialogStore[dialogeNumber].targetToDialoge)       // если игрок не дошёл до цели и цель есть
+            {                       
+                GameManager.instance.MovePlayer(dialogStore[dialogeNumber].targetToDialoge.position);       // двигаем игрока к цели[номер диалога]
             }                
-            if (player.atTarget)        // если дошёл
+            else        // если дошёл или цели нет
             {
-                StartDialog(dialogeNumber);     // начинаем диалог
-                startEvent = false;             // ивент закончился
+                StartDialog(dialogeNumber);                 // начинаем диалог
+                startEvent = false;                         // ивент закончился
+                GameManager.instance.playerAtTarget = false;    // сбрасываем, что игрок возле цели
+                GameManager.instance.player.animator.SetFloat("Speed", 0);  // если нет цели тут сбрасываю анимацию бега игрока (возможно стоит переместить в другой скрипт)
             }                
         }
 
@@ -70,7 +72,8 @@ public class Dialog : MonoBehaviour
         dialogeNumber = numberDialog;                               // номер диалога
         GameManager.instance.isPlayerEnactive = true;               // отключаем управление игроком
         GameManager.instance.EnemyResetAndNeutral(true);            // сбрасываем ботов
-        blackImagesAnim.SetTrigger("In");                           // запускаем чёрные полосы
+        GameManager.instance.BlackTapes(true);                      // черные полосы
+        
     }
 
     public void StartDialog(int numberDialog)
@@ -106,14 +109,13 @@ public class Dialog : MonoBehaviour
             textDisplay.text = "";              // стираем текст
             StartCoroutine(Type(0f));
         }
-        else
+        else                                    // если предложения закончились
         {
             index = 0;
             textDisplay.text = "";
             heroImage.SetActive(false);                         // убираем портреты
-            npcImage.SetActive(false);
-            blackImagesAnim.SetTrigger("Out");                  // убираем чёрные полосы
-            player.atTarget = false;                            // сбрасываем, что игрок у цели
+            npcImage.SetActive(false);          
+            GameManager.instance.BlackTapes(false);             // убираем черные полосы                                        
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
             GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
             interactAction.Invoke();                            // вызываем ивент (если есть)

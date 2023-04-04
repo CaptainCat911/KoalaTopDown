@@ -22,10 +22,13 @@ public class IdleBehaviourNPC : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (boss.isNeutral || !boss.isAlive)
+            return;
+
         if (boss.target)                                    // если есть цель
         {
-            animator.SetTrigger("ChaseTarget");              // триггер
             boss.chasing = true;                            // преследование включено
+            animator.SetTrigger("ChaseTarget");             // триггер, переходим дальше
         }
 
         if (Time.time - lastTargetFind > cooldownFind)      // если кд готово

@@ -16,7 +16,7 @@ public class RunningBehNPC : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Если нет цели - возвращаемся в идле
-        if (!boss.target)                           // если цель исчезла - 
+        if (!boss.target || !boss.isAlive)          // если цель исчезла - 
         {
             animator.SetBool("Running", false);     // выходим
             boss.chasing = false;                   // отключаем преследование

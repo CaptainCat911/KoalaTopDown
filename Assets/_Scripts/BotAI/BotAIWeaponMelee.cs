@@ -109,7 +109,7 @@ public class BotAIWeaponMelee : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, hitBox.transform.position, hitBox.transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
         bullet.GetComponent<Bullet>().damage = damage;                                                      // присваиваем урон снаряду
         bullet.GetComponent<Bullet>().pushForce = pushForce;                                                // присваиваем силу толчка снаряду
-        bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.transform.right * 5, ForceMode2D.Impulse);              // даём импульс        
+        bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.transform.right * 4, ForceMode2D.Impulse);              // даём импульс        
         //botAI.ForceBackFire(firePoint.transform.position, forceBackFire);                                   // даём отдачу оружия
         //firePoint.Rotate(0, 0, -randomBulletX);                                                             // и тупо возвращаем поворот
         if (botAI.isFriendly)
