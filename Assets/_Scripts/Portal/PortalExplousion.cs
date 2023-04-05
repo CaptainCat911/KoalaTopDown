@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PortalExplousion : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class PortalExplousion : MonoBehaviour
     public LayerMask layerExplousion;   // слои для битья
     public GameObject expEffect;        // эффект взрыва
     public BotAI targetTeleport;        // бот для портации
-    public GameObject targetHome;         // домик мага
+    public GameObject targetHome;       // домик мага
+    public UnityEvent interactAction;   // ивент по завершении диалога
 
     private void Awake()
     {
@@ -24,6 +26,8 @@ public class PortalExplousion : MonoBehaviour
     public void StartPortal()
     {
         animator.SetTrigger("Start");
+        targetTeleport.startPosition = transform.position;
+        targetTeleport.ResetTarget();
     }
 
     public void Explosion()
@@ -50,6 +54,7 @@ public class PortalExplousion : MonoBehaviour
         Destroy(effect, 0.5f);                          // уничтожаем эффект через .. сек        
         targetTeleport.agent.Warp(transform.position);  // тут создаём (перемещаем) нпс мага
         spriteRenderer.enabled = false;                 // выключаем спрайт
+        interactAction.Invoke();                        // ивент (для диалога)
         //Destroy(gameObject);                          // уничтожаем портал
     }
 

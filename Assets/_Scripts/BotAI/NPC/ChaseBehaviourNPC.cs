@@ -55,23 +55,23 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         {
             lastRandom = Time.time;                         // присваиваем время атаки
             
-            if (boss.distanceToTarget > 3)
+            if (boss.distanceToTarget > 3)              // для дальних атак
             {
-                int random = Random.Range(1, 7);
+                int random = Random.Range(1, 6);
                 if (random < 6)
                 {
                     boss.distanceToAttack = 6;
-                    attackNumber = 2;               // ренж атака
+                    attackNumber = 2;                   // ренж атака
                 }
-                if (random == 6)
+/*                if (random == 6)
                 {
                     boss.distanceToAttack = 20;
-                    attackNumber = 3;               // спаун
-                }
+                    attackNumber = 3;                   // спаун
+                }*/
             }
-            else
+            else                                        // для ближних атак
             {
-                int random = Random.Range(1, 4);
+                int random = Random.Range(1, 3);
                 if (random < 2)
                 {
                     boss.distanceToAttack = 20;
@@ -82,11 +82,11 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
                     boss.distanceToAttack = 6;      
                     attackNumber = 2;               // ренж атака
                 }
-                if (random == 3)
+/*                if (random == 3)
                 {
                     boss.distanceToAttack = 20;
                     attackNumber = 3;               // спаун
-                }
+                }*/
             }
         }
 

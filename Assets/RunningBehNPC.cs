@@ -6,6 +6,10 @@ public class RunningBehNPC : StateMachineBehaviour
 {
     NPC boss;                       // ссылка на бота
 
+    // —мена цели
+    float lastTargetChange;                 // врем€ последнего поиска цели
+    float cooldownChange = 4f;              // перезард€ка поиска цели
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -16,7 +20,7 @@ public class RunningBehNPC : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // ≈сли нет цели - возвращаемс€ в идле
-        if (!boss.target || !boss.isAlive)          // если цель исчезла - 
+        if (!boss.target || !boss.isAlive)          // если цель исчезла
         {
             animator.SetBool("Running", false);     // выходим
             boss.chasing = false;                   // отключаем преследование
@@ -30,6 +34,13 @@ public class RunningBehNPC : StateMachineBehaviour
             animator.SetBool("Running", false);     // выходим
             return;
         }
+
+/*        // »ногда смен€ем цель
+        if (Time.time - lastTargetChange > cooldownChange)      // если кд готово
+        {
+            lastTargetChange = Time.time;
+            boss.FindTarget();                                  // поиск цели
+        }*/
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -113,7 +113,7 @@ public class BotAI : Fighter
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
 
-        if (friendTarget)
+        if (!target && friendTarget)
         {
             FriendTarget(friendTarget);
         }
@@ -187,8 +187,8 @@ public class BotAI : Fighter
         // Дебаг
         if (debug)
         {
-            //Debug.Log(target);
-            Debug.Log(targetVisible);
+            Debug.Log(target);
+            //Debug.Log(targetVisible);
         }
     }
 
@@ -297,17 +297,21 @@ public class BotAI : Fighter
 
     public void Chase()
     {
-        if (isNeutral)
+        if (isNeutral || !isAlive || !target)
             return;
 
-        distanceToTarget = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
-        if (distanceToTarget < distanceToAttack && targetVisible)                                       // если дошли до цели и видим её
+        if (debug)
+            Debug.Log("Chasing");
+
+        distanceToTarget = Vector3.Distance(transform.position, target.transform.position);     // считаем дистанцию до цели
+
+        if (distanceToTarget < distanceToAttack && targetVisible)                               // если дошли до цели и видим её
         {
             if (!closeToTarget)
             {
                 agent.ResetPath();                                                              // сбрасываем путь            
                 closeToTarget = true;                                                           // готов стрелять
-                //Debug.Log("Ready Attack");
+
             }
         }
         else
@@ -325,6 +329,7 @@ public class BotAI : Fighter
     public void ResetTarget()
     {
         //isFindTarget = false;
+        target = null;
         chasing = false;                    // преследование отключено            
         targetVisible = false;              // цель не видима
         closeToTarget = false;              // далеко от цели

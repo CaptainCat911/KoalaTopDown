@@ -106,8 +106,9 @@ MonoBehaviour:
   chasePlayer: 1
   chaseDistance: 20
   cooldown: 1
+  enemysHowMuch: 10
   spawnEffect: {fileID: 7845441016114820387, guid: 87167e05437f7c844b845e558dc030aa, type: 3}
-  enemysHowMuch: 5
+  nextSpawners: []
 --- !u!1 &4133640175884828771
 GameObject:
   m_ObjectHideFlags: 0

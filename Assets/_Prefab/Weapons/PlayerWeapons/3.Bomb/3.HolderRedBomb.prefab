@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8917704073564388495}
   - component: {fileID: 7326813472310655043}
   m_Layer: 6
-  m_Name: 3
+  m_Name: 3.HolderRedBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,10 +51,10 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: 044a82e4ff17b6040a7c3e6e79c96e38, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
+  weaponIndexForAmmo: 3
   weaponName: 
   fireRate: 0
   nextTimeToFire: 0
-  ammo: 40
 --- !u!1 &2834671515621810669
 GameObject:
   m_ObjectHideFlags: 0
