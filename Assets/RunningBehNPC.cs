@@ -22,7 +22,7 @@ public class RunningBehNPC : StateMachineBehaviour
         // Если нет цели - возвращаемся в идле
         if (!boss.target || !boss.isAlive)          // если цель исчезла
         {
-            animator.SetBool("Running", false);     // выходим
+            animator.SetTrigger("Idle");            // выходим
             boss.chasing = false;                   // отключаем преследование
             return;
         }
@@ -31,16 +31,16 @@ public class RunningBehNPC : StateMachineBehaviour
 
         if (boss.closeToTarget)                     // если добежали до цели
         {
-            animator.SetBool("Running", false);     // выходим
+            animator.SetTrigger("ReadyAttack");     // выходим
             return;
         }
 
-/*        // Иногда сменяем цель
+        // Иногда сменяем цель
         if (Time.time - lastTargetChange > cooldownChange)      // если кд готово
         {
             lastTargetChange = Time.time;
             boss.FindTarget();                                  // поиск цели
-        }*/
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -26,19 +26,19 @@ public class IdleBehaviourNPC : StateMachineBehaviour
             return;
         if (boss.isNeutral)
         {
-            boss.agent.SetDestination(boss.startPosition);
+            //boss.agent.SetDestination(boss.startPosition);
             return;
         }
 
-        if (!boss.target)
+/*        if (!boss.target)
         {
             boss.agent.SetDestination(boss.startPosition);
-        }
+        }*/
 
         if (boss.target)                                    // если есть цель
         {
             boss.chasing = true;                            // преследование включено
-            animator.SetTrigger("ChaseTarget");             // триггер, переходим дальше
+            animator.SetTrigger("Run");                     // триггер, переходим дальше
         }
 
         if (Time.time - lastTargetFind > cooldownFind)      // если кд готово

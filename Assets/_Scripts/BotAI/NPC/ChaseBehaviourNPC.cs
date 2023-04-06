@@ -28,7 +28,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         // Если нет цели - возвращаемся в идле
         if (!boss.target || boss.isNeutral || !boss.isAlive)
         {
-            animator.SetTrigger("Idle");            // триггер
+            animator.SetTrigger("Run");             // триггер
             boss.chasing = false;                   // отключаем преследование
             return;
         }
@@ -39,7 +39,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         // Если не готовы атаковать - возвращаемся
         if (!boss.closeToTarget)
         {
-            animator.SetBool("Running", true);
+            animator.SetTrigger("Run");
             return;
         }
 

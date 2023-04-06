@@ -320,10 +320,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0411\u043E\u0441\u0441\u0430"
   hitBox: {fileID: 1630045362412420869}
-  damage: 60
+  damage: 100
   pushForce: 10
   radius: 0.7
   cooldown: 1.5
+  projctleSpeed: 8
   layerHit:
     serializedVersion: 2
     m_Bits: 4225
@@ -335,7 +336,7 @@ MonoBehaviour:
   - {fileID: 5691226719771854280, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
   - {fileID: 134668306723687997, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
   - {fileID: 1538151450151263897, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
-  explousionDamage: 30
+  explousionDamage: 100
   explousionForce: 50
   explousionRadius: 3
   trail: {fileID: 3786651681873589342}
