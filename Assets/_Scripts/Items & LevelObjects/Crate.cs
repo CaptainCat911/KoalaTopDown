@@ -13,6 +13,6 @@ public class Crate : Fighter
             Instantiate(itemToSpawn, transform.position, Quaternion.identity);                  // создаем предмет
         GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
         Destroy(effect, 0.5f);                                                                  // уничтожаем эффект через .. сек     
-        Destroy(gameObject);                                                                    // уничтожаем пулю
+        Destroy(gameObject);                                                                    // уничтожаем объект
     }
 }

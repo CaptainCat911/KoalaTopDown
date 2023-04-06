@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Mushket
   m_EditorClassIdentifier: 
   weaponName: "\u041C\u0443\u0448\u043A\u0435\u0442"
+  projectileWeapon: 1
+  splitProjectileWeapon: 0
   bulletPrefab: {fileID: 5170081587130710907, guid: eda020fbbf3cab346bc160658bcd2758, type: 3}
+  rayCastWeapon: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
   damage: 60
   fireRate: 1
   bulletSpeed: 15
   pushForce: 5
   forceBackFire: 0.7
   recoil: 5
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0

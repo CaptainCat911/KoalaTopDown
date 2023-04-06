@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: RocketLauncher
   m_EditorClassIdentifier: 
   weaponName: "\u0420\u0430\u043A\u0435\u0442\u043D\u0438\u0446\u0430"
+  projectileWeapon: 1
+  splitProjectileWeapon: 0
   bulletPrefab: {fileID: 2609019957272575851, guid: a973d9f66c30a584396351f203d6b99c, type: 3}
-  damage: 100
-  pushForce: 20
-  bulletSpeed: 10
-  fireRate: 1
-  forceBackFire: 5
-  recoil: 2
   rayCastWeapon: 0
   layerRayCast:
     serializedVersion: 2
     m_Bits: 0
+  damage: 100
+  fireRate: 1
+  bulletSpeed: 10
+  pushForce: 20
+  forceBackFire: 5
+  recoil: 2

@@ -30,10 +30,10 @@ public class IdleBehaviourNPC : StateMachineBehaviour
             return;
         }
 
-/*        if (!boss.target)
+        if (!boss.target)
         {
-            boss.agent.SetDestination(boss.startPosition);
-        }*/
+            boss.agent.ResetPath();
+        }
 
         if (boss.target)                                    // если есть цель
         {
