@@ -533,8 +533,8 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 10000
-  isPlayerOrNPC: 1
   hpBarOn: 0
+  hpBarGO: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 0}
   animatorWeapon: {fileID: 0}
@@ -571,7 +571,6 @@ MonoBehaviour:
   deathCameraShake: 0
   flipLeft: 0
   flipRight: 0
-  hpBarGO: {fileID: 0}
   layerTrigger:
     serializedVersion: 2
     m_Bits: 0
@@ -786,7 +785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a964c950110244ca0f265284f3f103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  weapons:
+  - {fileID: 2496722168628502743, guid: 5458168e9d7bb7543867e6a8016b239d, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
