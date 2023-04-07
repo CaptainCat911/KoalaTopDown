@@ -28,8 +28,8 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         // Если нет цели - возвращаемся в идле
         if (!boss.target || boss.isNeutral || !boss.isAlive)
         {
-            animator.SetTrigger("Run");             // триггер
             boss.chasing = false;                   // отключаем преследование
+            animator.SetTrigger("Run");             // триггер
             return;
         }
 
@@ -55,12 +55,12 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         {
             lastRandom = Time.time;                         // присваиваем время атаки
             
-            if (boss.distanceToTarget > 3)              // для дальних атак
+            if (boss.distanceToTarget > 2)                  // для дальних атак
             {
                 int random = Random.Range(1, 6);
                 if (random < 6)
                 {
-                    boss.distanceToAttack = 6;
+                    boss.distanceToAttack = boss.rangeDistanceToAttack;
                     attackNumber = 2;                   // ренж атака
                 }
 /*                if (random == 6)
@@ -79,7 +79,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
                 }
                 if (random == 2)
                 {
-                    boss.distanceToAttack = 6;      
+                    boss.distanceToAttack = 20;
                     attackNumber = 2;               // ренж атака
                 }
 /*                if (random == 3)
@@ -95,6 +95,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         if (Time.time - lastAttack > cooldownAttack)              // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем время атаки
+            boss.agent.ResetPath();
 
             if (attackNumber == 2)
             {

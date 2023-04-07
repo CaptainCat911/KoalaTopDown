@@ -2,7 +2,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class NPC : BotAI
-{    
+{
+    [Header("Поведение")]
+    public bool stayOnGround;
+    public bool goTo;
+    public Transform destinationPoint;
+
+    [Header("Дистанция атаки")]
+    public float meleeDistanceToAttack;
+    public float rangeDistanceToAttack;
+
+    [Header("Текст чата")]
     public string[] textToSay;      // текст для диалога
     int dialogeNumber;              // номер диалога
     bool isTextDone;                // проговорили весь текст

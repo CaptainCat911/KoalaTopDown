@@ -109,14 +109,10 @@ public class BotAI : Fighter
     }
 
     private void Update()
-    {
+    {       
+
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
-
-        if (!target && friendTarget)
-        {
-            FriendTarget(friendTarget);
-        }
 
         if (!isAlive || isNeutral)
             return;
@@ -187,13 +183,14 @@ public class BotAI : Fighter
         // Дебаг
         if (debug)
         {
-            Debug.Log(target);
-            //Debug.Log(targetVisible);
+            Debug.Log(target);            
+            Debug.Log(chasing);
+            Debug.Log(targetVisible);            
         }
     }
 
     // Дружеская цель
-    void FriendTarget(Transform friendTarget)
+    public void FriendTarget(Transform friendTarget)
     {
         Vector3 targetDirection = friendTarget.transform.position - pivot.transform.position;           // угол между целью и pivot оружия          
         float targetAnglePivot = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;     // находим угол в градусах             

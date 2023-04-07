@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Пивот для мили оружия, также поворачивается для поворота оружия и флипа
+/// Пивот для мили оружия (для флипа)
 /// </summary>
 
 public class BotAIHitBoxPivot : MonoBehaviour

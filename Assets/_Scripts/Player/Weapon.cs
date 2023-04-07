@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour
 
         weaponName = weaponClass.weaponName;                                    // имя оружия
         projectileWeapon = weaponClass.projectileWeapon;                        // оружие снарядами
-        splitProjectileWeapon = weaponClass.splitProjectileWeapon;                        // оружие снарядами
+        splitProjectileWeapon = weaponClass.splitProjectileWeapon;              // оружие снарядами
         rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
 
         audioSource = GetComponent<AudioSource>();
@@ -247,7 +247,7 @@ public class Weapon : MonoBehaviour
     {
         for (int i = 0; i < 7; i++)
         {
-            Debug.Log("Fire");
+            //Debug.Log("Fire");
             //firePoint.Rotate(0, 0, (1.5f * i));                                                                  // тупо вращаем
             FireProjectile();
             //firePoint.Rotate(0, 0, (-1.5f * i));                                                                  // тупо вращаем

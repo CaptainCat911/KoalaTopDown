@@ -9,7 +9,8 @@ public class Crate : Fighter
     public GameObject expEffect;
     protected override void Death()
     {
-        if(itemToSpawn)
+        base.Death();
+        if (itemToSpawn)
             Instantiate(itemToSpawn, transform.position, Quaternion.identity);                  // создаем предмет
         GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
         Destroy(effect, 0.5f);                                                                  // уничтожаем эффект через .. сек     

@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class BulletRocket : Bullet
 {
-    public float expRadius = 3;    
+    public float expRadius = 3;
+    public bool withTimer;
+    public float timeToExpl;
+
+    [Header("Тряска камеры при взрыве")]
+    public float cameraAmplitudeShake = 3f; // амплитуда
+    public float cameraTimedeShake = 0.1f;  // длительность
+
 
     private void Start()
     {
-        //Invoke("Explosion", 1);                   // взрыв после времени
+        if (withTimer)
+            Invoke("Explosion", timeToExpl);                   // взрыв после времени
     }
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,7 +46,7 @@ public class BulletRocket : Bullet
             }
             collidersHits = null;
         }
-        CMCameraShake.Instance.ShakeCamera(3, 0.1f);            // тряска камеры
+        CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);            // тряска камеры
         base.Explosion();                                       // создаёт эффект и уничтожает его и объект
     }
 
