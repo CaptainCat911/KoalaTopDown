@@ -15,7 +15,11 @@ public class Weapon : MonoBehaviour
 
     [Header("Параметры оружия")]
     public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
+    bool projectileWeapon;                          // оружие со снарядами
+    bool splitProjectileWeapon;                     // дробовики
     bool rayCastWeapon;                             // рейкаст оружие
+    bool splitRaycastWeapon;                        // мультирейкаст оружие
+
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
@@ -59,7 +63,10 @@ public class Weapon : MonoBehaviour
         ammoWeapons = GameManager.instance.ammoPack.ammoWeapons;
 
         weaponName = weaponClass.weaponName;                                    // имя оружия
+        projectileWeapon = weaponClass.projectileWeapon;                        // оружие снарядами
+        splitProjectileWeapon = weaponClass.splitProjectileWeapon;              // оружие снарядами
         rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
+        splitRaycastWeapon = weaponClass.splitRaycastWeapon;                    // мультирейкаст оружие
 
         audioSource = GetComponent<AudioSource>();
 
@@ -93,13 +100,13 @@ public class Weapon : MonoBehaviour
     private void Update()
     {
         // Флип оружия
-        if (Mathf.Abs(weaponHolder.aimAngle) > 90 && rightFlip)
+        if (GameManager.instance.player.leftFlip && rightFlip)
         {
             needFlip = true;
             leftFlip = true;
             rightFlip = false;
         }
-        if (Mathf.Abs(weaponHolder.aimAngle) <= 90 && leftFlip)
+        if (GameManager.instance.player.rightFlip && leftFlip)
         {
             needFlip = true;
             rightFlip = true;
@@ -146,25 +153,29 @@ public class Weapon : MonoBehaviour
     private void FixedUpdate()
     {
         // Стрельба
-        if (!weaponHolder.fireStart)                        // если не готовы стрелять
+        if (!weaponHolder.fireStart)        // если не готовы стрелять
         {
-            return;                                         // выходим
+            return;                         // выходим
         }
 
         if (Time.time >= nextTimeToFire && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)     // если начинаем стрелять и кд готово
         {
-            ammoWeapons[weaponIndexForAmmo].allAmmo--;                                      // - патроны
-            nextTimeToFire = Time.time + 1f / weaponClass.fireRate;                         // вычисляем кд           
+            ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
+            nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           
             
-            if (!rayCastWeapon)
-                FireProjectile();                                                           // выстрел пулей
+            if (projectileWeapon)
+                FireProjectile();       // выстрел пулей
+            if (splitProjectileWeapon)
+                FireSplit(false);       // выстрел "дробью"
             if (rayCastWeapon)
-                FireRayCast();                                                              // выстрел рейкастом
+                FireRayCast();          // выстрел рейкастом
+            if (splitRaycastWeapon)
+                FireSplit(true);            // выстрел "дробью"
 
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры
 
             // Флэш
-            if (flashEffectAnimator != null)                                                // если флэшэффект есть
+            if (flashEffectAnimator != null)        // если флэшэффект есть
                 Flash();
 
             // Аудио
@@ -211,7 +222,6 @@ public class Weapon : MonoBehaviour
         }
     }
 
-
     // Флип
     void Flip()                                                                                         
     {
@@ -226,8 +236,7 @@ public class Weapon : MonoBehaviour
         needFlip = false;
     }
 
-
-    public void FireProjectile()
+    void FireProjectile()
     {
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);                            // разброс стрельбы
         firePoint.Rotate(0, 0, randomBulletX);                                                                  // тупо вращаем
@@ -239,7 +248,32 @@ public class Weapon : MonoBehaviour
         firePoint.Rotate(0, 0, -randomBulletX);                                                                 // и тупо возвращаем поворот
     }
 
-    public void FireRayCast()
+    void FireSplit(bool raycast)
+    {
+        for (int i = 0; i < weaponClass.splitTimes; i++)                            // кол-во снарядов (разделений)
+        {
+            //Debug.Log("Fire");
+
+            // Вращаем
+            if (i % 2 == 1)                                                         // если делится без остатка (?)
+                firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i + 1)));        // вращаем на сплитРекоил                                                           
+            else
+                firePoint.Rotate(0, 0, (-weaponClass.splitRecoil * (i )));
+
+            if (!raycast)
+                FireProjectile();
+            if (raycast)
+                FireRayCast();
+
+            // Возвращаем
+            if (i % 2 == 1)
+                firePoint.Rotate(0, 0, (-weaponClass.splitRecoil * (i + 1)));
+            else
+                firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i)));                       
+        }
+    }    
+
+    void FireRayCast()
     {
         // Настройки для трасеров
         TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер

@@ -13,4 +13,5 @@ public class DialogStore
 	public string[] characterName;          // имя персонажа, который говорит
 	public GameObject imageNpc;
 	public UnityEvent interactAction;
+	public Transform targetToDialoge;
 }

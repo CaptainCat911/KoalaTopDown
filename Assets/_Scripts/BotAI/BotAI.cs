@@ -17,7 +17,7 @@ public class BotAI : Fighter
     //public Animator animatorHit;                            // аниматор мили оружия
 
     // Тип бота
-    public bool boss;
+    public bool newNpcSystem;                               // босс или сложный нпс
     public bool isNeutral;                                  // не будет никого атаковать
     public bool isFriendly;                                 // союзный бот
     public bool isEnemy;                                    // несоюзный бот
@@ -64,6 +64,9 @@ public class BotAI : Fighter
     // Для триггера
     public LayerMask layerTrigger;
 
+    public Transform friendTarget;
+
+    public bool fastDeathAnim;
     // Дебаг
     public bool debug;
 
@@ -107,7 +110,8 @@ public class BotAI : Fighter
     }
 
     private void Update()
-    {
+    {       
+
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
 
@@ -138,7 +142,7 @@ public class BotAI : Fighter
         }
 
         // поворот спрайта (Flip)       
-        if (target && targetVisible)                           // (потом chasing заменить на target и ещё это дублируется в хитбокспивот)
+        if (target && targetVisible)                           // (ещё это дублируется в хитбокспивот)
         {
             if (Mathf.Abs(aimAnglePivot) > 90 && !flipLeft)
             {
@@ -167,7 +171,7 @@ public class BotAI : Fighter
 
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
-
+        // Замедление
         if (slowed)
         {
             if (agent.speed < maxSpeed)
@@ -180,8 +184,27 @@ public class BotAI : Fighter
         // Дебаг
         if (debug)
         {
-            //Debug.Log(target);
-            Debug.Log(targetVisible);
+            Debug.Log(target);            
+            Debug.Log(chasing);
+            Debug.Log(targetVisible);            
+        }
+    }
+
+    // Дружеская цель
+    public void FriendTarget(Transform friendTarget)
+    {
+        Vector3 targetDirection = friendTarget.transform.position - pivot.transform.position;           // угол между целью и pivot оружия          
+        float targetAnglePivot = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;     // находим угол в градусах             
+        
+        if (Mathf.Abs(targetAnglePivot) > 90 && !flipLeft)
+        {
+            FaceTargetLeft();
+            pivot.Flip();
+        }
+        if (Mathf.Abs(targetAnglePivot) <= 90 && !flipRight)
+        {
+            FaceTargetRight();
+            pivot.Flip();
         }
     }
 
@@ -272,17 +295,21 @@ public class BotAI : Fighter
 
     public void Chase()
     {
-        if (isNeutral)
+        if (isNeutral || !isAlive || !target)
             return;
 
-        distanceToTarget = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
-        if (distanceToTarget < distanceToAttack && targetVisible)                                       // если дошли до цели и видим её
+        if (debug)
+            Debug.Log("Chasing");
+
+        distanceToTarget = Vector3.Distance(transform.position, target.transform.position);     // считаем дистанцию до цели
+
+        if (distanceToTarget < distanceToAttack && targetVisible)                               // если дошли до цели и видим её
         {
             if (!closeToTarget)
             {
                 agent.ResetPath();                                                              // сбрасываем путь            
                 closeToTarget = true;                                                           // готов стрелять
-                //Debug.Log("Ready Attack");
+
             }
         }
         else
@@ -300,6 +327,7 @@ public class BotAI : Fighter
     public void ResetTarget()
     {
         //isFindTarget = false;
+        target = null;
         chasing = false;                    // преследование отключено            
         targetVisible = false;              // цель не видима
         closeToTarget = false;              // далеко от цели
@@ -441,7 +469,7 @@ public class BotAI : Fighter
     {
         base.Death();
 
-        GameManager.instance.enemyCount--;                                                          // -1 к счётчику врагов
+        //GameManager.instance.enemyCount--;                                                          // -1 к счётчику врагов
 
         CMCameraShake.Instance.ShakeCamera(deathCameraShake, 0.2f);                                 // тряска камеры
         if (deathEffect)
@@ -463,7 +491,13 @@ public class BotAI : Fighter
         //animatorWeapon.animator.StopPlayback();
         //gameObject.layer = LayerMask.NameToLayer("Item");                            // слой самого бота
 
-        Invoke("AfterDeath", 0.8f);        
+        if (!fastDeathAnim)
+            Invoke("AfterDeath", 0.8f);
+        else
+        {
+            agent.enabled = false;                      // выключаем агента
+            Destroy(gameObject);
+        }            
     }
 
     void AfterDeath()

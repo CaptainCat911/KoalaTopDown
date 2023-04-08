@@ -340,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4250349429532821525
 Transform:
   m_ObjectHideFlags: 0
@@ -622,7 +622,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 500
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -631,7 +631,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
-  boss: 0
+  newNpcSystem: 0
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
@@ -652,7 +652,7 @@ MonoBehaviour:
   distanceToAttackRange: 5
   distanceToAttack: 1
   distanceToTarget: 0
-  itemToSpawn: {fileID: 0}
+  itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   meleeAttackType: 0
   rangeAttackType: 1
   twoWeapons: 0
@@ -664,6 +664,8 @@ MonoBehaviour:
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128
+  friendTarget: {fileID: 0}
+  fastDeathAnim: 1
   debug: 0
 --- !u!114 &290224714
 MonoBehaviour:

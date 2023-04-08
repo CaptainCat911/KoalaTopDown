@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3786651681049121962}
   - component: {fileID: 3786651681049121957}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: ImageStuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681049121963}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268274, w: 0.9238798}
-  m_LocalPosition: {x: 0.0000000024631142, y: 0.035000004, z: 0}
+  m_LocalPosition: {x: -0.014, y: 0.028, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 99433571, guid: cd36a4a809120ed4787052030ee77318, type: 3}
+  m_Sprite: {fileID: -1214411618, guid: cd36a4a809120ed4787052030ee77318, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3786651681873589343}
   - component: {fileID: 3786651681873589337}
   - component: {fileID: 3786651681873589342}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Circle Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 1479659406406739827}
   - component: {fileID: 5714915020998434831}
   - component: {fileID: 2147084357117586853}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: StuffNPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,10 +320,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0411\u043E\u0441\u0441\u0430"
   hitBox: {fileID: 1630045362412420869}
-  damage: 60
+  damage: 100
   pushForce: 10
   radius: 0.7
   cooldown: 1.5
+  projctleSpeed: 8
   layerHit:
     serializedVersion: 2
     m_Bits: 4225
@@ -335,8 +336,8 @@ MonoBehaviour:
   - {fileID: 5691226719771854280, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
   - {fileID: 134668306723687997, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
   - {fileID: 1538151450151263897, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
-  explousionDamage: 20
-  explousionForce: 60
+  explousionDamage: 100
+  explousionForce: 50
   explousionRadius: 3
   trail: {fileID: 3786651681873589342}
 --- !u!95 &2147084357117586853
@@ -368,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630045362412420869}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3635469760552922988}
   - component: {fileID: 6093109454168859730}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,8 +439,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.26842916, g: 1, b: 0, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.95554936, b: 0, a: 1}
+  m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 1911dbd600000000
@@ -595,6 +596,10 @@ PrefabInstance:
     - target: {fileID: 6387294908302005416, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_Name
       value: FireLightsBossStafff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387294908302005416, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}

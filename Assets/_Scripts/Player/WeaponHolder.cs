@@ -19,7 +19,6 @@ public class WeaponHolder : MonoBehaviour
 
     [HideInInspector] public string currentWeaponName;  // для текста ui
 
-
     bool stopAiming;                                    // для дебага
 
     void Start()
@@ -38,6 +37,16 @@ public class WeaponHolder : MonoBehaviour
         if (GameManager.instance.isPlayerEnactive)
         {
             fireStart = false;
+
+            if (GameManager.instance.player.rightFlip)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+            }
+            if (GameManager.instance.player.leftFlip)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 180), Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+            }
+
             return;
         }
 

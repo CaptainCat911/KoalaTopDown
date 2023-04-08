@@ -50,13 +50,13 @@ public class EnemySpawner : MonoBehaviour
         agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
         if(chasePlayer)
             go.GetComponentInChildren<BotAI>().triggerLenght = chaseDistance; // устанавливаем преследование за игроком
-        //enemyCount++;
-        //GameManager.instance.enemyCount++;
+        enemyCount++;
 
+        //GameManager.instance.enemyCount++;
         if (enemyCount >= enemysHowMuch)
         {
             //Invoke("NextSpawnersOn", 5f);
-            //Destroy(gameObject, 6f);
+            Destroy(gameObject, 0.1f);
         }
     }
 

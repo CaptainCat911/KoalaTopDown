@@ -51,6 +51,9 @@ public class Fighter : MonoBehaviour
        
     public virtual void TakeDamage(int dmg, Vector2 vec2, float pushForce)
     {
+        if (!isAlive)
+            return;
+
         if (hpBarOn)
         {
             if (currentHealth == maxHealth)
@@ -119,7 +122,8 @@ public class Fighter : MonoBehaviour
     protected virtual void Death()
     {
         isAlive = false;
-        capsuleCollider2D.enabled = false;
+        if (capsuleCollider2D)
+            capsuleCollider2D.enabled = false;
         
         //Debug.Log(transform.name + " died.");
     }

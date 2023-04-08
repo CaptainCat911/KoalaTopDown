@@ -343,7 +343,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
-  boss: 0
+  newNpcSystem: 0
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
@@ -364,7 +364,7 @@ MonoBehaviour:
   distanceToAttackRange: 0
   distanceToAttack: 1.25
   distanceToTarget: 0
-  itemToSpawn: {fileID: 0}
+  itemToSpawn: {fileID: 7098889320345549226, guid: 020d8dbcc759a3f42ae14761f1622cd3, type: 3}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
@@ -376,6 +376,7 @@ MonoBehaviour:
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128
+  friendTarget: {fileID: 0}
   debug: 0
 --- !u!114 &5079032359470510365
 MonoBehaviour:

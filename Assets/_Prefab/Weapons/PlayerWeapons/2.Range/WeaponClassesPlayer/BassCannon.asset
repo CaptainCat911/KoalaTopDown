@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bfff81076b41e49a197a73d4bd8167, type: 3}
+  m_Name: BassCannon
+  m_EditorClassIdentifier: 
+  weaponName: "\u041C\u0415\u0413\u0410 \u0411\u0410\u0421\u0421 \u041F\u0423\u0428\u041A\u0410"
+  projectileWeapon: 1
+  splitProjectileWeapon: 0
+  bulletPrefab: {fileID: 2609019957272575851, guid: a68b333735202ec44b7adeef14b65923, type: 3}
+  splitTimes: 0
+  splitRecoil: 0
+  rayCastWeapon: 0
+  splitRaycastWeapon: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  damage: 9999
+  fireRate: 1
+  bulletSpeed: 0
+  pushForce: 70
+  forceBackFire: 0
+  recoil: 0

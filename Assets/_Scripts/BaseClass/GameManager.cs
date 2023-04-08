@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject gui;                      // гуи
     public Dialog dialog;                       // диалог менеджер
     public AmmoPackKoala ammoPack;              // ссылка на аммопак
-    public GameObject magazine;
-    bool openMagazine;
+    public GameObject magazine;                 // магазин
+    bool openMagazine;                          // магазин открыт
 
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;                    // клавиша для действия
@@ -26,8 +26,11 @@ public class GameManager : MonoBehaviour
 
     public bool isPlayerEnactive;
 
-    [HideInInspector] public int enemyCount;
-    
+    //[HideInInspector] public int enemyCount;
+
+    public Animator blackImagesAnim;        // аниматор чёрных полос
+    [HideInInspector] public bool playerAtTarget;
+
 
 
     private void Awake()
@@ -71,12 +74,41 @@ public class GameManager : MonoBehaviour
         magazine.SetActive(openMagazine);
     }
 
+
+
     public void StartDialog(int number)
     {
-        dialog.StartDialog(number);
+        dialog.StartEvent(number);
     }
 
-    // Сбрасывать цель ботам и делать их нейтральными
+    // Чёрные полосы
+    public void BlackTapes(bool status)
+    {
+        if (status)
+            blackImagesAnim.SetTrigger("In");                   // запускаем чёрные полосы
+        else
+            blackImagesAnim.SetTrigger("Out");                  // убираем чёрные полосы
+    }
+
+
+    // Перемещение игрока
+    public void MovePlayer(Vector2 targetPosition)
+    {
+        float distance = Vector2.Distance(player.transform.position, targetPosition);
+        if (distance > 0.1f)
+        {
+            player.Move(targetPosition, true);            
+        }
+        else
+        {
+            player.Move(targetPosition, false);
+            playerAtTarget = true;
+        }
+    }
+
+
+
+    // Сбрасывать цель ботам и делать их нейтральными (вокруг игрока)
     public void EnemyResetAndNeutral(bool status)
     {
         if (status)

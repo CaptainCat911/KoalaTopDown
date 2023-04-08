@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChaseBehaviourNPC : StateMachineBehaviour
 {
-    NPC boss;                              // ссылка на бота
+    NPC boss;                               // ссылка на бота
     public float cooldownAttack = 2f;       // перезар€дка атаки   
     float lastAttack;                       // врем€ последнего рандома  
     float randomCooldown = 1f;              // перезар€дка рандома   
@@ -26,10 +26,10 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // ≈сли нет цели - возвращаемс€ в идле
-        if (!boss.target)
+        if (!boss.target || boss.isNeutral || !boss.isAlive)
         {
-            animator.SetTrigger("Idle");            // триггер
             boss.chasing = false;                   // отключаем преследование
+            animator.SetTrigger("Run");             // триггер
             return;
         }
 
@@ -39,7 +39,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         // ≈сли не готовы атаковать - возвращаемс€
         if (!boss.closeToTarget)
         {
-            animator.SetBool("Running", true);
+            animator.SetTrigger("Run");
             return;
         }
 
@@ -55,23 +55,23 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         {
             lastRandom = Time.time;                         // присваиваем врем€ атаки
             
-            if (boss.distanceToTarget > 3)
+            if (boss.distanceToTarget > 2)                  // дл€ дальних атак
             {
-                int random = Random.Range(1, 7);
+                int random = Random.Range(1, 6);
                 if (random < 6)
                 {
-                    boss.distanceToAttack = 6;
-                    attackNumber = 2;               // ренж атака
+                    boss.distanceToAttack = boss.rangeDistanceToAttack;
+                    attackNumber = 2;                   // ренж атака
                 }
-                if (random == 6)
+/*                if (random == 6)
                 {
                     boss.distanceToAttack = 20;
-                    attackNumber = 3;               // спаун
-                }
+                    attackNumber = 3;                   // спаун
+                }*/
             }
-            else
+            else                                        // дл€ ближних атак
             {
-                int random = Random.Range(1, 4);
+                int random = Random.Range(1, 3);
                 if (random < 2)
                 {
                     boss.distanceToAttack = 20;
@@ -79,14 +79,14 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
                 }
                 if (random == 2)
                 {
-                    boss.distanceToAttack = 6;      
+                    boss.distanceToAttack = 20;
                     attackNumber = 2;               // ренж атака
                 }
-                if (random == 3)
+/*                if (random == 3)
                 {
                     boss.distanceToAttack = 20;
                     attackNumber = 3;               // спаун
-                }
+                }*/
             }
         }
 
@@ -95,6 +95,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         if (Time.time - lastAttack > cooldownAttack)              // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем врем€ атаки
+            boss.agent.ResetPath();
 
             if (attackNumber == 2)
             {

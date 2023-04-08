@@ -292,7 +292,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1075158515, guid: 9ee94e43e2aa28149992f9fe04e0553e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.5625, y: 2.96875}
@@ -395,7 +395,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 10000
+  maxHealth: 300
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -404,7 +404,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
-  boss: 1
+  newNpcSystem: 1
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
@@ -425,18 +425,20 @@ MonoBehaviour:
   distanceToAttackRange: 0
   distanceToAttack: 0
   distanceToTarget: 0
-  itemToSpawn: {fileID: 0}
+  itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
   aimAnglePivot: 0
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 7845441016114820387, guid: 87167e05437f7c844b845e558dc030aa, type: 3}
   deathCameraShake: 0
   flipLeft: 0
   flipRight: 0
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128
+  friendTarget: {fileID: 0}
+  fastDeathAnim: 1
   debug: 0
   textToSay: []
 --- !u!1001 &3993575098468539934

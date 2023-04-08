@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3786651681049121962}
   - component: {fileID: 3786651681049121957}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: ImageSwoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3786651681873589343}
   - component: {fileID: 3786651681873589337}
   - component: {fileID: 3786651681873589342}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: Circle Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479659406406739827}
   - component: {fileID: 5542338318132308821}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: Swoard_Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,19 +316,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f380747e3608644a00fe1df2ceef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossWeapon: 0
   weaponName: "\u041C\u0415\u0427"
   hitBox: {fileID: 1630045362412420869}
   damage: 50
   pushForce: 5
   radius: 0.6
   cooldown: 2
+  projctleSpeed: 4
   layerHit:
     serializedVersion: 2
     m_Bits: 0
   bulletPrefab: {fileID: 0}
   attackClass: 1
   prefabEnemies: []
+  explousionDamage: 0
+  explousionForce: 0
+  explousionRadius: 0
   trail: {fileID: 3786651681873589342}
 --- !u!1 &6604417298802685298
 GameObject:
@@ -339,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630045362412420869}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7694846568029670375}
   - component: {fileID: 8881424224311481411}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

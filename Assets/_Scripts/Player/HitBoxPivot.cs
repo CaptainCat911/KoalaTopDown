@@ -16,9 +16,23 @@ public class HitBoxPivot : MonoBehaviour
    
     void Update()
     {
-        Quaternion qua1 = Quaternion.Euler(0, 0, weaponHolder.aimAngle);                                // создаем этот угол в Quaternion
-        transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 15);       // делаем Lerp между weaponHoder и нашим углом
-
+        if (!GameManager.instance.isPlayerEnactive)
+        {
+            Quaternion qua1 = Quaternion.Euler(0, 0, weaponHolder.aimAngle);                                // создаем этот угол в Quaternion
+            transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 15);       // делаем Lerp между weaponHoder и нашим углом
+        }        
+        else
+        {
+            
+            if (player.rightFlip)
+            {                
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+            }
+            if (player.leftFlip)
+            {                
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 180), Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+            }
+        }
     }
 
     public void Flip()

@@ -13,7 +13,7 @@ public class Boss : BotAI
         if (!isTextDone)                            // если не проговорили весь текст
         {
             ChatBubble.Clear(gameObject);           // очищаем диалог
-            ChatBubble.Create(transform, new Vector3(-1f, 0.2f), textToSay[dialogeNumber]);     // говорим     
+            ChatBubble.Create(transform, new Vector3(-1f, 1f), textToSay[dialogeNumber]);     // говорим     
 
             dialogeNumber++;                        // + к номеру диалога
 
@@ -27,6 +27,35 @@ public class Boss : BotAI
             ChatBubble.Clear(gameObject);           // очищаем диалог если всЄ проговорили
         }
     }
+
+/*    protected override void Death()
+    {
+        base.Death();
+
+        //GameManager.instance.enemyCount--;                                                          // -1 к счЄтчику врагов
+
+        CMCameraShake.Instance.ShakeCamera(deathCameraShake, 0.2f);                                 // тр€ска камеры
+        if (deathEffect)
+        {
+            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);  // создаем эффект убийства
+            Destroy(effect, 1);                                                                     // уничтожаем эффект через .. сек
+        }
+        animator.SetTrigger("Death");               // тригер 
+        spriteRenderer.color = Color.white;         // возвращем цвета на белый
+        hpBarGO.SetActive(false);                   // убираем хп бар
+        agent.ResetPath();                          // сбрасываем путь        
+
+        if (itemToSpawn)
+            Instantiate(itemToSpawn, transform.position, Quaternion.identity);          // создаем предмет
+
+        botAIMeleeWeaponHolder.HideWeapons();       // пр€чем оружи€
+        botAIRangeWeaponHolder.HideWeapons();
+        animatorWeapon.animator.enabled = false;    // отключаем аниматор оружи€
+        //animatorWeapon.animator.StopPlayback();
+        //gameObject.layer = LayerMask.NameToLayer("Item");                            // слой самого бота
+
+        Invoke("AfterDeath", 0.8f);
+    }*/
 
     /*    protected override void Death()
         {

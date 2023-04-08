@@ -9,7 +9,7 @@ public class IdleBehaviourNPC : StateMachineBehaviour
 
     // ѕоиск цели
     float lastTargetFind;                   // врем€ последнего поиска цели
-    float cooldownFind = 0.5f;              // перезард€ка поиска цели
+    float cooldownFind = 0.1f;              // перезард€ка поиска цели
     //float cooldownChangeTarget = 2f;        // перезар€дка смена цели
 
 
@@ -22,12 +22,42 @@ public class IdleBehaviourNPC : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (boss.target)                                    // если есть цель
-        {
-            animator.SetTrigger("ChaseTarget");              // триггер
-            boss.chasing = true;                            // преследование включено
+        if (!boss.isAlive)
+            return;
+        if (boss.isNeutral)
+        {            
+            return;
         }
 
+        // ≈сли нет цели
+        if (!boss.target)
+        {
+            // если поведение - охран€ть стартовую позицию
+            if (boss.stayOnGround)
+            {
+                float distance = Vector2.Distance(boss.transform.position, boss.startPosition);         // считаем дистанцию до стартовой позиции
+                if (distance > 0.1f)
+                {
+                    animator.SetTrigger("Run");            // выходим в идле
+                }
+                else
+                {
+                    boss.agent.ResetPath();
+                    if (boss.friendTarget)
+                        boss.FriendTarget(boss.friendTarget);
+                }
+            }
+
+        }
+
+        // ≈сли есть цель
+        if (boss.target)                                    
+        {
+            boss.chasing = true;                            // преследование включено
+            animator.SetTrigger("Run");                     // триггер, переходим дальше
+        }
+
+        // ѕоиск цели
         if (Time.time - lastTargetFind > cooldownFind)      // если кд готово
         {
             lastTargetFind = Time.time;
