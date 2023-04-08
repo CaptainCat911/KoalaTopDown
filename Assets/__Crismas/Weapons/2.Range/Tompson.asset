@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: Tompson
   m_EditorClassIdentifier: 
   weaponName: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442 \u0422\u043E\u043C\u043F\u0441\u043E\u043D\u0430"
+  projectileWeapon: 1
+  splitProjectileWeapon: 0
   bulletPrefab: {fileID: 5170081587130710907, guid: 40c9577f98c73ad439bc94a89afdfeb1, type: 3}
+  splitTimes: 0
+  splitRecoil: 0
+  rayCastWeapon: 0
+  splitRaycastWeapon: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
   damage: 10
   fireRate: 10
   bulletSpeed: 15
   pushForce: 1
   forceBackFire: 0.1
   recoil: 3
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0

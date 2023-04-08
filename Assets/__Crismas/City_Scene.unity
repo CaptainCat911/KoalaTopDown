@@ -37478,7 +37478,8 @@ MonoBehaviour:
   keys: 0
   battery: 0
   isPlayerEnactive: 0
-  enemyCount: 0
+  blackImagesAnim: {fileID: 1118256716}
+  playerAtTarget: 0
 --- !u!4 &1004862352
 Transform:
   m_ObjectHideFlags: 0
@@ -39819,7 +39820,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1503306396}
   animator: {fileID: 1503306398}
-  blackImagesAnim: {fileID: 1118256716}
   dialogStore:
   - name: "0. \u0412\u0441\u0442\u0443\u043F\u043B\u0435\u043D\u0438\u0435"
     sentences:
@@ -39856,9 +39856,11 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   typingSpeed: 0.01
   continueButton: {fileID: 2025347631}
   heroImage: {fileID: 2080090647}
+  startEvent: 0
 --- !u!4 &1389906937
 Transform:
   m_ObjectHideFlags: 0
@@ -95169,7 +95171,7 @@ PrefabInstance:
     - target: {fileID: 3941453669616193613, guid: 25ec1fbb2fce91944bf0d30910942179, type: 3}
       propertyPath: itemToSpawn
       value: 
-      objectReference: {fileID: 143108659}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25ec1fbb2fce91944bf0d30910942179, type: 3}
 --- !u!1 &2103293673

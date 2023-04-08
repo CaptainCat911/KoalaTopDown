@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442"
+  projectileWeapon: 1
+  splitProjectileWeapon: 0
   bulletPrefab: {fileID: 5170081587130710907, guid: bc261d7d6aae3834ba444226a6ca08b1, type: 3}
+  splitTimes: 0
+  splitRecoil: 0
+  rayCastWeapon: 0
+  splitRaycastWeapon: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
   damage: 2
   fireRate: 4
   bulletSpeed: 15
   pushForce: 1.5
   forceBackFire: 0
   recoil: 4
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0

@@ -7978,7 +7978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301796, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_Pivot.x
@@ -8090,11 +8090,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776515131865, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776515131865, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f455a6fe7649f3445802070e811fa112, type: 3}
@@ -23901,7 +23901,8 @@ MonoBehaviour:
   keys: 0
   battery: 0
   isPlayerEnactive: 0
-  enemyCount: 0
+  blackImagesAnim: {fileID: 1118256716}
+  playerAtTarget: 0
 --- !u!4 &1004862352
 Transform:
   m_ObjectHideFlags: 0
@@ -25279,7 +25280,7 @@ MonoBehaviour:
   m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 06e96fedb48d5d349bd2ffcb8d8414a0, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 69a1866fe4e711940a5244babe9b84c5, type: 2}
 --- !u!4 &1345891868
 Transform:
   m_ObjectHideFlags: 0
@@ -25588,7 +25589,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1503306396}
   animator: {fileID: 1503306398}
-  blackImagesAnim: {fileID: 1118256716}
   dialogStore:
   - name: "0. \u0412\u0441\u0442\u0443\u043F\u043B\u0435\u043D\u0438\u0435 111"
     sentences:
@@ -25605,6 +25605,7 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   - name: "1. \u041F\u0435\u0440\u0432\u0430\u044F \u0432\u0441\u0442\u0440\u0435\u0447\u0430
       \u0441 \u041D\u041F\u0421"
     sentences:
@@ -25619,6 +25620,7 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   - name: "\u0422\u0440\u0435\u0442\u044C\u044F \u0432\u0441\u0442\u0440\u0435\u0447\u0430
       \u0441 \u043C\u0430\u0433\u043E\u043C"
     sentences:
@@ -25634,6 +25636,7 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   - name: "\u0422\u0440\u0435\u0442\u044C\u044F \u0432\u0441\u0442\u0440\u0435\u0447\u0430
       \u0441 \u043C\u0430\u0433\u043E\u043C"
     sentences:
@@ -25649,6 +25652,7 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   - name: "\u0422\u0440\u0435\u0442\u044C\u044F \u0432\u0441\u0442\u0440\u0435\u0447\u0430
       \u0441 \u043C\u0430\u0433\u043E\u043C"
     sentences:
@@ -25664,6 +25668,7 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   - name: "5. \u041D\u0430\u0447\u0430\u043B\u043E \u0438\u0433\u0440\u044B \u0420\u0430\u0437\u0433\u0432\u043E\u043E\u0440
       \u0441\u0430\u043C \u0441 \u0441\u043E\u0431\u043E\u0439"
     sentences:
@@ -25683,6 +25688,7 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   - name: "6. \u0420\u0430\u0437\u0433\u0432\u043E\u043E\u0440 \u0441\u0430\u043C
       \u0441 \u0441\u043E\u0431\u043E\u0439 \u0432\u043E\u0437\u043B\u0435 \u043F\u043E\u0440\u0442\u0430\u043B\u0430"
     sentences:
@@ -25695,9 +25701,11 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   typingSpeed: 0.01
   continueButton: {fileID: 2025347631}
   heroImage: {fileID: 2080090647}
+  startEvent: 0
 --- !u!4 &1389906937
 Transform:
   m_ObjectHideFlags: 0
