@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: MiniGun
   m_EditorClassIdentifier: 
   weaponName: "\u041C\u0438\u043D\u0438\u0433\u0430\u043D"
+  projectileWeapon: 1
+  splitProjectileWeapon: 0
   bulletPrefab: {fileID: 2657864441510378518, guid: 2e2e13a92f71bc342a12093d19322514, type: 3}
+  splitTimes: 0
+  splitRecoil: 0
+  rayCastWeapon: 0
+  splitRaycastWeapon: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
   damage: 20
   fireRate: 20
   bulletSpeed: 15
   pushForce: 3
   forceBackFire: 1
   recoil: 5
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0

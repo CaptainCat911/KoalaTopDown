@@ -352,13 +352,14 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 100
-  isPlayerOrNPC: 1
   hpBarOn: 0
+  hpBarGO: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   weaponHolder: {fileID: 0}
   weaponHolderMelee: {fileID: 0}
   bombWeaponHolder: {fileID: 0}
+  hitBoxPivot: {fileID: 0}
   moveDirection: {x: 0, y: 0}
   moveSpeed: 6
   dashForce: 30
@@ -14859,7 +14860,8 @@ MonoBehaviour:
   keys: 0
   battery: 0
   isPlayerEnactive: 0
-  enemyCount: 0
+  blackImagesAnim: {fileID: 1118256716}
+  playerAtTarget: 0
 --- !u!4 &1004862352
 Transform:
   m_ObjectHideFlags: 0
@@ -15150,57 +15152,9 @@ MonoBehaviour:
     goldPriseWeapon: 0
     goldPriseAmmo: 0
     allAmmo: 0
-  buttonsBuy:
-  - {fileID: 0}
-  - {fileID: 1495632782}
-  - {fileID: 1143990820}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  ammoBombs: []
+  buttonsBuyWeapon: []
+  buttonsBuyBomb: []
   buttonsSell: []
 --- !u!1 &1011907716
 GameObject:
@@ -16797,7 +16751,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1503306396}
   animator: {fileID: 1503306398}
-  blackImagesAnim: {fileID: 1118256716}
   dialogStore:
   - name: "\u041F\u0435\u0440\u0432\u0430\u044F \u0432\u0441\u0442\u0440\u0435\u0447\u0430
       \u0441 \u043C\u0430\u0433\u043E\u043C"
@@ -16811,6 +16764,7 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   - name: "\u0412\u0442\u043E\u0440\u0430\u044F \u0432\u0441\u0442\u0440\u0435\u0447\u0430
       \u0441 \u043C\u0430\u0433\u043E\u043C"
     sentences:
@@ -16840,6 +16794,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    targetToDialoge: {fileID: 0}
   - name: "\u0422\u0440\u0435\u0442\u044C\u044F \u0432\u0441\u0442\u0440\u0435\u0447\u0430
       \u0441 \u043C\u0430\u0433\u043E\u043C"
     sentences:
@@ -16855,9 +16810,11 @@ MonoBehaviour:
     interactAction:
       m_PersistentCalls:
         m_Calls: []
+    targetToDialoge: {fileID: 0}
   typingSpeed: 0.01
   continueButton: {fileID: 2025347631}
   heroImage: {fileID: 2080090647}
+  startEvent: 0
 --- !u!4 &1389906937
 Transform:
   m_ObjectHideFlags: 0
