@@ -5,12 +5,16 @@ public class WeaponClass : ScriptableObject
 {
     public string weaponName;
 
-    [Header("Тип оружия")]
+    [Header("Снарядовое оружие")]
     public bool projectileWeapon;
     public bool splitProjectileWeapon;
     public GameObject bulletPrefab;
+    public int splitTimes;
+    public float splitRecoil;
 
+    [Header("Рейкас оружие")]
     public bool rayCastWeapon;
+    public bool splitRaycastWeapon;
     public LayerMask layerRayCast;
 
     [Header("Параметры оружия")]

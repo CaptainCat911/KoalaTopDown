@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bfff81076b41e49a197a73d4bd8167, type: 3}
   m_Name: Kar98
   m_EditorClassIdentifier: 
-  weaponName: "\u041C\u0443\u0448\u043A\u0435\u0442"
+  weaponName: "\u041A\u0430\u044098"
   projectileWeapon: 1
   splitProjectileWeapon: 0
   bulletPrefab: {fileID: 5170081587130710907, guid: 235b8e85db5d1fa4f941a8dbcf16cf5a, type: 3}
+  splitTimes: 0
+  splitRecoil: 0
   rayCastWeapon: 0
   layerRayCast:
     serializedVersion: 2

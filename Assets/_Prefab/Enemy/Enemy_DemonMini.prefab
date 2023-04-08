@@ -187,13 +187,15 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 200
-  isPlayerOrNPC: 0
   hpBarOn: 1
+  hpBarGO: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 2411289485797020917}
+  animatorWeapon: {fileID: 0}
   spriteRenderer: {fileID: 0}
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
+  newNpcSystem: 0
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
@@ -209,11 +211,12 @@ MonoBehaviour:
   triggerLenght: 5
   distanceToChangeTarget: 3
   targetVisible: 1
-  readyToAttack: 0
+  closeToTarget: 0
   distanceToAttackMelee: 0.9
   distanceToAttackRange: 0
   distanceToAttack: 0.8
   distanceToTarget: 0
+  itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
@@ -222,10 +225,11 @@ MonoBehaviour:
   deathCameraShake: 2
   flipLeft: 0
   flipRight: 0
-  hpBarGO: {fileID: 0}
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128
+  friendTarget: {fileID: 0}
+  fastDeathAnim: 1
   debug: 0
 --- !u!114 &3140556547057668604
 MonoBehaviour:

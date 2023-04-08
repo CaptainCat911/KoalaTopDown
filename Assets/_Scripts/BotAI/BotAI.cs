@@ -66,6 +66,7 @@ public class BotAI : Fighter
 
     public Transform friendTarget;
 
+    public bool fastDeathAnim;
     // Дебаг
     public bool debug;
 
@@ -490,7 +491,13 @@ public class BotAI : Fighter
         //animatorWeapon.animator.StopPlayback();
         //gameObject.layer = LayerMask.NameToLayer("Item");                            // слой самого бота
 
-        Invoke("AfterDeath", 0.8f);        
+        if (!fastDeathAnim)
+            Invoke("AfterDeath", 0.8f);
+        else
+        {
+            agent.enabled = false;                      // выключаем агента
+            Destroy(gameObject);
+        }            
     }
 
     void AfterDeath()

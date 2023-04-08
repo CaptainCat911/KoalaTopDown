@@ -16,8 +16,10 @@ public class Weapon : MonoBehaviour
     [Header("Параметры оружия")]
     public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
     bool projectileWeapon;                          // оружие со снарядами
-    bool splitProjectileWeapon;                           // дробовики
+    bool splitProjectileWeapon;                     // дробовики
     bool rayCastWeapon;                             // рейкаст оружие
+    bool splitRaycastWeapon;                        // мультирейкаст оружие
+
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
@@ -64,6 +66,7 @@ public class Weapon : MonoBehaviour
         projectileWeapon = weaponClass.projectileWeapon;                        // оружие снарядами
         splitProjectileWeapon = weaponClass.splitProjectileWeapon;              // оружие снарядами
         rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
+        splitRaycastWeapon = weaponClass.splitRaycastWeapon;                    // мультирейкаст оружие
 
         audioSource = GetComponent<AudioSource>();
 
@@ -163,9 +166,11 @@ public class Weapon : MonoBehaviour
             if (projectileWeapon)
                 FireProjectile();       // выстрел пулей
             if (splitProjectileWeapon)
-                FireSplit();            // выстрел "дробью"
+                FireSplit(false);       // выстрел "дробью"
             if (rayCastWeapon)
                 FireRayCast();          // выстрел рейкастом
+            if (splitRaycastWeapon)
+                FireSplit(true);            // выстрел "дробью"
 
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры
 
@@ -243,14 +248,28 @@ public class Weapon : MonoBehaviour
         firePoint.Rotate(0, 0, -randomBulletX);                                                                 // и тупо возвращаем поворот
     }
 
-    void FireSplit()
+    void FireSplit(bool raycast)
     {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < weaponClass.splitTimes; i++)                            // кол-во снарядов (разделений)
         {
             //Debug.Log("Fire");
-            //firePoint.Rotate(0, 0, (1.5f * i));                                                                  // тупо вращаем
-            FireProjectile();
-            //firePoint.Rotate(0, 0, (-1.5f * i));                                                                  // тупо вращаем
+
+            // Вращаем
+            if (i % 2 == 1)                                                         // если делится без остатка (?)
+                firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i + 1)));        // вращаем на сплитРекоил                                                           
+            else
+                firePoint.Rotate(0, 0, (-weaponClass.splitRecoil * (i )));
+
+            if (!raycast)
+                FireProjectile();
+            if (raycast)
+                FireRayCast();
+
+            // Возвращаем
+            if (i % 2 == 1)
+                firePoint.Rotate(0, 0, (-weaponClass.splitRecoil * (i + 1)));
+            else
+                firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i)));                       
         }
     }    
 

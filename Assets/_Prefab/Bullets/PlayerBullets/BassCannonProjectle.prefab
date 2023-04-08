@@ -246,11 +246,11 @@ MonoBehaviour:
   damage: 0
   pushForce: 0
   isPlayerBullet: 0
-  expEffect: {fileID: 5727708654878073701, guid: 6a6fbace441d3eb49ac7ef30e92363cd, type: 3}
+  expEffect: {fileID: 5727708654878073701, guid: f2a466984b0819a43b9b231ed62dddb6, type: 3}
   layerExplousion:
     serializedVersion: 2
     m_Bits: 4225
-  expRadius: 10
+  expRadius: 9
   withTimer: 1
   timeToExpl: 0
   cameraAmplitudeShake: 10
@@ -263,7 +263,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2609019957272575851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
