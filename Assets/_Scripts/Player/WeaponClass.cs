@@ -8,14 +8,23 @@ public class WeaponClass : ScriptableObject
     [Header("Снарядовое оружие")]
     public bool projectileWeapon;
     public bool splitProjectileWeapon;
-    public GameObject bulletPrefab;
-    public int splitTimes;
-    public float splitRecoil;
+    public GameObject bulletPrefab;  
 
     [Header("Рейкас оружие")]
     public bool rayCastWeapon;
     public bool splitRaycastWeapon;
+    public float range;
     public LayerMask layerRayCast;
+
+    [Header("Если оружие Сплит")]
+    public int splitTimes;
+    public float splitRecoil;
+
+    [Header("Параметры поджога")]
+    public bool ignite;
+    public int damageBurn;
+    public float cooldownBurn;
+    public float durationBurn;    
 
     [Header("Параметры оружия")]
     public int damage;

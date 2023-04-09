@@ -13,14 +13,24 @@ MonoBehaviour:
   m_Name: Laser
   m_EditorClassIdentifier: 
   weaponName: "\u041B\u0430\u0437\u0435\u0440"
+  projectileWeapon: 0
+  splitProjectileWeapon: 0
   bulletPrefab: {fileID: 0}
-  damage: 5
-  fireRate: 50
-  pushForce: 0.2
-  bulletSpeed: 0
-  forceBackFire: 0
-  recoil: 0
   rayCastWeapon: 1
+  splitRaycastWeapon: 0
+  range: 15
   layerRayCast:
     serializedVersion: 2
     m_Bits: 4225
+  splitTimes: 0
+  splitRecoil: 0
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0
+  damage: 5
+  fireRate: 50
+  bulletSpeed: 0
+  pushForce: 0.2
+  forceBackFire: 0
+  recoil: 0

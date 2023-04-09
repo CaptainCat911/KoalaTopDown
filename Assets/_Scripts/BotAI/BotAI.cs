@@ -92,6 +92,8 @@ public class BotAI : Fighter
             layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой для оружия
         }
         maxSpeed = agent.speed;
+
+
     }
 
     public override void Start()

@@ -25,7 +25,7 @@ public class Optimiser : MonoBehaviour
 
         if (preFabOptimaser)
         {
-            preFabOptimaser.DisActiveGo();
+            //preFabOptimaser.DisActiveGo();
         }                
     }
 }

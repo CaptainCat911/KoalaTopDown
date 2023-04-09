@@ -42,9 +42,10 @@ public class Weapon : MonoBehaviour
     public Animator flashEffectAnimator;    // флеш при стрельбе
     public bool singleFlash;                // одиночный флеш
     bool flashActive;                       // флеш активен (для мультифлеша)
-    public LineRenderer lineRenderer;       // линия для лазера (префаб)
-    LineRenderer lineRaycast;               // линия для лазера (создаём)
-    public TrailRenderer tracerEffect;      // трасер (пока не используется)
+    //public LineRenderer lineRenderer;       // линия для лазера (префаб)
+    //LineRenderer lineRaycast;               // линия для лазера (создаём)
+    public TrailRenderer tracerEffect;      // трасер
+    public ParticleSystem flameParticles;   // префаб системы частиц пламени
 
     [Header("Тряска камеры при выстреле")]
     public float cameraAmplitudeShake = 1f; // амплитуда
@@ -56,6 +57,8 @@ public class Weapon : MonoBehaviour
     bool soundStarted;                      // звук начался
     public AudioSource audioSource;         // основной звук
     public AudioSource audioSourceTail;     // "хвост"
+
+    public bool debug;
 
     void Awake()
     {
@@ -122,13 +125,13 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        // Стирать рендер лазера (возможно стоит переделать)
+        // Стирать рендер лазера и мультифлеш (возможно стоит переделать)
         if (!singleFlash && Time.time >= nextTimeToFire + 0.1f)
         {
             flashEffectAnimator.SetBool("Fire", false);
             flashActive = false;
-            if (lineRaycast)
-                lineRaycast.enabled = false;
+            //if (lineRaycast)
+                //lineRaycast.enabled = false;
         }
 
         // Звук
@@ -155,6 +158,8 @@ public class Weapon : MonoBehaviour
         // Стрельба
         if (!weaponHolder.fireStart)        // если не готовы стрелять
         {
+            if (flameParticles)
+                flameParticles.Stop();
             return;                         // выходим
         }
 
@@ -177,6 +182,9 @@ public class Weapon : MonoBehaviour
             // Флэш
             if (flashEffectAnimator != null)        // если флэшэффект есть
                 Flash();
+
+            if (flameParticles)
+                flameParticles.Play();
 
             // Аудио
             if (singleShot)
@@ -273,18 +281,16 @@ public class Weapon : MonoBehaviour
         }
     }    
 
+
     void FireRayCast()
     {
-        // Настройки для трасеров
-        TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
-        tracer.AddPosition(firePoint.position);                                                             // начальная позиция
-        //tracer.transform.SetParent(transform, true); 
+
 
         // Разброс
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
         
         // Рейкаст2Д
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), Mathf.Infinity, weaponClass.layerRayCast);        
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);        
         if (hit.collider != null)
         {
             //Debug.Log("Hit!");
@@ -294,7 +300,25 @@ public class Weapon : MonoBehaviour
                 fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);                
             }
 
-            tracer.transform.position = hit.point;                      // конечная позиция трасера рейкаста             
+            // Настройки для трасеров
+            if (tracerEffect)
+            {
+                TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                //tracer.transform.SetParent(transform, true); 
+                tracer.transform.position = hit.point;                      // конечная позиция трасера рейкаста
+            }
+
+            
+            if (weaponClass.ignite)
+            {
+                if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                {
+                    //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                    ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
+                }
+            }
+
 
             /*            if (!lineRaycast)
                         {
@@ -304,7 +328,10 @@ public class Weapon : MonoBehaviour
                         lineRaycast.SetPosition(0, firePoint.position);
                         lineRaycast.SetPosition(1, hit.point);*/
 
-            //Debug.DrawRay(firePoint.position, firePoint.right * 100f, Color.yellow);
+
+
+            if (debug)
+                Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
         }
         
 
@@ -327,4 +354,6 @@ public class Weapon : MonoBehaviour
                     }
                 }*/
     }
+
+
 }
