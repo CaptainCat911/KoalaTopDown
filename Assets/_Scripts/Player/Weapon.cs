@@ -125,8 +125,9 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        // Стирать рендер лазера и мультифлеш (возможно стоит переделать)
-        if (!singleFlash && Time.time >= nextTimeToFire + 0.1f)
+
+            // Стирать рендер лазера и мультифлеш (возможно стоит переделать)
+            if (!singleFlash && Time.time >= nextTimeToFire + 0.1f)
         {
             flashEffectAnimator.SetBool("Fire", false);
             flashActive = false;
@@ -167,13 +168,13 @@ public class Weapon : MonoBehaviour
         {
             ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           
-            
+
             if (projectileWeapon)
-                FireProjectile();       // выстрел пулей
+                FireProjectile();           // выстрел пулей
             if (splitProjectileWeapon)
-                FireSplit(false);       // выстрел "дробью"
+                FireSplit(false);           // выстрел "дробью"
             if (rayCastWeapon)
-                FireRayCast();          // выстрел рейкастом
+                FireRayCast();              // выстрел рейкастом
             if (splitRaycastWeapon)
                 FireSplit(true);            // выстрел "дробью"
 
@@ -184,7 +185,11 @@ public class Weapon : MonoBehaviour
                 Flash();
 
             if (flameParticles)
+            {
                 flameParticles.Play();
+                //flameParticles.transform.position = firePoint.transform.position;                
+            }
+                
 
             // Аудио
             if (singleShot)
@@ -284,8 +289,6 @@ public class Weapon : MonoBehaviour
 
     void FireRayCast()
     {
-
-
         // Разброс
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
         

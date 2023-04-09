@@ -45,6 +45,7 @@ public class Ignitable : MonoBehaviour
         {
             lastBurnDamaged = Time.time;
             figter.TakeDamage(burnDamage, Vector2.zero, 0f);
+            //figter.SlowSpeed(1f);
         }
 
         if (Time.time - lastBurn >= burnDuration)
