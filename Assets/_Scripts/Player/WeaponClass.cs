@@ -13,6 +13,8 @@ public class WeaponClass : ScriptableObject
     [Header("Рейкас оружие")]
     public bool rayCastWeapon;
     public bool splitRaycastWeapon;
+    public bool allRaycastWeapon;
+
     public float range;
     public LayerMask layerRayCast;
 

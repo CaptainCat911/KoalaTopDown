@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e813295d2ba7add49a90d388649605b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e5ad07891869d7458debde01d59f48c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -327,7 +327,7 @@ Animator:
   m_GameObject: {fileID: 4299739528003907958}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ed813245946502449e7c08f92ce7d4b, type: 2}
+  m_Controller: {fileID: 9100000, guid: e8808bea66b4800408f6128ec787e369, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5532,19 +5532,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: VelocityModule.x.scalar
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: VelocityModule.y.scalar
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: VelocityModule.x.minScalar
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: VelocityModule.y.minScalar
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -5580,7 +5580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -5636,7 +5636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
-      value: 0.48754075
+      value: 0.4909282
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].time
@@ -5652,7 +5652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
-      value: 0.33333334
+      value: 0.66666925
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].value

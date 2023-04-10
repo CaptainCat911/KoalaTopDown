@@ -584,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flames: {fileID: 5773957092196942561}
   canBurn: 1
+  slow: 0.2
 --- !u!1 &5691226719771854280
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +814,14 @@ PrefabInstance:
     - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
       propertyPath: m_RootOrder

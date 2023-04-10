@@ -9,5 +9,6 @@ public class AmmoPackStore
     public GameObject weapon;
     public int goldPriseWeapon;
     public int goldPriseAmmo;
+    public int ammoInReload;
     public int allAmmo;    
 }

@@ -91,6 +91,13 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public int GetCurrentWeaponIndex()
+    {
+        int weaponAmmo = player.weaponHolder.currentWeapon.weaponIndexForAmmo;
+        return (weaponAmmo);
+    }
+
+
     // Перемещение игрока
     public void MovePlayer(Vector2 targetPosition)
     {

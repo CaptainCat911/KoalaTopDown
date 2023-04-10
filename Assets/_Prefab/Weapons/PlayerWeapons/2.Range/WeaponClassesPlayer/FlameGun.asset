@@ -16,21 +16,22 @@ MonoBehaviour:
   projectileWeapon: 0
   splitProjectileWeapon: 0
   bulletPrefab: {fileID: 5170081587130710907, guid: 671512e7d2a187c4ba2d557c1162da8b, type: 3}
-  rayCastWeapon: 1
+  rayCastWeapon: 0
   splitRaycastWeapon: 0
-  range: 4
+  allRaycastWeapon: 1
+  range: 5
   layerRayCast:
     serializedVersion: 2
     m_Bits: 4225
   splitTimes: 0
   splitRecoil: 0
   ignite: 1
-  damageBurn: 4
+  damageBurn: 8
   cooldownBurn: 0.5
   durationBurn: 5
-  damage: 3
+  damage: 8
   fireRate: 20
   bulletSpeed: 0
-  pushForce: 0.7
+  pushForce: 1
   forceBackFire: 0
   recoil: 0

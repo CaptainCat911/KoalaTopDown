@@ -11,11 +11,12 @@ public class UnityEventInteract : MonoBehaviour
     public UnityEvent interactAction;           // ивент
     bool isInRange;                             // в ренже или нет
     GameObject arrow;                           // стрелка
+    //bool used;
 
     private void Start()
     {
-        arrow = transform.Find("QuestArrow").gameObject;
-        arrow.SetActive(false);
+        arrow = transform.Find("QuestArrow").gameObject;        // найти стрелку
+        arrow.SetActive(false);                                 
     }
 
     public void Update()
@@ -25,6 +26,7 @@ public class UnityEventInteract : MonoBehaviour
             if (Input.GetKeyDown(GameManager.instance.keyToUse) || !withButton)
             {
                 interactAction.Invoke();
+                //used = true;
             }
         }
     }

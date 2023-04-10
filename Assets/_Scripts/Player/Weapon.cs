@@ -15,10 +15,12 @@ public class Weapon : MonoBehaviour
 
     [Header("Параметры оружия")]
     public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
-    bool projectileWeapon;                          // оружие со снарядами
+    [HideInInspector] public int ammo;
+/*    bool projectileWeapon;                          // оружие со снарядами
     bool splitProjectileWeapon;                     // дробовики
     bool rayCastWeapon;                             // рейкаст оружие
     bool splitRaycastWeapon;                        // мультирейкаст оружие
+    bool allRaycastWeapon;                          // рейкастАлл оружие*/
 
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
@@ -62,14 +64,11 @@ public class Weapon : MonoBehaviour
 
     void Awake()
     {
-        player = GameManager.instance.player;
-        ammoWeapons = GameManager.instance.ammoPack.ammoWeapons;
+        player = GameManager.instance.player;                           // игрок
+        ammoWeapons = GameManager.instance.ammoPack.ammoWeapons;        // оружия
+        weaponName = weaponClass.weaponName;                            // имя оружия
+        ammo = ammoWeapons[weaponIndexForAmmo].allAmmo;
 
-        weaponName = weaponClass.weaponName;                                    // имя оружия
-        projectileWeapon = weaponClass.projectileWeapon;                        // оружие снарядами
-        splitProjectileWeapon = weaponClass.splitProjectileWeapon;              // оружие снарядами
-        rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
-        splitRaycastWeapon = weaponClass.splitRaycastWeapon;                    // мультирейкаст оружие
 
         audioSource = GetComponent<AudioSource>();
 
@@ -169,14 +168,17 @@ public class Weapon : MonoBehaviour
             ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           
 
-            if (projectileWeapon)
-                FireProjectile();           // выстрел пулей
-            if (splitProjectileWeapon)
-                FireSplit(false);           // выстрел "дробью"
-            if (rayCastWeapon)
-                FireRayCast();              // выстрел рейкастом
-            if (splitRaycastWeapon)
-                FireSplit(true);            // выстрел "дробью"
+            if (weaponClass.projectileWeapon)
+                FireProjectile();                       // выстрел пулей
+            if (weaponClass.splitProjectileWeapon)
+                FireSplit(false);                       // выстрел "дробью"
+            if (weaponClass.rayCastWeapon)
+                FireRayCast();                          // выстрел рейкастом
+            if (weaponClass.splitRaycastWeapon)
+                FireSplit(true);                        // выстрел "дробью"
+            if (weaponClass.allRaycastWeapon)            
+                FireRayCastAll();                       // выстрел рейкастом по всем (просторел)
+
 
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры
 
@@ -284,7 +286,50 @@ public class Weapon : MonoBehaviour
             else
                 firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i)));                       
         }
-    }    
+    }
+
+
+    void FireRayCastAll()
+    {
+        // Разброс
+        float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
+
+        // Рейкаст2Д
+        RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
+        if (hits != null)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                //Debug.Log("Hit!");
+                if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
+                {
+                    Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                    fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
+                }
+
+                // Настройки для трасеров
+                if (tracerEffect)
+                {
+                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                    //tracer.transform.SetParent(transform, true); 
+                    tracer.transform.position = hit.point;                      // конечная позиция трасера рейкаста
+                }
+
+                if (weaponClass.ignite)
+                {
+                    if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                    {
+                        //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                        ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
+                    }
+                }
+            }  
+
+            if (debug)
+                Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
+        }       
+    }
 
 
     void FireRayCast()
@@ -357,6 +402,4 @@ public class Weapon : MonoBehaviour
                     }
                 }*/
     }
-
-
 }

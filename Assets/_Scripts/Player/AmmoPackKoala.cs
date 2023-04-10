@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AmmoPackKoala : MonoBehaviour
 {
@@ -21,31 +22,14 @@ public class AmmoPackKoala : MonoBehaviour
     // ѕатроны
     public void BuyAmmo(int index)                  
     {
-        if (GameManager.instance.gold >= ammoWeapons[index].goldPriseAmmo)            // если золота больше чем стоимость оружи€
+        if (GameManager.instance.gold >= ammoWeapons[index].goldPriseAmmo)          // если золота больше чем стоимость оружи€
         {
-            GameManager.instance.gold -= ammoWeapons[index].goldPriseAmmo;            // вычитаем из золота стоимость оружи€
-
-            if (index == 1)                         // мушкет
-            {
-                ammoWeapons[index].allAmmo += 10;
-            }
-            if (index == 2)                         // револьвер
-            {
-                ammoWeapons[index].allAmmo += 20;
-            }
-            if (index == 3)                         // томпсон
-            {
-                ammoWeapons[index].allAmmo += 30;
-            }
-
-
+            GameManager.instance.gold -= ammoWeapons[index].goldPriseAmmo;          // вычитаем из золота стоимость оружи€
+            ammoWeapons[index].allAmmo += ammoWeapons[index].ammoInReload;          // добавл€ем во все патроны кол-во патронов в обойме
         }
         else
         {
-            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
-            textPrefab.GetComponentInChildren<TextMesh>().text = "Ќедостаточно золота!";
-            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
-            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
+            CreateMessage();
         }
     }
 
@@ -55,7 +39,7 @@ public class AmmoPackKoala : MonoBehaviour
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружи€
         {
-            buttonsBuyWeapon[index].SetActive(false);
+            //buttonsBuyWeapon[index].SetActive(false);
             //buttonsSell[index].SetActive(true);
 
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружи€
@@ -70,11 +54,8 @@ public class AmmoPackKoala : MonoBehaviour
             }
         }
         else
-        {            
-            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
-            textPrefab.GetComponentInChildren<TextMesh>().text = "Ќедостаточно золота!";
-            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
-            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
+        {
+            CreateMessage();
         } 
     }
 
@@ -111,10 +92,7 @@ public class AmmoPackKoala : MonoBehaviour
         }
         else
         {
-            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
-            textPrefab.GetComponentInChildren<TextMesh>().text = "Ќедостаточно золота!";
-            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
-            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
+            CreateMessage();
         }
     }
 
@@ -139,10 +117,7 @@ public class AmmoPackKoala : MonoBehaviour
         }
         else
         {
-            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
-            textPrefab.GetComponentInChildren<TextMesh>().text = "Ќедостаточно золота!";
-            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
-            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
+            CreateMessage();
         }
     }
 
@@ -155,10 +130,15 @@ public class AmmoPackKoala : MonoBehaviour
         }
         else
         {
-            GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
-            textPrefab.GetComponentInChildren<TextMesh>().text = "Ќедостаточно золота!";
-            textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
-            textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 0);
+            CreateMessage();
         }
+    }
+
+    void CreateMessage()
+    {
+        GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, player.transform.position, Quaternion.identity);
+        textPrefab.GetComponentInChildren<TextMeshPro>().text = "Ќедостаточно золота!";
+        textPrefab.GetComponentInChildren<TextMeshPro>().color = Color.yellow;
+        textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", 1);
     }
 }

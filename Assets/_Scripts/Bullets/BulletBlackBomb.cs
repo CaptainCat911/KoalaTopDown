@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class BulletBlackBomb : Bullet
 {
-    public float expRadius = 3;
-    public float timeToExpl = 1f;
-    public float force = 2f;
+    public float expRadius = 3;         // радиус взрыва
+    public float timeToExpl = 1f;       // время до взрыва (таймер)
+    public float slow = 2f;             // замедление
+
+    public bool withFire;
+    public int damageBurn = 8;
+    public float cooldownBurn = 0.5f;
+    public float durationBurn = 5f;
+
 
     private void Start()
     {
@@ -36,12 +42,23 @@ public class BulletBlackBomb : Bullet
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
                 Vector2 vec2 = -(coll.transform.position - transform.position).normalized;  // направление внутрь
-                fighter.TakeDamage(damage, vec2, pushForce);
+                fighter.TakeDamage(damage, vec2, pushForce);                                // урон
+
                 if (coll.gameObject.TryGetComponent(out BotAI botAI))                       // для замедления (потом переделать)
                 {
-                    botAI.SlowSpeed(force);
+                    botAI.SlowSpeed(slow);
+                }
+
+                if (withFire)
+                {
+                    if (fighter.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                    {                        
+                        ignitable.Ignite(damageBurn, cooldownBurn, durationBurn);
+                    }
                 }
             }
+
+
             collidersHits = null;
         }
         CMCameraShake.Instance.ShakeCamera(3, 0.1f);            // тряска камеры

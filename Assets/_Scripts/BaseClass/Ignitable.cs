@@ -5,23 +5,25 @@ using UnityEngine;
 public class Ignitable : MonoBehaviour
 {
     Fighter figter;
+    BotAI botAI;
     public ParticleSystem flames;   // Префаб системы частиц огня
 
     // Поиск цели
     public bool canBurn = true;     // Может ли объект гореть
-    
+    public float slow = 0.2f;         // замедление при получении урона    
     float lastBurnDamaged;          // время последнего урона
     float cooldownBurn;             // перезардяка
     int burnDamage;                 // Урон от горения
     float burnDuration;             // Длительность горения
     float lastBurn;                 // время последнего горения
-    private bool isBurning = false; // Горит ли объект
+    bool isBurning = false;         // Горит ли объект
 
 
 
     private void Awake()
     {
         figter = GetComponent<Fighter>();
+        botAI = GetComponent<BotAI>();
     }
 
     void Start()
@@ -32,26 +34,26 @@ public class Ignitable : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Ignite(10, 0.5f, 2);
-        }
 
         if (!isBurning)
             return; 
 
         // Наносим урон
-        if (Time.time - lastBurnDamaged > cooldownBurn)      // если кд готово
+        if (Time.time - lastBurnDamaged > cooldownBurn)         // если кд готово
         {
-            lastBurnDamaged = Time.time;
-            figter.TakeDamage(burnDamage, Vector2.zero, 0f);
-            //figter.SlowSpeed(1f);
+            lastBurnDamaged = Time.time;                        // время последнего урона огнём
+            figter.TakeDamage(burnDamage, Vector2.zero, 0f);    // наносим урон
+            if (botAI)                                          // если это бот
+            {
+                botAI.SlowSpeed(slow);                          // замедляем
+            }
         }
 
-        if (Time.time - lastBurn >= burnDuration)
+        if (Time.time - lastBurn >= burnDuration)               // если горение закончилось
         {
             isBurning = false;
-            flames.Stop();
+            if (flames)
+                flames.Stop();
         }
     }
 
@@ -70,6 +72,7 @@ public class Ignitable : MonoBehaviour
         cooldownBurn = cooldown;
         burnDuration = duration;
         lastBurn = Time.time;
-        flames.Play();
+        if(flames)
+            flames.Play();
     }
 }
