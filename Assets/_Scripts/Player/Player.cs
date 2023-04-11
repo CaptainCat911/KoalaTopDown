@@ -16,6 +16,7 @@ public class Player : Fighter
     // Передвижение
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)
     Vector2 movementVector;                             // вектор перещение (добавляем скорость)
+
     [Header("Параметры перемещения")]
     public float moveSpeed = 5f;                        // скорость передвижения
     public float dashForce;                             // сила рывка

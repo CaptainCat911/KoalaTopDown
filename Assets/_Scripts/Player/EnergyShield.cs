@@ -45,12 +45,7 @@ public class EnergyShield : MonoBehaviour
 
     void ShowDamageShield(string text)
     {
-        int floatType = Random.Range(0, 3);
-
-        GameObject textPrefab = Instantiate(floatinText, transform.position, Quaternion.identity);
-        textPrefab.GetComponentInChildren<TextMesh>().text = text;
-        textPrefab.GetComponentInChildren<TextMesh>().color = Color.blue;
-        textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", floatType);
+        GameManager.instance.CreateFloatingMessage(text, Color.blue, transform.position);
     }
 
     void ShieldOnOff(bool on)

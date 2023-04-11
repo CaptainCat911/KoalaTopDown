@@ -18,16 +18,17 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   rayCastWeapon: 1
   splitRaycastWeapon: 0
-  range: 15
+  allRaycastWeapon: 0
+  range: 100
   layerRayCast:
     serializedVersion: 2
     m_Bits: 4225
   splitTimes: 0
   splitRecoil: 0
-  ignite: 0
-  damageBurn: 0
-  cooldownBurn: 0
-  durationBurn: 0
+  ignite: 1
+  damageBurn: 3
+  cooldownBurn: 0.5
+  durationBurn: 4
   damage: 5
   fireRate: 50
   bulletSpeed: 0

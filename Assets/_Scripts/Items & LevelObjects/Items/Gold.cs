@@ -6,13 +6,9 @@ public class Gold : ItemPickUp
 
     public void PickUpGold()
     {
-        GameManager.instance.gold += goldValue;
-
-        int floatType = Random.Range(0, 3);
-        GameObject textPrefab = Instantiate(GameAssets.instance.floatingText, transform.position, Quaternion.identity);
-        textPrefab.GetComponentInChildren<TextMesh>().text = "+ " + goldValue;
-        textPrefab.GetComponentInChildren<TextMesh>().color = Color.yellow;
-        textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", floatType);
+        GameManager.instance.gold += goldValue;                                          // + золото
+        GameManager.instance.CreateFloatingMessage("+ " + goldValue, Color.yellow,
+           GameManager.instance.player.transform.position);                             // создаём сообщение
         Destroy(gameObject);
     }
 }

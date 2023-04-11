@@ -25,7 +25,8 @@ public class PortalExplousion : MonoBehaviour
 
     public void StartPortal()
     {
-        animator.SetTrigger("Start");
+        //animator.SetTrigger("Start");
+        Explosion();
         targetTeleport.startPosition = transform.position;
         targetTeleport.ResetTarget();
     }
@@ -63,8 +64,10 @@ public class PortalExplousion : MonoBehaviour
     {
         GameObject effect = Instantiate(expEffect, targetTeleport.transform.position, Quaternion.identity);    // создаем эффект
         targetTeleport.agent.Warp(targetHome.transform.position);           // тут создаём (перемещаем) нпс мага
-        Destroy(effect, 0.5f);                          // уничтожаем эффект через .. сек
-        Destroy(gameObject, 0.5f);                            // уничтожаем портал через .. сек
+        targetTeleport.startPosition = targetHome.transform.position;       // меняем магу стартовую позицию
+        targetTeleport.ResetTarget();                                       
+        Destroy(effect, 0.5f);                                  // уничтожаем эффект через .. сек
+        Destroy(gameObject, 0.5f);                              // уничтожаем портал через .. сек
     }
 
     void OnDrawGizmosSelected()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -91,6 +92,18 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void CreateFloatingMessage(string message, Color color, Vector2 position)
+    {
+        int floatType = Random.Range(0, 3);
+        GameObject textPrefab = Instantiate(GameAssets.instance.floatingMessage, position, Quaternion.identity);
+        textPrefab.GetComponentInChildren<TextMeshPro>().text = message;
+        textPrefab.GetComponentInChildren<TextMeshPro>().color = color;
+        textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", floatType);
+        //textPrefab.transform.SetParent(player.transform);
+    }
+
+
+    // Ќайти индекс оружи€ (дл€ автомата с патронами)
     public int GetCurrentWeaponIndex()
     {
         int weaponAmmo = player.weaponHolder.currentWeapon.weaponIndexForAmmo;
