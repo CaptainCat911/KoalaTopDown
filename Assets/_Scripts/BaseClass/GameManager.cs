@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
+
+    public UnityEvent[] events;                 // ивенты
     public string[] sceneNames;                 // все сцены
 
     [Header("—сылки")]
@@ -60,7 +63,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             ChatBubble.Clear(gameObject);
-            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi");
+            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi", 2f);
         }
         
         if (Input.GetKeyDown(keyOpenMagazine))
@@ -75,6 +78,13 @@ public class GameManager : MonoBehaviour
         openMagazine = !openMagazine;
         magazine.SetActive(openMagazine);
     }
+
+
+    public void StartEvent(int number)
+    {
+        events[number].Invoke();
+    }
+
 
 
 

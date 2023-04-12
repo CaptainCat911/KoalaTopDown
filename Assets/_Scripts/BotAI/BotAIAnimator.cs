@@ -73,6 +73,12 @@ public class BotAIAnimator : MonoBehaviour
         botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("TimeReverceAttack");
     }
 
+
+    public void GamemanagerMessage(int number)
+    {
+        GameManager.instance.StartEvent(number);
+    }
+
     /*    public void ResetTriggerAttack()
         {
             animator.ResetTrigger("Hit");

@@ -373,7 +373,7 @@ public class BotAI : Fighter
     public void SayText(string text)
     {
         ChatBubble.Clear(gameObject);
-        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text);
+        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 4f);
     }
 
 

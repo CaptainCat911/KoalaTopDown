@@ -22,9 +22,10 @@ public class IdleBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (boss.currentHealth < boss.maxHealth / 4)
+        if (boss.currentHealth < boss.maxHealth / 3)
         {
             animator.SetTrigger("TimeReverce");              // триггер
+            return;
         }
 
         if (boss.target)                                    // если есть цель
