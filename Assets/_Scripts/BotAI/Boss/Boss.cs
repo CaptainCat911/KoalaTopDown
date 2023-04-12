@@ -13,7 +13,7 @@ public class Boss : BotAI
         if (!isTextDone)                            // если не проговорили весь текст
         {
             ChatBubble.Clear(gameObject);           // очищаем диалог
-            ChatBubble.Create(transform, new Vector3(-1f, 1f), textToSay[dialogeNumber]);     // говорим     
+            ChatBubble.Create(transform, new Vector3(-1f, 1.5f), textToSay[dialogeNumber]);     // говорим     
 
             dialogeNumber++;                        // + к номеру диалога
 

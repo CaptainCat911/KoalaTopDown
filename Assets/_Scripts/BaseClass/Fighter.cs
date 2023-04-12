@@ -12,6 +12,7 @@ public class Fighter : MonoBehaviour
     public bool isAlive = true;             // жив здоров
     public int currentHealth;
     public int maxHealth;
+    public bool noAgro;
     GameObject floatinText;                 // текст чата
     bool isPlayerOrNPC;                     // игрок или нпс (для отображения урона)
 

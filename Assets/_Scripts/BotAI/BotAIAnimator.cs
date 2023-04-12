@@ -25,15 +25,21 @@ public class BotAIAnimator : MonoBehaviour
         botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака
     }
 
+    public void ExplousionWeaponAttack()
+    {
+        botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();    // взрыв
+    }
+
     public void SpawnWeaponAttack()
     {
         botAIMeleeWeaponHolder.currentWeapon.SpawnAttack();         // спаун атака
     }
 
-    public void ExplousionWeaponAttack()
+    public void TimeReverceWeaponAttack()
     {
-        botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();    // взрыв
+        botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращаает время!
     }
+
 
 
 
@@ -61,6 +67,10 @@ public class BotAIAnimator : MonoBehaviour
     public void StaffExplousion()
     {
         botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("ExplousionAttack");
+    }    
+    public void StaffTimeReverce()
+    {
+        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("TimeReverceAttack");
     }
 
     /*    public void ResetTriggerAttack()

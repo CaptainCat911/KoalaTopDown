@@ -3,11 +3,6 @@ using UnityEngine.Events;
 
 public class NPC : BotAI
 {
-    [Header("Поведение")]
-    public bool stayOnGround;
-    public bool goTo;
-    public Transform destinationPoint;
-
     [Header("Дистанция атаки")]
     public float meleeDistanceToAttack;
     public float rangeDistanceToAttack;
@@ -38,10 +33,10 @@ public class NPC : BotAI
         }
     }
 
-    public void NpcMagazine()
+/*    public void NpcMagazine()
     {
         GameManager.instance.OpenCloseMagazine();
-    }
+    }*/
 
 /*    protected override void Death()
     {

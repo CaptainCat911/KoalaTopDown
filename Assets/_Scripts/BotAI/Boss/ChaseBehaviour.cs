@@ -26,7 +26,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Если нет цели - возвращаемся в идле
-        if (!boss.target)
+        if (!boss.target || boss.currentHealth < boss.maxHealth / 4)
         {
             animator.SetTrigger("Idle");            // триггер
             boss.chasing = false;                   // отключаем преследование

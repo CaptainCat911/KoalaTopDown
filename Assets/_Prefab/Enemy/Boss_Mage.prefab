@@ -396,6 +396,7 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 300
+  noAgro: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -429,6 +430,10 @@ MonoBehaviour:
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
+  stayOnGround: 1
+  goTo: 0
+  followPlayer: 0
+  destinationPoint: {fileID: 0}
   aimAnglePivot: 0
   deathEffect: {fileID: 7845441016114820387, guid: 87167e05437f7c844b845e558dc030aa, type: 3}
   deathCameraShake: 0

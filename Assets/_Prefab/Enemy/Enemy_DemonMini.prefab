@@ -187,6 +187,7 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 200
+  noAgro: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -220,6 +221,10 @@ MonoBehaviour:
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
+  stayOnGround: 1
+  goTo: 0
+  followPlayer: 0
+  destinationPoint: {fileID: 0}
   aimAnglePivot: 0
   deathEffect: {fileID: 7845441016114820387, guid: cc0d24c4e3ed73e4e8969772c7851414, type: 3}
   deathCameraShake: 2
@@ -244,13 +249,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
-  brains:
-  - {fileID: 11400000, guid: 5579917536f4b9945a53027f322ccbb1, type: 2}
-  - {fileID: 11400000, guid: dd346c7a0908bda448534cc0cdb2b942, type: 2}
-  lastChange: 0
+  cooldownChangeTarget: 2
   cooldownChange: 2
   distancePatrol: 2
   maxDistancePatrol: 4
+  lastChange: 0
   positionsPoints: []
   i: 0
   nextPosition: 0

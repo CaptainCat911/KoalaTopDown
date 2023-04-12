@@ -80,6 +80,11 @@ public class BotAIWeaponMelee : MonoBehaviour
                         animator.SetTrigger("HitExplousion");
                     }
                     break;
+                case "5":
+                    {
+                        animator.SetTrigger("HitTimeReverce");
+                    }
+                    break;
             }
         }  
     }
@@ -130,6 +135,11 @@ public class BotAIWeaponMelee : MonoBehaviour
         go.GetComponentInChildren<BotAI>().target = GameManager.instance.player.gameObject;
     }
 
+    public void TimeReverceAttack()
+    {
+        GameManager.instance.NextScene(0);
+    }
+
     public void ExplousionAttack()
     {
         Collider2D[] collidersHits = Physics2D.OverlapCircleAll(hitBox.position, explousionRadius, layerHit);     // создаем круг в позиции объекта с радиусом
@@ -151,6 +161,9 @@ public class BotAIWeaponMelee : MonoBehaviour
             hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
         Destroy(effect, 1);                                                             // уничтожаем эффект через .. сек
     }
+
+
+
 
 
 

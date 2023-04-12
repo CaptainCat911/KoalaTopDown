@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
+    public string[] sceneNames;                 // все сцены
 
     [Header("—сылки")]
     public Player player;                       // ссылка на игрока    
@@ -167,6 +168,17 @@ public class GameManager : MonoBehaviour
                 collidersHits = null;
             }
         }
+    }
+
+
+  
+
+    public void NextScene(int sceneNumber)
+    {
+        //GameManager.instance.SaveState();
+        //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
+        string sceneName = sceneNames[sceneNumber];     // выбираем сцену
+        SceneManager.LoadScene(sceneName);              // загружаем сцену
     }
 
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)                      // выполн€ем при загрузке сцены
