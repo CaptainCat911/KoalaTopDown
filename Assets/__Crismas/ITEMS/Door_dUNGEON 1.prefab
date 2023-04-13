@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.42, y: 1.06}
+    oldSize: {x: 0.6, y: 2.4}
     newSize: {x: 1.6, y: 1.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a11f859511523c4ea4515161885841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorTypeNumber: 0
   openedDoorSprite: {fileID: 770049123, guid: 13e65156b5094ce4bb46b510a8a61d5f, type: 3}
 --- !u!1001 &6362724800852069213
 PrefabInstance:

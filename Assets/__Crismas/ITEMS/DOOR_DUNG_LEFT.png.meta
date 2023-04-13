@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,10 +107,10 @@ TextureImporter:
       name: DOOR_DUNG_LEFT_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 3
-        width: 16
-        height: 53
+        x: 0
+        y: 0
+        width: 30
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,10 +128,10 @@ TextureImporter:
       name: DOOR_DUNG_LEFT_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 3
-        width: 9
-        height: 53
+        x: 30
+        y: 0
+        width: 30
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,6 +141,48 @@ TextureImporter:
       bones: []
       spriteID: 1e6b47dd52e636947be742dd0fe8fa69
       internalID: 770049123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DOOR_DUNG_LEFT_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 30
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f2efa387381344eb5884ba52c9e179
+      internalID: 1110836599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DOOR_DUNG_LEFT_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 30
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc44069cab7e7ff48a73bd4c1deadde4
+      internalID: 959549343
       vertices: []
       indices: 
       edges: []
@@ -158,6 +200,8 @@ TextureImporter:
     nameFileIdTable:
       DOOR_DUNG_LEFT_0: 686819855
       DOOR_DUNG_LEFT_1: 770049123
+      DOOR_DUNG_LEFT_2: 1110836599
+      DOOR_DUNG_LEFT_3: 959549343
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

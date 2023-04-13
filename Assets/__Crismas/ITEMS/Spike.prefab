@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 2173812722079725826}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d13f45bc35133b24895c54a291466ef3, type: 2}
+  m_Controller: {fileID: 9100000, guid: d621b7c688485ad418132f5ef449e122, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.13, y: 0.14}
+    oldSize: {x: 0.8125, y: 0.875}
     newSize: {x: 0.13, y: 0.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb417599e81dbb34d8a9adcfe8fa7a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpikeWork: 0
+  isSpikeWork: 1
   damage: 5
   pushForce: 0
   cooldown: 3
