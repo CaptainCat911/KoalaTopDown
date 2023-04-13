@@ -5,12 +5,12 @@ using TMPro;
 
 public class ChatBubble : MonoBehaviour
 {
-    public static void Create(Transform parent, Vector3 localPosition, string text)                 // создать диалог
+    public static void Create(Transform parent, Vector3 localPosition, string text, float timeToDestroy)                 // создать диалог
     {
         Transform chatBubbleTransform = Instantiate(GameAssets.instance.chatBubblePrefab, parent);  // создаём префаб диалога и присваиваем родителя
         chatBubbleTransform.localPosition = localPosition;                                          // задаём позицию диалога такую же как и у родителя
         chatBubbleTransform.GetComponent<ChatBubble>().Setup(text);                                 // вызываем фукцию написать текст у префаба
-        Destroy(chatBubbleTransform.gameObject, 4f);
+        Destroy(chatBubbleTransform.gameObject, timeToDestroy);
     }
 
     public static void Clear(GameObject go )                                                        // очистить диалог

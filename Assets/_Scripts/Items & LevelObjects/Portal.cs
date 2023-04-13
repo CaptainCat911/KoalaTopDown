@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
+public class PortalNextScene : MonoBehaviour
 {
     public string[] sceneNames;                 // все сцены
 

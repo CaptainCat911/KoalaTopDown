@@ -308,7 +308,11 @@ MonoBehaviour:
     m_Bits: 4225
   expRadius: 4
   timeToExpl: 1
-  force: 1.5
+  slow: 2
+  withFire: 1
+  damageBurn: 8
+  cooldownBurn: 0.5
+  durationBurn: 5
 --- !u!1 &6674889618573583036
 GameObject:
   m_ObjectHideFlags: 0

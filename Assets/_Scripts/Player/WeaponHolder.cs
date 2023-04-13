@@ -82,6 +82,25 @@ public class WeaponHolder : MonoBehaviour
             weaponHolderMelee.rangeWeapon = true;   // оружие ренж
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (meleeWeapon)
+            {
+                SelectWeapon();                         // достаЄм огнестрел
+                weaponHolderMelee.HideWeapons();        // пр€чем мили
+                meleeWeapon = false;
+                weaponHolderMelee.rangeWeapon = true;   // оружие ренж
+            }
+            else
+            {
+                HideWeapons();                          // пр€чем огнестрел
+                weaponHolderMelee.SelectWeapon();       // достаЄм мили
+                meleeWeapon = true;                     // оружие мили
+                weaponHolderMelee.rangeWeapon = false;
+            }
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             stopAiming = !stopAiming;           // дл€ дебага, убираем поворот оружи€

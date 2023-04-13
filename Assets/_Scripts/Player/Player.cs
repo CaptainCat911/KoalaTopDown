@@ -16,6 +16,7 @@ public class Player : Fighter
     // Передвижение
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)
     Vector2 movementVector;                             // вектор перещение (добавляем скорость)
+
     [Header("Параметры перемещения")]
     public float moveSpeed = 5f;                        // скорость передвижения
     public float dashForce;                             // сила рывка
@@ -217,7 +218,7 @@ public class Player : Fighter
     public void SayText(string text)
     {
         ChatBubble.Clear(gameObject);
-        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text);
+        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 2f);
     }
 
     protected override void Death()

@@ -9,6 +9,7 @@ public class GameAssets : MonoBehaviour
     [Header("Текст")]
     public Transform chatBubblePrefab;
     public GameObject floatingText;
+    public GameObject floatingMessage;
 
     [Header("Эффекты")]
     public GameObject explousionStaffEffect;

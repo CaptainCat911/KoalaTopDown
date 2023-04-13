@@ -43,13 +43,18 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy()
     {
         int ndx = Random.Range(0, prefabEnemies.Length);            // выбираем рандом из массива врагов
-        GameObject go = Instantiate(prefabEnemies[ndx]);            // создаём префаб
+        GameObject enemyPref = Instantiate(prefabEnemies[ndx]);            // создаём префаб
         //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
-        agent = go.GetComponentInChildren<NavMeshAgent>();          // находим НавМешАгент
+        agent = enemyPref.GetComponentInChildren<NavMeshAgent>();          // находим НавМешАгент
         Debug.Log(agent);
         agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
-        if(chasePlayer)
-            go.GetComponentInChildren<BotAI>().triggerLenght = chaseDistance; // устанавливаем преследование за игроком
+        enemyPref.GetComponentInChildren<BotAI>().triggerLenght = chaseDistance;   // устанавливаем дистанцию триггера
+        if (chasePlayer)
+        {
+            enemyPref.GetComponentInChildren<BotAI>().target = GameManager.instance.player.gameObject;
+            enemyPref.GetComponentInChildren<BotAI>().chasing = true;
+        }
+
         enemyCount++;
 
         //GameManager.instance.enemyCount++;

@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class EnemyThinker : MonoBehaviour
 {
-    [HideInInspector] public BotAI botAI;           // ссылка на бота
-    public Brain[] brains;
+    [HideInInspector] public BotAI botAI;               // ссылка на бота
+    //public Brain[] brains;
 
     //[HideInInspector] public GameObject target;     // цель
-    bool isFindTarget;                              // нашли цель
-    float distanceToTarget;                         // дистанция до цели
+    bool isFindTarget;                                  // нашли цель
+    float distanceToTarget;                             // дистанция до цели
     // Поиск цели
     //public float targetFindRadius = 5f;                 // радиус поиска цели                                                               
     float lastTargetFind;                               // время последнего поиска цели
     float cooldownFind = 0.5f;                          // перезардяка поиска цели
-    float cooldownChangeTarget = 2f;                    // перезарядка смена цели
+    public float cooldownChangeTarget = 2f;             // перезарядка смена цели
 
     bool type_1;        // тип оружия мили
     bool type_2;        // тип оружия ренж
@@ -23,16 +23,16 @@ public class EnemyThinker : MonoBehaviour
     
     [Header("Поведение")]
     //public bool patrolingRandomPosition;
-    [HideInInspector] public float lastChange;                            // время последней смены позиции
     public float cooldownChange;                        // перезардяка смены позиции
     public float distancePatrol;                        // дистанция для патрулирования
     public float maxDistancePatrol;                     // максимальная дистанция от стартовой позиции
+    [HideInInspector] public float lastChange;          // время последней смены позиции
 
     // Для НПС
     [HideInInspector] public Transform[] positionsPoints;
     [HideInInspector] public int i = 0;
     [HideInInspector] public bool nextPosition;
-    [HideInInspector] public bool letsGo;
+    [HideInInspector] public bool letsGo;               // идти за игроком
     public string textTrigger;
     bool sayTriggerText;
 
@@ -77,20 +77,29 @@ public class EnemyThinker : MonoBehaviour
             if (Time.time - lastTargetFind > cooldownFind)  // если кд готово
             {
                 lastTargetFind = Time.time;
-                botAI.FindTarget();                               // поиск цели
+                botAI.FindTarget();                         // поиск цели
             }
 
-            if (letsGo)
+            if (botAI.followPlayer)
             {
-                brains[0].Think(this);                          // патрулирование 
+                float distanceToPlayer = Vector3.Distance(GameManager.instance.player.transform.position, botAI.transform.position);
+                if (distanceToPlayer > 2)
+                {
+                    botAI.SetDestination(GameManager.instance.player.transform.position);
+                    botAI.startPosition = GameManager.instance.player.transform.position;
+                }
+                else
+                {
+                    botAI.agent.ResetPath();
+                }
             }
-            if (!letsGo)
+            if (botAI.stayOnGround)                                
             {
-                Patrol();
-                //patrolingRandomPosition = true;                 // патрулирование            
+                Patrol();                               // патрулирование  
+                //patrolingRandomPosition = true;                           
             }
         }
-        else
+        else            // иногда меняем цель
         {
             if (Time.time - lastTargetFind > Random.Range(cooldownChangeTarget, cooldownChangeTarget + 2f))  // сменяем цель, если больше одной цели
             {
@@ -200,28 +209,22 @@ public class EnemyThinker : MonoBehaviour
         //Debug.Log(range); 
     }*/
 
-    public void LetsGo(int go)
-    {
-        //if (!botAI.isFollow)
-        //{
-            if (go == 0)
-                letsGo = false;
-            if (go == 1)
-                letsGo = true;
-        //}
 
-    }
 
     public void StayGo()
     {
         letsGo = !letsGo;
-        if (letsGo)
-        {
-            botAI.SayText("Let's go motherfucka");
-        }
         if (!letsGo)
         {
-            botAI.SayText("Okey, I'll wait");
+            botAI.stayOnGround = false;
+            botAI.followPlayer = true;
+            botAI.SayText("Я за тобой");
+        }
+        if (letsGo)
+        {
+            botAI.stayOnGround = true;
+            botAI.followPlayer = false;
+            botAI.SayText("Хорошо, я подожду здесь");
         }
     }
 
@@ -240,8 +243,7 @@ public class EnemyThinker : MonoBehaviour
 
             Vector3 destination = new(botAI.transform.position.x + Random.Range(-distancePatrol, distancePatrol),
                 botAI.transform.position.y + Random.Range(-distancePatrol, distancePatrol), botAI.transform.position.z);    // выбираем случайную позицию
-
-            botAI.SetDestination(destination);                      // идём в случайную позицию            
+            botAI.SetDestination(destination);                      // идём в случайную позицию
         }
 
         float distanceFromStart = Vector3.Distance(botAI.startPosition, botAI.transform.position);  // считаем дистанцию от стартовой позиции до следующей позиции

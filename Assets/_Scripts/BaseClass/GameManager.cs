@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
+
+    public UnityEvent[] events;                 // ивенты
+    public string[] sceneNames;                 // все сцены
 
     [Header("Ссылки")]
     public Player player;                       // ссылка на игрока    
     public GameObject gui;                      // гуи
     public Dialog dialog;                       // диалог менеджер
     public AmmoPackKoala ammoPack;              // ссылка на аммопак
-    public GameObject magazine;                 // магазин
+    //public GameObject magazine;                 // магазин
     bool openMagazine;                          // магазин открыт
 
     [Header("Клавиша взаимодействия")]
@@ -21,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Предметы")]
     public int gold;                            // золото
-    public int keys;                            // ключи
+    public int[] keys;                          // ключи
     public int battery;                         // батареи
 
     public bool isPlayerEnactive;
@@ -38,8 +43,9 @@ public class GameManager : MonoBehaviour
         if (GameManager.instance != null)
         {
             Destroy(gameObject);
+            Destroy(ammoPack);
             Destroy(player.gameObject);
-            Destroy(gui);
+            //Destroy(gui);
             //Destroy(floatingTextManager.gameObject);
             //Destroy(hud);
             //Destroy(menu);
@@ -58,21 +64,28 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             ChatBubble.Clear(gameObject);
-            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi");
+            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi", 2f);
         }
         
-        if (Input.GetKeyDown(keyOpenMagazine))
+/*        if (Input.GetKeyDown(keyOpenMagazine))
         {
             OpenCloseMagazine();
-        }
+        }*/
     }
 
-    public void OpenCloseMagazine()
+/*    public void OpenCloseMagazine()
     {
         isPlayerEnactive = !isPlayerEnactive;
         openMagazine = !openMagazine;
         magazine.SetActive(openMagazine);
+    }*/
+
+
+    public void StartEvent(int number)
+    {
+        events[number].Invoke();
     }
+
 
 
 
@@ -88,6 +101,25 @@ public class GameManager : MonoBehaviour
             blackImagesAnim.SetTrigger("In");                   // запускаем чёрные полосы
         else
             blackImagesAnim.SetTrigger("Out");                  // убираем чёрные полосы
+    }
+
+
+    public void CreateFloatingMessage(string message, Color color, Vector2 position)
+    {
+        int floatType = Random.Range(0, 3);
+        GameObject textPrefab = Instantiate(GameAssets.instance.floatingMessage, position, Quaternion.identity);
+        textPrefab.GetComponentInChildren<TextMeshPro>().text = message;
+        textPrefab.GetComponentInChildren<TextMeshPro>().color = color;
+        textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", floatType);
+        //textPrefab.transform.SetParent(player.transform);
+    }
+
+
+    // Найти индекс оружия (для автомата с патронами)
+    public int GetCurrentWeaponIndex()
+    {
+        int weaponAmmo = player.weaponHolder.currentWeapon.weaponIndexForAmmo;
+        return (weaponAmmo);
     }
 
 
@@ -147,6 +179,17 @@ public class GameManager : MonoBehaviour
                 collidersHits = null;
             }
         }
+    }
+
+
+  
+
+    public void NextScene(int sceneNumber)
+    {
+        //GameManager.instance.SaveState();
+        //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
+        string sceneName = sceneNames[sceneNumber];     // выбираем сцену
+        SceneManager.LoadScene(sceneName);              // загружаем сцену
     }
 
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)                      // выполняем при загрузке сцены

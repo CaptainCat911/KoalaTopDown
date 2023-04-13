@@ -3,11 +3,6 @@ using UnityEngine.Events;
 
 public class NPC : BotAI
 {
-    [Header("Поведение")]
-    public bool stayOnGround;
-    public bool goTo;
-    public Transform destinationPoint;
-
     [Header("Дистанция атаки")]
     public float meleeDistanceToAttack;
     public float rangeDistanceToAttack;
@@ -23,7 +18,7 @@ public class NPC : BotAI
         if (!isTextDone)                            // если не проговорили весь текст
         {
             ChatBubble.Clear(gameObject);           // очищаем диалог
-            ChatBubble.Create(transform, new Vector3(-1f, 0.2f), textToSay[dialogeNumber]);     // говорим     
+            ChatBubble.Create(transform, new Vector3(-1f, 0.2f), textToSay[dialogeNumber], 4f);     // говорим     
 
             dialogeNumber++;                        // + к номеру диалога
 
@@ -38,10 +33,10 @@ public class NPC : BotAI
         }
     }
 
-    public void NpcMagazine()
+/*    public void NpcMagazine()
     {
         GameManager.instance.OpenCloseMagazine();
-    }
+    }*/
 
 /*    protected override void Death()
     {

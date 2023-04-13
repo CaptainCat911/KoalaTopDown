@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Fighter : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Fighter : MonoBehaviour
     public bool isAlive = true;             // жив здоров
     public int currentHealth;
     public int maxHealth;
+    public bool noAgro;
     GameObject floatinText;                 // текст чата
     bool isPlayerOrNPC;                     // игрок или нпс (для отображения урона)
 
@@ -102,18 +104,18 @@ public class Fighter : MonoBehaviour
     {
         int floatType = Random.Range(0, 3);
         GameObject textPrefab = Instantiate(floatinText, transform.position, Quaternion.identity);
-        textPrefab.GetComponentInChildren<TextMesh>().text = text;
+        textPrefab.GetComponentInChildren<TextMeshPro>().text = text;
 
         if (damaged)
         {
             if (isPlayerOrNPC)
-                textPrefab.GetComponentInChildren<TextMesh>().color = Color.red;
+                textPrefab.GetComponentInChildren<TextMeshPro>().color = Color.red;
             else
-                textPrefab.GetComponentInChildren<TextMesh>().color = Color.white;
+                textPrefab.GetComponentInChildren<TextMeshPro>().color = Color.white;
         }
         else
         {
-            textPrefab.GetComponentInChildren<TextMesh>().color = Color.green;
+            textPrefab.GetComponentInChildren<TextMeshPro>().color = Color.green;
         }
 
         textPrefab.GetComponentInChildren<Animator>().SetFloat("FloatType", floatType);

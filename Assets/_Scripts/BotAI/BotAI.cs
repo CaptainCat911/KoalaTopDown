@@ -49,6 +49,12 @@ public class BotAI : Fighter
     bool slowed;    
     float maxSpeed;
 
+    [Header("Поведение")]
+    public bool stayOnGround;                               // стоять на месте и охранять
+    public bool goTo;                                       // двигаться к точке
+    public bool followPlayer;                               // следовать за игроком
+    public Transform destinationPoint;                      // точка назначения
+
     // Для анимации
     [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота
     public GameObject deathEffect;                          // эффект (потом сделать его в аниматоре (или  нет))
@@ -92,6 +98,8 @@ public class BotAI : Fighter
             layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой для оружия
         }
         maxSpeed = agent.speed;
+
+
     }
 
     public override void Start()
@@ -190,6 +198,20 @@ public class BotAI : Fighter
         }
     }
 
+    public void SetNeutral(bool status)
+    {
+        if (status)
+        {
+            isNeutral = true;
+            noAgro = true;
+        }
+        if (!status)
+        {
+            isNeutral = false;
+            noAgro = false;
+        }
+    }
+
     // Дружеская цель
     public void FriendTarget(Transform friendTarget)
     {
@@ -269,6 +291,10 @@ public class BotAI : Fighter
 
             if (enObjectBox.gameObject.TryGetComponent(out Fighter fighter))        // ищем скрипт файтер
             {
+                if (fighter.noAgro)
+                {
+                    continue;
+                }
                 NavMeshRayCast(fighter.gameObject);
                 float distance = Vector3.Distance(fighter.transform.position, transform.position);   // считаем дистанцию 
                 if (!target)
@@ -347,7 +373,7 @@ public class BotAI : Fighter
     public void SayText(string text)
     {
         ChatBubble.Clear(gameObject);
-        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text);
+        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 4f);
     }
 
 
@@ -363,7 +389,8 @@ public class BotAI : Fighter
         hitBox.EffectRangeAttack();
     }
 
-    // Атаки милихолдера
+
+    // Атаки милихолдера (атаки босса посохом)
     public void AttackMeleeHolder(string type)
     {
         botAIMeleeWeaponHolder.currentWeapon.Attack(type);
@@ -401,7 +428,7 @@ public class BotAI : Fighter
     // Триггер для противников
     public void TriggerEnemy()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 2, layerTrigger);     // создаем круг в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 5, layerTrigger);     // создаем круг в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)
