@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject gui;                      // гуи
     public Dialog dialog;                       // диалог менеджер
     public AmmoPackKoala ammoPack;              // ссылка на аммопак
-    public GameObject magazine;                 // магазин
+    //public GameObject magazine;                 // магазин
     bool openMagazine;                          // магазин открыт
 
     [Header("Клавиша взаимодействия")]
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Предметы")]
     public int gold;                            // золото
-    public int keys;                            // ключи
+    public int[] keys;                          // ключи
     public int battery;                         // батареи
 
     public bool isPlayerEnactive;
@@ -43,8 +43,9 @@ public class GameManager : MonoBehaviour
         if (GameManager.instance != null)
         {
             Destroy(gameObject);
+            Destroy(ammoPack);
             Destroy(player.gameObject);
-            Destroy(gui);
+            //Destroy(gui);
             //Destroy(floatingTextManager.gameObject);
             //Destroy(hud);
             //Destroy(menu);
@@ -66,18 +67,18 @@ public class GameManager : MonoBehaviour
             ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi", 2f);
         }
         
-        if (Input.GetKeyDown(keyOpenMagazine))
+/*        if (Input.GetKeyDown(keyOpenMagazine))
         {
             OpenCloseMagazine();
-        }
+        }*/
     }
 
-    public void OpenCloseMagazine()
+/*    public void OpenCloseMagazine()
     {
         isPlayerEnactive = !isPlayerEnactive;
         openMagazine = !openMagazine;
         magazine.SetActive(openMagazine);
-    }
+    }*/
 
 
     public void StartEvent(int number)

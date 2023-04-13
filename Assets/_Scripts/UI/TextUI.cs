@@ -8,6 +8,7 @@ public class TextUI : MonoBehaviour
     public Text shield;             // щит
     public Text gold;               // кол-во золота
     public Text key;                // кол-во ключей
+    public Text keyRed;             // кол-во особых ключей
     public Text battery;            // кол-во батарей
     public Text weaponName;         // имя оружия
     public Text ammoRangeWeapon;    // кол-во патронов
@@ -35,7 +36,10 @@ public class TextUI : MonoBehaviour
         gold.text = GameManager.instance.gold.ToString("0");
 
         // Ключи
-        key.text = GameManager.instance.keys.ToString("0");
+        key.text = GameManager.instance.keys[0].ToString("0");
+
+        // Ключи особые
+        keyRed.text = GameManager.instance.keys[1].ToString("0");
 
         // Батареи
         battery.text = GameManager.instance.battery.ToString("0");
