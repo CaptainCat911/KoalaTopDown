@@ -333,9 +333,8 @@ public class BotAI : Fighter
         {
             if (!closeToTarget)
             {
-                agent.ResetPath();                                                              // сбрасываем путь            
+                agent.ResetPath();                                                              // сбрасываем путь       
                 closeToTarget = true;                                                           // готов стрелять
-
             }
         }
         else
