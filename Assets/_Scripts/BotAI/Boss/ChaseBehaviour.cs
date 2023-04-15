@@ -5,7 +5,20 @@ using UnityEngine;
 public class ChaseBehaviour : StateMachineBehaviour
 {
     Boss boss;                              // ссылка на бота
-    public float cooldownAttack = 2f;       // перезарядка атаки   
+    public float cooldownAttack = 2f;       // перезарядка атаки
+
+    [Header("Атака издалека")]
+    public int rangeAttackChance;          // шанс ренже атаки
+
+    [Header("Атака вблизи")]
+    public int meleeAttackChance;
+    public int explousionAttackChance;
+
+    [Header("Общие атаки")]
+    public int spawnAttackChance;          // .. спауна
+    public int multiAttackChance;          // .. мультиатаки
+
+
     float lastAttack;                       // время последнего рандома  
     //float randomCooldown = 1f;              // перезарядка рандома    
     //float lastRandom;                       // время последнего рандома
@@ -34,8 +47,16 @@ public class ChaseBehaviour : StateMachineBehaviour
             return;
         }
 
+        // Если сейчас атакуем
+        if (boss.attackingNow)
+        {
+            boss.agent.ResetPath();
+            return;
+        }
+
         if (boss.currentHealth < boss.maxHealth / 3)
         {
+            boss.SayText("Тебе никогда не победить");
             boss.distanceToAttack = 20;
             animator.SetTrigger("TimeReverce");     // триггер            
             return;
@@ -52,44 +73,45 @@ public class ChaseBehaviour : StateMachineBehaviour
         }
 
         // Подготовка типа атаки
-        if (!attackReady)        
-        {            
+        if (!attackReady && Time.time - lastAttack > cooldownAttack)        
+        {
             // Дальняя дистанция
-            if (boss.distanceToTarget > 3)          
+            if (boss.distanceToTarget > 3)
             {
-                int random = Random.Range(1, 7);
-                if (random <= 4)
+                if (ProbabilityCheck(rangeAttackChance))   // шанс на ренж атаку
                 {
                     boss.distanceToAttack = 6;
                     attackNumber = 2;               // ренж атака
-                }
-                if (random > 4)
-                {
-                    boss.distanceToAttack = 20;
-                    attackNumber = 3;               // спаун
-                }
+                }                
             }
             // Ближняя дистанция
             else
             {
-                int random = Random.Range(1, 4);
-                if (random < 2)
+                if (ProbabilityCheck(meleeAttackChance))
+                {
+                    boss.distanceToAttack = 20;
+                    attackNumber = 1;               // удар
+                }
+                if (ProbabilityCheck(explousionAttackChance))
                 {
                     boss.distanceToAttack = 20;     
                     attackNumber = 4;               // взрыв
                 }
-                if (random == 2)
-                {
-                    boss.distanceToAttack = 6;      
-                    attackNumber = 2;               // ренж атака
-                }
-                if (random == 3)
-                {
-                    boss.distanceToAttack = 20;
-                    attackNumber = 3;               // спаун
-                }
             }
-            attackReady = true;
+
+            // Эти атаки для которых не важна дистанция
+            if (ProbabilityCheck(spawnAttackChance))
+            {
+                boss.distanceToAttack = 20;
+                attackNumber = 3;               // спаун
+            }
+            if (ProbabilityCheck(multiAttackChance))
+            {
+                boss.distanceToAttack = 20;
+                attackNumber = 5;               // мультиренж атака
+            }
+
+            attackReady = true;                 // готовы атаковать
         }
 
         // Если не готовы атаковать - возвращаемся
@@ -100,7 +122,10 @@ public class ChaseBehaviour : StateMachineBehaviour
         if (Time.time - lastAttack > cooldownAttack)        // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем время атаки
-
+            if (attackNumber == 1)
+            {
+                animator.SetTrigger("AttackMelee");
+            }
             if (attackNumber == 2)
             {
                 animator.SetTrigger("AttackRange");
@@ -113,15 +138,28 @@ public class ChaseBehaviour : StateMachineBehaviour
             {
                 animator.SetTrigger("AttackExplousion");
             }
+            if (attackNumber == 5)
+            {
+                animator.SetTrigger("AttackMultiRange");
+            }
 
             attackReady = false;
         }
     }
 
-    void Attack(int number)
+    bool ProbabilityCheck(int chance)
+    {
+        float random = Random.Range(0, 101);
+        if (random <= chance)
+            return true;
+        else
+            return false;
+    }
+
+/*    void Attack(int number)
     {
 
-    }
+    }*/
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

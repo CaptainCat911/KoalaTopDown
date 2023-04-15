@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3786651681873589343
 Transform:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681873589340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0.70100015, z: 0}
+  m_LocalPosition: {x: -0.031, y: 0.343, z: 0}
   m_LocalScale: {x: 0.3113438, y: 0.1830475, z: 0.20250002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -320,24 +320,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0411\u043E\u0441\u0441\u0430"
   hitBox: {fileID: 1630045362412420869}
-  damage: 60
-  pushForce: 10
-  radius: 0.7
+  attackClass: 2
   cooldown: 1.5
   layerHit:
     serializedVersion: 2
     m_Bits: 4225
+  damage: 50
+  pushForce: 30
+  radius: 1
   bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
-  attackClass: 2
-  prefabEnemies:
-  - {fileID: 5691226719771854280, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
-  - {fileID: 5691226719771854280, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
-  - {fileID: 5691226719771854280, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
-  - {fileID: 134668306723687997, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
-  - {fileID: 1538151450151263897, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
-  explousionDamage: 20
+  damageRange: 30
+  pushForceRange: 10
+  projctleSpeed: 3
+  explousionDamage: 70
   explousionForce: 60
-  explousionRadius: 3
+  explousionRadius: 2.5
+  enemySpawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  splitTimes: 8
+  splitRecoil: 15
   trail: {fileID: 3786651681873589342}
 --- !u!95 &2147084357117586853
 Animator:

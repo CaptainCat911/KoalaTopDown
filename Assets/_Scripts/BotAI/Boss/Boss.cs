@@ -7,6 +7,8 @@ public class Boss : BotAI
     int dialogeNumber;              // номер диалога
     bool isTextDone;                // проговорили весь текст
 
+    [HideInInspector] public bool attackingNow;
+
 
     public void Speak()
     {

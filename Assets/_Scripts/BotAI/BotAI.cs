@@ -62,6 +62,8 @@ public class BotAI : Fighter
     [HideInInspector] public bool flipLeft;                  // дл€ флипа
     [HideInInspector] public bool flipRight;                 //    
     bool pivotZero;
+    public float pivotSpeedKoef = 1f;
+
 
     // “аймер дл€ цветов при уроне
     float timerForColor;
@@ -139,7 +141,7 @@ public class BotAI : Fighter
             Vector3 aimDirection = target.transform.position - pivot.transform.position;                            // угол между положением мыши и pivot оружи€          
             aimAnglePivot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                            // находим угол в градусах             
             Quaternion qua1 = Quaternion.Euler(0, 0, aimAnglePivot);                                                // создаем этот угол в Quaternion
-            pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, qua1, Time.fixedDeltaTime * 5);    // делаем Lerp между weaponHoder и нашим углом
+            pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, qua1, Time.fixedDeltaTime * 5 * pivotSpeedKoef);    // делаем Lerp между weaponHoder и нашим углом
         }
         else 
         {

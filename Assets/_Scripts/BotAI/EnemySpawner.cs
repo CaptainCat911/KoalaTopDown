@@ -13,10 +13,11 @@ public class EnemySpawner : MonoBehaviour
     public float chaseDistance;             // дистанция триггера врагов
     public float cooldown = 1f;             // перезарядка спауна    
     private float lastSpawn;
-    public int enemysHowMuch;
+    public int enemysHowMuch;               // сколько врагов нужено
     int enemyCount;
     public GameObject spawnEffect;
-    public GameObject[] nextSpawners;
+    public bool bossSpawner;
+    
 
     //public int enemyTriggerDistance;        // установить дистанцию тригера врагов
 
@@ -58,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         enemyCount++;
 
         //GameManager.instance.enemyCount++;
-        if (enemyCount >= enemysHowMuch)
+        if (enemyCount >= enemysHowMuch && !bossSpawner)
         {
             //Invoke("NextSpawnersOn", 5f);
             Destroy(gameObject, 0.1f);
