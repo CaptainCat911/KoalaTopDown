@@ -38,12 +38,18 @@ public class BotAIWeaponMelee : MonoBehaviour
     public int splitTimes;                      // урон взрыва
     public float splitRecoil;                   // сила толчка взрыва    
 
+    [Header("Параметры лазера")]
+    public int laserDamage;                        // урон взрыва
+    public float laserForce;                       // сила толчка взрыва 
+    [HideInInspector] public bool laserStart;
+
 
 
     //public bool demon;
-
+    [Header("Визуальные эффекты")]
     // Треил 
     public TrailRenderer trail;
+    public ParticleSystem effectParticles;      // префаб системы частиц пламени
 
 
 
@@ -67,6 +73,31 @@ public class BotAIWeaponMelee : MonoBehaviour
 
 
     }
+
+    private void FixedUpdate()
+    {
+        if (laserStart)
+        {
+            LaserAttack();
+        }
+    }
+
+    public void LaserOn(int number)
+    {
+        if (number == 1)
+            laserStart = true;
+        if (number == 0)
+            laserStart = false;
+
+        if (effectParticles)
+        {
+            if (number == 1)
+                effectParticles.Play();
+            if (number == 0)
+                effectParticles.Stop();
+        }
+    }
+
 
     public void Attack(string type)
     {
@@ -106,6 +137,11 @@ public class BotAIWeaponMelee : MonoBehaviour
                 case "6":
                     {
                         animator.SetTrigger("HitMultiRange");
+                    }
+                    break;
+                case "7":
+                    {
+                        animator.SetTrigger("HitLaser");
                     }
                     break;
             }
@@ -215,6 +251,25 @@ public class BotAIWeaponMelee : MonoBehaviour
         Destroy(effect, 1);                                                             // уничтожаем эффект через .. сек
     }
 
+
+    public void LaserAttack()
+    {
+        // Рейкаст2Д        
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(hitBox.position, new Vector2(0.8f, 0.8f), 0f, hitBox.right, 15, layerHit);
+        if (hits != null)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                //Debug.Log("Hit!");
+                if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
+                {
+                    Vector2 vec2 = (fighter.transform.position - transform.position).normalized;
+                    fighter.TakeDamage(laserDamage, vec2, laserForce);
+                }
+            }
+        }
+    }
+
     public void TimeReverceAttack()
     {
         GameManager.instance.NextScene(0);
@@ -231,6 +286,10 @@ public class BotAIWeaponMelee : MonoBehaviour
                 trail.emitting = false;
         }
     }
+
+
+
+    
 
     void OnDrawGizmosSelected()
     {

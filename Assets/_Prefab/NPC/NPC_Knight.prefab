@@ -189,7 +189,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 5000
+  noAgro: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -245,7 +246,7 @@ MonoBehaviour:
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
   newNpcSystem: 0
-  isNeutral: 1
+  isNeutral: 0
   isFriendly: 1
   isEnemy: 0
   target: {fileID: 0}
@@ -261,7 +262,7 @@ MonoBehaviour:
   distanceToChangeTarget: 3
   targetVisible: 0
   closeToTarget: 0
-  distanceToAttackMelee: 1.5
+  distanceToAttackMelee: 2
   distanceToAttackRange: 0
   distanceToAttack: 0
   distanceToTarget: 0
@@ -269,20 +270,22 @@ MonoBehaviour:
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
+  stayOnGround: 0
+  goTo: 0
+  followPlayer: 1
+  destinationPoint: {fileID: 0}
   aimAnglePivot: 0
   deathEffect: {fileID: 0}
   deathCameraShake: 0
   flipLeft: 0
   flipRight: 0
+  pivotSpeedKoef: 1
   layerTrigger:
     serializedVersion: 2
     m_Bits: 0
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
-  stayOnGround: 0
-  goTo: 0
-  destinationPoint: {fileID: 0}
   meleeDistanceToAttack: 0
   rangeDistanceToAttack: 0
   textToSay:
@@ -305,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
-  cooldownChangeTarget: 2
+  cooldownChangeTarget: 4
   cooldownChange: 2
   distancePatrol: 2
   maxDistancePatrol: 4
@@ -396,14 +399,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8747245623845042317}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.351, y: -0.1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.79335225, w: 0.60876286}
+  m_LocalPosition: {x: -0.33, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8747245624398367225}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 105}
 --- !u!114 &8747245623845042315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 5674012138522298798, guid: c6acd53833056844db20e471ea526809, type: 3}
+  - {fileID: 5674012138522298798, guid: dd22f67e89499d440ba651b42b6df163, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

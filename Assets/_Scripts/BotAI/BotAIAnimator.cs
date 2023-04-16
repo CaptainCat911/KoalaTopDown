@@ -16,6 +16,16 @@ public class BotAIAnimator : MonoBehaviour
     }
 
 
+
+    // Для аниматора босса
+    public void BossAttacking(int status)
+    {
+        if (status == 0)
+            boss.attackingNow = false;
+        if (status == 1)
+            boss.attackingNow = true;
+    }
+
     // Атаки
     public void CurrentWeaponAttack()
     {
@@ -42,6 +52,11 @@ public class BotAIAnimator : MonoBehaviour
         botAIMeleeWeaponHolder.currentWeapon.SpawnAttack();         // спаун атака
     }
 
+    public void LaserWeaponAttack(int number)
+    {
+        botAIMeleeWeaponHolder.currentWeapon.LaserOn(number);         // лазер атака
+    }
+
     public void TimeReverceWeaponAttack()
     {
         botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращаает время!
@@ -53,8 +68,13 @@ public class BotAIAnimator : MonoBehaviour
     // Треил и пивот
     public void TrailStatus(int number)
     {
-        botAIMeleeWeaponHolder.currentWeapon.TrailOn(number);       // треил оружия
+        botAIMeleeWeaponHolder.currentWeapon.TrailOn(number);       // треил оружия (для мили оружия)
     }
+
+/*    public void EffectStatus(int number)
+    {
+        botAIMeleeWeaponHolder.currentWeapon.EffectOn(number);      // эффект оружия (для лазера)
+    }*/
 
     public void PivotStatus(int number)
     {
@@ -87,16 +107,12 @@ public class BotAIAnimator : MonoBehaviour
     {
         botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("TimeReverceAttack");
     }
-
-
-    // Для аниматора босса
-    public void BossAttacking(int status)
+    public void StaffLaseer()
     {
-        if(status == 0)
-            boss.attackingNow = false;
-        if (status == 1)
-            boss.attackingNow = true;
+        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("LaserAttack");
     }
+
+
 
 
     // Для перехода на другую сцену

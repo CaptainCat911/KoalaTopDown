@@ -15,8 +15,9 @@ public class ChaseBehaviour : StateMachineBehaviour
     public int explousionAttackChance;
 
     [Header("Общие атаки")]
-    public int spawnAttackChance;          // .. спауна
-    public int multiAttackChance;          // .. мультиатаки
+    public int spawnAttackChance;           // .. спауна
+    public int multiAttackChance;           // .. мультиатаки
+    public int laserChance;                 // .. лазера
 
 
     float lastAttack;                       // время последнего рандома  
@@ -56,7 +57,7 @@ public class ChaseBehaviour : StateMachineBehaviour
 
         if (boss.currentHealth < boss.maxHealth / 3)
         {
-            boss.SayText("Тебе никогда не победить");
+            //boss.SayText("Тебе никогда не победить");
             boss.distanceToAttack = 20;
             animator.SetTrigger("TimeReverce");     // триггер            
             return;
@@ -89,12 +90,12 @@ public class ChaseBehaviour : StateMachineBehaviour
             {
                 if (ProbabilityCheck(meleeAttackChance))
                 {
-                    boss.distanceToAttack = 20;
+                    boss.distanceToAttack = 3;
                     attackNumber = 1;               // удар
                 }
                 if (ProbabilityCheck(explousionAttackChance))
                 {
-                    boss.distanceToAttack = 20;     
+                    boss.distanceToAttack = 3;     
                     attackNumber = 4;               // взрыв
                 }
             }
@@ -109,6 +110,11 @@ public class ChaseBehaviour : StateMachineBehaviour
             {
                 boss.distanceToAttack = 20;
                 attackNumber = 5;               // мультиренж атака
+            }
+            if (ProbabilityCheck(laserChance))
+            {
+                boss.distanceToAttack = 20;
+                attackNumber = 6;               // лазер атака
             }
 
             attackReady = true;                 // готовы атаковать
@@ -141,6 +147,10 @@ public class ChaseBehaviour : StateMachineBehaviour
             if (attackNumber == 5)
             {
                 animator.SetTrigger("AttackMultiRange");
+            }
+            if (attackNumber == 6)
+            {
+                animator.SetTrigger("AttackLaser");
             }
 
             attackReady = false;

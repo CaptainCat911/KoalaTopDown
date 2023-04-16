@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] prefabEnemies;      // массив префабов с зомби
 
     public bool active;                     // активен или нет
-    public bool chasePlayer;                // триггер врагов срабатывает сразу
+    //public bool chasePlayer;                // триггер врагов срабатывает сразу
     public float chaseDistance;             // дистанци€ триггера врагов
     public float cooldown = 1f;             // перезар€дка спауна    
     private float lastSpawn;
@@ -43,18 +43,19 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        int ndx = Random.Range(0, prefabEnemies.Length);            // выбираем рандом из массива врагов
-        GameObject enemyPref = Instantiate(prefabEnemies[ndx]);            // создаЄм префаб
+        int ndx = Random.Range(0, prefabEnemies.Length);                            // выбираем рандом из массива врагов
+        GameObject enemyPref = Instantiate(prefabEnemies[ndx]);                     // создаЄм префаб
         //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
-        agent = enemyPref.GetComponentInChildren<NavMeshAgent>();          // находим Ќавћешјгент
+        agent = enemyPref.GetComponentInChildren<NavMeshAgent>();                   // находим Ќавћешјгент
         Debug.Log(agent);
-        agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
-        enemyPref.GetComponentInChildren<BotAI>().triggerLenght = chaseDistance;   // устанавливаем дистанцию триггера
-        if (chasePlayer)
+        agent.Warp(transform.position);                                             // перемещаем префаб к спавнеру
+        enemyPref.GetComponentInChildren<BotAI>().triggerLenght = chaseDistance;    // устанавливаем дистанцию триггера
+
+/*        if (chasePlayer)
         {
             enemyPref.GetComponentInChildren<BotAI>().target = GameManager.instance.player.gameObject;
             enemyPref.GetComponentInChildren<BotAI>().chasing = true;
-        }
+        }*/
 
         enemyCount++;
 

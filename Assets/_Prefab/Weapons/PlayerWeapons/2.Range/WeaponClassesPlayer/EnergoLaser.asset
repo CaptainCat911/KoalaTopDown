@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bfff81076b41e49a197a73d4bd8167, type: 3}
+  m_Name: EnergoLaser
+  m_EditorClassIdentifier: 
+  weaponName: "\u042D\u043D\u0435\u0440\u0433\u043E \u041B\u0430\u0437\u0435\u0440"
+  projectileWeapon: 0
+  splitProjectileWeapon: 0
+  bulletPrefab: {fileID: 0}
+  rayCastWeapon: 0
+  boxCastWeapon: 0
+  splitRaycastWeapon: 0
+  allRaycastWeapon: 0
+  allBoxcastWeapon: 1
+  boxSize: 0.8
+  range: 12
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 4225
+  splitTimes: 0
+  splitRecoil: 0
+  ignite: 0
+  damageBurn: 3
+  cooldownBurn: 0.5
+  durationBurn: 4
+  damage: 6
+  fireRate: 50
+  bulletSpeed: 0
+  pushForce: 0.5
+  forceBackFire: 0
+  recoil: 0

@@ -17,8 +17,11 @@ MonoBehaviour:
   splitProjectileWeapon: 0
   bulletPrefab: {fileID: 5170081587130710907, guid: 671512e7d2a187c4ba2d557c1162da8b, type: 3}
   rayCastWeapon: 0
+  boxCastWeapon: 0
   splitRaycastWeapon: 0
-  allRaycastWeapon: 1
+  allRaycastWeapon: 0
+  allBoxcastWeapon: 1
+  boxSize: 0.3
   range: 5
   layerRayCast:
     serializedVersion: 2
