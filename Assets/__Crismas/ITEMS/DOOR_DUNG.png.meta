@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,10 +107,10 @@ TextureImporter:
       name: DOOR_DUNG_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 10
+        x: 0
+        y: 0
         width: 80
-        height: 73
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,10 +128,10 @@ TextureImporter:
       name: DOOR_DUNG_1
       rect:
         serializedVersion: 2
-        x: 106
-        y: 10
+        x: 80
+        y: 0
         width: 80
-        height: 73
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,7 +139,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 866d654a032458b4aaa04694e96ecf7a
+      spriteID: 46d9ec3d92df0d548b1f5d8f5301d27a
       internalID: -108658796
       vertices: []
       indices: 
