@@ -363,7 +363,7 @@ MonoBehaviour:
   distanceToChangeTarget: 6
   targetVisible: 0
   closeToTarget: 0
-  distanceToAttackMelee: 4
+  distanceToAttackMelee: 2
   distanceToAttackRange: 0
   distanceToAttack: 1.25
   distanceToTarget: 0
@@ -380,6 +380,7 @@ MonoBehaviour:
   deathCameraShake: 2
   flipLeft: 0
   flipRight: 0
+  pivotSpeedKoef: 1
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128

@@ -27,42 +27,26 @@ public class BotAIAnimator : MonoBehaviour
     }
 
     // Атаки
-    public void CurrentWeaponAttack()
+    public void CurrentWeaponAttack(int type)
     {
-        botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();         // мили атака
-    }
-
-    public void RangeWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака
-    }
-
-    public void MultiRangeWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.MultiRangeAttack();    // мультиренж атака
-    }
-
-    public void ExplousionWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();    // взрыв
-    }
-
-    public void SpawnWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.SpawnAttack();         // спаун атака
+        if (type == 1)
+            botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();         // мили атака
+        if (type == 2)
+            botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();    // взрыв
+        if (type == 3)
+            botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака
+        if (type == 4)
+            botAIMeleeWeaponHolder.currentWeapon.SpawnAttack();         // спаун атака
+        if (type == 5)
+            botAIMeleeWeaponHolder.currentWeapon.MultiRangeAttack();    // мультиренж атака
+        if (type == 7)
+            botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращает время!
     }
 
     public void LaserWeaponAttack(int number)
     {
         botAIMeleeWeaponHolder.currentWeapon.LaserOn(number);         // лазер атака
     }
-
-    public void TimeReverceWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращает время!
-    }
-
-
 
 
     // Треил и пивот
