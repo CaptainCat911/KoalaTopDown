@@ -59,7 +59,7 @@ public class BotAIAnimator : MonoBehaviour
 
     public void TimeReverceWeaponAttack()
     {
-        botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращаает время!
+        botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращает время!
     }
 
 

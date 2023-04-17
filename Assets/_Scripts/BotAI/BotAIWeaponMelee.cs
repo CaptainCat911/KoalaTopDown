@@ -80,6 +80,17 @@ public class BotAIWeaponMelee : MonoBehaviour
         {
             LaserAttack();
         }
+    }   
+
+    public void Attack(int type)
+    {
+        if (Time.time - lastAttack > cooldown)                  // если готовы атаковать и кд готово
+        {
+            lastAttack = Time.time;                             // присваиваем время атаки
+
+            animator.SetFloat("HitType", type);
+            animator.SetTrigger("Hit");
+        }  
     }
 
     public void LaserOn(int number)
@@ -96,56 +107,6 @@ public class BotAIWeaponMelee : MonoBehaviour
             if (number == 0)
                 effectParticles.Stop();
         }
-    }
-
-
-    public void Attack(string type)
-    {
-        if (Time.time - lastAttack > cooldown)                  // если готовы атаковать и кд готово
-        {
-            lastAttack = Time.time;                             // присваиваем время атаки
-
-            switch (type)
-            {
-                case "1":
-                    {
-                        animator.SetTrigger("HitMelee");
-                    }
-                    break;
-
-                case "2":
-                    {
-                        animator.SetTrigger("HitRange");
-                    }
-                    break;
-
-                case "3":
-                    {
-                        animator.SetTrigger("HitSpawn");
-                    }
-                    break;
-                case "4":
-                    {
-                        animator.SetTrigger("HitExplousion");
-                    }
-                    break;
-                case "5":
-                    {
-                        animator.SetTrigger("HitTimeReverce");
-                    }
-                    break;
-                case "6":
-                    {
-                        animator.SetTrigger("HitMultiRange");
-                    }
-                    break;
-                case "7":
-                    {
-                        animator.SetTrigger("HitLaser");
-                    }
-                    break;
-            }
-        }  
     }
 
     public void MeleeAttack()

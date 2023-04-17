@@ -58,8 +58,10 @@ public class ChaseBehaviour : StateMachineBehaviour
         if (boss.currentHealth < boss.maxHealth / 3)
         {
             //boss.SayText("Тебе никогда не победить");
-            boss.distanceToAttack = 20;
-            animator.SetTrigger("TimeReverce");     // триггер            
+            boss.distanceToAttack = 30;
+            attackNumber = 7;               
+            animator.SetFloat("AttackType", attackNumber);
+            animator.SetTrigger("Attack");
             return;
         }
 
@@ -82,7 +84,7 @@ public class ChaseBehaviour : StateMachineBehaviour
                 if (ProbabilityCheck(rangeAttackChance))   // шанс на ренж атаку
                 {
                     boss.distanceToAttack = 6;
-                    attackNumber = 2;               // ренж атака
+                    attackNumber = 3;               // ренж атака
                 }                
             }
             // Ближняя дистанция
@@ -96,7 +98,7 @@ public class ChaseBehaviour : StateMachineBehaviour
                 if (ProbabilityCheck(explousionAttackChance))
                 {
                     boss.distanceToAttack = 3;     
-                    attackNumber = 4;               // взрыв
+                    attackNumber = 2;               // взрыв
                 }
             }
 
@@ -104,7 +106,7 @@ public class ChaseBehaviour : StateMachineBehaviour
             if (ProbabilityCheck(spawnAttackChance))
             {
                 boss.distanceToAttack = 20;
-                attackNumber = 3;               // спаун
+                attackNumber = 4;               // спаун
             }
             if (ProbabilityCheck(multiAttackChance))
             {
@@ -128,7 +130,12 @@ public class ChaseBehaviour : StateMachineBehaviour
         if (Time.time - lastAttack > cooldownAttack)        // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем время атаки
-            if (attackNumber == 1)
+
+
+            animator.SetFloat("AttackType", attackNumber);
+            animator.SetTrigger("Attack");
+
+/*            if (attackNumber == 1)
             {
                 animator.SetTrigger("AttackMelee");
             }
@@ -151,7 +158,7 @@ public class ChaseBehaviour : StateMachineBehaviour
             if (attackNumber == 6)
             {
                 animator.SetTrigger("AttackLaser");
-            }
+            }*/
 
             attackReady = false;
         }

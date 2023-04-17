@@ -392,7 +392,7 @@ public class BotAI : Fighter
 
 
     // Атаки милихолдера (атаки босса посохом)
-    public void AttackMeleeHolder(string type)
+    public void AttackMeleeHolder(int type)
     {
         botAIMeleeWeaponHolder.currentWeapon.Attack(type);
     }
