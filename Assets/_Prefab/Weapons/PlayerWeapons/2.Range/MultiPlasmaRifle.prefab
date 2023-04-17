@@ -137,19 +137,21 @@ MonoBehaviour:
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
   weaponIndexForAmmo: 0
+  ammo: 0
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 0
-  lineRenderer: {fileID: 5284901813468392028, guid: 19ed463347a9d4f43aa9dadd7d30e5c8, type: 3}
   tracerEffect: {fileID: 2862349512899274176, guid: c64802122df91054fb9523e2d9f53ecf, type: 3}
+  flameParticles: {fileID: 0}
   cameraAmplitudeShake: 0.7
   cameraTimedeShake: 0.1
   singleShot: 1
   multiShot: 0
   audioSource: {fileID: 9207148736259809736}
   audioSourceTail: {fileID: 0}
+  debug: 0
 --- !u!82 &9207148736259809736
 AudioSource:
   m_ObjectHideFlags: 0
@@ -517,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6674660268570137609
 Transform:
   m_ObjectHideFlags: 0
@@ -582,7 +584,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8393902237215104562
@@ -689,7 +691,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e8f58724cc6dd794e8b5dbd18684b4d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e0d409c89c8eca4b90e537c5bf38d0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

@@ -25,9 +25,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681049121963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25199986, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 0.327, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.6, z: 1.4}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479659406406739827}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ce4a0071e0114d8408c4569d20f017df, type: 3}
-  m_Color: {r: 0.13207549, g: 0.11276256, b: 0.11276256, a: 1}
+  m_Color: {r: 1, g: 0.7650311, b: 0.3820755, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -318,20 +318,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041C\u0415\u0427"
   hitBox: {fileID: 1630045362412420869}
-  damage: 50
-  pushForce: 5
-  radius: 0.6
+  attackClass: 1
   cooldown: 2
-  projctleSpeed: 4
   layerHit:
     serializedVersion: 2
     m_Bits: 0
+  damage: 50
+  pushForce: 5
+  radius: 0.6
   bulletPrefab: {fileID: 0}
-  attackClass: 1
-  prefabEnemies: []
+  damageRange: 0
+  pushForceRange: 0
+  projctleSpeed: 4
   explousionDamage: 0
   explousionForce: 0
   explousionRadius: 0
+  enemySpawners: []
+  splitTimes: 0
+  splitRecoil: 0
   trail: {fileID: 3786651681873589342}
 --- !u!1 &6604417298802685298
 GameObject:
@@ -357,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604417298802685298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.311, z: 0}
+  m_LocalPosition: {x: 0, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

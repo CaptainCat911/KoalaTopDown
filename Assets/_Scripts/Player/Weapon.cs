@@ -16,24 +16,24 @@ public class Weapon : MonoBehaviour
     [Header("Параметры оружия")]
     public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
     [HideInInspector] public int ammo;
-/*    bool projectileWeapon;                          // оружие со снарядами
-    bool splitProjectileWeapon;                     // дробовики
-    bool rayCastWeapon;                             // рейкаст оружие
-    bool splitRaycastWeapon;                        // мультирейкаст оружие
-    bool allRaycastWeapon;                          // рейкастАлл оружие*/
+    /*    bool projectileWeapon;                          // оружие со снарядами
+        bool splitProjectileWeapon;                     // дробовики
+        bool rayCastWeapon;                             // рейкаст оружие
+        bool splitRaycastWeapon;                        // мультирейкаст оружие
+        bool allRaycastWeapon;                          // рейкастАлл оружие*/
 
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
-    //public int ammo;                                       // патроны
+                                                    //public int ammo;                                       // патроны
 
-/*    GameObject bulletPrefab;                // префаб снаряда
-    float bulletSpeed;                      // скорость снаряда
-    int damage;                             // урон (возможно нужно сделать на снаряде)
-    float pushForce;                        // сила толчка (возможно нужно сделать на снаряде)
-    float forceBackFire;                    // отдача оружия
-    float recoil;                          // разброс стрельбы
-    LayerMask layerRayCast;                 // слои для рейкастов*/
+    /*    GameObject bulletPrefab;                // префаб снаряда
+        float bulletSpeed;                      // скорость снаряда
+        int damage;                             // урон (возможно нужно сделать на снаряде)
+        float pushForce;                        // сила толчка (возможно нужно сделать на снаряде)
+        float forceBackFire;                    // отдача оружия
+        float recoil;                          // разброс стрельбы
+        LayerMask layerRayCast;                 // слои для рейкастов*/
 
     // Для флипа оружия
     bool needFlip;                          // нужен флип (для правильного отображения оружия)    
@@ -118,32 +118,32 @@ public class Weapon : MonoBehaviour
         {
             Flip();
         }
-        
+
         if (!flashEffectAnimator)
         {
             return;
         }
 
 
-            // Стирать рендер лазера и мультифлеш (возможно стоит переделать)
-            if (!singleFlash && Time.time >= nextTimeToFire + 0.1f)
+        // Стирать рендер лазера и мультифлеш (возможно стоит переделать)
+        if (!singleFlash && Time.time >= nextTimeToFire + 0.1f)
         {
             flashEffectAnimator.SetBool("Fire", false);
             flashActive = false;
             //if (lineRaycast)
-                //lineRaycast.enabled = false;
+            //lineRaycast.enabled = false;
         }
 
         // Звук
         if (multiShot && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)
         {
             if (weaponHolder.fireStart && !soundStarted)                        // если не готовы стрелять
-            {                
+            {
                 audioSource.Play();
                 soundStarted = true;
             }
             if (!weaponHolder.fireStart && soundStarted)                        // если не готовы стрелять
-            {                 
+            {
                 audioSource.Stop();
                 if (audioSourceTail)
                     audioSourceTail.Play();
@@ -174,10 +174,14 @@ public class Weapon : MonoBehaviour
                 FireSplit(false);                       // выстрел "дробью"
             if (weaponClass.rayCastWeapon)
                 FireRayCast();                          // выстрел рейкастом
+            if (weaponClass.boxCastWeapon)
+                FireBoxCast();                          // выстрел бокскастом
             if (weaponClass.splitRaycastWeapon)
                 FireSplit(true);                        // выстрел "дробью"
-            if (weaponClass.allRaycastWeapon)            
+            if (weaponClass.allRaycastWeapon)
                 FireRayCastAll();                       // выстрел рейкастом по всем (просторел)
+            if (weaponClass.allBoxcastWeapon)
+                FireBoxCastAll();                       // выстрел рейкастом по всем (просторел)
 
 
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры
@@ -191,7 +195,7 @@ public class Weapon : MonoBehaviour
                 flameParticles.Play();
                 //flameParticles.transform.position = firePoint.transform.position;                
             }
-                
+
 
             // Аудио
             if (singleShot)
@@ -238,7 +242,7 @@ public class Weapon : MonoBehaviour
     }
 
     // Флип
-    void Flip()                                                                                         
+    void Flip()
     {
         if (leftFlip)                                                                                   // разворот налево
         {
@@ -246,7 +250,7 @@ public class Weapon : MonoBehaviour
         }
         if (rightFlip)
         {
-            transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);             
+            transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
         }
         needFlip = false;
     }
@@ -273,7 +277,7 @@ public class Weapon : MonoBehaviour
             if (i % 2 == 1)                                                         // если делится без остатка (?)
                 firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i + 1)));        // вращаем на сплитРекоил                                                           
             else
-                firePoint.Rotate(0, 0, (-weaponClass.splitRecoil * (i )));
+                firePoint.Rotate(0, 0, (-weaponClass.splitRecoil * (i)));
 
             if (!raycast)
                 FireProjectile();
@@ -284,7 +288,7 @@ public class Weapon : MonoBehaviour
             if (i % 2 == 1)
                 firePoint.Rotate(0, 0, (-weaponClass.splitRecoil * (i + 1)));
             else
-                firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i)));                       
+                firePoint.Rotate(0, 0, (weaponClass.splitRecoil * (i)));
         }
     }
 
@@ -324,11 +328,11 @@ public class Weapon : MonoBehaviour
                         ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
                     }
                 }
-            }  
+            }
 
             if (debug)
                 Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
-        }       
+        }
     }
 
 
@@ -336,16 +340,16 @@ public class Weapon : MonoBehaviour
     {
         // Разброс
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
-        
+
         // Рейкаст2Д
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);        
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
         if (hit.collider != null)
         {
             //Debug.Log("Hit!");
             if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
             {
                 Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
-                fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);                
+                fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
             }
 
             // Настройки для трасеров
@@ -357,7 +361,7 @@ public class Weapon : MonoBehaviour
                 tracer.transform.position = hit.point;                      // конечная позиция трасера рейкаста
             }
 
-            
+
             if (weaponClass.ignite)
             {
                 if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
@@ -381,12 +385,8 @@ public class Weapon : MonoBehaviour
             if (debug)
                 Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
         }
-        
-
 
         //Debug.Log("Hit");
-
-
 
         /*        if (Physics2D.Raycast(ray, out hit, Mathf.Infinity, layerRayCast))
                 {
@@ -401,5 +401,89 @@ public class Weapon : MonoBehaviour
                         fighter.rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);
                     }
                 }*/
+    }
+
+    void FireBoxCast()
+    {
+        // Разброс
+        float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
+
+        // Рейкаст2Д
+        //RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
+
+        RaycastHit2D hit = Physics2D.BoxCast(firePoint.position, new Vector2(1f, 1f), 0f, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
+
+        if (hit.collider != null)
+        {
+            //Debug.Log("Hit!");
+            if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
+            {
+                Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
+            }
+
+            // Настройки для трасеров
+            if (tracerEffect)
+            {
+                TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                //tracer.transform.SetParent(transform, true); 
+                tracer.transform.position = hit.point;                      // конечная позиция трасера рейкаста
+            }
+
+
+            if (weaponClass.ignite)
+            {
+                if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                {
+                    //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                    ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
+                }
+            }
+
+            //BoxCast(Vector2 origin, Vector2 size, float angle, Vector2 direction, float distance = Mathf.Infinity, int layerMask = Physics2D.AllLayers, float minDepth = -Mathf.Infinity, float maxDepth = Mathf.Infinity);
+        }
+    }
+
+    void FireBoxCastAll()
+    {
+        // Разброс
+        float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
+
+        // Рейкаст2Д        
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(firePoint.position, new Vector2(weaponClass.boxSize, weaponClass.boxSize), 0f, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
+        if (hits != null)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                //Debug.Log("Hit!");
+                if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
+                {
+                    Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                    fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
+                }
+
+                // Настройки для трасеров
+                if (tracerEffect)
+                {
+                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                    //tracer.transform.SetParent(transform, true); 
+                    tracer.transform.position = tracer.transform.position + firePoint.right * 10;                      // конечная позиция трасера рейкаста
+                }
+
+                if (weaponClass.ignite)
+                {
+                    if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                    {
+                        //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                        ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
+                    }
+                }
+            }
+
+            if (debug)
+                Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
+        }
     }
 }
