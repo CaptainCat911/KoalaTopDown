@@ -56,6 +56,11 @@ public class Fighter : MonoBehaviour
         if (!isAlive)
             return;
 
+        rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);
+
+        if (dmg == 0)
+            return;
+
         if (hpBarOn)
         {
             if (currentHealth == maxHealth)
@@ -68,7 +73,6 @@ public class Fighter : MonoBehaviour
         else
             ShowDamageOrHeal(dmg.ToString(), true);
 
-        rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);
 
 
         //Death

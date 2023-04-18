@@ -190,7 +190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2586413119318292845}
+  - {fileID: 2926253020452120529}
   m_Father: {fileID: 3993575098382153181}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -398,7 +398,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 15000
+  maxHealth: 6000
   noAgro: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
@@ -478,8 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ad733ec676f8845bb584bd45c9e822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 11
---- !u!1001 &3993575098468539934
+  radius: 8
+--- !u!1001 &4329346816006291618
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -534,16 +534,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: StuffBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 5714915020998434831, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
-      propertyPath: projctleSpeed
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
---- !u!4 &2586413119318292845 stripped
+--- !u!4 &2926253020452120529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1479659406406739827, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
-  m_PrefabInstance: {fileID: 3993575098468539934}
+  m_PrefabInstance: {fileID: 4329346816006291618}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6244686201429067362
 PrefabInstance:

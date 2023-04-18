@@ -4,14 +4,40 @@ using UnityEngine;
 
 public class BulletRocket : Bullet
 {
-    public float expRadius = 3;
-    public bool withTimer;
-    public float timeToExpl;
+    public float expRadius = 3;             // радиус взрыва
+
+    public enum FireBallPreFab
+    {
+        smallFireBall,
+        bigFireBall
+    }
+
+
+    [Header("Сплит при взрыве")]
+    public bool withSplit;                  // со сплитом
+    public FireBallPreFab prefabFireBall;   // префаб снаряда
+    public int splitTimes;                  // кол-во снарядов
+    public float splitRecoil;               // сколько разделений
+    public int damageSplitProjectile;       // урон
+    public float pushForceSplitProjectile;  // толчек
+    public float splitProjectileSpeed;      // их скорость
+    GameObject prefab;
+
+    [Header("С таймером")]
+    public bool withTimer;                  // с таймером
+    public float timeToExpl;                // время до взрыва
 
     [Header("Тряска камеры при взрыве")]
-    public float cameraAmplitudeShake = 3f; // амплитуда
-    public float cameraTimedeShake = 0.1f;  // длительность
+    public float cameraAmplitudeShake = 3f;     // амплитуда
+    public float cameraTimedeShake = 0.1f;      // длительность
 
+    private void Awake()
+    {
+        if (((int)prefabFireBall) == 0)
+            prefab = GameAssets.instance.fireBallSmall;
+        if (((int)prefabFireBall) == 1)
+            prefab = GameAssets.instance.fireBallBig;
+    }
 
     private void Start()
     {
@@ -48,6 +74,53 @@ public class BulletRocket : Bullet
         }
         CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);            // тряска камеры
         base.Explosion();                                       // создаёт эффект и уничтожает его и объект
+
+        if (withSplit)
+        {
+            MultiRangeAttack();
+        }
+    }
+
+    public void MultiRangeAttack()
+    {
+        for (int i = 0; i < splitTimes; i++)                            // кол-во снарядов (разделений)
+        {           
+            // Вращаем
+            if (i % 2 == 1)                                         // если делится без остатка (?)
+                transform.Rotate(0, 0, (splitRecoil * (i + 1)));       // вращаем на сплитРекоил                                                           
+            else
+                transform.Rotate(0, 0, (-splitRecoil * (i)));
+
+            /*            if (!raycast)
+                            FireProjectile();
+                        if (raycast)
+                            FireRayCast();*/
+
+            RangeAttack();
+
+            // Возвращаем
+            if (i % 2 == 1)
+                transform.Rotate(0, 0, (-splitRecoil * (i + 1)));
+            else
+                transform.Rotate(0, 0, (splitRecoil * (i)));
+        }
+    }
+
+    public void RangeAttack()
+    {
+        //float randomBulletX = Random.Range(-recoilX, recoilX);                                              // разброс стрельбы
+        //firePoint.Rotate(0, 0, randomBulletX);                                                              // тупо вращаем
+        GameObject bullet = Instantiate(prefab, transform.position, transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
+        bullet.GetComponent<Bullet>().damage = damageSplitProjectile;                                                      // присваиваем урон снаряду
+        bullet.GetComponent<Bullet>().pushForce = pushForceSplitProjectile;                                                // присваиваем силу толчка снаряду
+        bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * splitProjectileSpeed, ForceMode2D.Impulse);              // даём импульс        
+        //botAI.ForceBackFire(firePoint.transform.position, forceBackFire);                                   // даём отдачу оружия
+        //firePoint.Rotate(0, 0, -randomBulletX);                                                             // и тупо возвращаем поворот
+/*        if (botAI.isFriendly)
+        {
+            bullet.layer = LayerMask.NameToLayer("BulletPlayer");           // слой пули
+            bullet.GetComponent<Bullet>().layerExplousion = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");
+        }*/
     }
 
     void OnDrawGizmosSelected()

@@ -8,7 +8,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     public float cooldownAttack = 2f;       // перезарядка атаки
 
     [Header("Атака издалека")]
-    public int rangeAttackChance;          // шанс ренже атаки
+    public int rangeAttackChance;           // шанс ренже атаки
 
     [Header("Атака вблизи")]
     public int meleeAttackChance;
@@ -16,6 +16,7 @@ public class ChaseBehaviour : StateMachineBehaviour
 
     [Header("Общие атаки")]
     public int spawnAttackChance;           // .. спауна
+    public int gravityChance;               // .. гравитации
     public int multiAttackChance;           // .. мультиатаки
     public int laserChance;                 // .. лазера
 
@@ -58,8 +59,10 @@ public class ChaseBehaviour : StateMachineBehaviour
         if (boss.currentHealth < boss.maxHealth / 3)
         {
             //boss.SayText("Тебе никогда не победить");
-            boss.distanceToAttack = 20;
-            animator.SetTrigger("TimeReverce");     // триггер            
+            boss.distanceToAttack = 30;
+            attackNumber = 7;               
+            animator.SetFloat("AttackType", attackNumber);
+            animator.SetTrigger("Attack");
             return;
         }
 
@@ -79,11 +82,11 @@ public class ChaseBehaviour : StateMachineBehaviour
             // Дальняя дистанция
             if (boss.distanceToTarget > 3)
             {
-                if (ProbabilityCheck(rangeAttackChance))   // шанс на ренж атаку
+                if (ProbabilityCheck(rangeAttackChance))    // шанс на ренж атаку
                 {
                     boss.distanceToAttack = 6;
-                    attackNumber = 2;               // ренж атака
-                }                
+                    attackNumber = 3;               // ренж атака
+                }
             }
             // Ближняя дистанция
             else
@@ -96,7 +99,7 @@ public class ChaseBehaviour : StateMachineBehaviour
                 if (ProbabilityCheck(explousionAttackChance))
                 {
                     boss.distanceToAttack = 3;     
-                    attackNumber = 4;               // взрыв
+                    attackNumber = 2;               // взрыв
                 }
             }
 
@@ -104,7 +107,12 @@ public class ChaseBehaviour : StateMachineBehaviour
             if (ProbabilityCheck(spawnAttackChance))
             {
                 boss.distanceToAttack = 20;
-                attackNumber = 3;               // спаун
+                attackNumber = 4;               // спаун
+            }
+            if (ProbabilityCheck(gravityChance))    // шанс на гравити атаку
+            {
+                boss.distanceToAttack = 10;
+                attackNumber = 8;               // гравити атака
             }
             if (ProbabilityCheck(multiAttackChance))
             {
@@ -117,6 +125,7 @@ public class ChaseBehaviour : StateMachineBehaviour
                 attackNumber = 6;               // лазер атака
             }
 
+
             attackReady = true;                 // готовы атаковать
         }
 
@@ -128,7 +137,11 @@ public class ChaseBehaviour : StateMachineBehaviour
         if (Time.time - lastAttack > cooldownAttack)        // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем время атаки
-            if (attackNumber == 1)
+
+            animator.SetFloat("AttackType", attackNumber);
+            animator.SetTrigger("Attack");
+
+/*            if (attackNumber == 1)
             {
                 animator.SetTrigger("AttackMelee");
             }
@@ -151,7 +164,7 @@ public class ChaseBehaviour : StateMachineBehaviour
             if (attackNumber == 6)
             {
                 animator.SetTrigger("AttackLaser");
-            }
+            }*/
 
             attackReady = false;
         }

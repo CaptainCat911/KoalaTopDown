@@ -27,42 +27,33 @@ public class BotAIAnimator : MonoBehaviour
     }
 
     // јтаки
-    public void CurrentWeaponAttack()
+    public void CurrentWeaponAttack(int type)
     {
-        botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();         // мили атака
-    }
-
-    public void RangeWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака
-    }
-
-    public void MultiRangeWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.MultiRangeAttack();    // мультиренж атака
-    }
-
-    public void ExplousionWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();    // взрыв
-    }
-
-    public void SpawnWeaponAttack()
-    {
-        botAIMeleeWeaponHolder.currentWeapon.SpawnAttack();         // спаун атака
+        if (type == 1)
+            botAIMeleeWeaponHolder.currentWeapon.MeleeAttack();         // мили атака
+        if (type == 2)
+            botAIMeleeWeaponHolder.currentWeapon.ExplousionAttack();    // взрыв
+        if (type == 3)
+            botAIMeleeWeaponHolder.currentWeapon.RangeAttackBig();      // ренж атака (сильна€)
+        if (type == 4)
+            botAIMeleeWeaponHolder.currentWeapon.SpawnAttack();         // спаун атака
+        if (type == 5)
+            botAIMeleeWeaponHolder.currentWeapon.MultiRangeAttack();    // мультиренж атака
+        if (type == 7)
+            botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращает врем€!
+        if (type == 8)
+            botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака (слаба€)
     }
 
     public void LaserWeaponAttack(int number)
     {
-        botAIMeleeWeaponHolder.currentWeapon.LaserOn(number);         // лазер атака
+        botAIMeleeWeaponHolder.currentWeapon.LaserOn(number);       // лазер атака
     }
-
-    public void TimeReverceWeaponAttack()
+    
+    public void GravityWeaponAttack(int number)
     {
-        botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращаает врем€!
+        botAIMeleeWeaponHolder.currentWeapon.GravityOn(number);     // гравитаци€ атака
     }
-
-
 
 
     // “реил и пивот
@@ -87,30 +78,12 @@ public class BotAIAnimator : MonoBehaviour
 
 
     // Ёффекты дл€ атак
-    public void StaffFireBall()
+    public void StaffStartEffect(int type)
     {
-        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("RangeAttack");
+        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetFloat("Type", type);
+        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("StartEffect");
     }
-    public void StaffMultiFireBall()
-    {
-        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("MultiRangeAttack");
-    }
-    public void StaffSpawn()
-    {
-        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("SpawnAttack");
-    }    
-    public void StaffExplousion()
-    {
-        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("ExplousionAttack");
-    }    
-    public void StaffTimeReverce()
-    {
-        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("TimeReverceAttack");
-    }
-    public void StaffLaseer()
-    {
-        botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("LaserAttack");
-    }
+  
 
 
 

@@ -188,6 +188,8 @@ public class Player : Fighter
         else
         {
             base.TakeDamage(dmg, vec2, pushForce);
+            if (dmg == 0)
+                return;
             animator.SetTrigger("TakeHit");
             ColorRed(0.1f);                         // делаем спрайт красным
         }

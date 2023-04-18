@@ -315,22 +315,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f380747e3608644a00fe1df2ceef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0421\u043A\u0435\u043B\u0435\u0442\u0430"
-  hitBox: {fileID: 1630045362412420869}
-  damage: 60
-  pushForce: 10
-  radius: 0.7
-  cooldown: 2
   layerHit:
     serializedVersion: 2
     m_Bits: 4225
-  bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
-  attackClass: 2
-  prefabEnemies: []
-  explousionDamage: 20
-  explousionForce: 60
-  explousionRadius: 3
+  weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0421\u043A\u0435\u043B\u0435\u0442\u0430"
+  hitBox: {fileID: 1630045362412420869}
+  cooldown: 2
+  damage: 60
+  pushForce: 10
+  radius: 0.7
   trail: {fileID: 3786651681873589342}
+  damageRange: 10
+  pushForceRange: 10
+  projctleSpeed: 4
+  damageRangeBig: 0
+  pushForceRangeBig: 0
+  projctleSpeedBig: 0
+  explousionDamage: 20
+  explousionForce: 30
+  explousionRadius: 2
+  enemySpawners: []
+  splitTimes: 8
+  splitRecoil: 20
+  laserDamage: 0
+  laserForce: 0
+  laserStart: 0
+  laserEffectParticles: {fileID: 0}
+  gravityDamage: 0
+  gravityForce: 0
+  gravityRadius: 0
+  gravityCooldown: 0
+  gravityEffectParticles: {fileID: 0}
+  gravityStart: 0
 --- !u!1 &6604417298802685298
 GameObject:
   m_ObjectHideFlags: 0

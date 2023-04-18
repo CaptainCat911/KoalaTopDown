@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 6759844036914890781}
   - component: {fileID: 746699606941226674}
   m_Layer: 13
-  m_Name: ShadowBallPrefab
+  m_Name: FireBallSmallPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,11 +247,22 @@ MonoBehaviour:
   damage: 0
   pushForce: 0
   isPlayerBullet: 0
-  expEffect: {fileID: 5727708654878073701, guid: bfac2c014c6cedc41b5e1725ea8393e2, type: 3}
+  expEffect: {fileID: 5727708654878073701, guid: 190bc6ec9b6aab145ac41fc9a4d5a45a, type: 3}
   layerExplousion:
     serializedVersion: 2
     m_Bits: 20545
   expRadius: 1
+  withSplit: 0
+  prefabFireBall: 0
+  splitTimes: 0
+  splitRecoil: 0
+  damageSplitProjectile: 0
+  pushForceSplitProjectile: 0
+  splitProjectileSpeed: 0
+  withTimer: 0
+  timeToExpl: 0
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
 --- !u!96 &6759844036914890781
 TrailRenderer:
   serializedVersion: 2
