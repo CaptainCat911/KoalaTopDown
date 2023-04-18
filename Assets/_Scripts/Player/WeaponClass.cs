@@ -3,33 +3,29 @@ using UnityEngine;
 [CreateAssetMenu]
 public class WeaponClass : ScriptableObject
 {
+    public enum WeaponType
+    {
+        projectileWeapon,
+        rayCastWeapon,
+        boxCastWeapon,
+        splitRaycastWeapon,
+        allRaycastWeapon,
+        allBoxcastWeapon,
+    }
+
     public string weaponName;
 
-    [Header("Снарядовое оружие")]
-    public bool projectileWeapon;
-    public bool splitProjectileWeapon;
+    public WeaponType weaponType;    
+
+    [Header("Снарядовое оружие")]    
     public GameObject bulletPrefab;  
 
-    [Header("Рейкас оружие")]
-    public bool rayCastWeapon;
-    public bool boxCastWeapon;
-    public bool splitRaycastWeapon;
-    public bool allRaycastWeapon;
-    public bool allBoxcastWeapon;
+    [Header("Если рейкаст оружие")]
     public float boxSize;
-
     public float range;
     public LayerMask layerRayCast;
-
-    [Header("Если оружие Сплит")]
-    public int splitTimes;
-    public float splitRecoil;
-
-    [Header("Параметры поджога")]
-    public bool ignite;
-    public int damageBurn;
-    public float cooldownBurn;
-    public float durationBurn;    
+    
+    [Space(2)]
 
     [Header("Параметры оружия")]
     public int damage;
@@ -39,4 +35,16 @@ public class WeaponClass : ScriptableObject
     public float forceBackFire;
     public float recoil;
     //public GameObject flashEffect;
+
+    [Header("Если оружие Сплит")]
+    public bool splitProjectileWeapon;
+    public int splitTimes;
+    public float splitRecoil;
+
+    [Header("Параметры поджога")]
+    public bool ignite;
+    public int damageBurn;
+    public float cooldownBurn;
+    public float durationBurn;
+
 }

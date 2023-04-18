@@ -44,7 +44,7 @@ public class BotAIWeaponRange : MonoBehaviour
         
         //weaponHolderGO = GetComponentInParent<WeaponHolder>().gameObject;       // находим объект weaponHolder
         weaponName = weaponClass.weaponName;                                    // имя оружия
-        rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
+        //rayCastWeapon = weaponClass.rayCastWeapon;                              // рейкаст оружие
         layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам
         if (weaponClass.bulletPrefab)
             bulletPrefab = weaponClass.bulletPrefab;                                  // тип снаряда (если не рейкаст оружие)

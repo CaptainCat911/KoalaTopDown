@@ -168,20 +168,20 @@ public class Weapon : MonoBehaviour
             ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           
 
-            if (weaponClass.projectileWeapon)
+            if (((int)weaponClass.weaponType) == 0)
                 FireProjectile();                       // выстрел пулей
+            if (((int)weaponClass.weaponType) == 1)
+                FireRayCast();                          // выстрел рейкастом
+            if (((int)weaponClass.weaponType) == 2)
+                FireBoxCast();                          // выстрел бокскастом
+            if (((int)weaponClass.weaponType) == 3)
+                FireSplit(true);                        // выстрел "дробью"
+            if (((int)weaponClass.weaponType) == 4)
+                FireRayCastAll();                       // выстрел рейкастом по всем (просторел)
+            if (((int)weaponClass.weaponType) == 5)
+                FireBoxCastAll();                       // выстрел бокскастом по всем (просторел)
             if (weaponClass.splitProjectileWeapon)
                 FireSplit(false);                       // выстрел "дробью"
-            if (weaponClass.rayCastWeapon)
-                FireRayCast();                          // выстрел рейкастом
-            if (weaponClass.boxCastWeapon)
-                FireBoxCast();                          // выстрел бокскастом
-            if (weaponClass.splitRaycastWeapon)
-                FireSplit(true);                        // выстрел "дробью"
-            if (weaponClass.allRaycastWeapon)
-                FireRayCastAll();                       // выстрел рейкастом по всем (просторел)
-            if (weaponClass.allBoxcastWeapon)
-                FireBoxCastAll();                       // выстрел рейкастом по всем (просторел)
 
 
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры

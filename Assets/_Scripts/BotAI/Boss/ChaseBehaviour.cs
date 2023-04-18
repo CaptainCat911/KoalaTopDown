@@ -8,7 +8,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     public float cooldownAttack = 2f;       // перезар€дка атаки
 
     [Header("јтака издалека")]
-    public int rangeAttackChance;          // шанс ренже атаки
+    public int rangeAttackChance;           // шанс ренже атаки
 
     [Header("јтака вблизи")]
     public int meleeAttackChance;
@@ -16,6 +16,7 @@ public class ChaseBehaviour : StateMachineBehaviour
 
     [Header("ќбщие атаки")]
     public int spawnAttackChance;           // .. спауна
+    public int gravityChance;               // .. гравитации
     public int multiAttackChance;           // .. мультиатаки
     public int laserChance;                 // .. лазера
 
@@ -81,11 +82,11 @@ public class ChaseBehaviour : StateMachineBehaviour
             // ƒальн€€ дистанци€
             if (boss.distanceToTarget > 3)
             {
-                if (ProbabilityCheck(rangeAttackChance))   // шанс на ренж атаку
+                if (ProbabilityCheck(rangeAttackChance))    // шанс на ренж атаку
                 {
                     boss.distanceToAttack = 6;
                     attackNumber = 3;               // ренж атака
-                }                
+                }
             }
             // Ѕлижн€€ дистанци€
             else
@@ -108,6 +109,11 @@ public class ChaseBehaviour : StateMachineBehaviour
                 boss.distanceToAttack = 20;
                 attackNumber = 4;               // спаун
             }
+            if (ProbabilityCheck(gravityChance))    // шанс на гравити атаку
+            {
+                boss.distanceToAttack = 10;
+                attackNumber = 8;               // гравити атака
+            }
             if (ProbabilityCheck(multiAttackChance))
             {
                 boss.distanceToAttack = 20;
@@ -118,6 +124,7 @@ public class ChaseBehaviour : StateMachineBehaviour
                 boss.distanceToAttack = 20;
                 attackNumber = 6;               // лазер атака
             }
+
 
             attackReady = true;                 // готовы атаковать
         }
@@ -130,7 +137,6 @@ public class ChaseBehaviour : StateMachineBehaviour
         if (Time.time - lastAttack > cooldownAttack)        // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем врем€ атаки
-
 
             animator.SetFloat("AttackType", attackNumber);
             animator.SetTrigger("Attack");
