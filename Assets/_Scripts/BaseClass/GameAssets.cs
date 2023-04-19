@@ -18,6 +18,8 @@ public class GameAssets : MonoBehaviour
     [Header("Ёффекты")]
     public GameObject explousionRedEffect;
     public GameObject explousionGravity;
+    public GameObject explousionTeleportIn;
+    public GameObject explousionTeleportOut;
 
 
 

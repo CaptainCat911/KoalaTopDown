@@ -14,6 +14,8 @@ public class Dialog : MonoBehaviour
     public float typingSpeed;               // скорость появления букв
     string[] sentences;                     // предложения
     string[] characterName;                 // имя персонажа, который говорит
+    UnityEvent startInteractAction;         // ивент до начала диалога
+    UnityEvent goInteractAction;            // ивент при старте диалога
     UnityEvent interactAction;              // ивент по завершении диалога
 
     int index;                              // индекс
@@ -24,8 +26,6 @@ public class Dialog : MonoBehaviour
 
     public bool startEvent;                 // состояние этого ивента
     int dialogeNumber;                      // временная переменная для номера диалога
-    
-
 
 
     private void Awake()
@@ -43,15 +43,12 @@ public class Dialog : MonoBehaviour
             }                
             else        // если дошёл или цели нет
             {
-                StartDialog(dialogeNumber);                 // начинаем диалог
-                startEvent = false;                         // ивент закончился
+                StartDialog();                                  // начинаем диалог
+                startEvent = false;                             // ивент закончился
                 GameManager.instance.playerAtTarget = false;    // сбрасываем, что игрок возле цели
                 GameManager.instance.player.animator.SetFloat("Speed", 0);  // если нет цели тут сбрасываю анимацию бега игрока (возможно стоит переместить в другой скрипт)
             }                
         }
-
-
-
 
 /*        if (textDisplay.text == sentences[index])       // если написали всё предложение
         {
@@ -59,29 +56,27 @@ public class Dialog : MonoBehaviour
         }*/
     }
 
-/*    public void TakeDialog(DialogStore dialog)
-    {
-        sentences = dialog.sentences;
-    }*/
-
 
     // Начинаем ивент (вызывается из Gamemanager)
     public void StartEvent(int numberDialog)
     {
-        startEvent = true;                                          // ивент начат
+        startEvent = true;                                          // ивент начат        
         dialogeNumber = numberDialog;                               // номер диалога
         GameManager.instance.isPlayerEnactive = true;               // отключаем управление игроком
         GameManager.instance.EnemyResetAndNeutral(true);            // сбрасываем ботов
         GameManager.instance.BlackTapes(true);                      // черные полосы
-        
-    }
-
-    public void StartDialog(int numberDialog)
-    {
         sentences = dialogStore[numberDialog].sentences;            // берем предложения из диалга номер numberDialog
         characterName = dialogStore[numberDialog].characterName;    // имя (название) персонажа, который будет говорить
         npcImage = dialogStore[numberDialog].imageNpc;              // его портрет
-        interactAction = dialogStore[numberDialog].interactAction;  // ивент
+        startInteractAction = dialogStore[numberDialog].awakeInteractAction;  // ивент до начала диалога
+        goInteractAction = dialogStore[numberDialog].goInteractAction;  // ивент при старте диалога
+        interactAction = dialogStore[numberDialog].interactAction;  // ивент по завершению диалога
+        startInteractAction.Invoke();
+    }
+
+    public void StartDialog()
+    {
+        goInteractAction.Invoke();
         StartCoroutine(Type(0.5f));                                 // запускаем печать букв
     }
 

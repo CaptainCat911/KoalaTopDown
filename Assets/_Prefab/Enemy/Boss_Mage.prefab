@@ -337,8 +337,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.080197334, y: -0.13181686}
-  m_Size: {x: 1.0231533, y: 2.19973}
+  m_Offset: {x: 0, y: -0.13181686}
+  m_Size: {x: 0.7, y: 2.19973}
   m_Direction: 0
 --- !u!50 &3993575099791687073
 Rigidbody2D:
@@ -352,7 +352,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 50
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -370,7 +370,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3993575099791687098}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.3
+  m_Radius: 0.54
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -398,8 +398,9 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 6000
+  maxHealth: 15000
   noAgro: 0
+  bossHP: 1
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -409,7 +410,7 @@ MonoBehaviour:
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
   newNpcSystem: 1
-  isNeutral: 0
+  isNeutral: 1
   isFriendly: 0
   isEnemy: 1
   target: {fileID: 0}
@@ -533,6 +534,18 @@ PrefabInstance:
     - target: {fileID: 5674012138522298798, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: m_Name
       value: StuffBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714915020998434831, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: teleports.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291400726446209579, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291400726446209579, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
@@ -661,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301796, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_Pivot.x
@@ -753,11 +766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776515131865, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776515131865, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776515131865, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_SizeDelta.y

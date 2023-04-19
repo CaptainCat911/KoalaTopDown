@@ -175,13 +175,14 @@ public class Weapon : MonoBehaviour
             if (((int)weaponClass.weaponType) == 2)
                 FireBoxCast();                          // выстрел бокскастом
             if (((int)weaponClass.weaponType) == 3)
-                FireSplit(true);                        // выстрел "дробью"
+                FireSplit(false);                        // выстрел "дробью"
             if (((int)weaponClass.weaponType) == 4)
-                FireRayCastAll();                       // выстрел рейкастом по всем (просторел)
+                FireSplit(true);                       // выстрел "дробью" рейкастов
             if (((int)weaponClass.weaponType) == 5)
+                FireRayCastAll();                       // выстрел рейкастом по всем (просторел)
+            if (((int)weaponClass.weaponType) == 6)
                 FireBoxCastAll();                       // выстрел бокскастом по всем (просторел)
-            if (weaponClass.splitProjectileWeapon)
-                FireSplit(false);                       // выстрел "дробью"
+
 
 
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры

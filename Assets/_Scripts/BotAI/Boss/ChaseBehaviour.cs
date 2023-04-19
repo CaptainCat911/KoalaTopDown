@@ -8,7 +8,8 @@ public class ChaseBehaviour : StateMachineBehaviour
     public float cooldownAttack = 2f;       // перезарядка атаки
 
     [Header("Атака издалека")]
-    public int rangeAttackChance;           // шанс ренже атаки
+    public int rangeAttackChance;           // шанс ренж атаки
+    public int multiAttackChance;           // .. мультиатаки
 
     [Header("Атака вблизи")]
     public int meleeAttackChance;
@@ -17,9 +18,8 @@ public class ChaseBehaviour : StateMachineBehaviour
     [Header("Общие атаки")]
     public int spawnAttackChance;           // .. спауна
     public int gravityChance;               // .. гравитации
-    public int multiAttackChance;           // .. мультиатаки
     public int laserChance;                 // .. лазера
-
+    public int teleportChance;              // .. телепорта
 
     float lastAttack;                       // время последнего рандома  
     //float randomCooldown = 1f;              // перезарядка рандома    
@@ -87,6 +87,11 @@ public class ChaseBehaviour : StateMachineBehaviour
                     boss.distanceToAttack = 6;
                     attackNumber = 3;               // ренж атака
                 }
+                if (ProbabilityCheck(multiAttackChance))
+                {
+                    boss.distanceToAttack = 20;
+                    attackNumber = 5;               // мультиренж атака
+                }
             }
             // Ближняя дистанция
             else
@@ -114,19 +119,18 @@ public class ChaseBehaviour : StateMachineBehaviour
                 boss.distanceToAttack = 10;
                 attackNumber = 8;               // гравити атака
             }
-            if (ProbabilityCheck(multiAttackChance))
-            {
-                boss.distanceToAttack = 20;
-                attackNumber = 5;               // мультиренж атака
-            }
             if (ProbabilityCheck(laserChance))
             {
                 boss.distanceToAttack = 20;
                 attackNumber = 6;               // лазер атака
             }
+            if (ProbabilityCheck(teleportChance))
+            {
+                boss.distanceToAttack = 30;
+                attackNumber = 9;               // телепорт
+            }            
 
-
-            attackReady = true;                 // готовы атаковать
+           attackReady = true;                 // готовы атаковать
         }
 
         // Если не готовы атаковать - возвращаемся
@@ -140,31 +144,6 @@ public class ChaseBehaviour : StateMachineBehaviour
 
             animator.SetFloat("AttackType", attackNumber);
             animator.SetTrigger("Attack");
-
-/*            if (attackNumber == 1)
-            {
-                animator.SetTrigger("AttackMelee");
-            }
-            if (attackNumber == 2)
-            {
-                animator.SetTrigger("AttackRange");
-            }
-            if (attackNumber == 3)
-            {
-                animator.SetTrigger("AttackSpawn");
-            }
-            if (attackNumber == 4)
-            {
-                animator.SetTrigger("AttackExplousion");
-            }
-            if (attackNumber == 5)
-            {
-                animator.SetTrigger("AttackMultiRange");
-            }
-            if (attackNumber == 6)
-            {
-                animator.SetTrigger("AttackLaser");
-            }*/
 
             attackReady = false;
         }

@@ -13,20 +13,19 @@ MonoBehaviour:
   m_Name: FlameGun
   m_EditorClassIdentifier: 
   weaponName: "\u041E\u0433\u043D\u0435\u043C\u0451\u0442"
-  weaponType: 5
-  bulletPrefab: {fileID: 5170081587130710907, guid: 671512e7d2a187c4ba2d557c1162da8b, type: 3}
-  boxSize: 0.3
-  range: 5
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 4225
+  weaponType: 6
   damage: 8
   fireRate: 20
   bulletSpeed: 0
   pushForce: 1
   forceBackFire: 0
   recoil: 0
-  splitProjectileWeapon: 0
+  bulletPrefab: {fileID: 5170081587130710907, guid: 671512e7d2a187c4ba2d557c1162da8b, type: 3}
+  boxSize: 0.3
+  range: 5
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 4225
   splitTimes: 0
   splitRecoil: 0
   ignite: 1

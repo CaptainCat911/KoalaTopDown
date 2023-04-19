@@ -33,6 +33,26 @@ public class IdleBehaviour : StateMachineBehaviour
             return;
         }
 
+        // Если нет цели
+        if (!boss.target)
+        {
+            // если поведение - охранять стартовую позицию
+            if (boss.stayOnGround)
+            {
+                float distance = Vector2.Distance(boss.transform.position, boss.startPosition);         // считаем дистанцию до стартовой позиции
+                if (distance > 0.1f)
+                {
+                    animator.SetTrigger("Run");            // выходим в идле
+                }
+                else
+                {
+/*                    boss.agent.ResetPath();
+                    if (boss.friendTarget)
+                        boss.LookAt(boss.friendTarget);*/
+                }
+            }
+        }
+
         if (boss.target)                                    // если есть цель
         {
             animator.SetTrigger("FindTarget");              // триггер

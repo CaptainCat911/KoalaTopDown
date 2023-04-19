@@ -13,18 +13,22 @@ MonoBehaviour:
   m_Name: ShotGun
   m_EditorClassIdentifier: 
   weaponName: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
-  projectileWeapon: 0
-  splitProjectileWeapon: 1
-  bulletPrefab: {fileID: 5170081587130710907, guid: 2394faa765e8e5446869b0e890c54073, type: 3}
-  splitTimes: 6
-  splitRecoil: 1
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0
+  weaponType: 3
   damage: 15
   fireRate: 2
   bulletSpeed: 15
   pushForce: 3
   forceBackFire: 0
   recoil: 2
+  bulletPrefab: {fileID: 5170081587130710907, guid: 2394faa765e8e5446869b0e890c54073, type: 3}
+  boxSize: 0
+  range: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  splitTimes: 6
+  splitRecoil: 1
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0

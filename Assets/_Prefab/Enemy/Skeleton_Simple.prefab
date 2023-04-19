@@ -472,7 +472,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.3
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -501,6 +501,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 50
   noAgro: 0
+  bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -543,6 +544,7 @@ MonoBehaviour:
   deathCameraShake: 2
   flipLeft: 0
   flipRight: 0
+  pivotSpeedKoef: 1
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128

@@ -15,10 +15,11 @@ public class Fighter : MonoBehaviour
     public bool noAgro;
     GameObject floatinText;                 // текст чата
     bool isPlayerOrNPC;                     // игрок или нпс (для отображения урона)
+    public bool bossHP;
 
     // Хп бар
     public bool hpBarOn;                            // хп бар включен                                    
-    [HideInInspector] public GameObject hpBarGO;    // хп бар объект
+    public GameObject hpBarGO;                      // хп бар объект
     HpBar hpBar;                                    // хп бар скрипт
     
 
@@ -29,7 +30,7 @@ public class Fighter : MonoBehaviour
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         floatinText = GameAssets.instance.floatingText;
 
-        if (hpBarOn)
+        if (hpBarOn && !bossHP)
         {
             hpBarGO = transform.GetChild(0).gameObject;         // находим хп бар (ставлю его в начало иерархии)
         }
@@ -44,9 +45,18 @@ public class Fighter : MonoBehaviour
     {
         if (hpBarOn)
         {
-            hpBar = GetComponentInChildren<HpBar>();            // находим скрипт хп бара
-            hpBar.SetMaxHealth(maxHealth);                      // устанавливаем макс хп            
-            hpBarGO.SetActive(false);                           // прячем хп бар, пока не получим урон
+            if (bossHP)
+            {
+                hpBar = hpBarGO.GetComponent<HpBar>();
+                hpBar.SetMaxHealth(maxHealth);                  // устанавливаем макс хп 
+                hpBarGO.SetActive(false);                       // прячем хп бар, пока не получим урон
+            }
+            else
+            {
+                hpBar = GetComponentInChildren<HpBar>();        // находим скрипт хп бара
+                hpBar.SetMaxHealth(maxHealth);                  // устанавливаем макс хп            
+                hpBarGO.SetActive(false);                       // прячем хп бар, пока не получим урон
+            }
         }
     }
 
