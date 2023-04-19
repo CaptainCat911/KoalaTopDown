@@ -125,7 +125,7 @@ public class BotAI : Fighter
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
 
-        if (!isAlive || isNeutral)
+        if (!isAlive)
             return;
 
         // Поворот хитбокса
@@ -200,6 +200,7 @@ public class BotAI : Fighter
         }
     }
 
+    // Сделать нейтральным или нет
     public void SetNeutral(bool status)
     {
         if (status)
@@ -214,8 +215,23 @@ public class BotAI : Fighter
         }
     }
 
+    // Назначить точку назначения
+    public void SetPointBot(Transform transform)
+    {
+        agent.SetDestination(transform.position);
+    }
+
+    // Переместить (если живой)
+    public void WarpBot(Transform transform)
+    {
+        if (isAlive)
+        {
+            agent.Warp(transform.position);
+        }
+    }
+
     // Дружеская цель
-    public void FriendTarget(Transform friendTarget)
+    public void LookAt(Transform friendTarget)
     {
         Vector3 targetDirection = friendTarget.transform.position - pivot.transform.position;           // угол между целью и pivot оружия          
         float targetAnglePivot = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;     // находим угол в градусах             

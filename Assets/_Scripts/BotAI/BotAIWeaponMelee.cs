@@ -36,7 +36,8 @@ public class BotAIWeaponMelee : MonoBehaviour
     public float explousionRadius;                  // радиус взрыва
 
     [Header("Параметры призыва")]
-    public EnemySpawner[] enemySpawners;
+    public EnemySpawner[] enemySpawners;            // массив префабов со спавнерами
+    public int spawnTimes;                          // сколько призывать за раз
     //public GameObject[] prefabEnemies;            // массив префабов со скелетами
     //NavMeshAgent agent;                           // их агент
 
@@ -51,9 +52,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     public int damageBurn;
     public float cooldownBurn;
     public float durationBurn;
-
-    public ParticleSystem laserEffectParticles;     // префаб системы частиц для лазера
-    
+    public ParticleSystem laserEffectParticles;     // префаб системы частиц для лазера    
 
     [Header("Параметры гравитационной атаки")]
     public int gravityDamage;                       // урон 
@@ -62,13 +61,13 @@ public class BotAIWeaponMelee : MonoBehaviour
     public float gravityDistanceToDamage;           // дистанция, с которой будет наноситься урон
     public float gravityCooldown;                   // перезардяка гравитации
     float gravityLastAttack;                        // время последнего удара
-    public ParticleSystem gravityEffectParticles;   // префаб системы частиц для лазера
     [HideInInspector] public bool gravityStart;     // начало гравитации
+    public ParticleSystem gravityEffectParticles;   // префаб системы частиц для лазера
+
+    [Header("Параметры телепорта")]
+    public Transform[] teleports;
 
     //public bool demon;
-
-
-
 
 
     void Start()
@@ -235,9 +234,8 @@ public class BotAIWeaponMelee : MonoBehaviour
     {
         foreach(EnemySpawner enemySpawner in enemySpawners)
         {
-            enemySpawner.enemysHowMuch++;
+            enemySpawner.enemysHowMuch += spawnTimes;
         }
-
 
 
 /*        int ndx = Random.Range(0, prefabEnemies.Length);            // выбираем рандом из массива врагов
@@ -319,6 +317,26 @@ public class BotAIWeaponMelee : MonoBehaviour
         GameObject effect = Instantiate(GameAssets.instance.explousionGravity,
             hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
         Destroy(effect, 0.5f);                                                             // уничтожаем эффект через .. сек
+    }
+
+    public void Teleport()
+    {
+        Transform point = teleports[Random.Range(0, teleports.Length)];
+        float distance = Vector2.Distance(point.position, botAI.transform.position);
+        if (distance > 5)
+        {
+            GameObject effect = Instantiate(GameAssets.instance.explousionGravity, transform.position, Quaternion.identity);    // создаем эффект
+            Destroy(effect, 0.5f);                          // уничтожаем эффект через .. сек
+            
+            botAI.agent.Warp(point.position);               // тут телепортируем босса
+
+            GameObject effectExit = Instantiate(GameAssets.instance.explousionRedEffect, point.position, Quaternion.identity);    // создаем эффект
+            Destroy(effectExit, 0.5f);                      // уничтожаем эффект через .. сек     
+        }
+        else
+        {
+            Teleport();
+        }
     }
 
     public void TimeReverceAttack()

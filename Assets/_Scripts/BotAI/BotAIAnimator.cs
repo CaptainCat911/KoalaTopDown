@@ -43,6 +43,8 @@ public class BotAIAnimator : MonoBehaviour
             botAIMeleeWeaponHolder.currentWeapon.TimeReverceAttack();   // возвращает время!
         if (type == 8)
             botAIMeleeWeaponHolder.currentWeapon.RangeAttack();         // ренж атака (слабая)
+        if (type == 9)
+            botAIMeleeWeaponHolder.currentWeapon.Teleport();            // телепорт
     }
 
     public void LaserWeaponAttack(int number)

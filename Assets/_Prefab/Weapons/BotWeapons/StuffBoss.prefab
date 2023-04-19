@@ -28,11 +28,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3786651681873589343}
   - {fileID: 6303310758115824665}
   - {fileID: 751702009760059098}
   - {fileID: 7627628651251278353}
   m_Father: {fileID: 1479659406406739827}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3786651681049121963
 GameObject:
@@ -144,12 +145,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681873589340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.008, y: 0.348, z: 0}
-  m_LocalScale: {x: 0.3113438, y: 0.1830475, z: 0.20250002}
+  m_LocalPosition: {x: -0.02435992, y: 0.1471, z: 0}
+  m_LocalScale: {x: 0.3113438, y: 0.9856849, z: 0.20250002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1479659406406739827}
-  m_RootOrder: 1
+  m_Father: {fileID: 2958771701304328881}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3786651681873589337
 SpriteRenderer:
@@ -333,7 +334,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3786651681049121962}
-  - {fileID: 3786651681873589343}
   - {fileID: 1630045362412420869}
   - {fileID: 3635469760552922988}
   - {fileID: 2958771701304328881}
@@ -360,7 +360,7 @@ MonoBehaviour:
   cooldown: 1.5
   damage: 50
   pushForce: 30
-  radius: 1
+  radius: 1.5
   trail: {fileID: 3786651681873589342}
   damageRange: 20
   pushForceRange: 10
@@ -376,6 +376,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spawnTimes: 1
   splitTimes: 8
   splitRecoil: 18
   laserDamage: 1
@@ -390,8 +391,9 @@ MonoBehaviour:
   gravityRadius: 12
   gravityDistanceToDamage: 2
   gravityCooldown: 0.2
-  gravityEffectParticles: {fileID: 4897976513326334911}
   gravityStart: 0
+  gravityEffectParticles: {fileID: 4897976513326334911}
+  teleports: []
 --- !u!95 &2147084357117586853
 Animator:
   serializedVersion: 4
@@ -441,7 +443,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479659406406739827}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &7051519440332540350
 GameObject:
@@ -473,7 +475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479659406406739827}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6093109454168859730
 MonoBehaviour:
@@ -563,7 +565,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1671016465447502377, guid: 7e9f4cfe40fe5924896d78b918bdcbbd, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1671016465447502377, guid: 7e9f4cfe40fe5924896d78b918bdcbbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -666,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -732,7 +734,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1671016465447502377, guid: e45580022d56bc446814721d8168cc83, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1671016465447502377, guid: e45580022d56bc446814721d8168cc83, type: 3}
       propertyPath: m_LocalPosition.x

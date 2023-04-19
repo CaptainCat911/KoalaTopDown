@@ -44,10 +44,9 @@ public class IdleBehaviourNPC : StateMachineBehaviour
                 {
                     boss.agent.ResetPath();
                     if (boss.friendTarget)
-                        boss.FriendTarget(boss.friendTarget);
+                        boss.LookAt(boss.friendTarget);
                 }
             }
-
         }
 
         // Если есть цель
