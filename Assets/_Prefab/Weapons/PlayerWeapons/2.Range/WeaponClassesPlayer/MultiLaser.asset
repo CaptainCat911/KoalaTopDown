@@ -13,20 +13,19 @@ MonoBehaviour:
   m_Name: MultiLaser
   m_EditorClassIdentifier: 
   weaponName: "\u041C\u0443\u043B\u044C\u0442\u0438\u043B\u0430\u0437\u0435\u0440"
-  weaponType: 1
-  bulletPrefab: {fileID: 0}
-  boxSize: 0
-  range: 100
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 4225
+  weaponType: 4
   damage: 5
   fireRate: 50
   bulletSpeed: 0
   pushForce: 0.2
   forceBackFire: 0
   recoil: 0
-  splitProjectileWeapon: 1
+  bulletPrefab: {fileID: 0}
+  boxSize: 0
+  range: 100
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 4225
   splitTimes: 5
   splitRecoil: 4
   ignite: 1

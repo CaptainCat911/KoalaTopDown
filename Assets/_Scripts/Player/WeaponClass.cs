@@ -8,6 +8,7 @@ public class WeaponClass : ScriptableObject
         projectileWeapon,
         rayCastWeapon,
         boxCastWeapon,
+        splitProjectileWeapon,
         splitRaycastWeapon,
         allRaycastWeapon,
         allBoxcastWeapon,
@@ -16,14 +17,6 @@ public class WeaponClass : ScriptableObject
     public string weaponName;
 
     public WeaponType weaponType;    
-
-    [Header("Снарядовое оружие")]    
-    public GameObject bulletPrefab;  
-
-    [Header("Если рейкаст оружие")]
-    public float boxSize;
-    public float range;
-    public LayerMask layerRayCast;
     
     [Space(2)]
 
@@ -36,8 +29,16 @@ public class WeaponClass : ScriptableObject
     public float recoil;
     //public GameObject flashEffect;
 
+    [Header("Снарядовое оружие")]
+    public GameObject bulletPrefab;
+
+    [Header("Если рейкаст оружие")]
+    public float boxSize;
+    public float range;
+    public LayerMask layerRayCast;
+
     [Header("Если оружие Сплит")]
-    public bool splitProjectileWeapon;
+    //public bool splitProjectileWeapon;
     public int splitTimes;
     public float splitRecoil;
 

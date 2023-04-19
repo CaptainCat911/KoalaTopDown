@@ -394,6 +394,9 @@ MonoBehaviour:
   gravityStart: 0
   gravityEffectParticles: {fileID: 4897976513326334911}
   teleports: []
+  teleportForceRadius: 4
+  teleportInForce: 30
+  teleportOutForce: 30
 --- !u!95 &2147084357117586853
 Animator:
   serializedVersion: 4

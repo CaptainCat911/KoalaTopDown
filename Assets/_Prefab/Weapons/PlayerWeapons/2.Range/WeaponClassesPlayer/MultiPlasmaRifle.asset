@@ -14,18 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041C\u0443\u043B\u044C\u0442\u0438 \u043F\u043B\u0430\u0437\u043C\u0435\u043D\u043D\u0430\u044F
     \u0432\u0438\u043D\u0442\u043E\u0432\u043A\u0430"
-  projectileWeapon: 0
-  splitProjectileWeapon: 1
-  bulletPrefab: {fileID: 5170081587130710907, guid: fec3ecea4b7d8514a8449b715d50d1c3, type: 3}
-  splitTimes: 6
-  splitRecoil: 4
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0
+  weaponType: 3
   damage: 25
   fireRate: 7
   bulletSpeed: 15
   pushForce: 1
   forceBackFire: 0
   recoil: 0
+  bulletPrefab: {fileID: 5170081587130710907, guid: fec3ecea4b7d8514a8449b715d50d1c3, type: 3}
+  boxSize: 0
+  range: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  splitTimes: 6
+  splitRecoil: 4
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0
