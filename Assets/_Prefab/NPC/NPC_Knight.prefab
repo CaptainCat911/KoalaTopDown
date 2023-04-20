@@ -238,7 +238,8 @@ MonoBehaviour:
   isAlive: 1
   currentHealth: 0
   maxHealth: 5000
-  noAgro: 0
+  noAgro: 1
+  bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -248,7 +249,7 @@ MonoBehaviour:
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
   newNpcSystem: 0
-  isNeutral: 0
+  isNeutral: 1
   isFriendly: 1
   isEnemy: 0
   target: {fileID: 0}
@@ -264,7 +265,7 @@ MonoBehaviour:
   distanceToChangeTarget: 3
   targetVisible: 0
   closeToTarget: 0
-  distanceToAttackMelee: 1.7
+  distanceToAttackMelee: 1.75
   distanceToAttackRange: 0
   distanceToAttack: 0
   distanceToTarget: 0
