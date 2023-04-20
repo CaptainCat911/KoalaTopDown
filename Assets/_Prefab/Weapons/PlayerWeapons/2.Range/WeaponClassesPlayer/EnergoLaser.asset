@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u042D\u043D\u0435\u0440\u0433\u043E \u041B\u0430\u0437\u0435\u0440"
   weaponType: 6
-  damage: 6
+  damage: 8
   fireRate: 50
   bulletSpeed: 0
   pushForce: 0.5
   forceBackFire: 0
   recoil: 0
   bulletPrefab: {fileID: 0}
-  boxSize: 0.8
-  range: 12
+  boxSize: 0.25
+  range: 100
   layerRayCast:
     serializedVersion: 2
     m_Bits: 4225

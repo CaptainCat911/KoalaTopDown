@@ -338,6 +338,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 70
   noAgro: 0
+  bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -367,7 +368,7 @@ MonoBehaviour:
   distanceToAttackRange: 0
   distanceToAttack: 1.25
   distanceToTarget: 0
-  itemToSpawn: {fileID: 7098889320345549226, guid: 020d8dbcc759a3f42ae14761f1622cd3, type: 3}
+  itemToSpawn: {fileID: 1899818089229980536, guid: f064c523bf4badc4b95152b709ee87dc, type: 3}
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0

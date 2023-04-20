@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Chest : ItemPickUp
 {
+    [Header("Предмет для спауна")]
     public GameObject itemToSpawn;
     BoxCollider2D boxCollider2d;
     Animator animator;

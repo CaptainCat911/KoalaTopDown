@@ -4,6 +4,33 @@ using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
+    public bool withAnimation;
+    public bool delayTake;
+    public GameObject trigger;
+    Animator itemAnimator;   
+    
+
+    private void Awake()
+    {
+        itemAnimator = GetComponent<Animator>();
+
+        if (delayTake)
+            trigger.SetActive(false);
+    }
+
+    public virtual void Start()
+    {
+        if (withAnimation)
+            itemAnimator.SetTrigger("ItemDrop");
+    }
+
+    public void EnableTrigger()
+    {
+        trigger.SetActive(true);
+    }
+
+
+
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
 

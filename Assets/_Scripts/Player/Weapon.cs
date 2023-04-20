@@ -453,24 +453,30 @@ public class Weapon : MonoBehaviour
 
         // Рейкаст2Д        
         RaycastHit2D[] hits = Physics2D.BoxCastAll(firePoint.position, new Vector2(weaponClass.boxSize, weaponClass.boxSize), 0f, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
-        if (hits != null)
+        if (hits != null)                       // если во что-то попали
         {
             foreach (RaycastHit2D hit in hits)
             {
+                bool stop = false;
+                if (hit.collider.tag == "Wall")
+                {
+                    if (tracerEffect)
+                    {
+                        TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                        tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                        //tracer.transform.SetParent(transform, true); 
+                        tracer.transform.position = hit.point; ;            // конечная позиция трасера рейкаста
+                    }
+                    stop = true;
+                }
+                if (stop)
+                    break;
+
                 //Debug.Log("Hit!");
                 if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
                 {
                     Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
                     fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
-                }
-
-                // Настройки для трасеров
-                if (tracerEffect)
-                {
-                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
-                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
-                    //tracer.transform.SetParent(transform, true); 
-                    tracer.transform.position = tracer.transform.position + firePoint.right * 10;                      // конечная позиция трасера рейкаста
                 }
 
                 if (weaponClass.ignite)
@@ -481,10 +487,34 @@ public class Weapon : MonoBehaviour
                         ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
                     }
                 }
+
+                if (tracerEffect)
+                {
+                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                    //tracer.transform.SetParent(transform, true); 
+                    tracer.transform.position = tracer.transform.position + firePoint.right * 10;                      // конечная позиция трасера рейкаста
+                }
             }
 
             if (debug)
+            {
+                //Debug.Log("Ok!");
                 Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
+            }
         }
+
+        else                // если ни во что не попали
+        {
+            // Настройки для трасеров
+            if (tracerEffect)
+            {
+                TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                //tracer.transform.SetParent(transform, true); 
+                tracer.transform.position = tracer.transform.position + firePoint.right * 10;                      // конечная позиция трасера рейкаста
+            }
+        }
+
     }
 }
