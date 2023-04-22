@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: DEST_G_GR
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: -1865921278, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules:
+  - m_Id: 1
+    m_Sprites:
+    - {fileID: -1865921278, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 1329366137, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: -433019384, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 237818158, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 1924660301, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 1113940787, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: -742175572, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 1924743935, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: -2016990733, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 2133576328, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: -1063613058, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 2147049930, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 895670476, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 75551745, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 1597751354, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: -1934206511, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: -542587485, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 1489800562, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: 1104579282, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    - {fileID: -21373017, guid: 9004f44997d2f45468e49135f8466010, type: 3}
+    m_GameObject: {fileID: 0}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.84
+    m_Output: 1
+    m_ColliderType: 1
+    m_RandomTransform: 1
+    m_Neighbors: 
+    m_NeighborPositions:
+    - {x: -1, y: 1, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 1, y: 1, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: -1, z: 0}
+    - {x: 0, y: -1, z: 0}
+    - {x: 1, y: -1, z: 0}
+    m_RuleTransform: 0
