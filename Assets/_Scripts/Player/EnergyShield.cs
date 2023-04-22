@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class EnergyShield : MonoBehaviour
 {
-    public bool shieldOn;
-    public int shieldHp;
-    public int shieldHpMax;
+    public int shieldHp;                // текущее хп щита
+    public int shieldHpMax;             // максимальное хп щита
+    [HideInInspector] public bool shieldOn;     // состояние щита
     SpriteRenderer spriteRenderer;
 
-    GameObject floatinText;
+    public LayerMask layerExplousion;
+    public float cooldown = 1f;         // перезардяка атаки
+    float lastAttack;                   // время последнего удара (для перезарядки удара)
+
+    //GameObject floatinText;
 
     private void Awake()
     {
-        floatinText = GameAssets.instance.floatingText;
+        //floatinText = GameAssets.instance.floatingText;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -23,6 +27,14 @@ public class EnergyShield : MonoBehaviour
         {
             ShieldOnOff(true);
         }       
+        if (shieldOn)
+        {
+            if (Time.time - lastAttack > cooldown)                  // если готовы атаковать и кд готово
+            {
+                lastAttack = Time.time;                             // присваиваем время атаки
+                Explosion();
+            }
+        }
     }
 
     public void TakeDamage(int dmg)
@@ -59,6 +71,25 @@ public class EnergyShield : MonoBehaviour
         {
             spriteRenderer.enabled = false;
             shieldOn = false;
+        }
+    }
+
+    public void Explosion()
+    {
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 5, layerExplousion);     // создаем круг в позиции объекта с радиусом
+        foreach (Collider2D coll in collidersHits)
+        {
+            if (coll == null)
+            {
+                continue;
+            }
+
+            if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
+            {
+                Vector2 vec2 = (coll.transform.position - transform.position).normalized;
+                fighter.TakeDamage(50, vec2, 30);
+            }
+            collidersHits = null;
         }
     }
 }

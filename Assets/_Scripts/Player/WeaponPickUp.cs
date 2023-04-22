@@ -7,7 +7,7 @@ public class WeaponPickUp : ItemPickUp
     public GameObject weaponToPickUp;
     Player player;
 
-    private void Start()
+    public override void Start()
     {
         player = GameManager.instance.player;
     }

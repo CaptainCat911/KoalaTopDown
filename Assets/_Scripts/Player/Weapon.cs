@@ -25,7 +25,11 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
-                                                    //public int ammo;                                       // патроны
+    //public int ammo;                                       // патроны
+
+    public bool withDelay;
+    public float delayFire;
+    float currentDelay;
 
     /*    GameObject bulletPrefab;                // префаб снаряда
         float bulletSpeed;                      // скорость снаряда
@@ -97,10 +101,30 @@ public class Weapon : MonoBehaviour
     {
         weaponHolder = GetComponentInParent<WeaponHolder>();                    // находим скрипт weaponHolder
         //ammo = GameManager.instance.ammoPack.ammoTompson;
+        //currentDelay = delayFire + Time.time;
+    }
+
+    private void OnEnable()
+    {
+        currentDelay = delayFire;
     }
 
     private void Update()
     {
+        // Задержка перед выстрелом
+        if (weaponHolder.fireStart)             // если готовы стрелять
+        { 
+            if (currentDelay > 0f)
+            {
+                currentDelay -= Time.time;
+            }
+        }
+        else
+        {
+            currentDelay = delayFire;
+        }
+        Debug.Log(currentDelay);
+
         // Флип оружия
         if (GameManager.instance.player.leftFlip && rightFlip)
         {
@@ -163,6 +187,11 @@ public class Weapon : MonoBehaviour
             return;                         // выходим
         }
 
+        // Задержка перед стрельбой
+        if (currentDelay > 0)
+            return;                
+        
+
         if (Time.time >= nextTimeToFire && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)     // если начинаем стрелять и кд готово
         {
             ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
@@ -175,15 +204,13 @@ public class Weapon : MonoBehaviour
             if (((int)weaponClass.weaponType) == 2)
                 FireBoxCast();                          // выстрел бокскастом
             if (((int)weaponClass.weaponType) == 3)
-                FireSplit(false);                        // выстрел "дробью"
+                FireSplit(false);                       // выстрел "дробью"
             if (((int)weaponClass.weaponType) == 4)
-                FireSplit(true);                       // выстрел "дробью" рейкастов
+                FireSplit(true);                        // выстрел "дробью" рейкастов
             if (((int)weaponClass.weaponType) == 5)
                 FireRayCastAll();                       // выстрел рейкастом по всем (просторел)
             if (((int)weaponClass.weaponType) == 6)
                 FireBoxCastAll();                       // выстрел бокскастом по всем (просторел)
-
-
 
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры
 
@@ -194,9 +221,8 @@ public class Weapon : MonoBehaviour
             if (flameParticles)
             {
                 flameParticles.Play();
-                //flameParticles.transform.position = firePoint.transform.position;                
+                //flameParticles.transform.position = firePoint.transform.position;              
             }
-
 
             // Аудио
             if (singleShot)
