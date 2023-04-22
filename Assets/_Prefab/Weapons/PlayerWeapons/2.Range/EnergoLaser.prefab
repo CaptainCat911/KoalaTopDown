@@ -142,6 +142,8 @@ MonoBehaviour:
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
+  withDelay: 0
+  delayFire: 1
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 0
   tracerEffect: {fileID: 2862349512899274176, guid: 41fe1cef38389584b8eb27eb1126d0e7, type: 3}
