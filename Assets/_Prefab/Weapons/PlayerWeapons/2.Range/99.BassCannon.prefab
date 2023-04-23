@@ -287,9 +287,12 @@ MonoBehaviour:
   firePoint: {fileID: 6020096223212024337}
   pivot: {fileID: 6020096225174558977}
   weaponIndexForAmmo: 0
+  ammo: 0
   weaponName: 
   fireRate: 0
   nextTimeToFire: 0
+  withDelay: 0
+  delayFire: 0
   flashEffectAnimator: {fileID: 6982191634660688761}
   singleFlash: 1
   tracerEffect: {fileID: 0}
@@ -313,7 +316,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: aa540b028c72b354983aab342ff0c178, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
