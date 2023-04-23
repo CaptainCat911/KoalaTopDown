@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u042D\u043D\u0435\u0440\u0433\u043E \u041B\u0430\u0437\u0435\u0440"
   weaponType: 6
-  damage: 8
+  damage: 10
   fireRate: 50
   bulletSpeed: 0
   pushForce: 0.5
-  forceBackFire: 0
+  forceBackFire: 0.2
   recoil: 0
+  delayFire: 1
   bulletPrefab: {fileID: 0}
   boxSize: 0.25
   range: 100

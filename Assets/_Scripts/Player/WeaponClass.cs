@@ -27,6 +27,7 @@ public class WeaponClass : ScriptableObject
     public float pushForce;
     public float forceBackFire;
     public float recoil;
+    public float delayFire;
     //public GameObject flashEffect;
 
     [Header("Снарядовое оружие")]

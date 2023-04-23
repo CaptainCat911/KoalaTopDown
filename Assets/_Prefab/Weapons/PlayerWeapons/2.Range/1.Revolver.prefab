@@ -59,14 +59,22 @@ MonoBehaviour:
   nextTimeToFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 0
+  lineRenderer: {fileID: 0}
   tracerEffect: {fileID: 0}
-  flameParticles: {fileID: 0}
+  effectParticles: {fileID: 0}
+  startParticles: {fileID: 0}
   cameraAmplitudeShake: 0.3
   cameraTimedeShake: 0.1
   singleShot: 1
   multiShot: 0
   audioSource: {fileID: 1106157235044219289}
   audioSourceTail: {fileID: 0}
+  x1: 0
+  y1: 0
+  x2: 0
+  y2: 0
+  x3: 0
+  y3: 0
   debug: 0
 --- !u!82 &1106157235044219289
 AudioSource:
@@ -78,7 +86,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7ceaaeea45cbbe148a81e176c72afc32, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

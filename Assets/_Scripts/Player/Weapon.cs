@@ -25,10 +25,7 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
-    //public int ammo;                                       // патроны
-
-    public bool withDelay;
-    public float delayFire;
+    //public int ammo;                                       // патроны    
     float currentDelay;
 
     /*    GameObject bulletPrefab;                // префаб снаряда
@@ -48,10 +45,11 @@ public class Weapon : MonoBehaviour
     public Animator flashEffectAnimator;    // флеш при стрельбе
     public bool singleFlash;                // одиночный флеш
     bool flashActive;                       // флеш активен (для мультифлеша)
-    //public LineRenderer lineRenderer;       // линия для лазера (префаб)
-    //LineRenderer lineRaycast;               // линия для лазера (создаём)
+    public LineRenderer lineRenderer;       // линия для лазера (префаб)
+    LineRenderer lineRaycast;               // линия для лазера (создаём)
     public TrailRenderer tracerEffect;      // трасер
-    public ParticleSystem flameParticles;   // префаб системы частиц пламени
+    public ParticleSystem effectParticles;   // префаб системы частиц пламени
+    public ParticleSystem startParticles;   // префаб системы частиц пламени
 
     [Header("Тряска камеры при выстреле")]
     public float cameraAmplitudeShake = 1f; // амплитуда
@@ -63,6 +61,13 @@ public class Weapon : MonoBehaviour
     bool soundStarted;                      // звук начался
     public AudioSource audioSource;         // основной звук
     public AudioSource audioSourceTail;     // "хвост"
+
+    public float x1;
+    public float y1;
+    public float x2;
+    public float y2;
+    public float x3;
+    public float y3;
 
     public bool debug;
 
@@ -106,24 +111,12 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
-        currentDelay = delayFire;
+        currentDelay = weaponClass.delayFire;
     }
 
     private void Update()
     {
-        // Задержка перед выстрелом
-        if (weaponHolder.fireStart)             // если готовы стрелять
-        { 
-            if (currentDelay > 0f)
-            {
-                currentDelay -= Time.time;
-            }
-        }
-        else
-        {
-            currentDelay = delayFire;
-        }
-        Debug.Log(currentDelay);
+        //Debug.Log(currentDelay);
 
         // Флип оружия
         if (GameManager.instance.player.leftFlip && rightFlip)
@@ -154,8 +147,9 @@ public class Weapon : MonoBehaviour
         {
             flashEffectAnimator.SetBool("Fire", false);
             flashActive = false;
-            //if (lineRaycast)
-            //lineRaycast.enabled = false;
+
+            if (lineRaycast)
+                lineRaycast.enabled = false;
         }
 
         // Звук
@@ -180,10 +174,32 @@ public class Weapon : MonoBehaviour
     private void FixedUpdate()
     {
         // Стрельба
+        // Задержка перед выстрелом
+        if (weaponHolder.fireStart)             // если готовы стрелять
+        {
+            currentDelay -= 0.02f;
+
+            if (startParticles)
+            {
+                if (currentDelay > 0)
+                {
+                    startParticles.Play();
+                }
+                else
+                {
+                    startParticles.Stop();
+                }
+            }
+        }
+
         if (!weaponHolder.fireStart)        // если не готовы стрелять
         {
-            if (flameParticles)
-                flameParticles.Stop();
+            currentDelay = weaponClass.delayFire;
+
+            if (startParticles)
+                startParticles.Stop();
+            if (effectParticles)
+                effectParticles.Stop();
             return;                         // выходим
         }
 
@@ -218,9 +234,9 @@ public class Weapon : MonoBehaviour
             if (flashEffectAnimator != null)        // если флэшэффект есть
                 Flash();
 
-            if (flameParticles)
+            if (effectParticles)
             {
-                flameParticles.Play();
+                effectParticles.Play();
                 //flameParticles.transform.position = firePoint.transform.position;              
             }
 
@@ -360,6 +376,8 @@ public class Weapon : MonoBehaviour
             if (debug)
                 Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
         }
+
+        player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия
     }
 
 
@@ -399,13 +417,16 @@ public class Weapon : MonoBehaviour
             }
 
 
-            /*            if (!lineRaycast)
-                        {
-                            lineRaycast = Instantiate(lineRenderer, firePoint.position, Quaternion.identity);
-                        }
-                        lineRaycast.enabled = true;
-                        lineRaycast.SetPosition(0, firePoint.position);
-                        lineRaycast.SetPosition(1, hit.point);*/
+/*            if (!lineRaycast)
+            {
+                lineRaycast = Instantiate(lineRenderer, firePoint.position, Quaternion.identity);
+            }
+            lineRaycast.enabled = true;
+            lineRaycast.SetPosition(0, firePoint.position);
+*//*            lineRaycast.SetPosition(1, (hit.point - new Vector2(firePoint.position.x, firePoint.position.y))/2);            
+            lineRaycast.SetPosition(2, (hit.point + new Vector2(firePoint.position.x, firePoint.position.y)) / 2);
+            lineRaycast.SetPosition(3, hit.point - (hit.point - new Vector2(firePoint.position.x, firePoint.position.y)) / 1.5f);*//*
+            lineRaycast.SetPosition(1, hit.point);*/
 
 
 
@@ -491,7 +512,7 @@ public class Weapon : MonoBehaviour
                         TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
                         tracer.AddPosition(firePoint.position);                                                             // начальная позиция
                         //tracer.transform.SetParent(transform, true); 
-                        tracer.transform.position = hit.point; ;            // конечная позиция трасера рейкаста
+                        tracer.transform.position = hit.point;            // конечная позиция трасера рейкаста
                     }
                     stop = true;
                 }
@@ -514,13 +535,13 @@ public class Weapon : MonoBehaviour
                     }
                 }
 
-                if (tracerEffect)
+/*                if (tracerEffect)
                 {
                     TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
                     tracer.AddPosition(firePoint.position);                                                             // начальная позиция
                     //tracer.transform.SetParent(transform, true); 
-                    tracer.transform.position = tracer.transform.position + firePoint.right * 10;                      // конечная позиция трасера рейкаста
-                }
+                    tracer.transform.position = tracer.transform.position + firePoint.right * 20;                      // конечная позиция трасера рейкаста
+                }*/
             }
 
             if (debug)
@@ -538,9 +559,10 @@ public class Weapon : MonoBehaviour
                 TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
                 tracer.AddPosition(firePoint.position);                                                             // начальная позиция
                 //tracer.transform.SetParent(transform, true); 
-                tracer.transform.position = tracer.transform.position + firePoint.right * 10;                      // конечная позиция трасера рейкаста
+                tracer.transform.position = tracer.transform.position + firePoint.right * 20;                      // конечная позиция трасера рейкаста
             }
         }
 
+        player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия
     }
 }

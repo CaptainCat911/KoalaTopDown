@@ -12,16 +12,25 @@ public class Player : Fighter
     [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
     [HideInInspector] public BombWeaponHolder bombWeaponHolder;
     [HideInInspector] public HitBoxPivot hitBoxPivot;
+    [HideInInspector] public bool playerWeaponReady;    // игрок готов (стрелять (это для блинка))
+    Ignitable ignitable;
 
-    // Передвижение
+    [Header("Параметры перемещения")]    
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)
     Vector2 movementVector;                             // вектор перещение (добавляем скорость)
-
-    [Header("Параметры перемещения")]
     public float moveSpeed = 5f;                        // скорость передвижения
     public float dashForce;                             // сила рывка
     public float dashRate;                              // как часто можно делать рывок 
     float nextTimeToDash;                               // когда в следующий раз готов рывок
+
+    public bool blink;
+    public float blinkForce;
+    public float blinkRate;
+    public float blinkOutTime;
+    public TrailRenderer blinkTrail;
+
+    [Header("Параметры энергощита")]
+    public EnergyShield shield;
 
     // Для флипа игрока
     [HideInInspector] public bool needFlip;             // нужен флип (для игрока и оружия)    
@@ -32,18 +41,18 @@ public class Player : Fighter
     float timerForColor;        // сколько времени он будет красным
     bool red;                   // красный (-_-)
 
-    public EnergyShield shield;
 
-    
+
+
 
 
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-
     public override void Start()
     {
         base.Start();
+        playerWeaponReady = true;
         animator = GetComponent<Animator>();
         //agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -51,6 +60,7 @@ public class Player : Fighter
         weaponHolderMelee = GetComponentInChildren<WeaponHolderMelee>();
         bombWeaponHolder = GetComponentInChildren<BombWeaponHolder>();
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
+        ignitable = GetComponent<Ignitable>();
 
         //agent.updateRotation = false;               // для навМеш2д
         //agent.updateUpAxis = false;                 //        
@@ -74,9 +84,18 @@ public class Player : Fighter
         // Рывок
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextTimeToDash)
         {
-            nextTimeToDash = Time.time + 1f / dashRate;                     // вычисляем кд
-            Dash();
+            if (blink)
+            {
+                nextTimeToDash = Time.time + 1f / blinkRate;                    // вычисляем кд
+                BlinkIn();
+            }
+            else
+            {
+                nextTimeToDash = Time.time + 1f / dashRate;                     // вычисляем кд
+                Dash();
+            }
         }
+
 
         // Анимации 
         animator.SetFloat("Speed", movementVector.magnitude);
@@ -126,6 +145,48 @@ public class Player : Fighter
         agent.Move(movementVector * Time.deltaTime);                                                        // перемещаем с учётом дельтаТайм
         Debug.Log(movementVector);*/
     }
+    void Dash()
+    {
+        rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);              // даём импульс
+    }
+
+    void BlinkIn()
+    {
+        rb2D.AddForce(moveDirection * blinkForce, ForceMode2D.Impulse);              // даём импульс
+
+        GameObject effect = Instantiate(GameAssets.instance.playerBlinkIn,
+            transform.position, Quaternion.identity);                               // создаем эффект убийства
+        Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
+        blinkTrail.emitting = true;
+
+        gameObject.layer = LayerMask.NameToLayer("BlinkSpace");                     // слой самого бота
+        spriteRenderer.enabled = false;
+        spriteRenderer.color = new Color(1, 0, 0, 0.5f);
+        //playerWeaponReady = false;
+        //weaponHolder.HideWeapon(true);
+        weaponHolder.gameObject.SetActive(false);
+        weaponHolderMelee.gameObject.SetActive(false);
+        ignitable.flames.gameObject.SetActive(false);
+
+        Invoke("BlinkOut", blinkOutTime);
+    }
+    void BlinkOut()
+    {        
+        gameObject.layer = LayerMask.NameToLayer("Player");                     // слой самого бота
+
+        spriteRenderer.enabled = true;
+        spriteRenderer.color = Color.white;
+        GameObject effect = Instantiate(GameAssets.instance.playerBlinkOut,
+            transform.position, Quaternion.identity);                               // создаем эффект убийства
+        Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
+        blinkTrail.emitting = false;
+
+        //playerWeaponReady = true;
+        //weaponHolder.HideWeapon(false);
+        weaponHolder.gameObject.SetActive(true);
+        weaponHolderMelee.gameObject.SetActive(true);
+        ignitable.flames.gameObject.SetActive(true);
+    }
 
     public void Move(Vector3 targetPosition, bool moving)
     {
@@ -152,10 +213,6 @@ public class Player : Fighter
             animator.SetFloat("Speed", 0);
     }
 
-    void Dash()
-    {
-        rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);                // даём импульс
-    }
 
     // Флип игрока
     void Flip()

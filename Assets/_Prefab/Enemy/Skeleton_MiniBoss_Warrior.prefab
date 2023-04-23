@@ -257,7 +257,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -305,6 +305,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 500
   noAgro: 0
+  bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -347,6 +348,7 @@ MonoBehaviour:
   deathCameraShake: 2
   flipLeft: 0
   flipRight: 0
+  pivotSpeedKoef: 1
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128
