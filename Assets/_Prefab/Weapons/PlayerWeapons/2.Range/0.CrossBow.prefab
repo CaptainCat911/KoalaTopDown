@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3149198440331655057}
   - component: {fileID: -8181685386423758947}
   m_Layer: 6
-  m_Name: 0
+  m_Name: 0.CrossBow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,20 +52,24 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: 7adb13df1d33ae3408e4f1025a2c8b94, type: 2}
   firePoint: {fileID: 7731985870906193054}
   pivot: {fileID: 4787895431063454227}
+  weaponIndexForAmmo: 0
+  ammo: 0
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
-  ammo: 0
+  withDelay: 0
+  delayFire: 0
   flashEffectAnimator: {fileID: 0}
   singleFlash: 0
-  lineRenderer: {fileID: 0}
   tracerEffect: {fileID: 0}
+  flameParticles: {fileID: 0}
   cameraAmplitudeShake: 0.3
   cameraTimedeShake: 0.1
   singleShot: 1
   multiShot: 0
   audioSource: {fileID: -8181685386423758947}
   audioSourceTail: {fileID: 0}
+  debug: 0
 --- !u!82 &-8181685386423758947
 AudioSource:
   m_ObjectHideFlags: 0
@@ -76,7 +80,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e336cc58c7cbc2d44961fc45e4366417, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

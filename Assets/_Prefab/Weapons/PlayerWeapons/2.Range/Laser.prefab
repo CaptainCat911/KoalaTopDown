@@ -137,19 +137,23 @@ MonoBehaviour:
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
   weaponIndexForAmmo: 0
+  ammo: 0
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
+  withDelay: 0
+  delayFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 0
-  lineRenderer: {fileID: 5284901813468392028, guid: 19ed463347a9d4f43aa9dadd7d30e5c8, type: 3}
   tracerEffect: {fileID: 2862349512899274176, guid: c64802122df91054fb9523e2d9f53ecf, type: 3}
+  flameParticles: {fileID: 0}
   cameraAmplitudeShake: 0.3
   cameraTimedeShake: 0.1
   singleShot: 0
   multiShot: 1
   audioSource: {fileID: 1339705786717506207}
   audioSourceTail: {fileID: 0}
+  debug: 0
 --- !u!82 &1339705786717506207
 AudioSource:
   m_ObjectHideFlags: 0
@@ -160,11 +164,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4d5d97b590322424e90a8802589deef1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

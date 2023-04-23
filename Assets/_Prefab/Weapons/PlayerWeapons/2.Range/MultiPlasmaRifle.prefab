@@ -141,6 +141,8 @@ MonoBehaviour:
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
+  withDelay: 0
+  delayFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 0
   tracerEffect: {fileID: 2862349512899274176, guid: c64802122df91054fb9523e2d9f53ecf, type: 3}
@@ -162,7 +164,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 31f5f9d19376b964da72874480ad63ea, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 86dbd6cb8c20889408aeefbadeedffb5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
