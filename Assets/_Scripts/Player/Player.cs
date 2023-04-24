@@ -23,11 +23,17 @@ public class Player : Fighter
     public float dashRate;                              // как часто можно делать рывок 
     float nextTimeToDash;                               // когда в следующий раз готов рывок
 
-    public bool blink;
-    public float blinkForce;
-    public float blinkRate;
-    public float blinkOutTime;
-    public TrailRenderer blinkTrail;
+    public bool blink;                  // блинк 
+    public float blinkForce;            // сила (дальность) блинка
+    public float blinkRate;             // кд блинка
+    public float blinkOutTime;          // время в межпространстве
+
+    public bool withExplousion;         // с хлопком
+    public int blinkOutDamage;          // урон
+    public float blinkOutExpRadius;     // радиус
+    public float blinkOutPushForce;     // толчек
+    public LayerMask layerExplBlink;    // слой
+    public TrailRenderer blinkTrail;    // треил
 
     [Header("Параметры энергощита")]
     public EnergyShield shield;
@@ -186,6 +192,26 @@ public class Player : Fighter
         weaponHolder.gameObject.SetActive(true);
         weaponHolderMelee.gameObject.SetActive(true);
         ignitable.flames.gameObject.SetActive(true);
+    }
+
+    void BlinkExplousion()
+    {
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, blinkOutExpRadius, layerExplBlink);     // создаем круг в позиции объекта с радиусом
+        foreach (Collider2D coll in collidersHits)
+        {
+            if (coll == null)
+            {
+                continue;
+            }
+
+            if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
+            {
+                Vector2 vec2 = (coll.transform.position - transform.position).normalized;
+                fighter.TakeDamage(blinkOutDamage, vec2, blinkOutPushForce);
+            }
+            collidersHits = null;
+        }
+        CMCameraShake.Instance.ShakeCamera(2, 0.2f);            // тряска камеры
     }
 
     public void Move(Vector3 targetPosition, bool moving)

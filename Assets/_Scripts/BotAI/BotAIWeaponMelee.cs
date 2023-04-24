@@ -235,6 +235,9 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void SpawnAttack()
     {
+        if (enemySpawners.Length < 1)
+            return;
+
         foreach(EnemySpawner enemySpawner in enemySpawners)
         {
             enemySpawner.enemysHowMuch += spawnTimes;
@@ -324,6 +327,10 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void Teleport()
     {
+        Debug.Log(teleports.Length);
+        if (teleports.Length < 1)
+            return;
+
         Transform point = teleports[Random.Range(0, teleports.Length)];
         float distance = Vector2.Distance(point.position, botAI.transform.position);
         if (distance > 5)

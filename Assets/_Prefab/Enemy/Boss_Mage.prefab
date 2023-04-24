@@ -402,7 +402,7 @@ MonoBehaviour:
   noAgro: 0
   bossHP: 1
   hpBarOn: 1
-  hpBarGO: {fileID: 0}
+  hpBarGO: {fileID: 762399419927068047}
   agent: {fileID: 0}
   animator: {fileID: 0}
   animatorWeapon: {fileID: 0}
@@ -785,5 +785,10 @@ PrefabInstance:
 --- !u!224 &762399419927068046 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
+  m_PrefabInstance: {fileID: 6923538828813931947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &762399419927068047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7674643776461301796, guid: f455a6fe7649f3445802070e811fa112, type: 3}
   m_PrefabInstance: {fileID: 6923538828813931947}
   m_PrefabAsset: {fileID: 0}
