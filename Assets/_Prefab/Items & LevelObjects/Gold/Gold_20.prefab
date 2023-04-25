@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1391870522635053536}
   - component: {fileID: 6751645639105037274}
   - component: {fileID: 6273021618593407975}
+  - component: {fileID: 2350636127591744688}
   m_Layer: 0
   m_Name: Gold_20
   m_TagString: Untagged
@@ -70,6 +71,19 @@ MonoBehaviour:
   delayTake: 1
   trigger: {fileID: 4133650310662168314}
   goldValue: 20
+--- !u!114 &2350636127591744688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899818089229980536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894b15da7cff2a247b7c190b4336f43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToDestroy: 120
 --- !u!1 &5128527960205913401
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366399733124784376, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size

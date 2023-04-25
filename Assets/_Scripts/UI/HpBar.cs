@@ -7,7 +7,7 @@ public class HpBar : MonoBehaviour
     RectTransform rectTransform;    // область
     public Gradient gradient;       // цвет (градиент)
     public Image fill;              // заливка
-    public float sizeHp;
+    public float sizeHp;            // размер ...
 
     private void Awake()
     {

@@ -13,18 +13,23 @@ MonoBehaviour:
   m_Name: AWM
   m_EditorClassIdentifier: 
   weaponName: "\u0410\u0412\u041C"
-  projectileWeapon: 1
-  splitProjectileWeapon: 0
-  bulletPrefab: {fileID: 5170081587130710907, guid: eda020fbbf3cab346bc160658bcd2758, type: 3}
-  splitTimes: 0
-  splitRecoil: 0
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0
-  damage: 150
+  weaponType: 0
+  damage: 170
   fireRate: 1.5
   bulletSpeed: 20
   pushForce: 10
   forceBackFire: 0
   recoil: 0
+  delayFire: 0
+  bulletPrefab: {fileID: 5170081587130710907, guid: eda020fbbf3cab346bc160658bcd2758, type: 3}
+  boxSize: 0
+  range: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  splitTimes: 0
+  splitRecoil: 0
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0

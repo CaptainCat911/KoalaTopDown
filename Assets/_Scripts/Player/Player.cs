@@ -28,12 +28,18 @@ public class Player : Fighter
     public float blinkRate;             // кд блинка
     public float blinkOutTime;          // время в межпространстве
 
-    public bool withExplousion;         // с хлопком
+    public bool blinkWithExplousion;    // с хлопком
     public int blinkOutDamage;          // урон
     public float blinkOutExpRadius;     // радиус
     public float blinkOutPushForce;     // толчек
     public LayerMask layerExplBlink;    // слой
     public TrailRenderer blinkTrail;    // треил
+    public GameObject antiBugCircle;    // круг от застревания
+
+    [Header("Флеш мод")]
+    public bool flashMod;
+    public float flashSpeed;
+    bool inBlinkSpace;
 
     [Header("Параметры энергощита")]
     public EnergyShield shield;
@@ -90,7 +96,7 @@ public class Player : Fighter
         // Рывок
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextTimeToDash)
         {
-            if (blink)
+            if (blink && !inBlinkSpace)
             {
                 nextTimeToDash = Time.time + 1f / blinkRate;                    // вычисляем кд
                 BlinkIn();
@@ -101,6 +107,20 @@ public class Player : Fighter
                 Dash();
             }
         }
+
+        // Флеш мод
+        if (flashMod)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !inBlinkSpace)
+            {
+                RunFlashMode(true);
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                RunFlashMode(false);
+            }
+        }
+
 
 
         // Анимации 
@@ -158,40 +178,87 @@ public class Player : Fighter
 
     void BlinkIn()
     {
+        inBlinkSpace = true;
         rb2D.AddForce(moveDirection * blinkForce, ForceMode2D.Impulse);              // даём импульс
+        gameObject.layer = LayerMask.NameToLayer("BlinkSpace");                     // слой самого бота
 
         GameObject effect = Instantiate(GameAssets.instance.playerBlinkIn,
             transform.position, Quaternion.identity);                               // создаем эффект убийства
         Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
-        blinkTrail.emitting = true;
-
-        gameObject.layer = LayerMask.NameToLayer("BlinkSpace");                     // слой самого бота
-        spriteRenderer.enabled = false;
-        spriteRenderer.color = new Color(1, 0, 0, 0.5f);
+        blinkTrail.emitting = true;                                                 // включаем треил
+        spriteRenderer.enabled = false;                                             // отключаем спрайт
+        //spriteRenderer.color = new Color(1, 0, 0, 0.5f);                            
         //playerWeaponReady = false;
         //weaponHolder.HideWeapon(true);
-        weaponHolder.gameObject.SetActive(false);
-        weaponHolderMelee.gameObject.SetActive(false);
-        ignitable.flames.gameObject.SetActive(false);
+        weaponHolder.gameObject.SetActive(false);               // отключаем оружия 
+        weaponHolderMelee.gameObject.SetActive(false);          //
+        ignitable.flames.gameObject.SetActive(false);           // отключаем горение
 
         Invoke("BlinkOut", blinkOutTime);
+        Invoke("AntiBugCircleOn", blinkOutTime - 0.04f);
     }
     void BlinkOut()
     {        
         gameObject.layer = LayerMask.NameToLayer("Player");                     // слой самого бота
 
+        if (blinkWithExplousion)
+            BlinkExplousion();
+
         spriteRenderer.enabled = true;
-        spriteRenderer.color = Color.white;
+        //spriteRenderer.color = Color.white;
         GameObject effect = Instantiate(GameAssets.instance.playerBlinkOut,
             transform.position, Quaternion.identity);                               // создаем эффект убийства
         Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
-        blinkTrail.emitting = false;
-
+        blinkTrail.emitting = false;        
         //playerWeaponReady = true;
         //weaponHolder.HideWeapon(false);
         weaponHolder.gameObject.SetActive(true);
         weaponHolderMelee.gameObject.SetActive(true);
         ignitable.flames.gameObject.SetActive(true);
+        inBlinkSpace = false;
+    }
+
+    void RunFlashMode(bool status)
+    {
+        if (status)
+        {
+            inBlinkSpace = true;
+            gameObject.layer = LayerMask.NameToLayer("BlinkSpace");                     // слой самого бота
+            moveSpeed += flashSpeed;
+            GameObject effect = Instantiate(GameAssets.instance.playerBlinkIn,
+                transform.position, Quaternion.identity);                               // создаем эффект убийства
+            Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
+            blinkTrail.emitting = true;                                                 // включаем треил
+            spriteRenderer.color = new Color(1, 0, 0, 0.5f);   
+            weaponHolder.gameObject.SetActive(false);               // отключаем оружия 
+            weaponHolderMelee.gameObject.SetActive(false);          //
+            ignitable.flames.gameObject.SetActive(false);           // отключаем горение
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Player");                     // слой самого бота
+            moveSpeed -= flashSpeed;
+            spriteRenderer.enabled = true;
+            GameObject effect = Instantiate(GameAssets.instance.playerBlinkOut,
+                transform.position, Quaternion.identity);                               // создаем эффект убийства
+            Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
+            blinkTrail.emitting = false;
+            spriteRenderer.color = Color.white;
+            weaponHolder.gameObject.SetActive(true);
+            weaponHolderMelee.gameObject.SetActive(true);
+            ignitable.flames.gameObject.SetActive(true);
+            inBlinkSpace = false;
+        }        
+    }
+
+    void AntiBugCircleOn()
+    {
+        antiBugCircle.SetActive(true);
+        Invoke("AntiBugCircleOff", 0.02f);
+    }
+    void AntiBugCircleOff()
+    {
+        antiBugCircle.SetActive(false);        
     }
 
     void BlinkExplousion()
@@ -212,6 +279,10 @@ public class Player : Fighter
             collidersHits = null;
         }
         CMCameraShake.Instance.ShakeCamera(2, 0.2f);            // тряска камеры
+
+        GameObject effect = Instantiate(GameAssets.instance.explousionRedEffect,
+            transform.position, Quaternion.identity);                                      // создаем эффект убийства
+        Destroy(effect, 1);                                                             // уничтожаем эффект через .. сек
     }
 
     public void Move(Vector3 targetPosition, bool moving)
