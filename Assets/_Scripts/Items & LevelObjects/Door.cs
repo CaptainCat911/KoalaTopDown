@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public int doorTypeNumber;
+    //public bool rockDoor;
+    public int doorTypeNumber;              // тип двери
     public Sprite openedDoorSprite;         // спрайт открыйтой двери
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2D;
@@ -21,10 +22,15 @@ public class Door : MonoBehaviour
     {   
         if (GameManager.instance.keys[doorTypeNumber] > 0 && !isOpened)         // если ключей больше 0 и дверь ещё не открыта
         {
-            spriteRenderer.sprite = openedDoorSprite;           // меняем спрайт закрытой двери на спрайт открытой
-            boxCollider2D.enabled = false;                      // убираем коллайдер
-            isOpened = true;                                    // дверь открыта
+            OpenDoor();
             GameManager.instance.keys[doorTypeNumber]--;                        // забираем ключ
         }
+    }
+
+    public void OpenDoor()
+    {
+        spriteRenderer.sprite = openedDoorSprite;           // меняем спрайт закрытой двери на спрайт открытой
+        boxCollider2D.enabled = false;                      // убираем коллайдер
+        isOpened = true;                                    // дверь открыта
     }
 }

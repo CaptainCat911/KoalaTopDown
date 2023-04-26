@@ -90,27 +90,14 @@ public class WeaponHolder : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (meleeWeapon)
-            {
-                SelectWeapon();                         // достаЄм огнестрел
-                weaponHolderMelee.HideWeapons();        // пр€чем мили
-                meleeWeapon = false;
-                weaponHolderMelee.rangeWeapon = true;   // оружие ренж
-            }
-            else
-            {
-                HideWeapons();                          // пр€чем огнестрел
-                weaponHolderMelee.SelectWeapon();       // достаЄм мили
-                meleeWeapon = true;                     // оружие мили
-                weaponHolderMelee.rangeWeapon = false;
-            }
+            SwapWeapon();
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Z))
+/*        if (Input.GetKeyDown(KeyCode.Z))
         {
             stopAiming = !stopAiming;           // дл€ дебага, убираем поворот оружи€
-        }
+        }*/
 
         // ѕоворот оружи€
         if (!stopAiming)
@@ -128,14 +115,14 @@ public class WeaponHolder : MonoBehaviour
         {
             int previousWeapon = selectedWeapon;                                // присваиваем переменной индекс оружи€
 
-            if (Input.GetAxis("Mouse ScrollWheel") < 0f)                        // управление колЄсиком (дл€ правого холдера)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)                        // управление колЄсиком (дл€ правого холдера)
             {
                 if (selectedWeapon >= transform.childCount - 1)                 // сбрасываем в 0 индекс, если индекс равен кол-ву объекто в иерархии WeaponHolder - 1(?)
                     selectedWeapon = 0;
                 else
                     selectedWeapon++;
             }
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)                        // управление колЄсиком (дл€ левого холдера)
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)                        // управление колЄсиком (дл€ левого холдера)
             {
                 if (selectedWeapon <= 0)
                     selectedWeapon = transform.childCount - 1;
@@ -168,6 +155,25 @@ public class WeaponHolder : MonoBehaviour
     }
 
     // —мена оружи€
+
+    public void SwapWeapon()
+    {
+        if (meleeWeapon)
+        {
+            SelectWeapon();                         // достаЄм огнестрел
+            weaponHolderMelee.HideWeapons();        // пр€чем мили
+            meleeWeapon = false;
+            weaponHolderMelee.rangeWeapon = true;   // оружие ренж
+        }
+        else
+        {
+            HideWeapons();                          // пр€чем огнестрел
+            weaponHolderMelee.SelectWeapon();       // достаЄм мили
+            meleeWeapon = true;                     // оружие мили
+            weaponHolderMelee.rangeWeapon = false;
+        }
+    }
+
     public void SelectWeapon()
     {
         int i = 0;

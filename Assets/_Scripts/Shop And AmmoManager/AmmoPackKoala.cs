@@ -148,6 +148,45 @@ public class AmmoPackKoala : MonoBehaviour
         }
     }
 
+
+    // Для поднятия оружия
+
+    // Поднять ренж оружие
+    public void TakeRangeWeapon(int index)
+    {
+        if (GameManager.instance.player.weaponHolder.meleeWeapon)
+            GameManager.instance.player.weaponHolder.SwapWeapon();
+
+        player.weaponHolder.weapons.Add(ammoWeapons[index].weapon);                 // добавляем оружие в список оружий
+        player.weaponHolder.BuyWeapon(player.weaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока                                                                                
+        //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружия)
+        if (!player.weaponHolder.meleeWeapon)
+        {
+            player.weaponHolder.selectedWeapon = player.weaponHolder.weapons.Count - 1;
+            player.weaponHolder.SelectWeapon();                                     // выбрать оружие 
+        }
+        CreateMessage(ammoWeapons[index].name + " !");
+
+    }
+    // Поднять мили оружие
+    public void TakeMeleeWeapon(int index)
+    {
+        if (!GameManager.instance.player.weaponHolder.meleeWeapon)
+            GameManager.instance.player.weaponHolder.SwapWeapon();
+
+        player.weaponHolderMelee.weapons.Add(ammoMeleeWeapons[index].weapon);                    // добавляем оружие в список оружий
+        player.weaponHolderMelee.BuyWeapon(player.weaponHolderMelee.weapons.Count - 1);     // создаем его в инвентаре игрока                                                                                
+                                                                                            //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружия)
+        if (player.weaponHolder.meleeWeapon)
+        {
+            player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
+            player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
+        }
+        CreateMessage(ammoMeleeWeapons[index].name + " !");  
+    }
+
+
+
     void CreateMessage(string text)
     {
         GameManager.instance.CreateFloatingMessage(text, Color.white, player.transform.position);

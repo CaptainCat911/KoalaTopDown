@@ -318,6 +318,8 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  triggerLenght: 5
+  distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
@@ -327,25 +329,23 @@ MonoBehaviour:
     m_Bits: 0
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
-  triggerLenght: 5
-  distanceToChangeTarget: 3
   targetVisible: 0
   closeToTarget: 0
+  meleeAttackType: 1
+  rangeAttackType: 0
+  twoWeapons: 0
   distanceToAttackMelee: 1
   distanceToAttackRange: 4
   distanceToAttack: 1.25
   distanceToTarget: 0
-  itemToSpawn: {fileID: 1899818089229980536, guid: f064c523bf4badc4b95152b709ee87dc, type: 3}
-  meleeAttackType: 1
-  rangeAttackType: 0
-  twoWeapons: 0
+  itemToSpawn: {fileID: 1899818089229980536, guid: 080112eed7aac1244b8543ef553479ca, type: 3}
   stayOnGround: 1
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
-  aimAnglePivot: 0
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
+  aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
   pivotSpeedKoef: 1

@@ -29,6 +29,11 @@ public class ItemPickUp : MonoBehaviour
         trigger.SetActive(true);
     }
 
+    public void DisableTrigger()
+    {
+        trigger.SetActive(false);
+    }
+
 
 
     public virtual void OnTriggerEnter2D(Collider2D collision)

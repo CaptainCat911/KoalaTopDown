@@ -6,6 +6,7 @@ public class TextUI : MonoBehaviour
     Player player;                  // ссылка на игрока
     public Text hp;                 // кол-во хп
     public Text shield;             // щит
+    public Text bootsEnedgy;        // энергия ботинок
     public Text gold;               // кол-во золота
     public Text key;                // кол-во ключей
     public Text keyRed;             // кол-во особых ключей
@@ -31,6 +32,12 @@ public class TextUI : MonoBehaviour
             shield.text = player.shield.shieldHp.ToString("0");
         else
             shield.text = "OFF";
+
+        // Ботинки
+        if (player.bootsMod)
+            bootsEnedgy.text = player.bootsEnergy.ToString("0");
+        else
+            bootsEnedgy.text = "OFF";
 
         // Золото
         gold.text = GameManager.instance.gold.ToString("0");

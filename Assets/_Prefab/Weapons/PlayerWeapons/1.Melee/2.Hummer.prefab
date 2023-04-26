@@ -413,6 +413,16 @@ MonoBehaviour:
   pushForce: 30
   radius: 0.8
   cooldown: 0.8
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0
+  electro: 0
+  damageElectro: 0
+  pushForceElectro: 0
+  radiusElectro: 0
+  cameraAmplitudeShakeElectro: 0
+  cameraTimedeShakeElectro: 0
   trail: {fileID: 3786651681873589342}
 --- !u!1 &6604417298802685298
 GameObject:

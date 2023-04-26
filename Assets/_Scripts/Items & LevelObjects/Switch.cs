@@ -17,5 +17,6 @@ public class Switch : ItemPickUp
             spriteRenderer.flipX = true;
         if (!switched)
             spriteRenderer.flipX = false;
+        DisableTrigger();
     }
 }
