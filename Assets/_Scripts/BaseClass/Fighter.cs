@@ -15,7 +15,7 @@ public class Fighter : MonoBehaviour
     public bool noAgro;
     GameObject floatinText;                 // текст чата
     bool isPlayerOrNPC;                     // игрок или нпс (для отображения урона)
-    public bool bossHP;
+    public bool bossHP;                     // хп босса (ссылаемся на гуи)
 
     // Хп бар
     public bool hpBarOn;                            // хп бар включен                                    

@@ -6,7 +6,8 @@ using System.Collections.Generic;
 /// </summary>
 
 public class WeaponHolder : MonoBehaviour
-{    
+{
+    Player player;
     public WeaponHolderMelee weaponHolderMelee;         // ссылка на холдер для мили оружия
     public List<GameObject> weapons;                    // Список оружий    
     [HideInInspector] public Weapon currentWeapon;      // текущее оружие 
@@ -20,6 +21,11 @@ public class WeaponHolder : MonoBehaviour
     [HideInInspector] public string currentWeaponName;  // для текста ui
 
     bool stopAiming;                                    // для дебага
+
+    private void Awake()
+    {
+        player = GameManager.instance.player;
+    }
 
     void Start()
     {
@@ -51,7 +57,7 @@ public class WeaponHolder : MonoBehaviour
         }
 
         // Стрельба
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && player.playerWeaponReady)
         {
             //if (meleeWeapon)                        // если оружие ближнего боя
                 //attackHitBoxStart = true;           // начинаем атаку хитбоксом
@@ -188,6 +194,11 @@ public class WeaponHolder : MonoBehaviour
         {
             weapon.gameObject.SetActive(false);                                     // остальные оружия дезактивируем
         }
+    }
+
+    public void HideWeapon(bool hide)
+    {
+        
     }
 
     // Покупка оружия (подбираем оружие)

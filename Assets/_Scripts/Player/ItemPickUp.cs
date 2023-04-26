@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
-    public bool withAnimation;
-    public bool delayTake;
-    public GameObject trigger;
+    public bool withAnimation;      // с анимацией выпадания
+    public bool delayTake;          // с задержкой после анимации
+    public GameObject trigger;  
     Animator itemAnimator;   
     
 

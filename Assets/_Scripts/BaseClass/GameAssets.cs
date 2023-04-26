@@ -17,9 +17,12 @@ public class GameAssets : MonoBehaviour
 
     [Header("Ёффекты")]
     public GameObject explousionRedEffect;
+    public GameObject explousionBlue;
     public GameObject explousionGravity;
     public GameObject explousionTeleportIn;
     public GameObject explousionTeleportOut;
+    public GameObject playerBlinkIn;
+    public GameObject playerBlinkOut;
 
 
 

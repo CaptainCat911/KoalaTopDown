@@ -48,8 +48,8 @@ public class AmmoPackKoala : MonoBehaviour
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            buttonsBuyRangeWeapon[index].SetActive(false);
-            buttonsSellRangeWeapon[index].SetActive(true);
+            buttonsBuyRangeWeapon[index].SetActive(false);                              // кнопка покупки
+            buttonsSellRangeWeapon[index].SetActive(true);                              // кнопка продажи
 
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
 
@@ -88,8 +88,8 @@ public class AmmoPackKoala : MonoBehaviour
 
         if (GameManager.instance.gold >= ammoMeleeWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            //buttonsBuyWeapon[index].SetActive(false);                                         // убираем кнопку покупки
-            //buttonsSell[index].SetActive(true);
+            buttonsBuyMeleeWeapon[index].SetActive(false);                                         // убираем кнопку покупки
+            buttonsSellMeleeWeapon[index].SetActive(true);
 
             GameManager.instance.gold -= ammoMeleeWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
 
@@ -113,20 +113,20 @@ public class AmmoPackKoala : MonoBehaviour
     // Бомбы
     public void BuyBomb(int index)
     {
-        if (GameManager.instance.gold >= ammoBombs[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
+        if (GameManager.instance.gold >= ammoBombs[index].goldPriseWeapon)              // если золота больше чем стоимость оружия
         {
             buttonsBuyBomb[index].SetActive(false);
+            buttonsSellBomb[index].SetActive(true);
 
-            GameManager.instance.gold -= ammoBombs[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
+            GameManager.instance.gold -= ammoBombs[index].goldPriseWeapon;              // вычитаем из золота стоимость оружия
 
-            player.bombWeaponHolder.weapons.Add(ammoBombs[index].weapon);                 // добавляем оружие в список оружий
-                                                                                          // 
-            player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока                                                                                
+            player.bombWeaponHolder.weapons.Add(ammoBombs[index].weapon);                 // добавляем оружие в список оружий 
+            player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);   // создаем его в инвентаре игрока                                                                                
             //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружия)
 
             player.bombWeaponHolder.selectedWeapon = player.bombWeaponHolder.weapons.Count - 1;
             player.bombWeaponHolder.SelectWeapon();                                         // выбрать оружие 
-            
+            CreateMessage(ammoBombs[index].name + " Куплено!");
         }
         else
         {
@@ -139,7 +139,8 @@ public class AmmoPackKoala : MonoBehaviour
         if (GameManager.instance.gold >= ammoBombs[index].goldPriseAmmo)            // если золота больше чем стоимость оружия
         {
             GameManager.instance.gold -= ammoBombs[index].goldPriseAmmo;            // вычитаем из золота стоимость оружия             
-            ammoBombs[index].allAmmo += 1;
+            ammoBombs[index].allAmmo += ammoBombs[index].ammoInReload; ;
+            CreateMessage("+ " + ammoBombs[index].ammoInReload + " бомб");
         }
         else
         {

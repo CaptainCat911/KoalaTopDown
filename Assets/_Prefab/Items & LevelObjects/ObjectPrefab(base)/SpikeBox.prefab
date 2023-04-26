@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.5, y: 1.0193253}
   m_EdgeRadius: 0
 --- !u!114 &6856653570865345729
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c2c5b2b95b7674d8abaf7f2363c4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 5
   pushForce: 10
   timeToActive: 1
   animators:
@@ -165,7 +165,11 @@ MonoBehaviour:
   - {fileID: 8087972443296814640}
   - {fileID: 8087972442961095568}
   - {fileID: 8087972443348894961}
-  cooldown: 0
+  isSpikeWork: 1
+  cooldown: 2
+  layerHit:
+    serializedVersion: 2
+    m_Bits: 16448
 --- !u!1 &8087972441979341428
 GameObject:
   m_ObjectHideFlags: 0

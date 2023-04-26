@@ -122,8 +122,15 @@ public class GameManager : MonoBehaviour
         return (weaponAmmo);
     }
 
+    // Найти индекс бомбы (для автомата с бомбами)
+    public int GetCurrentBombIndex()
+    {
+        int bombAmmo = player.bombWeaponHolder.currentWeapon.weaponIndexForAmmo;
+        return (bombAmmo);
+    }
 
-    // Перемещение игрока
+
+    // Перемещение игрока (для диалога)
     public void MovePlayer(Vector2 targetPosition)
     {
         float distance = Vector2.Distance(player.transform.position, targetPosition);

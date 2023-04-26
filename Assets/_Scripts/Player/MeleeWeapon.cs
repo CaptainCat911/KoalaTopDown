@@ -15,12 +15,27 @@ public class MeleeWeapon : MonoBehaviour
     public bool spear;
     public bool hummer;
 
+    [Header("Параметры оружия")]
     public Transform hitBox;                            // положение хитбокса
     public int damage = 10;                             // урон
     public float pushForce = 1;                         // сила толчка
     public float radius = 1;                            // радиус
     public float cooldown = 1f;                         // перезардяка атаки
     float lastAttack;                                   // время последнего удара (для перезарядки удара)
+
+    [Header("Параметры поджога")]
+    public bool ignite;
+    public int damageBurn;
+    public float cooldownBurn;
+    public float durationBurn;
+
+    [Header("Параметры молний")]
+    public bool electro;
+    public int damageElectro;
+    public float pushForceElectro;
+    public float radiusElectro;
+    public float cameraAmplitudeShakeElectro;      // амплитуда
+    public float cameraTimedeShakeElectro;         // длительность
 
     // Треил 
     public TrailRenderer trail;
@@ -52,6 +67,32 @@ public class MeleeWeapon : MonoBehaviour
     public void MeleeAttack()
     {
         Collider2D[] collidersHits = Physics2D.OverlapCircleAll(hitBox.position, radius, layer);     // создаем круг в позиции объекта с радиусом
+                                                                                                     // 
+        // для электро атаки, взрыв (громовой молот)
+        if (electro && collidersHits.Length > 0)        
+        {
+            Collider2D[] collidersHitsElectro = Physics2D.OverlapCircleAll(hitBox.position, radiusElectro, layer);     // создаем круг в позиции объекта с радиусом
+            foreach (Collider2D collEl in collidersHitsElectro)
+            {
+                if (collEl == null)
+                {
+                    continue;
+                }
+
+                if (collEl.gameObject.TryGetComponent<Fighter>(out Fighter fighterEl))
+                {
+                    Vector2 vec2 = (collEl.transform.position - player.transform.position).normalized;
+                    fighterEl.TakeDamage(damageElectro, vec2, pushForceElectro);
+                }
+            }
+
+            GameObject effect = Instantiate(GameAssets.instance.explousionBlue,
+                    hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
+            Destroy(effect, 1);                                                                 // уничтожаем эффект через .. сек
+            CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShakeElectro, cameraTimedeShakeElectro);        // тряска камеры
+        }
+
+        // обычная атака
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)
@@ -64,6 +105,15 @@ public class MeleeWeapon : MonoBehaviour
                 Vector2 vec2 = (coll.transform.position - player.transform.position).normalized;
                 fighter.TakeDamage(damage, vec2, pushForce);                
             }
+            if (ignite)
+            {
+                if (coll.gameObject.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                {
+                    //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                    ignitable.Ignite(damageBurn, cooldownBurn, durationBurn);
+                }                
+            }
+
             collidersHits = null;
         }
     }

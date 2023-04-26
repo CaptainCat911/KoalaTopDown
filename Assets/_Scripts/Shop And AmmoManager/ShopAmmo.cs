@@ -27,12 +27,26 @@ public class ShopAmmo : MonoBehaviour
         textMeshAmmo.text = ammoPack.ammoWeapons[index].ammoInReload.ToString();
         textMeshGold.text = ammoPack.ammoWeapons[index].goldPriseAmmo.ToString();
     }
-
-
-
     public void BuyAmmoCurrentWeapon()
     {
         int index = GameManager.instance.GetCurrentWeaponIndex();       // находим индекс
         ammoPack.BuyAmmo(index);                                        // покупаем оружие по индексу
+    }
+
+
+
+    public void SetTextBomb()
+    {
+        int index = GameManager.instance.GetCurrentBombIndex();
+
+        textMeshName.text = ammoPack.ammoBombs[index].name;
+        textMeshAmmo.text = ammoPack.ammoBombs[index].ammoInReload.ToString();
+        textMeshGold.text = ammoPack.ammoBombs[index].goldPriseAmmo.ToString();
+    }
+
+    public void BuyAmmoCurrentBomb()
+    {
+        int index = GameManager.instance.GetCurrentBombIndex();         // находим индекс
+        ammoPack.BuyAmmoBomb(index);                                        // покупаем оружие по индексу
     }
 }

@@ -14,7 +14,7 @@ public class CMCameraShake : MonoBehaviour
     {
         Instance = this;                                                // инстанс
         cmVirtCam = GetComponent<CinemachineVirtualCamera>();
-        cmVirtCam.Follow = GameManager.instance.player.transform;       // находим трансформ игрока
+        //cmVirtCam.Follow = GameManager.instance.player.transform;       // находим трансформ игрока
     }
 
     public void ShakeCamera(float intensity, float time)

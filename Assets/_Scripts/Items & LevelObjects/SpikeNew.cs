@@ -5,15 +5,16 @@ using UnityEngine;
 public class SpikeNew : MonoBehaviour
 {
     Animator animator;      
-    public int damage;                                      // урон
-    public float pushForce;                                 // отталкивание
-    public float timeToActive;                              // через сколько сработают
-    bool isSpikeActive;                                     // активны сейчас или нет
+    public int damage;                      // урон
+    public float pushForce;                 // отталкивание
+    public float timeToActive;              // через сколько сработают
+    bool isSpikeActive;                     // активны сейчас или нет
     public Animator[] animators;
 
-    //public bool isSpikeWork;                                // шипы работают постоянно
-    public float cooldown = 3f;                             // перезардяка атаки
-    float lastAttack;                                       // время последнего удара (для перезарядки удара)                                                               
+    public bool isSpikeWork;                // шипы работают постоянно
+    public float cooldown = 3f;             // перезардяка атаки
+    float lastAttack;                       // время последнего удара (для перезарядки удара)
+    public LayerMask layerHit;              // слой 
 
 
     private void Awake()
@@ -24,13 +25,11 @@ public class SpikeNew : MonoBehaviour
 
     private void Update()
     {
-/*        if (isSpikeWork && Time.time - lastAttack > cooldown)
+        if (isSpikeWork && Time.time - lastAttack > cooldown)
         {
-            animator.SetTrigger("SpikeHit");
-            animator.SetBool("Disactive", true);
-            DamageAll();
             lastAttack = Time.time;                         // присваиваем время атаки
-        }*/
+            ActiveSpike();
+        }
     }
 
 /*    public void SpikeActiveEvent()                          // ивент запускает инвок
@@ -50,19 +49,19 @@ public class SpikeNew : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Player>(out Player player))
+/*        if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {            
             if (!isSpikeActive)
             {
                 isSpikeActive = true;
                 Invoke("ActiveSpike", timeToActive);                
             }
-        }
+        }*/
     }
 
     void DamageAll()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapBoxAll(transform.position, new Vector2 (1.5f, 1.5f), 0f);     // создаем квадрат в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapBoxAll(transform.position, new Vector2 (1.5f, 1f), 0f, layerHit);     // создаем квадрат в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)
@@ -99,6 +98,6 @@ public class SpikeNew : MonoBehaviour
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, new Vector3(1.5f,1.5f,0f));
+        Gizmos.DrawWireCube(transform.position, new Vector3(1.5f,1f,0f));
     }
 }

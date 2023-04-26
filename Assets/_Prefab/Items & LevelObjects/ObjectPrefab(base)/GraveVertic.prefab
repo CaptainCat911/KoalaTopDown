@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3941453669616193615}
   - component: {fileID: 3941453669616193614}
   - component: {fileID: 3941453669616193609}
-  - component: {fileID: 3941453669616193613}
+  - component: {fileID: 8634606144583027157}
   m_Layer: 12
-  m_Name: Crate
+  m_Name: GraveVertic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 1354701883, guid: b4495f9f9d6462e4abf96b2762a7e721, type: 3}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: b2c465d69c31aa94fbbc512af3bff981, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0010700971, y: 0.13864613}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5625, y: 1.34375}
     newSize: {x: 0.5, y: 0.6875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.6}
+  m_Size: {x: 0.54411495, y: 1.0559261}
   m_EdgeRadius: 0
 --- !u!50 &3941453669616193609
 Rigidbody2D:
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3941453669616193613
+--- !u!114 &8634606144583027157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,15 +143,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3941453669616193612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03718a65a04b1cc44929d75ab2012f8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fb3bde845c0f05429443ca098446aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 1
+  maxHealth: 50
   noAgro: 0
+  bossHP: 0
   hpBarOn: 0
   hpBarGO: {fileID: 0}
   itemToSpawn: {fileID: 0}
-  expEffect: {fileID: 7845441016114820387, guid: cded3b4e7f40a4746ad72fbfa09eb0c9, type: 3}
+  expEffect: {fileID: 7845441016114820387, guid: 0a3f06b9520c2114ca45f0bece3fcaa2, type: 3}
+  m_spriteDestroyed:
+  - {fileID: 21300000, guid: da3123a1dbfca7b4ea6a962b24876cd8, type: 2}
+  - {fileID: 21300000, guid: 855bdd05a7df0014095cc9f62b3b4147, type: 2}
