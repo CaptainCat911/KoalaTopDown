@@ -48,8 +48,8 @@ public class Weapon : MonoBehaviour
     public LineRenderer lineRenderer;       // линия для лазера (префаб)
     LineRenderer lineRaycast;               // линия для лазера (создаём)
     public TrailRenderer tracerEffect;      // трасер
-    public ParticleSystem effectParticles;   // префаб системы частиц пламени
-    public ParticleSystem startParticles;   // префаб системы частиц пламени
+    public ParticleSystem effectParticles;  // префаб системы частиц стрельбы
+    public ParticleSystem startParticles;   // префаб системы частиц при старте огня
 
     [Header("Тряска камеры при выстреле")]
     public float cameraAmplitudeShake = 1f; // амплитуда
