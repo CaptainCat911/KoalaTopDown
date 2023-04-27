@@ -41,6 +41,7 @@ public class BotAI : Fighter
     public bool twoWeapons;                                 // если есть 2 оружия
     public float distanceToAttackMelee;                     // дистанция для атакой мили
     public float distanceToAttackRange;                     // дистанция для атаки ренж
+    public float pivotSpeedKoef = 1f;                       // скорость поворота держателя оружия
     [HideInInspector] public float distanceToAttack;        // дистанция, с которой можно атаковать
     [HideInInspector] public float distanceToTarget;
 
@@ -65,7 +66,6 @@ public class BotAI : Fighter
     [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота
     [HideInInspector] public bool flipLeft;                 // для флипа
     [HideInInspector] public bool flipRight;                //    
-    [HideInInspector] public float pivotSpeedKoef = 1f;     // скорость поворота держателя оружия
     bool pivotZero;                                         // оружие не вращается
 
     [Header("Остальное")]

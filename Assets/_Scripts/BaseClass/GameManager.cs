@@ -29,13 +29,12 @@ public class GameManager : MonoBehaviour
     public int[] keys;                          // ключи
     public int battery;                         // батареи
 
-    public bool isPlayerEnactive;
+    public bool isPlayerEnactive;               // активен игрок или нет
 
-    //[HideInInspector] public int enemyCount;
-
-    public Animator blackImagesAnim;        // аниматор чёрных полос
+    public Animator blackImagesAnim;            // аниматор чёрных полос
     [HideInInspector] public bool playerAtTarget;
 
+    //[HideInInspector] public int enemyCount;
 
 
     private void Awake()

@@ -321,11 +321,11 @@ MonoBehaviour:
   weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0421\u043A\u0435\u043B\u0435\u0442\u0430"
   hitBox: {fileID: 1630045362412420869}
   cooldown: 2
-  damage: 60
+  damage: 0
   pushForce: 10
   radius: 0.7
   trail: {fileID: 3786651681873589342}
-  damageRange: 10
+  damageRange: 6
   pushForceRange: 10
   projctleSpeed: 4
   damageRangeBig: 0
@@ -335,18 +335,27 @@ MonoBehaviour:
   explousionForce: 30
   explousionRadius: 2
   enemySpawners: []
+  spawnTimes: 0
   splitTimes: 8
   splitRecoil: 20
   laserDamage: 0
   laserForce: 0
   laserStart: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0
   laserEffectParticles: {fileID: 0}
   gravityDamage: 0
   gravityForce: 0
   gravityRadius: 0
+  gravityDistanceToDamage: 0
   gravityCooldown: 0
-  gravityEffectParticles: {fileID: 0}
   gravityStart: 0
+  gravityEffectParticles: {fileID: 0}
+  teleports: []
+  teleportForceRadius: 0
+  teleportInForce: 0
+  teleportOutForce: 0
 --- !u!1 &6604417298802685298
 GameObject:
   m_ObjectHideFlags: 0

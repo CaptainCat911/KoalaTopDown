@@ -400,22 +400,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f380747e3608644a00fe1df2ceef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: "\u0411\u041E\u041B\u042C\u0428\u041E\u0419 \u041C\u041E\u041B\u041E\u0422 "
-  hitBox: {fileID: 1630045362412420869, guid: 66f1810aeddd7384fbfe8e8355a71413, type: 3}
-  damage: 120
-  pushForce: 30
-  radius: 0.7
-  cooldown: 2.5
   layerHit:
     serializedVersion: 2
     m_Bits: 4225
-  bulletPrefab: {fileID: 0}
-  attackClass: 1
-  prefabEnemies: []
+  weaponName: "\u0411\u041E\u041B\u042C\u0428\u041E\u0419 \u041C\u041E\u041B\u041E\u0422 "
+  hitBox: {fileID: 1630045362412420869, guid: 66f1810aeddd7384fbfe8e8355a71413, type: 3}
+  cooldown: 2.5
+  damage: 12
+  pushForce: 30
+  radius: 0.7
+  trail: {fileID: 3786651681873589342, guid: 66f1810aeddd7384fbfe8e8355a71413, type: 3}
+  damageRange: 0
+  pushForceRange: 0
+  projctleSpeed: 0
+  damageRangeBig: 0
+  pushForceRangeBig: 0
+  projctleSpeedBig: 0
   explousionDamage: 0
   explousionForce: 0
   explousionRadius: 0
-  trail: {fileID: 3786651681873589342, guid: 66f1810aeddd7384fbfe8e8355a71413, type: 3}
+  enemySpawners: []
+  spawnTimes: 0
+  splitTimes: 0
+  splitRecoil: 0
+  laserDamage: 0
+  laserForce: 0
+  laserStart: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0
+  laserEffectParticles: {fileID: 0}
+  gravityDamage: 0
+  gravityForce: 0
+  gravityRadius: 0
+  gravityDistanceToDamage: 0
+  gravityCooldown: 0
+  gravityStart: 0
+  gravityEffectParticles: {fileID: 0}
+  teleports: []
+  teleportForceRadius: 0
+  teleportInForce: 0
+  teleportOutForce: 0
 --- !u!1 &6604417298802685298
 GameObject:
   m_ObjectHideFlags: 0
