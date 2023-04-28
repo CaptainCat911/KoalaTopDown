@@ -60,7 +60,13 @@ public class Fighter : MonoBehaviour
         }
     }
 
-       
+    public virtual void Update()
+    {
+
+    }
+
+
+
     public virtual void TakeDamage(int dmg, Vector2 vec2, float pushForce)
     {
         if (!isAlive)

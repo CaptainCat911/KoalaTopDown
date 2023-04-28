@@ -125,9 +125,8 @@ public class BotAI : Fighter
             SwitchAttackType(2);        
     }
 
-    private void Update()
-    {       
-
+    public override void Update()
+    {
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
 
@@ -371,8 +370,6 @@ public class BotAI : Fighter
         }
     }
 
-
-
     public void ResetTarget()
     {
         //isFindTarget = false;
@@ -385,9 +382,6 @@ public class BotAI : Fighter
     }
 
 
-
-
-
     public void SetDestination(Vector3 destination)
     {
         agent.SetDestination(destination);
@@ -398,7 +392,6 @@ public class BotAI : Fighter
         ChatBubble.Clear(gameObject);
         ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 4f);
     }
-
 
 
 

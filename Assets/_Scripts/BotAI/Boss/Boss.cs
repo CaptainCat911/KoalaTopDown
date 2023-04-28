@@ -29,7 +29,7 @@ public class Boss : BotAI
 
 
 
-    private void Update()
+    public override void Update()
     {
         if (immortalBoss)
         {
@@ -38,6 +38,8 @@ public class Boss : BotAI
                 currentHealth = maxHealth / 10;
             }
         }
+
+        base.Update();
     }
 
     public void Speak()
