@@ -51,6 +51,9 @@ public class AmmoPackKoala : MonoBehaviour
             buttonsBuyRangeWeapon[index].SetActive(false);                              // кнопка покупки
             buttonsSellRangeWeapon[index].SetActive(true);                              // кнопка продажи
 
+            if (GameManager.instance.player.weaponHolder.meleeWeapon)
+                GameManager.instance.player.weaponHolder.SwapWeapon();                  // переключаемся на это оружие
+
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
 
             player.weaponHolder.weapons.Add(ammoWeapons[index].weapon);                 // добавляем оружие в список оружий
@@ -90,6 +93,9 @@ public class AmmoPackKoala : MonoBehaviour
         {
             buttonsBuyMeleeWeapon[index].SetActive(false);                                         // убираем кнопку покупки
             buttonsSellMeleeWeapon[index].SetActive(true);
+
+            if (!GameManager.instance.player.weaponHolder.meleeWeapon)
+                GameManager.instance.player.weaponHolder.SwapWeapon();
 
             GameManager.instance.gold -= ammoMeleeWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
 

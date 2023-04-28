@@ -7,8 +7,38 @@ public class Boss : BotAI
     int dialogeNumber;              // номер диалога
     bool isTextDone;                // проговорили весь текст
 
+    [Header("Параметры атак босса")]
+    public bool immortalBoss;
+    public float cooldownAttack;
+
+    [Header("Атака издалека")]
+    public int rangeAttackChance = 100;     // шанс ренж атаки
+    public int multiAttackChance;           // .. мультиатаки
+
+    [Header("Атака вблизи")]
+    public int meleeAttackChance = 100;
+    public int explousionAttackChance;
+
+    [Header("Общие атаки")]
+    public int spawnAttackChance;           // .. спауна
+    public int gravityChance;               // .. гравитации
+    public int laserChance;                 // .. лазера
+    public int teleportChance;              // .. телепорта
+
     [HideInInspector] public bool attackingNow;
 
+
+
+    private void Update()
+    {
+        if (immortalBoss)
+        {
+            if (currentHealth < maxHealth / 10)
+            {
+                currentHealth = maxHealth / 10;
+            }
+        }
+    }
 
     public void Speak()
     {

@@ -174,8 +174,10 @@ public class Weapon : MonoBehaviour
     private void FixedUpdate()
     {
         // Стрельба
+
+
         // Задержка перед выстрелом
-        if (weaponHolder.fireStart)             // если готовы стрелять
+        if (weaponHolder.fireStart && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)          // если готовы стрелять и есть патроны
         {
             currentDelay -= 0.02f;
 
@@ -192,7 +194,7 @@ public class Weapon : MonoBehaviour
             }
         }
 
-        if (!weaponHolder.fireStart)        // если не готовы стрелять
+        if (!weaponHolder.fireStart || ammoWeapons[weaponIndexForAmmo].allAmmo <= 0)        // если не готовы стрелять или закончились патроны
         {
             currentDelay = weaponClass.delayFire;
 
@@ -200,15 +202,14 @@ public class Weapon : MonoBehaviour
                 startParticles.Stop();
             if (effectParticles)
                 effectParticles.Stop();
-            return;                         // выходим
+            return;
         }
 
         // Задержка перед стрельбой
         if (currentDelay > 0)
             return;                
-        
 
-        if (Time.time >= nextTimeToFire && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)     // если начинаем стрелять и кд готово
+        if (Time.time >= nextTimeToFire)     // если начинаем стрелять и кд готово
         {
             ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           
@@ -303,8 +304,10 @@ public class Weapon : MonoBehaviour
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);                            // разброс стрельбы
         firePoint.Rotate(0, 0, randomBulletX);                                                                  // тупо вращаем
         GameObject bullet = Instantiate(weaponClass.bulletPrefab, firePoint.position, firePoint.rotation);      // создаем префаб снаряда с позицией и поворотом якоря
-        bullet.GetComponent<Bullet>().damage = weaponClass.damage;                                              // присваиваем урон снаряду
-        bullet.GetComponent<Bullet>().pushForce = weaponClass.pushForce;                                        // присваиваем силу толчка снаряду
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.damage = weaponClass.damage;                                              // присваиваем урон снаряду
+        bulletScript.pushForce = weaponClass.pushForce;                                        // присваиваем силу толчка снаряду
+        bulletScript.enemyToDamageCount = weaponClass.enemyToDamageCount;                      // сколько врагов пробьёт снаряд
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * weaponClass.bulletSpeed, ForceMode2D.Impulse);    // даём импульс
         player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия
         firePoint.Rotate(0, 0, -randomBulletX);                                                                 // и тупо возвращаем поворот
@@ -451,7 +454,7 @@ public class Weapon : MonoBehaviour
                 }*/
     }
 
-    void FireBoxCast()
+    void FireBoxCast()      // (пока не использую)
     {
         // Разброс
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
@@ -534,14 +537,15 @@ public class Weapon : MonoBehaviour
                         ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
                     }
                 }
+                hits = null;
 
-/*                if (tracerEffect)
-                {
-                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
-                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
-                    //tracer.transform.SetParent(transform, true); 
-                    tracer.transform.position = tracer.transform.position + firePoint.right * 20;                      // конечная позиция трасера рейкаста
-                }*/
+                /*                if (tracerEffect)
+                                {
+                                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                                    //tracer.transform.SetParent(transform, true); 
+                                    tracer.transform.position = tracer.transform.position + firePoint.right * 20;                      // конечная позиция трасера рейкаста
+                                }*/
             }
 
             if (debug)

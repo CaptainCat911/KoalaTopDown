@@ -93,9 +93,29 @@ public class Player : Fighter
     {
         //Debug.Log(rightFlip);
 
+        // Таймеры
+
+        if (bootsMod)
+        {
+            if (bootsOn)
+            {
+                bootsEnergy -= Time.deltaTime * minusEnergy;
+                if (bootsEnergy < 0)
+                    bootsEnergy = 0;
+            }
+            if (!bootsOn && bootsEnergy < 100)
+            {
+                bootsEnergy += Time.deltaTime * plusEnergy;
+                if (bootsEnergy > 100)
+                    bootsEnergy = 100;
+            }
+        }
+
         if (GameManager.instance.isPlayerEnactive)              // если игрок не активен
         {
-            moveDirection = new Vector2(0, 0).normalized;       // сбрасываем вектор для скорости 
+            moveDirection = new Vector2(0, 0).normalized;       // сбрасываем вектор для скорости
+            if (bootsOn)
+                BootsMode(false);                               // выключаем реактивные ботинки
             return;
         }
 
@@ -128,19 +148,6 @@ public class Player : Fighter
             if ((Input.GetKeyUp(KeyCode.LeftShift) || bootsEnergy <= 0) && bootsOn)
             {
                 BootsMode(false);
-            }
-
-            if (bootsOn)
-            {
-                bootsEnergy -= Time.deltaTime * minusEnergy;
-                if (bootsEnergy < 0)
-                    bootsEnergy = 0;
-            }
-            if (!bootsOn && bootsEnergy < 100)
-            {
-                bootsEnergy += Time.deltaTime * plusEnergy;
-                if (bootsEnergy > 100)
-                    bootsEnergy = 100;
             }
         }
 

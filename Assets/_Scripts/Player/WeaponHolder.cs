@@ -19,7 +19,6 @@ public class WeaponHolder : MonoBehaviour
     [HideInInspector] public bool meleeWeapon;          // мили оружие или ренж
 
     [HideInInspector] public string currentWeaponName;  // для текста ui
-
     bool stopAiming;                                    // для дебага
 
     private void Awake()
@@ -40,6 +39,7 @@ public class WeaponHolder : MonoBehaviour
 
     private void Update()
     {
+        // Для сцен диалогов
         if (GameManager.instance.isPlayerEnactive)
         {
             fireStart = false;
@@ -54,6 +54,17 @@ public class WeaponHolder : MonoBehaviour
             }
 
             return;
+        }
+
+        // Поворот оружия
+        if (!stopAiming)
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                        // положение мыши                  
+            Vector3 aimDirection = mousePosition - transform.position;                                  // угол между положением мыши и pivot оружия          
+            aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                     // находим угол в градусах             
+            Quaternion qua1 = Quaternion.Euler(0, 0, aimAngle);                                         // создаем этот угол в Quaternion
+            transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
+            //Debug.Log(aimAngle);
         }
 
         // Стрельба
@@ -99,16 +110,7 @@ public class WeaponHolder : MonoBehaviour
             stopAiming = !stopAiming;           // для дебага, убираем поворот оружия
         }*/
 
-        // Поворот оружия
-        if (!stopAiming)
-        {
-            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                        // положение мыши                  
-            Vector3 aimDirection = mousePosition - transform.position;                                  // угол между положением мыши и pivot оружия          
-            aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                     // находим угол в градусах             
-            Quaternion qua1 = Quaternion.Euler(0, 0, aimAngle);                                         // создаем этот угол в Quaternion
-            transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
-            //Debug.Log(aimAngle);
-        }
+
 
         // Выбор оружия
         if (!meleeWeapon)
@@ -202,9 +204,9 @@ public class WeaponHolder : MonoBehaviour
         }
     }
 
-    public void HideWeapon(bool hide)
+    public void CurrentWeaponVisible(bool hide)
     {
-        
+        currentWeapon.gameObject.SetActive(hide);
     }
 
     // Покупка оружия (подбираем оружие)

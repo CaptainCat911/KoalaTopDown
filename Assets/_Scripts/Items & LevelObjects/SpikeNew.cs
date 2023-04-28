@@ -8,8 +8,9 @@ public class SpikeNew : MonoBehaviour
     public int damage;                      // урон
     public float pushForce;                 // отталкивание
     public float timeToActive;              // через сколько сработают
-    bool isSpikeActive;                     // активны сейчас или нет
     public Animator[] animators;
+
+    [HideInInspector] public bool isSpikeActive;        // активны сейчас или нет (не использую, но есть в ивентах аниматора)
 
     public bool isSpikeWork;                // шипы работают постоянно
     public float cooldown = 3f;             // перезардяка атаки

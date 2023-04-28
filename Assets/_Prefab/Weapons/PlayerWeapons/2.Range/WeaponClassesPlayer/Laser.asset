@@ -14,19 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041B\u0430\u0437\u0435\u0440"
   weaponType: 1
+  damage: 5
+  fireRate: 50
+  bulletSpeed: 0
+  pushForce: 0.2
+  enemyToDamageCount: 0
+  forceBackFire: 0
+  recoil: 0
+  delayFire: 0
   bulletPrefab: {fileID: 0}
   boxSize: 0
   range: 100
   layerRayCast:
     serializedVersion: 2
     m_Bits: 4225
-  damage: 5
-  fireRate: 50
-  bulletSpeed: 0
-  pushForce: 0.2
-  forceBackFire: 0
-  recoil: 0
-  splitProjectileWeapon: 0
   splitTimes: 0
   splitRecoil: 0
   ignite: 1

@@ -8,9 +8,10 @@ public class PreFabOptimaser : MonoBehaviour
     public GameObject go;           // ссылка на объект оптимизации
     public GameObject point;        // точка для детектирования входа/выхода коллайдера
     public GameObject prefab;       // весь префаб
+    public bool pointMove;
     
 
-    private void Start()
+    private void Awake()
     {
         DisActiveGo();              // при старте отключаем объект
     }
@@ -27,27 +28,36 @@ public class PreFabOptimaser : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (go)
+        if (go && !pointMove)
         {
             point.transform.position = go.transform.position;       // перемещаем точку с объектом
         }
     }
 
     public void ActiveGo()
-    {
+    {        
+        //Debug.Break();
+
         if (go)
+        {
             go.SetActive(true);
+            //Debug.Log("Active!");
+        }
     }
 
     public void DisActiveGo()
     {
+        //Debug.Break();
+
         if (go)
+        {
             go.SetActive(false);
+            //Debug.Log("Disactive!");
+        }
     }
 
 
-
-    IEnumerator EnterDelay()
+/*    IEnumerator EnterDelay()
     {
         yield return new WaitForSeconds(1f);
 
@@ -57,5 +67,5 @@ public class PreFabOptimaser : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-    }
+    }*/
 }

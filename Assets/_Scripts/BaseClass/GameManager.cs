@@ -14,11 +14,14 @@ public class GameManager : MonoBehaviour
 
     [Header("—сылки")]
     public Player player;                       // ссылка на игрока    
-    public GameObject gui;                      // гуи
+    public AmmoPackKoala ammoPack;              // аммо менеджер   
     public Dialog dialog;                       // диалог менеджер
-    public AmmoPackKoala ammoPack;              // ссылка на аммопак
-    //public GameObject magazine;                 // магазин
-    bool openMagazine;                          // магазин открыт
+    //public GameObject gui;                      // гуи
+
+    [Header("”правление игрой")]
+    public bool isPlayerEnactive;               // активен игрок или нет
+    public bool dialogeStart;                   // диалог началс€
+    [HideInInspector] public bool playerAtTarget;   // игрок дошЄл до места старта диалога
 
     [Header(" лавиша взаимодействи€")]
     public KeyCode keyToUse;                    // клавиша дл€ действи€
@@ -29,10 +32,7 @@ public class GameManager : MonoBehaviour
     public int[] keys;                          // ключи
     public int battery;                         // батареи
 
-    public bool isPlayerEnactive;               // активен игрок или нет
-
     public Animator blackImagesAnim;            // аниматор чЄрных полос
-    [HideInInspector] public bool playerAtTarget;
 
     //[HideInInspector] public int enemyCount;
 

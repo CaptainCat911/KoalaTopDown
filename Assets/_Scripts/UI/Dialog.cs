@@ -28,20 +28,15 @@ public class Dialog : MonoBehaviour
     int dialogeNumber;                      // временная переменная для номера диалога
 
 
-    private void Awake()
-    {
-        
-    }
-
     private void Update()
     {
-        if (startEvent)                 // если ивент начат
+        if (startEvent)         // если ивент начат
         {
             if (!GameManager.instance.playerAtTarget && dialogStore[dialogeNumber].targetToDialoge)       // если игрок не дошёл до цели и цель есть
             {                       
                 GameManager.instance.MovePlayer(dialogStore[dialogeNumber].targetToDialoge.position);       // двигаем игрока к цели[номер диалога]
             }                
-            else        // если дошёл или цели нет
+            else                // если дошёл или цели нет
             {
                 StartDialog();                                  // начинаем диалог
                 startEvent = false;                             // ивент закончился
@@ -60,6 +55,7 @@ public class Dialog : MonoBehaviour
     // Начинаем ивент (вызывается из Gamemanager)
     public void StartEvent(int numberDialog)
     {
+        GameManager.instance.dialogeStart = true;
         startEvent = true;                                          // ивент начат        
         dialogeNumber = numberDialog;                               // номер диалога
         GameManager.instance.isPlayerEnactive = true;               // отключаем управление игроком
@@ -114,6 +110,7 @@ public class Dialog : MonoBehaviour
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
             GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
             interactAction.Invoke();                            // вызываем ивент (если есть)
+            GameManager.instance.dialogeStart = false;
         }
     }
 
