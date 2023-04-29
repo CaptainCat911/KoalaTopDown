@@ -365,10 +365,11 @@ MonoBehaviour:
   damageRange: 10
   pushForceRange: 10
   projctleSpeed: 3
-  damageRangeBig: 20
+  damageRangeBig: 12
   pushForceRangeBig: 30
   projctleSpeedBig: 4
-  explousionDamage: 20
+  withSplit: 0
+  explousionDamage: 15
   explousionForce: 60
   explousionRadius: 3.5
   enemySpawners:
@@ -399,7 +400,7 @@ MonoBehaviour:
   teleportOutForce: 30
   layerRayCastTarget:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 524288
 --- !u!95 &2147084357117586853
 Animator:
   serializedVersion: 4

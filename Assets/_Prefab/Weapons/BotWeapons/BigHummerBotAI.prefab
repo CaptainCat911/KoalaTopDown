@@ -331,6 +331,7 @@ MonoBehaviour:
   damageRangeBig: 0
   pushForceRangeBig: 0
   projctleSpeedBig: 0
+  withSplit: 0
   explousionDamage: 0
   explousionForce: 0
   explousionRadius: 0
@@ -356,6 +357,9 @@ MonoBehaviour:
   teleportForceRadius: 0
   teleportInForce: 0
   teleportOutForce: 0
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 524288
 --- !u!1 &6604417298802685298
 GameObject:
   m_ObjectHideFlags: 0

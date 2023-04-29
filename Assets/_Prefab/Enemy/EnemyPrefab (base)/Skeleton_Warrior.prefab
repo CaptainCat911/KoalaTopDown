@@ -334,8 +334,9 @@ MonoBehaviour:
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
-  distanceToAttackMelee: 1
+  distanceToAttackMelee: 1.3
   distanceToAttackRange: 4
+  pivotSpeedKoef: 1
   distanceToAttack: 1.25
   distanceToTarget: 0
   itemToSpawn: {fileID: 1899818089229980536, guid: 080112eed7aac1244b8543ef553479ca, type: 3}
@@ -348,7 +349,6 @@ MonoBehaviour:
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
-  pivotSpeedKoef: 1
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128

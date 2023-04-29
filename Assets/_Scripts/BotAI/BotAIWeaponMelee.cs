@@ -158,22 +158,32 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     // Для щита игрока
     public bool RayCastToTarget(Transform fromTrans, Transform toTrans, float distance)
-    {
-        // Рейкаст2Д
-        RaycastHit2D hit = Physics2D.Raycast(fromTrans.position, toTrans.position, distance, layerRayCastTarget);
-        bool target = false;
+    {        
+        Vector2 vec2 = (toTrans.transform.position - fromTrans.transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(fromTrans.position, vec2, distance, layerRayCastTarget);
+
         if (hit.collider != null)
-        {            
-            if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
+        {
+            if (hit.collider.TryGetComponent<Shield>(out Shield shield))
             {
-                target = true;
+                shield.TakeDamage();
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
         else
         {
-            target = false;
+            return true;
         }
-        return target;
+
+
+
+
+        //Debug.DrawRay(fromTrans.position, vec2, Color.yellow);
     }
 
     public void MeleeAttack()
@@ -188,11 +198,13 @@ public class BotAIWeaponMelee : MonoBehaviour
 
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
-                //if (RayCastToTarget(transform, coll.transform, radius / 2))
-                //{
+                float distance = Vector2.Distance(botAI.transform.position, coll.transform.position);
+
+                if (RayCastToTarget(botAI.transform, coll.transform, distance))
+                {
                     Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
                     fighter.TakeDamage(damage, vec2, pushForce);
-                //}               
+                }               
             }
             collidersHits = null;
         }

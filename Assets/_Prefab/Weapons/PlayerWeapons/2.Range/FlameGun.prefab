@@ -143,8 +143,6 @@ MonoBehaviour:
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
-  withDelay: 0
-  delayFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 0
   lineRenderer: {fileID: 0}
@@ -5533,6 +5531,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8917704073564388495}
     m_Modifications:
+    - target: {fileID: 669106893643142521, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 7152dc9c4df596d4bb047bedd3c30ae9, type: 3}
       propertyPath: m_RootOrder
       value: 4

@@ -89,12 +89,13 @@ public class Player : Fighter
         //agent.updateUpAxis = false;                 //        
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
+
         //Debug.Log(rightFlip);
 
         // Таймеры
-
         if (bootsMod)
         {
             if (bootsOn)
