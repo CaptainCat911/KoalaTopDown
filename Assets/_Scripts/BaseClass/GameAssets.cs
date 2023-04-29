@@ -23,8 +23,7 @@ public class GameAssets : MonoBehaviour
     public GameObject explousionTeleportOut;
     public GameObject playerBlinkIn;
     public GameObject playerBlinkOut;
-
-
+    public GameObject explousionSmall;
 
     private void Awake()
     {

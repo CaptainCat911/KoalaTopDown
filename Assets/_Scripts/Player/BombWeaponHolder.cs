@@ -15,7 +15,7 @@ public class BombWeaponHolder : MonoBehaviour
     [HideInInspector] public bool attackHitBoxStart;    // начать атаку мечом
     [HideInInspector] public float aimAngle;            // угол поворота для вращения холдера с оружием и хитбоксПивота
     [HideInInspector] public Vector3 mousePosition;     // положение мыши
-    bool meleeWeapon;                                   // мили оружие или ренж
+    //bool meleeWeapon;                                   // мили оружие или ренж
 
     [HideInInspector] public string currentWeaponName;  // для текста ui
     
@@ -40,7 +40,7 @@ public class BombWeaponHolder : MonoBehaviour
         }
 
         // Стрельба
-        if (Input.GetMouseButton(1))
+        if (Input.GetKey(KeyCode.G))     //if (Input.GetMouseButton(1))
         {
             fireStart = true;               // кидаем бомбу                
         }

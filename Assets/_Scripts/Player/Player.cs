@@ -19,15 +19,18 @@ public class Player : Fighter
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)
     Vector2 movementVector;                             // вектор перещение (добавляем скорость)
     public float moveSpeed = 5f;                        // скорость передвижения
+
+    [Header("Рывок")]
     public float dashForce;                             // сила рывка
     public float dashRate;                              // как часто можно делать рывок 
     float nextTimeToDash;                               // когда в следующий раз готов рывок
 
+    [Header("Блинк")]
     public bool blink;                  // блинк 
     public float blinkForce;            // сила (дальность) блинка
     public float blinkRate;             // кд блинка
     public float blinkOutTime;          // время в межпространстве
-
+    [Space(2)]
     public bool blinkWithExplousion;    // с хлопком
     public int blinkOutDamage;          // урон
     public float blinkOutExpRadius;     // радиус
@@ -35,6 +38,14 @@ public class Player : Fighter
     public LayerMask layerExplBlink;    // слой
     public TrailRenderer blinkTrail;    // треил
     public GameObject antiBugCircle;    // круг от застревания
+
+    [Header("Реактивные ботинки")]
+    public bool bootsMod;
+    public float bootsSpeed;
+    public float bootsEnergy;
+    public float minusEnergy;
+    public float plusEnergy;
+    bool bootsOn;
 
     [Header("Флеш мод")]
     public bool flashMod;
@@ -78,13 +89,34 @@ public class Player : Fighter
         //agent.updateUpAxis = false;                 //        
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
+
         //Debug.Log(rightFlip);
+
+        // Таймеры
+        if (bootsMod)
+        {
+            if (bootsOn)
+            {
+                bootsEnergy -= Time.deltaTime * minusEnergy;
+                if (bootsEnergy < 0)
+                    bootsEnergy = 0;
+            }
+            if (!bootsOn && bootsEnergy < 100)
+            {
+                bootsEnergy += Time.deltaTime * plusEnergy;
+                if (bootsEnergy > 100)
+                    bootsEnergy = 100;
+            }
+        }
 
         if (GameManager.instance.isPlayerEnactive)              // если игрок не активен
         {
-            moveDirection = new Vector2(0, 0).normalized;       // сбрасываем вектор для скорости 
+            moveDirection = new Vector2(0, 0).normalized;       // сбрасываем вектор для скорости
+            if (bootsOn)
+                BootsMode(false);                               // выключаем реактивные ботинки
             return;
         }
 
@@ -108,18 +140,31 @@ public class Player : Fighter
             }
         }
 
-        // Флеш мод
-        if (flashMod)
+        if (bootsMod)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) && !inBlinkSpace)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && bootsEnergy >= 20 && !bootsOn)
             {
-                RunFlashMode(true);
+                BootsMode(true);
             }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            if ((Input.GetKeyUp(KeyCode.LeftShift) || bootsEnergy <= 0) && bootsOn)
             {
-                RunFlashMode(false);
+                BootsMode(false);
             }
         }
+
+
+        // Флеш мод
+        /*        if (flashMod)
+                {
+                    if (Input.GetKeyDown(KeyCode.LeftShift) && !inBlinkSpace)
+                    {
+                        RunFlashMode(true);
+                    }
+                    if (Input.GetKeyUp(KeyCode.LeftShift))
+                    {
+                        RunFlashMode(false);
+                    }
+                }*/
 
 
 
@@ -249,6 +294,29 @@ public class Player : Fighter
             ignitable.flames.gameObject.SetActive(true);
             inBlinkSpace = false;
         }        
+    }
+
+    void BootsMode(bool status)
+    {
+        if (status)
+        {
+            bootsOn = true;
+            moveSpeed += bootsSpeed;
+            bootsEnergy -= 10;
+            GameObject effect = Instantiate(GameAssets.instance.explousionSmall,
+                transform.position, Quaternion.identity);                               // создаем эффект убийства
+            Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
+            blinkTrail.emitting = true;                                                 // включаем треил
+        }
+        else
+        {            
+            moveSpeed -= bootsSpeed;            
+            //GameObject effect = Instantiate(GameAssets.instance.explousionSmall,
+                //transform.position, Quaternion.identity);                               // создаем эффект убийства
+            //Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
+            blinkTrail.emitting = false;
+            bootsOn = false;
+        }
     }
 
     void AntiBugCircleOn()

@@ -29,6 +29,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     public int damageRangeBig;                      // урон ренж
     public float pushForceRangeBig;                 // сила толчка ренж
     public float projctleSpeedBig;                  // скорость снаряда
+    public bool withSplit;                          // с разлётом на мелкие снаряды
 
     [Header("Параметры взрыва")]
     public int explousionDamage;                    // урон взрыва
@@ -69,6 +70,8 @@ public class BotAIWeaponMelee : MonoBehaviour
     public float teleportForceRadius;
     public float teleportInForce;
     public float teleportOutForce;
+
+    public LayerMask layerRayCastTarget;
 
     //public bool demon;
 
@@ -152,6 +155,37 @@ public class BotAIWeaponMelee : MonoBehaviour
         }
     }
 
+
+    // Для щита игрока
+    public bool RayCastToTarget(Transform fromTrans, Transform toTrans, float distance)
+    {        
+        Vector2 vec2 = (toTrans.transform.position - fromTrans.transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(fromTrans.position, vec2, distance, layerRayCastTarget);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.TryGetComponent<Shield>(out Shield shield))
+            {
+                shield.TakeDamage();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return true;
+        }
+
+
+
+
+        //Debug.DrawRay(fromTrans.position, vec2, Color.yellow);
+    }
+
     public void MeleeAttack()
     {
         Collider2D[] collidersHits = Physics2D.OverlapCircleAll(hitBox.position, radius, layerHit);     // создаем круг в позиции объекта с радиусом
@@ -164,8 +198,13 @@ public class BotAIWeaponMelee : MonoBehaviour
 
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
-                Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
-                fighter.TakeDamage(damage, vec2, pushForce);                
+                float distance = Vector2.Distance(botAI.transform.position, coll.transform.position);
+
+                if (RayCastToTarget(botAI.transform, coll.transform, distance))
+                {
+                    Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
+                    fighter.TakeDamage(damage, vec2, pushForce);
+                }               
             }
             collidersHits = null;
         }
@@ -195,6 +234,7 @@ public class BotAIWeaponMelee : MonoBehaviour
         GameObject bullet = Instantiate(GameAssets.instance.fireBallBig, hitBox.transform.position, hitBox.transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
         bullet.GetComponent<Bullet>().damage = damageRangeBig;                                                      // присваиваем урон снаряду
         bullet.GetComponent<Bullet>().pushForce = pushForceRangeBig;                                                // присваиваем силу толчка снаряду
+        bullet.GetComponent<BulletRocket>().withSplit = withSplit;
         bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.transform.right * projctleSpeedBig, ForceMode2D.Impulse);              // даём импульс        
         //botAI.ForceBackFire(firePoint.transform.position, forceBackFire);                                   // даём отдачу оружия
         //firePoint.Rotate(0, 0, -randomBulletX);                                                             // и тупо возвращаем поворот
@@ -327,7 +367,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void Teleport()
     {
-        Debug.Log(teleports.Length);
+        //Debug.Log(teleports.Length);
         if (teleports.Length < 1)
             return;
 

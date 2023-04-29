@@ -16,33 +16,38 @@ public class BotAI : Fighter
     BotAIHitbox hitBox;
     //public Animator animatorHit;                            // аниматор мили оружия
 
-    // Тип бота
+    [Header("Параметры бота")]
     public bool newNpcSystem;                               // босс или сложный нпс
     public bool isNeutral;                                  // не будет никого атаковать
     public bool isFriendly;                                 // союзный бот
     public bool isEnemy;                                    // несоюзный бот
     //public bool isFollow;                                   // следовать
 
-    // Преследование
+    [Header("Параметры тригера")]
+    public float triggerLenght;                             // дистанция тригера
+    public float distanceToChangeTarget = 3f;               // дистанция при которой бот будет менять цель, если целей больше 1
     [HideInInspector] public GameObject target;             // цель
     [HideInInspector] public LayerMask layerTarget;         // слой для поиска 
     [HideInInspector] public LayerMask layerHit;            // слой для оружия
     [HideInInspector] public bool chasing;                  // статус преследования
     [HideInInspector] public Vector3 startPosition;         // позиция для охраны
-    //public float chaseLeght;                                // дальность преследования (пока не используется)   
-    public float triggerLenght;                             // дистанция тригера
-    public float distanceToChangeTarget = 3f;               // дистанция при которой бот будет менять цель, если целей больше 1
     [HideInInspector] public bool targetVisible;            // видим мы цель или нет
     [HideInInspector] public bool closeToTarget;            // можно атаковать
-    public float distanceToAttackMelee;                     // дистанция для атакой мили
-    public float distanceToAttackRange;                     // дистанция для атаки ренж
-    [HideInInspector] public float distanceToAttack;        // дистанция, с которой можно атаковать
-    [HideInInspector] public float distanceToTarget;
-    public GameObject itemToSpawn;
+    //public float chaseLeght;                                // дальность преследования (пока не используется)   
 
+    [Header("Тип атаки бота")]
     public bool meleeAttackType;                            // устанавливаем тип атаки мили
     public bool rangeAttackType;                            // ... ренж
     public bool twoWeapons;                                 // если есть 2 оружия
+    public float distanceToAttackMelee;                     // дистанция для атакой мили
+    public float distanceToAttackRange;                     // дистанция для атаки ренж
+    public float pivotSpeedKoef = 1f;                       // скорость поворота держателя оружия
+    [HideInInspector] public float distanceToAttack;        // дистанция, с которой можно атаковать
+    [HideInInspector] public float distanceToTarget;
+
+    [Header("Предмет")]
+    public GameObject itemToSpawn;
+
     //public bool switchMelee;
 
     // Замедление
@@ -55,16 +60,15 @@ public class BotAI : Fighter
     public bool followPlayer;                               // следовать за игроком
     public Transform destinationPoint;                      // точка назначения
 
-    // Для анимации
-    [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота
+    [Header("Анимации и эффекты")]
     public GameObject deathEffect;                          // эффект (потом сделать его в аниматоре (или  нет))
     public float deathCameraShake;                          // мощность тряски камеры при убийстве
-    [HideInInspector] public bool flipLeft;                  // для флипа
-    [HideInInspector] public bool flipRight;                 //    
-    bool pivotZero;
-    public float pivotSpeedKoef = 1f;
+    [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота
+    [HideInInspector] public bool flipLeft;                 // для флипа
+    [HideInInspector] public bool flipRight;                //    
+    bool pivotZero;                                         // оружие не вращается
 
-
+    [Header("Остальное")]
     // Таймер для цветов при уроне
     float timerForColor;
     bool red;
@@ -77,6 +81,8 @@ public class BotAI : Fighter
     public bool fastDeathAnim;
     // Дебаг
     public bool debug;
+
+
 
     public override void Awake()
     {
@@ -119,9 +125,8 @@ public class BotAI : Fighter
             SwitchAttackType(2);        
     }
 
-    private void Update()
-    {       
-
+    public override void Update()
+    {
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
 
@@ -365,8 +370,6 @@ public class BotAI : Fighter
         }
     }
 
-
-
     public void ResetTarget()
     {
         //isFindTarget = false;
@@ -379,9 +382,6 @@ public class BotAI : Fighter
     }
 
 
-
-
-
     public void SetDestination(Vector3 destination)
     {
         agent.SetDestination(destination);
@@ -392,7 +392,6 @@ public class BotAI : Fighter
         ChatBubble.Clear(gameObject);
         ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 4f);
     }
-
 
 
 
@@ -445,7 +444,7 @@ public class BotAI : Fighter
     // Триггер для противников
     public void TriggerEnemy()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 5, layerTrigger);     // создаем круг в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 10, layerTrigger);     // создаем круг в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)

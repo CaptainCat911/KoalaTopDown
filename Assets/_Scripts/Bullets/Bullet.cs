@@ -4,8 +4,12 @@ public class Bullet : MonoBehaviour
 {
     [HideInInspector] public int damage;
     [HideInInspector] public float pushForce;
+    [HideInInspector] public int enemyToDamageCount;
+    [HideInInspector] public int enemyDamaged;
     public bool isPlayerBullet;
+
     public GameObject expEffect;
+
     public LayerMask layerExplousion;
 
 

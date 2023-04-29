@@ -149,11 +149,12 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 50
+  maxHealth: 40
   noAgro: 0
   bossHP: 0
   hpBarOn: 0
   hpBarGO: {fileID: 0}
+  destroyed: 0
   itemToSpawn: {fileID: 0}
   expEffect: {fileID: 7845441016114820387, guid: 0a3f06b9520c2114ca45f0bece3fcaa2, type: 3}
   m_spriteDestroyed:

@@ -15,9 +15,9 @@ public class EnemySpawner : MonoBehaviour
     private float lastSpawn;
     public int enemysHowMuch;               // сколько врагов нужено
     int enemyCount;
-    public GameObject spawnEffect;
-    public bool bossSpawner;
-    
+    public GameObject spawnEffect;          // эффект спавна
+    public bool bossSpawner;                // спавнер дл€ босса
+    public bool noItem;                     // спаун без предмета       
 
     //public int enemyTriggerDistance;        // установить дистанцию тригера врагов
 
@@ -44,12 +44,14 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy()
     {
         int ndx = Random.Range(0, prefabEnemies.Length);                            // выбираем рандом из массива врагов
-        GameObject enemyPref = Instantiate(prefabEnemies[ndx]);                     // создаЄм префаб
+        GameObject enemyPref = Instantiate(prefabEnemies[ndx], transform.position, Quaternion.identity);                     // создаЄм префаб
         //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
         agent = enemyPref.GetComponentInChildren<NavMeshAgent>();                   // находим Ќавћешјгент
         Debug.Log(agent);
         agent.Warp(transform.position);                                             // перемещаем префаб к спавнеру
         enemyPref.GetComponentInChildren<BotAI>().triggerLenght = chaseDistance;    // устанавливаем дистанцию триггера
+        if(noItem)
+            enemyPref.GetComponentInChildren<BotAI>().itemToSpawn = null;
 
 /*        if (chasePlayer)
         {

@@ -5,25 +5,11 @@ using UnityEngine;
 public class ChaseBehaviour : StateMachineBehaviour
 {
     Boss boss;                              // ссылка на бота
-    public float cooldownAttack = 2f;       // перезарядка атаки
 
-    [Header("Атака издалека")]
-    public int rangeAttackChance;           // шанс ренж атаки
-    public int multiAttackChance;           // .. мультиатаки
-
-    [Header("Атака вблизи")]
-    public int meleeAttackChance;
-    public int explousionAttackChance;
-
-    [Header("Общие атаки")]
-    public int spawnAttackChance;           // .. спауна
-    public int gravityChance;               // .. гравитации
-    public int laserChance;                 // .. лазера
-    public int teleportChance;              // .. телепорта
-
-    float lastAttack;                       // время последнего рандома  
+    //public float cooldownAttack;       // перезарядка атаки
     //float randomCooldown = 1f;              // перезарядка рандома    
     //float lastRandom;                       // время последнего рандома
+    float lastAttack;                       // время последнего рандома  
     int attackNumber;                       // тип атаки
     bool attackReady;                       // атака готова
 
@@ -56,7 +42,7 @@ public class ChaseBehaviour : StateMachineBehaviour
             return;
         }
 
-        if (boss.currentHealth < boss.maxHealth / 3)
+        if (boss.currentHealth < boss.maxHealth / 4)
         {
             //boss.SayText("Тебе никогда не победить");
             boss.distanceToAttack = 30;
@@ -70,24 +56,24 @@ public class ChaseBehaviour : StateMachineBehaviour
         boss.NavMeshRayCast(boss.target);           // делаем рейкаст
 
         // Иногда сменяем цель
-        if (Time.time - lastTargetChange > cooldownChange && Time.time - lastAttack > cooldownAttack)      // если кд готово
+        if (Time.time - lastTargetChange > cooldownChange && Time.time - lastAttack > boss.cooldownAttack)      // если кд готово
         {
             lastTargetChange = Time.time;
             boss.FindTarget();                              // поиск цели
         }
 
         // Подготовка типа атаки
-        if (!attackReady && Time.time - lastAttack > cooldownAttack)        
+        if (!attackReady && Time.time - lastAttack > boss.cooldownAttack)        
         {
             // Дальняя дистанция
             if (boss.distanceToTarget > 3)
             {
-                if (ProbabilityCheck(rangeAttackChance))    // шанс на ренж атаку
+                if (ProbabilityCheck(boss.rangeAttackChance))    // шанс на ренж атаку
                 {
                     boss.distanceToAttack = 6;
                     attackNumber = 3;               // ренж атака
                 }
-                if (ProbabilityCheck(multiAttackChance))
+                if (ProbabilityCheck(boss.multiAttackChance))
                 {
                     boss.distanceToAttack = 20;
                     attackNumber = 5;               // мультиренж атака
@@ -96,12 +82,12 @@ public class ChaseBehaviour : StateMachineBehaviour
             // Ближняя дистанция
             else
             {
-                if (ProbabilityCheck(meleeAttackChance))
+                if (ProbabilityCheck(boss.meleeAttackChance))
                 {
                     boss.distanceToAttack = 3;
                     attackNumber = 1;               // удар
                 }
-                if (ProbabilityCheck(explousionAttackChance))
+                if (ProbabilityCheck(boss.explousionAttackChance))
                 {
                     boss.distanceToAttack = 3;     
                     attackNumber = 2;               // взрыв
@@ -109,22 +95,22 @@ public class ChaseBehaviour : StateMachineBehaviour
             }
 
             // Эти атаки для которых не важна дистанция
-            if (ProbabilityCheck(spawnAttackChance))
+            if (ProbabilityCheck(boss.spawnAttackChance))
             {
                 boss.distanceToAttack = 20;
                 attackNumber = 4;               // спаун
             }
-            if (ProbabilityCheck(gravityChance))    // шанс на гравити атаку
+            if (ProbabilityCheck(boss.gravityChance))    // шанс на гравити атаку
             {
                 boss.distanceToAttack = 10;
                 attackNumber = 8;               // гравити атака
             }
-            if (ProbabilityCheck(laserChance))
+            if (ProbabilityCheck(boss.laserChance))
             {
                 boss.distanceToAttack = 20;
                 attackNumber = 6;               // лазер атака
             }
-            if (ProbabilityCheck(teleportChance))
+            if (ProbabilityCheck(boss.teleportChance))
             {
                 boss.distanceToAttack = 30;
                 attackNumber = 9;               // телепорт
@@ -138,7 +124,7 @@ public class ChaseBehaviour : StateMachineBehaviour
             return;
 
         // Если всё готово - атакуем
-        if (Time.time - lastAttack > cooldownAttack)        // если готовы атаковать и кд готово
+        if (Time.time - lastAttack > boss.cooldownAttack)        // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                         // присваиваем время атаки
 
@@ -152,7 +138,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     bool ProbabilityCheck(int chance)
     {
         float random = Random.Range(0, 101);
-        if (random <= chance)
+        if (random < chance)
             return true;
         else
             return false;

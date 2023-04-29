@@ -51,6 +51,9 @@ public class AmmoPackKoala : MonoBehaviour
             buttonsBuyRangeWeapon[index].SetActive(false);                              // кнопка покупки
             buttonsSellRangeWeapon[index].SetActive(true);                              // кнопка продажи
 
+            if (GameManager.instance.player.weaponHolder.meleeWeapon)
+                GameManager.instance.player.weaponHolder.SwapWeapon();                  // переключаемс€ на это оружие
+
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружи€
 
             player.weaponHolder.weapons.Add(ammoWeapons[index].weapon);                 // добавл€ем оружие в список оружий
@@ -90,6 +93,9 @@ public class AmmoPackKoala : MonoBehaviour
         {
             buttonsBuyMeleeWeapon[index].SetActive(false);                                         // убираем кнопку покупки
             buttonsSellMeleeWeapon[index].SetActive(true);
+
+            if (!GameManager.instance.player.weaponHolder.meleeWeapon)
+                GameManager.instance.player.weaponHolder.SwapWeapon();
 
             GameManager.instance.gold -= ammoMeleeWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружи€
 
@@ -147,6 +153,45 @@ public class AmmoPackKoala : MonoBehaviour
             CreateMessage("Ќедостаточно золота!");
         }
     }
+
+
+    // ƒл€ подн€ти€ оружи€
+
+    // ѕодн€ть ренж оружие
+    public void TakeRangeWeapon(int index)
+    {
+        if (GameManager.instance.player.weaponHolder.meleeWeapon)
+            GameManager.instance.player.weaponHolder.SwapWeapon();
+
+        player.weaponHolder.weapons.Add(ammoWeapons[index].weapon);                 // добавл€ем оружие в список оружий
+        player.weaponHolder.BuyWeapon(player.weaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока                                                                                
+        //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружи€)
+        if (!player.weaponHolder.meleeWeapon)
+        {
+            player.weaponHolder.selectedWeapon = player.weaponHolder.weapons.Count - 1;
+            player.weaponHolder.SelectWeapon();                                     // выбрать оружие 
+        }
+        CreateMessage(ammoWeapons[index].name + " !");
+
+    }
+    // ѕодн€ть мили оружие
+    public void TakeMeleeWeapon(int index)
+    {
+        if (!GameManager.instance.player.weaponHolder.meleeWeapon)
+            GameManager.instance.player.weaponHolder.SwapWeapon();
+
+        player.weaponHolderMelee.weapons.Add(ammoMeleeWeapons[index].weapon);                    // добавл€ем оружие в список оружий
+        player.weaponHolderMelee.BuyWeapon(player.weaponHolderMelee.weapons.Count - 1);     // создаем его в инвентаре игрока                                                                                
+                                                                                            //if (player.weaponHolder.weapons.Count - 1 > 0)                              // (длинна списка - 1 и будет номер последнего добавленного оружи€)
+        if (player.weaponHolder.meleeWeapon)
+        {
+            player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
+            player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
+        }
+        CreateMessage(ammoMeleeWeapons[index].name + " !");  
+    }
+
+
 
     void CreateMessage(string text)
     {

@@ -358,17 +358,18 @@ MonoBehaviour:
   weaponName: "\u041F\u043E\u0441\u043E\u0445 \u0411\u043E\u0441\u0441\u0430"
   hitBox: {fileID: 1630045362412420869}
   cooldown: 1.5
-  damage: 50
+  damage: 10
   pushForce: 30
   radius: 1.5
   trail: {fileID: 3786651681873589342}
-  damageRange: 20
+  damageRange: 10
   pushForceRange: 10
   projctleSpeed: 3
-  damageRangeBig: 50
+  damageRangeBig: 12
   pushForceRangeBig: 30
   projctleSpeedBig: 4
-  explousionDamage: 70
+  withSplit: 0
+  explousionDamage: 15
   explousionForce: 60
   explousionRadius: 3.5
   enemySpawners:
@@ -397,6 +398,9 @@ MonoBehaviour:
   teleportForceRadius: 4
   teleportInForce: 30
   teleportOutForce: 30
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 524288
 --- !u!95 &2147084357117586853
 Animator:
   serializedVersion: 4

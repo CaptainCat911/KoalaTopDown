@@ -13,7 +13,7 @@ public class Optimiser : MonoBehaviour
         
         if (preFabOptimaser)
         {
-            preFabOptimaser.ActiveGo();         // если есть - включаем объект
+            preFabOptimaser.ActiveGo();         // если есть - включаем объект            
         }       
     }
 
@@ -25,7 +25,7 @@ public class Optimiser : MonoBehaviour
 
         if (preFabOptimaser)
         {
-            //preFabOptimaser.DisActiveGo();
+            preFabOptimaser.DisActiveGo();
         }                
     }
 }

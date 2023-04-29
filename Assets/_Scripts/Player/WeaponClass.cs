@@ -25,6 +25,7 @@ public class WeaponClass : ScriptableObject
     public float fireRate;
     public float bulletSpeed;
     public float pushForce;
+    public int enemyToDamageCount;
     public float forceBackFire;
     public float recoil;
     public float delayFire;

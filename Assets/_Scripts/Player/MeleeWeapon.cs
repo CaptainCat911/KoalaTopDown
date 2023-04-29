@@ -22,6 +22,9 @@ public class MeleeWeapon : MonoBehaviour
     public float radius = 1;                            // радиус
     public float cooldown = 1f;                         // перезардяка атаки
     float lastAttack;                                   // время последнего удара (для перезарядки удара)
+    [Space]
+    public float capsuleLeght;
+    public float capsuleWidht;
 
     [Header("Параметры поджога")]
     public bool ignite;
@@ -66,9 +69,19 @@ public class MeleeWeapon : MonoBehaviour
 
     public void MeleeAttack()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(hitBox.position, radius, layer);     // создаем круг в позиции объекта с радиусом
-                                                                                                     // 
-        // для электро атаки, взрыв (громовой молот)
+        Collider2D[] collidersHits;
+
+        if (spear)
+        {
+            collidersHits = Physics2D.OverlapCapsuleAll(hitBox.position, new Vector2(capsuleLeght, capsuleWidht), CapsuleDirection2D.Horizontal, player.hitBoxPivot.transform.localEulerAngles.z, layer);
+        }
+        else
+        {
+            collidersHits = Physics2D.OverlapCircleAll(hitBox.position, radius, layer);     // создаем круг в позиции объекта с радиусом
+        }
+
+        
+        // Для электро атаки, взрыв (громовой молот)
         if (electro && collidersHits.Length > 0)        
         {
             Collider2D[] collidersHitsElectro = Physics2D.OverlapCircleAll(hitBox.position, radiusElectro, layer);     // создаем круг в позиции объекта с радиусом
@@ -92,7 +105,7 @@ public class MeleeWeapon : MonoBehaviour
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShakeElectro, cameraTimedeShakeElectro);        // тряска камеры
         }
 
-        // обычная атака
+        // Обычная атака
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)
@@ -134,5 +147,6 @@ public class MeleeWeapon : MonoBehaviour
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(hitBox.position, radius);
+        //Gizmos.DrawLine(hitBox.position, )
     }
 }
