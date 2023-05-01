@@ -5,11 +5,10 @@ using UnityEngine;
 public class ChaseBehaviourNPC : StateMachineBehaviour
 {
     NPC boss;                               // ссылка на бота
-    public float cooldownAttack = 2f;       // перезарядка атаки   
-    float lastAttack;                       // время последнего рандома  
-    float randomCooldown = 1f;              // перезарядка рандома   
-    float lastRandom;                       // время последнего рандома
+    
+    float lastAttack;                       // время последнего рандома    
     int attackNumber;                       // тип атаки
+    bool attackReady;                       // атака готова
 
     // Смена цели
     float lastTargetChange;                 // время последнего поиска цели
@@ -33,93 +32,125 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
             return;
         }
 
-        boss.Chase();                               // преследуем цель
-        boss.NavMeshRayCast(boss.target);           // делаем рейкаст
-
-        // Если не готовы атаковать - возвращаемся
-        if (!boss.closeToTarget)
+        // Если сейчас атакуем
+        if (boss.attackingNow)
         {
-            animator.SetTrigger("Run");
+            boss.agent.ResetPath();
             return;
         }
 
+        if (boss.currentHealth < boss.maxHealth / 4)
+        {
+            //boss.SayText("Тебе никогда не победить");
+            boss.distanceToAttack = 30;
+            attackNumber = 7;
+            animator.SetFloat("AttackType", attackNumber);
+            animator.SetTrigger("Attack");
+            return;
+        }
+
+        boss.Chase();                               // преследуем цель
+        boss.NavMeshRayCast(boss.target);           // делаем рейкаст
+
         // Иногда сменяем цель
-        if (Time.time - lastTargetChange > cooldownChange && Time.time - lastAttack > cooldownAttack)      // если кд готово
+        if (Time.time - lastTargetChange > cooldownChange && Time.time - lastAttack > boss.cooldownAttack)      // если кд готово
         {
             lastTargetChange = Time.time;
             boss.FindTarget();                                  // поиск цели
         }
 
+
+
+
+        // Если не близко к цели - бежим
+        if (!boss.targetInRange)
+        {
+            animator.SetTrigger("Run");
+            return;
+        }
+
+        if (Time.time - lastAttack <= boss.cooldownAttack)
+        {
+            return;
+        }
         // Подготовка типа атаки
-        if (Time.time - lastRandom > randomCooldown)        // если готовы атаковать и кд готово
+        else
         {
-            lastRandom = Time.time;                         // присваиваем время атаки
-            
-            if (boss.distanceToTarget > 2)                  // для дальних атак
+            // Дальняя дистанция
+            if (boss.distanceToTarget > 3)
             {
-                int random = Random.Range(1, 6);
-                if (random < 6)
+                if (ProbabilityCheck(boss.rangeAttackChance))    // шанс на ренж атаку
                 {
-                    boss.distanceToAttack = boss.rangeDistanceToAttack;
-                    attackNumber = 2;                   // ренж атака
+                    boss.distanceToAttack = boss.rangeAttackDistance;
+                    attackNumber = 3;               // ренж атака
                 }
-/*                if (random == 6)
+                if (ProbabilityCheck(boss.multiAttackChance))
                 {
                     boss.distanceToAttack = 20;
-                    attackNumber = 3;                   // спаун
-                }*/
+                    attackNumber = 5;               // мультиренж атака
+                }
             }
-            else                                        // для ближних атак
+            // Ближняя дистанция
+            else
             {
-                int random = Random.Range(1, 3);
-                if (random < 2)
+                if (ProbabilityCheck(boss.meleeAttackChance))
                 {
-                    boss.distanceToAttack = 20;
-                    attackNumber = 4;               // взрыв
+                    boss.distanceToAttack = boss.meleeAttackDistance;
+                    attackNumber = 1;               // удар
                 }
-                if (random == 2)
+                if (ProbabilityCheck(boss.explousionAttackChance))
                 {
-                    boss.distanceToAttack = 20;
-                    attackNumber = 2;               // ренж атака
+                    boss.distanceToAttack = 3;
+                    attackNumber = 2;               // взрыв
                 }
-/*                if (random == 3)
-                {
-                    boss.distanceToAttack = 20;
-                    attackNumber = 3;               // спаун
-                }*/
             }
-        }
+
+            // Эти атаки для которых не важна дистанция
+            if (ProbabilityCheck(boss.spawnAttackChance))
+            {
+                boss.distanceToAttack = 20;
+                attackNumber = 4;               // спаун
+            }
+            if (ProbabilityCheck(boss.gravityChance))    // шанс на гравити атаку
+            {
+                boss.distanceToAttack = 10;
+                attackNumber = 8;               // гравити атака
+            }
+            if (ProbabilityCheck(boss.laserChance))
+            {
+                boss.distanceToAttack = 20;
+                attackNumber = 6;               // лазер атака
+            }
+            if (ProbabilityCheck(boss.teleportChance))
+            {
+                boss.distanceToAttack = 30;
+                attackNumber = 9;               // телепорт
+            }
 
 
-        // Если всё готово - атакуем
-        if (Time.time - lastAttack > cooldownAttack)              // если готовы атаковать и кд готово
-        {
             lastAttack = Time.time;                         // присваиваем время атаки
-            boss.agent.ResetPath();
+            animator.SetFloat("AttackType", attackNumber);
+            animator.SetTrigger("Attack");
 
-            if (attackNumber == 2)
-            {
-                animator.SetTrigger("AttackRange");
-            }
-            if (attackNumber == 3)
-            {
-                animator.SetTrigger("AttackSpawn");
-            }
-            if (attackNumber == 4)
-            {
-                animator.SetTrigger("AttackExplousion");
-            }
+            boss.distanceToAttack = boss.defaultRangeToTarget;
+
+            //attackReady = true;                 // готовы атаковать
         }
     }
 
-    void Attack(int number)
+    bool ProbabilityCheck(int chance)
     {
-
+        float random = Random.Range(0, 101);
+        if (random < chance)
+            return true;
+        else
+            return false;
     }
+}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
     //    
     //}
-}
+

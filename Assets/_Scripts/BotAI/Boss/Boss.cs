@@ -25,7 +25,7 @@ public class Boss : BotAI
     public int laserChance;                 // .. лазера
     public int teleportChance;              // .. телепорта
 
-    [HideInInspector] public bool attackingNow;
+    [HideInInspector] public bool attackingNow;     // сейчас атакует
 
 
 

@@ -3,14 +3,14 @@ using UnityEngine;
 public class BotAIAnimator : MonoBehaviour
 {
     BotAI botAi;                                    // ссылка на бота
-    Boss boss;                                      // ссылка на босса
+    NPC npc;                                      // ссылка на босса
     [HideInInspector] public Animator animator;     // аниматор
     BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;  // мили холдер
 
     private void Awake()
     {
         botAi = GetComponentInParent<BotAI>();
-        boss = GetComponentInParent<Boss>();
+        npc = GetComponentInParent<NPC>();
         animator = GetComponent<Animator>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
     }
@@ -21,9 +21,9 @@ public class BotAIAnimator : MonoBehaviour
     public void BossAttacking(int status)
     {
         if (status == 0)
-            boss.attackingNow = false;
+            npc.attackingNow = false;
         if (status == 1)
-            boss.attackingNow = true;
+            npc.attackingNow = true;
     }
 
     // Атаки

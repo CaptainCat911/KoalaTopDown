@@ -9,7 +9,7 @@ public class IdleBehaviour : StateMachineBehaviour
 
     // Поиск цели
     float lastTargetFind;                   // время последнего поиска цели
-    float cooldownFind = 0.5f;              // перезардяка поиска цели
+    float cooldownFind = 0.1f;              // перезардяка поиска цели
     //float cooldownChangeTarget = 2f;        // перезарядка смена цели
 
 
@@ -27,11 +27,11 @@ public class IdleBehaviour : StateMachineBehaviour
             return;
         }
 
-        if (boss.currentHealth < boss.maxHealth / 3)
+/*        if (boss.currentHealth < boss.maxHealth / 3)
         {
             animator.SetTrigger("FindTarget");              // триггер
             return;
-        }
+        }*/
 
         // Если нет цели
         if (!boss.target)
@@ -55,8 +55,8 @@ public class IdleBehaviour : StateMachineBehaviour
 
         if (boss.target)                                    // если есть цель
         {
-            animator.SetTrigger("FindTarget");              // триггер
             boss.chasing = true;                            // преследование включено
+            animator.SetTrigger("FindTarget");              // триггер
         }
 
         if (Time.time - lastTargetFind > cooldownFind)      // если кд готово

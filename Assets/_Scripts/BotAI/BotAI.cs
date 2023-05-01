@@ -32,18 +32,21 @@ public class BotAI : Fighter
     [HideInInspector] public bool chasing;                  // статус преследования
     [HideInInspector] public Vector3 startPosition;         // позиция для охраны
     [HideInInspector] public bool targetVisible;            // видим мы цель или нет
-    [HideInInspector] public bool closeToTarget;            // можно атаковать
+    [HideInInspector] public bool closeToTarget;            // можно атаковать (текущей атакой)
+    [HideInInspector] public bool targetInRange;            // можно атаковать (общее)
+
     //public float chaseLeght;                                // дальность преследования (пока не используется)   
 
     [Header("Тип атаки бота")]
     public bool meleeAttackType;                            // устанавливаем тип атаки мили
     public bool rangeAttackType;                            // ... ренж
     public bool twoWeapons;                                 // если есть 2 оружия
+    public float defaultRangeToTarget;                     // дистанция для атакой мили
     public float distanceToAttackMelee;                     // дистанция для атакой мили
     public float distanceToAttackRange;                     // дистанция для атаки ренж
     public float pivotSpeedKoef = 1f;                       // скорость поворота держателя оружия
-    [HideInInspector] public float distanceToAttack;        // дистанция, с которой можно атаковать
-    [HideInInspector] public float distanceToTarget;
+    public float distanceToAttack;                          // дистанция, с которой можно атаковать
+    [HideInInspector] public float distanceToTarget;        // дистанция до цели
 
     [Header("Предмет")]
     public GameObject itemToSpawn;
@@ -107,7 +110,7 @@ public class BotAI : Fighter
         }
         maxSpeed = agent.speed;
 
-
+        //distanceToAttack = defaultRangeToTarget;
     }
 
     public override void Start()
@@ -127,6 +130,8 @@ public class BotAI : Fighter
 
     public override void Update()
     {
+        Debug.Log(distanceToAttack);
+
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
 
@@ -352,7 +357,24 @@ public class BotAI : Fighter
 
         distanceToTarget = Vector3.Distance(transform.position, target.transform.position);     // считаем дистанцию до цели
 
-        if (distanceToTarget < distanceToAttack && targetVisible)                               // если дошли до цели и видим её
+        // Дистанция до цели
+        if (distanceToTarget <= defaultRangeToTarget && targetVisible)
+        {
+            if (!targetInRange)
+            {
+                targetInRange = true;
+            }
+        }
+        else
+        {
+            if (targetInRange)
+            {
+                targetInRange = false;
+            }
+        }          
+
+        // Дистанция для текущей атаки
+        if (distanceToTarget <= distanceToAttack && targetVisible)                               // если дошли до цели и видим её
         {
             if (!closeToTarget)
             {

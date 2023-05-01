@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [HideInInspector] public Rigidbody2D rb;
+
+    public bool isPlayerBullet;
+
     [HideInInspector] public int damage;
     [HideInInspector] public float pushForce;
     [HideInInspector] public int enemyToDamageCount;
     [HideInInspector] public int enemyDamaged;
-    public bool isPlayerBullet;
-
+    public LayerMask layerExplousion;
     public GameObject expEffect;
 
-    public LayerMask layerExplousion;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
