@@ -244,13 +244,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4679c321acafe48b5ab91030711ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  isPlayerBullet: 0
   damage: 0
   pushForce: 0
-  isPlayerBullet: 0
-  expEffect: {fileID: 5727708654878073701, guid: 190bc6ec9b6aab145ac41fc9a4d5a45a, type: 3}
+  enemyToDamageCount: 0
+  enemyDamaged: 0
   layerExplousion:
     serializedVersion: 2
     m_Bits: 20545
+  expEffect: {fileID: 5727708654878073701, guid: 190bc6ec9b6aab145ac41fc9a4d5a45a, type: 3}
   expRadius: 1
   withSplit: 0
   prefabFireBall: 0
@@ -263,6 +266,9 @@ MonoBehaviour:
   timeToExpl: 0
   cameraAmplitudeShake: 3
   cameraTimedeShake: 0.1
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 524288
 --- !u!96 &6759844036914890781
 TrailRenderer:
   serializedVersion: 2

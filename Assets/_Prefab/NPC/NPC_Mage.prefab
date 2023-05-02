@@ -92,7 +92,7 @@ Animator:
   m_GameObject: {fileID: 8505044237320569743}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ebb7c0cecf0362948b9285d4b82a18a1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 64c301a9fe5ad4e49a58bd53c2decf33, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   isFriendly: 1
   isEnemy: 0
   triggerLenght: 7
-  distanceToChangeTarget: 5
+  distanceToChangeTarget: 2
   target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
@@ -374,10 +374,12 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   targetVisible: 0
   closeToTarget: 0
+  targetInRange: 0
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
-  distanceToAttackMelee: 20
+  defaultRangeToTarget: 5
+  distanceToAttackMelee: 5
   distanceToAttackRange: 0
   pivotSpeedKoef: 1
   distanceToAttack: 0
@@ -398,8 +400,19 @@ MonoBehaviour:
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
-  meleeDistanceToAttack: 0
-  rangeDistanceToAttack: 4
+  attackingNow: 0
+  immortalBoss: 0
+  cooldownAttack: 2.5
+  rangeAttackChance: 100
+  rangeAttackDistance: 4
+  multiAttackChance: 0
+  meleeAttackChance: 100
+  meleeAttackDistance: 1
+  explousionAttackChance: 0
+  spawnAttackChance: 0
+  gravityChance: 0
+  laserChance: 0
+  teleportChance: 0
   textToSay: []
 --- !u!1 &8505044238699533609
 GameObject:
@@ -504,6 +517,22 @@ PrefabInstance:
     - target: {fileID: 5674012138522298798, guid: 5145fe0ee5e54f34db6d535581724c24, type: 3}
       propertyPath: m_Name
       value: StuffNPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714915020998434831, guid: 5145fe0ee5e54f34db6d535581724c24, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714915020998434831, guid: 5145fe0ee5e54f34db6d535581724c24, type: 3}
+      propertyPath: damageRangeBig
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714915020998434831, guid: 5145fe0ee5e54f34db6d535581724c24, type: 3}
+      propertyPath: projctleSpeedBig
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714915020998434831, guid: 5145fe0ee5e54f34db6d535581724c24, type: 3}
+      propertyPath: pushForceRangeBig
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5145fe0ee5e54f34db6d535581724c24, type: 3}

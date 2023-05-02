@@ -14,6 +14,7 @@ public class WeaponHolderMelee : MonoBehaviour
     [HideInInspector] public int selectedWeapon = 0;        // индекс оружия (положение в иерархии WeaponHolder)   
     [HideInInspector] public bool rangeWeapon = true;       // мили или ренж оружие
     [HideInInspector] public bool attackHitBoxStart;        // начать атаку мечом
+    [HideInInspector] public bool stopHolder;
 
 
 
@@ -41,6 +42,9 @@ public class WeaponHolderMelee : MonoBehaviour
             attackHitBoxStart = false;
             return;
         }
+
+        if (stopHolder)
+            return;
 
         // Атака
         if (Input.GetMouseButton(0))

@@ -237,8 +237,8 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 5000
-  noAgro: 1
+  maxHealth: 500
+  noAgro: 0
   bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
@@ -249,9 +249,11 @@ MonoBehaviour:
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
   newNpcSystem: 0
-  isNeutral: 1
+  isNeutral: 0
   isFriendly: 1
   isEnemy: 0
+  triggerLenght: 7
+  distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
@@ -261,36 +263,47 @@ MonoBehaviour:
     m_Bits: 0
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
-  triggerLenght: 7
-  distanceToChangeTarget: 3
   targetVisible: 0
   closeToTarget: 0
-  distanceToAttackMelee: 1.75
-  distanceToAttackRange: 0
-  distanceToAttack: 0
-  distanceToTarget: 0
-  itemToSpawn: {fileID: 0}
+  targetInRange: 0
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
+  defaultRangeToTarget: 0
+  distanceToAttackMelee: 1.75
+  distanceToAttackRange: 0
+  pivotSpeedKoef: 1
+  distanceToAttack: 0
+  distanceToTarget: 0
+  itemToSpawn: {fileID: 0}
   stayOnGround: 0
   goTo: 0
   followPlayer: 1
   destinationPoint: {fileID: 0}
-  aimAnglePivot: 0
   deathEffect: {fileID: 0}
   deathCameraShake: 0
+  aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
-  pivotSpeedKoef: 1
   layerTrigger:
     serializedVersion: 2
     m_Bits: 0
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
-  meleeDistanceToAttack: 0
-  rangeDistanceToAttack: 0
+  attackingNow: 0
+  immortalBoss: 0
+  cooldownAttack: 0
+  rangeAttackChance: 100
+  rangeAttackDistance: 0
+  multiAttackChance: 0
+  meleeAttackChance: 100
+  meleeAttackDistance: 0
+  explousionAttackChance: 0
+  spawnAttackChance: 0
+  gravityChance: 0
+  laserChance: 0
+  teleportChance: 0
   textToSay:
   - "\u041C\u0435\u043D\u044F \u0437\u043E\u0432\u0443\u0442 \u041E\u043B\u0435\u0433"
   - "\u042F \u043F\u0440\u0438\u0448\u0451\u043B \u0441\u044E\u0434\u0430 \u043F\u043E

@@ -17,6 +17,8 @@ public class WeaponHolder : MonoBehaviour
     [HideInInspector] public float aimAngle;            // угол поворота для вращения холдера с оружием и хитбоксПивота
     Vector3 mousePosition;                              // положение мыши
     [HideInInspector] public bool meleeWeapon;          // мили оружие или ренж
+    [HideInInspector] public bool stopHolder;
+
 
     [HideInInspector] public string currentWeaponName;  // для текста ui
     bool stopAiming;                                    // для дебага
@@ -66,6 +68,9 @@ public class WeaponHolder : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
             //Debug.Log(aimAngle);
         }
+
+        if (stopHolder)
+            return;
 
         // Стрельба
         if (Input.GetMouseButton(0) && player.playerWeaponReady)
