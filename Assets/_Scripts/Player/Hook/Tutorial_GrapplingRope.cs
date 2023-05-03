@@ -63,10 +63,12 @@ public class Tutorial_GrapplingRope : MonoBehaviour
         {
             if (m_lineRenderer.GetPosition(percision - 1).x == grapplingGun.grapplePoint.x)
             {
+                //Debug.Log("!");
                 strightLine = true;
             }
             else
             {
+                //Debug.Log("Waves!");
                 DrawRopeWaves();
             }
         }
@@ -74,6 +76,8 @@ public class Tutorial_GrapplingRope : MonoBehaviour
         {
             if (!isGrappling)
             {
+                //Debug.Log("Grap!");
+
                 grapplingGun.Grapple();
                 isGrappling = true;
             }
