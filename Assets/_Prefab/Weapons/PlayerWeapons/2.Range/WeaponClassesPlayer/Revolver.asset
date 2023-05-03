@@ -13,16 +13,24 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   weaponName: "\u0420\u0435\u0432\u043E\u043B\u044C\u0432\u0435\u0440"
-  projectileWeapon: 1
-  splitProjectileWeapon: 0
-  bulletPrefab: {fileID: 5170081587130710907, guid: bc261d7d6aae3834ba444226a6ca08b1, type: 3}
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0
+  weaponType: 0
   damage: 25
   fireRate: 3
   bulletSpeed: 15
   pushForce: 1.5
+  enemyToDamageCount: 0
   forceBackFire: 0
   recoil: 4
+  delayFire: 0
+  bulletPrefab: {fileID: 5170081587130710907, guid: 9de40da2d75bc5046ad5ac702436cdfb, type: 3}
+  boxSize: 0
+  range: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  splitTimes: 0
+  splitRecoil: 0
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0

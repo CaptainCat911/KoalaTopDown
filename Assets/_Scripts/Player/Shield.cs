@@ -41,11 +41,16 @@ public class Shield : MonoBehaviour
         // Флип эффекта (потом сделать по нормальному)
         if (GameManager.instance.player.leftFlip)                               // разворот налево
         {
-            effectParticles.transform.localScale = new Vector3(effectParticles.transform.localScale.x, -1, effectParticles.transform.localScale.z);     // поворачиваем оружие через scale
+            //Quaternion qua1 = new Quaternion.Euler(effectParticles.transform.localRotation.x, -60, effectParticles.transform.localRotation.z);     // поворачиваем оружие через scale
+            //effectParticles.transform.localRotation = qua1;
+
+            //effectParticles.transform.localRotation = Quaternion.Lerp(pivot.transform.rotation, qua1, Time.fixedDeltaTime * 15);
+
+            effectParticles.transform.localRotation = Quaternion.Lerp(effectParticles.transform.localRotation, Quaternion.Euler(effectParticles.transform.localRotation.x, effectParticles.transform.localRotation.y, 60), Time.fixedDeltaTime * 100);
         }
         if (GameManager.instance.player.rightFlip)
         {
-            effectParticles.transform.localScale = new Vector3(effectParticles.transform.localScale.x, 1, effectParticles.transform.localScale.z);     // поворачиваем оружие через scale
+            effectParticles.transform.localRotation = Quaternion.Lerp(effectParticles.transform.localRotation, Quaternion.Euler(effectParticles.transform.localRotation.x, effectParticles.transform.localRotation.y, -60), Time.fixedDeltaTime * 100);
         }
     }
 

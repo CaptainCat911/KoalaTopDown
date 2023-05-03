@@ -22,11 +22,11 @@ public class Hook : MonoBehaviour
         {            
             nextTimeToFire = Time.time + 1f / fireRate;         // вычисляем кд
 
-            FireHook();
+            //FireHook();
         }
     }
 
-    void FireHook()
+/*    void FireHook()
     {
         float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);                            // разброс стрельбы
         firePoint.Rotate(0, 0, randomBulletX);                                                                  // тупо вращаем
@@ -38,7 +38,7 @@ public class Hook : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * weaponClass.bulletSpeed, ForceMode2D.Impulse);    // даём импульс
         player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия
         firePoint.Rotate(0, 0, -randomBulletX);                                                                 // и тупо возвращаем поворот
-    }
+    }*/
 
     void HookForce()
     {
