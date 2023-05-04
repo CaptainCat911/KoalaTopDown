@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+    Color originColor;
 
     // Для флипа игрока
     [HideInInspector] public bool needFlip;             // нужен флип (для игрока и оружия)    
@@ -12,13 +13,14 @@ public class Shield : MonoBehaviour
     [HideInInspector] public bool rightFlip = true;     // оружие справа
 
     // Таймер для цветов при уроне
-    float timerForColor;        // сколько времени он будет красным
-    bool red;                   // красный (-_-)
-    public ParticleSystem effectParticles;  // префаб системы частиц (искры)
+    float timerForColor;                        // сколько времени он будет красным
+    bool red;                                   // красный (-_-)
+    public ParticleSystem effectParticles;      // префаб системы частиц (искры)
 
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        originColor = spriteRenderer.color;
     }
 
     private void Update()
@@ -66,12 +68,12 @@ public class Shield : MonoBehaviour
     void ColorRed(float time)
     {
         timerForColor = time;
-        spriteRenderer.color = Color.blue;
+        spriteRenderer.color = Color.white;
         red = true;
     }
     void ColorWhite()
     {
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = originColor;
         red = false;
     }
 }

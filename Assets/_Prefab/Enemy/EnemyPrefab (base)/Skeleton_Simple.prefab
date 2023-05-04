@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2038906913601192681}
   - component: {fileID: 2038906913601192592}
   - component: {fileID: 3342656398622153013}
+  - component: {fileID: 1043864242127699296}
   m_Layer: 7
   m_Name: Skeleton_Simple
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038906913601192675}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.90000004}
   m_ConstrainProportionsScale: 1
@@ -41,7 +42,7 @@ Transform:
   - {fileID: 6638169399789218269}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 3.001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2038906913601192687
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -216,9 +217,11 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   targetVisible: 0
   closeToTarget: 0
+  targetInRange: 0
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
+  defaultRangeToTarget: 0
   distanceToAttackMelee: 1.3
   distanceToAttackRange: 4
   pivotSpeedKoef: 1
@@ -279,6 +282,26 @@ MonoBehaviour:
   flames: {fileID: 9098035591501831770}
   canBurn: 1
   slow: 0.2
+--- !u!231 &1043864242127699296
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038906913601192675}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 1
+  m_DampingRatio: 0.5
+  m_Frequency: 1
 --- !u!1 &3287362555705753795
 GameObject:
   m_ObjectHideFlags: 0
