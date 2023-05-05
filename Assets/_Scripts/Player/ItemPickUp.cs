@@ -7,10 +7,10 @@ public class ItemPickUp : MonoBehaviour
     public bool withAnimation;      // с анимацией выпадания
     public bool delayTake;          // с задержкой после анимации
     public GameObject trigger;  
-    Animator itemAnimator;   
-    
+    Animator itemAnimator;
 
-    private void Awake()
+
+    public virtual void Awake()
     {
         itemAnimator = GetComponent<Animator>();
 

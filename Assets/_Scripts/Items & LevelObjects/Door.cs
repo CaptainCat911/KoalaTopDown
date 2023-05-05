@@ -25,6 +25,10 @@ public class Door : MonoBehaviour
             OpenDoor();
             GameManager.instance.keys[doorTypeNumber]--;                        // забираем ключ
         }
+        else
+        {
+            //GameManager.instance.CreateFloatingMessage("Нужен ключ!", Color.white, transform.position);
+        }
     }
 
     public void OpenDoor()

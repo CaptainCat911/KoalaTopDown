@@ -55,6 +55,10 @@ public class Player : Fighter
     [Header("Параметры энергощита")]
     public EnergyShield shield;
 
+    [Header("Параметры магнита для монеток")]
+    public bool withGoldMagnet;
+    public float speedMagnet;
+
     // Для флипа игрока
     [HideInInspector] public bool needFlip;             // нужен флип (для игрока и оружия)    
     [HideInInspector] public bool leftFlip;             // оружие слева

@@ -404,6 +404,13 @@ public class BotAI : Fighter
         animator.SetFloat("Speed", 0);      // сбрасываем анимацию бега
     }
 
+    public void StayOnGround()
+    {
+        stayOnGround = false;                               // стоять на месте и охранять
+        goTo = false;                                       // двигаться к точке
+        followPlayer = false;                               // следовать за игроком
+}
+
 
     public void SetDestination(Vector3 destination)
     {

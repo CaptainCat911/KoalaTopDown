@@ -27,6 +27,9 @@ public class UnityEventTrigger : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out NPC npc))
             {
+                if (npc.gameObject.name != "NPC_Knight")
+                    return;
+
                 interactAction.Invoke();
                 if (isSingleTrigger)
                 {

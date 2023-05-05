@@ -9,7 +9,10 @@ public class EnergyShield : MonoBehaviour
     [HideInInspector] public bool shieldOn;     // состояние щита
     SpriteRenderer spriteRenderer;
 
+    public bool withExplousion;
     public LayerMask layerExplousion;
+    public int damage = 100;            // урон атаки
+    public float radius = 10f;          // радиус атаки
     public float cooldown = 1f;         // перезардяка атаки
     float lastAttack;                   // время последнего удара (для перезарядки удара)
 
@@ -29,7 +32,7 @@ public class EnergyShield : MonoBehaviour
         }       
         if (shieldOn)
         {
-            if (Time.time - lastAttack > cooldown)                  // если готовы атаковать и кд готово
+            if (Time.time - lastAttack > cooldown && withExplousion)                  // если готовы атаковать и кд готово
             {
                 lastAttack = Time.time;                             // присваиваем время атаки
                 Explosion();
@@ -76,7 +79,7 @@ public class EnergyShield : MonoBehaviour
 
     public void Explosion()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 5, layerExplousion);     // создаем круг в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, radius, layerExplousion);     // создаем круг в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)
@@ -87,7 +90,7 @@ public class EnergyShield : MonoBehaviour
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
                 Vector2 vec2 = (coll.transform.position - transform.position).normalized;
-                fighter.TakeDamage(50, vec2, 30);
+                fighter.TakeDamage(damage, vec2, 30);
             }
             collidersHits = null;
         }
