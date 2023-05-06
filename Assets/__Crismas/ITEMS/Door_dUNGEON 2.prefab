@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 1110836599, guid: 13e65156b5094ce4bb46b510a8a61d5f, type: 3}
+  m_Sprite: {fileID: 949440094, guid: c8672ad3f89006943b2a7828739a226f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 4.8}
+    oldSize: {x: 1.625, y: 3.96875}
     newSize: {x: 1.6, y: 1.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorTypeNumber: 0
-  openedDoorSprite: {fileID: 959549343, guid: 13e65156b5094ce4bb46b510a8a61d5f, type: 3}
+  openedDoorSprite: {fileID: -1201281816, guid: c8672ad3f89006943b2a7828739a226f, type: 3}
 --- !u!1001 &6362724800852069213
 PrefabInstance:
   m_ObjectHideFlags: 0
