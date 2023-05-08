@@ -5,13 +5,27 @@ using UnityEngine;
 public class BulletRifle : Bullet
 {
 
+    public LayerMask layerRayCastTarget;
+
     public override void OnTriggerEnter2D(Collider2D collision)
     {        
         if (collision.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
         {
             Vector2 vec2 = (collision.transform.position - GameManager.instance.player.transform.position).normalized;
-            fighter.TakeDamage(damage, vec2, pushForce);
+            fighter.TakeDamage(0, vec2, pushForce);
+
+            float distance = Vector2.Distance(transform.position, fighter.transform.position);
+
+            if (RayCastToTarget(transform, fighter.transform, distance))
+            {
+                fighter.TakeDamage(damage, new Vector2(0, 0), 0);
+            }
             enemyDamaged++;
+        }
+
+        if (collision.TryGetComponent<Shield>(out Shield shield))
+        {
+            shield.TakeDamage();            
         }
 
         base.OnTriggerEnter2D(collision);           // там пусто пока что
@@ -19,6 +33,10 @@ public class BulletRifle : Bullet
         if (enemyDamaged >= enemyToDamageCount || collision.tag == "Wall")      // если пробили врагов или попали в стену
             Explosion();        
     }
+
+
+
+
 
     public void FindNewTarget()
     {
@@ -37,5 +55,34 @@ public class BulletRifle : Bullet
             }
             collidersHits = null;
         }
+    }
+
+
+
+
+    // Для щита игрока (временно тут)
+    public bool RayCastToTarget(Transform fromTrans, Transform toTrans, float distance)
+    {
+        Vector2 vec2 = (toTrans.transform.position - fromTrans.transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(fromTrans.position, vec2, distance, layerRayCastTarget);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.TryGetComponent<Shield>(out Shield shield))
+            {
+                shield.TakeDamage();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return true;
+        }
+        //Debug.DrawRay(fromTrans.position, vec2, Color.yellow);
     }
 }
