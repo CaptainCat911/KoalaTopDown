@@ -11,6 +11,7 @@ public class Player : Fighter
     [HideInInspector] public WeaponHolder weaponHolder;
     [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
     [HideInInspector] public BombWeaponHolder bombWeaponHolder;
+    [HideInInspector] public ShieldHolder shieldHolder;
     [HideInInspector] public HitBoxPivot hitBoxPivot;
     [HideInInspector] public bool playerWeaponReady;    // игрок готов (стрелять (это для блинка))
     Ignitable ignitable;
@@ -86,6 +87,7 @@ public class Player : Fighter
         weaponHolder = GetComponentInChildren<WeaponHolder>();
         weaponHolderMelee = GetComponentInChildren<WeaponHolderMelee>();
         bombWeaponHolder = GetComponentInChildren<BombWeaponHolder>();
+        shieldHolder = GetComponentInChildren<ShieldHolder>();
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
         ignitable = GetComponent<Ignitable>();
 
@@ -115,6 +117,9 @@ public class Player : Fighter
                     bootsEnergy = 100;
             }
         }
+
+        // Выбор цвета при получении урона и его сброс
+        SetColorTimer();
 
         if (GameManager.instance.isPlayerEnactive)              // если игрок не активен
         {
@@ -195,8 +200,7 @@ public class Player : Fighter
             hitBoxPivot.Flip();
         }
 
-        // Выбор цвета при получении урона и его сброс
-        SetColorTimer();
+
     }
 
 
@@ -225,6 +229,14 @@ public class Player : Fighter
         rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);              // даём импульс
     }
 
+    public void EnableHolders(bool status)
+    {
+        weaponHolder.gameObject.SetActive(status);               // отключаем оружия 
+        weaponHolderMelee.gameObject.SetActive(status);          //
+        bombWeaponHolder.gameObject.SetActive(status);           //
+        shieldHolder.gameObject.SetActive(status);
+    }
+
     void BlinkIn()
     {
         inBlinkSpace = true;
@@ -239,8 +251,7 @@ public class Player : Fighter
         //spriteRenderer.color = new Color(1, 0, 0, 0.5f);                            
         //playerWeaponReady = false;
         //weaponHolder.HideWeapon(true);
-        weaponHolder.gameObject.SetActive(false);               // отключаем оружия 
-        weaponHolderMelee.gameObject.SetActive(false);          //
+        EnableHolders(false);
         ignitable.flames.gameObject.SetActive(false);           // отключаем горение
 
         Invoke("BlinkOut", blinkOutTime);
@@ -251,18 +262,17 @@ public class Player : Fighter
         gameObject.layer = LayerMask.NameToLayer("Player");                     // слой самого бота
 
         if (blinkWithExplousion)
-            BlinkExplousion();
+            ExplousionPlayer();
 
         spriteRenderer.enabled = true;
         //spriteRenderer.color = Color.white;
         GameObject effect = Instantiate(GameAssets.instance.playerBlinkOut,
             transform.position, Quaternion.identity);                               // создаем эффект убийства
         Destroy(effect, 0.5f);                                                      // уничтожаем эффект через .. сек
-        blinkTrail.emitting = false;        
+        blinkTrail.emitting = false;
         //playerWeaponReady = true;
         //weaponHolder.HideWeapon(false);
-        weaponHolder.gameObject.SetActive(true);
-        weaponHolderMelee.gameObject.SetActive(true);
+        EnableHolders(true);
         ignitable.flames.gameObject.SetActive(true);
         inBlinkSpace = false;
     }
@@ -333,7 +343,7 @@ public class Player : Fighter
         antiBugCircle.SetActive(false);        
     }
 
-    void BlinkExplousion()
+    public void ExplousionPlayer()
     {
         Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, blinkOutExpRadius, layerExplBlink);     // создаем круг в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
@@ -451,8 +461,70 @@ public class Player : Fighter
 
     protected override void Death()
     {
-        base.Death();
-        spriteRenderer.color = Color.white;
-        GameManager.instance.isPlayerEnactive = true;
+        if (GameManager.instance.playerInResroom)
+        {
+            base.Death();
+            spriteRenderer.color = Color.white;
+            GameManager.instance.isPlayerEnactive = true;
+            GameManager.instance.cameraOnPlayer = true;
+            animator.SetTrigger("Death");
+            //capsuleCollider2D.enabled = false;
+            EnableHolders(false);
+            noAgro = true;
+            ResetTargetBots();
+            Invoke(nameof(PreResurrection), 1);
+        }
+        else
+        {
+            base.Death();
+            spriteRenderer.color = Color.white;
+            GameManager.instance.isPlayerEnactive = true;
+            GameManager.instance.cameraOnPlayer = true;
+            animator.SetTrigger("Death");
+            //capsuleCollider2D.enabled = false;
+            EnableHolders(false);
+            noAgro = true;
+            ResetTargetBots();
+            ResRoomManager.instance.SpawnMonsterAndChest();
+            ResRoomManager.instance.deathPos.position = transform.position;
+            GameManager.instance.playerInResroom = true;
+            Invoke(nameof(PreResurrection), 1);
+        }
+    }
+
+    void AfterDeath()
+    {
+
+    }
+
+    void PreResurrection()
+    {
+        transform.position = GameManager.instance.resStart.position;
+        animator.SetTrigger("WakeUp");
+        Invoke(nameof(Resurrection), 1);
+    }
+
+    void Resurrection()
+    {
+        isAlive = true;
+        currentHealth = maxHealth;
+        GameManager.instance.isPlayerEnactive = false;
+        GameManager.instance.cameraOnPlayer = false;        
+        capsuleCollider2D.enabled = true;
+        EnableHolders(true);
+        noAgro = false;        
+    }
+
+    void ResetTargetBots()
+    {
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 20, layerExplBlink);     // создаем круг в позиции объекта с радиусом
+        foreach (Collider2D coll in collidersHits)
+        {
+            if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
+            {
+                botAI.ResetTarget();
+            }
+            collidersHits = null;
+        }
     }
 }

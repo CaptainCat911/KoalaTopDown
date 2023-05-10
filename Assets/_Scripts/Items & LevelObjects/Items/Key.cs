@@ -13,6 +13,10 @@ public class Key : ItemPickUp
         {
             GameManager.instance.CreateFloatingMessage("+ 1 Особый ключ", Color.red, transform.position);
         }
+        if (keyTypeNumber == 2)
+        {
+            GameManager.instance.CreateFloatingMessage("+ 1 Темный ключ", Color.cyan, transform.position);
+        }
         GameManager.instance.keys[keyTypeNumber]++;
         Destroy(gameObject);
     }

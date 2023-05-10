@@ -75,6 +75,7 @@ public class BotAI : Fighter
     // Таймер для цветов при уроне
     float timerForColor;
     bool red;
+    Color originColor;
 
     // Для триггера
     public LayerMask layerTrigger;
@@ -95,6 +96,7 @@ public class BotAI : Fighter
         animator = GetComponent<Animator>();
         animatorWeapon = GetComponentInChildren<BotAIAnimator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originColor = spriteRenderer.color;
         pivot = GetComponentInChildren<BotAIHitBoxPivot>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
         botAIRangeWeaponHolder = GetComponentInChildren<BotAIRangeWeaponHolder>();
@@ -508,7 +510,7 @@ public class BotAI : Fighter
     }
     void ColorWhite()
     {
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = originColor;
         red = false;
     }
 

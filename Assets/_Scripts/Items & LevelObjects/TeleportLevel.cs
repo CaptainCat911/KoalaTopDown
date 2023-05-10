@@ -6,24 +6,38 @@ public class TeleportLevel : MonoBehaviour
     //public bool teleportFromShop;
     public bool teleportToShop;             // телепорт в магазин
     public GameObject exitTeleport;         // второй телепорт      
-    public GameObject exit;
-    public bool actived;                    // телепорт активирован
+    public GameObject exit;                 // выход из входного телепорта
+    //public bool actived;                    // телепорт активирован
     //bool isInRange;                       // в ренже мы или нет    
     GameObject gameObjectToTeleport;        // объект, который нужно телепортировать
 
-    void ActivateTeleport()
-    {
-        actived = true;
-    }
+    [Header("Временно здесь")]
+    public bool teleportFromRes;            // телепорт из ресрума
+    public GameObject doorRes;              // дверь 
+
+
+
+    /*    void ActivateTeleport()
+        {
+            actived = true;
+        }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Player player))
         {
+            // Для ресрума, временно здесь
+            if (teleportFromRes)
+            {
+                GameManager.instance.playerInResroom = false;                
+                doorRes.GetComponent<Door>().CloseDoor();
+            }
+
+
             //isInRange = true;
             gameObjectToTeleport = player.gameObject;
-            if (actived)
-                TeleportObject(gameObjectToTeleport);                   // телепортируем
+            //if (actived)
+            TeleportObject(gameObjectToTeleport);                   // телепортируем
         }
     }
 /*    private void OnTriggerExit2D(Collider2D collision)
@@ -39,9 +53,16 @@ public class TeleportLevel : MonoBehaviour
     {
         //if (isInRange)        
         go.transform.position = exitTeleport.transform.position;
+        //go.GetComponent<Rigidbody2D>(). = 0;
+
         if (teleportToShop)
         {
-            TeleportShop.instance.SetExitShopPortal(exit);
+            TeleportManager.instance.SetExitShopPortal(exit);
+        }
+        
+        if (teleportFromRes)
+        {
+            GameManager.instance.player.Invoke(nameof(GameManager.instance.player.ExplousionPlayer), 0.2f);     // (Временно здесь)
         }
     }
 

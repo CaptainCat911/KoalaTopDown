@@ -12,7 +12,7 @@ public class CameraTarget : MonoBehaviour
     
     void Update()
     {
-        if (!GameManager.instance.dialogeStart)
+        if (!GameManager.instance.cameraOnPlayer)
         {
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 targetPos = (player.position + mousePos) / 2f;

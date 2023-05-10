@@ -6,7 +6,7 @@ using TMPro;
 public class Fighter : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D rb2D;
-    CapsuleCollider2D capsuleCollider2D;
+    [HideInInspector] public CapsuleCollider2D capsuleCollider2D;
 
     [Header("Параметры")]
     public bool isAlive = true;             // жив здоров
