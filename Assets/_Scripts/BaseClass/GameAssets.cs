@@ -24,6 +24,7 @@ public class GameAssets : MonoBehaviour
     public GameObject playerBlinkIn;
     public GameObject playerBlinkOut;
     public GameObject explousionSmall;
+    public GameObject sparks;
 
     private void Awake()
     {

@@ -9,6 +9,8 @@ public class BulletRifle : Bullet
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {        
+        base.OnTriggerEnter2D(collision);           // там пусто пока что
+
         if (collision.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
         {
             Vector2 vec2 = (collision.transform.position - GameManager.instance.player.transform.position).normalized;
@@ -28,10 +30,11 @@ public class BulletRifle : Bullet
             shield.TakeDamage();            
         }
 
-        base.OnTriggerEnter2D(collision);           // там пусто пока что
-
         if (enemyDamaged >= enemyToDamageCount || collision.tag == "Wall")      // если пробили врагов или попали в стену
-            Explosion();        
+            Explosion();
+
+        GameObject effect = Instantiate(GameAssets.instance.sparks, transform.position, Quaternion.identity);                                      // создаем эффект убийства
+        Destroy(effect, 1);
     }
 
 
