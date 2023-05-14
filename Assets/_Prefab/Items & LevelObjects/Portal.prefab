@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500163349262717176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25900003, y: -0.078999996, z: 0}
+  m_LocalPosition: {x: 0.145, y: -0.022, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2564708599989365011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -133,7 +133,7 @@ Transform:
   - {fileID: 5697871885471513756}
   m_Father: {fileID: 3938231086011323736}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &5140944546812931546
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -199,8 +199,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  m_Size: {x: 0.13, y: 0.41}
+  m_Offset: {x: -0.0010878026, y: -0.04903619}
+  m_Size: {x: 0.08431303, y: 0.3349431}
   m_Direction: 0
 --- !u!95 &2270174386708562728
 Animator:
@@ -235,9 +235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportToShop: 0
-  teleportFromRes: 0
   exitTeleport: {fileID: 3938231085834828163}
   exit: {fileID: 1500163349262717176}
+  teleportFromRes: 0
+  doorRes: {fileID: 0}
 --- !u!1 &3938231085834828163
 GameObject:
   m_ObjectHideFlags: 0
