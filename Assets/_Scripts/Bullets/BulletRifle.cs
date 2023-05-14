@@ -33,8 +33,11 @@ public class BulletRifle : Bullet
         if (enemyDamaged >= enemyToDamageCount || collision.tag == "Wall")      // если пробили врагов или попали в стену
             Explosion();
 
-        GameObject effect = Instantiate(GameAssets.instance.sparks, transform.position, Quaternion.identity);                                      // создаем эффект убийства
-        Destroy(effect, 1);
+        if (sparksEffect)
+        {
+            GameObject effect = Instantiate(sparksEffect, transform.position, Quaternion.identity);                                      // создаем эффект убийства
+            Destroy(effect, 1);
+        }
     }
 
 

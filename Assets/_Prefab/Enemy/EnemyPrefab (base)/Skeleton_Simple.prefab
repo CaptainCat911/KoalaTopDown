@@ -187,10 +187,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 50
   noAgro: 0
+  isGoodPerson: 0
   bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
@@ -261,6 +263,7 @@ MonoBehaviour:
   distancePatrol: 2
   maxDistancePatrol: 4
   lastChange: 0
+  goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0
@@ -657,33 +660,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2038906913601192680}
     m_Modifications:
-    - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1111112
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.111111
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.111111
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
       propertyPath: m_LocalPosition.x

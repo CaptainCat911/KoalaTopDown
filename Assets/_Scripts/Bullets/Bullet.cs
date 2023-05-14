@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public int enemyDamaged;
     public LayerMask layerExplousion;
     public GameObject expEffect;
+    public GameObject sparksEffect;
 
     private void Awake()
     {
@@ -26,8 +27,11 @@ public class Bullet : MonoBehaviour
 
     public virtual void Explosion()
     {
-        GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
-        Destroy(effect, 0.5f);                                                                  // уничтожаем эффект через .. сек     
-        Destroy(gameObject);                                                                    // уничтожаем пулю
+        if (expEffect)
+        {
+            GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
+            Destroy(effect, 0.5f);                                                                  // уничтожаем эффект через .. сек    
+        }                                                                 
+        Destroy(gameObject);                                                                        // уничтожаем пулю
     }
 }

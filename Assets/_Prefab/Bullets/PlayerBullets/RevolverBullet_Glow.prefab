@@ -115,7 +115,11 @@ MonoBehaviour:
   layerExplousion:
     serializedVersion: 2
     m_Bits: 0
-  expEffect: {fileID: 6838830282863028361, guid: 9bcfbd57f80156d47881a4c5be09b696, type: 3}
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 4947641790296222230, guid: b4239e6ea3ede944e9b5476b3cca0e03, type: 3}
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!96 &6680086522174144134
 TrailRenderer:
   serializedVersion: 2
