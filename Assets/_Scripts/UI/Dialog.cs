@@ -24,7 +24,7 @@ public class Dialog : MonoBehaviour
     GameObject npcImage;                    // портрет нпс, с которым говорим
     public GameObject heroImage;            // портрет героя    
 
-    public bool startEvent;                 // состояние этого ивента
+    [HideInInspector] public bool startEvent;   // состояние этого ивента
     int dialogeNumber;                      // временная переменная для номера диалога
 
 
@@ -56,17 +56,19 @@ public class Dialog : MonoBehaviour
     public void StartEvent(int numberDialog)
     {
         GameManager.instance.dialogeStart = true;
-        startEvent = true;                                          // ивент начат        
-        dialogeNumber = numberDialog;                               // номер диалога
-        GameManager.instance.isPlayerEnactive = true;               // отключаем управление игроком
-        GameManager.instance.EnemyResetAndNeutral(true);            // сбрасываем ботов
-        GameManager.instance.BlackTapes(true);                      // черные полосы
-        sentences = dialogStore[numberDialog].sentences;            // берем предложения из диалга номер numberDialog
-        characterName = dialogStore[numberDialog].characterName;    // имя (название) персонажа, который будет говорить
-        npcImage = dialogStore[numberDialog].imageNpc;              // его портрет
-        startInteractAction = dialogStore[numberDialog].awakeInteractAction;  // ивент до начала диалога
-        goInteractAction = dialogStore[numberDialog].goInteractAction;  // ивент при старте диалога
-        interactAction = dialogStore[numberDialog].interactAction;  // ивент по завершению диалога
+        startEvent = true;                                                      // ивент начат        
+        dialogeNumber = numberDialog;                                           // номер диалога
+        GameManager.instance.isPlayerEnactive = true;                           // отключаем управление игроком
+        GameManager.instance.EnemyResetAndNeutral(true);                        // сбрасываем ботов
+        GameManager.instance.BlackTapes(true);                                  // черные полосы
+        GameManager.instance.cameraOnPlayer = true;                             // камера на игрока
+
+        sentences = dialogStore[numberDialog].sentences;                        // берем предложения из диалга номер numberDialog
+        characterName = dialogStore[numberDialog].characterName;                // имя (название) персонажа, который будет говорить
+        npcImage = dialogStore[numberDialog].imageNpc;                          // его портрет
+        startInteractAction = dialogStore[numberDialog].awakeInteractAction;    // ивент до начала диалога
+        goInteractAction = dialogStore[numberDialog].goInteractAction;          // ивент при старте диалога
+        interactAction = dialogStore[numberDialog].interactAction;              // ивент по завершению диалога
         startInteractAction.Invoke();
     }
 
@@ -106,7 +108,8 @@ public class Dialog : MonoBehaviour
             textDisplay.text = "";
             heroImage.SetActive(false);                         // убираем портреты
             npcImage.SetActive(false);          
-            GameManager.instance.BlackTapes(false);             // убираем черные полосы                                        
+            GameManager.instance.BlackTapes(false);             // убираем черные полосы
+            GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
             GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
             interactAction.Invoke();                            // вызываем ивент (если есть)

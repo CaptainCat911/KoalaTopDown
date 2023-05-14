@@ -13,8 +13,8 @@ public class TextUI : MonoBehaviour
     public Text battery;            // кол-во батарей
     public Text weaponName;         // имя оружия
     public Text ammoRangeWeapon;    // кол-во патронов
-    public Text ammoBomb;           // кол-во бомб
     public Text bombName;           // имя бомбы
+    public Text ammoBomb;           // кол-во бомб
 
 
     void Start()

@@ -13,18 +13,24 @@ MonoBehaviour:
   m_Name: Kar98
   m_EditorClassIdentifier: 
   weaponName: "\u041A\u0430\u044098"
-  projectileWeapon: 1
-  splitProjectileWeapon: 0
-  bulletPrefab: {fileID: 5170081587130710907, guid: 235b8e85db5d1fa4f941a8dbcf16cf5a, type: 3}
-  splitTimes: 0
-  splitRecoil: 0
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0
+  weaponType: 0
   damage: 60
   fireRate: 1.5
   bulletSpeed: 15
   pushForce: 5
+  enemyToDamageCount: 0
   forceBackFire: 0
-  recoil: 2
+  recoil: 3
+  delayFire: 0
+  bulletPrefab: {fileID: 5170081587130710907, guid: 235b8e85db5d1fa4f941a8dbcf16cf5a, type: 3}
+  boxSize: 0
+  range: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  splitTimes: 0
+  splitRecoil: 0
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0

@@ -26,15 +26,36 @@ public class ShieldHolder : MonoBehaviour
         // Щит
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.V))
         {
-            player.weaponHolder.gameObject.SetActive(false);               // отключаем оружия 
-            player.weaponHolderMelee.gameObject.SetActive(false);          //
+            /*            player.weaponHolder.gameObject.SetActive(false);               // отключаем оружия 
+                        player.weaponHolderMelee.gameObject.SetActive(false);          //*/
+            
+            if (!player.weaponHolder.meleeWeapon)
+            {
+                player.weaponHolder.currentWeapon.gameObject.SetActive(false);
+                player.weaponHolder.stopHolder = true;
+            }
+            else
+            {
+                player.weaponHolderMelee.currentWeapon.gameObject.SetActive(false);
+                player.weaponHolderMelee.stopHolder = true;
+            }
             shield.SetActive(true);            
         }
         if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.V))
         {
             shield.SetActive(false);
-            player.weaponHolder.gameObject.SetActive(true);               // отключаем оружия 
-            player.weaponHolderMelee.gameObject.SetActive(true);          //
+            if (!player.weaponHolder.meleeWeapon)
+            {
+                player.weaponHolder.stopHolder = false;
+                player.weaponHolder.currentWeapon.gameObject.SetActive(true);
+            }
+            else
+            {
+                player.weaponHolderMelee.stopHolder = false;
+                player.weaponHolderMelee.currentWeapon.gameObject.SetActive(true);
+            }
+            /*            player.weaponHolder.gameObject.SetActive(true);               // отключаем оружия 
+                        player.weaponHolderMelee.gameObject.SetActive(true);          //*/
         }
     }
 }

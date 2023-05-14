@@ -339,49 +339,7 @@ public class Weapon : MonoBehaviour
     }
 
 
-    void FireRayCastAll()
-    {
-        // Разброс
-        float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
 
-        // Рейкаст2Д
-        RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
-        if (hits != null)
-        {
-            foreach (RaycastHit2D hit in hits)
-            {
-                //Debug.Log("Hit!");
-                if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
-                {
-                    Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
-                    fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
-                }
-
-                // Настройки для трасеров
-                if (tracerEffect)
-                {
-                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
-                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
-                    //tracer.transform.SetParent(transform, true); 
-                    tracer.transform.position = hit.point;                      // конечная позиция трасера рейкаста
-                }
-
-                if (weaponClass.ignite)
-                {
-                    if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
-                    {
-                        //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
-                        ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
-                    }
-                }
-            }
-
-            if (debug)
-                Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
-        }
-
-        player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия
-    }
 
 
     void FireRayCast()
@@ -453,6 +411,53 @@ public class Weapon : MonoBehaviour
                     }
                 }*/
     }
+
+
+    void FireRayCastAll()
+    {
+        // Разброс
+        float randomBulletX = Random.Range(-weaponClass.recoil, weaponClass.recoil);
+
+        // Рейкаст2Д
+        RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, firePoint.right + new Vector3(randomBulletX, 0, 0), weaponClass.range, weaponClass.layerRayCast);
+        if (hits != null)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                //Debug.Log("Hit!");
+                if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
+                {
+                    Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                    fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
+                }
+
+                // Настройки для трасеров
+                if (tracerEffect)
+                {
+                    TrailRenderer tracer = Instantiate(tracerEffect, firePoint.position, Quaternion.identity);          // создаем трасер
+                    tracer.AddPosition(firePoint.position);                                                             // начальная позиция
+                    //tracer.transform.SetParent(transform, true); 
+                    tracer.transform.position = hit.point;                      // конечная позиция трасера рейкаста
+                }
+
+                if (weaponClass.ignite)
+                {
+                    if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                    {
+                        //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                        ignitable.Ignite(weaponClass.damageBurn, weaponClass.cooldownBurn, weaponClass.durationBurn);
+                    }
+                }
+            }
+
+            if (debug)
+                Debug.DrawRay(firePoint.position, firePoint.right * weaponClass.range, Color.yellow);
+        }
+
+        player.ForceBackFire(firePoint.transform.position, weaponClass.forceBackFire);                          // даём отдачу оружия
+    }
+
+
 
     void FireBoxCast()      // (пока не использую)
     {

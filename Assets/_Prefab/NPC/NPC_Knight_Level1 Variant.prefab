@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6638926050238012826
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: goTo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: noAgro
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: isNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: itemToSpawn
+      value: 
+      objectReference: {fileID: 1899818089229980536, guid: cfd4c459f5ec672419db2c3eea0db7f8, type: 3}
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: followPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: isGoodPerson
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: fastDeathAnim
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -156.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -120.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979288, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Name
+      value: NPC_Knight_Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166287769672765281, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166287769672765281, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297625147953556815, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: goToPosition
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8504479325347438871, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db5669a97033a804c885cc7f7036dee2, type: 3}

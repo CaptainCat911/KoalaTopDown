@@ -31,6 +31,8 @@ public class BulletRocket : Bullet
     public float cameraAmplitudeShake = 3f;     // амплитуда
     public float cameraTimedeShake = 0.1f;      // длительность
 
+    public LayerMask layerRayCastTarget;
+
     private void Awake()
     {
         if (((int)prefabFireBall) == 0)
@@ -67,8 +69,15 @@ public class BulletRocket : Bullet
 
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
+                float distance = Vector2.Distance(transform.position, coll.transform.position);
+
                 Vector2 vec2 = (coll.transform.position - transform.position).normalized;
-                fighter.TakeDamage(damage, vec2, pushForce);                
+                fighter.TakeDamage(0, vec2, pushForce);
+
+                if (RayCastToTarget(transform, coll.transform, distance))
+                {
+                    fighter.TakeDamage(damage, new Vector2(0, 0), 0);
+                }
             }
             collidersHits = null;
         }
@@ -80,6 +89,34 @@ public class BulletRocket : Bullet
             MultiRangeAttack();
         }
     }
+
+
+    // Для щита игрока (временно тут)
+    public bool RayCastToTarget(Transform fromTrans, Transform toTrans, float distance)
+    {
+        Vector2 vec2 = (toTrans.transform.position - fromTrans.transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(fromTrans.position, vec2, distance, layerRayCastTarget);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.TryGetComponent<Shield>(out Shield shield))
+            {
+                shield.TakeDamage();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return true;
+        }
+        //Debug.DrawRay(fromTrans.position, vec2, Color.yellow);
+    }
+
 
     public void MultiRangeAttack()
     {

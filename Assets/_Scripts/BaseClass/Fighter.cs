@@ -6,7 +6,7 @@ using TMPro;
 public class Fighter : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D rb2D;
-    CapsuleCollider2D capsuleCollider2D;
+    [HideInInspector] public CapsuleCollider2D capsuleCollider2D;
 
     [Header("Параметры")]
     public bool isAlive = true;             // жив здоров
@@ -14,7 +14,7 @@ public class Fighter : MonoBehaviour
     public int maxHealth;
     public bool noAgro;
     GameObject floatinText;                 // текст чата
-    bool isPlayerOrNPC;                     // игрок или нпс (для отображения урона)
+    public bool isGoodPerson;                     // игрок или нпс (для отображения урона)
     public bool bossHP;                     // хп босса (ссылаемся на гуи)
 
     // Хп бар
@@ -35,10 +35,10 @@ public class Fighter : MonoBehaviour
             hpBarGO = transform.GetChild(0).gameObject;         // находим хп бар (ставлю его в начало иерархии)
         }
 
-        if (gameObject.TryGetComponent(out Player player) || gameObject.TryGetComponent(out NPC npc))
+/*        if (gameObject.TryGetComponent(out Player player) || gameObject.TryGetComponent(out NPC npc))
         {
-            isPlayerOrNPC = true;
-        }
+            isGoodPerson = true;
+        }*/
     }
 
     public virtual void Start()
@@ -84,7 +84,7 @@ public class Fighter : MonoBehaviour
         }
 
         currentHealth -= dmg;
-        if (isPlayerOrNPC)
+        if (isGoodPerson)
             ShowDamageOrHeal("-" + dmg.ToString(), true);
         else
             ShowDamageOrHeal(dmg.ToString(), true);
@@ -128,7 +128,7 @@ public class Fighter : MonoBehaviour
 
         if (damaged)
         {
-            if (isPlayerOrNPC)
+            if (isGoodPerson)
                 textPrefab.GetComponentInChildren<TextMeshPro>().color = Color.red;
             else
                 textPrefab.GetComponentInChildren<TextMeshPro>().color = Color.white;

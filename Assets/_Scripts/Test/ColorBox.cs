@@ -17,7 +17,7 @@ public class ColorBox : Fighter
     }
 
 
-    private void Update()
+    public override void Update()
     {
         if (!changeVector)
         {

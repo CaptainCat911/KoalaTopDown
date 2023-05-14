@@ -14,7 +14,7 @@ public class EnemyThinker : MonoBehaviour
     // ѕоиск цели
     //public float targetFindRadius = 5f;                 // радиус поиска цели                                                               
     float lastTargetFind;                               // врем€ последнего поиска цели
-    float cooldownFind = 0.5f;                          // перезард€ка поиска цели
+    float cooldownFind = 0.1f;                          // перезард€ка поиска цели
     public float cooldownChangeTarget = 2f;             // перезар€дка смена цели
 
     bool type_1;        // тип оружи€ мили
@@ -29,6 +29,7 @@ public class EnemyThinker : MonoBehaviour
     [HideInInspector] public float lastChange;          // врем€ последней смены позиции
 
     // ƒл€ Ќѕ—
+    public Transform goToPosition;
     [HideInInspector] public Transform[] positionsPoints;
     [HideInInspector] public int i = 0;
     [HideInInspector] public bool nextPosition;
@@ -97,6 +98,10 @@ public class EnemyThinker : MonoBehaviour
             {
                 Patrol();                               // патрулирование  
                 //patrolingRandomPosition = true;                           
+            }
+            if (botAI.goTo)
+            {
+                botAI.SetDestination(goToPosition.position);
             }
         }
         else            // иногда мен€ем цель

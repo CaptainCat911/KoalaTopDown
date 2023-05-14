@@ -32,18 +32,21 @@ public class BotAI : Fighter
     [HideInInspector] public bool chasing;                  // статус преследовани€
     [HideInInspector] public Vector3 startPosition;         // позици€ дл€ охраны
     [HideInInspector] public bool targetVisible;            // видим мы цель или нет
-    [HideInInspector] public bool closeToTarget;            // можно атаковать
+    [HideInInspector] public bool closeToTarget;            // можно атаковать (текущей атакой)
+    [HideInInspector] public bool targetInRange;            // можно атаковать (общее)
+
     //public float chaseLeght;                                // дальность преследовани€ (пока не используетс€)   
 
     [Header("“ип атаки бота")]
     public bool meleeAttackType;                            // устанавливаем тип атаки мили
     public bool rangeAttackType;                            // ... ренж
     public bool twoWeapons;                                 // если есть 2 оружи€
+    public float defaultRangeToTarget;                     // дистанци€ дл€ атакой мили
     public float distanceToAttackMelee;                     // дистанци€ дл€ атакой мили
     public float distanceToAttackRange;                     // дистанци€ дл€ атаки ренж
     public float pivotSpeedKoef = 1f;                       // скорость поворота держател€ оружи€
-    [HideInInspector] public float distanceToAttack;        // дистанци€, с которой можно атаковать
-    [HideInInspector] public float distanceToTarget;
+    public float distanceToAttack;                          // дистанци€, с которой можно атаковать
+    [HideInInspector] public float distanceToTarget;        // дистанци€ до цели
 
     [Header("ѕредмет")]
     public GameObject itemToSpawn;
@@ -72,6 +75,7 @@ public class BotAI : Fighter
     // “аймер дл€ цветов при уроне
     float timerForColor;
     bool red;
+    Color originColor;
 
     // ƒл€ триггера
     public LayerMask layerTrigger;
@@ -92,6 +96,7 @@ public class BotAI : Fighter
         animator = GetComponent<Animator>();
         animatorWeapon = GetComponentInChildren<BotAIAnimator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originColor = spriteRenderer.color;
         pivot = GetComponentInChildren<BotAIHitBoxPivot>();
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
         botAIRangeWeaponHolder = GetComponentInChildren<BotAIRangeWeaponHolder>();
@@ -107,7 +112,7 @@ public class BotAI : Fighter
         }
         maxSpeed = agent.speed;
 
-
+        //distanceToAttack = defaultRangeToTarget;
     }
 
     public override void Start()
@@ -127,6 +132,9 @@ public class BotAI : Fighter
 
     public override void Update()
     {
+        if (debug)
+            Debug.Log(distanceToAttack);
+
         // ¬ыбор цвета при получении урона и его сброс
         SetColorTimer();
 
@@ -352,7 +360,24 @@ public class BotAI : Fighter
 
         distanceToTarget = Vector3.Distance(transform.position, target.transform.position);     // считаем дистанцию до цели
 
-        if (distanceToTarget < distanceToAttack && targetVisible)                               // если дошли до цели и видим еЄ
+        // ƒистанци€ до цели
+        if (distanceToTarget <= defaultRangeToTarget && targetVisible)
+        {
+            if (!targetInRange)
+            {
+                targetInRange = true;
+            }
+        }
+        else
+        {
+            if (targetInRange)
+            {
+                targetInRange = false;
+            }
+        }          
+
+        // ƒистанци€ дл€ текущей атаки
+        if (distanceToTarget <= distanceToAttack && targetVisible)                               // если дошли до цели и видим еЄ
         {
             if (!closeToTarget)
             {
@@ -380,6 +405,13 @@ public class BotAI : Fighter
         agent.ResetPath();                  // сбрасываем путь
         animator.SetFloat("Speed", 0);      // сбрасываем анимацию бега
     }
+
+    public void StayOnGround()
+    {
+        stayOnGround = false;                               // сто€ть на месте и охран€ть
+        goTo = false;                                       // двигатьс€ к точке
+        followPlayer = false;                               // следовать за игроком
+}
 
 
     public void SetDestination(Vector3 destination)
@@ -478,7 +510,7 @@ public class BotAI : Fighter
     }
     void ColorWhite()
     {
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = originColor;
         red = false;
     }
 

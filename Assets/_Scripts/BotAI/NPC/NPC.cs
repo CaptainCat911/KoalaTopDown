@@ -3,14 +3,51 @@ using UnityEngine.Events;
 
 public class NPC : BotAI
 {
-    [Header("Дистанция атаки")]
+    [Header("Параметры атак босса")]
+    [HideInInspector] public bool attackingNow;     // сейчас атакует
+    public bool immortalBoss;
+    public float cooldownAttack;
+
+    [Header("Атака издалека")]
+    public int rangeAttackChance = 100;     // шанс ренж атаки
+    public float rangeAttackDistance;       // дистанция для атаки
+    public int multiAttackChance;           // .. мультиатаки
+
+    [Header("Атака вблизи")]
+    public int meleeAttackChance = 100;
+    public float meleeAttackDistance;       // дистанция для атаки
+    public int explousionAttackChance;
+
+    [Header("Общие атаки")]
+    public int spawnAttackChance;           // .. спауна
+    public int gravityChance;               // .. гравитации
+    public int laserChance;                 // .. лазера
+    public int teleportChance;              // .. телепорта
+
+
+/*    [Header("Дистанция атаки")]
     public float meleeDistanceToAttack;
-    public float rangeDistanceToAttack;
+    public float rangeDistanceToAttack;*/
 
     [Header("Текст чата")]
     public string[] textToSay;      // текст для диалога
     int dialogeNumber;              // номер диалога
     bool isTextDone;                // проговорили весь текст
+
+
+        public override void Update()
+    {
+        if (immortalBoss)
+        {
+            if (currentHealth < maxHealth / 10)
+            {
+                currentHealth = maxHealth / 10;
+            }
+        }
+
+        base.Update();
+    }
+
 
 
     public void Speak()

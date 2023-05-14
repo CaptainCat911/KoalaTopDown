@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Управление игрой")]
     public bool isPlayerEnactive;               // активен игрок или нет
+    public bool cameraOnPlayer;                 // управление камерой
     public bool dialogeStart;                   // диалог начался
+    public bool playerInResroom;
     [HideInInspector] public bool playerAtTarget;   // игрок дошёл до места старта диалога
 
     [Header("Клавиша взаимодействия")]
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviour
     public int battery;                         // батареи
 
     public Animator blackImagesAnim;            // аниматор чёрных полос
+
+    [Header("Комната воскрешения")]
+    public Transform resStart;
 
     //[HideInInspector] public int enemyCount;
 
@@ -80,18 +85,19 @@ public class GameManager : MonoBehaviour
     }*/
 
 
+    // Ивенты
     public void StartEvent(int number)
     {
         events[number].Invoke();
     }
 
 
-
-
+    // Начать ивент диалога
     public void StartDialog(int number)
     {
         dialog.StartEvent(number);
     }
+
 
     // Чёрные полосы
     public void BlackTapes(bool status)

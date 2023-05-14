@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1771346061373825447}
   - component: {fileID: 8144049846394484820}
   - component: {fileID: 6680086522174144134}
-  - component: {fileID: -774795922353049568}
+  - component: {fileID: -3882654671041673460}
   m_Layer: 8
   m_Name: PlasmaBullet
   m_TagString: Untagged
@@ -254,7 +254,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &-774795922353049568
+--- !u!114 &-3882654671041673460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,13 +263,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 5170081587130710907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee683788220e39488080ee93e50726c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e4679c321acafe48b5ab91030711ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
   pushForce: 0
+  enemyToDamageCount: 0
+  enemyDamaged: 0
+  isPlayerBullet: 0
   expEffect: {fileID: 5727708654878073701, guid: 6a6fbace441d3eb49ac7ef30e92363cd, type: 3}
   layerExplousion:
     serializedVersion: 2
     m_Bits: 4225
   expRadius: 1
+  withSplit: 0
+  prefabFireBall: 0
+  splitTimes: 0
+  splitRecoil: 0
+  damageSplitProjectile: 0
+  pushForceSplitProjectile: 0
+  splitProjectileSpeed: 0
+  withTimer: 0
+  timeToExpl: 0
+  cameraAmplitudeShake: 1
+  cameraTimedeShake: 0.1

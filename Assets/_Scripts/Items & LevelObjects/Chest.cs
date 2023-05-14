@@ -10,7 +10,7 @@ public class Chest : ItemPickUp
     BoxCollider2D boxCollider2d;
     Animator animator;
 
-    private void Awake()
+    public override void Awake()
     {
         boxCollider2d = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();

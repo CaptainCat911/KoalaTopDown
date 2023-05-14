@@ -5,7 +5,7 @@ public class Switch : ItemPickUp
     SpriteRenderer spriteRenderer;
     bool switched;
 
-    private void Awake()
+    public override void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

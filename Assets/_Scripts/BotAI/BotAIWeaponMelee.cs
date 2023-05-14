@@ -179,10 +179,6 @@ public class BotAIWeaponMelee : MonoBehaviour
         {
             return true;
         }
-
-
-
-
         //Debug.DrawRay(fromTrans.position, vec2, Color.yellow);
     }
 
@@ -200,10 +196,12 @@ public class BotAIWeaponMelee : MonoBehaviour
             {
                 float distance = Vector2.Distance(botAI.transform.position, coll.transform.position);
 
+                Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
+                fighter.TakeDamage(0, vec2, pushForce);
+
                 if (RayCastToTarget(botAI.transform, coll.transform, distance))
                 {
-                    Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
-                    fighter.TakeDamage(damage, vec2, pushForce);
+                    fighter.TakeDamage(damage, new Vector2(0,0), 0);
                 }               
             }
             collidersHits = null;
@@ -304,8 +302,15 @@ public class BotAIWeaponMelee : MonoBehaviour
 
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
+                float distance = Vector2.Distance(botAI.transform.position, coll.transform.position);
+
                 Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
-                fighter.TakeDamage(explousionDamage, vec2, explousionForce);
+                fighter.TakeDamage(0, vec2, explousionForce);
+
+                if (RayCastToTarget(botAI.transform, coll.transform, distance))
+                {
+                    fighter.TakeDamage(explousionDamage, new Vector2(0, 0), 0);
+                }
             }
             collidersHits = null;
         }
@@ -326,15 +331,22 @@ public class BotAIWeaponMelee : MonoBehaviour
                 //Debug.Log("Hit!");
                 if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
                 {
-                    Vector2 vec2 = (fighter.transform.position - transform.position).normalized;
-                    fighter.TakeDamage(laserDamage, vec2, laserForce);
-                }
+                    float distance = Vector2.Distance(hitBox.transform.position, fighter.transform.position);
 
-                if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
-                {
-                    //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
-                    ignitable.Ignite(damageBurn, cooldownBurn, durationBurn);
-                }                
+                    Vector2 vec2 = (fighter.transform.position - hitBox.transform.position).normalized;
+                    fighter.TakeDamage(0, vec2, laserForce);
+
+                    if (RayCastToTarget(hitBox.transform, fighter.transform, distance))
+                    {
+                        fighter.TakeDamage(laserDamage, new Vector2(0, 0), 0);
+
+                        if (hit.collider.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                        {
+                            //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                            ignitable.Ignite(damageBurn, cooldownBurn, durationBurn);
+                        }
+                    }
+                }               
             }
         }
     }
