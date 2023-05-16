@@ -8,7 +8,7 @@ public class MeleeWeapon : MonoBehaviour
     //WeaponHolder weaponHolder;                          // ссылка на скрипт weaponHolder (для удара)
     WeaponHolderMelee weaponHolderMelee;
     Animator animator;
-    public LayerMask layer;                             // слои для битья
+    public LayerMask layer;                         // слои для битья
 
     public string weaponName;
     public bool swoard;
@@ -16,12 +16,12 @@ public class MeleeWeapon : MonoBehaviour
     public bool hummer;
 
     [Header("Параметры оружия")]
-    public Transform hitBox;                            // положение хитбокса
-    public int damage = 10;                             // урон
-    public float pushForce = 1;                         // сила толчка
-    public float radius = 1;                            // радиус
-    public float cooldown = 1f;                         // перезардяка атаки
-    float lastAttack;                                   // время последнего удара (для перезарядки удара)
+    public Transform hitBox;                        // положение хитбокса
+    public int damage = 10;                         // урон
+    public float pushForce = 1;                     // сила толчка
+    public float radius = 1;                        // радиус
+    public float cooldown = 1f;                     // перезардяка атаки
+    float lastAttack;                               // время последнего удара (для перезарядки удара)
     [Space]
     public float capsuleLeght;
     public float capsuleWidht;
@@ -37,11 +37,12 @@ public class MeleeWeapon : MonoBehaviour
     public int damageElectro;
     public float pushForceElectro;
     public float radiusElectro;
-    public float cameraAmplitudeShakeElectro;      // амплитуда
-    public float cameraTimedeShakeElectro;         // длительность
+    public float cameraAmplitudeShakeElectro;       // амплитуда
+    public float cameraTimedeShakeElectro;          // длительность
 
-    // Треил 
-    public TrailRenderer trail;
+    [Header("Эффекты")]    
+    public TrailRenderer trail;                     // треил 
+    public GameObject sparksEffect;                 // искры
 
     void Start()
     {
@@ -105,14 +106,18 @@ public class MeleeWeapon : MonoBehaviour
             CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShakeElectro, cameraTimedeShakeElectro);        // тряска камеры
         }
 
+        if (collidersHits.Length > 0)       // если во что-то попали
+        {
+            if (sparksEffect)
+            {
+                GameObject effect = Instantiate(sparksEffect, hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
+                Destroy(effect, 1);
+            }
+        }
+
         // Обычная атака
         foreach (Collider2D coll in collidersHits)
         {
-            if (coll == null)
-            {
-                continue;
-            }
-
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
                 Vector2 vec2 = (coll.transform.position - player.transform.position).normalized;

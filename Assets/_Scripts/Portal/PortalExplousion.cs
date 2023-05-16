@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class PortalExplousion : MonoBehaviour
 {
-    Animator animator;      
+    //Animator animator;      
     SpriteRenderer spriteRenderer;
 
     public int damage;                  // урон при появлении портала
@@ -19,7 +19,7 @@ public class PortalExplousion : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

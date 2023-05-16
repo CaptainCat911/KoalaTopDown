@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     BoxCollider2D boxCollider2D;
     SpriteRenderer spriteRenderer;
 
+    public bool openedDoor;
     public int doorTypeNumber;              // тип двери
     public Sprite openedDoorSprite;         // спрайт открыйтой двери
     Sprite closedDoorSprite;
@@ -24,7 +25,8 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-
+        if (openedDoor)
+            OpenDoor();
     }
 
     public void OpenDoorWithKey()

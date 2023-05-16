@@ -257,7 +257,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.3
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -301,10 +301,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 100
   noAgro: 0
+  isGoodPerson: 0
   bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
@@ -331,9 +333,11 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   targetVisible: 0
   closeToTarget: 0
+  targetInRange: 0
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
+  defaultRangeToTarget: 0
   distanceToAttackMelee: 1.3
   distanceToAttackRange: 4
   pivotSpeedKoef: 1
@@ -373,6 +377,7 @@ MonoBehaviour:
   distancePatrol: 2
   maxDistancePatrol: 4
   lastChange: 0
+  goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0

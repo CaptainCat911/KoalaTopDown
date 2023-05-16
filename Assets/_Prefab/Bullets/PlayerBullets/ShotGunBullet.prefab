@@ -158,11 +158,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b82607bc642a54e8e84d528b3ad04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  isPlayerBullet: 0
   damage: 0
   pushForce: 0
-  isPlayerBullet: 0
-  expEffect: {fileID: 6838830282863028361, guid: 9bcfbd57f80156d47881a4c5be09b696, type: 3}
+  enemyToDamageCount: 0
+  enemyDamaged: 0
   layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  expEffect: {fileID: 6838830282863028361, guid: 9bcfbd57f80156d47881a4c5be09b696, type: 3}
+  sparksEffect: {fileID: 4947641790296222230, guid: b4239e6ea3ede944e9b5476b3cca0e03, type: 3}
+  layerRayCastTarget:
     serializedVersion: 2
     m_Bits: 0
 --- !u!96 &6680086522174144134

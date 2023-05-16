@@ -8,7 +8,8 @@ public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;     // ссылка на текст
     public Animator animator;               // ссылка на аниматор
-    
+    public Animator blackImagesAnim;        // аниматор чёрных полос
+
     public DialogStore[] dialogStore;       // диалоги
 
     public float typingSpeed;               // скорость появления букв
@@ -60,7 +61,7 @@ public class Dialog : MonoBehaviour
         dialogeNumber = numberDialog;                                           // номер диалога
         GameManager.instance.isPlayerEnactive = true;                           // отключаем управление игроком
         GameManager.instance.EnemyResetAndNeutral(true);                        // сбрасываем ботов
-        GameManager.instance.BlackTapes(true);                                  // черные полосы
+        BlackTapes(true);                                                       // черные полосы
         GameManager.instance.cameraOnPlayer = true;                             // камера на игрока
 
         sentences = dialogStore[numberDialog].sentences;                        // берем предложения из диалга номер numberDialog
@@ -108,7 +109,7 @@ public class Dialog : MonoBehaviour
             textDisplay.text = "";
             heroImage.SetActive(false);                         // убираем портреты
             npcImage.SetActive(false);          
-            GameManager.instance.BlackTapes(false);             // убираем черные полосы
+            BlackTapes(false);                                  // убираем черные полосы
             GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
             GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
@@ -130,4 +131,14 @@ public class Dialog : MonoBehaviour
             npcImage.SetActive(true);
         }
     }
+
+    // Чёрные полосы
+    public void BlackTapes(bool status)
+    {
+        if (status)
+            blackImagesAnim.SetTrigger("In");                   // запускаем чёрные полосы
+        else
+            blackImagesAnim.SetTrigger("Out");                  // убираем чёрные полосы
+    }
+
 }

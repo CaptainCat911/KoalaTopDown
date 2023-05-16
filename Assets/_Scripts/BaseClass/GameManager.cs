@@ -32,9 +32,7 @@ public class GameManager : MonoBehaviour
     [Header("Предметы")]
     public int gold;                            // золото
     public int[] keys;                          // ключи
-    public int battery;                         // батареи
-
-    public Animator blackImagesAnim;            // аниматор чёрных полос
+    public int battery;                         // батареи    
 
     [Header("Комната воскрешения")]
     public Transform resStart;
@@ -99,14 +97,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Чёрные полосы
-    public void BlackTapes(bool status)
-    {
-        if (status)
-            blackImagesAnim.SetTrigger("In");                   // запускаем чёрные полосы
-        else
-            blackImagesAnim.SetTrigger("Out");                  // убираем чёрные полосы
-    }
+
 
 
     public void CreateFloatingMessage(string message, Color color, Vector2 position)
