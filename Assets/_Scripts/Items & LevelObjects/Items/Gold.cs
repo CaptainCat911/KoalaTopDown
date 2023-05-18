@@ -4,6 +4,7 @@ public class Gold : ItemPickUp
 {
     public int goldValue;
     Player player;
+    bool nearPlayer;
 
     public override void Awake()
     {
@@ -11,10 +12,15 @@ public class Gold : ItemPickUp
         player = GameManager.instance.player;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (player.withGoldMagnet)
+        if (player.withGoldMagnet && nearPlayer)
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, player.speedMagnet * Time.deltaTime);   // перемещаем игрока
+    }
+
+    public void MagnerOn()
+    {
+        nearPlayer = true;
     }
 
     public void PickUpGold()

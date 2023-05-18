@@ -331,6 +331,7 @@ MonoBehaviour:
   damageRangeBig: 0
   pushForceRangeBig: 0
   projctleSpeedBig: 0
+  withSplit: 0
   explousionDamage: 20
   explousionForce: 30
   explousionRadius: 2
@@ -356,6 +357,9 @@ MonoBehaviour:
   teleportForceRadius: 0
   teleportInForce: 0
   teleportOutForce: 0
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6604417298802685298
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604417298802685298}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.022, y: 0.478, z: 0}
+  m_LocalPosition: {x: -0.022, y: 0.083, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

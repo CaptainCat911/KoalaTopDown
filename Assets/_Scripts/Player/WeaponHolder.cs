@@ -73,7 +73,7 @@ public class WeaponHolder : MonoBehaviour
             return;
 
         // Стрельба
-        if (Input.GetMouseButton(0) && player.playerWeaponReady)
+        if (Input.GetMouseButton(0))                    // && player.playerWeaponReady
         {
             //if (meleeWeapon)                        // если оружие ближнего боя
                 //attackHitBoxStart = true;           // начинаем атаку хитбоксом

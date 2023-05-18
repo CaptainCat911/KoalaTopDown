@@ -620,10 +620,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 500
   noAgro: 0
+  isGoodPerson: 0
+  bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -636,6 +639,8 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  triggerLenght: 5
+  distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
@@ -645,25 +650,26 @@ MonoBehaviour:
     m_Bits: 0
   chasing: 0
   startPosition: {x: 0, y: 0, z: 0}
-  triggerLenght: 5
-  distanceToChangeTarget: 3
   targetVisible: 0
   closeToTarget: 0
-  distanceToAttackMelee: 1.1
-  distanceToAttackRange: 5
-  distanceToAttack: 1
-  distanceToTarget: 0
-  itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
+  targetInRange: 0
   meleeAttackType: 0
   rangeAttackType: 1
   twoWeapons: 0
+  defaultRangeToTarget: 0
+  distanceToAttackMelee: 1.1
+  distanceToAttackRange: 5
+  pivotSpeedKoef: 1
+  distanceToAttack: 1
+  distanceToTarget: 0
+  itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   stayOnGround: 1
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
-  aimAnglePivot: 0
   deathEffect: {fileID: 7845441016114820387, guid: 63da8428eacb2d64e834aa5b7bf5e82f, type: 3}
   deathCameraShake: 3
+  aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
   layerTrigger:
@@ -690,6 +696,7 @@ MonoBehaviour:
   distancePatrol: 2
   maxDistancePatrol: 4
   lastChange: 0
+  goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0

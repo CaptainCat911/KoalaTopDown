@@ -12,6 +12,21 @@ public class ShieldHolder : MonoBehaviour
         player = GameManager.instance.player;
     }
 
+    private void OnDisable()
+    {
+        shield.SetActive(false);
+        if (!player.weaponHolder.meleeWeapon)
+        {
+            player.weaponHolder.stopHolder = false;
+            player.weaponHolder.currentWeapon.gameObject.SetActive(true);
+        }
+        else
+        {
+            player.weaponHolderMelee.stopHolder = false;
+            player.weaponHolderMelee.currentWeapon.gameObject.SetActive(true);
+        }
+    }
+
 
     private void Update()
     {

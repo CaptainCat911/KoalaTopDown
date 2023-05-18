@@ -52,7 +52,7 @@ public class MeleeWeapon : MonoBehaviour
         animator = GetComponentInParent<Animator>();        
     }
 
-    
+
     void Update()
     {
         if (weaponHolderMelee.attackHitBoxStart && Time.time - lastAttack > cooldown)          // если готовы атаковать и кд готово

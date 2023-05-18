@@ -141,18 +141,24 @@ MonoBehaviour:
   weaponName: 
   fireRate: 15
   nextTimeToFire: 0
-  withDelay: 0
-  delayFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
   singleFlash: 1
+  lineRenderer: {fileID: 0}
   tracerEffect: {fileID: 2862349512899274176, guid: c64802122df91054fb9523e2d9f53ecf, type: 3}
-  flameParticles: {fileID: 0}
+  effectParticles: {fileID: 0}
+  startParticles: {fileID: 0}
   cameraAmplitudeShake: 0.7
   cameraTimedeShake: 0.1
   singleShot: 1
   multiShot: 0
   audioSource: {fileID: 9207148736259809736}
   audioSourceTail: {fileID: 0}
+  x1: 0
+  y1: 0
+  x2: 0
+  y2: 0
+  x3: 0
+  y3: 0
   debug: 0
 --- !u!82 &9207148736259809736
 AudioSource:

@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class AnimatorForMelee : MonoBehaviour
 {
-
+    Animator animator;
     WeaponHolderMelee weaponHolderMelee;
-    private void Start()
+
+
+    private void Awake()
     {
+        animator = GetComponent<Animator>();
         weaponHolderMelee = GetComponentInChildren<WeaponHolderMelee>();
     }
 

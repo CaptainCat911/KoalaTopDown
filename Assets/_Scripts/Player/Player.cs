@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
+using System.Collections;
+//using UnityEngine.AI;
 
 
 public class Player : Fighter
@@ -12,8 +13,8 @@ public class Player : Fighter
     [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
     [HideInInspector] public BombWeaponHolder bombWeaponHolder;
     [HideInInspector] public ShieldHolder shieldHolder;
-    [HideInInspector] public HitBoxPivot hitBoxPivot;
-    [HideInInspector] public bool playerWeaponReady;    // игрок готов (стрелять (это для блинка))
+    [HideInInspector] public HitBoxPivot hitBoxPivot;    
+    //[HideInInspector] public bool playerWeaponReady;    // игрок готов (стрелять (это для блинка))
     Ignitable ignitable;
 
     [Header("Параметры перемещения")]    
@@ -80,9 +81,9 @@ public class Player : Fighter
     public override void Start()
     {
         base.Start();
-        playerWeaponReady = true;
-        animator = GetComponent<Animator>();
+        //playerWeaponReady = true;
         //agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponHolder = GetComponentInChildren<WeaponHolder>();
         weaponHolderMelee = GetComponentInChildren<WeaponHolderMelee>();
@@ -231,9 +232,9 @@ public class Player : Fighter
 
     public void EnableHolders(bool status)
     {
-        weaponHolder.gameObject.SetActive(status);               // отключаем оружия 
-        weaponHolderMelee.gameObject.SetActive(status);          //
-        bombWeaponHolder.gameObject.SetActive(status);           //
+        weaponHolder.gameObject.SetActive(status);                  // отключаем оружия 
+        hitBoxPivot.gameObject.SetActive(status);                   //
+        bombWeaponHolder.gameObject.SetActive(status);              //
         shieldHolder.gameObject.SetActive(status);
     }
 
@@ -417,6 +418,9 @@ public class Player : Fighter
     // Получение урона
     public override void TakeDamage(int dmg, Vector2 vec2, float pushForce)
     {
+        if (!isAlive)
+            return;
+
         if (shield.shieldOn)
         {
             shield.TakeDamage(dmg);
@@ -426,6 +430,7 @@ public class Player : Fighter
             base.TakeDamage(dmg, vec2, pushForce);
             if (dmg == 0)
                 return;
+            //Debug.Log("Hit");
             animator.SetTrigger("TakeHit");
             ColorRed(0.1f);                         // делаем спрайт красным
         }
@@ -459,49 +464,81 @@ public class Player : Fighter
         ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 2f);
     }
 
+
+
+
+
     protected override void Death()
     {
-        if (GameManager.instance.playerInResroom)
+        //base.Death();
+        isAlive = false;
+        spriteRenderer.color = Color.white;
+        GameManager.instance.isPlayerEnactive = true;
+        GameManager.instance.cameraOnPlayer = true;        
+        animator.SetTrigger("Death");            
+        EnableHolders(false);
+        noAgro = true;
+        ResetTargetBots();                                  // сбросить цель врагам
+        if (!GameManager.instance.playerInResroom)
         {
-            base.Death();
-            spriteRenderer.color = Color.white;
-            GameManager.instance.isPlayerEnactive = true;
-            GameManager.instance.cameraOnPlayer = true;
-            animator.SetTrigger("Death");
-            //capsuleCollider2D.enabled = false;
-            EnableHolders(false);
-            noAgro = true;
-            ResetTargetBots();
-            Invoke(nameof(PreResurrection), 1);
-        }
-        else
-        {
-            base.Death();
-            spriteRenderer.color = Color.white;
-            GameManager.instance.isPlayerEnactive = true;
-            GameManager.instance.cameraOnPlayer = true;
-            animator.SetTrigger("Death");
-            //capsuleCollider2D.enabled = false;
-            EnableHolders(false);
-            noAgro = true;
-            ResetTargetBots();
             ResRoomManager.instance.SpawnMonsterAndChest();
             ResRoomManager.instance.deathPos.position = transform.position;
             GameManager.instance.playerInResroom = true;
-            Invoke(nameof(PreResurrection), 1);
+            StartCoroutine(AfterDeath());
+        }
+        else
+        {
+            StartCoroutine(AfterDeathResRoom());
         }
     }
 
-    void AfterDeath()
+    IEnumerator AfterDeath()
     {
+        yield return new WaitForSeconds(0.5f);
+        capsuleCollider2D.enabled = false;
 
+        yield return new WaitForSeconds(1.5f);
+        animator.ResetTrigger("TakeHit");                   // из-за бага
+        GameObject effect = Instantiate(GameAssets.instance.portalDeath, transform.position, Quaternion.identity);      // создаем эффект портала
+        Destroy(effect, 1);
+        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, GameManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
+        
+        yield return new WaitForSeconds(1);
+        transform.position = GameManager.instance.resStart.position;
+
+        yield return new WaitForSeconds(0.5f);
+        effect2.GetComponentInChildren<Animator>().SetTrigger("Close");
+        Destroy(effect2, 1);
+
+        yield return new WaitForSeconds(0.5f);
+        animator.SetTrigger("WakeUp");
+
+        yield return new WaitForSeconds(1);
+        Resurrection();
     }
 
-    void PreResurrection()
+    IEnumerator AfterDeathResRoom()
     {
+        yield return new WaitForSeconds(1f);
+        GameObject effect = Instantiate(GameAssets.instance.portalDeath, transform.position, Quaternion.identity);      // создаем эффект портала
+        
+        yield return new WaitForSeconds(0.5f);
+        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, GameManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
+
+        yield return new WaitForSeconds(0.5f);
         transform.position = GameManager.instance.resStart.position;
+        effect.GetComponentInChildren<Animator>().SetTrigger("Close");
+        Destroy(effect, 1);
+
+        yield return new WaitForSeconds(0.5f);
+        effect2.GetComponentInChildren<Animator>().SetTrigger("Close");
+        Destroy(effect2, 1);
+
+        yield return new WaitForSeconds(0.5f);
         animator.SetTrigger("WakeUp");
-        Invoke(nameof(Resurrection), 1);
+
+        yield return new WaitForSeconds(1);
+        Resurrection();
     }
 
     void Resurrection()
@@ -515,6 +552,8 @@ public class Player : Fighter
         noAgro = false;        
     }
 
+
+    // Сбросить ботам цель
     void ResetTargetBots()
     {
         Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 20, layerExplBlink);     // создаем круг в позиции объекта с радиусом
