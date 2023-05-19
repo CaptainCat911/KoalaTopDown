@@ -6,9 +6,10 @@ public class ResRoomManager : MonoBehaviour
 {
     public static ResRoomManager instance;     // инстанс
 
-    public Transform deathPos;
-    public Transform monsetPos;
-    public Transform chestPos;
+    public Transform deathPos;          // место несчастного случая
+    public Transform resStart;          // позиция для воскрешения в комнате
+    public Transform monsterPos;        // позиция для монстра
+    public Transform chestPos;          // позиция для сундука
     public GameObject monsterPref;
     public GameObject chestPref;
 
@@ -19,8 +20,8 @@ public class ResRoomManager : MonoBehaviour
 
     public void SpawnMonsterAndChest()
     {       
-        GameObject monster = Instantiate(monsterPref, monsetPos.position, Quaternion.identity);             // создаём монстра        
-        GameObject chest = Instantiate(chestPref, chestPos.position, Quaternion.identity);                // создаём сундук        
+        GameObject monster = Instantiate(monsterPref, monsterPos.position, Quaternion.identity);            // создаём монстра        
+        GameObject chest = Instantiate(chestPref, chestPos.position, Quaternion.identity);                  // создаём сундук        
         //agent = enemyPref.GetComponentInChildren<NavMeshAgent>();                   // находим НавМешАгент        
         //agent.Warp(transform.position);                                             // перемещаем префаб к спавнеру        
     }

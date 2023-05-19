@@ -501,10 +501,10 @@ public class Player : Fighter
         animator.ResetTrigger("TakeHit");                   // из-за бага
         GameObject effect = Instantiate(GameAssets.instance.portalDeath, transform.position, Quaternion.identity);      // создаем эффект портала
         Destroy(effect, 1);
-        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, GameManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
+        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, ResRoomManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
         
         yield return new WaitForSeconds(1);
-        transform.position = GameManager.instance.resStart.position;
+        transform.position = ResRoomManager.instance.resStart.position;
 
         yield return new WaitForSeconds(0.5f);
         effect2.GetComponentInChildren<Animator>().SetTrigger("Close");
@@ -523,10 +523,10 @@ public class Player : Fighter
         GameObject effect = Instantiate(GameAssets.instance.portalDeath, transform.position, Quaternion.identity);      // создаем эффект портала
         
         yield return new WaitForSeconds(0.5f);
-        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, GameManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
+        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, ResRoomManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
 
         yield return new WaitForSeconds(0.5f);
-        transform.position = GameManager.instance.resStart.position;
+        transform.position = ResRoomManager.instance.resStart.position;
         effect.GetComponentInChildren<Animator>().SetTrigger("Close");
         Destroy(effect, 1);
 

@@ -14,28 +14,24 @@ public class GameManager : MonoBehaviour
 
     [Header("Ссылки")]
     public Player player;                       // ссылка на игрока    
-    public AmmoPackKoala ammoPack;              // аммо менеджер   
-    public Dialog dialog;                       // диалог менеджер
+    public AmmoPackKoala ammoManager;           // аммо менеджер   
+    //public Dialog dialog;                       // диалог менеджер    
     //public GameObject gui;                      // гуи
 
     [Header("Управление игрой")]
     public bool isPlayerEnactive;               // активен игрок или нет
     public bool cameraOnPlayer;                 // управление камерой
     public bool dialogeStart;                   // диалог начался
-    public bool playerInResroom;
+    public bool playerInResroom;                // игрок в комнате воскрешения
     [HideInInspector] public bool playerAtTarget;   // игрок дошёл до места старта диалога
 
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;                    // клавиша для действия
-    public KeyCode keyOpenMagazine;
 
     [Header("Предметы")]
     public int gold;                            // золото
     public int[] keys;                          // ключи
-    public int battery;                         // батареи    
-
-    [Header("Комната воскрешения")]
-    public Transform resStart;
+    public int battery;                         // батареи     
 
     //[HideInInspector] public int enemyCount;
 
@@ -45,7 +41,7 @@ public class GameManager : MonoBehaviour
         if (GameManager.instance != null)
         {
             Destroy(gameObject);
-            Destroy(ammoPack);
+            Destroy(ammoManager.gameObject);
             Destroy(player.gameObject);
             //Destroy(gui);
             //Destroy(floatingTextManager.gameObject);
@@ -53,12 +49,11 @@ public class GameManager : MonoBehaviour
             //Destroy(menu);
             //Destroy(eventSys);
 
-
             return;
         }
-        // присваем instance (?) этому обьекту и по ивенту загрузки запускаем функцию загрузки
-        instance = this;       
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        
+        instance = this;                                // присваем instance (?) этому обьекту и по ивенту загрузки запускаем функцию загрузки
+        SceneManager.sceneLoaded += OnSceneLoaded;      // при загрузке сцены выполнится это += функция
     }
 
     public void Update()
@@ -68,11 +63,15 @@ public class GameManager : MonoBehaviour
             ChatBubble.Clear(gameObject);
             ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi", 2f);
         }
-        
-/*        if (Input.GetKeyDown(keyOpenMagazine))
+        if (Input.GetKeyDown(KeyCode.N))
         {
-            OpenCloseMagazine();
-        }*/
+            NextScene(1);
+        }
+
+        /*        if (Input.GetKeyDown(keyOpenMagazine))
+                {
+                    OpenCloseMagazine();
+                }*/
     }
 
 /*    public void OpenCloseMagazine()
@@ -90,11 +89,11 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Начать ивент диалога
+/*    // Начать ивент диалога
     public void StartDialog(int number)
     {
         dialog.StartEvent(number);
-    }
+    }*/
 
 
 

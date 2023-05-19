@@ -38,7 +38,7 @@ public class UnityEventDialogeTrigger : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
-            GameManager.instance.StartDialog(dialogeNumber);
+            DialogManager.instance.StartEvent(dialogeNumber);
             Destroy(gameObject);            
         }
         

@@ -36,7 +36,7 @@ public class BombWeapon : MonoBehaviour
     void Awake()
     {
         player = GameManager.instance.player;
-        ammoBombs = GameManager.instance.ammoPack.ammoBombs;
+        ammoBombs = GameManager.instance.ammoManager.ammoBombs;
         weaponName = weaponClass.weaponName;                                    // имя оружия        
 
 /*        layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам

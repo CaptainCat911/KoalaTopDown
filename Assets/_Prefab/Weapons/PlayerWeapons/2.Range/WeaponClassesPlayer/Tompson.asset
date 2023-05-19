@@ -19,9 +19,10 @@ MonoBehaviour:
   bulletSpeed: 15
   pushForce: 1
   enemyToDamageCount: 0
-  forceBackFire: 0
   recoil: 6
   delayFire: 0
+  forceBackFire: 0
+  effectBackFire: 0.04
   bulletPrefab: {fileID: 5170081587130710907, guid: 8cf0ee194bd7ef241955b9afa5796b9b, type: 3}
   boxSize: 0
   range: 0

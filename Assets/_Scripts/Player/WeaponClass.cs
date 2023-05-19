@@ -26,9 +26,10 @@ public class WeaponClass : ScriptableObject
     public float bulletSpeed;
     public float pushForce;
     public int enemyToDamageCount;
-    public float forceBackFire;
-    public float recoil;
-    public float delayFire;
+    public float recoil;                // разброс
+    public float delayFire;             // задердка перед выстрелом
+    public float forceBackFire;         // отталкивает назад
+    public float effectBackFire;        // эффект отдачи для оружия
     //public GameObject flashEffect;
 
     [Header("Снарядовое оружие")]

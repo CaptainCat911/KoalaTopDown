@@ -62,19 +62,16 @@ public class Weapon : MonoBehaviour
     public AudioSource audioSource;         // основной звук
     public AudioSource audioSourceTail;     // "хвост"
 
-    public float x1;
-    public float y1;
-    public float x2;
-    public float y2;
-    public float x3;
-    public float y3;
+    Vector3 originPosition;
+
+
 
     public bool debug;
 
     void Awake()
     {
         player = GameManager.instance.player;                           // игрок
-        ammoWeapons = GameManager.instance.ammoPack.ammoWeapons;        // оружия
+        ammoWeapons = GameManager.instance.ammoManager.ammoWeapons;        // оружия
         weaponName = weaponClass.weaponName;                            // имя оружия
         ammo = ammoWeapons[weaponIndexForAmmo].allAmmo;
 
@@ -89,6 +86,9 @@ public class Weapon : MonoBehaviour
         {
             audioSource.loop = true;
         }
+
+
+        
 
         /*        layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам
                 if (weaponClass.bulletPrefab)
@@ -105,12 +105,14 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         weaponHolder = GetComponentInParent<WeaponHolder>();                    // находим скрипт weaponHolder
+        originPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         //ammo = GameManager.instance.ammoPack.ammoTompson;
         //currentDelay = delayFire + Time.time;
     }
 
     private void OnEnable()
     {
+        
         currentDelay = weaponClass.delayFire;
     }
 
@@ -174,7 +176,14 @@ public class Weapon : MonoBehaviour
     private void FixedUpdate()
     {
         // Стрельба
+        //Debug.Log(originPosition.x);
 
+        // Возвращение отдачи
+        if (transform.localPosition.x < originPosition.x)       
+        {
+            //Debug.Log("Recoil!");
+            transform.localPosition = new Vector3(transform.localPosition.x + 0.05f, transform.localPosition.y, transform.localPosition.z);
+        }
 
         // Задержка перед выстрелом
         if (weaponHolder.fireStart && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)          // если готовы стрелять и есть патроны
@@ -211,6 +220,8 @@ public class Weapon : MonoBehaviour
 
         if (Time.time >= nextTimeToFire)     // если начинаем стрелять и кд готово
         {
+            transform.localPosition = new Vector3(transform.localPosition.x - weaponClass.effectBackFire, transform.localPosition.y, transform.localPosition.z); // отдача (эффект)
+
             ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           
 

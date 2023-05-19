@@ -12,7 +12,7 @@ public class ShopWeapons : MonoBehaviour
 
     private void Awake()
     {
-        ammoPack = GameManager.instance.ammoPack;        
+        ammoPack = GameManager.instance.ammoManager;        
     }
 
 

@@ -12,11 +12,11 @@ public class WeaponPickUp : ItemPickUp
     {
         if (isRange)
         {
-            GameManager.instance.ammoPack.TakeRangeWeapon(weaponIndex);
+            GameManager.instance.ammoManager.TakeRangeWeapon(weaponIndex);
         }
         else
         {
-            GameManager.instance.ammoPack.TakeMeleeWeapon(weaponIndex);
+            GameManager.instance.ammoManager.TakeMeleeWeapon(weaponIndex);
         }
         Destroy(gameObject);
     }

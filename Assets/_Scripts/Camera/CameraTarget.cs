@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class CameraTarget : MonoBehaviour
 {
-    [SerializeField] Camera cam;
-    [SerializeField] Transform player;
+    Transform player;
+    Camera cam;
     [SerializeField] float threshold;
-      
 
-    
+    private void Awake()
+    {
+        player = GameManager.instance.player.transform;
+        cam = Camera.main;
+    }
+
     void Update()
     {
-        if (!GameManager.instance.cameraOnPlayer)
+        if (!GameManager.instance.cameraOnPlayer)       
         {
-            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);     
             Vector3 targetPos = (player.position + mousePos) / 2f;
 
             targetPos.x = Mathf.Clamp(targetPos.x, -threshold + player.position.x, threshold + player.position.x);
@@ -22,7 +26,7 @@ public class CameraTarget : MonoBehaviour
 
             transform.position = targetPos;
         }
-        else
+        else                // в синематиках смотрим на игрока
         {
             transform.position = player.position;
         }

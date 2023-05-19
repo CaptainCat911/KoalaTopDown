@@ -37,12 +37,16 @@ public class MeleeWeapon : MonoBehaviour
     public int damageElectro;
     public float pushForceElectro;
     public float radiusElectro;
-    public float cameraAmplitudeShakeElectro;       // амплитуда
-    public float cameraTimedeShakeElectro;          // длительность
+    //public float cameraAmplitudeShakeElectro;       // амплитуда
+    //public float cameraTimedeShakeElectro;          // длительность
 
     [Header("Ёффекты")]    
     public TrailRenderer trail;                     // треил 
     public GameObject sparksEffect;                 // искры
+
+    [Header("“р€ска камеры при выстреле")]
+    public float cameraAmplitudeShake = 1f; // амплитуда
+    public float cameraTimedeShake = 0.1f;  // длительность
 
     void Start()
     {
@@ -103,7 +107,7 @@ public class MeleeWeapon : MonoBehaviour
             GameObject effect = Instantiate(GameAssets.instance.explousionBlue,
                     hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
             Destroy(effect, 1);                                                                 // уничтожаем эффект через .. сек
-            CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShakeElectro, cameraTimedeShakeElectro);        // тр€ска камеры
+            //CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShakeElectro, cameraTimedeShakeElectro);        // тр€ска камеры
         }
 
         if (collidersHits.Length > 0)       // если во что-то попали
@@ -112,6 +116,7 @@ public class MeleeWeapon : MonoBehaviour
             {
                 GameObject effect = Instantiate(sparksEffect, hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
                 Destroy(effect, 1);
+                CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тр€ска камеры
             }
         }
 
