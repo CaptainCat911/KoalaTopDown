@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Grave : Fighter
 {
     [Header("Параметры предмета")]
-    public bool destroyed;
+    public bool destroyed;                      // разрушен
+    public bool withObstacle;                   // с навМешОбстикл
     public GameObject itemToSpawn;              // предмет для спауна
     public GameObject expEffect;                // эффект разрушения
     SpriteRenderer spriteRenderer;              // спрайт    
@@ -31,8 +33,12 @@ public class Grave : Fighter
         GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
         Destroy(effect, 0.5f);                                                                  // уничтожаем эффект через .. сек
 
-        int spriteNumber = Random.Range(0, m_spriteDestroyed.Length);       // выбираем рандомно спрайт 
+        int spriteNumber = Random.Range(0, m_spriteDestroyed.Length);           // выбираем рандомно спрайт 
         spriteRenderer.sprite = m_spriteDestroyed[spriteNumber];                // заменяем спрайт на разрушенный
         boxCollider.enabled = false;                                            // убираем коллайдер
+        if (withObstacle)
+        {
+            GetComponent<NavMeshObstacle>().enabled = false;
+        }
     }
 }
