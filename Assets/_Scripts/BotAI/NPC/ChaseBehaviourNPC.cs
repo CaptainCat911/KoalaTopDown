@@ -8,7 +8,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
     
     float lastAttack;                       // время последнего рандома    
     int attackNumber;                       // тип атаки
-    bool attackReady;                       // атака готова
+    //bool attackReady;                       // атака готова
 
     // Смена цели
     float lastTargetChange;                 // время последнего поиска цели
@@ -39,7 +39,8 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
             return;
         }
 
-        if (boss.currentHealth < boss.maxHealth / 4)
+        // ТУТ ПЕРЕДЕЛАТЬ
+        if (boss.lowHp && boss.mainBossAttack)
         {
             //boss.SayText("Тебе никогда не победить");
             boss.distanceToAttack = 30;

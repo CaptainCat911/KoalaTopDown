@@ -5,8 +5,10 @@ public class NPC : BotAI
 {
     [Header("Параметры атак босса")]
     [HideInInspector] public bool attackingNow;     // сейчас атакует
-    public bool immortalBoss;
-    public float cooldownAttack;
+    public bool mainBossAttack;                     // для возвращения во времени
+    public bool immortalBoss;                       // бессмертный
+    public float cooldownAttack;                    // кд атаки
+    public bool lowHp;                              // мало хп
 
     [Header("Атака издалека")]
     public int rangeAttackChance = 100;     // шанс ренж атаки
@@ -35,16 +37,16 @@ public class NPC : BotAI
     bool isTextDone;                // проговорили весь текст
 
 
-        public override void Update()
+    public override void Update()
     {
-        if (immortalBoss)
+        if (!lowHp)
         {
-            if (currentHealth < maxHealth / 10)
+            if (currentHealth < maxHealth / 4)
             {
-                currentHealth = maxHealth / 10;
+                lowHp = true;
             }
         }
-
+        
         base.Update();
     }
 
@@ -70,16 +72,19 @@ public class NPC : BotAI
         }
     }
 
-/*    public void NpcMagazine()
-    {
-        GameManager.instance.OpenCloseMagazine();
-    }*/
+    /*    public void NpcMagazine()
+        {
+            GameManager.instance.OpenCloseMagazine();
+        }*/
 
-/*    protected override void Death()
+    protected override void Death()
     {
-        base.Death();
-        Destroy(gameObject);
-    }*/
+        if (immortalBoss)
+            return;
+        else
+            base.Death();
+        //Destroy(gameObject);
+    }
 
     /*    void ClearDialoge()
         {

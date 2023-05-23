@@ -427,10 +427,10 @@ MonoBehaviour:
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
-  maxHealth: 15000
+  maxHealth: 2000
   noAgro: 0
   isGoodPerson: 0
-  bossHP: 1
+  bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -440,7 +440,7 @@ MonoBehaviour:
   botAIMeleeWeaponHolder: {fileID: 0}
   botAIRangeWeaponHolder: {fileID: 0}
   newNpcSystem: 1
-  isNeutral: 1
+  isNeutral: 0
   isFriendly: 0
   isEnemy: 1
   triggerLenght: 7
@@ -483,8 +483,10 @@ MonoBehaviour:
   fastDeathAnim: 1
   debug: 0
   attackingNow: 0
-  immortalBoss: 1
+  mainBossAttack: 0
+  immortalBoss: 0
   cooldownAttack: 2
+  lowHp: 0
   rangeAttackChance: 100
   rangeAttackDistance: 6
   multiAttackChance: 30
@@ -494,7 +496,7 @@ MonoBehaviour:
   spawnAttackChance: 0
   gravityChance: 15
   laserChance: 10
-  teleportChance: 20
+  teleportChance: 0
   textToSay: []
 --- !u!1001 &2170014190984783942
 PrefabInstance:
