@@ -99,17 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabEnemies:
-  - {fileID: 8105260067676780272, guid: d6a12a890a7f29b4494bb49b0222f235, type: 3}
-  - {fileID: 8105260067676780272, guid: 4b587cf69ccd51a4fa79df30db91aef2, type: 3}
-  - {fileID: 2411289485797020924, guid: bee88da44b11b6f498e2144dd0b9bbb7, type: 3}
   - {fileID: 4817016154119956039, guid: 9ee4ee6a434a5334d8aea3e3c727e6c1, type: 3}
+  - {fileID: 2411289485797020924, guid: bee88da44b11b6f498e2144dd0b9bbb7, type: 3}
+  - {fileID: 8105260067676780272, guid: d6a12a890a7f29b4494bb49b0222f235, type: 3}
   active: 1
-  chasePlayer: 1
-  chaseDistance: 5
-  cooldown: 0.1
-  enemysHowMuch: 20
+  chaseDistance: 20
+  cooldown: 0.5
+  enemysHowMuch: 10
   spawnEffect: {fileID: 7845441016114820387, guid: 87167e05437f7c844b845e558dc030aa, type: 3}
-  nextSpawners: []
+  bossSpawner: 0
+  noItem: 0
 --- !u!1 &4133640175884828771
 GameObject:
   m_ObjectHideFlags: 0
