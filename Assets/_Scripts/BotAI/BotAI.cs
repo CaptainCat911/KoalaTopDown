@@ -59,6 +59,7 @@ public class BotAI : Fighter
 
     [Header("Поведение")]
     public bool stayOnGround;                               // стоять на месте и охранять
+    public bool noPatrol;
     public bool goTo;                                       // двигаться к точке
     public bool followPlayer;                               // следовать за игроком
     public Transform destinationPoint;                      // точка назначения

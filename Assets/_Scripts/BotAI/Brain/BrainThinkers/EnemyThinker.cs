@@ -94,7 +94,7 @@ public class EnemyThinker : MonoBehaviour
                     botAI.agent.ResetPath();
                 }
             }
-            if (botAI.stayOnGround)                                
+            if (botAI.stayOnGround && !botAI.noPatrol)                                
             {
                 Patrol();                               // патрулирование  
                 //patrolingRandomPosition = true;                           
