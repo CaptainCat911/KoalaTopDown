@@ -22,7 +22,8 @@ public class DialogManager : MonoBehaviour
     UnityEvent interactAction;              // ивент по завершении диалога
 
     int index;                              // индекс
-    public GameObject continueButton;       // ссылка на кнопку продолжения     
+    public GameObject continueButton;       // кнопка продолжения
+    public GameObject skipButton;           // кнопка пропуска диалога
 
     GameObject npcImage;                    // портрет нпс, с которым говорим
     public GameObject heroImage;            // портрет героя    
@@ -60,7 +61,7 @@ public class DialogManager : MonoBehaviour
     }
 
 
-    // Начинаем ивент (вызывается из Gamemanager)
+    // Начинаем ивент
     public void StartEvent(int numberDialog)
     {
         GameManager.instance.dialogeStart = true;
@@ -83,6 +84,7 @@ public class DialogManager : MonoBehaviour
     public void StartDialog()
     {
         goInteractAction.Invoke();
+
         StartCoroutine(Type(0.5f));                                 // запускаем печать букв
     }
 
@@ -123,6 +125,20 @@ public class DialogManager : MonoBehaviour
             interactAction.Invoke();                            // вызываем ивент (если есть)
             GameManager.instance.dialogeStart = false;
         }
+    }
+
+    public void SkipDialoge()
+    {
+        index = 0;
+        textDisplay.text = "";
+        heroImage.SetActive(false);                         // убираем портреты
+        npcImage.SetActive(false);
+        BlackTapes(false);                                  // убираем черные полосы
+        GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
+        GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
+        GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
+        interactAction.Invoke();                            // вызываем ивент (если есть)
+        GameManager.instance.dialogeStart = false;
     }
 
     void ChangeCharacterImage(string name)
