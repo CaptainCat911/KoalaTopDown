@@ -16,7 +16,7 @@ public class UnityEventInteract : MonoBehaviour
     private void Start()
     {
         arrow = transform.Find("QuestArrow").gameObject;        // найти стрелку
-        arrow.SetActive(false);                                 
+        //arrow.SetActive(false);                                 
     }
 
     public void Update()
