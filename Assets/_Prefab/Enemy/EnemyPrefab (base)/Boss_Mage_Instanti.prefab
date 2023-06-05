@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 2637134685245506604}
   - component: {fileID: 2452664736615913399}
   - component: {fileID: 1237062792777719945}
+  - component: {fileID: -738877946137100874}
   m_Layer: 7
   m_Name: Boss_Mage_Instanti
   m_TagString: Untagged
@@ -468,6 +469,7 @@ MonoBehaviour:
   distanceToTarget: 0
   itemToSpawn: {fileID: 0}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -498,6 +500,35 @@ MonoBehaviour:
   laserChance: 10
   teleportChance: 0
   textToSay: []
+--- !u!114 &-738877946137100874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541808811086435678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.61138916, y: -1.3356018, z: 0}
+  - {x: -0.4377594, y: 0.603714, z: 0}
+  - {x: -0.08950043, y: 0.9529114, z: 0}
+  - {x: 0.2583542, y: 0.6657257, z: 0}
+  - {x: 0.3197937, y: -0.27496338, z: 0}
+  - {x: 0.32037354, y: -1.3852081, z: 0}
+  m_ShapePathHash: 116559005
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 247434
 --- !u!1001 &2170014190984783942
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2038906913601192592}
   - component: {fileID: 3342656398622153013}
   - component: {fileID: 1043864242127699296}
+  - component: {fileID: 3326193182701099681}
   m_Layer: 7
   m_Name: Skeleton_Simple
   m_TagString: Untagged
@@ -231,6 +232,7 @@ MonoBehaviour:
   distanceToTarget: 0
   itemToSpawn: {fileID: 1899818089229980536, guid: 4cb14f1d8cec02c4284d43409b269446, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -305,6 +307,33 @@ SpringJoint2D:
   m_Distance: 1
   m_DampingRatio: 0.5
   m_Frequency: 1
+--- !u!114 &3326193182701099681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038906913601192675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.22762923, y: -0.44685447, z: 0}
+  - {x: -0.14791094, y: 0.3472066, z: 0}
+  - {x: 0.114695, y: 0.34056342, z: 0}
+  - {x: 0.11469499, y: -0.43356812, z: 0}
+  m_ShapePathHash: 1195901240
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 1941436
 --- !u!1 &3287362555705753795
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +654,10 @@ PrefabInstance:
     - target: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674643776461301816, guid: f455a6fe7649f3445802070e811fa112, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 246409961
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177202, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_Layer

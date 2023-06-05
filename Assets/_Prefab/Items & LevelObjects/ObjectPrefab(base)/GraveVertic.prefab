@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3941453669616193614}
   - component: {fileID: 3941453669616193609}
   - component: {fileID: 8634606144583027157}
+  - component: {fileID: 7391024080936931917}
+  - component: {fileID: -8604137259507262271}
   m_Layer: 12
   m_Name: GraveVertic
   m_TagString: Untagged
@@ -147,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 30
@@ -156,8 +159,52 @@ MonoBehaviour:
   hpBarOn: 0
   hpBarGO: {fileID: 0}
   destroyed: 0
+  withObstacle: 0
   itemToSpawn: {fileID: 0}
   expEffect: {fileID: 7845441016114820387, guid: 0a3f06b9520c2114ca45f0bece3fcaa2, type: 3}
   m_spriteDestroyed:
   - {fileID: 21300000, guid: da3123a1dbfca7b4ea6a962b24876cd8, type: 2}
   - {fileID: 21300000, guid: 855bdd05a7df0014095cc9f62b3b4147, type: 2}
+--- !u!114 &7391024080936931917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941453669616193612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.28125, y: -0.671875, z: 0}
+  - {x: -0.28125, y: 0.671875, z: 0}
+  - {x: 0.28125, y: 0.671875, z: 0}
+  - {x: 0.28125, y: -0.671875, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 377622
+--- !u!208 &-8604137259507262271
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941453669616193612}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.275, y: 0.565, z: 0.05}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5

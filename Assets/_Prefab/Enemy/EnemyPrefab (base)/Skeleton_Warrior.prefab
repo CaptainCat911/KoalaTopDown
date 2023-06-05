@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 6659531816541181763}
   - component: {fileID: 5828908189043161053}
   - component: {fileID: 6313666227327462856}
+  - component: {fileID: -369122263953954523}
   m_Layer: 7
   m_Name: Skeleton_Warrior
   m_TagString: Untagged
@@ -345,6 +346,7 @@ MonoBehaviour:
   distanceToTarget: 0
   itemToSpawn: {fileID: 1899818089229980536, guid: 080112eed7aac1244b8543ef553479ca, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -399,6 +401,34 @@ MonoBehaviour:
   flames: {fileID: 2117279884925357807}
   canBurn: 1
   slow: 0.2
+--- !u!114 &-369122263953954523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598857050350358110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.15014772, y: -0.40971288, z: 0}
+  - {x: -0.15014778, y: 0.3359164, z: 0}
+  - {x: 0.003931129, y: 0.4272679, z: 0}
+  - {x: 0.18458606, y: 0.32607684, z: 0}
+  - {x: 0.1845861, y: -0.39495358, z: 0}
+  m_ShapePathHash: -460142334
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 247942
 --- !u!1 &7336027484549765548
 GameObject:
   m_ObjectHideFlags: 0

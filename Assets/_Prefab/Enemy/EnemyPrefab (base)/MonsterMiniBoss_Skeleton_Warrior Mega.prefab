@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 2313645642471710270}
   - component: {fileID: 7367888658173034818}
   - component: {fileID: 2330813782090931808}
+  - component: {fileID: 2861901891532740022}
   m_Layer: 7
   m_Name: MonsterMiniBoss_Skeleton_Warrior Mega
   m_TagString: Untagged
@@ -298,6 +299,7 @@ MonoBehaviour:
   distanceToTarget: 0
   itemToSpawn: {fileID: 1899818089229980536, guid: a3edbe32a95e7744e898f21125fdb3c0, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -352,6 +354,33 @@ MonoBehaviour:
   flames: {fileID: 8657183805254557320}
   canBurn: 1
   slow: 0.2
+--- !u!114 &2861901891532740022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802629281138358728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.3125, y: -0.46875, z: 0}
+  - {x: -0.3125, y: 0.46875, z: 0}
+  - {x: 0.3125, y: 0.46875, z: 0}
+  - {x: 0.3125, y: -0.46875, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -152630
 --- !u!1 &2293322271805238329
 GameObject:
   m_ObjectHideFlags: 0

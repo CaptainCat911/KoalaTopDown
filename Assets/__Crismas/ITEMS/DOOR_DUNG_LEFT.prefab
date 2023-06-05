@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6362724801498859921}
   - component: {fileID: 6362724801498859920}
   - component: {fileID: 6362724801498859923}
+  - component: {fileID: -4175345087308813358}
   m_Layer: 0
   m_Name: DOOR_DUNG_LEFT
   m_TagString: Wall
@@ -125,8 +126,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a11f859511523c4ea4515161885841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openedDoor: 0
   doorTypeNumber: 0
   openedDoorSprite: {fileID: -108658796, guid: 70653bbcd72b62a4ba00a8866df5fc9c, type: 3}
+--- !u!114 &-4175345087308813358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362724801498859927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -1.25, y: -1, z: 0}
+  - {x: -1.1806326, y: 0.53755087, z: 0}
+  - {x: 1.1806328, y: 0.5606734, z: 0}
+  - {x: 1.25, y: -1, z: 0}
+  m_ShapePathHash: 1193308871
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 765420
 --- !u!1001 &6362724800852069213
 PrefabInstance:
   m_ObjectHideFlags: 0

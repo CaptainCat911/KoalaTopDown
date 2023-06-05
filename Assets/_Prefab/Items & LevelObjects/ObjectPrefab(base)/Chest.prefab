@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2479654506836797072}
   - component: {fileID: 2479654506836797067}
   - component: {fileID: 2479654506836797073}
+  - component: {fileID: 8537320906513218626}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -172,6 +173,33 @@ MonoBehaviour:
   delayTake: 0
   trigger: {fileID: 0}
   itemToSpawn: {fileID: 7098889320345549226, guid: 020d8dbcc759a3f42ae14761f1622cd3, type: 3}
+--- !u!114 &8537320906513218626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479654506836797070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.25, y: -0.25, z: 0}
+  - {x: -0.25, y: 0.25, z: 0}
+  - {x: 0.25, y: 0.25, z: 0}
+  - {x: 0.25, y: -0.25, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -121128
 --- !u!1001 &7550561870501009545
 PrefabInstance:
   m_ObjectHideFlags: 0

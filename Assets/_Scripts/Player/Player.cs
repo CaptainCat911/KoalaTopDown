@@ -200,8 +200,6 @@ public class Player : Fighter
             Flip();
             hitBoxPivot.Flip();
         }
-
-
     }
 
 
@@ -241,7 +239,7 @@ public class Player : Fighter
     void BlinkIn()
     {
         inBlinkSpace = true;
-        rb2D.AddForce(moveDirection * blinkForce, ForceMode2D.Impulse);              // даём импульс
+        rb2D.AddForce(moveDirection * blinkForce, ForceMode2D.Impulse);             // даём импульс
         gameObject.layer = LayerMask.NameToLayer("BlinkSpace");                     // слой самого бота
 
         GameObject effect = Instantiate(GameAssets.instance.playerBlinkIn,

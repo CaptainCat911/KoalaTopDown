@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class Door : MonoBehaviour
 {
     //public bool rockDoor;
     BoxCollider2D boxCollider2D;
     SpriteRenderer spriteRenderer;
+    ShadowCaster2D shadow2D;
 
-    public bool openedDoor;
+    public bool openedDoor;                 // открыть дверь при старте
     public int doorTypeNumber;              // тип двери
     public Sprite openedDoorSprite;         // спрайт открыйтой двери
     Sprite closedDoorSprite;
@@ -19,6 +20,7 @@ public class Door : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        shadow2D = GetComponent<ShadowCaster2D>();
         closedDoorSprite = spriteRenderer.sprite;
     }
 
@@ -46,13 +48,17 @@ public class Door : MonoBehaviour
     {
         spriteRenderer.sprite = openedDoorSprite;           // меняем спрайт закрытой двери на спрайт открытой
         boxCollider2D.enabled = false;                      // убираем коллайдер
+        //GetComponent<NavMeshObstacle>().enabled = false;
+        shadow2D.enabled = false;                           // убираем тень
         isOpened = true;                                    // дверь открыта
     }
 
     public void CloseDoor()
     {
         spriteRenderer.sprite = closedDoorSprite;           // меняем спрайт закрытой двери на спрайт открытой
-        boxCollider2D.enabled = true;                      // убираем коллайдер
+        boxCollider2D.enabled = true;                       // включаем коллайдер
+        shadow2D.enabled = true;                            // добавляем тень
+        //GetComponent<NavMeshObstacle>().enabled = true;
         isOpened = false;                                    // дверь открыта
     }
 }

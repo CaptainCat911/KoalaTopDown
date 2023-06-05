@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class BotAI : Fighter
 {
+   
+
     // —сылки
     //EnemyThinker enemyThinker;
     [HideInInspector] public NavMeshAgent agent;
@@ -13,8 +16,11 @@ public class BotAI : Fighter
     BotAIHitBoxPivot pivot;
     [HideInInspector] public BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
     [HideInInspector] public BotAIRangeWeaponHolder botAIRangeWeaponHolder;
-    BotAIHitbox hitBox;
+    BotAIHitbox hitBox;                                     // хитбокс (дл€ атаки)
+    ShadowCaster2D shadow;                                  // тень
     //public Animator animatorHit;                            // аниматор мили оружи€
+
+
 
     [Header("ѕараметры бота")]
     public bool newNpcSystem;                               // босс или сложный нпс
@@ -102,6 +108,7 @@ public class BotAI : Fighter
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
         botAIRangeWeaponHolder = GetComponentInChildren<BotAIRangeWeaponHolder>();
         hitBox = GetComponentInChildren<BotAIHitbox>();
+        shadow = GetComponentInChildren<ShadowCaster2D>();
 
         layerTarget = LayerMask.GetMask("Player", "NPC");
         layerHit = LayerMask.GetMask("Player", "NPC", "ObjectsDestroyble", "Default");
@@ -558,12 +565,14 @@ public class BotAI : Fighter
         hpBarGO.SetActive(false);                   // убираем хп бар
         agent.ResetPath();                          // сбрасываем путь        
 
-        if(itemToSpawn)
+        if (itemToSpawn)
             Instantiate(itemToSpawn, transform.position, Quaternion.identity);          // создаем предмет
 
         botAIMeleeWeaponHolder.HideWeapons();       // пр€чем оружи€
         botAIRangeWeaponHolder.HideWeapons();
         animatorWeapon.animator.enabled = false;    // отключаем аниматор оружи€
+        if (shadow)
+            shadow.enabled = false;                     // отключаем тень
         //animatorWeapon.animator.StopPlayback();
         //gameObject.layer = LayerMask.NameToLayer("Item");                            // слой самого бота
 
