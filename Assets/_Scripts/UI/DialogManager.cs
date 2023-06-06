@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
@@ -31,10 +30,13 @@ public class DialogManager : MonoBehaviour
     [HideInInspector] public bool startEvent;   // состояние этого ивента
     int dialogeNumber;                      // временная переменная для номера диалога
 
+    IEnumerator coroutine;
+
 
     private void Awake()
     {
         instance = this;
+        coroutine = Type(0f);
     }
 
     private void Update()
@@ -83,9 +85,9 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog()
     {
-        goInteractAction.Invoke();
-
-        StartCoroutine(Type(0.5f));                                 // запускаем печать букв
+        goInteractAction.Invoke();          // ивент при старте диалога
+        skipButton.SetActive(true);         // включаем кнопку пропуска диалога
+        StartCoroutine(Type(0.5f));         // запускаем печать букв
     }
 
     public IEnumerator Type(float delay)
@@ -114,6 +116,7 @@ public class DialogManager : MonoBehaviour
         }
         else                                    // если предложения закончились
         {
+            skipButton.SetActive(false);
             index = 0;
             textDisplay.text = "";
             heroImage.SetActive(false);                         // убираем портреты
@@ -129,6 +132,9 @@ public class DialogManager : MonoBehaviour
 
     public void SkipDialoge()
     {
+        skipButton.SetActive(false);
+        StopCoroutine(coroutine);
+        continueButton.SetActive(false);                    // убираем кнопку продолжения
         index = 0;
         textDisplay.text = "";
         heroImage.SetActive(false);                         // убираем портреты

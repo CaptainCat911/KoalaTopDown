@@ -8,7 +8,7 @@ public class ShopWeapons : MonoBehaviour
     public TextMeshPro[] m_textsRange;
     public TextMeshPro[] m_textsMelee;
     public TextMeshPro[] m_textsBomb;
-    AmmoPackKoala ammoPack;          // ссылка на аммопак (тут и оружие и бомбы и покупка этого всего)
+    AmmoPackKoala ammoPack;             // ссылка на аммопак (тут и оружие и бомбы и покупка этого всего)
 
     private void Awake()
     {

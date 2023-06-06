@@ -101,6 +101,9 @@ public class EnemyThinker : MonoBehaviour
             }
             if (botAI.goTo)
             {
+                float distanceToPlayer = Vector3.Distance(GameManager.instance.player.transform.position, botAI.transform.position);
+                if (distanceToPlayer > 10)
+                    return;
                 botAI.SetDestination(goToPosition.position);
             }
         }
