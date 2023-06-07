@@ -8,7 +8,7 @@ public class DialogManager : MonoBehaviour
     public static DialogManager instance;   // инстанс
 
     public TextMeshProUGUI textDisplay;     // ссылка на текст
-    public Animator animator;               // ссылка на аниматор
+    public Animator textAnimator;           // ссылка на аниматор текста
     public GameObject blackImages;          // аниматор чёрных полос
 
     public DialogStore[] dialogStore;       // диалоги
@@ -30,13 +30,13 @@ public class DialogManager : MonoBehaviour
     [HideInInspector] public bool startEvent;   // состояние этого ивента
     int dialogeNumber;                      // временная переменная для номера диалога
 
-    IEnumerator coroutine;
+    //IEnumerator coroutine;
 
 
     private void Awake()
     {
         instance = this;
-        coroutine = Type(0f);
+        //coroutine = Type(0f);
     }
 
     private void Update()
@@ -99,14 +99,14 @@ public class DialogManager : MonoBehaviour
             textDisplay.text += letter;                             // выводим текст по букве
             yield return new WaitForSeconds(typingSpeed);           // задержка
         }
-        animator.SetBool("Change", false);          // убираем эффект появления букв
+        textAnimator.SetBool("Change", false);          // убираем эффект появления букв
         continueButton.SetActive(true);             // показываем кнопку продолжения
     }
 
     public void NextSentence()
     {        
         continueButton.SetActive(false);        // убираем кнопку продолжения
-        animator.SetBool("Change", true);       // эффект появления текста
+        textAnimator.SetBool("Change", true);       // эффект появления текста
 
         if (index < sentences.Length - 1)       // если ещё есть предложения
         {
@@ -133,8 +133,8 @@ public class DialogManager : MonoBehaviour
     public void SkipDialoge()
     {
         skipButton.SetActive(false);
-        StopCoroutine(coroutine);
         continueButton.SetActive(false);                    // убираем кнопку продолжения
+        StopAllCoroutines();
         index = 0;
         textDisplay.text = "";
         heroImage.SetActive(false);                         // убираем портреты
