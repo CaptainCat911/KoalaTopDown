@@ -93,6 +93,11 @@ public class BotAI : Fighter
     // Дебаг
     public bool debug;
 
+    [Header("Диалоги (баблчат)")]
+    public string[] bubbleTexts;
+    public bool withChat;
+    bool sayedChat;
+
 
 
     public override void Awake()
@@ -354,7 +359,15 @@ public class BotAI : Fighter
             collidersHitbox = null;                         // сбрасываем все найденные объекты (на самом деле непонятно как это работает)
         }
         if (targets.Count > 0)
-            target = targets[Random.Range(0, targets.Count)];
+        {
+            target = targets[Random.Range(0, targets.Count)];       // выбираем рандомно цель
+
+            if (withChat && !sayedChat)         // чат
+            {
+                SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);
+                sayedChat = true;
+            }
+        }
     }
 
 
