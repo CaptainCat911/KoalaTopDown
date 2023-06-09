@@ -48,8 +48,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.9811321, g: 0.9193643, b: 0.5784977, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 1911dbd600000000
@@ -1771,9 +1771,6 @@ MonoBehaviour:
   weaponHolder: {fileID: 3137378571984717913}
   weapons:
   - {fileID: 5674012138522298798, guid: 8cce8d8d676c2874090d0cf951d47c82, type: 3}
-  - {fileID: 1272269816416803160, guid: 0dc62181a0d5e704ebfe824aa9109212, type: 3}
-  - {fileID: 5674012138522298798, guid: 4a7146f7e79d4314bbf8b18167e19c0a, type: 3}
-  - {fileID: 5674012138522298798, guid: d6ee359138c180948a53af2f64dee255, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   rangeWeapon: 1
@@ -1825,22 +1822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolderMelee: {fileID: 3137378571777031426}
   weapons:
-  - {fileID: 2496722168628502743, guid: 9081bf87110607c46a86f5a4fcd28bff, type: 3}
-  - {fileID: 2496722168628502743, guid: 4a434330d06f85945a2abbbade00d556, type: 3}
-  - {fileID: 2496722168628502743, guid: e2a3be42c7660324e8c9e9ce737e4364, type: 3}
   - {fileID: 3016861489659110144, guid: 0534d7bf46d38c1459fc898d54c9ab08, type: 3}
-  - {fileID: 2496722168628502743, guid: fc436987fb33d434ba3b1a1237f7eb43, type: 3}
-  - {fileID: 2496722168628502743, guid: e980ad862cc0986478deeb0a6df7bd60, type: 3}
-  - {fileID: 2496722168628502743, guid: 1c28be433ee20cf47aa630506e416977, type: 3}
-  - {fileID: 2496722168628502743, guid: 177f9f5b91880ef4b8277b862f589f0e, type: 3}
-  - {fileID: 2496722168628502743, guid: f72778c9939c47e4097a5bcb65cc3d48, type: 3}
-  - {fileID: 2496722168628502743, guid: 63ea0bcbe42143c4a9ee31184431194a, type: 3}
-  - {fileID: 2496722168628502743, guid: 9955cc4c20a52e34fbf429f2caa22d3b, type: 3}
-  - {fileID: 2496722168628502743, guid: e4c28e4b5a53b084c98fe0896dfe00ee, type: 3}
-  - {fileID: 6020096225121009833, guid: 6b8ae5e41153ea64b9a398e92d9c991f, type: 3}
-  - {fileID: 2496722168628502743, guid: bd1d80e85ec7e434b9078e677b4b2a34, type: 3}
-  - {fileID: 2496722168628502743, guid: c2f1d859333e0cf488dabcc59f14e054, type: 3}
-  - {fileID: 6020096225121009833, guid: 9062c275b2227ec4cbdec05d36550de6, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

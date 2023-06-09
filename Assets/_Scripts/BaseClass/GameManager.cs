@@ -197,5 +197,7 @@ public class GameManager : MonoBehaviour
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)                      // выполняем при загрузке сцены
     {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+        keys[0] = 0;
+        keys[1] = 0;
     }
 }

@@ -12,7 +12,8 @@ public class Door : MonoBehaviour
     public bool openedDoor;                 // открыть дверь при старте
     public int doorTypeNumber;              // тип двери
     public Sprite openedDoorSprite;         // спрайт открыйтой двери
-    Sprite closedDoorSprite;
+    Sprite closedDoorSprite;                // спрайт закрытой двери
+    public ParticleSystem effect;
 
     bool isOpened;
 
@@ -50,6 +51,8 @@ public class Door : MonoBehaviour
         boxCollider2D.enabled = false;                      // убираем коллайдер
         //GetComponent<NavMeshObstacle>().enabled = false;
         shadow2D.enabled = false;                           // убираем тень
+        if (effect)
+            effect.Stop();
         isOpened = true;                                    // дверь открыта
     }
 
@@ -58,6 +61,8 @@ public class Door : MonoBehaviour
         spriteRenderer.sprite = closedDoorSprite;           // меняем спрайт закрытой двери на спрайт открытой
         boxCollider2D.enabled = true;                       // включаем коллайдер
         shadow2D.enabled = true;                            // добавляем тень
+        if(effect)
+            effect.Play();
         //GetComponent<NavMeshObstacle>().enabled = true;
         isOpened = false;                                    // дверь открыта
     }

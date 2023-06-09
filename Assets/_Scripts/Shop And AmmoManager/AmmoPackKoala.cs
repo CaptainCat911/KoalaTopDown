@@ -149,7 +149,7 @@ public class AmmoPackKoala : MonoBehaviour
         {
             GameManager.instance.gold -= ammoBombs[index].goldPriseAmmo;            // вычитаем из золота стоимость оружия             
             ammoBombs[index].allAmmo += ammoBombs[index].ammoInReload; ;
-            CreateMessage("+ " + ammoBombs[index].ammoInReload + " бомб");
+            CreateMessage("+ " + ammoBombs[index].ammoInReload + " бомба");
         }
         else
         {
