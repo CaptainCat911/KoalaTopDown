@@ -9,11 +9,14 @@ public class PreFabOptimaser : MonoBehaviour
     public GameObject point;        // точка для детектирования входа/выхода коллайдера
     public GameObject prefab;       // весь префаб
     public bool pointMove;
-    
+
+    PrefabBotSettings prefabBotSettings;        // установки настроек бота в префабе
+
 
     private void Awake()
     {
         DisActiveGo();              // при старте отключаем объект
+        prefabBotSettings = GetComponentInParent<PrefabBotSettings>();
     }
 
     private void Update()
@@ -41,6 +44,8 @@ public class PreFabOptimaser : MonoBehaviour
         if (go)
         {
             go.SetActive(true);
+            if(prefabBotSettings)
+                prefabBotSettings.SetSettingsBot();         // устанавливаем настройки префаба
             //Debug.Log("Active!");
         }
     }

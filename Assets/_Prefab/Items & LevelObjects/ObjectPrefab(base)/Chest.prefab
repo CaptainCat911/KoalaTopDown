@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2479654506836797067}
   - component: {fileID: 2479654506836797073}
   - component: {fileID: 8537320906513218626}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
   m_ComponentVersion: 1
-  m_HasRenderer: 0
+  m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   - {x: 0.25, y: -0.25, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -121128
+  m_InstanceId: 298112
 --- !u!1001 &7550561870501009545
 PrefabInstance:
   m_ObjectHideFlags: 0

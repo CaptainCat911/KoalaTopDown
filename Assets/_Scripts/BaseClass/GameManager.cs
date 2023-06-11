@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
     {
         if (status)
         {
+            player.noAgro = true;
             Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 20);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
             foreach (Collider2D coll in collidersHits)
             {
@@ -158,7 +159,7 @@ public class GameManager : MonoBehaviour
                 if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
                 {
                     botAI.ResetTarget();                                        // сбрасываем цель
-                    botAI.isNeutral = true;                                     // делаем нейтральным
+                    botAI.noAgro = true;                                     // делаем нейтральным
                 }
                 collidersHits = null;
             }
@@ -166,6 +167,7 @@ public class GameManager : MonoBehaviour
         }
         if (!status)
         {
+            player.noAgro = false;
             Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 25);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
             foreach (Collider2D coll in collidersHits)
             {
@@ -176,7 +178,7 @@ public class GameManager : MonoBehaviour
 
                 if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
                 {
-                    botAI.isNeutral = false;                                     // делаем нейтральным
+                    botAI.noAgro = false;                                     // делаем нейтральным
                 }
                 collidersHits = null;
             }

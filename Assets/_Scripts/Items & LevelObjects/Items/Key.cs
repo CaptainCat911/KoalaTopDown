@@ -7,11 +7,11 @@ public class Key : ItemPickUp
     {
         if (keyTypeNumber == 0)
         {
-            GameManager.instance.CreateFloatingMessage("+ 1 Ключ", Color.yellow, transform.position);
+            GameManager.instance.CreateFloatingMessage("+ 1 Ключ", Color.white, transform.position);
         }
         if (keyTypeNumber == 1)
         {
-            GameManager.instance.CreateFloatingMessage("+ 1 Особый ключ", Color.red, transform.position);
+            GameManager.instance.CreateFloatingMessage("+ 1 Магический ключ", Color.white, transform.position);
         }
         if (keyTypeNumber == 2)
         {

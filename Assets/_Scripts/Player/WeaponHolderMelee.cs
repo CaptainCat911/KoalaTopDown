@@ -92,6 +92,9 @@ public class WeaponHolderMelee : MonoBehaviour
     // Смена оружия
     public void SelectWeapon()
     {
+/*        if (!weaponHolder.meleeWeapon)
+            return;*/
+
         int i = 0;
         foreach (Transform weapon in transform)
         {

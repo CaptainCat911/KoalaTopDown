@@ -314,6 +314,8 @@ MonoBehaviour:
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
+  bubbleTexts: []
+  withChat: 0
 --- !u!114 &7367888658173034818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,19 +370,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
   m_ComponentVersion: 1
-  m_HasRenderer: 0
+  m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
   m_ShapePath:
-  - {x: -0.3125, y: -0.46874997, z: 0}
-  - {x: -0.3125, y: 0.46874997, z: 0}
-  - {x: 0.3125, y: 0.46874997, z: 0}
-  - {x: 0.3125, y: -0.46874997, z: 0}
-  m_ShapePathHash: 0
+  - {x: -0.20312588, y: -0.45625007, z: 0}
+  - {x: -0.1625012, y: 0.38437572, z: 0}
+  - {x: -0.0029278072, y: 0.43596342, z: 0}
+  - {x: 0.15312627, y: 0.3875006, z: 0}
+  - {x: 0.21554695, y: -0.44935936, z: 0}
+  m_ShapePathHash: -1788856732
   m_Mesh: {fileID: 0}
-  m_InstanceId: -152650
+  m_InstanceId: 139752
 --- !u!1 &2293322271805238329
 GameObject:
   m_ObjectHideFlags: 0
