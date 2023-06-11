@@ -462,7 +462,8 @@ public class BotAI : Fighter
     // Атаки милихолдера (ссылка с аниматора на милхолдер)
     public void AttackMeleeHolder(int type)
     {
-        botAIMeleeWeaponHolder.currentWeapon.Attack(type);
+        if (botAIMeleeWeaponHolder.currentWeapon)
+            botAIMeleeWeaponHolder.currentWeapon.Attack(type);
     }
 
 

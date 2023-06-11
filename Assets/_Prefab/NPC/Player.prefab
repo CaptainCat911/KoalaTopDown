@@ -753,7 +753,6 @@ GameObject:
   - component: {fileID: 3137378571337029652}
   - component: {fileID: 3137378571337029650}
   - component: {fileID: 3137378571337029649}
-  - component: {fileID: 8150412446411228928}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1124,22 +1123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a22b3caff963f46883dcfb881c4834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8150412446411228928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137378571337029656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c52d44963a58784449728f292204c7b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spotLightNormal: {fileID: 546322896}
-  spotLightMini: {fileID: 918348450}
-  fonarikHorror: {fileID: 7818036805559810755}
-  spotLightHorror: {fileID: 1947072907858032057}
 --- !u!1 &3137378571407986844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,8 +2200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ebdd7551e53b54aa4443475ea31ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 2496722168628502743, guid: 62059c8819b44114993a7b6ad47eda1a, type: 3}
+  weapons: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

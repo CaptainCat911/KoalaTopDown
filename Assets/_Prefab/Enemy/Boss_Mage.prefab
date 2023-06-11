@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 473266720851225800}
   - component: {fileID: 1571569491}
   - component: {fileID: 2015250431}
+  - component: {fileID: 3411834101445019267}
   m_Layer: 7
   m_Name: Boss_Mage
   m_TagString: Untagged
@@ -424,6 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 15000
@@ -467,6 +469,7 @@ MonoBehaviour:
   distanceToTarget: 0
   itemToSpawn: {fileID: 0}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -481,9 +484,13 @@ MonoBehaviour:
   friendTarget: {fileID: 0}
   fastDeathAnim: 1
   debug: 0
+  bubbleTexts: []
+  withChat: 0
   attackingNow: 0
+  mainBossAttack: 0
   immortalBoss: 1
   cooldownAttack: 2
+  lowHp: 0
   rangeAttackChance: 100
   rangeAttackDistance: 4
   multiAttackChance: 30
@@ -495,6 +502,36 @@ MonoBehaviour:
   laserChance: 10
   teleportChance: 20
   textToSay: []
+--- !u!114 &3411834101445019267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993575099791687098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.28630066, y: -1.1240311, z: 0}
+  - {x: -0.22403717, y: -0.32595062, z: 0}
+  - {x: -0.44363022, y: 0.36037445, z: 0}
+  - {x: -0.07348251, y: 0.98474884, z: 0}
+  - {x: 0.38009262, y: 0.3227539, z: 0}
+  - {x: 0.16563034, y: -0.41451263, z: 0}
+  - {x: 0.29544067, y: -1.1014938, z: 0}
+  m_ShapePathHash: 452262439
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 2012908
 --- !u!1001 &4329346816006291618
 PrefabInstance:
   m_ObjectHideFlags: 0
