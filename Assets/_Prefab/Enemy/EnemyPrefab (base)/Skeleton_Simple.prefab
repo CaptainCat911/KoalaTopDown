@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2038906913601192592}
   - component: {fileID: 3342656398622153013}
   - component: {fileID: 1043864242127699296}
+  - component: {fileID: 3326193182701099681}
   m_Layer: 7
   m_Name: Skeleton_Simple
   m_TagString: Untagged
@@ -229,8 +230,9 @@ MonoBehaviour:
   pivotSpeedKoef: 1
   distanceToAttack: 1.25
   distanceToTarget: 0
-  itemToSpawn: {fileID: 1899818089229980536, guid: 4cb14f1d8cec02c4284d43409b269446, type: 3}
+  itemToSpawn: {fileID: 1899818089229980536, guid: 080112eed7aac1244b8543ef553479ca, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -245,6 +247,19 @@ MonoBehaviour:
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
+  bubbleTexts:
+  - "\u041F\u0438\u0437\u0434\u0430 \u0442\u0435\u0431\u0435, \u043A\u0440\u0430\u0441\u043D\u0430\u044F
+    \u0448\u0430\u043F\u043E\u0447\u043A\u0430"
+  - "\u041F\u043E\u043B\u0443\u0447\u0430\u0439, \u0433\u043E\u0432\u043D\u043E!"
+  - "\u0410\u0445 \u0442\u044B \u043F\u0435\u0441 \u0432\u043E\u043D\u044E\u0447\u0438\u0439!"
+  - "\u0422\u044B \u0447\u0435 \u0441\u0443\u0447\u0430\u0440\u0430, \u0442\u044B
+    \u0447\u0435"
+  - "\u0410 \u043D\u0443 \u0438\u0434\u0438 \u0441\u044E\u0434\u0430, \u043F\u0441\u0438\u043D\u0430!"
+  - "\u0421\u044E\u0434\u0430 \u0438\u0434\u0438, \u043A\u043E\u0436\u0430\u043D\u044B\u0439
+    \u0443\u0431\u043B\u044E\u0434\u043E\u043A!"
+  - "\u0414\u0443\u043C\u0430\u0435\u0448\u044C \u0441\u0430\u043C\u044B\u0439 \u043A\u0440\u0443\u0442\u043E\u0439
+    \u0442\u0443\u0442, \u0443\u043F\u044B\u0440\u044C?"
+  withChat: 0
 --- !u!114 &2038906913601192592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +320,33 @@ SpringJoint2D:
   m_Distance: 1
   m_DampingRatio: 0.5
   m_Frequency: 1
+--- !u!114 &3326193182701099681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038906913601192675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.22762923, y: -0.44685447, z: 0}
+  - {x: -0.14791094, y: 0.3472066, z: 0}
+  - {x: 0.114695, y: 0.34056342, z: 0}
+  - {x: 0.11469499, y: -0.43356812, z: 0}
+  m_ShapePathHash: 1195901240
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 945522
 --- !u!1 &3287362555705753795
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +667,10 @@ PrefabInstance:
     - target: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674643776461301816, guid: f455a6fe7649f3445802070e811fa112, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 246409961
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177202, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_Layer

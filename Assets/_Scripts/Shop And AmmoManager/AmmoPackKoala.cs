@@ -12,14 +12,14 @@ public class AmmoPackKoala : MonoBehaviour
     public AmmoPackStore[] ammoMeleeWeapons;    // ссылка на мили оружие в инвентаре (название, цена, патроны)
     public AmmoPackStore[] ammoBombs;           // ссылка на бомбы в инвентаре (название, цена, патроны)
 
-    [Header("Кнопки для замены")]
+/*    [Header("Кнопки для замены")]
     public GameObject[] buttonsBuyRangeWeapon;
     public GameObject[] buttonsBuyMeleeWeapon;
     public GameObject[] buttonsBuyBomb;
 
     public GameObject[] buttonsSellRangeWeapon;
     public GameObject[] buttonsSellMeleeWeapon;
-    public GameObject[] buttonsSellBomb;
+    public GameObject[] buttonsSellBomb;*/
 
 
     private void Awake()
@@ -44,13 +44,10 @@ public class AmmoPackKoala : MonoBehaviour
 
 
     // Ренж оружие
-    public void BuyRangeWeapon(int index)
+    public bool BuyRangeWeapon(int index)
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            buttonsBuyRangeWeapon[index].SetActive(false);                              // кнопка покупки
-            buttonsSellRangeWeapon[index].SetActive(true);                              // кнопка продажи
-
             if (GameManager.instance.player.weaponHolder.meleeWeapon)
                 GameManager.instance.player.weaponHolder.SwapWeapon();                  // переключаемся на это оружие
 
@@ -65,34 +62,35 @@ public class AmmoPackKoala : MonoBehaviour
                 player.weaponHolder.SelectWeapon();                                     // выбрать оружие 
             }
             CreateMessage(ammoWeapons[index].name + " Куплено!");
+            return true;
         }
         else
         {
             CreateMessage("Недостаточно золота!");
+            return false;
         } 
     }
 
 
-    // Продать ренж оружие (пока не сделал)
+/*    // Продать ренж оружие (пока не сделал)
     public void SellRangeWeapon(int index)
     {
-        buttonsBuyRangeWeapon[index].SetActive(true);
-        buttonsSellRangeWeapon[index].SetActive(false);
+        //buttonsBuyRangeWeapon[index].SetActive(true);
+        //buttonsSellRangeWeapon[index].SetActive(false);
 
         GameManager.instance.gold += ammoWeapons[index].goldPriseWeapon;            // возвращаем золото 
 
         //player.weaponHolder.weapons.Remove
-    }
+    }*/
 
 
     // Мили оружие
-    public void BuyMeleeWeapon(int index)
+    public bool BuyMeleeWeapon(int index)
     {
-
         if (GameManager.instance.gold >= ammoMeleeWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            buttonsBuyMeleeWeapon[index].SetActive(false);                                         // убираем кнопку покупки
-            buttonsSellMeleeWeapon[index].SetActive(true);
+            //buttonsBuyMeleeWeapon[index].SetActive(false);                                         // убираем кнопку покупки
+            //buttonsSellMeleeWeapon[index].SetActive(true);
 
             if (!GameManager.instance.player.weaponHolder.meleeWeapon)
                 GameManager.instance.player.weaponHolder.SwapWeapon();
@@ -108,21 +106,24 @@ public class AmmoPackKoala : MonoBehaviour
                 player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
             }
             CreateMessage(ammoMeleeWeapons[index].name + " Куплено!");
+
+            return true;
         }
         else
         {
             CreateMessage("Недостаточно золота!");
+            return false;
         }
     }
 
 
     // Бомбы
-    public void BuyBomb(int index)
+    public bool BuyBomb(int index)
     {
         if (GameManager.instance.gold >= ammoBombs[index].goldPriseWeapon)              // если золота больше чем стоимость оружия
         {
-            buttonsBuyBomb[index].SetActive(false);
-            buttonsSellBomb[index].SetActive(true);
+            //buttonsBuyBomb[index].SetActive(false);
+            //buttonsSellBomb[index].SetActive(true);
 
             GameManager.instance.gold -= ammoBombs[index].goldPriseWeapon;              // вычитаем из золота стоимость оружия
 
@@ -133,10 +134,12 @@ public class AmmoPackKoala : MonoBehaviour
             player.bombWeaponHolder.selectedWeapon = player.bombWeaponHolder.weapons.Count - 1;
             player.bombWeaponHolder.SelectWeapon();                                         // выбрать оружие 
             CreateMessage(ammoBombs[index].name + " Куплено!");
+            return true;
         }
         else
         {
             CreateMessage("Недостаточно золота!");
+            return false;
         }
     }
 
@@ -146,7 +149,7 @@ public class AmmoPackKoala : MonoBehaviour
         {
             GameManager.instance.gold -= ammoBombs[index].goldPriseAmmo;            // вычитаем из золота стоимость оружия             
             ammoBombs[index].allAmmo += ammoBombs[index].ammoInReload; ;
-            CreateMessage("+ " + ammoBombs[index].ammoInReload + " бомб");
+            CreateMessage("+ " + ammoBombs[index].ammoInReload + " бомба");
         }
         else
         {

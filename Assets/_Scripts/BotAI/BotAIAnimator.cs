@@ -84,8 +84,7 @@ public class BotAIAnimator : MonoBehaviour
     {
         botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetFloat("Type", type);
         botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("StartEffect");
-    }
-  
+    } 
 
 
 

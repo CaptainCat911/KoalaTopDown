@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
@@ -9,7 +8,7 @@ public class DialogManager : MonoBehaviour
     public static DialogManager instance;   // инстанс
 
     public TextMeshProUGUI textDisplay;     // ссылка на текст
-    public Animator animator;               // ссылка на аниматор
+    public Animator textAnimator;           // ссылка на аниматор текста
     public GameObject blackImages;          // аниматор чёрных полос
 
     public DialogStore[] dialogStore;       // диалоги
@@ -22,7 +21,8 @@ public class DialogManager : MonoBehaviour
     UnityEvent interactAction;              // ивент по завершении диалога
 
     int index;                              // индекс
-    public GameObject continueButton;       // ссылка на кнопку продолжения     
+    public GameObject continueButton;       // кнопка продолжения
+    public GameObject skipButton;           // кнопка пропуска диалога
 
     GameObject npcImage;                    // портрет нпс, с которым говорим
     public GameObject heroImage;            // портрет героя    
@@ -30,10 +30,13 @@ public class DialogManager : MonoBehaviour
     [HideInInspector] public bool startEvent;   // состояние этого ивента
     int dialogeNumber;                      // временная переменная для номера диалога
 
+    //IEnumerator coroutine;
+
 
     private void Awake()
     {
         instance = this;
+        //coroutine = Type(0f);
     }
 
     private void Update()
@@ -60,7 +63,7 @@ public class DialogManager : MonoBehaviour
     }
 
 
-    // Начинаем ивент (вызывается из Gamemanager)
+    // Начинаем ивент
     public void StartEvent(int numberDialog)
     {
         GameManager.instance.dialogeStart = true;
@@ -82,8 +85,9 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog()
     {
-        goInteractAction.Invoke();
-        StartCoroutine(Type(0.5f));                                 // запускаем печать букв
+        goInteractAction.Invoke();          // ивент при старте диалога
+        skipButton.SetActive(true);         // включаем кнопку пропуска диалога
+        StartCoroutine(Type(0.5f));         // запускаем печать букв
     }
 
     public IEnumerator Type(float delay)
@@ -95,14 +99,14 @@ public class DialogManager : MonoBehaviour
             textDisplay.text += letter;                             // выводим текст по букве
             yield return new WaitForSeconds(typingSpeed);           // задержка
         }
-        animator.SetBool("Change", false);          // убираем эффект появления букв
+        textAnimator.SetBool("Change", false);          // убираем эффект появления букв
         continueButton.SetActive(true);             // показываем кнопку продолжения
     }
 
     public void NextSentence()
     {        
         continueButton.SetActive(false);        // убираем кнопку продолжения
-        animator.SetBool("Change", true);       // эффект появления текста
+        textAnimator.SetBool("Change", true);       // эффект появления текста
 
         if (index < sentences.Length - 1)       // если ещё есть предложения
         {
@@ -112,6 +116,7 @@ public class DialogManager : MonoBehaviour
         }
         else                                    // если предложения закончились
         {
+            skipButton.SetActive(false);
             index = 0;
             textDisplay.text = "";
             heroImage.SetActive(false);                         // убираем портреты
@@ -123,6 +128,23 @@ public class DialogManager : MonoBehaviour
             interactAction.Invoke();                            // вызываем ивент (если есть)
             GameManager.instance.dialogeStart = false;
         }
+    }
+
+    public void SkipDialoge()
+    {
+        skipButton.SetActive(false);
+        continueButton.SetActive(false);                    // убираем кнопку продолжения
+        StopAllCoroutines();
+        index = 0;
+        textDisplay.text = "";
+        heroImage.SetActive(false);                         // убираем портреты
+        npcImage.SetActive(false);
+        BlackTapes(false);                                  // убираем черные полосы
+        GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
+        GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
+        GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
+        interactAction.Invoke();                            // вызываем ивент (если есть)
+        GameManager.instance.dialogeStart = false;
     }
 
     void ChangeCharacterImage(string name)

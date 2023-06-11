@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6362724801498859921}
   - component: {fileID: 6362724801498859920}
   - component: {fileID: 6362724801498859923}
+  - component: {fileID: -308241484302007947}
+  - component: {fileID: 4576038755316825910}
   m_Layer: 0
   m_Name: Door_dUNGEON 2
   m_TagString: Wall
@@ -125,8 +127,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a11f859511523c4ea4515161885841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openedDoor: 0
   doorTypeNumber: 0
   openedDoorSprite: {fileID: -1201281816, guid: c8672ad3f89006943b2a7828739a226f, type: 3}
+--- !u!114 &-308241484302007947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362724801498859927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000
+  m_ShapePath:
+  - {x: 0.022025293, y: -2.217466, z: 0}
+  - {x: 0.028628916, y: 2.2652607, z: 0}
+  - {x: 0.28708154, y: 2.2806077, z: 0}
+  - {x: 0.33773994, y: -2.2016804, z: 0}
+  m_ShapePathHash: -195962030
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 507042
+--- !u!208 &4576038755316825910
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362724801498859927}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.215, y: 2.24, z: 0.05}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.15, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &6362724800852069213
 PrefabInstance:
   m_ObjectHideFlags: 0

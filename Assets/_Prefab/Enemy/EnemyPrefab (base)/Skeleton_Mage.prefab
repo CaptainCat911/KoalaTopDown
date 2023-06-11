@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 2799554192792386848}
   - component: {fileID: 7770423111574753340}
   - component: {fileID: 5805211570719166884}
+  - component: {fileID: 3948477344904913665}
   m_Layer: 7
   m_Name: Skeleton_Mage
   m_TagString: Untagged
@@ -396,10 +397,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 70
   noAgro: 0
+  isGoodPerson: 0
   bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
@@ -426,15 +429,19 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   targetVisible: 0
   closeToTarget: 0
+  targetInRange: 0
   meleeAttackType: 1
   rangeAttackType: 0
   twoWeapons: 0
+  defaultRangeToTarget: 0
   distanceToAttackMelee: 5
   distanceToAttackRange: 0
+  pivotSpeedKoef: 1
   distanceToAttack: 1.25
   distanceToTarget: 0
-  itemToSpawn: {fileID: 1899818089229980536, guid: 080112eed7aac1244b8543ef553479ca, type: 3}
+  itemToSpawn: {fileID: 1899818089229980536, guid: 3a176fcfaaadc3840b627bc129e5fb49, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -443,13 +450,14 @@ MonoBehaviour:
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
-  pivotSpeedKoef: 1
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
+  bubbleTexts: []
+  withChat: 0
 --- !u!114 &7770423111574753340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +476,7 @@ MonoBehaviour:
   distancePatrol: 2
   maxDistancePatrol: 4
   lastChange: 0
+  goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0
@@ -489,6 +498,34 @@ MonoBehaviour:
   flames: {fileID: 2084103079883856069}
   canBurn: 1
   slow: 0.2
+--- !u!114 &3948477344904913665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8588756845586053878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.20636094, y: -0.43443012, z: 0}
+  - {x: -0.14649267, y: 0.42872837, z: 0}
+  - {x: 0.0016175872, y: 0.48432475, z: 0}
+  - {x: 0.1493436, y: 0.42017576, z: 0}
+  - {x: 0.23772039, y: -0.44298273, z: 0}
+  m_ShapePathHash: 1051907940
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 140146
 --- !u!1001 &1559685389988072892
 PrefabInstance:
   m_ObjectHideFlags: 0

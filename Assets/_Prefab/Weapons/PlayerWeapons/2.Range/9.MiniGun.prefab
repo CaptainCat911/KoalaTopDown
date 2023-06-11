@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3141515486008555706}
   - component: {fileID: 4955261986538465187}
   m_Layer: 6
-  m_Name: 10.MiniGun
+  m_Name: 9.MiniGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: fd8eafa00f756cb429630c56e94cd216, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
-  weaponIndexForAmmo: 10
+  weaponIndexForAmmo: 9
   ammo: 0
   weaponName: 
   fireRate: 15
@@ -70,12 +70,6 @@ MonoBehaviour:
   multiShot: 1
   audioSource: {fileID: -3141515486008555706}
   audioSourceTail: {fileID: 4955261986538465187}
-  x1: 0
-  y1: 0
-  x2: 0
-  y2: 0
-  x3: 0
-  y3: 0
   debug: 0
 --- !u!82 &-3141515486008555706
 AudioSource:

@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 4817016154119956040}
   - component: {fileID: 4817016154119956045}
   - component: {fileID: 3558181207535806481}
+  - component: {fileID: -7977801047777230169}
   m_Layer: 7
   m_Name: Enemy_Imp
   m_TagString: Untagged
@@ -446,6 +447,7 @@ MonoBehaviour:
   distanceToTarget: 0
   itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -485,6 +487,33 @@ MonoBehaviour:
   letsGo: 0
   textTrigger: 
   debug: 0
+--- !u!114 &-7977801047777230169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817016154119956039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.25, y: -0.25, z: 0}
+  - {x: -0.25, y: 0.25, z: 0}
+  - {x: 0.25, y: 0.25, z: 0}
+  - {x: 0.25, y: -0.25, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -152638
 --- !u!1 &6502689187189214424
 GameObject:
   m_ObjectHideFlags: 0

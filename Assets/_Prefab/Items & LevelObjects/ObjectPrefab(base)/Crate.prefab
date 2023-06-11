@@ -147,13 +147,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 10
   noAgro: 0
+  isGoodPerson: 0
   bossHP: 0
   hpBarOn: 0
   hpBarGO: {fileID: 0}
+  destroyed: 0
+  withObstacle: 0
   itemToSpawn: {fileID: 0}
   expEffect: {fileID: 7845441016114820387, guid: cded3b4e7f40a4746ad72fbfa09eb0c9, type: 3}
   m_spriteDestroyed:

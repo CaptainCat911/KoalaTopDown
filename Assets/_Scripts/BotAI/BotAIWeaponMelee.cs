@@ -435,7 +435,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void TimeReverceAttack()
     {
-        GameManager.instance.NextScene(0);
+        GameManager.instance.NextScene(1);
     }
 
 

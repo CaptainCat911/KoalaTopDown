@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 2313645642471710270}
   - component: {fileID: 7367888658173034818}
   - component: {fileID: 2330813782090931808}
+  - component: {fileID: 997905747176815394}
   m_Layer: 7
   m_Name: MiniBoss_Skeleton_Warrior
   m_TagString: Untagged
@@ -296,8 +297,9 @@ MonoBehaviour:
   pivotSpeedKoef: 1
   distanceToAttack: 1.25
   distanceToTarget: 0
-  itemToSpawn: {fileID: 1899818089229980536, guid: 6bd72ad02ccde214ab83b64d2bf40184, type: 3}
+  itemToSpawn: {fileID: 1899818089229980536, guid: fc97bf84b8dc55748af0bc32adc3fdb2, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
@@ -312,6 +314,8 @@ MonoBehaviour:
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
+  bubbleTexts: []
+  withChat: 0
 --- !u!114 &7367888658173034818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +356,33 @@ MonoBehaviour:
   flames: {fileID: 8657183805254557320}
   canBurn: 1
   slow: 0.2
+--- !u!114 &997905747176815394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802629281138358728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
+  m_ShapePath:
+  - {x: -0.16387622, y: -0.4519699, z: 0}
+  - {x: -0.13271315, y: 0.39204094, z: 0}
+  - {x: 0.1590819, y: 0.38484946, z: 0}
+  - {x: 0.18305348, y: -0.44477844, z: 0}
+  m_ShapePathHash: 1007078908
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 142456
 --- !u!1 &2293322271805238329
 GameObject:
   m_ObjectHideFlags: 0

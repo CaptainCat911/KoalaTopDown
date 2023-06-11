@@ -21,32 +21,55 @@ public class ShopAmmo : MonoBehaviour
 
     public void SetTextWeapon()
     {
-        int index = GameManager.instance.GetCurrentWeaponIndex();
+        if (GameManager.instance.player.weaponHolder.currentWeapon)
+        {
+            int index = GameManager.instance.GetCurrentWeaponIndex();
+            textMeshName.text = ammoPack.ammoWeapons[index].name;
+            textMeshAmmo.text = ammoPack.ammoWeapons[index].ammoInReload.ToString();
+            textMeshGold.text = ammoPack.ammoWeapons[index].goldPriseAmmo.ToString();
+        }
+        else
+        {
+            textMeshName.text = "-";
+            textMeshAmmo.text = "-";
+            textMeshGold.text = "-";
+        }
 
-        textMeshName.text = ammoPack.ammoWeapons[index].name;
-        textMeshAmmo.text = ammoPack.ammoWeapons[index].ammoInReload.ToString();
-        textMeshGold.text = ammoPack.ammoWeapons[index].goldPriseAmmo.ToString();
     }
     public void BuyAmmoCurrentWeapon()
     {
-        int index = GameManager.instance.GetCurrentWeaponIndex();       // находим индекс
-        ammoPack.BuyAmmo(index);                                        // покупаем оружие по индексу
+        if (GameManager.instance.player.weaponHolder.currentWeapon)
+        {
+            int index = GameManager.instance.GetCurrentWeaponIndex();       // находим индекс
+            ammoPack.BuyAmmo(index);                                        // покупаем оружие по индексу
+        }
     }
 
 
 
     public void SetTextBomb()
     {
-        int index = GameManager.instance.GetCurrentBombIndex();
-
-        textMeshName.text = ammoPack.ammoBombs[index].name;
-        textMeshAmmo.text = ammoPack.ammoBombs[index].ammoInReload.ToString();
-        textMeshGold.text = ammoPack.ammoBombs[index].goldPriseAmmo.ToString();
+        if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
+        {
+            int index = GameManager.instance.GetCurrentBombIndex();
+            textMeshName.text = ammoPack.ammoBombs[index].name;
+            textMeshAmmo.text = ammoPack.ammoBombs[index].ammoInReload.ToString();
+            textMeshGold.text = ammoPack.ammoBombs[index].goldPriseAmmo.ToString();
+        }
+        else
+        {
+            textMeshName.text = "-";
+            textMeshAmmo.text = "-";
+            textMeshGold.text = "-";
+        }
     }
 
     public void BuyAmmoCurrentBomb()
     {
-        int index = GameManager.instance.GetCurrentBombIndex();         // находим индекс
-        ammoPack.BuyAmmoBomb(index);                                        // покупаем оружие по индексу
+        if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
+        {
+            int index = GameManager.instance.GetCurrentBombIndex();         // находим индекс
+            ammoPack.BuyAmmoBomb(index);                                    // покупаем оружие по индексу
+        }                                  
     }
 }

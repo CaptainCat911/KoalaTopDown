@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2363293952648459334}
   - component: {fileID: 9207148736259809736}
   m_Layer: 6
-  m_Name: FlameGun
+  m_Name: 8.FlameGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: 0dcd0007b7274ff43ab09041f77cc52f, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
-  weaponIndexForAmmo: 20
+  weaponIndexForAmmo: 8
   ammo: 0
   weaponName: 
   fireRate: 15
@@ -155,12 +155,6 @@ MonoBehaviour:
   multiShot: 1
   audioSource: {fileID: 9207148736259809736}
   audioSourceTail: {fileID: 0}
-  x1: 0
-  y1: 0
-  x2: 0
-  y2: 0
-  x3: 0
-  y3: 0
   debug: 0
 --- !u!82 &9207148736259809736
 AudioSource:

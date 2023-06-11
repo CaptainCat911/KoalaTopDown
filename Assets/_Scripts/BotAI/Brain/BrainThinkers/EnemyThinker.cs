@@ -33,7 +33,7 @@ public class EnemyThinker : MonoBehaviour
     [HideInInspector] public Transform[] positionsPoints;
     [HideInInspector] public int i = 0;
     [HideInInspector] public bool nextPosition;
-    [HideInInspector] public bool letsGo;               // идти за игроком
+    bool letsGo;               // идти за игроком
     public string textTrigger;
     bool sayTriggerText;
 
@@ -101,6 +101,9 @@ public class EnemyThinker : MonoBehaviour
             }
             if (botAI.goTo)
             {
+                float distanceToPlayer = Vector3.Distance(GameManager.instance.player.transform.position, botAI.transform.position);
+                if (distanceToPlayer > 10)
+                    return;
                 botAI.SetDestination(goToPosition.position);
             }
         }
