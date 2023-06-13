@@ -20,4 +20,18 @@ public class WeaponPickUp : ItemPickUp
         }
         Destroy(gameObject);
     }
+
+    public void TakeShield()
+    {
+        GameManager.instance.player.withShield = true;
+        GameManager.instance.CreateFloatingMessage("Щит получен!", Color.white, GameManager.instance.player.transform.position);
+        Destroy(gameObject);
+    }
+
+    public void TakeMagnet()
+    {
+        GameManager.instance.player.withGoldMagnet = true;
+        GameManager.instance.CreateFloatingMessage("Магнит для золота получен!", Color.white, GameManager.instance.player.transform.position);
+        Destroy(gameObject);
+    }
 }
