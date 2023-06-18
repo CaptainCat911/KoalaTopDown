@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,7 +6,8 @@ public class NPC : BotAI
 {
     [Header("Параметры атак босса")]
     [HideInInspector] public bool attackingNow;     // сейчас атакует
-    public bool mainBossAttack;                     // для возвращения во времени
+    public bool mainBoss;                           // для возвращения во времени
+    public bool shadowBoss;
     public bool immortalBoss;                       // бессмертный
     public float cooldownAttack;                    // кд атаки
     public bool lowHp;                              // мало хп
@@ -36,6 +38,16 @@ public class NPC : BotAI
     int dialogeNumber;              // номер диалога
     bool isTextDone;                // проговорили весь текст
 
+    [Header("Теневой босс")]
+    public Transform[] shadowTeleports;
+    bool shadowTeleportReady;
+    float i = 0.9f;
+
+    public Transform waitShadowTeleport;
+
+    public EnemySpawner[] enemySpawners;
+    bool spawnReady;
+
 
     public override void Update()
     {
@@ -46,8 +58,84 @@ public class NPC : BotAI
                 lowHp = true;
             }
         }
-        
+
+        // Теневой босс
+        if (shadowBoss)
+        {
+            // Первая фаза
+            if (currentHealth > maxHealth * 0.6f)
+            {
+                if (currentHealth < maxHealth * i)          // если здоровье падает на 10%
+                {
+                    i -= 0.1f;
+                    shadowTeleportReady = true;                    
+                }
+                if (shadowTeleportReady)                    // телепортируем
+                {                    
+                    WarpBot(shadowTeleports[Random.Range(0, shadowTeleports.Length)]);
+                    shadowTeleportReady = false;                    
+                }
+            }
+
+            // Вторая фаза
+            if (currentHealth <= maxHealth * 0.6f && currentHealth > maxHealth * 0.3f)
+            {
+                if (currentHealth < maxHealth * i)      // если здоровье падает на 10%
+                {
+                    i -= 0.1f;
+                    shadowTeleportReady = true;
+                    spawnReady = true;
+                }
+                if (shadowTeleportReady)                // телепортируем
+                {                    
+                    WarpBot(waitShadowTeleport);
+                    shadowTeleportReady = false;
+                    StartCoroutine(BossWait(12));                   
+                }
+                if (spawnReady)       // спауним
+                {
+                    foreach (EnemySpawner enemySpawner in enemySpawners)
+                    {
+                        enemySpawner.enemysHowMuch += 2;
+                    }
+                    spawnReady = false;
+                }
+            }
+
+            // Третья фаза
+            if (currentHealth <= maxHealth * 0.3f)
+            {
+                if (currentHealth < maxHealth * i)      // если здоровье падает на 10%
+                {
+                    i -= 0.1f;
+                    shadowTeleportReady = true;
+                    spawnReady = true;
+                }
+                if (shadowTeleportReady)                // телепортируем
+                {
+                    WarpBot(shadowTeleports[Random.Range(0, shadowTeleports.Length)]);
+                    shadowTeleportReady = false;
+                }
+                if (spawnReady)       // спауним
+                {
+                    foreach (EnemySpawner enemySpawner in enemySpawners)
+                    {
+                        enemySpawner.enemysHowMuch += 3;
+                    }
+                    spawnReady = false;
+                }
+            }
+        }
+
         base.Update();
+    }
+
+
+    public IEnumerator BossWait(float delay)
+    {
+        SetNeutral(true);
+        yield return new WaitForSeconds(delay);                     // задержка
+        SetNeutral(false);
     }
 
 
@@ -82,7 +170,30 @@ public class NPC : BotAI
         if (immortalBoss)
             return;
         else
+        {
             base.Death();
+            if (shadowBoss)
+            {
+                Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 25, LayerMask.GetMask("Enemy"));     // создаем круг в позиции объекта с радиусом
+                foreach (Collider2D coll in collidersHits)
+                {
+                    if (coll == null)
+                    {
+                        continue;
+                    }
+
+                    if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
+                    {                       
+
+                        Vector2 vec2 = (coll.transform.position - transform.position).normalized;
+                        fighter.TakeDamage(1000, vec2, 0);
+                    }
+                    collidersHits = null;
+                }
+                CMCameraShake.Instance.ShakeCamera(5, 0.3f);            // тряска камеры                
+            }
+
+        }
         //Destroy(gameObject);
     }
 

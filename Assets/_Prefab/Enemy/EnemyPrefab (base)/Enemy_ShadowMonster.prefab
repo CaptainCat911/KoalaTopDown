@@ -160,7 +160,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.3
-  m_Speed: 2
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -204,7 +204,7 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
-  triggerLenght: 4
+  triggerLenght: 6
   distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
@@ -233,6 +233,10 @@ MonoBehaviour:
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
+  noTriggerAgro: 0
+  events:
+    m_PersistentCalls:
+      m_Calls: []
   deathEffect: {fileID: 7845441016114820387, guid: 63da8428eacb2d64e834aa5b7bf5e82f, type: 3}
   deathCameraShake: 2
   aimAnglePivot: 0
@@ -296,7 +300,7 @@ MonoBehaviour:
   - {x: 0.15258026, y: -0.21078491, z: 0}
   m_ShapePathHash: 1012902165
   m_Mesh: {fileID: 0}
-  m_InstanceId: 1182486
+  m_InstanceId: 3519408
 --- !u!1 &2934255678635008645
 GameObject:
   m_ObjectHideFlags: 0

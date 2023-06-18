@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Events;
 
 public class BotAI : Fighter
 {
@@ -70,6 +71,9 @@ public class BotAI : Fighter
     public bool followPlayer;                               // следовать за игроком
     public Transform destinationPoint;                      // точка назначения
     public bool noTriggerAgro;                              // без агро при попадании в соседнего монстра
+
+    [Header("Ивенты при смерти")]
+    public UnityEvent events;                 // ивенты
 
     [Header("Анимации и эффекты")]
     public GameObject deathEffect;                          // эффект (потом сделать его в аниматоре (или  нет))
@@ -592,6 +596,8 @@ public class BotAI : Fighter
         //animatorWeapon.animator.StopPlayback();
         //gameObject.layer = LayerMask.NameToLayer("Item");                            // слой самого бота
 
+        events.Invoke();
+
         if (!fastDeathAnim)
             Invoke("AfterDeath", 0.8f);
         else
@@ -611,6 +617,6 @@ public class BotAI : Fighter
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, distanceToAttack);
+        Gizmos.DrawWireSphere(transform.position, triggerLenght);
     }
 }

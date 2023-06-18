@@ -58,7 +58,7 @@ public class Player : Fighter
     public EnergyShield shield;
 
     [Header("Щит")]
-    [HideInInspector] public bool withShield;
+    public bool withShield;
 
     [Header("Параметры магнита для монеток")]
     public bool withGoldMagnet;
