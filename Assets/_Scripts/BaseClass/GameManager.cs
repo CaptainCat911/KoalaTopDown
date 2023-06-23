@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     public int[] keys;                          // ключи
     public int battery;                         // батареи     
 
+    [Header("Управление светом")]
+    public bool lightDark;
+    public bool lightOff;
+
     //[HideInInspector] public int enemyCount;
 
 
@@ -88,12 +92,21 @@ public class GameManager : MonoBehaviour
         events[number].Invoke();
     }
 
-
-/*    // Начать ивент диалога
-    public void StartDialog(int number)
+    public void LightsOff(bool status)
     {
-        dialog.StartEvent(number);
-    }*/
+        lightOff = status;
+    }
+
+    public void LightsDark(bool status)
+    {
+        lightDark = status;
+    }
+
+    /*    // Начать ивент диалога
+        public void StartDialog(int number)
+        {
+            dialog.StartEvent(number);
+        }*/
 
 
 

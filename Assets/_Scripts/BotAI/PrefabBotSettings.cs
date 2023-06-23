@@ -8,11 +8,13 @@ public class PrefabBotSettings : MonoBehaviour
 
     public bool withChat;
     public bool noPatrol;
+    public bool noTriggerAgro;
 
     public void SetSettingsBot()
     {
         botAI = GetComponentInChildren<BotAI>();
         botAI.withChat = withChat;
         botAI.noPatrol = noPatrol;
+        botAI.noTriggerAgro = noTriggerAgro;
     }
 }

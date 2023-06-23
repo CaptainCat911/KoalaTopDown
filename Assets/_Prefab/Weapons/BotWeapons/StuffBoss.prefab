@@ -362,9 +362,12 @@ MonoBehaviour:
   pushForce: 30
   radius: 1.5
   trail: {fileID: 3786651681873589342}
+  hitShield: 0
+  bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
   damageRange: 10
   pushForceRange: 10
   projctleSpeed: 3
+  bulletPrefabBig: {fileID: 2609019957272575851, guid: c675c6819f034a14ca6c9a63f9865382, type: 3}
   damageRangeBig: 12
   pushForceRangeBig: 30
   projctleSpeedBig: 4
@@ -394,6 +397,7 @@ MonoBehaviour:
   gravityCooldown: 0.2
   gravityStart: 0
   gravityEffectParticles: {fileID: 4897976513326334911}
+  effectExplGravity: {fileID: 5727708654878073701, guid: a17f7d2a66cb61f43b5d68e9a24b327b, type: 3}
   teleports: []
   teleportForceRadius: 4
   teleportInForce: 30

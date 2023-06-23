@@ -18,14 +18,16 @@ public class BotAIWeaponMelee : MonoBehaviour
     public float pushForce = 1;                     // сила толчка
     public float radius = 1;                        // радиус
     public TrailRenderer trail;
+    public bool hitShield;                          // Пробивает щит
 
     [Header("Параметры ренж атаки (слабая)")]
-    //public GameObject bulletPrefab;               // префаб снаряда для посоха
+    public GameObject bulletPrefab;                 // префаб снаряда
     public int damageRange;                         // урон ренж
     public float pushForceRange;                    // сила толчка ренж
-    public float projctleSpeed;                     // скорость снаряда
+    public float projctleSpeed;                     // скорость снаряда    
 
-    [Header("Параметры ренж атаки (сильная)")]    
+    [Header("Параметры ренж атаки (сильная)")]
+    public GameObject bulletPrefabBig;              // префаб снаряда
     public int damageRangeBig;                      // урон ренж
     public float pushForceRangeBig;                 // сила толчка ренж
     public float projctleSpeedBig;                  // скорость снаряда
@@ -35,6 +37,8 @@ public class BotAIWeaponMelee : MonoBehaviour
     public int explousionDamage;                    // урон взрыва
     public float explousionForce;                   // сила толчка взрыва
     public float explousionRadius;                  // радиус взрыва
+    //public GameObject explousionEffect;             // эффект взрыва
+
 
     [Header("Параметры призыва")]
     public EnemySpawner[] enemySpawners;            // массив префабов со спавнерами
@@ -64,6 +68,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     float gravityLastAttack;                        // время последнего удара
     [HideInInspector] public bool gravityStart;     // начало гравитации
     public ParticleSystem gravityEffectParticles;   // префаб системы частиц для лазера
+    public GameObject effectExplGravity;            // префаб эффекта взрыва гравитации
 
     [Header("Параметры телепорта")]
     public Transform[] teleports;
@@ -158,7 +163,11 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     // Для щита игрока
     public bool RayCastToTarget(Transform fromTrans, Transform toTrans, float distance)
-    {        
+    {
+        if (hitShield)
+        {
+            return true;
+        }
         Vector2 vec2 = (toTrans.transform.position - fromTrans.transform.position).normalized;
 
         RaycastHit2D hit = Physics2D.Raycast(fromTrans.position, vec2, distance, layerRayCastTarget);
@@ -212,7 +221,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     {
         //float randomBulletX = Random.Range(-recoilX, recoilX);                                              // разброс стрельбы
         //firePoint.Rotate(0, 0, randomBulletX);                                                              // тупо вращаем
-        GameObject bullet = Instantiate(GameAssets.instance.fireBallSmall, hitBox.transform.position, hitBox.transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
+        GameObject bullet = Instantiate(bulletPrefab, hitBox.transform.position, hitBox.transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
         bullet.GetComponent<Bullet>().damage = damageRange;                                                      // присваиваем урон снаряду
         bullet.GetComponent<Bullet>().pushForce = pushForceRange;                                                // присваиваем силу толчка снаряду
         bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.transform.right * projctleSpeed, ForceMode2D.Impulse);              // даём импульс        
@@ -229,7 +238,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     {
         //float randomBulletX = Random.Range(-recoilX, recoilX);                                              // разброс стрельбы
         //firePoint.Rotate(0, 0, randomBulletX);                                                              // тупо вращаем
-        GameObject bullet = Instantiate(GameAssets.instance.fireBallBig, hitBox.transform.position, hitBox.transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
+        GameObject bullet = Instantiate(bulletPrefabBig, hitBox.transform.position, hitBox.transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
         bullet.GetComponent<Bullet>().damage = damageRangeBig;                                                      // присваиваем урон снаряду
         bullet.GetComponent<Bullet>().pushForce = pushForceRangeBig;                                                // присваиваем силу толчка снаряду
         bullet.GetComponent<BulletRocket>().withSplit = withSplit;
@@ -314,8 +323,7 @@ public class BotAIWeaponMelee : MonoBehaviour
             }
             collidersHits = null;
         }
-        GameObject effect = Instantiate(GameAssets.instance.explousionRedEffect,
-            hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
+        GameObject effect = Instantiate(GameAssets.instance.explousionRedEffect, hitBox.position, Quaternion.identity);     // создаем эффект убийства
         Destroy(effect, 1);                                                             // уничтожаем эффект через .. сек
     }
 
@@ -372,9 +380,11 @@ public class BotAIWeaponMelee : MonoBehaviour
             }
             collidersHits = null;
         }
-        GameObject effect = Instantiate(GameAssets.instance.explousionGravity,
-            hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
-        Destroy(effect, 0.5f);                                                             // уничтожаем эффект через .. сек
+        if (effectExplGravity)
+        {
+            GameObject effect = Instantiate(effectExplGravity, hitBox.position, Quaternion.identity);       // создаем эффект 
+            Destroy(effect, 0.5f);          // уничтожаем эффект через .. сек
+        }      
     }
 
     public void Teleport()

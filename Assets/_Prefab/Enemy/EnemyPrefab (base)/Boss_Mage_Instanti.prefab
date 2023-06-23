@@ -484,6 +484,8 @@ MonoBehaviour:
   friendTarget: {fileID: 0}
   fastDeathAnim: 1
   debug: 0
+  bubbleTexts: []
+  withChat: 0
   attackingNow: 0
   mainBossAttack: 0
   immortalBoss: 0
@@ -528,7 +530,7 @@ MonoBehaviour:
   - {x: 0.32037354, y: -1.3852081, z: 0}
   m_ShapePathHash: 116559005
   m_Mesh: {fileID: 0}
-  m_InstanceId: 247434
+  m_InstanceId: 768334
 --- !u!1001 &2170014190984783942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -580,6 +582,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1504767130459240455, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650914546787000911, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198461759243455022, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820035296268505622, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5674012138522298798, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: m_Name
       value: StuffBoss
@@ -591,6 +609,10 @@ PrefabInstance:
     - target: {fileID: 5714915020998434831, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: enemySpawners.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482858681000666853, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8291400726446209579, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: m_Radius

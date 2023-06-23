@@ -39,7 +39,7 @@ public class ShieldHolder : MonoBehaviour
                                                                                                     //Debug.Log(aimAngle);
 
         // Щит
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.V))
+        if (Input.GetMouseButtonDown(1) && GameManager.instance.player.withShield)
         {
             /*            player.weaponHolder.gameObject.SetActive(false);               // отключаем оружия 
                         player.weaponHolderMelee.gameObject.SetActive(false);          //*/
@@ -56,7 +56,7 @@ public class ShieldHolder : MonoBehaviour
             }
             shield.SetActive(true);            
         }
-        if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.V))
+        if (Input.GetMouseButtonUp(1) && GameManager.instance.player.withShield)
         {
             shield.SetActive(false);
             if (!player.weaponHolder.meleeWeapon)
