@@ -350,9 +350,6 @@ public class Weapon : MonoBehaviour
     }
 
 
-
-
-
     void FireRayCast()
     {
         // Разброс
@@ -366,7 +363,13 @@ public class Weapon : MonoBehaviour
             if (hit.collider.TryGetComponent<Fighter>(out Fighter fighter))
             {
                 Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
-                fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);
+                fighter.TakeDamage(weaponClass.damage, vec2, weaponClass.pushForce);                
+            }
+
+            // если со взрывом
+            if (weaponClass.withExplousion)
+            {
+                Explousion(hit.point);
             }
 
             // Настройки для трасеров
@@ -421,6 +424,40 @@ public class Weapon : MonoBehaviour
                         fighter.rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);
                     }
                 }*/
+    }
+
+    void Explousion(Vector3 explPosition)
+    {
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(explPosition, weaponClass.radiusExpl, weaponClass.layerExplousion);     // создаем круг в позиции объекта с радиусом
+        foreach (Collider2D coll in collidersHits)
+        {
+            if (coll == null)
+            {
+                continue;
+            }
+
+            if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
+            {
+                float distance = Vector2.Distance(transform.position, coll.transform.position);
+
+                Vector2 vec2 = (coll.transform.position - explPosition).normalized;
+                fighter.TakeDamage(weaponClass.damageExpl, vec2, weaponClass.pushForceExpl);
+            }
+            collidersHits = null;
+        }
+
+        if (weaponClass.expEffect)
+        {
+            GameObject effect = Instantiate(weaponClass.expEffect, explPosition, Quaternion.identity);          // создаем эффект
+            Destroy(effect, 0.5f);                                                                              // уничтожаем эффект через .. сек    
+        }
+        if (weaponClass.sparksEffect)
+        {
+            GameObject effect = Instantiate(weaponClass.sparksEffect, explPosition, Quaternion.identity);       // создаем эффект
+            Destroy(effect, 1);
+        }
+
+        CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);            // тряска камеры
     }
 
 

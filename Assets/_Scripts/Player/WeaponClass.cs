@@ -45,10 +45,21 @@ public class WeaponClass : ScriptableObject
     public int splitTimes;
     public float splitRecoil;
 
+    [Header("Параметры взрыва")]
+    public bool withExplousion;
+    public LayerMask layerExplousion;
+    public int damageExpl;
+    public float radiusExpl;
+    public float pushForceExpl;    
+    public GameObject expEffect;
+    public GameObject sparksEffect;
+    public float cameraAmplitudeShake = 3f;     // амплитуда
+    public float cameraTimedeShake = 0.1f;      // длительность
+
+
     [Header("Параметры поджога")]
     public bool ignite;
     public int damageBurn;
     public float cooldownBurn;
     public float durationBurn;
-
 }
