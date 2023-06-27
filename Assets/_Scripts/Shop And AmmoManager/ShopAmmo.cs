@@ -11,14 +11,16 @@ public class ShopAmmo : MonoBehaviour
     public TextMeshPro textMeshName;
     public TextMeshPro textMeshAmmo;
     public TextMeshPro textMeshGold;
+    AudioSource audioSource;
 
     private void Awake()
     {
         ammoPack = GameManager.instance.ammoManager;
+        audioSource = GetComponent<AudioSource>();
         //ammoWeapons = GameManager.instance.ammoPack.ammoWeapons;        // оружия
     }
 
-
+    // Устанавливаем текст для автомата патронов
     public void SetTextWeapon()
     {
         if (GameManager.instance.player.weaponHolder.currentWeapon)
@@ -36,17 +38,19 @@ public class ShopAmmo : MonoBehaviour
         }
 
     }
+    // Покупка патронов
     public void BuyAmmoCurrentWeapon()
     {
         if (GameManager.instance.player.weaponHolder.currentWeapon)
         {
             int index = GameManager.instance.GetCurrentWeaponIndex();       // находим индекс
             ammoPack.BuyAmmo(index);                                        // покупаем оружие по индексу
+            audioSource.Play();
         }
     }
 
 
-
+    // Устанавливаем текст для автомата бомб
     public void SetTextBomb()
     {
         if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
@@ -63,13 +67,14 @@ public class ShopAmmo : MonoBehaviour
             textMeshGold.text = "-";
         }
     }
-
+    // Покупка бомб
     public void BuyAmmoCurrentBomb()
     {
         if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
         {
             int index = GameManager.instance.GetCurrentBombIndex();         // находим индекс
             ammoPack.BuyAmmoBomb(index);                                    // покупаем оружие по индексу
+            audioSource.Play();
         }                                  
     }
 }
