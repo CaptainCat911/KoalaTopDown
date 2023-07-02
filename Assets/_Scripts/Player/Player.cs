@@ -17,6 +17,10 @@ public class Player : Fighter
     //[HideInInspector] public bool playerWeaponReady;    // игрок готов (стрелять (это для блинка))
     Ignitable ignitable;
 
+    [Header("Управление светом")]
+    public GameObject lightNormal;
+    public GameObject lightMini;
+
     [Header("Параметры перемещения")]    
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)
     Vector2 movementVector;                             // вектор перещение (добавляем скорость)
@@ -466,6 +470,25 @@ public class Player : Fighter
     }
 
 
+    public void MiniLightOn(bool status)
+    {
+        if (status)
+        {
+            lightNormal.SetActive(false);
+            lightMini.SetActive(true);
+        }
+        else
+        {
+            lightNormal.SetActive(true);
+            lightMini.SetActive(false);
+        }
+    }
+
+
+    public void StartWakeUp()
+    {
+
+    }
 
 
 
@@ -473,7 +496,7 @@ public class Player : Fighter
     {
         //base.Death();
         isAlive = false;
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = Color.white;                 // поменять на оригинальный цвет
         GameManager.instance.isPlayerEnactive = true;
         GameManager.instance.cameraOnPlayer = true;        
         animator.SetTrigger("Death");            

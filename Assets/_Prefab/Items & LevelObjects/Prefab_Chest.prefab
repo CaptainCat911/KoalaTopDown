@@ -47,6 +47,7 @@ MonoBehaviour:
   go: {fileID: 4010914162637162084}
   point: {fileID: 9059891835315676177}
   prefab: {fileID: 5929634715793325386}
+  pointMove: 0
 --- !u!1 &5929634715793325386
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,10 +238,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
-    - target: {fileID: 2479654506836797073, guid: 67d016add9dd97a49b83edfce357add6, type: 3}
-      propertyPath: itemToSpawn
+    - target: {fileID: 8537320906513218626, guid: 67d016add9dd97a49b83edfce357add6, type: 3}
+      propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1899818089229980536, guid: 43558ac25d5e9494985e827714ff0d55, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537320906513218626, guid: 67d016add9dd97a49b83edfce357add6, type: 3}
+      propertyPath: m_InstanceId
+      value: -134166
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67d016add9dd97a49b83edfce357add6, type: 3}
 --- !u!4 &4010914162637162080 stripped

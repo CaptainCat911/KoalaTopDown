@@ -76,6 +76,10 @@ public class BotAIWeaponMelee : MonoBehaviour
     public float teleportInForce;
     public float teleportOutForce;
 
+    [Header("Параметры возвращения во времени")]
+    public int sceneNumberStuff;
+
+    [Header("Для щита")]
     public LayerMask layerRayCastTarget;
 
     //public bool demon;
@@ -445,7 +449,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void TimeReverceAttack()
     {
-        GameManager.instance.NextScene(1);
+        GameManager.instance.NextScene(sceneNumberStuff);
     }
 
 

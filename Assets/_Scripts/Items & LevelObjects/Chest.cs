@@ -9,11 +9,17 @@ public class Chest : ItemPickUp
 
     BoxCollider2D boxCollider2d;
     Animator animator;
+    bool isOpened;
 
     public override void Awake()
     {
         boxCollider2d = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+    }
+    private void OnEnable()
+    {
+        if (isOpened)
+            animator.SetTrigger("OpenChest");
     }
 
     public void OpenChest()
@@ -21,6 +27,7 @@ public class Chest : ItemPickUp
         if (itemToSpawn)
             Instantiate(itemToSpawn, transform.position, Quaternion.identity);                  // создаем предмет  
         boxCollider2d.enabled = false;
+        isOpened = true;
         animator.SetTrigger("OpenChest");
     }
 }
