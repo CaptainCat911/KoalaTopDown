@@ -197,7 +197,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   withChat: 0
+  withChatAudio: 0
   noPatrol: 0
+  noTriggerAgro: 0
 --- !u!1001 &3342656399290981563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,9 +323,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2154121653946553938, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5450024240a5f1447b08e6b1ac969f1d, type: 3}
     - target: {fileID: 3326193182701099681, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
       propertyPath: m_InstanceId
-      value: -769444
+      value: -1247448
       objectReference: {fileID: 0}
     - target: {fileID: 5565312694332085324, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -333,6 +339,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7634889990381000832, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: be661ab6d51db4d45a6455664ff1c9c3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
 --- !u!4 &3614181865363430995 stripped

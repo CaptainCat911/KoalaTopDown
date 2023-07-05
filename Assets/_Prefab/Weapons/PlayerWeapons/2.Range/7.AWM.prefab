@@ -69,12 +69,6 @@ MonoBehaviour:
   multiShot: 0
   audioSource: {fileID: -8225947025363683194}
   audioSourceTail: {fileID: 0}
-  x1: 0
-  y1: 0
-  x2: 0
-  y2: 0
-  x3: 0
-  y3: 0
   debug: 0
 --- !u!82 &-8225947025363683194
 AudioSource:
@@ -86,9 +80,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2a8ef1e044a835d41861595fc859a4f0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ca0eecd100cf1e9429504c0159bb4c6e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
