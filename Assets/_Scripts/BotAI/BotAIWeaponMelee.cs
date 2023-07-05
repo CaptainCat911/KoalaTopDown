@@ -82,6 +82,10 @@ public class BotAIWeaponMelee : MonoBehaviour
     [Header("Для щита")]
     public LayerMask layerRayCastTarget;
 
+    [Header("Звуки")]
+    public AudioWeaponMelee audioWeapon;
+    
+
     //public bool demon;
 
 
@@ -123,12 +127,14 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void Attack(int type)
     {
-        if (Time.time - lastAttack > cooldown)                  // если готовы атаковать и кд готово
+        if (Time.time - lastAttack > cooldown)      // если готовы атаковать и кд готово
         {
-            lastAttack = Time.time;                             // присваиваем время атаки
+            lastAttack = Time.time;                 // присваиваем время атаки
 
-            animator.SetFloat("HitType", type);
-            animator.SetTrigger("Hit");
+            animator.SetFloat("HitType", type);     // тип атаки
+            animator.SetTrigger("Hit");             // тригер для начала анимации
+            if (audioWeapon)
+                audioWeapon.hitStart.Play();                    // звук взмаха
         }  
     }
 
@@ -212,13 +218,18 @@ public class BotAIWeaponMelee : MonoBehaviour
                 Vector2 vec2 = (coll.transform.position - botAI.transform.position).normalized;
                 fighter.TakeDamage(0, vec2, pushForce);
 
-                if (RayCastToTarget(botAI.transform, coll.transform, distance))
+                if (RayCastToTarget(botAI.transform, coll.transform, distance))     // проверка на щит
                 {
                     fighter.TakeDamage(damage, new Vector2(0,0), 0);
                 }               
+
+                if (audioWeapon)                    
+                {
+                    audioWeapon.hitDone.Play();         // звук попадания
+                }
             }
             collidersHits = null;
-        }
+        }        
     }
 
     public void RangeAttack()

@@ -240,7 +240,7 @@ public class Player : Fighter
         weaponHolder.gameObject.SetActive(status);                  // отключаем оружия 
         hitBoxPivot.gameObject.SetActive(status);                   //
         bombWeaponHolder.gameObject.SetActive(status);              //
-        shieldHolder.gameObject.SetActive(status);
+        shieldHolder.gameObject.SetActive(status);                  //
     }
 
     void BlinkIn()

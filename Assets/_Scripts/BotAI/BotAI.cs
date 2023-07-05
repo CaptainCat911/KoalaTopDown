@@ -100,8 +100,13 @@ public class BotAI : Fighter
 
     [Header("Диалоги (баблчат)")]
     public string[] bubbleTexts;
-    public bool withChat;                // с чатом
+    public bool withChat;               // с чатом
     bool sayedChat;
+
+    [Header("Аудио")]
+    public AudioEnemy audioEnemy;
+    public bool withAudioChat;          // с репликой
+    bool sayedAudoiChat;
 
 
 
@@ -361,17 +366,24 @@ public class BotAI : Fighter
                     }
                 }
             }
-            collidersHitbox = null;                         // сбрасываем все найденные объекты (на самом деле непонятно как это работает)
+            collidersHitbox = null;                 // сбрасываем все найденные объекты (на самом деле непонятно как это работает)
         }
         if (targets.Count > 0)
         {
             target = targets[Random.Range(0, targets.Count)];       // выбираем рандомно цель
 
-            if (withChat && !sayedChat)         // чат
+            if (withChat && !sayedChat)             // чат, когда нашли цель
             {
                 SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);
                 sayedChat = true;
             }
+            if (withAudioChat && !sayedAudoiChat)
+            {
+                int random = Random.Range(0, audioEnemy.taunt.Length);
+                audioEnemy.taunt[random].Play();
+                sayedAudoiChat = true;
+            }
+
         }
     }
 
@@ -592,24 +604,32 @@ public class BotAI : Fighter
         botAIRangeWeaponHolder.HideWeapons();
         animatorWeapon.animator.enabled = false;    // отключаем аниматор оружия
         if (shadow)
-            shadow.enabled = false;                     // отключаем тень
+            shadow.enabled = false;                 // отключаем тень
         //animatorWeapon.animator.StopPlayback();
         //gameObject.layer = LayerMask.NameToLayer("Item");                            // слой самого бота
 
-        events.Invoke();
+        if (audioEnemy)
+        {
+            int random = Random.Range(0, audioEnemy.death.Length);      // выбираем рандомно звук
+            float audioPitch = Random.Range(0.9f, 1.1f);                // рандомный питч
+            audioEnemy.death[random].pitch = audioPitch;
+            audioEnemy.death[random].Play();                            // звук       
+        }                              
+
+        events.Invoke();                        // ивенты
 
         if (!fastDeathAnim)
-            Invoke("AfterDeath", 0.8f);
+            Invoke("AfterDeath", 2.5f);         // 0.8f
         else
         {
-            agent.enabled = false;                      // выключаем агента
+            agent.enabled = false;              // выключаем агента
             Destroy(gameObject);
         }            
     }
 
     void AfterDeath()
     {
-        agent.enabled = false;                      // выключаем агента
+        agent.enabled = false;                  // выключаем агента
         Destroy(gameObject);
     }
 
