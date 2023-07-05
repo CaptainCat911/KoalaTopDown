@@ -8,6 +8,9 @@ public class BulletBlackBomb : Bullet
     [Header("Параметры взрыва")]
     public float expRadius = 3;         // радиус взрыва
     public float timeToExpl = 1f;       // время до взрыва (таймер)
+
+    [Header("Стягивание и замедление")]
+    //public bool withVacuum;
     public float slow = 2f;             // замедление
 
     [Header("С огнём")]
@@ -52,7 +55,7 @@ public class BulletBlackBomb : Bullet
 
             if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
             {
-                Vector2 vec2 = -(coll.transform.position - transform.position).normalized;  // направление внутрь
+                Vector2 vec2 = (coll.transform.position - transform.position).normalized;   // направление внутрь
                 fighter.TakeDamage(damage, vec2, pushForce);                                // урон
 
 /*                if (coll.gameObject.TryGetComponent(out BotAI botAI))                       // для замедления (потом переделать)

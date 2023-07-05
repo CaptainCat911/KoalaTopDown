@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            NextScene(1);
+            NextScene(2);
         }
 
         /*        if (Input.GetKeyDown(keyOpenMagazine))
@@ -92,6 +92,8 @@ public class GameManager : MonoBehaviour
         events[number].Invoke();
     }
 
+
+    // 3-й лвл
     public void LightsOff(bool status)
     {
         lightOff = status;
@@ -100,7 +102,17 @@ public class GameManager : MonoBehaviour
     public void LightsDark(bool status)
     {
         lightDark = status;
-    }
+    }  
+
+
+
+
+
+
+
+
+
+
 
     /*    // Начать ивент диалога
         public void StartDialog(int number)
@@ -200,6 +212,18 @@ public class GameManager : MonoBehaviour
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void NextScene(int sceneNumber)
     {

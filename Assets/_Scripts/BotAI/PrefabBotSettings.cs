@@ -7,6 +7,7 @@ public class PrefabBotSettings : MonoBehaviour
     BotAI botAI;
 
     public bool withChat;
+    public bool withChatAudio;
     public bool noPatrol;
     public bool noTriggerAgro;
 
@@ -14,6 +15,7 @@ public class PrefabBotSettings : MonoBehaviour
     {
         botAI = GetComponentInChildren<BotAI>();
         botAI.withChat = withChat;
+        botAI.withAudioChat = withChatAudio;
         botAI.noPatrol = noPatrol;
         botAI.noTriggerAgro = noTriggerAgro;
     }

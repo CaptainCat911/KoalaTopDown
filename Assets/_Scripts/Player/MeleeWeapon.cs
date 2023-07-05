@@ -44,9 +44,12 @@ public class MeleeWeapon : MonoBehaviour
     public TrailRenderer trail;                     // треил 
     public GameObject sparksEffect;                 // искры
 
-    [Header("Тряска камеры при выстреле")]
+    [Header("Тряска камеры при ударе")]
     public float cameraAmplitudeShake = 1f; // амплитуда
     public float cameraTimedeShake = 0.1f;  // длительность
+
+    [Header("Звуки")]
+    public AudioWeaponMelee audioWeapon;
 
     void Start()
     {
@@ -69,6 +72,13 @@ public class MeleeWeapon : MonoBehaviour
                 animator.SetTrigger("HitSpear");
             if (hummer)
                 animator.SetTrigger("HitHummer");
+
+            if (audioWeapon)
+            {
+                float audioPitch = Random.Range(0.9f, 1.1f);        // рандомный питч
+                audioWeapon.hitStart.pitch = audioPitch;                
+                audioWeapon.hitStart.Play();                        // звук взмаха
+            }
         }
     }
 
@@ -117,6 +127,12 @@ public class MeleeWeapon : MonoBehaviour
                 GameObject effect = Instantiate(sparksEffect, hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
                 Destroy(effect, 1);
                 CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShake, cameraTimedeShake);    // тряска камеры
+            }
+            if (audioWeapon)
+            {
+                float audioPitch = Random.Range(0.9f, 1.1f);    // рандомный питч
+                audioWeapon.hitDone.pitch = audioPitch;
+                audioWeapon.hitDone.Play();                     // звук попадания
             }
         }
 

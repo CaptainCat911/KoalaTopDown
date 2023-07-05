@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f6c280aa3acdd41b05baf13977d671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteButtomUse: {fileID: 8526230229399481002}
-  key: 101
+  withArrow: 0
+  withButton: 0
   interactAction:
     m_PersistentCalls:
       m_Calls: []
@@ -131,10 +131,5 @@ PrefabInstance:
 --- !u!4 &8526230229399481000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3237850732736583337, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
-  m_PrefabInstance: {fileID: 6538216407070227457}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &8526230229399481002 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3237850732736583339, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
   m_PrefabInstance: {fileID: 6538216407070227457}
   m_PrefabAsset: {fileID: 0}

@@ -16,11 +16,13 @@ MonoBehaviour:
   weaponType: 0
   damage: 1
   fireRate: 20
-  bulletSpeed: 15
+  bulletSpeed: 10
   pushForce: 3
-  forceBackFire: 0.2
+  enemyToDamageCount: 0
   recoil: 6
   delayFire: 0
+  forceBackFire: 0
+  effectBackFire: 0
   bulletPrefab: {fileID: 2657864441510378518, guid: e2d4cd8275b7685499e62df53e3a3990, type: 3}
   boxSize: 0
   range: 0
@@ -29,6 +31,17 @@ MonoBehaviour:
     m_Bits: 0
   splitTimes: 0
   splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
   ignite: 0
   damageBurn: 0
   cooldownBurn: 0

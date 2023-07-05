@@ -141,7 +141,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3137378571337029659}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &918348451
 MonoBehaviour:
@@ -252,7 +252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3137378571337029659}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4234805784467464304
 MonoBehaviour:
@@ -782,8 +782,8 @@ Transform:
   - {fileID: 3137378572170672602}
   - {fileID: 44513522415611900}
   - {fileID: 546322897}
-  - {fileID: 2435341455247781596}
   - {fileID: 918348452}
+  - {fileID: 2435341455247781596}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1066,6 +1066,8 @@ MonoBehaviour:
   bombWeaponHolder: {fileID: 3137378572612673003}
   shieldHolder: {fileID: 0}
   hitBoxPivot: {fileID: 3137378572445812870}
+  lightNormal: {fileID: 546322896}
+  lightMini: {fileID: 918348450}
   moveDirection: {x: 0, y: 0}
   moveSpeed: 4
   dashForce: 20
@@ -1091,6 +1093,7 @@ MonoBehaviour:
   flashMod: 0
   flashSpeed: 0
   shield: {fileID: 3137378571217417185}
+  withShield: 0
   withGoldMagnet: 1
   speedMagnet: 5
   needFlip: 0
