@@ -300,7 +300,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.8
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -344,10 +344,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
   currentHealth: 0
   maxHealth: 30000
   noAgro: 0
+  isGoodPerson: 0
   bossHP: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
@@ -386,9 +388,14 @@ MonoBehaviour:
   distanceToTarget: 0
   itemToSpawn: {fileID: 4689769345750624077, guid: 74191566ad7ce7942bb47b1308716d80, type: 3}
   stayOnGround: 1
+  noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
+  noTriggerAgro: 0
+  events:
+    m_PersistentCalls:
+      m_Calls: []
   deathEffect: {fileID: 5727708654878073701, guid: d47a9e735c129d24c8bb269bb235dcc8, type: 3}
   deathCameraShake: 0
   aimAnglePivot: 0
@@ -400,9 +407,16 @@ MonoBehaviour:
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
   debug: 0
+  bubbleTexts: []
+  withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
   attackingNow: 0
+  mainBoss: 0
+  shadowBoss: 0
   immortalBoss: 0
   cooldownAttack: 2.5
+  lowHp: 0
   rangeAttackChance: 100
   rangeAttackDistance: 4
   multiAttackChance: 0
@@ -414,6 +428,9 @@ MonoBehaviour:
   laserChance: 0
   teleportChance: 0
   textToSay: []
+  shadowTeleports: []
+  waitShadowTeleport: {fileID: 0}
+  enemySpawners: []
 --- !u!1 &8505044238699533609
 GameObject:
   m_ObjectHideFlags: 0
