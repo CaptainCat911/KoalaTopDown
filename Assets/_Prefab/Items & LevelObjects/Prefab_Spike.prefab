@@ -47,6 +47,7 @@ MonoBehaviour:
   go: {fileID: 5126291749027114845}
   point: {fileID: 9059891835315676177}
   prefab: {fileID: 5929634715793325386}
+  pointMove: 0
 --- !u!1 &5929634715793325386
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +190,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5929634715793325383}
     m_Modifications:
+    - target: {fileID: 6856653570865345593, guid: fa8081d59573a5e4c89b81d5301c184e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5712479
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856653570865345593, guid: fa8081d59573a5e4c89b81d5301c184e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.027207434
+      objectReference: {fileID: 0}
     - target: {fileID: 6856653570865345595, guid: fa8081d59573a5e4c89b81d5301c184e, type: 3}
       propertyPath: m_Name
       value: SpikeBox
