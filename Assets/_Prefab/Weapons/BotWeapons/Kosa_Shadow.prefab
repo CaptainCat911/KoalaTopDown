@@ -471,7 +471,7 @@ MonoBehaviour:
   weaponName: "\u041A\u043E\u0441\u0430 \u0442\u0435\u043D\u0435\u0439"
   hitBox: {fileID: 1659115751495550444}
   cooldown: 2.5
-  damage: 15
+  damage: 10
   pushForce: 10
   radius: 0.6
   trail: {fileID: 3825151229547073207}
@@ -511,9 +511,11 @@ MonoBehaviour:
   teleportForceRadius: 0
   teleportInForce: 0
   teleportOutForce: 0
+  sceneNumberStuff: 0
   layerRayCastTarget:
     serializedVersion: 2
     m_Bits: 524288
+  audioWeapon: {fileID: 0}
 --- !u!95 &1254263959580690162
 Animator:
   serializedVersion: 4
