@@ -104,7 +104,8 @@ public class BotAI : Fighter
     bool sayedChat;
 
     [Header("јудио")]
-    public AudioEnemy audioEnemy;
+    AudioSource audioSource;
+    public AudioEnemy audioEnemy;       // набор звуков
     public bool withAudioChat;          // с репликой
     bool sayedAudoiChat;
 
@@ -124,6 +125,7 @@ public class BotAI : Fighter
         botAIRangeWeaponHolder = GetComponentInChildren<BotAIRangeWeaponHolder>();
         hitBox = GetComponentInChildren<BotAIHitbox>();
         shadow = GetComponentInChildren<ShadowCaster2D>();
+        audioSource = GetComponent<AudioSource>();
 
         layerTarget = LayerMask.GetMask("Player", "NPC");
         layerHit = LayerMask.GetMask("Player", "NPC", "ObjectsDestroyble", "Default");
@@ -379,11 +381,11 @@ public class BotAI : Fighter
             }
             if (withAudioChat && !sayedAudoiChat)
             {
-                int random = Random.Range(0, audioEnemy.taunt.Length);
-                audioEnemy.taunt[random].Play();
+                int random = Random.Range(0, audioEnemy.audioClipsTaunt.Length);
+                audioSource.clip = audioEnemy.audioClipsTaunt[random];
+                audioSource.Play();
                 sayedAudoiChat = true;
             }
-
         }
     }
 
@@ -610,11 +612,13 @@ public class BotAI : Fighter
 
         if (audioEnemy)
         {
-            int random = Random.Range(0, audioEnemy.death.Length);      // выбираем рандомно звук
-            float audioPitch = Random.Range(0.9f, 1.1f);                // рандомный питч
-            audioEnemy.death[random].pitch = audioPitch;
-            audioEnemy.death[random].Play();                            // звук       
-        }                              
+            int random = Random.Range(0, audioEnemy.audioClipsDeath.Length);        // выбираем рандомно звук
+            float audioPitch = Random.Range(0.9f, 1.1f);                            // рандомный питч
+            audioSource.pitch = audioPitch;                                         // устанавливаем питч
+            audioSource.clip = audioEnemy.audioClipsDeath[random];                  // устанавливаем выбранный звук в аудио—оурс
+            audioSource.Play();                                                     // воспроизводим
+            audioSource.pitch = 1f;                                                 // возвращаем обычный питч 
+        }
 
         events.Invoke();                        // ивенты
 

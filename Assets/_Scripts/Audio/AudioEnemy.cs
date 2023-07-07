@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioEnemy : MonoBehaviour
 {
-    public AudioSource[] death;
-    public AudioSource[] taunt;
+    //public AudioSource[] death;
+    //public AudioSource[] taunt;
+
+    public AudioClip[] audioClipsDeath;
+    public AudioClip[] audioClipsTaunt;
 }
