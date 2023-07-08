@@ -62,7 +62,7 @@ public class SpikeNew : MonoBehaviour
 
     void DamageAll()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapBoxAll(transform.position, new Vector2 (1.5f, 1f), 0f, layerHit);     // создаем квадрат в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapBoxAll(new Vector2(transform.position.x, transform.position.y + 0.15f), new Vector2 (1.5f, 1.25f), 0f, layerHit);       // создаем квадрат в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll == null)
@@ -99,6 +99,6 @@ public class SpikeNew : MonoBehaviour
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, new Vector3(1.5f,1f,0f));
+        Gizmos.DrawWireCube(new Vector2(transform.position.x, transform.position.y + 0.15f), new Vector3(1.5f, 1.25f, 0f));
     }
 }

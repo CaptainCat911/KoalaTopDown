@@ -157,6 +157,11 @@ public class Player : Fighter
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Vskritsya();
+        }
+
         if (bootsMod)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && bootsEnergy >= 20 && !bootsOn)
@@ -218,6 +223,12 @@ public class Player : Fighter
         //rb2D.AddForce(moveDirection * moveSpeed);
         //rb2D.MovePosition(rb2D.position + moveDirection * moveSpeed * Time.deltaTime);                // скорость полная  
         //rb2D.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);        // скорость полная        
+    }
+
+
+    void Vskritsya()
+    {
+        TakeDamage(1000, new Vector2(0, 0), 0f);
     }
 
     // Мотор
