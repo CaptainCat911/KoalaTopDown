@@ -11,10 +11,12 @@ public class ShopWeapons : MonoBehaviour
     public TextMeshPro[] m_textsMelee;
     public TextMeshPro[] m_textsBomb;*/
     AmmoPackKoala ammoPack;             // ссылка на аммопак (тут и оружие и бомбы и покупка этого всего)
+    AudioSource audioSource;
 
     private void Awake()
     {
-        ammoPack = GameManager.instance.ammoManager;        
+        ammoPack = GameManager.instance.ammoManager;
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -47,6 +49,7 @@ public class ShopWeapons : MonoBehaviour
         if (ammoPack.BuyRangeWeapon(index))
         {
             rangeWeapons[index].WeaponBuyed();
+            MakeSound();
         }
     }
 
@@ -55,6 +58,7 @@ public class ShopWeapons : MonoBehaviour
         if (ammoPack.BuyMeleeWeapon(index))
         {
             meleeWeapons[index].WeaponBuyed();
+            MakeSound();
         }
     }
 
@@ -63,6 +67,12 @@ public class ShopWeapons : MonoBehaviour
         if (ammoPack.BuyBomb(index))
         {
             bombsWeapons[index].WeaponBuyed();
+            MakeSound();
         }
+    }
+
+    void MakeSound()
+    {
+        audioSource.Play();
     }
 }

@@ -299,13 +299,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aab08de233044c49b9527752cb82207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  isPlayerBullet: 0
   damage: 0
   pushForce: 0
-  isPlayerBullet: 0
-  expEffect: {fileID: 3263829405623792208, guid: 7a8b029797a71d742b70e766901a1d36, type: 3}
+  enemyToDamageCount: 0
+  enemyDamaged: 0
   layerExplousion:
     serializedVersion: 2
     m_Bits: 4225
+  expEffect: {fileID: 3263829405623792208, guid: 7a8b029797a71d742b70e766901a1d36, type: 3}
+  sparksEffect: {fileID: 0}
   expRadius: 4
   timeToExpl: 1
   slow: 2
@@ -313,6 +317,10 @@ MonoBehaviour:
   damageBurn: 8
   cooldownBurn: 0.5
   durationBurn: 5
+  withSpawn: 0
+  goToSpawn: []
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
 --- !u!1 &6674889618573583036
 GameObject:
   m_ObjectHideFlags: 0
