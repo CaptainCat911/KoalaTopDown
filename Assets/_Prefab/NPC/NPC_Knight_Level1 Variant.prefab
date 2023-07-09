@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: goTo
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: noAgro
@@ -26,10 +26,10 @@ PrefabInstance:
     - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: itemToSpawn
       value: 
-      objectReference: {fileID: 1899818089229980536, guid: cfd4c459f5ec672419db2c3eea0db7f8, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: followPlayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497639919, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: isGoodPerson
@@ -39,17 +39,21 @@ PrefabInstance:
       propertyPath: fastDeathAnim
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1685355570259030562, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -156.7
+      value: -172.97
       objectReference: {fileID: 0}
     - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -120.3
+      value: -127.76
       objectReference: {fileID: 0}
     - target: {fileID: 2818694411222979283, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -87,9 +91,29 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2818694411222979287, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2818694411222979288, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_Name
-      value: NPC_Knight_Level1 Variant
+      value: NPC_Knight
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166287768865320013, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166287769470921621, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166287769625030300, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166287769672765280, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6166287769672765281, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -99,13 +123,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6166287769685810634, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 6297625147953556815, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: goToPosition
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8504479325347438871, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
@@ -140,4 +168,4 @@ MonoBehaviour:
   - {x: 0.1303711, y: -0.39762878, z: 0}
   m_ShapePathHash: 1877715221
   m_Mesh: {fileID: 0}
-  m_InstanceId: 120876
+  m_InstanceId: -509324
