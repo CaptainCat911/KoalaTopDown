@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     [Header("—сылки")]
     public Player player;                       // ссылка на игрока    
     public AmmoPackKoala ammoManager;           // аммо менеджер   
-    //public Dialog dialog;                       // диалог менеджер    
     //public GameObject gui;                      // гуи
+    //public Dialog dialog;                       // диалог менеджер    
 
     [Header("”правление игрой")]
     public bool isPlayerEnactive;               // активен игрок или нет
