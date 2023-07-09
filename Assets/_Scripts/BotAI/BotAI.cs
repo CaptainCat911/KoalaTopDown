@@ -95,6 +95,8 @@ public class BotAI : Fighter
     public Transform friendTarget;
 
     public bool fastDeathAnim;
+    public float timeForDeath = 2.5f;
+
     // Дебаг
     public bool debug;
 
@@ -623,7 +625,7 @@ public class BotAI : Fighter
         events.Invoke();                        // ивенты
 
         if (!fastDeathAnim)
-            Invoke("AfterDeath", 2.5f);         // 0.8f
+            Invoke("AfterDeath", timeForDeath);         // 0.8f
         else
         {
             agent.enabled = false;              // выключаем агента

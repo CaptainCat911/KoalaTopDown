@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8705924086056908241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8489873629230333585, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: noPatrol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 621363409139145222, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 621363409139145222, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_InstanceId
+      value: -4684312
+      objectReference: {fileID: 0}
+    - target: {fileID: 2692443611383562010, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: triggerLenght
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2692443611383562010, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: pivotSpeedKoef
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2692443611383562010, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: meleeAttackType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2692443611383562010, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: rangeAttackType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2692443611383562010, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: distanceToAttackRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381653298542351335, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: weapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611103131906415624, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611103131906415624, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2496722168628502743, guid: 85dbf235304f7c54abf982d2e1473bc9, type: 3}
+    - target: {fileID: 7192944306313023075, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192944306313023075, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689391962534687421, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -67.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 40.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255862, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030488130396255869, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_Name
+      value: MiniBoss_Skeleton_WithMinigun
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080431227306345322, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080431227306345322, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1879417f2a7bc814e90dc3b59b516b4a, type: 3}

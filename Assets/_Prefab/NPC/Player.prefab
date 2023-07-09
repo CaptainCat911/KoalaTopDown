@@ -1072,12 +1072,12 @@ MonoBehaviour:
   moveSpeed: 4
   dashForce: 20
   dashRate: 1.3
-  blink: 1
+  blink: 0
   blinkForce: 40
   blinkRate: 3
   blinkOutTime: 0.2
   blinkWithExplousion: 0
-  blinkOutDamage: 30
+  blinkOutDamage: 50
   blinkOutExpRadius: 3
   blinkOutPushForce: 30
   layerExplBlink:
@@ -1085,7 +1085,7 @@ MonoBehaviour:
     m_Bits: 4225
   blinkTrail: {fileID: 3137378571337029651}
   antiBugCircle: {fileID: 3137378572170672601}
-  bootsMod: 1
+  bootsMod: 0
   bootsSpeed: 15
   bootsEnergy: 100000
   minusEnergy: 50
@@ -1094,7 +1094,7 @@ MonoBehaviour:
   flashSpeed: 0
   shield: {fileID: 3137378571217417185}
   withShield: 0
-  withGoldMagnet: 1
+  withGoldMagnet: 0
   speedMagnet: 5
   needFlip: 0
   leftFlip: 0

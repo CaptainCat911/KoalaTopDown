@@ -247,9 +247,12 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
+  timeForDeath: 0.8
   debug: 0
   bubbleTexts: []
   withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
 --- !u!114 &7772086055373530415
 MonoBehaviour:
   m_ObjectHideFlags: 0

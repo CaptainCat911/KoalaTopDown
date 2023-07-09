@@ -34,4 +34,11 @@ public class WeaponPickUp : ItemPickUp
         GameManager.instance.CreateFloatingMessage("Магнит для золота получен!", Color.white, GameManager.instance.player.transform.position);
         Destroy(gameObject);
     }
+
+    public void TakeBlink()
+    {
+        GameManager.instance.player.blink = true;
+        GameManager.instance.CreateFloatingMessage("Блинк получен!", Color.white, GameManager.instance.player.transform.position);
+        Destroy(gameObject);
+    }
 }

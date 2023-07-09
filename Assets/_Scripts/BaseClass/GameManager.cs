@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            NextScene(2);
+            NextScene(3);
         }
 
         /*        if (Input.GetKeyDown(keyOpenMagazine))
