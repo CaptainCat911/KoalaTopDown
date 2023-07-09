@@ -171,7 +171,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.95
   m_BaseOffset: 0.47
@@ -356,7 +356,7 @@ MonoBehaviour:
   - {x: 0.11469499, y: -0.43356812, z: 0}
   m_ShapePathHash: 1195901240
   m_Mesh: {fileID: 0}
-  m_InstanceId: 1293856
+  m_InstanceId: 286948
 --- !u!82 &8796676852888449190
 AudioSource:
   m_ObjectHideFlags: 0

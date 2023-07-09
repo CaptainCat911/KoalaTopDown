@@ -236,7 +236,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.95
   m_BaseOffset: 0.47
@@ -303,6 +303,10 @@ MonoBehaviour:
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
+  noTriggerAgro: 0
+  events:
+    m_PersistentCalls:
+      m_Calls: []
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
   aimAnglePivot: 0
@@ -316,6 +320,8 @@ MonoBehaviour:
   debug: 0
   bubbleTexts: []
   withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
 --- !u!114 &7367888658173034818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +344,6 @@ MonoBehaviour:
   positionsPoints: []
   i: 0
   nextPosition: 0
-  letsGo: 0
   textTrigger: 
   debug: 0
 --- !u!114 &2330813782090931808
@@ -382,7 +387,7 @@ MonoBehaviour:
   - {x: 0.18305348, y: -0.44477844, z: 0}
   m_ShapePathHash: 1007078908
   m_Mesh: {fileID: 0}
-  m_InstanceId: 142456
+  m_InstanceId: 287618
 --- !u!1 &2293322271805238329
 GameObject:
   m_ObjectHideFlags: 0

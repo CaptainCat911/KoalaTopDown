@@ -101,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008693486, y: 0.16395187}
+  m_Offset: {x: -0.040805817, y: 0.13095093}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6488934, y: 1.1103837}
+  m_Size: {x: 0.44989014, y: 0.8463898}
   m_EdgeRadius: 0
 --- !u!50 &3300082381565689868
 Rigidbody2D:
@@ -158,7 +158,7 @@ MonoBehaviour:
   hpBarOn: 0
   hpBarGO: {fileID: 0}
   destroyed: 0
-  withObstacle: 1
+  withObstacle: 0
   itemToSpawn: {fileID: 0}
   expEffect: {fileID: 7845441016114820387, guid: 0a3f06b9520c2114ca45f0bece3fcaa2, type: 3}
   m_spriteDestroyed:
@@ -170,7 +170,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3300082381565689865}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.84400004, y: 0.6, z: 0.1}
