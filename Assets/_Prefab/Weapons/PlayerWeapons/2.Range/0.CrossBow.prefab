@@ -69,12 +69,6 @@ MonoBehaviour:
   multiShot: 0
   audioSource: {fileID: -8181685386423758947}
   audioSourceTail: {fileID: 0}
-  x1: 0
-  y1: 0
-  x2: 0
-  y2: 0
-  x3: 0
-  y3: 0
   debug: 0
 --- !u!82 &-8181685386423758947
 AudioSource:
@@ -86,9 +80,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e336cc58c7cbc2d44961fc45e4366417, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -198,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 3183744385473864250}
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0.25, y: 0, z: 0}
-  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8122845030030638936}
