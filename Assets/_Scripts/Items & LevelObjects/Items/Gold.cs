@@ -3,6 +3,7 @@ using UnityEngine;
 public class Gold : ItemPickUp
 {
     public int goldValue;
+    public bool noMagnet;
     Player player;
     bool nearPlayer;
 
@@ -14,6 +15,8 @@ public class Gold : ItemPickUp
 
     void FixedUpdate()
     {
+        if (noMagnet)
+            return;
         if (player.withGoldMagnet && nearPlayer)
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, player.speedMagnet * Time.deltaTime);   // перемещаем игрока
     }
