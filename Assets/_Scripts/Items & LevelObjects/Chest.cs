@@ -11,10 +11,13 @@ public class Chest : ItemPickUp
     Animator animator;
     bool isOpened;
 
+     AudioSource audioSource; 
+
     public override void Awake()
     {
         boxCollider2d = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void OnEnable()
     {
@@ -28,6 +31,10 @@ public class Chest : ItemPickUp
             Instantiate(itemToSpawn, transform.position, Quaternion.identity);                  // создаем предмет  
         boxCollider2d.enabled = false;
         isOpened = true;
+
+        if (audioSource)                    // звук
+            audioSource.Play();
+
         animator.SetTrigger("OpenChest");
     }
 }

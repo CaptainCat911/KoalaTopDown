@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class Key : ItemPickUp
 {
+    [Header("Тип ключа")]
     public int keyTypeNumber;
+
+    [Header("Аудио")]
+    public GameObject audioPickUp;
+
     public void PickUpKey()
     {
         if (keyTypeNumber == 0)
@@ -18,6 +23,13 @@ public class Key : ItemPickUp
             GameManager.instance.CreateFloatingMessage("+ 1 Темный ключ", Color.cyan, transform.position);
         }
         GameManager.instance.keys[keyTypeNumber]++;
+
+        if (audioPickUp)
+        {
+            GameObject sound = Instantiate(audioPickUp, transform.position, Quaternion.identity);      // звук 
+            Destroy(sound, 2f);
+        }
+
         Destroy(gameObject);
     }
 }

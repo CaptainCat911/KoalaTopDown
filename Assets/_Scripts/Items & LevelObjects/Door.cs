@@ -55,7 +55,7 @@ public class Door : MonoBehaviour
         shadow2D.enabled = false;                           // убираем тень
         if (effect)
             effect.Stop();
-        if (audioSource)
+        if (audioSource && !openedDoor)
             audioSource.Play();
         isOpened = true;                                    // дверь открыта
     }

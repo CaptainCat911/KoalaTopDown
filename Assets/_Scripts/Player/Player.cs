@@ -68,11 +68,16 @@ public class Player : Fighter
     public bool withGoldMagnet;
     public float speedMagnet;
 
+    [Header("Параметры звуков")]
+    AudioSource audioSource;
+    public AudioPlayer audioPlayer;       // набор звуков
+
     // Для флипа игрока
     [HideInInspector] public bool needFlip;             // нужен флип (для игрока и оружия)    
     [HideInInspector] public bool leftFlip;             // оружие слева
     [HideInInspector] public bool rightFlip = true;     // оружие справа
 
+    [Header("Цвет")]
     // Таймер для цветов при уроне
     float timerForColor;        // сколько времени он будет красным
     bool red;                   // красный (-_-)
@@ -98,6 +103,7 @@ public class Player : Fighter
         shieldHolder = GetComponentInChildren<ShieldHolder>();
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
         ignitable = GetComponent<Ignitable>();
+        audioSource = GetComponent<AudioSource>();
 
         //agent.updateRotation = false;               // для навМеш2д
         //agent.updateUpAxis = false;                 //        
@@ -449,13 +455,22 @@ public class Player : Fighter
             //Debug.Log("Hit");
             animator.SetTrigger("TakeHit");
             ColorRed(0.1f);                         // делаем спрайт красным
+            if (audioPlayer)
+            {
+                int random = Random.Range(0, audioPlayer.audioClipsTakeHit.Length);     // выбираем рандомно звук
+                float audioPitch = Random.Range(0.9f, 1.1f);                            // рандомный питч
+                audioSource.pitch = audioPitch;                                         // устанавливаем питч
+                audioSource.clip = audioPlayer.audioClipsTakeHit[random];               // устанавливаем выбранный звук в аудиоСоурс
+                audioSource.Play();                                                     // воспроизводим
+                audioSource.pitch = 1f;                                                 // возвращаем обычный питч 
+            }
         }
     }
 
     // Смена цветов при уроне
     void SetColorTimer()
     {        
-        if (timerForColor > 0)                  // таймер для отображения урона
+        if (timerForColor > 0)                      // таймер для отображения урона
             timerForColor -= Time.deltaTime;
         if (red && timerForColor <= 0)
             ColorWhite();
@@ -514,6 +529,9 @@ public class Player : Fighter
         EnableHolders(false);
         noAgro = true;
         ResetTargetBots();                                  // сбросить цель врагам
+
+
+
         if (!GameManager.instance.playerInResroom)
         {
             ResRoomManager.instance.SpawnMonsterAndChest();
@@ -529,8 +547,21 @@ public class Player : Fighter
 
     IEnumerator AfterDeath()
     {
+        yield return new WaitForSeconds(0.1f);
+        if (audioPlayer)
+        {
+            int random = Random.Range(0, audioPlayer.audioClipsDeath.Length);       // выбираем рандомно звук
+            float audioPitch = Random.Range(0.9f, 1.1f);                            // рандомный питч
+            audioSource.pitch = audioPitch;                                         // устанавливаем питч
+            audioSource.clip = audioPlayer.audioClipsDeath[random];                 // устанавливаем выбранный звук в аудиоСоурс
+            audioSource.Play();                                                     // воспроизводим
+            audioSource.pitch = 1f;                                                 // возвращаем обычный питч 
+        }
+
         yield return new WaitForSeconds(0.5f);
         capsuleCollider2D.enabled = false;
+
+
 
         yield return new WaitForSeconds(1.5f);
         animator.ResetTrigger("TakeHit");                   // из-за бага

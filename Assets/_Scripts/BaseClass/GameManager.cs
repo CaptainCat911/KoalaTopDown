@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             ChatBubble.Clear(gameObject);
-            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi", 2f);
+            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Ну все, вам жопа!", 2f);
         }
         if (Input.GetKeyDown(KeyCode.N))
         {

@@ -4,10 +4,12 @@ public class Switch : ItemPickUp
 {
     SpriteRenderer spriteRenderer;
     bool switched;
+    AudioSource audioSource;
 
     public override void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void SwitchActive()
@@ -17,6 +19,10 @@ public class Switch : ItemPickUp
             spriteRenderer.flipX = true;
         if (!switched)
             spriteRenderer.flipX = false;
-        DisableTrigger();
+
+        if (audioSource)                    // звук
+            audioSource.Play();
+
+        DisableTrigger();                   // вырубаем триггер
     }
 }
