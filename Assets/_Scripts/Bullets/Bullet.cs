@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     public GameObject sparksEffect;
 
     [Header("Аудио")]
+    public GameObject audioExplousion;
     public AudioProjectile audioProjectile;
 
     private void Awake()
@@ -37,9 +38,14 @@ public class Bullet : MonoBehaviour
         if (expEffect)
         {
             GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);    // создаем эффект
-            Destroy(effect, 0.5f);                                                                  // уничтожаем эффект через .. сек    
+            Destroy(effect, 1f);                                                                  // уничтожаем эффект через .. сек    
         }
-        
+        if (audioExplousion)
+        {
+            GameObject sound = Instantiate(audioExplousion, transform.position, Quaternion.identity);      // звук взрыва
+            Destroy(sound, 1f);
+        }
+
         Destroy(gameObject);                                                                        // уничтожаем пулю
     }
 }

@@ -73,6 +73,8 @@ MonoBehaviour:
   delayTake: 1
   trigger: {fileID: 4133650310662168314}
   goldValue: 100
+  noMagnet: 0
+  audioPickUp: {fileID: 4209454454700283240, guid: 66d702023f4c3e04c9b29308143af2c4, type: 3}
 --- !u!114 &554726081899463635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3119875147740093463}
   - component: {fileID: 5179085199654173155}
+  - component: {fileID: 810584892}
   m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
@@ -241,6 +244,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &810584892
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341713665439643346}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 031855402a1b2e849963de6def075098, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 031855402a1b2e849963de6def075098, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &5717416402929731946
 PrefabInstance:
   m_ObjectHideFlags: 0

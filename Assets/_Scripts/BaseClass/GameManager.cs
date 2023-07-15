@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
     public bool lightDark;
     public bool lightOff;
 
+    // Для паузы
+    bool paused;
+    bool slowed;
+
     //[HideInInspector] public int enemyCount;
 
 
@@ -62,10 +66,41 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!paused)
+            {
+                Time.timeScale = 0f;
+                paused = true;
+                Debug.Log("Pause!");
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                paused = false;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (!slowed)
+            {
+                Time.timeScale = 0.5f;
+                slowed = true;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                slowed = false;
+            }
+        }
+
+
+
+
         if (Input.GetKeyDown(KeyCode.H))
         {
             ChatBubble.Clear(gameObject);
-            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Hi", 2f);
+            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Ну все, вам жопа!", 2f);
         }
         if (Input.GetKeyDown(KeyCode.N))
         {

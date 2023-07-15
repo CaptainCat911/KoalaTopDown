@@ -7,6 +7,9 @@ public class Gold : ItemPickUp
     Player player;
     bool nearPlayer;
 
+    [Header("Аудио")]
+    public GameObject audioPickUp;
+
     public override void Awake()
     {
         base.Awake();
@@ -31,6 +34,12 @@ public class Gold : ItemPickUp
         GameManager.instance.gold += goldValue;                                          // + золото
         GameManager.instance.CreateFloatingMessage("+ " + goldValue, Color.yellow,
            GameManager.instance.player.transform.position);                             // создаём сообщение
+
+        if (audioPickUp)
+        {
+            GameObject sound = Instantiate(audioPickUp, transform.position, Quaternion.identity);      // звук взрыва
+            Destroy(sound, 1f);
+        }
         Destroy(gameObject);
     }
 }

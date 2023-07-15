@@ -14,7 +14,12 @@ public class TeleportLevel : MonoBehaviour
     [Header("Временно здесь")]
     public bool teleportFromRes;            // телепорт из ресрума
     public GameObject doorRes;              // дверь 
+    AudioSource audioSource;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
 
     /*    void ActivateTeleport()
@@ -64,11 +69,14 @@ public class TeleportLevel : MonoBehaviour
         {
             GameManager.instance.player.Invoke(nameof(GameManager.instance.player.ExplousionPlayer), 0.2f);     // (Временно здесь)
         }
+
+        if (audioSource)                    // звук
+            audioSource.Play();
     }
 
-/*    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
-    }*/
+    /*    void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, 0.5f);
+        }*/
 }

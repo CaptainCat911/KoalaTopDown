@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     BoxCollider2D boxCollider2D;
     SpriteRenderer spriteRenderer;
     ShadowCaster2D shadow2D;
+    AudioSource audioSource;
 
     public bool openedDoor;                 // открыть дверь при старте
     public int doorTypeNumber;              // тип двери
@@ -23,6 +24,7 @@ public class Door : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         shadow2D = GetComponent<ShadowCaster2D>();
         closedDoorSprite = spriteRenderer.sprite;
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -53,6 +55,8 @@ public class Door : MonoBehaviour
         shadow2D.enabled = false;                           // убираем тень
         if (effect)
             effect.Stop();
+        if (audioSource && !openedDoor)
+            audioSource.Play();
         isOpened = true;                                    // дверь открыта
     }
 
