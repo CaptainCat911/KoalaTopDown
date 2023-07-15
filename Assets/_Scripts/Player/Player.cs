@@ -249,6 +249,15 @@ public class Player : Fighter
     }
     void Dash()
     {
+        if (audioPlayer)
+        {
+            
+            //float audioPitch = Random.Range(0.9f, 1.1f);                            // рандомный питч
+            //audioSource.pitch = audioPitch;                                         // устанавливаем питч
+            audioSource.clip = audioPlayer.audioClipsDash;                 // устанавливаем выбранный звук в аудиоСоурс
+            audioSource.Play();                                                     // воспроизводим
+            //audioSource.pitch = 1f;                                                 // возвращаем обычный питч 
+        }
         rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);              // даём импульс
     }
 

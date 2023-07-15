@@ -6,4 +6,6 @@ public class AudioPlayer : MonoBehaviour
 {
     public AudioClip[] audioClipsDeath;
     public AudioClip[] audioClipsTakeHit;
+    public AudioClip audioClipsDash;
+    //public AudioClip audioClipsRun;
 }
