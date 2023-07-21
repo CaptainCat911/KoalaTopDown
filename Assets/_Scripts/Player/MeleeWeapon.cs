@@ -49,7 +49,13 @@ public class MeleeWeapon : MonoBehaviour
     public float cameraTimedeShake = 0.1f;  // длительность
 
     [Header("Звуки")]
+    AudioSource audioSource;
     public AudioWeaponMelee audioWeapon;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -76,8 +82,9 @@ public class MeleeWeapon : MonoBehaviour
             if (audioWeapon)
             {
                 float audioPitch = Random.Range(0.9f, 1.1f);        // рандомный питч
-                audioWeapon.hitStart.pitch = audioPitch;                
-                audioWeapon.hitStart.Play();                        // звук взмаха
+                audioSource.pitch = audioPitch;
+                audioSource.clip = audioWeapon.hitStart;            // звук взмаха
+                audioSource.Play();                                 
             }
         }
     }
@@ -130,9 +137,10 @@ public class MeleeWeapon : MonoBehaviour
             }
             if (audioWeapon)
             {
-                float audioPitch = Random.Range(0.9f, 1.1f);    // рандомный питч
-                audioWeapon.hitDone.pitch = audioPitch;
-                audioWeapon.hitDone.Play();                     // звук попадания
+                float audioPitch = Random.Range(0.9f, 1.1f);        // рандомный питч
+                audioSource.pitch = audioPitch;
+                audioSource.clip = audioWeapon.hitStart;            // звук попадания
+                audioSource.Play();
             }
         }
 

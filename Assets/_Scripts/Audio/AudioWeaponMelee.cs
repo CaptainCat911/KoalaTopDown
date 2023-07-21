@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioWeaponMelee : MonoBehaviour
 {
-    public AudioSource hitStart;
-    public AudioSource hitDone;
+    /*    public AudioSource hitStart;
+        public AudioSource hitDone;*/
+
+    public AudioClip hitStart;
+    public AudioClip hitDone;
 }

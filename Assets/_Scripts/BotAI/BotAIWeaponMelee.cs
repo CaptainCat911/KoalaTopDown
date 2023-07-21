@@ -83,6 +83,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     public LayerMask layerRayCastTarget;
 
     [Header("Звуки")]
+    [HideInInspector] public AudioSource audioSource;
     public AudioWeaponMelee audioWeapon;
     
 
@@ -93,6 +94,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     {
         botAI = GetComponentInParent<BotAI>();
         animator = GetComponentInParent<BotAIAnimator>().GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         //weaponHolderMelee = GetComponentInParent<BotAIMeleeWeaponHolder>();
         layerHit = botAI.layerHit;
     }
@@ -134,7 +136,10 @@ public class BotAIWeaponMelee : MonoBehaviour
             animator.SetFloat("HitType", type);     // тип атаки
             animator.SetTrigger("Hit");             // тригер для начала анимации
             if (audioWeapon)
-                audioWeapon.hitStart.Play();                    // звук взмаха
+            {
+                audioSource.clip = audioWeapon.hitStart;            // звук взмаха
+                audioSource.Play();
+            }
         }  
     }
 
@@ -220,12 +225,13 @@ public class BotAIWeaponMelee : MonoBehaviour
 
                 if (RayCastToTarget(botAI.transform, coll.transform, distance))     // проверка на щит
                 {
-                    fighter.TakeDamage(damage, new Vector2(0,0), 0);
+                    fighter.TakeDamage(damage, new Vector2(0, 0), 0);
                 }               
 
                 if (audioWeapon)                    
                 {
-                    audioWeapon.hitDone.Play();         // звук попадания
+                    audioSource.clip = audioWeapon.hitDone;                 // звук попадания
+                    audioSource.Play();                        
                 }
             }
             collidersHits = null;

@@ -3,7 +3,7 @@ using UnityEngine;
 public class BotAIAnimator : MonoBehaviour
 {
     BotAI botAi;                                    // ссылка на бота
-    NPC npc;                                      // ссылка на босса
+    NPC npc;                                        // ссылка на босса
     [HideInInspector] public Animator animator;     // аниматор
     BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;  // мили холдер
 
@@ -56,6 +56,20 @@ public class BotAIAnimator : MonoBehaviour
     {
         botAIMeleeWeaponHolder.currentWeapon.GravityOn(number);     // гравитация атака
     }
+
+
+    // Звук
+    public void SoudnAttack(string type)
+    {
+        if (type == "StartMeleeAttack")
+        {
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.clip = botAIMeleeWeaponHolder.currentWeapon.audioWeapon.hitStart;
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.Play();
+        }
+    }
+
+
+
 
 
     // Треил и пивот
