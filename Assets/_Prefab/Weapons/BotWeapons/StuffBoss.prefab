@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitStart: {fileID: 8300000, guid: ac3dd2fc5b0387349a8f14dc5419001e, type: 3}
   hitDone: {fileID: 8300000, guid: 744a7714c04d6cb4f9be9760d78dcb10, type: 3}
+  hitRange: {fileID: 8300000, guid: 9f4bca6de813c304ea383c46c255371d, type: 3}
 --- !u!1 &3786651681049121963
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +455,8 @@ MonoBehaviour:
   layerRayCastTarget:
     serializedVersion: 2
     m_Bits: 524288
-  audioWeapon: {fileID: 0}
+  audioSource: {fileID: 0}
+  audioWeapon: {fileID: 517858322006280573}
 --- !u!95 &2147084357117586853
 Animator:
   serializedVersion: 4

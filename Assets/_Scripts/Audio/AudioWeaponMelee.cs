@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AudioWeaponMelee : MonoBehaviour
 {
-    /*    public AudioSource hitStart;
-        public AudioSource hitDone;*/
-
+    [Header("Обычные мобы")]
     public AudioClip hitStart;
     public AudioClip hitDone;
+
+    [Header("НПС")]
+    public AudioClip hitRange;
+    //public AudioClip ;
 }

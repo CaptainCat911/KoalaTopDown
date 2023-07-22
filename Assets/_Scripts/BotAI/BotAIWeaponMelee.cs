@@ -135,7 +135,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 
             animator.SetFloat("HitType", type);     // тип атаки
             animator.SetTrigger("Hit");             // тригер для начала анимации
-            if (audioWeapon)
+            if (audioWeapon && !botAI.newNpcSystem)
             {
                 audioSource.clip = audioWeapon.hitStart;            // звук взмаха
                 audioSource.Play();
@@ -270,6 +270,11 @@ public class BotAIWeaponMelee : MonoBehaviour
         {
             bullet.layer = LayerMask.NameToLayer("BulletPlayer");           // слой пули
             bullet.GetComponent<Bullet>().layerExplousion = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");
+        }
+        if (audioWeapon)
+        {
+            audioSource.clip = audioWeapon.hitRange;                 // звук попадания
+            audioSource.Play();
         }
     }
 

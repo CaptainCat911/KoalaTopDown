@@ -59,7 +59,7 @@ public class BotAIAnimator : MonoBehaviour
 
 
     // Звук
-    public void SoudnAttack(string type)
+    public void SoundAttack(string type)
     {
         if (type == "StartMeleeAttack")
         {
