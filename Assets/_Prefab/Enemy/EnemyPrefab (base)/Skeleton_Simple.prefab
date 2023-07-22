@@ -252,6 +252,7 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
+  timeForDeath: 2.5
   debug: 0
   bubbleTexts:
   - "\u0421\u043A\u0435\u043B\u0435\u0442\u043E\u0432 \u043D\u0435 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C!"
@@ -356,7 +357,7 @@ MonoBehaviour:
   - {x: 0.11469499, y: -0.43356812, z: 0}
   m_ShapePathHash: 1195901240
   m_Mesh: {fileID: 0}
-  m_InstanceId: 286948
+  m_InstanceId: 1431218
 --- !u!82 &8796676852888449190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -713,7 +714,8 @@ MonoBehaviour:
   audioClipsTaunt:
   - {fileID: 8300000, guid: 827b9a03db0a6a64dabb71db3c5ef965, type: 3}
   - {fileID: 8300000, guid: 7907846604ae4f749bb07125ca4031da, type: 3}
-  - {fileID: 8300000, guid: 3b23f0c87f2a5314a87cfa38cc214719, type: 3}
+  - {fileID: 8300000, guid: a319fa54f319d2b4cbf43990be7a5ea6, type: 3}
+  - {fileID: 8300000, guid: 3c495b8f2b6eb224c81554e519b60056, type: 3}
 --- !u!1001 &2862663952187923861
 PrefabInstance:
   m_ObjectHideFlags: 0
