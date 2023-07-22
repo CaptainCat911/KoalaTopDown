@@ -139,7 +139,7 @@ public class MeleeWeapon : MonoBehaviour
             {
                 float audioPitch = Random.Range(0.9f, 1.1f);        // рандомный питч
                 audioSource.pitch = audioPitch;
-                audioSource.clip = audioWeapon.hitStart;            // звук попадани€
+                audioSource.clip = audioWeapon.hitDone;            // звук попадани€
                 audioSource.Play();
             }
         }
