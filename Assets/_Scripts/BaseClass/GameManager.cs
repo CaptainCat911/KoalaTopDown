@@ -41,7 +41,22 @@ public class GameManager : MonoBehaviour
     bool paused;
     bool slowed;
 
-    //[HideInInspector] public int enemyCount;
+    [Header("Настройки арены")]
+    public EnemySpawner[] enemySpawners;
+    public bool arenaStart;
+    public int arenaMaxEnemys;
+    public bool arenaSpawnStarted;
+    public int arenaEnemyCount;
+    // Таймер
+    float time;
+    public float timer_1; 
+    public float timer_2; 
+    public float timer_3;
+    public float timer_4;
+    bool timerDone_1;
+    bool timerDone_2;
+    bool timerDone_3;
+    bool timerDone_4;
 
 
     private void Awake()
@@ -107,18 +122,92 @@ public class GameManager : MonoBehaviour
             NextScene(3);
         }
 
+        ArenaUpdate();              // апдейт арены, остановка спауна если слишком много врагов       
+
+
         /*        if (Input.GetKeyDown(keyOpenMagazine))
                 {
                     OpenCloseMagazine();
                 }*/
     }
 
-/*    public void OpenCloseMagazine()
+    /*    public void OpenCloseMagazine()
+        {
+            isPlayerEnactive = !isPlayerEnactive;
+            openMagazine = !openMagazine;
+            magazine.SetActive(openMagazine);
+        }*/
+
+
+    private void FixedUpdate()
     {
-        isPlayerEnactive = !isPlayerEnactive;
-        openMagazine = !openMagazine;
-        magazine.SetActive(openMagazine);
-    }*/
+        if (arenaStart)
+        {
+            ArenaTimer();
+        }            
+    }
+
+    public void ArenaStartStop(bool status)
+    {
+        arenaStart = status;
+    }
+
+    void ArenaUpdate()
+    {
+        if (!arenaStart)
+            return;
+
+        if (arenaEnemyCount >= arenaMaxEnemys)
+        {
+            arenaSpawnStarted = false;
+        }
+        else if (!arenaSpawnStarted)
+        {
+            arenaSpawnStarted = true;
+        }
+
+        // Установка сложности по таймеру
+        if (time >= timer_1 && !timerDone_1)
+        {
+            ArenaAddNewEnemy(0);
+            //ArenaAddNewEnemy(0);
+            arenaMaxEnemys = 15;
+            timerDone_1 = true;
+        }
+        if (time >= timer_2 && !timerDone_2)
+        {
+            ArenaAddNewEnemy(1);
+            arenaMaxEnemys = 20;
+            timerDone_2 = true;
+        }
+        if (time >= timer_3 && !timerDone_3)
+        {
+            ArenaAddNewEnemy(2);
+            arenaMaxEnemys = 25;
+            timerDone_3 = true;
+        }
+        if (time >= timer_4 && !timerDone_4)
+        {
+            ArenaAddNewEnemy(3);
+            arenaMaxEnemys = 30;
+            timerDone_4 = true;
+        }
+    }
+    
+    void ArenaTimer()
+    {
+        time += 0.02f;
+    }
+
+    void ArenaAddNewEnemy(int number)
+    {
+        foreach (EnemySpawner enemySpawner in enemySpawners)
+        {
+            enemySpawner.AddNewEnemy(number);
+        }
+    }
+
+
 
 
     // Ивенты

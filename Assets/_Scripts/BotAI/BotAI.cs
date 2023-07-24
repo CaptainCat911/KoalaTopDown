@@ -28,6 +28,7 @@ public class BotAI : Fighter
     public bool isNeutral;                                  // не будет никого атаковать
     public bool isFriendly;                                 // союзный бот
     public bool isEnemy;                                    // несоюзный бот
+    public bool isArenaEnemy;                               // бот для арены
     //public bool isFollow;                                   // следовать
 
     [Header("Параметры тригера")]
@@ -110,6 +111,8 @@ public class BotAI : Fighter
     public AudioEnemy audioEnemy;       // набор звуков
     public bool withAudioChat;          // с репликой
     bool sayedAudoiChat;
+
+
 
 
 
@@ -631,6 +634,12 @@ public class BotAI : Fighter
             agent.enabled = false;              // выключаем агента
             Destroy(gameObject);
         }            
+
+        // Для арены
+        if (isArenaEnemy)
+        {
+            GameManager.instance.arenaEnemyCount--;
+        }
     }
 
     void AfterDeath()

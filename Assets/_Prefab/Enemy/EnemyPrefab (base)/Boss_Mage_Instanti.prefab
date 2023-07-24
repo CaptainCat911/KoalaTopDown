@@ -444,6 +444,7 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  isArenaEnemy: 0
   triggerLenght: 7
   distanceToChangeTarget: 20
   target: {fileID: 0}
@@ -473,6 +474,10 @@ MonoBehaviour:
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
+  noTriggerAgro: 0
+  events:
+    m_PersistentCalls:
+      m_Calls: []
   deathEffect: {fileID: 5727708654878073701, guid: bfac2c014c6cedc41b5e1725ea8393e2, type: 3}
   deathCameraShake: 10
   aimAnglePivot: 0
@@ -483,13 +488,17 @@ MonoBehaviour:
     m_Bits: 0
   friendTarget: {fileID: 0}
   fastDeathAnim: 1
+  timeForDeath: 2.5
   debug: 0
   bubbleTexts: []
   withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
   attackingNow: 0
-  mainBossAttack: 0
+  mainBoss: 0
+  shadowBoss: 0
   immortalBoss: 0
-  cooldownAttack: 2
+  cooldownAttack: 3
   lowHp: 0
   rangeAttackChance: 100
   rangeAttackDistance: 6
@@ -502,6 +511,9 @@ MonoBehaviour:
   laserChance: 10
   teleportChance: 0
   textToSay: []
+  shadowTeleports: []
+  waitShadowTeleport: {fileID: 0}
+  enemySpawners: []
 --- !u!114 &-738877946137100874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,7 +542,7 @@ MonoBehaviour:
   - {x: 0.32037354, y: -1.3852081, z: 0}
   m_ShapePathHash: 116559005
   m_Mesh: {fileID: 0}
-  m_InstanceId: 768334
+  m_InstanceId: 1747370
 --- !u!1001 &2170014190984783942
 PrefabInstance:
   m_ObjectHideFlags: 0
