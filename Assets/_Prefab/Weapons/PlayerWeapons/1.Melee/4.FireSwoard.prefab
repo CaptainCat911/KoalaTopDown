@@ -406,7 +406,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &4309950815181896357
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   hitBox: {fileID: 1630045362412420869}
   damage: 120
   pushForce: 10
-  radius: 0.8
+  radius: 0.9
   cooldown: 0.5
   capsuleLeght: 0
   capsuleWidht: 0
