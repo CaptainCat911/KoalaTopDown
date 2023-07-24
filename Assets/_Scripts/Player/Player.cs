@@ -158,6 +158,8 @@ public class Player : Fighter
             }
             else
             {
+                if (moveDirection.magnitude == 0)
+                    return;
                 nextTimeToDash = Time.time + 1f / dashRate;                     // вычисляем кд
                 Dash();
             }
@@ -252,13 +254,23 @@ public class Player : Fighter
         if (audioPlayer)
         {
             
-            //float audioPitch = Random.Range(0.9f, 1.1f);                            // рандомный питч
-            //audioSource.pitch = audioPitch;                                         // устанавливаем питч
-            audioSource.clip = audioPlayer.audioClipsDash;                 // устанавливаем выбранный звук в аудиоСоурс
-            audioSource.Play();                                                     // воспроизводим
-            //audioSource.pitch = 1f;                                                 // возвращаем обычный питч 
-        }
-        rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);              // даём импульс
+            //float audioPitch = Random.Range(0.9f, 1.1f);                        // рандомный питч
+            //audioSource.pitch = audioPitch;                                     // устанавливаем питч
+            audioSource.clip = audioPlayer.audioClipsDash;                      // устанавливаем выбранный звук в аудиоСоурс
+            audioSource.Play();                                                 // воспроизводим
+            //audioSource.pitch = 1f;                                             // возвращаем обычный питч 
+        }        
+        
+        rb2D.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);      // даём импульс
+
+        blinkTrail.emitting = true;                                         // включаем треил
+        Invoke(nameof(DashTrailOff), 0.2f);
+        
+    }
+
+    void DashTrailOff()
+    {
+        blinkTrail.emitting = false;                                        // включаем треил
     }
 
     public void EnableHolders(bool status)

@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
+        
 
 
         if (Input.GetKeyDown(KeyCode.H))
@@ -170,12 +170,13 @@ public class GameManager : MonoBehaviour
         if (time >= timer_1 && !timerDone_1)
         {
             ArenaAddNewEnemy(0);
-            //ArenaAddNewEnemy(0);
+            ArenaAddNewEnemy(0);
             arenaMaxEnemys = 15;
             timerDone_1 = true;
         }
         if (time >= timer_2 && !timerDone_2)
         {
+            ArenaAddNewEnemy(1);
             ArenaAddNewEnemy(1);
             arenaMaxEnemys = 20;
             timerDone_2 = true;
@@ -197,6 +198,7 @@ public class GameManager : MonoBehaviour
     void ArenaTimer()
     {
         time += 0.02f;
+        Debug.Log(Time.time);
     }
 
     void ArenaAddNewEnemy(int number)

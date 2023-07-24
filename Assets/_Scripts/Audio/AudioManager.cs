@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip[] tracks;
+    public float trackVolume;
     public float speedTrackChange;
     AudioSource audioSource;
     bool volumeMinus;
@@ -22,12 +23,14 @@ public class AudioManager : MonoBehaviour
         
     void FixedUpdate()
     {
-        if (volumeMinus && audioSource.volume > 0)      
+        if (volumeMinus && audioSource.volume >= 0)      
         {
             audioSource.volume -= speedTrackChange;                // уменьшаем громкость
         }
-        if (volumePlus && audioSource.volume <1)
+        if (volumePlus && audioSource.volume <= 1)
         {
+            if (audioSource.volume >= trackVolume)
+                return;
             audioSource.volume += speedTrackChange;                // уменьшаем громкость
         }
 
@@ -41,7 +44,7 @@ public class AudioManager : MonoBehaviour
     IEnumerator SetNewTrackCoroutine(int number)
     {        
         volumeMinus = true;                             // уменьшаем громкость           
-        yield return new WaitForSeconds(1f);          // ждем 
+        yield return new WaitForSeconds(1f);            // ждем 
 
         volumeMinus = false;
         audioSource.clip = tracks[number];              // меняем трек
