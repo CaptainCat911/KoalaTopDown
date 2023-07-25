@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 8f66c60fb167a0f4299a9865ef4badc9, type: 3}
-  m_Color: {r: 0.4528302, g: 0.0064079626, b: 0.0064079626, a: 1}
+  m_Color: {r: 1, g: 0.808957, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,14 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabEnemies:
-  - {fileID: 134668306723687997, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
+  - {fileID: 1598857050350358110, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
+  prefabEnemiesToAdd: []
   active: 1
-  chasePlayer: 1
   chaseDistance: 30
   cooldown: 0.1
   enemysHowMuch: 0
   spawnEffect: {fileID: 7845441016114820387, guid: 87167e05437f7c844b845e558dc030aa, type: 3}
   bossSpawner: 1
+  arenaSpawner: 0
+  noItem: 0
 --- !u!1 &4133640175884828771
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +183,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 8f66c60fb167a0f4299a9865ef4badc9, type: 3}
-  m_Color: {r: 0.4339623, g: 0.07164471, b: 0.07164471, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.059297085, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

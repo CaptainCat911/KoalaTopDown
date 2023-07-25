@@ -357,7 +357,7 @@ public class BotAIWeaponMelee : MonoBehaviour
     public void LaserAttack()
     {
         // Рейкаст2Д        
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(hitBox.position, new Vector2(0.8f, 0.8f), 0f, hitBox.right, 15, layerHit);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(hitBox.position, new Vector2(0.8f, 0.8f), 0f, hitBox.right, 14, layerHit);
         if (hits != null)
         {
             foreach (RaycastHit2D hit in hits)

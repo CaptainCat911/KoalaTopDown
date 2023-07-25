@@ -20,13 +20,14 @@ public class EnemySpawner : MonoBehaviour
     public GameObject spawnEffect;          // эффект спавна
     public bool bossSpawner;                // спавнер для босса
     public bool arenaSpawner;               // спавнер для арены
+    public bool arenaBossSpawner;           // спавнер боссов для арены
     public bool noItem;                     // спаун без предмета  
 
     //public int enemyTriggerDistance;        // установить дистанцию тригера врагов
 
     void Update()
     {
-        if (!arenaSpawner && active && Time.time - lastSpawn > cooldown && enemyCount < enemysHowMuch)
+        if (!arenaSpawner && !arenaBossSpawner && active && Time.time - lastSpawn > cooldown && enemyCount < enemysHowMuch)
         {
             lastSpawn = Time.time;
 
@@ -44,7 +45,16 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // Для арены
-        if (arenaSpawner && active && Time.time - lastSpawn > cooldown && GameManager.instance.arenaSpawnStarted)
+        if (arenaSpawner && active && Time.time - lastSpawn > cooldown && EventManager.instance.arenaSpawnStarted)
+        {
+            lastSpawn = Time.time;
+
+            GameObject effect = Instantiate(spawnEffect, transform.position, Quaternion.identity);      // создаем эффект
+            Destroy(effect, 0.5f);                                                                      // уничтожаем эффект через .. сек            
+
+            Invoke("SpawnEnemy", 0.1f);
+        }
+        if (arenaBossSpawner && active && Time.time - lastSpawn > cooldown)
         {
             lastSpawn = Time.time;
 
@@ -70,7 +80,12 @@ public class EnemySpawner : MonoBehaviour
         if (arenaSpawner)
         {
             bot.isArenaEnemy = true;
-            GameManager.instance.arenaEnemyCount++;
+            EventManager.instance.arenaEnemyCount++;
+        }
+        if (arenaBossSpawner)
+        {
+            bot.isArenaBoss = true;
+            EventManager.instance.arenaBossCount++;
         }
         if (noItem)
         {

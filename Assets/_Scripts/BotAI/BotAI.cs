@@ -29,6 +29,8 @@ public class BotAI : Fighter
     public bool isFriendly;                                 // союзный бот
     public bool isEnemy;                                    // несоюзный бот
     public bool isArenaEnemy;                               // бот для арены
+    public bool isArenaBoss;                                // босс для арены
+
     //public bool isFollow;                                   // следовать
 
     [Header("Параметры тригера")]
@@ -638,7 +640,11 @@ public class BotAI : Fighter
         // Для арены
         if (isArenaEnemy)
         {
-            GameManager.instance.arenaEnemyCount--;
+            EventManager.instance.arenaEnemyCount--;
+        }
+        if (isArenaBoss)
+        {
+            EventManager.instance.arenaBossCount--;
         }
     }
 

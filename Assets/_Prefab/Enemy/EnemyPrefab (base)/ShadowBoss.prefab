@@ -395,6 +395,7 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  isArenaEnemy: 0
   triggerLenght: 30
   distanceToChangeTarget: 3
   target: {fileID: 0}
@@ -474,9 +475,12 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   fastDeathAnim: 1
+  timeForDeath: 2.5
   debug: 0
   bubbleTexts: []
   withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
   attackingNow: 0
   mainBoss: 0
   shadowBoss: 1
@@ -540,7 +544,7 @@ MonoBehaviour:
   - {x: 0.18598938, y: -0.68125916, z: 0}
   m_ShapePathHash: -571122161
   m_Mesh: {fileID: 0}
-  m_InstanceId: -89532
+  m_InstanceId: 1179140
 --- !u!1 &151560313669547486
 GameObject:
   m_ObjectHideFlags: 0
