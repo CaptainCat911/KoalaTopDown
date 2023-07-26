@@ -9,7 +9,9 @@ public class EventManager : MonoBehaviour
     [Header("Настройки арены")]    
     public EnemySpawner[] enemySpawners;                // спавнеры
     public EnemySpawner bossSpawner;                    // босс спавнер
+    public WaveSpawner[] waveSpawners;                  // волновые спавнеры
     public int arenaMaxEnemys;                          // макс кол-во врагов
+    public int arenaMaxBosses = 1;                      // макс кол-во боссов
     [HideInInspector] public int arenaEnemyCount;       // врагов на арене
     [HideInInspector] public int arenaBossCount;        // боссов на арене
     [HideInInspector] public bool arenaStart;           // арена началась
@@ -19,6 +21,8 @@ public class EventManager : MonoBehaviour
     public float[] timer;                               // сколько до следующего усиления арены
     public bool[] timerDone;                            // усиление сделано
     int i;                                              // счетчик
+    [HideInInspector] public int arenaEnemyKilled;      // сколько врагов убито
+    [HideInInspector] public int arenaBossKilled;       // сколько боссов убито
 
     private void Awake()
     {
@@ -27,6 +31,14 @@ public class EventManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            waveSpawners[0].MakeWave();
+            waveSpawners[1].MakeWave();
+            waveSpawners[2].MakeWave();
+            waveSpawners[3].MakeWave();
+        }
+
         ArenaUpdate();              // апдейт арены, остановка спауна если слишком много врагов   
     }
 
@@ -37,26 +49,32 @@ public class EventManager : MonoBehaviour
 
     public void ArenaStartStop(bool status)
     {
-        arenaStart = status;
+        arenaStart = status;        // запуск арены
     }
 
     void ArenaUpdate()
     {
         if (!arenaStart)
-            return;
-
-        if (arenaEnemyCount >= arenaMaxEnemys)
         {
-            arenaSpawnStarted = false;
+            if (arenaSpawnStarted)
+                arenaSpawnStarted = false;
+            if (bossSpawner.active)                            
+                bossSpawner.active = false;            
+            return;
+        }
+
+        if (arenaEnemyCount >= arenaMaxEnemys)      // если врагов больше, чем положено
+        {
+            arenaSpawnStarted = false;              // останавливаем спаун
         }
         else if (!arenaSpawnStarted)
         {
             arenaSpawnStarted = true;
         }
 
-        if (arenaBossStart)
+        if (arenaBossStart)                         // если спаун боссов запущен
         {
-            if (arenaBossCount > 2)
+            if (arenaBossCount >= arenaMaxBosses)
             {
                 bossSpawner.active = false;
             }
@@ -75,39 +93,51 @@ public class EventManager : MonoBehaviour
                 ArenaAddNewEnemy(0);
                 ArenaAddNewEnemy(0);
                 arenaMaxEnemys = 15;
-                timerDone[i] = true;
+                waveSpawners[0].MakeWave();                
             }
             if (i == 1)
             {
                 ArenaAddNewEnemy(1);
                 ArenaAddNewEnemy(1);
                 arenaMaxEnemys = 20;
-                timerDone[i] = true;
+                waveSpawners[3].MakeWave();
+                ArenaSpawnersSetCooldown(6);                
             }
             if (i == 2)
             {
-                arenaMaxEnemys = 0;
-                timerDone[i] = true;
+                ArenaAddNewEnemy(2);
+                arenaMaxEnemys = 20;
+                waveSpawners[1].MakeWave();
             }
             if (i == 3)
             {
-                ArenaAddNewEnemy(2);
-                arenaMaxEnemys = 25;
-                timerDone[i] = true;
+                arenaMaxEnemys = 25;            // максимум врагов на арене
+                waveSpawners[2].MakeWave();     // вызываем волну скелетов (5 шт)                
+                ArenaSpawnersSetCooldown(4);    // устанавливаем кд спаунеров                
             }
             if (i == 4)
             {
-                arenaBossStart = true;
-                timerDone[i] = true;
+                arenaMaxEnemys = 0;                
             }
             if (i == 5)
             {
-                bossSpawner.cooldown = 1;
-                timerDone[i] = true;
+                arenaBossStart = true;          // запускаем спаун боссов
+                arenaMaxEnemys = 30;
+                waveSpawners[0].MakeWave();
+                waveSpawners[3].MakeWave();                
             }
-            if (i >= 5)
-                return;
+            if (i == 6)
+            {
+                arenaMaxBosses = 3;             // максимум боссов на арене
+                bossSpawner.cooldown = 30;      // кд боссов на арене
+                waveSpawners[0].MakeWave();
+                waveSpawners[3].MakeWave();
+                ArenaSpawnersSetCooldown(2);                
+            }
 
+            timerDone[i] = true;                // событие выполнено
+            if (i >= 6)
+                return;
             i++;
         }
     }
@@ -126,6 +156,14 @@ public class EventManager : MonoBehaviour
         foreach (EnemySpawner enemySpawner in enemySpawners)
         {
             enemySpawner.AddNewEnemy(number);
+        }
+    }
+
+    void ArenaSpawnersSetCooldown(int number)
+    {
+        foreach (EnemySpawner enemySpawner in enemySpawners)
+        {
+            enemySpawner.cooldown = number;
         }
     }
 

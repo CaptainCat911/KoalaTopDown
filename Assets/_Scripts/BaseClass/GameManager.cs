@@ -42,8 +42,7 @@ public class GameManager : MonoBehaviour
     bool slowed;
 
     // Арена уровень
-    [HideInInspector] public bool arenaLvl;                                            
-
+    [HideInInspector] public bool arenaLvl;    
 
 
     private void Awake()

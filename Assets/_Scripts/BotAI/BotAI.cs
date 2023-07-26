@@ -641,10 +641,12 @@ public class BotAI : Fighter
         if (isArenaEnemy)
         {
             EventManager.instance.arenaEnemyCount--;
+            EventManager.instance.arenaEnemyKilled++;
         }
         if (isArenaBoss)
         {
             EventManager.instance.arenaBossCount--;
+            EventManager.instance.arenaBossKilled++;
         }
     }
 

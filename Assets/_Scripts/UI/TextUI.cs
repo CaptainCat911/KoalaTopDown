@@ -16,6 +16,9 @@ public class TextUI : MonoBehaviour
     public Text bombName;           // имя бомбы
     public Text ammoBomb;           // кол-во бомб
 
+    public Text arenaEnemyKilledCount;      // врагов убито
+    public Text arenaBossKilledCount;       // босов убито
+
 
     void Start()
     {
@@ -69,5 +72,10 @@ public class TextUI : MonoBehaviour
             ammoBomb.text = GameManager.instance.ammoManager.ammoBombs[GameManager.instance.
                     player.bombWeaponHolder.currentWeapon.weaponIndexForAmmo].allAmmo.ToString("0");       // находим кол-во патронов текущего оружия
         }
+
+        // Арена
+        arenaEnemyKilledCount.text = EventManager.instance.arenaEnemyKilled.ToString("0");
+        arenaBossKilledCount.text = EventManager.instance.arenaBossKilled.ToString("0");
+        
     }
 }
