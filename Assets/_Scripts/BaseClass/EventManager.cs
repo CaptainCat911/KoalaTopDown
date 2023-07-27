@@ -24,6 +24,14 @@ public class EventManager : MonoBehaviour
     [HideInInspector] public int arenaEnemyKilled;      // сколько врагов убито
     [HideInInspector] public int arenaBossKilled;       // сколько боссов убито
 
+    [Header("Оружия")]
+    public GameObject[] weapons;
+    public int[] countForWeapon;
+    public bool[] weaponSpawned;                        // усиление сделано
+    int j;                                              // счетчик
+
+
+
     private void Awake()
     {
         instance = this;
@@ -58,8 +66,8 @@ public class EventManager : MonoBehaviour
         {
             if (arenaSpawnStarted)
                 arenaSpawnStarted = false;
-            if (bossSpawner.active)                            
-                bossSpawner.active = false;            
+            if (bossSpawner.active)
+                bossSpawner.active = false;
             return;
         }
 
@@ -93,7 +101,7 @@ public class EventManager : MonoBehaviour
                 ArenaAddNewEnemy(0);
                 ArenaAddNewEnemy(0);
                 arenaMaxEnemys = 15;
-                waveSpawners[0].MakeWave();                
+                waveSpawners[0].MakeWave();
             }
             if (i == 1)
             {
@@ -101,7 +109,7 @@ public class EventManager : MonoBehaviour
                 ArenaAddNewEnemy(1);
                 arenaMaxEnemys = 20;
                 waveSpawners[3].MakeWave();
-                ArenaSpawnersSetCooldown(6);                
+                ArenaSpawnersSetCooldown(6);
             }
             if (i == 2)
             {
@@ -117,14 +125,14 @@ public class EventManager : MonoBehaviour
             }
             if (i == 4)
             {
-                arenaMaxEnemys = 0;                
+                arenaMaxEnemys = 0;
             }
             if (i == 5)
             {
                 arenaBossStart = true;          // запускаем спаун боссов
                 arenaMaxEnemys = 30;
                 waveSpawners[0].MakeWave();
-                waveSpawners[3].MakeWave();                
+                waveSpawners[3].MakeWave();
             }
             if (i == 6)
             {
@@ -132,13 +140,24 @@ public class EventManager : MonoBehaviour
                 bossSpawner.cooldown = 30;      // кд боссов на арене
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
-                ArenaSpawnersSetCooldown(2);                
+                ArenaSpawnersSetCooldown(2);
             }
 
             timerDone[i] = true;                // событие выполнено
             if (i >= 6)
                 return;
             i++;
+        }
+
+        // Спаун оружия от кол-ва убитых врагов
+        if (arenaEnemyKilled >= countForWeapon[j] && !weaponSpawned[j])
+        {
+            Debug.Log(weapons.Length);
+            weapons[j].SetActive(true);
+            weaponSpawned[j] = true;
+            if (j >= weapons.Length - 1)
+                return;
+            j++;
         }
     }
 
@@ -148,7 +167,7 @@ public class EventManager : MonoBehaviour
             return;
 
         time += 0.02f;
-        Debug.Log(time);
+        //Debug.Log(time);
     }
 
     void ArenaAddNewEnemy(int number)
