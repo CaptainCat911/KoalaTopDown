@@ -13,7 +13,8 @@ public class EnemySpawner : MonoBehaviour
     public bool active;                     // активен или нет
     //public bool chasePlayer;                // триггер врагов срабатывает сразу
     public float chaseDistance;             // дистанция триггера врагов
-    public float cooldown = 1f;             // перезарядка спауна    
+    public float cooldown = 1f;             // перезарядка спауна
+    float randomCd;                         // рандом для кд
     private float lastSpawn;
     public int enemysHowMuch;               // сколько врагов нужено
     int enemyCount;
@@ -23,16 +24,22 @@ public class EnemySpawner : MonoBehaviour
     public bool arenaBossSpawner;           // спавнер боссов для арены
     public bool noItem;                     // спаун без предмета  
 
+    [Header("Портал")]
+    public Animator portalAnimator;
+
     //public int enemyTriggerDistance;        // установить дистанцию тригера врагов
+
+    private void Start()
+    {
+        randomCd = Random.Range(1, 4);
+        lastSpawn = Time.time;
+    }
 
     void Update()
     {
-        if (!arenaSpawner && !arenaBossSpawner && active && Time.time - lastSpawn > cooldown && enemyCount < enemysHowMuch)
+        if (!arenaSpawner && !arenaBossSpawner && active && Time.time - (lastSpawn + randomCd) > cooldown && enemyCount < enemysHowMuch)
         {
             lastSpawn = Time.time;
-
-            GameObject effect = Instantiate(spawnEffect, transform.position, Quaternion.identity);      // создаем эффект
-            Destroy(effect, 0.5f);                                                                      // уничтожаем эффект через .. сек
             
             Invoke("SpawnEnemy", 0.1f);
 
@@ -45,21 +52,15 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // Для арены
-        if (arenaSpawner && active && Time.time - lastSpawn > cooldown && EventManager.instance.arenaSpawnStarted)
+        if (arenaSpawner && active && Time.time - (lastSpawn + randomCd) > cooldown && EventManager.instance.arenaSpawnStarted)
         {
             lastSpawn = Time.time;
-
-            GameObject effect = Instantiate(spawnEffect, transform.position, Quaternion.identity);      // создаем эффект
-            Destroy(effect, 0.5f);                                                                      // уничтожаем эффект через .. сек            
-
-            Invoke("SpawnEnemy", 0.1f);
+            portalAnimator.SetTrigger("Open");
+            Invoke("SpawnEnemy", 2f);
         }
         if (arenaBossSpawner && active && Time.time - lastSpawn > cooldown)
         {
-            lastSpawn = Time.time;
-
-            GameObject effect = Instantiate(spawnEffect, transform.position, Quaternion.identity);      // создаем эффект
-            Destroy(effect, 0.5f);                                                                      // уничтожаем эффект через .. сек            
+            lastSpawn = Time.time;           
 
             Invoke("SpawnEnemy", 0.1f);
         }
@@ -67,6 +68,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        GameObject effect = Instantiate(spawnEffect, transform.position, Quaternion.identity);      // создаем эффект
+        Destroy(effect, 0.5f);                                                                      // уничтожаем эффект через .. сек 
+
         int ndx = Random.Range(0, prefabEnemies.Count);                // выбираем рандом из массива врагов
         GameObject enemyPref = Instantiate(prefabEnemies[ndx], transform.position, Quaternion.identity);        // создаём префаб
         //go.transform.SetParent(transform, false);                     // назначаем этот спавнер родителем
@@ -99,6 +103,9 @@ public class EnemySpawner : MonoBehaviour
         }*/
         if (!arenaSpawner)
             enemyCount++;
+
+        if (portalAnimator)
+            portalAnimator.SetTrigger("Close");
 
         //GameManager.instance.enemyCount++;
         if (enemyCount >= enemysHowMuch && !bossSpawner && !arenaSpawner)

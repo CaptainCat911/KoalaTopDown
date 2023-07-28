@@ -648,7 +648,7 @@ public class Player : Fighter
     // Сбросить ботам цель
     void ResetTargetBots()
     {
-        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 20, layerExplBlink);     // создаем круг в позиции объекта с радиусом
+        Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 50, layerExplBlink);     // создаем круг в позиции объекта с радиусом
         foreach (Collider2D coll in collidersHits)
         {
             if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
