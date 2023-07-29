@@ -174,7 +174,7 @@ public class EventManager : MonoBehaviour
             return;
 
         time += 0.02f;
-        //Debug.Log(time);
+        Debug.Log(time);
     }
 
     void ArenaAddNewEnemy(int number)
@@ -193,10 +193,10 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void MakeLvlArena()
+/*    public void MakeLvlArena()
     {
         GameManager.instance.arenaLvl = true;
-    }
+    }*/
 
 
 

@@ -551,7 +551,7 @@ public class Player : Fighter
         noAgro = true;
         ResetTargetBots();                                  // сбросить цель врагам
 
-        if (GameManager.instance.arenaLvl)
+        if (EventManager.instance)
         {
             EventManager.instance.ArenaStartStop(false);
         }

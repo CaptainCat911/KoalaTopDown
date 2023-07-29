@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     bool slowed;
 
     // Арена уровень
-    [HideInInspector] public bool arenaLvl;    
+    //[HideInInspector] public bool arenaLvl;    
 
 
     private void Awake()
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            NextScene(3);
+            NextScene(4);
         }
 
             
@@ -256,6 +256,10 @@ public class GameManager : MonoBehaviour
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену
         SceneManager.LoadScene(sceneName);              // загружаем сцену
+        /*if (sceneNumber == 4)
+        {
+            arenaLvl = true;
+        }*/
     }
 
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)                      // выполняем при загрузке сцены
