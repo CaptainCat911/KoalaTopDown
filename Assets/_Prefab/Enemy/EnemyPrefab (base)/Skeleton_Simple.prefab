@@ -209,6 +209,8 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  isArenaEnemy: 0
+  isArenaBoss: 0
   triggerLenght: 5
   distanceToChangeTarget: 3
   target: {fileID: 0}
@@ -357,7 +359,7 @@ MonoBehaviour:
   - {x: 0.11469499, y: -0.43356812, z: 0}
   m_ShapePathHash: 1195901240
   m_Mesh: {fileID: 0}
-  m_InstanceId: 1431218
+  m_InstanceId: 3647758
 --- !u!82 &8796676852888449190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -709,13 +711,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipsDeath:
+  - {fileID: 8300000, guid: e350d707b86f8d54d9e5253db200c7f0, type: 3}
+  - {fileID: 8300000, guid: 2740483c9f4c3fd4cba8e625c8cf614e, type: 3}
+  - {fileID: 8300000, guid: 4c559cdf1b3151c459f502093948051e, type: 3}
+  - {fileID: 8300000, guid: 5a6de7a70ea52344e96ceb50a2ce751a, type: 3}
+  - {fileID: 8300000, guid: 1d085d3db5db2784d805e828246f2fc7, type: 3}
+  - {fileID: 8300000, guid: 62240ce538a84744bb99fdff6284f4dd, type: 3}
+  - {fileID: 8300000, guid: 1c5f103e721f17f47be374542a739ef1, type: 3}
   - {fileID: 8300000, guid: 93cf71da46fd03442b5f5fc2809086d4, type: 3}
   - {fileID: 8300000, guid: a745658c2683b3a4a92cc1608eb02d03, type: 3}
   audioClipsTaunt:
+  - {fileID: 8300000, guid: 9aeabd838a26f3d45ad5fb79d041492f, type: 3}
+  - {fileID: 8300000, guid: 716097fdbeecab14b86b0eb3b6de027e, type: 3}
   - {fileID: 8300000, guid: 827b9a03db0a6a64dabb71db3c5ef965, type: 3}
   - {fileID: 8300000, guid: 7907846604ae4f749bb07125ca4031da, type: 3}
   - {fileID: 8300000, guid: a319fa54f319d2b4cbf43990be7a5ea6, type: 3}
-  - {fileID: 8300000, guid: 3c495b8f2b6eb224c81554e519b60056, type: 3}
 --- !u!1001 &2862663952187923861
 PrefabInstance:
   m_ObjectHideFlags: 0
