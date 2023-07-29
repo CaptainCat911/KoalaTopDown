@@ -74,8 +74,10 @@ public class TextUI : MonoBehaviour
         }
 
         // Арена
-        arenaEnemyKilledCount.text = EventManager.instance.arenaEnemyKilled.ToString("0");
-        arenaBossKilledCount.text = EventManager.instance.arenaBossKilled.ToString("0");
-        
+        if(GameManager.instance.arenaLvl)
+        {
+            arenaEnemyKilledCount.text = EventManager.instance.arenaEnemyKilled.ToString("0");
+            arenaBossKilledCount.text = EventManager.instance.arenaBossKilled.ToString("0");
+        }        
     }
 }

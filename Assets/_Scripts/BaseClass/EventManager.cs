@@ -109,7 +109,7 @@ public class EventManager : MonoBehaviour
                 ArenaAddNewEnemy(1);
                 arenaMaxEnemys = 20;
                 waveSpawners[3].MakeWave();
-                ArenaSpawnersSetCooldown(6);
+                ArenaSpawnersSetCooldown(12);
             }
             if (i == 2)
             {
@@ -121,7 +121,7 @@ public class EventManager : MonoBehaviour
             {
                 arenaMaxEnemys = 25;            // ìàêñèìóì âğàãîâ íà àğåíå
                 waveSpawners[2].MakeWave();     // âûçûâàåì âîëíó ñêåëåòîâ (5 øò)                
-                ArenaSpawnersSetCooldown(4);    // óñòàíàâëèâàåì êä ñïàóíåğîâ                
+                ArenaSpawnersSetCooldown(8);    // óñòàíàâëèâàåì êä ñïàóíåğîâ                
             }
             if (i == 4)
             {
@@ -136,15 +136,22 @@ public class EventManager : MonoBehaviour
             }
             if (i == 6)
             {
+                arenaMaxBosses = 2;             // ìàêñèìóì áîññîâ íà àğåíå
+                bossSpawner.cooldown = 45;      // êä áîññîâ íà àğåíå
+                waveSpawners[0].MakeWave();
+                waveSpawners[3].MakeWave();
+                ArenaSpawnersSetCooldown(4);
+            }
+            if (i == 7)
+            {
                 arenaMaxBosses = 3;             // ìàêñèìóì áîññîâ íà àğåíå
                 bossSpawner.cooldown = 30;      // êä áîññîâ íà àğåíå
                 waveSpawners[0].MakeWave();
-                waveSpawners[3].MakeWave();
-                ArenaSpawnersSetCooldown(2);
+                waveSpawners[3].MakeWave();                
             }
 
             timerDone[i] = true;                // ñîáûòèå âûïîëíåíî
-            if (i >= 6)
+            if (i >= 7)
                 return;
             i++;
         }
