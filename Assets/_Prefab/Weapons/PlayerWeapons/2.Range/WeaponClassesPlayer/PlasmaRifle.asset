@@ -13,16 +13,36 @@ MonoBehaviour:
   m_Name: PlasmaRifle
   m_EditorClassIdentifier: 
   weaponName: "\u041F\u043B\u0430\u0437\u043C\u0435\u043D\u043D\u0430\u044F \u0432\u0438\u043D\u0442\u043E\u0432\u043A\u0430"
-  projectileWeapon: 1
-  splitProjectileWeapon: 0
+  weaponType: 0
+  damage: 25
+  fireRate: 8
+  bulletSpeed: 15
+  pushForce: 1
+  enemyToDamageCount: 0
+  recoil: 1
+  delayFire: 0
+  forceBackFire: 0
+  effectBackFire: 0
   bulletPrefab: {fileID: 5170081587130710907, guid: fec3ecea4b7d8514a8449b715d50d1c3, type: 3}
-  rayCastWeapon: 0
+  boxSize: 0
+  range: 0
   layerRayCast:
     serializedVersion: 2
     m_Bits: 0
-  damage: 25
-  fireRate: 7
-  bulletSpeed: 15
-  pushForce: 1
-  forceBackFire: 0
-  recoil: 1
+  splitTimes: 0
+  splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0

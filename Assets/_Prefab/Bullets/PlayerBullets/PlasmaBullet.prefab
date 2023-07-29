@@ -266,16 +266,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4679c321acafe48b5ab91030711ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  isPlayerBullet: 0
   damage: 0
   pushForce: 0
   enemyToDamageCount: 0
   enemyDamaged: 0
-  isPlayerBullet: 0
-  expEffect: {fileID: 5727708654878073701, guid: 6a6fbace441d3eb49ac7ef30e92363cd, type: 3}
   layerExplousion:
     serializedVersion: 2
     m_Bits: 4225
-  expRadius: 1
+  expEffect: {fileID: 5727708654878073701, guid: 6a6fbace441d3eb49ac7ef30e92363cd, type: 3}
+  sparksEffect: {fileID: 0}
+  audioExplousion: {fileID: 0}
+  audioProjectile: {fileID: 0}
+  expRadius: 2
   withSplit: 0
   prefabFireBall: 0
   splitTimes: 0
@@ -287,3 +291,6 @@ MonoBehaviour:
   timeToExpl: 0
   cameraAmplitudeShake: 1
   cameraTimedeShake: 0.1
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 0

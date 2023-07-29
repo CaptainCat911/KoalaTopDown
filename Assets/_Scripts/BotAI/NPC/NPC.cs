@@ -145,13 +145,14 @@ public class NPC : BotAI
         if (!isTextDone)                            // если не проговорили весь текст
         {
             ChatBubble.Clear(gameObject);           // очищаем диалог
-            ChatBubble.Create(transform, new Vector3(-1f, 0.2f), textToSay[dialogeNumber], 4f);     // говорим     
+            ChatBubble.Create(transform, new Vector3(0f, 0.2f), textToSay[dialogeNumber], 4f);     // говорим     
 
             dialogeNumber++;                        // + к номеру диалога
 
             if (dialogeNumber >= textToSay.Length)  // если номер диалога последний
             {
-                isTextDone = true;                  // проговорили весь текст
+                //isTextDone = true;                  // проговорили весь текст
+                dialogeNumber = 0;
             }
         }
         else
