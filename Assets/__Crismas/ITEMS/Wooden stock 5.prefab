@@ -101,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009471178, y: 0.11462015}
+  m_Offset: {x: -0.009471178, y: 0.0884496}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2648412, y: 1.2297739}
+  m_Size: {x: 0.2648412, y: 1.1774328}
   m_EdgeRadius: 0
 --- !u!50 &3300082381565689868
 Rigidbody2D:
@@ -150,6 +150,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
   maxHealth: 30
   noAgro: 0
@@ -158,7 +159,7 @@ MonoBehaviour:
   hpBarOn: 0
   hpBarGO: {fileID: 0}
   destroyed: 0
-  withObstacle: 0
+  withObstacle: 1
   itemToSpawn: {fileID: 0}
   expEffect: {fileID: 7845441016114820387, guid: 0a3f06b9520c2114ca45f0bece3fcaa2, type: 3}
   m_spriteDestroyed:
@@ -170,14 +171,14 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3300082381565689865}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1.14, y: 0.82, z: 0.1}
+  m_Extents: {x: 0.15, y: 0.6, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Center: {x: 0, y: 0.08, z: 0}
   m_TimeToStationary: 0.5
 --- !u!1 &5829304671917812136
 GameObject:

@@ -19,7 +19,9 @@ public class ResRoomManager : MonoBehaviour
     }
 
     public void SpawnMonsterAndChest()
-    {       
+    {
+        if (ArenaManager.instance)
+            return;
         GameObject monster = Instantiate(monsterPref, monsterPos.position, Quaternion.identity);            // создаЄм монстра        
         GameObject chest = Instantiate(chestPref, chestPos.position, Quaternion.identity);                  // создаЄм сундук        
         //agent = enemyPref.GetComponentInChildren<NavMeshAgent>();                   // находим Ќавћешјгент        

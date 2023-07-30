@@ -1,0 +1,603 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3363006184936330905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3363006184936330902}
+  - component: {fileID: 3363006184936330903}
+  - component: {fileID: 3363006184936330900}
+  m_Layer: 0
+  m_Name: AmmoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3363006184936330902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363006184936330905}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4895263, y: -0.096422, z: -0.0041213385}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3363006184936330903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363006184936330905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15388be85a59174a836ae4916c4b677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoWeapons:
+  - name: "\u0410\u0440\u0431\u0430\u043B\u0435\u0442"
+    weapon: {fileID: 3016861489659110144, guid: 0534d7bf46d38c1459fc898d54c9ab08, type: 3}
+    goldPriseWeapon: 50
+    goldPriseAmmo: 10
+    ammoInReload: 30
+    allAmmo: 100000
+  - name: "\u0420\u0435\u0432\u043E\u043B\u044C\u0432\u0435\u0440"
+    weapon: {fileID: 2496722168628502743, guid: fc436987fb33d434ba3b1a1237f7eb43, type: 3}
+    goldPriseWeapon: 500
+    goldPriseAmmo: 30
+    ammoInReload: 20
+    allAmmo: 60
+  - name: "\u041A\u0430\u0440-98"
+    weapon: {fileID: 2496722168628502743, guid: e980ad862cc0986478deeb0a6df7bd60, type: 3}
+    goldPriseWeapon: 1200
+    goldPriseAmmo: 40
+    ammoInReload: 15
+    allAmmo: 30
+  - name: "\u0422\u043E\u043C\u043F\u0441\u043E\u043D"
+    weapon: {fileID: 2496722168628502743, guid: 1c28be433ee20cf47aa630506e416977, type: 3}
+    goldPriseWeapon: 2100
+    goldPriseAmmo: 25
+    ammoInReload: 30
+    allAmmo: 120
+  - name: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
+    weapon: {fileID: 2496722168628502743, guid: 63ea0bcbe42143c4a9ee31184431194a, type: 3}
+    goldPriseWeapon: 2500
+    goldPriseAmmo: 80
+    ammoInReload: 12
+    allAmmo: 360
+  - name: "\u0420\u041F\u0413"
+    weapon: {fileID: 6020096225121009833, guid: 6b8ae5e41153ea64b9a398e92d9c991f, type: 3}
+    goldPriseWeapon: 3000
+    goldPriseAmmo: 100
+    ammoInReload: 1
+    allAmmo: 150
+  - name: "\u0410\u041A-47"
+    weapon: {fileID: 2496722168628502743, guid: 9081bf87110607c46a86f5a4fcd28bff, type: 3}
+    goldPriseWeapon: 3500
+    goldPriseAmmo: 60
+    ammoInReload: 30
+    allAmmo: 900
+  - name: "\u0410\u0412\u041C"
+    weapon: {fileID: 2496722168628502743, guid: 9955cc4c20a52e34fbf429f2caa22d3b, type: 3}
+    goldPriseWeapon: 5000
+    goldPriseAmmo: 100
+    ammoInReload: 10
+    allAmmo: 600
+  - name: "\u041E\u0433\u043D\u0435\u043C\u0435\u0442"
+    weapon: {fileID: 2496722168628502743, guid: e4c28e4b5a53b084c98fe0896dfe00ee, type: 3}
+    goldPriseWeapon: 6000
+    goldPriseAmmo: 200
+    ammoInReload: 100
+    allAmmo: 3000
+  - name: "\u041C\u0438\u043D\u0438\u0433\u0430\u043D"
+    weapon: {fileID: 2496722168628502743, guid: 4a434330d06f85945a2abbbade00d556, type: 3}
+    goldPriseWeapon: 7000
+    goldPriseAmmo: 150
+    ammoInReload: 50
+    allAmmo: 5000
+  - name: "\u041F\u043B\u0430\u0437\u043C\u0430\u0433\u0430\u043D"
+    weapon: {fileID: 2496722168628502743, guid: bd1d80e85ec7e434b9078e677b4b2a34, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 500
+  - name: "\u041B\u0430\u0437\u0435\u0440"
+    weapon: {fileID: 2496722168628502743, guid: f72778c9939c47e4097a5bcb65cc3d48, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 2000
+  - name: "\u0422\u044F\u0436\u0435\u043B\u044B\u0439 \u043F\u0443\u043B\u0435\u043C\u0435\u0442"
+    weapon: {fileID: 2496722168628502743, guid: e2a3be42c7660324e8c9e9ce737e4364, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 800
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 88888
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 5000
+    goldPriseAmmo: 40
+    ammoInReload: 100
+    allAmmo: 1000
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  ammoMeleeWeapons:
+  - name: "\u041C\u0435\u0447 "
+    weapon: {fileID: 5674012138522298798, guid: 8cce8d8d676c2874090d0cf951d47c82, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: "\u041A\u043E\u043F\u044C\u0435"
+    weapon: {fileID: 1272269816416803160, guid: 0dc62181a0d5e704ebfe824aa9109212, type: 3}
+    goldPriseWeapon: 300
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: "\u041C\u043E\u043B\u043E\u0442"
+    weapon: {fileID: 5674012138522298798, guid: 4a7146f7e79d4314bbf8b18167e19c0a, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: "\u041A\u0430\u0442\u0430\u043D\u0430"
+    weapon: {fileID: 5674012138522298798, guid: 313d0908708360d42a9a979b090ea907, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: "\u041E\u0433\u043D\u0435\u043D\u043D\u044B\u0439 \u043C\u0435\u0447"
+    weapon: {fileID: 5674012138522298798, guid: 4bfa25c1a0c2a064993342c856398821, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: "\u0413\u0440\u043E\u0437\u043E\u0432\u043E\u0439 \u043C\u043E\u043B\u043E\u0442"
+    weapon: {fileID: 5674012138522298798, guid: d6ee359138c180948a53af2f64dee255, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  ammoBombs:
+  - name: "\u041C\u0430\u043B\u0435\u043D\u044C\u043A\u0430\u044F \u0431\u043E\u043C\u0431\u0430"
+    weapon: {fileID: 2496722168628502743, guid: 62059c8819b44114993a7b6ad47eda1a, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 20
+    ammoInReload: 1
+    allAmmo: 10
+  - name: "\u0411\u043E\u043C\u0431\u0430"
+    weapon: {fileID: 2496722168628502743, guid: f41474dc2d6c4a141ac53ac939031fc0, type: 3}
+    goldPriseWeapon: 1000
+    goldPriseAmmo: 100
+    ammoInReload: 1
+    allAmmo: 10
+  - name: "\u0417\u0430\u0436\u0438\u0433\u0430\u0442\u0435\u043B\u044C\u043D\u0430\u044F
+      \u0431\u043E\u043C\u0431\u0430"
+    weapon: {fileID: 2496722168628502743, guid: 47fc0e0dd33eba2428e479dc6c4571cc, type: 3}
+    goldPriseWeapon: 1300
+    goldPriseAmmo: 130
+    ammoInReload: 1
+    allAmmo: 10
+  - name: "\u041A\u0440\u0430\u0441\u043D\u0430\u044F \u0431\u043E\u043C\u0431\u0430"
+    weapon: {fileID: 2496722168628502743, guid: 704d16330f01e204c86e644349853bec, type: 3}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+  - name: 
+    weapon: {fileID: 0}
+    goldPriseWeapon: 0
+    goldPriseAmmo: 0
+    ammoInReload: 0
+    allAmmo: 0
+--- !u!114 &3363006184936330900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363006184936330905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a22b3caff963f46883dcfb881c4834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -32,6 +32,9 @@ public class ArenaManager : MonoBehaviour
     public bool[] weaponSpawned;                        // усиление сделано
     int j;                                              // счетчик
 
+    [Header("Белый экран")]
+    public GameObject whiteScreen;
+
 
 
     private void Awake()
@@ -208,7 +211,11 @@ public class ArenaManager : MonoBehaviour
     }*/
 
 
-
+    // Для белого экрана босса
+    public void WhiteScreen()
+    {
+        whiteScreen.SetActive(true);
+    }
 
 
 

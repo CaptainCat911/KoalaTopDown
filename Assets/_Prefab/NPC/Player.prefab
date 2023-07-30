@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546322896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.09, y: -0.15, z: 0}
   m_LocalScale: {x: 2.19, y: 2.19, z: 2.19}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50,8 +50,8 @@ MonoBehaviour:
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.9
-  m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
+  m_LightVolumeIntensity: 0.01
+  m_LightVolumeIntensityEnabled: 1
   m_ApplyToSortingLayers: 1911dbd600000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
@@ -62,9 +62,9 @@ MonoBehaviour:
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 1
-  m_ShadowIntensity: 0.3
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
+  m_ShadowIntensity: 0.12
+  m_ShadowVolumeIntensityEnabled: 1
+  m_ShadowVolumeIntensity: 0
   m_Vertices:
   - position: {x: 0.9985302, y: 0.9985302, z: 0}
     color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldHp: 0
-  shieldHpMax: 3000
+  shieldHpMax: 10000
   shieldOn: 0
   withExplousion: 0
   layerExplousion:
@@ -1103,8 +1103,9 @@ MonoBehaviour:
   rb2D: {fileID: 3137378571337029657}
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 1000
   noAgro: 0
   isGoodPerson: 1
   bossHP: 0
@@ -1125,7 +1126,7 @@ MonoBehaviour:
   dashRate: 1.3
   blink: 0
   blinkForce: 40
-  blinkRate: 2
+  blinkRate: 1.5
   blinkOutTime: 0.2
   blinkWithExplousion: 0
   blinkOutDamage: 50
@@ -1137,8 +1138,8 @@ MonoBehaviour:
   blinkTrail: {fileID: 3137378571337029651}
   antiBugCircle: {fileID: 3137378572170672601}
   bootsMod: 1
-  bootsSpeed: 8
-  bootsEnergy: 100
+  bootsSpeed: 15
+  bootsEnergy: 10000
   minusEnergy: 50
   plusEnergy: 20
   flashMod: 0
@@ -1146,7 +1147,7 @@ MonoBehaviour:
   shield: {fileID: 3137378571217417185}
   withShield: 1
   withGoldMagnet: 1
-  speedMagnet: 5
+  speedMagnet: 8
   audioPlayer: {fileID: 5624496065309943650}
   needFlip: 0
   leftFlip: 0
@@ -1905,6 +1906,9 @@ MonoBehaviour:
   weaponHolder: {fileID: 3137378571984717913}
   weapons:
   - {fileID: 5674012138522298798, guid: 8cce8d8d676c2874090d0cf951d47c82, type: 3}
+  - {fileID: 1272269816416803160, guid: 0dc62181a0d5e704ebfe824aa9109212, type: 3}
+  - {fileID: 5674012138522298798, guid: 4a7146f7e79d4314bbf8b18167e19c0a, type: 3}
+  - {fileID: 5674012138522298798, guid: 4bfa25c1a0c2a064993342c856398821, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   rangeWeapon: 1
@@ -1956,7 +1960,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolderMelee: {fileID: 3137378571777031426}
   weapons:
-  - {fileID: 3016861489659110144, guid: 0534d7bf46d38c1459fc898d54c9ab08, type: 3}
+  - {fileID: 2496722168628502743, guid: 63ea0bcbe42143c4a9ee31184431194a, type: 3}
+  - {fileID: 2496722168628502743, guid: 9081bf87110607c46a86f5a4fcd28bff, type: 3}
+  - {fileID: 6020096225121009833, guid: 6b8ae5e41153ea64b9a398e92d9c991f, type: 3}
+  - {fileID: 2496722168628502743, guid: 9955cc4c20a52e34fbf429f2caa22d3b, type: 3}
+  - {fileID: 2496722168628502743, guid: e4c28e4b5a53b084c98fe0896dfe00ee, type: 3}
+  - {fileID: 2496722168628502743, guid: 4a434330d06f85945a2abbbade00d556, type: 3}
+  - {fileID: 2496722168628502743, guid: e980ad862cc0986478deeb0a6df7bd60, type: 3}
+  - {fileID: 2496722168628502743, guid: fc436987fb33d434ba3b1a1237f7eb43, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -2351,7 +2362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ebdd7551e53b54aa4443475ea31ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  weapons:
+  - {fileID: 2496722168628502743, guid: f41474dc2d6c4a141ac53ac939031fc0, type: 3}
+  - {fileID: 2496722168628502743, guid: 47fc0e0dd33eba2428e479dc6c4571cc, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
