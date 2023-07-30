@@ -58,12 +58,33 @@ public class BotAIAnimator : MonoBehaviour
     }
 
 
+    public void MakePlayerImmortal()
+    {
+        GameManager.instance.player.isImmortal = true;
+    }
+
+
     // Звук
     public void SoundAttack(string type)
     {
         if (type == "StartMeleeAttack")
         {
             botAIMeleeWeaponHolder.currentWeapon.audioSource.clip = botAIMeleeWeaponHolder.currentWeapon.audioWeapon.hitStart;
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.Play();
+        }
+        if (type == "StartExplousionAttack")    // 135 frame + explousion
+        {
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.clip = botAIMeleeWeaponHolder.currentWeapon.audioWeapon.hitExplousion;
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.Play();
+        }
+        if (type == "StartLasetAttack")         // 150 frame
+        {
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.clip = botAIMeleeWeaponHolder.currentWeapon.audioWeapon.hitLaser;
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.Play();
+        }
+        if (type == "StartTimeReverce")         // 420 frame
+        {
+            botAIMeleeWeaponHolder.currentWeapon.audioSource.clip = botAIMeleeWeaponHolder.currentWeapon.audioWeapon.hitTimeReverce;
             botAIMeleeWeaponHolder.currentWeapon.audioSource.Play();
         }
     }

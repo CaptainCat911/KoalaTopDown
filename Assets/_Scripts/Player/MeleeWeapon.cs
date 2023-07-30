@@ -32,6 +32,13 @@ public class MeleeWeapon : MonoBehaviour
     public float cooldownBurn;
     public float durationBurn;
 
+    [Header("Параметры огненной волны")]
+    public bool fireWave;
+    public GameObject fireProjectile;
+    public int fireWaveDamage;
+    public float fireWavePushForce;
+    public float fireWaveSpeed;
+
     [Header("Параметры молний")]
     public bool electro;
     public int damageElectro;
@@ -125,6 +132,19 @@ public class MeleeWeapon : MonoBehaviour
                     hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
             Destroy(effect, 1);                                                                 // уничтожаем эффект через .. сек
             //CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShakeElectro, cameraTimedeShakeElectro);        // тряска камеры
+        }
+
+        if (fireWave)
+        {
+            GameObject bullet = Instantiate(fireProjectile, hitBox.position, hitBox.rotation);      // создаем префаб снаряда с позицией и поворотом якоря
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.damage = fireWaveDamage;                                              // присваиваем урон снаряду
+            bulletScript.pushForce = fireWavePushForce;                                        // присваиваем силу толчка снаряду
+            bulletScript.enemyToDamageCount = 50;                      // сколько врагов пробьёт снаряд
+            if (player.rightFlip)
+                bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.up * fireWaveSpeed, ForceMode2D.Impulse);    // даём импульс
+            else
+                bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.up * -fireWaveSpeed, ForceMode2D.Impulse);    // даём импульс
         }
 
         if (collidersHits.Length > 0)       // если во что-то попали

@@ -40,19 +40,19 @@ public class EnemySpawner : MonoBehaviour
         if (!arenaSpawner && !arenaBossSpawner && active && Time.time - (lastSpawn + randomCd) > cooldown && enemyCount < enemysHowMuch)
         {
             lastSpawn = Time.time;
-            
-            Invoke("SpawnEnemy", 0.1f);
+            portalAnimator.SetTrigger("Open");
+            Invoke("SpawnEnemy", 2f);
 
 
-/*            float dist = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
-            if (dist > radius)
-            {
-                SpawnEnemy();
-            }*/
+            /*            float dist = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
+                        if (dist > radius)
+                        {
+                            SpawnEnemy();
+                        }*/
         }
 
         // Для арены
-        if (arenaSpawner && active && Time.time - (lastSpawn + randomCd) > cooldown && EventManager.instance.arenaSpawnStarted)
+        if (arenaSpawner && active && Time.time - (lastSpawn + randomCd) > cooldown && ArenaManager.instance.arenaSpawnStarted)
         {
             lastSpawn = Time.time;
             portalAnimator.SetTrigger("Open");
@@ -60,10 +60,16 @@ public class EnemySpawner : MonoBehaviour
         }
         if (arenaBossSpawner && active && Time.time - lastSpawn > cooldown)
         {
-            lastSpawn = Time.time;           
-
-            Invoke("SpawnEnemy", 0.1f);
+            lastSpawn = Time.time;
+            portalAnimator.SetTrigger("Open");
+            Invoke("SpawnEnemy", 2f);
         }
+    }
+
+    public void WaveSpawnEnemy()
+    {
+        portalAnimator.SetTrigger("Open");
+        Invoke("SpawnEnemy", 2f);
     }
 
     public void SpawnEnemy()
@@ -84,12 +90,12 @@ public class EnemySpawner : MonoBehaviour
         if (arenaSpawner)
         {
             bot.isArenaEnemy = true;
-            EventManager.instance.arenaEnemyCount++;
+            ArenaManager.instance.arenaEnemyCount++;
         }
         if (arenaBossSpawner)
         {
             bot.isArenaBoss = true;
-            EventManager.instance.arenaBossCount++;
+            ArenaManager.instance.arenaBossCount++;
         }
         if (noItem)
         {

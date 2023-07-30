@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7d3f8e83c79f9de4b95a2882af489736, type: 2}
-  m_Color: {r: 0.9622642, g: 0.4221253, b: 0.4221253, a: 1}
+  m_Color: {r: 0.9811321, g: 0.1342115, b: 0.1342115, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -254,6 +254,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 20545
   expEffect: {fileID: 7845441016114820387, guid: 2b6d17c4c74f584428431454946bf0b7, type: 3}
+  sparksEffect: {fileID: 0}
+  audioExplousion: {fileID: 4209454454700283240, guid: 8fb15a9debeb36d42881e2e0be56953b, type: 3}
+  audioProjectile: {fileID: 0}
   expRadius: 1.5
   withSplit: 1
   prefabFireBall: 0
@@ -264,7 +267,7 @@ MonoBehaviour:
   splitProjectileSpeed: 2
   withTimer: 0
   timeToExpl: 2
-  cameraAmplitudeShake: 3
+  cameraAmplitudeShake: 2
   cameraTimedeShake: 0.1
   layerRayCastTarget:
     serializedVersion: 2

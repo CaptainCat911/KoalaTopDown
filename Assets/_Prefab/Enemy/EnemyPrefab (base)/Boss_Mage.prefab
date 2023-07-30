@@ -5257,6 +5257,8 @@ MonoBehaviour:
   isNeutral: 1
   isFriendly: 0
   isEnemy: 1
+  isArenaEnemy: 0
+  isArenaBoss: 0
   triggerLenght: 7
   distanceToChangeTarget: 20
   target: {fileID: 0}
@@ -5355,7 +5357,7 @@ MonoBehaviour:
   - {x: 0.29544067, y: -1.1014938, z: 0}
   m_ShapePathHash: 452262439
   m_Mesh: {fileID: 0}
-  m_InstanceId: 331082
+  m_InstanceId: 57548
 --- !u!1001 &4329346816006291618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5643,6 +5645,10 @@ PrefabInstance:
     - target: {fileID: 7674643776461301797, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674643776461301819, guid: f455a6fe7649f3445802070e811fa112, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: sizeHp

@@ -406,7 +406,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
 --- !u!1 &4309950815181896357
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +454,14 @@ MonoBehaviour:
   hitStart: {fileID: 8300000, guid: ac3dd2fc5b0387349a8f14dc5419001e, type: 3}
   hitDone: {fileID: 8300000, guid: 744a7714c04d6cb4f9be9760d78dcb10, type: 3}
   hitRange: {fileID: 0}
+  hitRangeBig: {fileID: 0}
+  hitSpawn: {fileID: 0}
+  hitExplousion: {fileID: 0}
+  hitLaser: {fileID: 0}
+  hitGravity: {fileID: 0}
+  hitMultiRange: {fileID: 0}
+  hitTeleport: {fileID: 0}
+  hitTimeReverce: {fileID: 0}
 --- !u!1 &5674012138522298798
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,13 +526,18 @@ MonoBehaviour:
   damage: 120
   pushForce: 10
   radius: 0.9
-  cooldown: 0.5
+  cooldown: 0.75
   capsuleLeght: 0
   capsuleWidht: 0
-  ignite: 1
+  ignite: 0
   damageBurn: 5
   cooldownBurn: 0.5
   durationBurn: 4
+  fireWave: 1
+  fireProjectile: {fileID: 5170081587130710907, guid: 1e6361f1a9a58e3489b4073e272c2916, type: 3}
+  fireWaveDamage: 10
+  fireWavePushForce: 10
+  fireWaveSpeed: 8
   electro: 0
   damageElectro: 0
   pushForceElectro: 0
