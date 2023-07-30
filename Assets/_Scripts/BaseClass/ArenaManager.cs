@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class ArenaManager : MonoBehaviour
 {
-    public static EventManager instance;                // инстанс
+    public static ArenaManager instance;                // инстанс
+
+    public bool managerOn;
 
     [Header("Настройки арены")]    
     public EnemySpawner[] enemySpawners;                // спавнеры
@@ -25,8 +27,8 @@ public class EventManager : MonoBehaviour
     [HideInInspector] public int arenaBossKilled;       // сколько боссов убито
 
     [Header("Оружия")]
-    public GameObject[] weapons;
-    public int[] countForWeapon;
+    public GameObject[] weapons;                        // оружия для спауна
+    public int[] countForWeapon;                        // счетчик убитых врагов для спауна оружия
     public bool[] weaponSpawned;                        // усиление сделано
     int j;                                              // счетчик
 
@@ -34,11 +36,15 @@ public class EventManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (managerOn)
+            instance = this;
     }
 
     private void Update()
     {
+        if (!managerOn)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Y))
         {
             waveSpawners[0].MakeWave();
@@ -52,6 +58,9 @@ public class EventManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!managerOn)
+            return;
+
         ArenaTimer();               // счетчик таймера арены
     }
 
@@ -204,12 +213,7 @@ public class EventManager : MonoBehaviour
 
 
 
-
-
-
-
-
-    // Свет для 3-го лвл (пока не использую)
+    // Свет для 3-го лвл
     public void LightOff(bool status)
     {
         GameManager.instance.LightsOff(status);

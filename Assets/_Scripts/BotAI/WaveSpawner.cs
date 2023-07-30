@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour
     {
         foreach (EnemySpawner enemySpawner in waveSpawner)
         {
-            enemySpawner.SpawnEnemy();
+            enemySpawner.WaveSpawnEnemy();
         }
     }
 }

@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;      // при загрузке сцены выполнится это += функция
     }
 
+    private void Start()
+    {
+        
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -73,7 +78,7 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 paused = true;
-                Debug.Log("Pause!");
+                //Debug.Log("Pause!");
             }
             else
             {
@@ -256,6 +261,7 @@ public class GameManager : MonoBehaviour
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену
         SceneManager.LoadScene(sceneName);              // загружаем сцену
+        player.isImmortal = false;
         /*if (sceneNumber == 4)
         {
             arenaLvl = true;

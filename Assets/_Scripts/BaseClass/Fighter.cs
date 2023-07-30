@@ -10,6 +10,7 @@ public class Fighter : MonoBehaviour
 
     [Header("Параметры")]
     public bool isAlive = true;             // жив здоров
+    public bool isImmortal;
     public int currentHealth;
     public int maxHealth;
     public bool noAgro;
@@ -93,10 +94,15 @@ public class Fighter : MonoBehaviour
 
         //Death
         if (currentHealth <= 0)
+        {
+            if (isImmortal)
             {
-                currentHealth = 0;                
-                Death();
+                currentHealth = 1;
+                return;
             }
+            currentHealth = 0;                
+            Death();
+        }
 
         if (hpBarOn)
             hpBar.SetHealth(currentHealth);

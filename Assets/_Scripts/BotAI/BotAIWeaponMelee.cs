@@ -253,6 +253,11 @@ public class BotAIWeaponMelee : MonoBehaviour
             bullet.layer = LayerMask.NameToLayer("BulletPlayer");           // слой пули
             bullet.GetComponent<Bullet>().layerExplousion = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");
         }
+        if (audioWeapon && !botAI.newNpcSystem)
+        {
+            audioSource.clip = audioWeapon.hitRange;                 // звук попадани€
+            audioSource.Play();
+        }
     }
 
     public void RangeAttackBig()
@@ -273,7 +278,7 @@ public class BotAIWeaponMelee : MonoBehaviour
         }
         if (audioWeapon)
         {
-            audioSource.clip = audioWeapon.hitRange;                 // звук попадани€
+            audioSource.clip = audioWeapon.hitRangeBig;                 // звук попадани€
             audioSource.Play();
         }
     }
@@ -303,6 +308,12 @@ public class BotAIWeaponMelee : MonoBehaviour
             else
                 hitBox.Rotate(0, 0, (splitRecoil * (i)));
         }
+
+        if (audioWeapon)
+        {
+            audioSource.clip = audioWeapon.hitMultiRange;                 // звук попадани€
+            audioSource.Play();
+        }
     }
 
 
@@ -316,13 +327,18 @@ public class BotAIWeaponMelee : MonoBehaviour
             enemySpawner.enemysHowMuch += spawnTimes;
         }
 
+        if (audioWeapon)
+        {
+            audioSource.clip = audioWeapon.hitSpawn;                 // звук попадани€
+            audioSource.Play();
+        }
 
-/*        int ndx = Random.Range(0, prefabEnemies.Length);            // выбираем рандом из массива врагов
-        GameObject go = Instantiate(prefabEnemies[ndx]);            // создаЄм префаб
-        //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
-        agent = go.GetComponentInChildren<NavMeshAgent>();                    // находим Ќавћешјгент
-        agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
-        go.GetComponentInChildren<BotAI>().target = GameManager.instance.player.gameObject;*/
+        /*        int ndx = Random.Range(0, prefabEnemies.Length);            // выбираем рандом из массива врагов
+                GameObject go = Instantiate(prefabEnemies[ndx]);            // создаЄм префаб
+                //go.transform.SetParent(transform, false);                   // назначаем этот спавнер родителем
+                agent = go.GetComponentInChildren<NavMeshAgent>();                    // находим Ќавћешјгент
+                agent.Warp(transform.position);                             // перемещаем префаб к спавнеру
+                go.GetComponentInChildren<BotAI>().target = GameManager.instance.player.gameObject;*/
     }
 
     public void ExplousionAttack()
@@ -410,7 +426,12 @@ public class BotAIWeaponMelee : MonoBehaviour
         {
             GameObject effect = Instantiate(effectExplGravity, hitBox.position, Quaternion.identity);       // создаем эффект 
             Destroy(effect, 0.5f);          // уничтожаем эффект через .. сек
-        }      
+        }
+        if (audioWeapon)
+        {
+            audioSource.clip = audioWeapon.hitGravity;                 // звук попадани€
+            audioSource.Play();
+        }
     }
 
     public void Teleport()
@@ -466,6 +487,12 @@ public class BotAIWeaponMelee : MonoBehaviour
         else
         {
             Teleport();
+        }
+
+        if (audioWeapon)
+        {
+            audioSource.clip = audioWeapon.hitTeleport;                 // звук попадани€
+            audioSource.Play();
         }
     }
 
