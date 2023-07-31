@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
-
-    public UnityEvent[] events;                 // ивенты
+    
     public string[] sceneNames;                 // все сцены
 
     [Header("—сылки")]
@@ -136,10 +134,7 @@ public class GameManager : MonoBehaviour
 
 
     // »венты
-    public void StartEvent(int number)
-    {
-        events[number].Invoke();
-    }
+
 
 
     // 3-й лвл

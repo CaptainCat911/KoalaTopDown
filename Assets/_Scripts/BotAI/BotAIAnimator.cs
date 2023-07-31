@@ -127,7 +127,7 @@ public class BotAIAnimator : MonoBehaviour
     // Для перехода на другую сцену
     public void GamemanagerMessage(int number)
     {
-        GameManager.instance.StartEvent(number);
+        ArenaManager.instance.StartEvent(number);
     }
 
     /*    public void ResetTriggerAttack()

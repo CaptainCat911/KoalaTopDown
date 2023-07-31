@@ -242,8 +242,9 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 120
   noAgro: 0
   isGoodPerson: 0
   bossHP: 0
@@ -259,6 +260,8 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  isArenaEnemy: 0
+  isArenaBoss: 0
   triggerLenght: 6
   distanceToChangeTarget: 3
   target: {fileID: 0}
@@ -373,7 +376,7 @@ MonoBehaviour:
   - {x: 0.15258026, y: -0.21078491, z: 0}
   m_ShapePathHash: 1012902165
   m_Mesh: {fileID: 0}
-  m_InstanceId: 687534
+  m_InstanceId: 1177092
 --- !u!82 &5984834870589312873
 AudioSource:
   m_ObjectHideFlags: 0
