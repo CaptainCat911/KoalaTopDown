@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   withChat: 0
+  withChatAudio: 0
   noPatrol: 1
   noTriggerAgro: 1
 --- !u!1001 &3693319472050485489
@@ -258,6 +259,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1990683396309506740, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990683396309506740, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990683396309506740, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1990683396309506744, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: m_Name
       value: Enemy_ShadowMonster
@@ -268,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7964817913752860295, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: m_InstanceId
-      value: -1232244
+      value: -925438
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}

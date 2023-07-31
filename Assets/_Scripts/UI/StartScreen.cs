@@ -9,8 +9,8 @@ public class StartScreen : MonoBehaviour
     public int sceneNumber;                     // номер сцены
     public int delay;                           // задержка
     public Animator animator;                   // аниматор подписи
-    public GameObject kontrakt;
-    public GameObject loading;
+    public GameObject kontrakt;                 // страница контракта
+    public GameObject loading;                  // картинка загрузки
 
 
 

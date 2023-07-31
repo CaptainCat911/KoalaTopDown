@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ArenaManager : MonoBehaviour
 {
     public static ArenaManager instance;                // инстанс
 
-    public bool managerOn;
+    public bool darkLevel;
+    public bool arenaLevel;
+    public UnityEvent[] events;                         // ивенты
 
     [Header("Настройки арены")]    
     public EnemySpawner[] enemySpawners;                // спавнеры
@@ -32,20 +35,30 @@ public class ArenaManager : MonoBehaviour
     public bool[] weaponSpawned;                        // усиление сделано
     int j;                                              // счетчик
 
+    [Header("Темный уровень")]
+    public GameObject forceShield;
+    int ghostKilled;
+
     [Header("Белый экран")]
     public GameObject whiteScreen;
 
 
 
     private void Awake()
-    {
-        if (managerOn)
-            instance = this;
+    {        
+        instance = this;
     }
+
+    public void StartEvent(int number)
+    {
+        events[number].Invoke();
+    }
+
+
 
     private void Update()
     {
-        if (!managerOn)
+        if (!arenaLevel)
             return;
 
         if (Input.GetKeyDown(KeyCode.Y))
@@ -61,7 +74,7 @@ public class ArenaManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!managerOn)
+        if (!arenaLevel)
             return;
 
         ArenaTimer();               // счетчик таймера арены
@@ -171,7 +184,7 @@ public class ArenaManager : MonoBehaviour
         // Спаун оружия от кол-ва убитых врагов
         if (arenaEnemyKilled >= countForWeapon[j] && !weaponSpawned[j])
         {
-            Debug.Log(weapons.Length);
+            //Debug.Log(weapons.Length);
             weapons[j].SetActive(true);
             weaponSpawned[j] = true;
             if (j >= weapons.Length - 1)
@@ -229,5 +242,14 @@ public class ArenaManager : MonoBehaviour
     public void PlayerMiniLightOn(bool status)
     {
         GameManager.instance.player.MiniLightOn(status);
+    }
+
+    public void ShieldKeyOff()
+    {
+        ghostKilled++;
+        if (ghostKilled >= 3)
+        {
+            forceShield.SetActive(false);
+        }
     }
 }
