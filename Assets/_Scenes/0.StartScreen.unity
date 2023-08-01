@@ -394,7 +394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -634, y: -444.79504}
+  m_AnchoredPosition: {x: -786, y: -398}
   m_SizeDelta: {x: 0, y: 108.722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167773698
@@ -722,17 +722,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520299718}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98554534, y: 0.92860574, z: 1.2501028}
+  m_LocalScale: {x: 1.8593247, y: 1.3954439, z: 2.161441}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1483039621}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 88.69918, y: 226.85844}
+  m_AnchoredPosition: {x: 87.8, y: 232.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &520299720
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.0990566, b: 0.0990566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1568,7 +1568,27 @@ PrefabInstance:
     m_TransformParent: {fileID: 1483039621}
     m_Modifications:
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: lengthInSec
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: scalingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: TriggerModule.enter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: emitterVelocityMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
@@ -1605,11 +1625,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: VelocityModule.x.scalar
-      value: -25
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: VelocityModule.z.scalar
       value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: ShapeModule.m_Position.y
@@ -1644,8 +1668,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: InheritVelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
@@ -1657,7 +1685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSizeY.scalar
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSizeZ.scalar
@@ -1673,7 +1701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
@@ -1701,19 +1729,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.990566
+      value: 0.5377358
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.8702542
+      value: 0.35839808
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.6775098
+      value: 0.07863118
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: TriggerModule.primitives.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: TriggerModule.primitives.Array.data[0]
@@ -1727,13 +1763,25 @@ PrefabInstance:
       propertyPath: TriggerModule.primitives.Array.data[2]
       value: 
       objectReference: {fileID: 221553945}
+    - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.009375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.72774994
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 163
+      value: 173
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2274,9 +2322,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6e68475b60bc19245a5dad122b3b2ed1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b33b57d09b46beb498f89781b713806f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3507,7 +3555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.000122, y: -3.000122}
+  m_AnchoredPosition: {x: -8, y: -3}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1984482354
