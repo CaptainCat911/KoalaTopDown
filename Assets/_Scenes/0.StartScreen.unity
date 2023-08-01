@@ -1573,7 +1573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: lengthInSec
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: scalingMode
@@ -1673,7 +1673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
@@ -1685,7 +1685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSizeY.scalar
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSizeZ.scalar
@@ -1701,7 +1701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
@@ -1717,7 +1717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSizeY.minScalar
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: InitialModule.startSizeZ.minScalar
@@ -1773,7 +1773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.009375
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 0e6eba324fe15184a95696ae015d6f1b, type: 3}
       propertyPath: m_LocalScale.z
@@ -2324,7 +2324,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b33b57d09b46beb498f89781b713806f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
