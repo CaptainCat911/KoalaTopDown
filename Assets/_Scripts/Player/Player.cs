@@ -82,6 +82,7 @@ public class Player : Fighter
     float timerForColor;        // сколько времени он будет красным
     bool red;                   // красный (-_-)
 
+    public bool noAim;                 // для дебага
 
 
 
@@ -169,6 +170,15 @@ public class Player : Fighter
         {
             Vskritsya();
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            noAim = !noAim;
+            Debug.Log(noAim);
+        }
+
+
+        
 
         if (bootsMod)
         {

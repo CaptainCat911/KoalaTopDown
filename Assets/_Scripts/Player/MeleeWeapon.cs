@@ -138,8 +138,8 @@ public class MeleeWeapon : MonoBehaviour
         {
             GameObject bullet = Instantiate(fireProjectile, hitBox.position, hitBox.rotation);      // создаем префаб снаряда с позицией и поворотом якоря
             Bullet bulletScript = bullet.GetComponent<Bullet>();
-            bulletScript.damage = fireWaveDamage;                                              // присваиваем урон снаряду
-            bulletScript.pushForce = fireWavePushForce;                                        // присваиваем силу толчка снаряду
+            bulletScript.damage = fireWaveDamage;                      // присваиваем урон снаряду
+            bulletScript.pushForce = fireWavePushForce;                // присваиваем силу толчка снаряду
             bulletScript.enemyToDamageCount = 50;                      // сколько врагов пробьёт снаряд
             if (player.rightFlip)
                 bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.up * fireWaveSpeed, ForceMode2D.Impulse);    // даём импульс

@@ -13,16 +13,36 @@ MonoBehaviour:
   m_Name: RocketLauncher
   m_EditorClassIdentifier: 
   weaponName: "\u0420\u0430\u043A\u0435\u0442\u043D\u0438\u0446\u0430"
-  projectileWeapon: 1
-  splitProjectileWeapon: 0
+  weaponType: 0
+  damage: 150
+  fireRate: 1
+  bulletSpeed: 12
+  pushForce: 20
+  enemyToDamageCount: 0
+  recoil: 2
+  delayFire: 0
+  forceBackFire: 0
+  effectBackFire: 0
   bulletPrefab: {fileID: 2609019957272575851, guid: a973d9f66c30a584396351f203d6b99c, type: 3}
-  rayCastWeapon: 0
+  boxSize: 0
+  range: 0
   layerRayCast:
     serializedVersion: 2
     m_Bits: 0
-  damage: 120
-  fireRate: 1
-  bulletSpeed: 10
-  pushForce: 20
-  forceBackFire: 0
-  recoil: 2
+  splitTimes: 0
+  splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0
