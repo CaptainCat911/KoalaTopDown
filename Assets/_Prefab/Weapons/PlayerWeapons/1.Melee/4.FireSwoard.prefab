@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356399357414798544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004, y: 0.549, z: 0}
+  m_LocalPosition: {x: -0.045, y: 0.549, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -164,7 +164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681049121963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.364, z: 0}
+  m_LocalPosition: {x: -0.041, y: 0.364, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -249,7 +249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3786651681873589340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.522, z: 0}
+  m_LocalPosition: {x: -0.031000001, y: 0.522, z: 0}
   m_LocalScale: {x: 0.20250002, y: 0.77198297, z: 0.20250002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -523,10 +523,10 @@ MonoBehaviour:
   spear: 0
   hummer: 0
   hitBox: {fileID: 1630045362412420869}
-  damage: 120
+  damage: 100
   pushForce: 10
   radius: 0.9
-  cooldown: 0.75
+  cooldown: 0.8
   capsuleLeght: 0
   capsuleWidht: 0
   ignite: 0
@@ -535,9 +535,9 @@ MonoBehaviour:
   durationBurn: 4
   fireWave: 1
   fireProjectile: {fileID: 5170081587130710907, guid: 1e6361f1a9a58e3489b4073e272c2916, type: 3}
-  fireWaveDamage: 10
-  fireWavePushForce: 10
-  fireWaveSpeed: 8
+  fireWaveDamage: 30
+  fireWavePushForce: 5
+  fireWaveSpeed: 10
   electro: 0
   damageElectro: 0
   pushForceElectro: 0
@@ -668,7 +668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6483834731651814780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.108, y: -0.109, z: 0}
+  m_LocalPosition: {x: -0.149, y: -0.109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -751,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604417298802685298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.004, y: 0.45, z: 0}
+  m_LocalPosition: {x: -0.045, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -803,7 +803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.008
+      value: -0.033
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
       propertyPath: m_LocalPosition.y

@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [HideInInspector] public Rigidbody2D rb;
-    AudioSource audioSource;
+    [HideInInspector] public Rigidbody2D rb;    
 
-    public bool isPlayerBullet;
+    public bool isPlayerBullet;    
 
     [HideInInspector] public int damage;
     [HideInInspector] public float pushForce;
@@ -20,6 +19,7 @@ public class Bullet : MonoBehaviour
     [Header("Аудио")]
     public GameObject audioExplousion;
     public AudioProjectile audioProjectile;
+    AudioSource audioSource;
 
     private void Awake()
     {
