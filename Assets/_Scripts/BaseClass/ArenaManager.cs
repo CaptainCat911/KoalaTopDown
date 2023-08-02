@@ -231,6 +231,10 @@ public class ArenaManager : MonoBehaviour
     }
 
 
+    public void SayTextPlayer(string text)
+    {
+        GameManager.instance.player.SayText(text);
+    }
 
 
     // Свет для 3-го лвл
