@@ -26,6 +26,14 @@ public class BotAIAnimator : MonoBehaviour
             npc.attackingNow = true;
     }
 
+    public void BotAttacking(int status)
+    {
+        if (status == 0)
+            botAi.nowAttacking = false;
+        if (status == 1)
+            botAi.nowAttacking = true;
+    }
+
     // Атаки
     public void CurrentWeaponAttack(int type)
     {
