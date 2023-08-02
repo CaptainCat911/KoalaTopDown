@@ -117,9 +117,16 @@ MonoBehaviour:
     m_Bits: 0
   expEffect: {fileID: 6838830282863028361, guid: 9bcfbd57f80156d47881a4c5be09b696, type: 3}
   sparksEffect: {fileID: 4947641790296222230, guid: 83dbac8f18dc73f428b42ff831e28be0, type: 3}
+  audioExplousion: {fileID: 0}
+  audioProjectile: {fileID: 0}
   layerRayCastTarget:
     serializedVersion: 2
     m_Bits: 0
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0
+  timeToExpl: 1
 --- !u!96 &6680086522174144134
 TrailRenderer:
   serializedVersion: 2
@@ -280,7 +287,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 802f734bbb0e2ed419b306defc8d5a63, type: 2}
+  - {fileID: 2100000, guid: eafcece1d8ba9eb41abd206c84c0fbd0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -302,7 +309,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.9194028, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

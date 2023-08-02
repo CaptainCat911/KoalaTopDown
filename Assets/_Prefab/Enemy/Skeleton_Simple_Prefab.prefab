@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 93cf71da46fd03442b5f5fc2809086d4, type: 3}
     - target: {fileID: 3326193182701099681, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
       propertyPath: m_InstanceId
-      value: -682324
+      value: -612654
       objectReference: {fileID: 0}
     - target: {fileID: 5565312694332085324, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -343,6 +343,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 5450024240a5f1447b08e6b1ac969f1d, type: 3}
+    - target: {fileID: 9098035591501831770, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f1ed0242eb9df46ae8ff9e557ae4d8, type: 3}
 --- !u!4 &3614181865363430995 stripped

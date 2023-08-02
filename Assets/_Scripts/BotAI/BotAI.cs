@@ -51,12 +51,13 @@ public class BotAI : Fighter
     public bool meleeAttackType;                            // устанавливаем тип атаки мили
     public bool rangeAttackType;                            // ... ренж
     public bool twoWeapons;                                 // если есть 2 оружия
-    public float defaultRangeToTarget;                     // дистанция для атакой мили
+    public float defaultRangeToTarget;                      // дистанция для атакой мили
     public float distanceToAttackMelee;                     // дистанция для атакой мили
     public float distanceToAttackRange;                     // дистанция для атаки ренж
     public float pivotSpeedKoef = 1f;                       // скорость поворота держателя оружия
     public float distanceToAttack;                          // дистанция, с которой можно атаковать
     [HideInInspector] public float distanceToTarget;        // дистанция до цели
+    [HideInInspector] public bool nowAttacking;             // дистанция до цели
 
     [Header("Предмет")]
     public GameObject itemToSpawn;
@@ -424,20 +425,20 @@ public class BotAI : Fighter
         }          
 
         // Дистанция для текущей атаки
-        if (distanceToTarget <= distanceToAttack && targetVisible)                               // если дошли до цели и видим её
+        if (distanceToTarget <= distanceToAttack && targetVisible || nowAttacking)      // если дошли до цели и видим её
         {
-            if (!closeToTarget)
+            if (!closeToTarget)                                                 //
             {
-                agent.ResetPath();                                                              // сбрасываем путь       
-                closeToTarget = true;                                                           // готов стрелять
+                agent.ResetPath();                                              // сбрасываем путь       
+                closeToTarget = true;                                           // готов стрелять
             }
         }
         else
         {
-            agent.SetDestination(target.transform.position);                                    // перемещаемся к цели
+            agent.SetDestination(target.transform.position);                    // перемещаемся к цели
             if (closeToTarget)
             {
-                closeToTarget = false;                                                          // не готов стрелять
+                closeToTarget = false;                                          // не готов стрелять
             }
         }
     }

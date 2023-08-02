@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 1479659406406739827}
   - component: {fileID: 4966953706723386910}
   m_Layer: 0
-  m_Name: 12.StormHummer
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,13 +404,13 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 4225
-  weaponName: "\u0413\u0420\u041E\u041C\u041E\u0412\u041E\u0419 \u041C\u041E\u041B\u041E\u0422
-    \u0423\u041D\u0418\u0427\u0422\u041E\u0416\u0410\u042E\u0429\u0418\u0419 \u0412\u0420\u0410\u0413\u041E\u0412"
+  weaponName: "\u041C\u041E\u041B\u041E\u0422 \u0423\u041D\u0418\u0427\u0422\u041E\u0416\u0418\u0422\u0415\u041B\u042C
+    \u0412\u0420\u0410\u0413\u041E\u0412"
   swoard: 0
   spear: 0
   hummer: 1
   hitBox: {fileID: 1630045362412420869}
-  damage: 50
+  damage: 70
   pushForce: 10
   radius: 0.8
   cooldown: 0.9
@@ -420,6 +420,11 @@ MonoBehaviour:
   damageBurn: 0
   cooldownBurn: 0
   durationBurn: 0
+  fireWave: 0
+  fireProjectile: {fileID: 0}
+  fireWaveDamage: 0
+  fireWavePushForce: 0
+  fireWaveSpeed: 0
   electro: 1
   damageElectro: 100
   pushForceElectro: 60
@@ -428,6 +433,7 @@ MonoBehaviour:
   sparksEffect: {fileID: 4947641790296222230, guid: 83dbac8f18dc73f428b42ff831e28be0, type: 3}
   cameraAmplitudeShake: 6
   cameraTimedeShake: 0.3
+  audioWeapon: {fileID: 0}
 --- !u!1 &6604417298802685298
 GameObject:
   m_ObjectHideFlags: 0

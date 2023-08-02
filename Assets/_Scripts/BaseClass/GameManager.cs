@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
     public bool lightDark;
     public bool lightOff;
 
+    [Header("Чат для игрока")]
+    public string[] chatTexts;
+    int chatRandom;
+    int prevNumber;
+
     // Для паузы
     bool paused;
     bool slowed;
@@ -84,6 +89,8 @@ public class GameManager : MonoBehaviour
                 paused = false;
             }
         }
+
+        // Замедление времени
         if (Input.GetKeyDown(KeyCode.T))
         {
             if (!slowed)
@@ -96,16 +103,24 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
                 slowed = false;
             }
-        }
-
-        
+        }        
 
 
-        if (Input.GetKeyDown(KeyCode.H))
+        // Чат игрока
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            ChatBubble.Clear(gameObject);
-            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), "Ну все, вам жопа!", 2f);
+            ChatBubble.Clear(player.gameObject);
+            
+            while (prevNumber == chatRandom)
+            {
+                chatRandom = Random.Range(0, chatTexts.Length);
+            }
+
+            prevNumber = chatRandom;
+            
+            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), chatTexts[chatRandom], 2f);
         }
+
         if (Input.GetKeyDown(KeyCode.N))
         {
             NextScene(4);

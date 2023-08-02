@@ -5,7 +5,23 @@ using UnityEngine;
 public class BulletRifle : Bullet
 {
 
-    public LayerMask layerRayCastTarget;
+    public LayerMask layerRayCastTarget;            // для щита
+                        
+    [Header("Параметры поджога")]
+    public bool ignite;                         
+    public int damageBurn;
+    public float cooldownBurn;
+    public float durationBurn;
+
+    [Header("Параметры взрыва")]
+    //public float expRadius = 3;         // радиус взрыва
+    public float timeToExpl = 1f;       // время до взрыва (таймер)
+
+
+    private void Start()
+    {
+        Invoke("Explosion", timeToExpl);                   // взрыв после времени
+    }
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {        
@@ -23,7 +39,18 @@ public class BulletRifle : Bullet
                 fighter.TakeDamage(damage, new Vector2(0, 0), 0);
             }
             enemyDamaged++;
+
+            if (ignite)
+            {
+                if (collision.gameObject.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                {
+                    //Vector2 vec2 = (fighter.transform.position - player.transform.position).normalized;
+                    ignitable.Ignite(damageBurn, cooldownBurn, durationBurn);
+                }
+            }
         }
+
+
 
         if (collision.TryGetComponent<Shield>(out Shield shield))
         {
