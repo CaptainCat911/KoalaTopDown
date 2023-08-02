@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] tracks;
     public float trackVolume;
     public float speedTrackChange;
+    public float delayTrackChange = 1;
     AudioSource audioSource;
     bool volumeMinus;
     bool volumePlus;
@@ -44,14 +45,14 @@ public class AudioManager : MonoBehaviour
     IEnumerator SetNewTrackCoroutine(int number)
     {        
         volumeMinus = true;                             // уменьшаем громкость           
-        yield return new WaitForSeconds(1f);            // ждем 
+        yield return new WaitForSeconds(delayTrackChange);            // ждем 
 
         volumeMinus = false;
         audioSource.clip = tracks[number];              // меняем трек
         audioSource.Play();
         volumePlus = true;                              // увеличиваем громкость
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delayTrackChange);
         volumePlus = false;
     }
 }
