@@ -10,8 +10,8 @@ public class ResRoomManager : MonoBehaviour
     public Transform resStart;          // позиция для воскрешения в комнате
     public Transform monsterPos;        // позиция для монстра
     public Transform chestPos;          // позиция для сундука
-    public GameObject monsterPref;
-    public GameObject chestPref;
+    public GameObject monsterPref;      // префаб монстра
+    public GameObject chestPref;        // префаб сундука
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class ResRoomManager : MonoBehaviour
 
     public void SpawnMonsterAndChest()
     {
-        if (ArenaManager.instance)
+        if (ArenaManager.instance.arenaLevel)
             return;
         GameObject monster = Instantiate(monsterPref, monsterPos.position, Quaternion.identity);            // создаём монстра        
         GameObject chest = Instantiate(chestPref, chestPos.position, Quaternion.identity);                  // создаём сундук        

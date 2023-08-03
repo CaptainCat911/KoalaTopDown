@@ -221,7 +221,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3397013406516351012, guid: c79b506c47f8ff243b8c7919e4fee420, type: 3}
       propertyPath: m_InstanceId
-      value: -371852
+      value: -986886
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554635920535571973, guid: c79b506c47f8ff243b8c7919e4fee420, type: 3}
+      propertyPath: bubbleTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554635920535571973, guid: c79b506c47f8ff243b8c7919e4fee420, type: 3}
+      propertyPath: bubbleTexts.Array.data[0]
+      value: "\u0422\u044B \u043D\u0435 \u043F\u0440\u043E\u0439\u0434\u0435\u0448\u044C!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554635920535571973, guid: c79b506c47f8ff243b8c7919e4fee420, type: 3}
+      propertyPath: bubbleTexts.Array.data[1]
+      value: "\u0412\u0437\u044F\u0442\u044C \u0435\u0433\u043E!"
       objectReference: {fileID: 0}
     - target: {fileID: 7161888840960340524, guid: c79b506c47f8ff243b8c7919e4fee420, type: 3}
       propertyPath: m_RootOrder

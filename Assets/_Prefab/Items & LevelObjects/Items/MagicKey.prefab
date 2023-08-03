@@ -359,10 +359,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
@@ -374,11 +378,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PickUpKey
       objectReference: {fileID: 0}
     - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Key, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Key, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2660023156008569600, guid: 08fefb9514cbc5b418c729b5f3fcd9c6, type: 3}

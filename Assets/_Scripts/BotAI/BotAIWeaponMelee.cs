@@ -250,12 +250,12 @@ public class BotAIWeaponMelee : MonoBehaviour
         //firePoint.Rotate(0, 0, -randomBulletX);                                                             // и тупо возвращаем поворот
         if (botAI.isFriendly)
         {
-            bullet.layer = LayerMask.NameToLayer("BulletPlayer");           // слой пули
+            bullet.layer = LayerMask.NameToLayer("BulletPlayer");       // слой пули
             bullet.GetComponent<Bullet>().layerExplousion = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");
         }
-        if (audioWeapon && !botAI.newNpcSystem)
+        if (audioWeapon && audioWeapon.hitRange)
         {
-            audioSource.clip = audioWeapon.hitRange;                 // звук попадания
+            audioSource.clip = audioWeapon.hitRange;                    // звук 
             audioSource.Play();
         }
     }
@@ -311,7 +311,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 
         if (audioWeapon)
         {
-            audioSource.clip = audioWeapon.hitMultiRange;                 // звук попадания
+            audioSource.clip = audioWeapon.hitMultiRange;                 // звук 
             audioSource.Play();
         }
     }

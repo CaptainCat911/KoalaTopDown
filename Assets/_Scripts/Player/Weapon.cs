@@ -111,8 +111,7 @@ public class Weapon : MonoBehaviour
     }
 
     private void OnEnable()
-    {
-        
+    {        
         currentDelay = weaponClass.delayFire;
     }
 
@@ -138,11 +137,11 @@ public class Weapon : MonoBehaviour
             Flip();
         }
 
+        // Ёффекты выстрелов
         if (!flashEffectAnimator)
         {
             return;
         }
-
 
         // —тирать рендер лазера и мультифлеш (возможно стоит переделать)
         if (!singleFlash && Time.time >= nextTimeToFire + 0.1f)
@@ -155,21 +154,34 @@ public class Weapon : MonoBehaviour
         }
 
         // «вук
-        if (multiShot && ammoWeapons[weaponIndexForAmmo].allAmmo > 0)
+        if (multiShot)
         {
-            if (weaponHolder.fireStart && !soundStarted)                        // если не готовы стрел€ть
+            if (ammoWeapons[weaponIndexForAmmo].allAmmo > 0)            // если патронов больше 0
             {
-                audioSource.Play();
-                soundStarted = true;
+                if (weaponHolder.fireStart && !soundStarted)            // если готовы стрел€ть
+                {
+                    audioSource.Play();
+                    soundStarted = true;
+                }
+                if (!weaponHolder.fireStart && soundStarted)            // если не готовы стрел€ть
+                {
+                    audioSource.Stop();
+                    if (audioSourceTail)
+                        audioSourceTail.Play();
+                    soundStarted = false;
+                }
             }
-            if (!weaponHolder.fireStart && soundStarted)                        // если не готовы стрел€ть
+            else                                    // если патроны закончились
             {
-                audioSource.Stop();
-                if (audioSourceTail)
-                    audioSourceTail.Play();
-                soundStarted = false;
+                if (soundStarted)                   // и играл звук
+                {
+                    audioSource.Stop();             // останавливаем звук
+                    if (audioSourceTail)
+                        audioSourceTail.Play();     // воспроизводим "хваост"
+                    soundStarted = false;           // звук остановлен
+                }
             }
-        }
+        }        
     }
 
 
@@ -202,7 +214,8 @@ public class Weapon : MonoBehaviour
                 }
             }
         }
-
+        
+        // ≈сли закончились патроны
         if (!weaponHolder.fireStart || ammoWeapons[weaponIndexForAmmo].allAmmo <= 0)        // если не готовы стрел€ть или закончились патроны
         {
             currentDelay = weaponClass.delayFire;

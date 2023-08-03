@@ -27,9 +27,9 @@ public class Player : Fighter
     public float moveSpeed = 5f;                        // скорость передвижения
 
     [Header("Рывок")]
-    public float dashForce;                             // сила рывка
-    public float dashRate;                              // как часто можно делать рывок 
-    float nextTimeToDash;                               // когда в следующий раз готов рывок
+    public float dashForce;             // сила рывка
+    public float dashRate;              // как часто можно делать рывок 
+    float nextTimeToDash;               // когда в следующий раз готов рывок
 
     [Header("Блинк")]
     public bool blink;                  // блинк 
@@ -176,8 +176,6 @@ public class Player : Fighter
             noAim = !noAim;
             Debug.Log(noAim);
         }
-
-
         
 
         if (bootsMod)
@@ -523,7 +521,7 @@ public class Player : Fighter
     public void SayText(string text)
     {
         ChatBubble.Clear(gameObject);
-        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 4f);
+        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 3f);
     }
 
 
@@ -567,7 +565,7 @@ public class Player : Fighter
         }
 
 
-
+        // Для ресрума
         if (!GameManager.instance.playerInResroom)
         {
             ResRoomManager.instance.SpawnMonsterAndChest();

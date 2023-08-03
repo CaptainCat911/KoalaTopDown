@@ -1139,7 +1139,7 @@ MonoBehaviour:
   antiBugCircle: {fileID: 3137378572170672601}
   bootsMod: 1
   bootsSpeed: 15
-  bootsEnergy: 10000
+  bootsEnergy: 1000000
   minusEnergy: 50
   plusEnergy: 20
   flashMod: 0
@@ -1166,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: {fileID: 2504863533873141883}
+  lightGo2D: {fileID: 0}
   canBurn: 1
   slow: 0
 --- !u!82 &7480746828111994324
@@ -1962,14 +1963,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolderMelee: {fileID: 3137378571777031426}
   weapons:
+  - {fileID: 2496722168628502743, guid: fc436987fb33d434ba3b1a1237f7eb43, type: 3}
+  - {fileID: 2496722168628502743, guid: e980ad862cc0986478deeb0a6df7bd60, type: 3}
+  - {fileID: 2496722168628502743, guid: 1c28be433ee20cf47aa630506e416977, type: 3}
   - {fileID: 2496722168628502743, guid: 63ea0bcbe42143c4a9ee31184431194a, type: 3}
-  - {fileID: 2496722168628502743, guid: 9081bf87110607c46a86f5a4fcd28bff, type: 3}
   - {fileID: 6020096225121009833, guid: 6b8ae5e41153ea64b9a398e92d9c991f, type: 3}
+  - {fileID: 2496722168628502743, guid: 9081bf87110607c46a86f5a4fcd28bff, type: 3}
   - {fileID: 2496722168628502743, guid: 9955cc4c20a52e34fbf429f2caa22d3b, type: 3}
   - {fileID: 2496722168628502743, guid: e4c28e4b5a53b084c98fe0896dfe00ee, type: 3}
   - {fileID: 2496722168628502743, guid: 4a434330d06f85945a2abbbade00d556, type: 3}
-  - {fileID: 2496722168628502743, guid: e980ad862cc0986478deeb0a6df7bd60, type: 3}
-  - {fileID: 2496722168628502743, guid: fc436987fb33d434ba3b1a1237f7eb43, type: 3}
+  - {fileID: 2496722168628502743, guid: 0448485bdcb054f4f979ed1c9fba7a29, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

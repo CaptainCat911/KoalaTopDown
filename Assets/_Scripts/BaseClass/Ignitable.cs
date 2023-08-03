@@ -7,10 +7,10 @@ public class Ignitable : MonoBehaviour
     Fighter figter;
     BotAI botAI;
     public ParticleSystem flames;   // Префаб системы частиц огня
-
-    // Поиск цели
+    public GameObject lightGo2D;    // Свет
+    
     public bool canBurn = true;     // Может ли объект гореть
-    public float slow = 0.2f;         // замедление при получении урона    
+    public float slow = 0.2f;       // замедление при получении урона    
     float lastBurnDamaged;          // время последнего урона
     float cooldownBurn;             // перезардяка
     int burnDamage;                 // Урон от горения
@@ -54,6 +54,8 @@ public class Ignitable : MonoBehaviour
             isBurning = false;
             if (flames)
                 flames.Stop();
+            if (lightGo2D)
+                lightGo2D.SetActive(false);
         }
     }
 
@@ -72,7 +74,9 @@ public class Ignitable : MonoBehaviour
         cooldownBurn = cooldown;
         burnDuration = duration;
         lastBurn = Time.time;
-        if(flames)
+        if (flames)
             flames.Play();
+        if (lightGo2D)
+            lightGo2D.SetActive(true);
     }
 }

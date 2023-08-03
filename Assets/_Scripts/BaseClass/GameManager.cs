@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (GameManager.instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
             Destroy(ammoManager.gameObject);
@@ -109,16 +109,30 @@ public class GameManager : MonoBehaviour
         // Чат игрока
         if (Input.GetKeyDown(KeyCode.C))
         {
-            ChatBubble.Clear(player.gameObject);
-            
+            // Делаем чат
+            ChatBubble.Clear(player.gameObject);            
             while (prevNumber == chatRandom)
             {
                 chatRandom = Random.Range(0, chatTexts.Length);
             }
-
-            prevNumber = chatRandom;
-            
+            prevNumber = chatRandom;            
             ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), chatTexts[chatRandom], 2f);
+            
+            // Триггер врагов
+            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 20);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
+            foreach (Collider2D coll in collidersHits)
+            {
+                if (coll == null)
+                {
+                    continue;
+                }
+
+                if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
+                {
+                    botAI.TriggerEnemy();
+                }
+                collidersHits = null;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.N))
@@ -149,8 +163,6 @@ public class GameManager : MonoBehaviour
 
 
     // Ивенты
-
-
 
     // 3-й лвл
     public void LightsOff(bool status)
@@ -241,7 +253,6 @@ public class GameManager : MonoBehaviour
                 }
                 collidersHits = null;
             }
-
         }
         if (!status)
         {
@@ -270,18 +281,18 @@ public class GameManager : MonoBehaviour
         //GameManager.instance.SaveState();
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену
-        SceneManager.LoadScene(sceneName);              // загружаем сцену
-        player.isImmortal = false;
+        SceneManager.LoadScene(sceneName);              // загружаем сцену        
         /*if (sceneNumber == 4)
         {
             arenaLvl = true;
         }*/
     }
 
-    public void OnSceneLoaded(Scene s, LoadSceneMode mode)                      // выполняем при загрузке сцены
+    public void OnSceneLoaded(Scene s, LoadSceneMode mode)                              // выполняем при загрузке сцены
     {
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
-        keys[0] = 0;
+        player.transform.position = GameObject.Find("SpawnPoint").transform.position;   // перемещаем игрока на точку спауна
+        player.isImmortal = false;                                                      // убираем бессмертие
+        keys[0] = 0;                                                                    // сбрасываем ключи
         keys[1] = 0;
     }
 }

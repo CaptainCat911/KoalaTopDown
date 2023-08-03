@@ -19,9 +19,8 @@ public class BotAI : Fighter
     [HideInInspector] public BotAIRangeWeaponHolder botAIRangeWeaponHolder;
     BotAIHitbox hitBox;                                     // хитбокс (для атаки)
     ShadowCaster2D shadow;                                  // тень
+    AudioSource audioSource;
     //public Animator animatorHit;                            // аниматор мили оружия
-
-
 
     [Header("Параметры бота")]
     public bool newNpcSystem;                               // босс или сложный нпс
@@ -109,8 +108,7 @@ public class BotAI : Fighter
     public bool withChat;               // с чатом
     bool sayedChat;
 
-    [Header("Аудио")]
-    AudioSource audioSource;
+    [Header("Аудио")]    
     public AudioEnemy audioEnemy;       // набор звуков
     public bool withAudioChat;          // с репликой
     bool sayedAudoiChat;
@@ -654,7 +652,7 @@ public class BotAI : Fighter
     void AfterDeath()
     {
         agent.enabled = false;                  // выключаем агента
-        Destroy(gameObject);
+        Destroy(gameObject, 1.5f);
     }
 
     void OnDrawGizmosSelected()

@@ -383,10 +383,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7502019662705953905, guid: cdb5f71daaf8b9b44a2acb415fdbc62e, type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7735217325729895164, guid: cdb5f71daaf8b9b44a2acb415fdbc62e, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e8808bea66b4800408f6128ec787e369, type: 2}
+      objectReference: {fileID: 9100000, guid: fa95368adedf3e94f93d11799867147e, type: 2}
     - target: {fileID: 8509495147137703318, guid: cdb5f71daaf8b9b44a2acb415fdbc62e, type: 3}
       propertyPath: m_Name
       value: FlashRifle

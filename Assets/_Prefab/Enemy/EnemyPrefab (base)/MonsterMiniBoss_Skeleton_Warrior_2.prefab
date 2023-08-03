@@ -257,6 +257,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
   maxHealth: 1400
   noAgro: 0
@@ -274,6 +275,8 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  isArenaEnemy: 0
+  isArenaBoss: 0
   triggerLenght: 5
   distanceToChangeTarget: 3
   target: {fileID: 0}
@@ -297,6 +300,7 @@ MonoBehaviour:
   pivotSpeedKoef: 1
   distanceToAttack: 1.25
   distanceToTarget: 0
+  nowAttacking: 0
   itemToSpawn: {fileID: 1899818089229980536, guid: a3edbe32a95e7744e898f21125fdb3c0, type: 3}
   stayOnGround: 1
   noPatrol: 0
@@ -317,7 +321,7 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   fastDeathAnim: 0
-  timeForDeath: 2.5
+  timeForDeath: 1
   debug: 0
   bubbleTexts: []
   withChat: 0

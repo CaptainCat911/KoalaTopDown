@@ -14,6 +14,7 @@ public class MeleeWeapon : MonoBehaviour
     public bool swoard;
     public bool spear;
     public bool hummer;
+    public bool katana;
 
     [Header("Параметры оружия")]
     public Transform hitBox;                        // положение хитбокса
@@ -84,7 +85,9 @@ public class MeleeWeapon : MonoBehaviour
             if (spear)
                 animator.SetTrigger("HitSpear");
             if (hummer)
-                animator.SetTrigger("HitHummer");
+                animator.SetTrigger("HitHummer");            
+            if (katana)
+                animator.SetTrigger("HitKatana");
 
             if (audioWeapon)
             {
@@ -136,13 +139,13 @@ public class MeleeWeapon : MonoBehaviour
 
         if (fireWave)
         {
-            GameObject bullet = Instantiate(fireProjectile, hitBox.position, player.hitBoxPivot.transform.rotation);      // создаем префаб снаряда с позицией и поворотом якоря
+            GameObject bullet = Instantiate(fireProjectile, hitBox.position, player.hitBoxPivot.transform.rotation);      // создаем префаб снаряда с позицией хитбокса и поворотом пивота
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.damage = fireWaveDamage;                      // присваиваем урон снаряду
             bulletScript.pushForce = fireWavePushForce;                // присваиваем силу толчка снаряду
             bulletScript.enemyToDamageCount = 50;                      // сколько врагов пробьёт снаряд
             //if (player.rightFlip)
-                bullet.GetComponent<Rigidbody2D>().AddForce(player.hitBoxPivot.transform.right * fireWaveSpeed, ForceMode2D.Impulse);    // даём импульс
+            bullet.GetComponent<Rigidbody2D>().AddForce(player.hitBoxPivot.transform.right * fireWaveSpeed, ForceMode2D.Impulse);    // даём импульс
             //else
                 //bullet.GetComponent<Rigidbody2D>().AddForce(player.hitBoxPivot.transform.right * -fireWaveSpeed, ForceMode2D.Impulse);    // даём импульс
         }
@@ -159,7 +162,7 @@ public class MeleeWeapon : MonoBehaviour
             {
                 float audioPitch = Random.Range(0.9f, 1.1f);        // рандомный питч
                 audioSource.pitch = audioPitch;
-                audioSource.clip = audioWeapon.hitDone;            // звук попадания
+                audioSource.clip = audioWeapon.hitDone;             // звук попадания
                 audioSource.Play();
             }
         }

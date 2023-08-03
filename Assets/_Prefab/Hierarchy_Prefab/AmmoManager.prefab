@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3363006184936330905}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.4895263, y: -0.096422, z: -0.0041213385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -90,19 +90,19 @@ MonoBehaviour:
     allAmmo: 900
   - name: "\u0410\u0412\u041C"
     weapon: {fileID: 2496722168628502743, guid: 9955cc4c20a52e34fbf429f2caa22d3b, type: 3}
-    goldPriseWeapon: 5000
+    goldPriseWeapon: 4000
     goldPriseAmmo: 100
     ammoInReload: 10
     allAmmo: 600
   - name: "\u041E\u0433\u043D\u0435\u043C\u0435\u0442"
     weapon: {fileID: 2496722168628502743, guid: e4c28e4b5a53b084c98fe0896dfe00ee, type: 3}
-    goldPriseWeapon: 6000
+    goldPriseWeapon: 5000
     goldPriseAmmo: 200
     ammoInReload: 100
     allAmmo: 3000
   - name: "\u041C\u0438\u043D\u0438\u0433\u0430\u043D"
     weapon: {fileID: 2496722168628502743, guid: 4a434330d06f85945a2abbbade00d556, type: 3}
-    goldPriseWeapon: 7000
+    goldPriseWeapon: 6000
     goldPriseAmmo: 150
     ammoInReload: 50
     allAmmo: 5000
@@ -367,7 +367,7 @@ MonoBehaviour:
     allAmmo: 0
   - name: "\u041A\u0430\u0442\u0430\u043D\u0430"
     weapon: {fileID: 5674012138522298798, guid: 313d0908708360d42a9a979b090ea907, type: 3}
-    goldPriseWeapon: 0
+    goldPriseWeapon: 1200
     goldPriseAmmo: 0
     ammoInReload: 0
     allAmmo: 0
