@@ -15,5 +15,6 @@ public class DialogStore
 	public UnityEvent awakeInteractAction;	// ивент до начала диалога
 	public UnityEvent goInteractAction;		// ивент при старте диалога
 	public UnityEvent interactAction;		// ивент в конце диалога
-	public Transform targetToDialoge;		// место, куда надо дойти игроку
+	public Transform targetToDialoge;       // место, куда надо дойти игроку
+	public float dialogeDelay;				// задержка перед текстом
 }

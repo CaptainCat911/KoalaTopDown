@@ -49,7 +49,8 @@ public class DialogManager : MonoBehaviour
             }                
             else                // если дошёл или цели нет
             {
-                StartDialog();                                  // начинаем диалог
+                Invoke(nameof(StartDialog), dialogStore[dialogeNumber].dialogeDelay);                 // начинаем диалог
+                //StartDialog();                                  
                 startEvent = false;                             // ивент закончился
                 GameManager.instance.playerAtTarget = false;    // сбрасываем, что игрок возле цели
                 GameManager.instance.player.animator.SetFloat("Speed", 0);  // если нет цели тут сбрасываю анимацию бега игрока (возможно стоит переместить в другой скрипт)

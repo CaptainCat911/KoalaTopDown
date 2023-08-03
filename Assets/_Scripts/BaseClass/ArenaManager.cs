@@ -40,7 +40,8 @@ public class ArenaManager : MonoBehaviour
     int ghostKilled;
 
     [Header("Белый экран")]
-    public GameObject whiteScreen;
+    public bool noStartWhiteScreen;
+    public Animator whiteScreenAnimator;
 
 
 
@@ -218,16 +219,16 @@ public class ArenaManager : MonoBehaviour
         }
     }
 
-/*    public void MakeLvlArena()
-    {
-        GameManager.instance.arenaLvl = true;
-    }*/
+    /*    public void MakeLvlArena()
+        {
+            GameManager.instance.arenaLvl = true;
+        }*/
 
 
     // Для белого экрана босса
-    public void WhiteScreen()
+    public void WhiteScreenEnd()
     {
-        whiteScreen.SetActive(true);
+        whiteScreenAnimator.SetTrigger("EndScreen");
     }
 
 

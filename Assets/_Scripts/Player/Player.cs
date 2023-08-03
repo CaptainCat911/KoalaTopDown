@@ -82,6 +82,9 @@ public class Player : Fighter
     float timerForColor;        // сколько времени он будет красным
     bool red;                   // красный (-_-)
 
+    [Header("Чат-таунт")]
+    public string[] chatTexts;
+
     public bool noAim;                 // для дебага
 
 

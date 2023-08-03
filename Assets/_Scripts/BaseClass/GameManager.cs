@@ -17,11 +17,12 @@ public class GameManager : MonoBehaviour
     //public Dialog dialog;                       // диалог менеджер    
 
     [Header("Управление игрой")]
-    public bool isPlayerEnactive;               // активен игрок или нет
-    public bool cameraOnPlayer;                 // управление камерой
-    public bool dialogeStart;                   // диалог начался
-    public bool playerInResroom;                // игрок в комнате воскрешения
-    [HideInInspector] public bool playerAtTarget;   // игрок дошёл до места старта диалога
+    
+    [HideInInspector] public bool isPlayerEnactive;             // активен игрок или нет
+    [HideInInspector] public bool cameraOnPlayer;               // управление камерой
+    [HideInInspector] public bool dialogeStart;                 // диалог начался
+    [HideInInspector] public bool playerInResroom;              // игрок в комнате воскрешения
+    [HideInInspector] public bool playerAtTarget;               // игрок дошёл до места старта диалога
 
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;                    // клавиша для действия
@@ -35,8 +36,7 @@ public class GameManager : MonoBehaviour
     public bool lightDark;
     public bool lightOff;
 
-    [Header("Чат для игрока")]
-    public string[] chatTexts;
+    [Header("Чат для игрока")]    
     int chatRandom;
     int prevNumber;
 
@@ -113,10 +113,10 @@ public class GameManager : MonoBehaviour
             ChatBubble.Clear(player.gameObject);            
             while (prevNumber == chatRandom)
             {
-                chatRandom = Random.Range(0, chatTexts.Length);
+                chatRandom = Random.Range(0, player.chatTexts.Length);
             }
             prevNumber = chatRandom;            
-            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), chatTexts[chatRandom], 2f);
+            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), player.chatTexts[chatRandom], 2f);
             
             // Триггер врагов
             Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 20);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
@@ -294,5 +294,7 @@ public class GameManager : MonoBehaviour
         player.isImmortal = false;                                                      // убираем бессмертие
         keys[0] = 0;                                                                    // сбрасываем ключи
         keys[1] = 0;
+        if (!ArenaManager.instance.noStartWhiteScreen)
+            ArenaManager.instance.whiteScreenAnimator.SetTrigger("StartScreen");
     }
 }
