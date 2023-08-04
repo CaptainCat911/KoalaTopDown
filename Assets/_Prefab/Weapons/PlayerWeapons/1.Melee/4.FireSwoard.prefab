@@ -398,7 +398,7 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 90
     numCapVertices: 0
     alignment: 0
     textureMode: 0
@@ -522,6 +522,7 @@ MonoBehaviour:
   swoard: 1
   spear: 0
   hummer: 0
+  katana: 0
   hitBox: {fileID: 1630045362412420869}
   damage: 100
   pushForce: 10

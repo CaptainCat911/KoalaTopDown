@@ -31,7 +31,7 @@ public class WeaponHolderMelee : MonoBehaviour
             BuyWeapon(i);
             i++;
         }
-        SelectWeapon();
+        //SelectWeapon();
         HideWeapons();                      // пр€чем оружие
     }
 
@@ -92,8 +92,8 @@ public class WeaponHolderMelee : MonoBehaviour
     // —мена оружи€
     public void SelectWeapon()
     {
-/*        if (!weaponHolder.meleeWeapon)
-            return;*/
+        /*        if (!weaponHolder.meleeWeapon)
+                    return;*/
 
         int i = 0;
         foreach (Transform weapon in transform)

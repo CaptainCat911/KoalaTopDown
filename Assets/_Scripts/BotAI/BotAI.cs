@@ -6,8 +6,6 @@ using UnityEngine.Events;
 
 public class BotAI : Fighter
 {
-   
-
     // Ссылки
     //EnemyThinker enemyThinker;
     [HideInInspector] public NavMeshAgent agent;
@@ -18,6 +16,7 @@ public class BotAI : Fighter
     [HideInInspector] public BotAIMeleeWeaponHolder botAIMeleeWeaponHolder;
     [HideInInspector] public BotAIRangeWeaponHolder botAIRangeWeaponHolder;
     BotAIHitbox hitBox;                                     // хитбокс (для атаки)
+    Ignitable ignitable;
     ShadowCaster2D shadow;                                  // тень
     AudioSource audioSource;
     //public Animator animatorHit;                            // аниматор мили оружия
@@ -81,6 +80,7 @@ public class BotAI : Fighter
     [Header("Анимации и эффекты")]
     public GameObject deathEffect;                          // эффект (потом сделать его в аниматоре (или  нет))
     public float deathCameraShake;                          // мощность тряски камеры при убийстве
+    public ParticleSystem darkEffect;
     [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота
     [HideInInspector] public bool flipLeft;                 // для флипа
     [HideInInspector] public bool flipRight;                //    
@@ -130,6 +130,7 @@ public class BotAI : Fighter
         botAIMeleeWeaponHolder = GetComponentInChildren<BotAIMeleeWeaponHolder>();
         botAIRangeWeaponHolder = GetComponentInChildren<BotAIRangeWeaponHolder>();
         hitBox = GetComponentInChildren<BotAIHitbox>();
+        ignitable = GetComponent<Ignitable>();
         shadow = GetComponentInChildren<ShadowCaster2D>();
         audioSource = GetComponent<AudioSource>();
 
@@ -634,7 +635,15 @@ public class BotAI : Fighter
         {
             agent.enabled = false;              // выключаем агента
             Destroy(gameObject);
-        }            
+        }
+        if (ignitable)
+        {
+            //Debug.Log("Ign!");
+            ignitable.stopBurn = true;
+        }
+
+        if (darkEffect)
+            darkEffect.Stop();
 
         // Для арены
         if (isArenaEnemy)
@@ -652,7 +661,7 @@ public class BotAI : Fighter
     void AfterDeath()
     {
         agent.enabled = false;                  // выключаем агента
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 1f);
     }
 
     void OnDrawGizmosSelected()

@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   withChat: 0
+  withChatAudio: 0
   noPatrol: 0
   noTriggerAgro: 0
 --- !u!1001 &380205928636571940
@@ -211,12 +212,12 @@ PrefabInstance:
       value: Skeleton_MiniBoss_Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 997905747176815394, guid: 6904f8c25c6d0604090f680179f2ae92, type: 3}
-      propertyPath: m_InstanceId
-      value: -1324246
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5198941851537551423, guid: 6904f8c25c6d0604090f680179f2ae92, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 997905747176815394, guid: 6904f8c25c6d0604090f680179f2ae92, type: 3}
+      propertyPath: m_InstanceId
+      value: -1217402
       objectReference: {fileID: 0}
     - target: {fileID: 7391739577533574983, guid: 6904f8c25c6d0604090f680179f2ae92, type: 3}
       propertyPath: m_AnchorMax.x

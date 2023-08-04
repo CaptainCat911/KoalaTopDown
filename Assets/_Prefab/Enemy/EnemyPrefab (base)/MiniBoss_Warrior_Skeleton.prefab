@@ -316,6 +316,7 @@ MonoBehaviour:
       m_Calls: []
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
+  darkEffect: {fileID: 1858656089152909806}
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -396,7 +397,7 @@ MonoBehaviour:
   - {x: 0.18305348, y: -0.44477844, z: 0}
   m_ShapePathHash: 1007078908
   m_Mesh: {fileID: 0}
-  m_InstanceId: 4838610
+  m_InstanceId: 1221196
 --- !u!82 &-5451195169023565519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -875,6 +876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a26041c89c365bd4d904ca18e0a9936c, type: 3}
+--- !u!198 &1858656089152909806 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 669106893643142521, guid: a26041c89c365bd4d904ca18e0a9936c, type: 3}
+  m_PrefabInstance: {fileID: 1189619840483992727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4293743614075160169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3104125698818925310, guid: a26041c89c365bd4d904ca18e0a9936c, type: 3}

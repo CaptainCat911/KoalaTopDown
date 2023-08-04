@@ -18,6 +18,8 @@ public class Ignitable : MonoBehaviour
     float lastBurn;                 // время последнего горения
     bool isBurning = false;         // Горит ли объект
 
+   [HideInInspector] public bool stopBurn;  // для управления огнем
+
 
 
     private void Awake()
@@ -49,7 +51,7 @@ public class Ignitable : MonoBehaviour
             }
         }
 
-        if (Time.time - lastBurn >= burnDuration)               // если горение закончилось
+        if (Time.time - lastBurn >= burnDuration || stopBurn)               // если горение закончилось
         {
             isBurning = false;
             if (flames)

@@ -47,6 +47,14 @@ MonoBehaviour:
   hitStart: {fileID: 8300000, guid: ac3dd2fc5b0387349a8f14dc5419001e, type: 3}
   hitDone: {fileID: 8300000, guid: d2a2161d21fed324799edeecc806833c, type: 3}
   hitRange: {fileID: 0}
+  hitRangeBig: {fileID: 0}
+  hitSpawn: {fileID: 0}
+  hitExplousion: {fileID: 0}
+  hitLaser: {fileID: 0}
+  hitGravity: {fileID: 0}
+  hitMultiRange: {fileID: 0}
+  hitTeleport: {fileID: 0}
+  hitTimeReverce: {fileID: 0}
 --- !u!1 &3786651681049121963
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +314,7 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 90
     numCapVertices: 0
     alignment: 0
     textureMode: 0
@@ -457,6 +465,7 @@ MonoBehaviour:
   swoard: 0
   spear: 0
   hummer: 1
+  katana: 0
   hitBox: {fileID: 1630045362412420869}
   damage: 70
   pushForce: 30
@@ -468,6 +477,11 @@ MonoBehaviour:
   damageBurn: 0
   cooldownBurn: 0
   durationBurn: 0
+  fireWave: 0
+  fireProjectile: {fileID: 0}
+  fireWaveDamage: 0
+  fireWavePushForce: 0
+  fireWaveSpeed: 0
   electro: 0
   damageElectro: 0
   pushForceElectro: 0

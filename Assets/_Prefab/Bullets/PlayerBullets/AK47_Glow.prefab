@@ -122,10 +122,11 @@ MonoBehaviour:
   layerRayCastTarget:
     serializedVersion: 2
     m_Bits: 0
-  ignite: 1
-  damageBurn: 5
+  ignite: 0
+  damageBurn: 8
   cooldownBurn: 0.5
-  durationBurn: 3
+  durationBurn: 2
+  timeToExpl: 1
 --- !u!96 &6680086522174144134
 TrailRenderer:
   serializedVersion: 2

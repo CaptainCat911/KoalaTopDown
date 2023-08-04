@@ -132,9 +132,19 @@ public class BotAIWeaponMelee : MonoBehaviour
         if (Time.time - lastAttack > cooldown)      // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                 // присваиваем время атаки
-
-            animator.SetFloat("HitType", type);     // тип атаки
+            if (!botAI.newNpcSystem)
+            {
+                int randomType = Random.Range(0, type+1);
+                animator.SetFloat("HitType", randomType);     // тип атаки
+                Debug.Log(randomType);
+            }
+            else
+            {
+                animator.SetFloat("HitType", type);     // тип атаки
+            }            
             animator.SetTrigger("Hit");             // тригер для начала анимации
+
+            // Звук
             if (audioWeapon && !botAI.newNpcSystem)
             {
                 audioSource.clip = audioWeapon.hitStart;            // звук взмаха

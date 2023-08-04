@@ -15,8 +15,13 @@ public class Fighter : MonoBehaviour
     public int maxHealth;
     public bool noAgro;
     GameObject floatinText;                 // текст чата
-    public bool isGoodPerson;                     // игрок или нпс (для отображения урона)
+    public bool isGoodPerson;               // игрок или нпс (для отображения урона)
     public bool bossHP;                     // хп босса (ссылаемся на гуи)
+
+    [Header("Время неуязвимости")]
+    public bool withTimeNoDamage;
+    public float timeNoDamage;                     // перезардяка атаки
+    float lastNoDamage;                               // время последнего удара (для перезарядки удара)
 
     // Хп бар
     public bool hpBarOn;                            // хп бар включен                                    
@@ -72,6 +77,14 @@ public class Fighter : MonoBehaviour
     {
         if (!isAlive)
             return;
+
+
+
+/*        if (withTimeNoDamage && Time.time - lastNoDamage > timeNoDamage)          // 
+        {
+            //Debug.Log("Attack!");
+            lastNoDamage = Time.time;
+        }*/
 
         rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);
 
