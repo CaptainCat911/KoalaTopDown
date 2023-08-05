@@ -53,11 +53,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1899818089229980536, guid: 0c30b5c6b4e9bbd4692bdf1ef48c2dae, type: 3}
       propertyPath: m_Name
-      value: ElectroMolot_PickUp
+      value: ElectroMolot_PickUp Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1899818089229980536, guid: 0c30b5c6b4e9bbd4692bdf1ef48c2dae, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074348441098215196, guid: 0c30b5c6b4e9bbd4692bdf1ef48c2dae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074348441098215196, guid: 0c30b5c6b4e9bbd4692bdf1ef48c2dae, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6708437100143781399, guid: 0c30b5c6b4e9bbd4692bdf1ef48c2dae, type: 3}
       propertyPath: weaponIndex

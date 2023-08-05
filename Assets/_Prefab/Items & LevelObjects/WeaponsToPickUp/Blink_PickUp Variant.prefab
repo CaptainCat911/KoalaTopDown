@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1870689062, guid: cd36a4a809120ed4787052030ee77318, type: 3}
+    - target: {fileID: 6709385030645280140, guid: b18fb28059bfc774bab7cd1cd31b0f7b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc126ec5013b117448c679a9df6b844d, type: 3}
+    - target: {fileID: 6709385030645280140, guid: b18fb28059bfc774bab7cd1cd31b0f7b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8558689411926317936, guid: b18fb28059bfc774bab7cd1cd31b0f7b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9208728799990391272, guid: b18fb28059bfc774bab7cd1cd31b0f7b, type: 3}
       propertyPath: m_Name
-      value: Blink_PickUp
+      value: Blink_PickUp Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9208728799990391272, guid: b18fb28059bfc774bab7cd1cd31b0f7b, type: 3}
       propertyPath: m_IsActive
