@@ -9,29 +9,30 @@ public class EnemyThinker : MonoBehaviour
     //public Brain[] brains;
 
     //[HideInInspector] public GameObject target;     // цель
-    bool isFindTarget;                                  // нашли цель
-    float distanceToTarget;                             // дистанци€ до цели
+    bool isFindTarget;                              // нашли цель
+    float distanceToTarget;                         // дистанци€ до цели
     // ѕоиск цели
-    //public float targetFindRadius = 5f;                 // радиус поиска цели                                                               
-    float lastTargetFind;                               // врем€ последнего поиска цели
-    float cooldownFind = 0.1f;                          // перезард€ка поиска цели
-    public float cooldownChangeTarget = 2f;             // перезар€дка смена цели
+    //public float targetFindRadius = 5f;             // радиус поиска цели                                                               
+    float lastTargetFind;                           // врем€ последнего поиска цели
+    float cooldownFind = 0.1f;                      // перезард€ка поиска цели
+    public float cooldownChangeTarget = 2f;         // перезар€дка смена цели
 
     bool type_1;        // тип оружи€ мили
     bool type_2;        // тип оружи€ ренж
 
-    
+
     [Header("ѕоведение")]
     //public bool patrolingRandomPosition;
-    public float cooldownChange;                        // перезард€ка смены позиции
-    public float distancePatrol;                        // дистанци€ дл€ патрулировани€
-    public float maxDistancePatrol;                     // максимальна€ дистанци€ от стартовой позиции
-    [HideInInspector] public float lastChange;          // врем€ последней смены позиции
+    public float cooldownChange;                    // перезард€ка смены позиции
+    public float distancePatrol;                    // дистанци€ дл€ патрулировани€
+    public float maxDistancePatrol;                 // максимальна€ дистанци€ от стартовой позиции
+    [HideInInspector] public float lastChange;      // врем€ последней смены позиции
 
-    [Header("ƒл€ корол€ скелетов")]
-    public bool withSpell;
-    public float cooldownSpell;
-    float lastSpell;
+    [Header("ƒл€ корол€ скелетов")] 
+    public bool withSpell;                          // со спелом
+    public float cooldownSpell;                     // кд спелов
+    float lastSpell;    
+    int iSpell = 1;                                     // счетчик
 
     // ƒл€ Ќѕ—
     public Transform goToPosition;
@@ -164,8 +165,17 @@ public class EnemyThinker : MonoBehaviour
                 if (Time.time - lastSpell > cooldownSpell && !botAI.nowAttacking)
                 {
                     lastSpell = Time.time;              // присваиваем врем€ атаки
-                    // Spell
-                    botAI.AttackMeleeHolder(1);
+                    // Spell                    
+                    int randomSpell = Random.Range(0, 101);
+
+                    if (randomSpell < 40)
+                        iSpell = 1;
+                    if (randomSpell >= 40 && randomSpell < 80)
+                        iSpell = 2;
+                    if ( randomSpell >= 80)
+                        iSpell = 3;
+
+                    botAI.botAIMeleeWeaponHolder.currentWeapon.AttackNoCd(iSpell);
                 }
                 else
                 {

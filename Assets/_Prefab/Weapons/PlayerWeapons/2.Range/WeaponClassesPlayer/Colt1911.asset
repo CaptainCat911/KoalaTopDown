@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bfff81076b41e49a197a73d4bd8167, type: 3}
+  m_Name: Colt1911
+  m_EditorClassIdentifier: 
+  weaponName: "\u041A\u043E\u043B\u044C\u0442 1911"
+  weaponType: 0
+  damage: 25
+  fireRate: 3
+  bulletSpeed: 15
+  pushForce: 1.5
+  enemyToDamageCount: 0
+  recoil: 4
+  delayFire: 0
+  forceBackFire: 0
+  effectBackFire: 0.15
+  bulletPrefab: {fileID: 5170081587130710907, guid: 9de40da2d75bc5046ad5ac702436cdfb, type: 3}
+  boxSize: 0
+  range: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  splitTimes: 0
+  splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0

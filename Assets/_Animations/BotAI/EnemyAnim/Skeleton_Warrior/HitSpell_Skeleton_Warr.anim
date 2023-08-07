@@ -464,6 +464,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 0
+    functionName: PivotStatus
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
   - time: 0.25
     functionName: GravityWeaponAttack
     data: 
@@ -480,6 +487,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.8333333
     functionName: BotAttacking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.8333333
+    functionName: PivotStatus
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

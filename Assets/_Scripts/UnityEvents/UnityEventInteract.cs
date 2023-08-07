@@ -16,7 +16,8 @@ public class UnityEventInteract : MonoBehaviour
     private void Start()
     {
         arrow = transform.Find("QuestArrow").gameObject;        // найти стрелку
-        //arrow.SetActive(false);                                 
+        if (withArrow)
+            arrow.SetActive(true);                                 
     }
 
     public void Update()
@@ -25,7 +26,12 @@ public class UnityEventInteract : MonoBehaviour
         {
             if (Input.GetKeyDown(GameManager.instance.keyToUse) || !withButton)
             {
-                interactAction.Invoke();
+                interactAction.Invoke();                
+                //used = true;
+            }            
+            if (Input.GetKeyDown(GameManager.instance.keyToUse))
+            {                
+                arrow.SetActive(false);
                 //used = true;
             }
         }
@@ -45,8 +51,8 @@ public class UnityEventInteract : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
             isInRange = false;
-            if (withArrow)
-                arrow.SetActive(false);
+            //if (withArrow)
+                //arrow.SetActive(false);
         }
     }
 }

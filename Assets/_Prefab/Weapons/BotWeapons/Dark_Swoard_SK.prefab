@@ -328,22 +328,22 @@ MonoBehaviour:
   radius: 0.6
   trail: {fileID: 3786651681873589342}
   hitShield: 0
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
   damageRange: 0
   pushForceRange: 0
   projctleSpeed: 4
-  bulletPrefabBig: {fileID: 0}
-  damageRangeBig: 0
-  pushForceRangeBig: 0
-  projctleSpeedBig: 0
-  withSplit: 0
-  explousionDamage: 0
-  explousionForce: 0
-  explousionRadius: 0
+  bulletPrefabBig: {fileID: 2609019957272575851, guid: c675c6819f034a14ca6c9a63f9865382, type: 3}
+  damageRangeBig: 20
+  pushForceRangeBig: 30
+  projctleSpeedBig: 5
+  withSplit: 1
+  explousionDamage: 30
+  explousionForce: -60
+  explousionRadius: 4
   enemySpawners: []
   spawnTimes: 0
-  splitTimes: 0
-  splitRecoil: 0
+  splitTimes: 8
+  splitRecoil: 20
   laserDamage: 0
   laserForce: 0
   laserStart: 0
@@ -392,14 +392,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604417298802685298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479659406406739827}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &8460507967632840291
 GameObject:
   m_ObjectHideFlags: 0

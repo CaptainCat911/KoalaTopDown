@@ -44,6 +44,11 @@ public class BotAIHitbox : MonoBehaviour
     {
         //Debug.Log(enemy.lastAttack);
 
+        if (!botAI.isAlive)
+        {
+            return;
+        }
+
         // Атака
         if (botAI.closeToTarget && Time.time - lastAttack > cooldown)               // если готовы атаковать и кд готово
         {

@@ -216,7 +216,7 @@ public class Weapon : MonoBehaviour
         }
         
         // Если закончились патроны
-        if (!weaponHolder.fireStart || ammoWeapons[weaponIndexForAmmo].allAmmo <= 0)        // если не готовы стрелять или закончились патроны
+        if (!weaponHolder.fireStart)        // если не готовы стрелять или закончились патроны
         {
             currentDelay = weaponClass.delayFire;
 
@@ -233,7 +233,17 @@ public class Weapon : MonoBehaviour
 
         if (Time.time >= nextTimeToFire)     // если начинаем стрелять и кд готово
         {
-            transform.localPosition = new Vector3(transform.localPosition.x - weaponClass.effectBackFire, transform.localPosition.y, transform.localPosition.z); // отдача (эффект)
+            if (ammoWeapons[weaponIndexForAmmo].allAmmo <= 0)
+            {
+                GameManager.instance.CreateFloatingMessage("Нет патронов", Color.white, GameManager.instance.player.transform.position);
+                if (startParticles)
+                    startParticles.Stop();
+                if (effectParticles)
+                    effectParticles.Stop();
+                return;
+            }
+
+            transform.localPosition = new Vector3(transform.localPosition.x - weaponClass.effectBackFire, transform.localPosition.y, transform.localPosition.z);    // отдача (эффект)
 
             ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           

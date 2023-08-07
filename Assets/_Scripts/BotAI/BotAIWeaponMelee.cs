@@ -129,7 +129,7 @@ public class BotAIWeaponMelee : MonoBehaviour
 
     public void Attack(int type)
     {
-        if (Time.time - lastAttack > cooldown)      // если готовы атаковать и кд готово
+        if (Time.time - lastAttack > cooldown && !botAI.nowAttacking)      // если готовы атаковать и кд готово
         {
             lastAttack = Time.time;                 // присваиваем врем€ атаки
 /*            if (!botAI.newNpcSystem)
@@ -151,6 +151,12 @@ public class BotAIWeaponMelee : MonoBehaviour
                 audioSource.Play();
             }
         }  
+    }
+
+    public void AttackNoCd(int type)
+    {
+        animator.SetFloat("HitType", type);     // тип атаки
+        animator.SetTrigger("Hit");             // тригер дл€ начала анимации
     }
 
     public void LaserOn(int number)

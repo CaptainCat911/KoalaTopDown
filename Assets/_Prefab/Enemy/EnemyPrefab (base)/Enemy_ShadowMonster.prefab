@@ -249,6 +249,8 @@ MonoBehaviour:
   noAgro: 0
   isGoodPerson: 0
   bossHP: 0
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -287,6 +289,7 @@ MonoBehaviour:
   distanceToAttack: 1
   distanceToTarget: 0
   nowAttacking: 0
+  noHealBox: 1
   itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   stayOnGround: 1
   noPatrol: 0
@@ -294,11 +297,16 @@ MonoBehaviour:
   followPlayer: 0
   destinationPoint: {fileID: 0}
   noTriggerAgro: 0
-  events:
+  eventsStart:
+    m_PersistentCalls:
+      m_Calls: []
+  eventsDeath:
     m_PersistentCalls:
       m_Calls: []
   deathEffect: {fileID: 7845441016114820387, guid: 63da8428eacb2d64e834aa5b7bf5e82f, type: 3}
   deathCameraShake: 2
+  darkEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -331,6 +339,8 @@ MonoBehaviour:
   distancePatrol: 2
   maxDistancePatrol: 4
   lastChange: 0
+  withSpell: 0
+  cooldownSpell: 0
   goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
@@ -353,6 +363,7 @@ MonoBehaviour:
   lightGo2D: {fileID: 3762999397295591328}
   canBurn: 1
   slow: 0.2
+  stopBurn: 0
 --- !u!114 &7964817913752860295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +390,7 @@ MonoBehaviour:
   - {x: 0.15258026, y: -0.21078491, z: 0}
   m_ShapePathHash: 1012902165
   m_Mesh: {fileID: 0}
-  m_InstanceId: 4353552
+  m_InstanceId: 2410702
 --- !u!82 &5984834870589312873
 AudioSource:
   m_ObjectHideFlags: 0

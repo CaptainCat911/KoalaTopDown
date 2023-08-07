@@ -13,16 +13,36 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442"
-  projectileWeapon: 1
-  splitProjectileWeapon: 0
-  bulletPrefab: {fileID: 5170081587130710907, guid: bc261d7d6aae3834ba444226a6ca08b1, type: 3}
-  rayCastWeapon: 0
-  layerRayCast:
-    serializedVersion: 2
-    m_Bits: 0
+  weaponType: 0
   damage: 25
   fireRate: 3
   bulletSpeed: 15
   pushForce: 1.5
-  forceBackFire: 0
+  enemyToDamageCount: 0
   recoil: 4
+  delayFire: 0
+  forceBackFire: 0
+  effectBackFire: 0.1
+  bulletPrefab: {fileID: 5170081587130710907, guid: bc261d7d6aae3834ba444226a6ca08b1, type: 3}
+  boxSize: 0
+  range: 0
+  layerRayCast:
+    serializedVersion: 2
+    m_Bits: 0
+  splitTimes: 0
+  splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
+  ignite: 0
+  damageBurn: 0
+  cooldownBurn: 0
+  durationBurn: 0

@@ -80,7 +80,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3237850732736583336, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3237850732736583337, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
       propertyPath: m_RootOrder
@@ -124,6 +124,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3237850732736583337, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611481666550757540, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
