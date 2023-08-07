@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1589726066522566051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589726066522566061}
+  - component: {fileID: 1589726066522566050}
+  m_Layer: 0
+  m_Name: GameAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589726066522566061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589726066522566051}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1589726066522566050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589726066522566051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8e7e56aefb12440aacf4332f0dbfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healBox: {fileID: 1899818089229980536, guid: 0d35400dc360b3d44828c0f0a57e6ab3, type: 3}
+  fireBallSmall: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
+  fireBallBig: {fileID: 2609019957272575851, guid: c675c6819f034a14ca6c9a63f9865382, type: 3}
+  chatBubblePrefab: {fileID: 5242830040618600346, guid: d0aae9fc72b3e1347a339a019732354c, type: 3}
+  floatingText: {fileID: 4810637959296370814, guid: c984a297bae5fe74a9d54ace278b635e, type: 3}
+  floatingMessage: {fileID: 4810637959296370814, guid: 07bcd345408fa02468733f2faed3cd19, type: 3}
+  explousionRedEffect: {fileID: 5727708654878073701, guid: 1e544d0fc79aa59468d7a41cf03925a0, type: 3}
+  explousionBlue: {fileID: 5727708654878073701, guid: a9fe56090ee0f694f8dcbfe561b29016, type: 3}
+  explousionGravity: {fileID: 5727708654878073701, guid: a17f7d2a66cb61f43b5d68e9a24b327b, type: 3}
+  explousionTeleportIn: {fileID: 5727708654878073701, guid: feede7d7a21b2d94087c4f23cc877658, type: 3}
+  explousionTeleportOut: {fileID: 5727708654878073701, guid: 791ff9c0322d7a54ea26f0b6e60b55ae, type: 3}
+  playerBlinkIn: {fileID: 5727708654878073701, guid: 70516f0ef26862442b78c5b3fadbd4cf, type: 3}
+  playerBlinkOut: {fileID: 5727708654878073701, guid: 3c857099f59070742869b7cfa3e1e397, type: 3}
+  explousionSmall: {fileID: 7845441016114820387, guid: df1d8e040ec39f94a94e5891cc534aec, type: 3}
+  sparks: {fileID: 4947641790296222230, guid: 83dbac8f18dc73f428b42ff831e28be0, type: 3}
+  portalDeath: {fileID: 3630255970614574080, guid: 9151d1aa145f6654aa8920a3d716a6b5, type: 3}

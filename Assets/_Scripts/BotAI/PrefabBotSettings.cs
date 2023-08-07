@@ -10,6 +10,7 @@ public class PrefabBotSettings : MonoBehaviour
     public bool withChatAudio;
     public bool noPatrol;
     public bool noTriggerAgro;
+    public bool turnLeft;
 
     public void SetSettingsBot()
     {
@@ -18,5 +19,6 @@ public class PrefabBotSettings : MonoBehaviour
         botAI.withAudioChat = withChatAudio;
         botAI.noPatrol = noPatrol;
         botAI.noTriggerAgro = noTriggerAgro;
+        botAI.makeLeft = turnLeft;
     }
 }

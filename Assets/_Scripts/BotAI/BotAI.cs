@@ -58,7 +58,9 @@ public class BotAI : Fighter
     [HideInInspector] public bool nowAttacking;             // дистанция до цели
 
     [Header("Предмет")]
+    public bool noHealBox;
     public GameObject itemToSpawn;
+
 
     //public bool switchMelee;
 
@@ -67,24 +69,28 @@ public class BotAI : Fighter
     float maxSpeed;
 
     [Header("Поведение")]
-    public bool stayOnGround;                               // стоять на месте и охранять
-    public bool noPatrol;                                   // без патрулирования
-    public bool goTo;                                       // двигаться к точке
-    public bool followPlayer;                               // следовать за игроком
-    public Transform destinationPoint;                      // точка назначения
-    public bool noTriggerAgro;                              // без агро при попадании в соседнего монстра
+    public bool stayOnGround;                       // стоять на месте и охранять
+    public bool noPatrol;                           // без патрулирования
+    public bool goTo;                               // двигаться к точке
+    public bool followPlayer;                       // следовать за игроком
+    public Transform destinationPoint;              // точка назначения
+    public bool noTriggerAgro;                      // без агро при попадании в соседнего монстра
+
+    [Header("Ивенты при старте")]
+    public UnityEvent eventsStart;                  // ивенты при старте
 
     [Header("Ивенты при смерти")]
-    public UnityEvent events;                 // ивенты
+    public UnityEvent eventsDeath;                  // ивенты
 
     [Header("Анимации и эффекты")]
-    public GameObject deathEffect;                          // эффект (потом сделать его в аниматоре (или  нет))
-    public float deathCameraShake;                          // мощность тряски камеры при убийстве
+    public GameObject deathEffect;                  // эффект (потом сделать его в аниматоре (или  нет))
+    public float deathCameraShake;                  // мощность тряски камеры при убийстве
     public ParticleSystem darkEffect;
-    [HideInInspector] public float aimAnglePivot;           // угол поворота хитбокспивота
-    [HideInInspector] public bool flipLeft;                 // для флипа
-    [HideInInspector] public bool flipRight;                //    
-    bool pivotZero;                                         // оружие не вращается
+    public bool makeLeft;                           // повернуть налево
+    [HideInInspector] public float aimAnglePivot;   // угол поворота хитбокспивота
+    [HideInInspector] public bool flipLeft;         // для флипа
+    [HideInInspector] public bool flipRight;        //    
+    bool pivotZero;                                 // оружие не вращается
 
     [Header("Остальное")]
     // Таймер для цветов при уроне
@@ -144,7 +150,14 @@ public class BotAI : Fighter
         }
         maxSpeed = agent.speed;
 
+        //MakeLeft();
+
         //distanceToAttack = defaultRangeToTarget;
+    }
+
+    private void OnEnable()
+    {
+        
     }
 
     public override void Start()
@@ -152,20 +165,25 @@ public class BotAI : Fighter
         base.Start();
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-        agent.updateRotation = false;                       // для навмеш2д
-        agent.updateUpAxis = false;                         //
-        agent.ResetPath();                                  // сбрасываем путь, потому что он при старте есть
+        agent.updateRotation = false;           // для навмеш2д
+        agent.updateUpAxis = false;             //
+        agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
+
+        eventsStart.Invoke();                   // запускаем ивент
 
         if (meleeAttackType)
             SwitchAttackType(1);
         if (rangeAttackType)
-            SwitchAttackType(2);        
+            SwitchAttackType(2);
+
+        if (makeLeft)
+            Invoke(nameof(MakeLeft), 0.5f);     // повернуть налево
     }
 
     public override void Update()
     {
-        if (debug)
-            Debug.Log(distanceToAttack);
+/*        if (debug)
+            Debug.Log(distanceToAttack);*/
 
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
@@ -237,12 +255,12 @@ public class BotAI : Fighter
 
 
         // Дебаг
-        if (debug)
+/*        if (debug)
         {
             Debug.Log(target);            
             Debug.Log(chasing);
             Debug.Log(targetVisible);            
-        }
+        }*/
     }
 
     // Сделать нейтральным или нет
@@ -403,7 +421,9 @@ public class BotAI : Fighter
             return;
 
         if (debug)
-            Debug.Log("Chasing");
+        {
+            Debug.Log(nowAttacking);            
+        }            
 
         distanceToTarget = Vector3.Distance(transform.position, target.transform.position);     // считаем дистанцию до цели
 
@@ -421,12 +441,18 @@ public class BotAI : Fighter
             {
                 targetInRange = false;
             }
-        }          
+        }
+
+        if (nowAttacking)
+        {
+            agent.ResetPath();
+            return;
+        }
 
         // Дистанция для текущей атаки
-        if (distanceToTarget <= distanceToAttack && targetVisible || nowAttacking)      // если дошли до цели и видим её
+        if (distanceToTarget <= distanceToAttack && targetVisible)      // если дошли до цели и видим её
         {
-            if (!closeToTarget)                                                 //
+            if (!closeToTarget)                                                 // 
             {
                 agent.ResetPath();                                              // сбрасываем путь       
                 closeToTarget = true;                                           // готов стрелять
@@ -564,17 +590,23 @@ public class BotAI : Fighter
     }
 
     // Поворот спрайта
-    void FaceTargetRight()                                  // поворот направо
+    public void FaceTargetRight()                                  // поворот направо
     {
         spriteRenderer.flipX = false;
         flipLeft = false;
-        flipRight = true;
+        flipRight = true;        
     }
-    void FaceTargetLeft()                                   // поворот налево
+    public void FaceTargetLeft()                                   // поворот налево
     {
         spriteRenderer.flipX = true;
         flipRight = false;
-        flipLeft = true;
+        flipLeft = true;        
+    }
+
+    public void MakeLeft()
+    {
+        FaceTargetLeft();
+        pivot.Flip();
     }
 
     public void PivotZero(int number)
@@ -609,6 +641,13 @@ public class BotAI : Fighter
         if (itemToSpawn)
             Instantiate(itemToSpawn, transform.position, Quaternion.identity);          // создаем предмет
 
+        if (!noHealBox)
+        {
+            int random = Random.Range(0, 101);
+            if (random >= 97)
+                Instantiate(GameAssets.instance.healBox, transform.position, Quaternion.identity);          // создаем аптечку
+        }
+
         botAIMeleeWeaponHolder.HideWeapons();       // прячем оружия
         botAIRangeWeaponHolder.HideWeapons();
         animatorWeapon.animator.enabled = false;    // отключаем аниматор оружия
@@ -627,7 +666,7 @@ public class BotAI : Fighter
             audioSource.pitch = 1f;                                                 // возвращаем обычный питч 
         }
 
-        events.Invoke();                        // ивенты
+        eventsDeath.Invoke();                        // ивенты
 
         if (!fastDeathAnim)
             Invoke("AfterDeath", timeForDeath);         // 0.8f

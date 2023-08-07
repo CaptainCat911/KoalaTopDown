@@ -28,6 +28,11 @@ public class EnemyThinker : MonoBehaviour
     public float maxDistancePatrol;                     // максимальная дистанция от стартовой позиции
     [HideInInspector] public float lastChange;          // время последней смены позиции
 
+    [Header("Для короля скелетов")]
+    public bool withSpell;
+    public float cooldownSpell;
+    float lastSpell;
+
     // Для НПС
     public Transform goToPosition;
     [HideInInspector] public Transform[] positionsPoints;
@@ -154,7 +159,23 @@ public class EnemyThinker : MonoBehaviour
 
         if (botAI.chasing && botAI.target)
         {
-            botAI.Chase();                      // преследуем и аттакуем           
+            if (withSpell)
+            {
+                if (Time.time - lastSpell > cooldownSpell && !botAI.nowAttacking)
+                {
+                    lastSpell = Time.time;              // присваиваем время атаки
+                    // Spell
+                    botAI.AttackMeleeHolder(1);
+                }
+                else
+                {
+                    botAI.Chase();                      // преследуем и аттакуем
+                }
+            }
+            else
+            {
+                botAI.Chase();                          // преследуем и аттакуем
+            }            
         }
 
 
@@ -166,14 +187,14 @@ public class EnemyThinker : MonoBehaviour
         }
 
 
-
+/*
         if(debug)
         {
             Debug.Log(botAI.target);
             Debug.Log(isFindTarget);
             //Debug.Log(botAI.chasing);
             //Debug.Log(botAI.readyToAttack);
-        }
+        }*/
 
 
 /*        if (isFriendly)

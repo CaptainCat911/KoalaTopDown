@@ -6,10 +6,13 @@ public class GameAssets : MonoBehaviour
 {
     public static GameAssets instance;         // инстанс
 
-    [Header("Звуки")]
+    [Header("Предметы")]
+    public GameObject healBox;
+
+/*    [Header("Звуки")]
     public GameObject audioExplousionBomb;
     public GameObject audioExplousionFireBomb;
-    public GameObject audioGoldTake;
+    public GameObject audioGoldTake;*/
 
     [Header("Префабы")]
     public GameObject fireBallSmall;

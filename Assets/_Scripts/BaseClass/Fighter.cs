@@ -23,6 +23,9 @@ public class Fighter : MonoBehaviour
     public float timeNoDamage;                     // перезардяка атаки
     float lastNoDamage;                               // время последнего удара (для перезарядки удара)
 
+    float lastHealMinus;
+    float cooldownHealMinus = 1f;
+
     // Хп бар
     public bool hpBarOn;                            // хп бар включен                                    
     public GameObject hpBarGO;                      // хп бар объект
@@ -68,7 +71,15 @@ public class Fighter : MonoBehaviour
 
     public virtual void Update()
     {
-
+        // если здоровья больше, чем максимальное здоровье
+        if (currentHealth > maxHealth)
+        {
+            if (Time.time - lastHealMinus > cooldownHealMinus)
+            {
+                lastHealMinus = Time.time;
+                currentHealth -= 1;
+            }
+        }
     }
 
 
@@ -126,12 +137,12 @@ public class Fighter : MonoBehaviour
 
     public virtual void Heal(int healingAmount)
     {
-        if (currentHealth == maxHealth)
-            return;
+/*        if (currentHealth == maxHealth)
+            return;*/
 
         currentHealth += healingAmount;
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
+/*        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;*/
         ShowDamageOrHeal("+" + healingAmount.ToString() + " hp", false);
 
         //GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 30, 1.5f);
