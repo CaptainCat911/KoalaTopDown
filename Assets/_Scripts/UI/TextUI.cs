@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class TextUI : MonoBehaviour
 {
+    public static TextUI instance;          // инстанс
+
     Player player;                  // ссылка на игрока
     public Text hp;                 // кол-во хп
     public Text shield;             // щит
@@ -16,16 +18,23 @@ public class TextUI : MonoBehaviour
     public Text bombName;           // имя бомбы
     public Text ammoBomb;           // кол-во бомб
 
+    public GameObject pozorGo;      // объект (чтобы включать)
+    public Text pozorCount;         // счетчик позора
+
     public Text arenaEnemyKilledCount;      // врагов убито
     public Text arenaBossKilledCount;       // босов убито
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
         player = GameManager.instance.player;
     }
    
-    void Update()                                                   // (потом изменить вывод сообщений)
+    void FixedUpdate()                                                   // (потом изменить вывод сообщений)
     {
         // HP
         hp.text = player.currentHealth.ToString("0");
@@ -53,6 +62,9 @@ public class TextUI : MonoBehaviour
 
         // Батареи
         battery.text = GameManager.instance.battery.ToString("0");
+
+        // Позор
+        pozorCount.text = GameManager.instance.pozorCount.ToString("0");
 
         // Активное оружие
         if (GameManager.instance.player.weaponHolder.currentWeapon)

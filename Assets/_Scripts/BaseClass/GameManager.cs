@@ -16,8 +16,7 @@ public class GameManager : MonoBehaviour
     //public GameObject gui;                      // гуи
     //public Dialog dialog;                       // диалог менеджер    
 
-    [Header("Управление игрой")]
-    
+    [Header("Управление игрой")]    
     [HideInInspector] public bool isPlayerEnactive;             // активен игрок или нет
     [HideInInspector] public bool cameraOnPlayer;               // управление камерой
     [HideInInspector] public bool dialogeStart;                 // диалог начался
@@ -30,7 +29,8 @@ public class GameManager : MonoBehaviour
     [Header("Предметы")]
     public int gold;                            // золото
     public int[] keys;                          // ключи
-    public int battery;                         // батареи     
+    public int battery;                         // батареи
+    public int pozorCount;                      // счетчик позора
 
     [Header("Управление светом")]
     public bool lightDark;

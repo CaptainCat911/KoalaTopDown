@@ -598,10 +598,9 @@ public class Player : Fighter
         yield return new WaitForSeconds(0.5f);
         capsuleCollider2D.enabled = false;
 
-
-
         yield return new WaitForSeconds(1.5f);
         animator.ResetTrigger("TakeHit");                   // из-за бага
+        
         GameObject effect = Instantiate(GameAssets.instance.portalDeath, transform.position, Quaternion.identity);      // создаем эффект портала
         Destroy(effect, 1);
         GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, ResRoomManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
@@ -626,10 +625,10 @@ public class Player : Fighter
         GameObject effect = Instantiate(GameAssets.instance.portalDeath, transform.position, Quaternion.identity);      // создаем эффект портала
         
         yield return new WaitForSeconds(0.5f);
-        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, ResRoomManager.instance.resStart.position, Quaternion.identity);      // создаем эффект портала
+        GameObject effect2 = Instantiate(GameAssets.instance.portalDeath, ResRoomManager.instance.resStartPozor.position, Quaternion.identity);      // создаем эффект портала
 
         yield return new WaitForSeconds(0.5f);
-        transform.position = ResRoomManager.instance.resStart.position;
+        transform.position = ResRoomManager.instance.resStartPozor.position;
         effect.GetComponentInChildren<Animator>().SetTrigger("Close");
         Destroy(effect, 1);
 

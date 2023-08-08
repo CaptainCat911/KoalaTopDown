@@ -281,6 +281,8 @@ MonoBehaviour:
   isEnemy: 1
   isArenaEnemy: 0
   isArenaBoss: 0
+  pozorSkeleton: 0
+  skeletonKing: 1
   triggerLenght: 7
   distanceToChangeTarget: 3
   target: {fileID: 0}
@@ -306,7 +308,7 @@ MonoBehaviour:
   distanceToTarget: 0
   nowAttacking: 0
   noHealBox: 0
-  itemToSpawn: {fileID: 1899818089229980536, guid: a3edbe32a95e7744e898f21125fdb3c0, type: 3}
+  itemToSpawn: {fileID: 0}
   stayOnGround: 1
   noPatrol: 0
   goTo: 0
@@ -330,6 +332,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   friendTarget: {fileID: 0}
+  lookAtPlayer: 0
   fastDeathAnim: 0
   timeForDeath: 1
   debug: 0
@@ -337,6 +340,7 @@ MonoBehaviour:
   withChat: 0
   audioEnemy: {fileID: 7866334079242397434}
   withAudioChat: 0
+  pozor: 0
 --- !u!114 &7367888658173034818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +411,7 @@ MonoBehaviour:
   - {x: 0.21554695, y: -0.44935936, z: 0}
   m_ShapePathHash: -1788856732
   m_Mesh: {fileID: 0}
-  m_InstanceId: 1062634
+  m_InstanceId: 5535122
 --- !u!82 &-5125645208778790399
 AudioSource:
   m_ObjectHideFlags: 0

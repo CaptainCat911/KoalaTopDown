@@ -28,6 +28,9 @@ public class BotAI : Fighter
     public bool isEnemy;                                    // несоюзный бот
     public bool isArenaEnemy;                               // бот для арены
     public bool isArenaBoss;                                // босс для арены
+    //public bool pozorSkeleton;                              // для позора
+    public bool skeletonKing;                               // король скелетов
+
 
     //public bool isFollow;                                   // следовать
 
@@ -101,7 +104,10 @@ public class BotAI : Fighter
     // Для триггера
     public LayerMask layerTrigger;
 
+    [Header("Смотреть на цель")]
     public Transform friendTarget;
+    public bool lookAtPlayer;
+
 
     public bool fastDeathAnim;
     public float timeForDeath = 2.5f;
@@ -119,7 +125,11 @@ public class BotAI : Fighter
     public bool withAudioChat;          // с репликой
     bool sayedAudoiChat;
 
-
+    [Header("Для позора")]
+    public bool pozor;
+    bool startPozorChat;
+    float cooldownPozorChat;             // перезардяка атаки
+    float lastPozorChat;                        // время последнего удара (для перезарядки удара)
 
 
 
@@ -144,10 +154,9 @@ public class BotAI : Fighter
         layerHit = LayerMask.GetMask("Player", "NPC", "ObjectsDestroyble", "Default");
         if (isFriendly)
         {
-            layerTarget = LayerMask.GetMask("Enemy");                                   // слой поиска цели
-            gameObject.layer = LayerMask.NameToLayer("NPC");                            // слой самого бота
-            layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой для оружия
+            MakeFriendly();
         }
+
         maxSpeed = agent.speed;
 
         //MakeLeft();
@@ -251,6 +260,38 @@ public class BotAI : Fighter
                 agent.speed += 0.005f;
             else
                 slowed = false;
+        }
+
+        if (friendTarget)
+        {
+            LookAt(friendTarget);
+        }
+                
+        if (lookAtPlayer)
+        {
+            LookAt(GameManager.instance.player.transform);
+        }
+
+        // Для скелетов в позорной комнате
+        if (pozor)
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, GameManager.instance.player.transform.position); 
+            if (distanceToPlayer <= 6)
+            {
+                startPozorChat = true;
+            }
+            else
+            {
+                startPozorChat = false;
+            }
+
+            cooldownPozorChat = Random.Range(4, 7);             // рандомный кд
+
+            if (startPozorChat && withChat && Time.time - lastPozorChat > cooldownPozorChat)    // если игрок рядом и враг с чатом
+            {
+                lastPozorChat = Time.time;
+                SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);                      // выдаём рандомну фразу
+            }
         }
 
 
@@ -484,7 +525,17 @@ public class BotAI : Fighter
         stayOnGround = false;                               // стоять на месте и охранять
         goTo = false;                                       // двигаться к точке
         followPlayer = false;                               // следовать за игроком
-}
+    }
+    public void ActiveGoTo()
+    {
+        stayOnGround = false;                               // стоять на месте и охранять
+        goTo = true;                                        // двигаться к точке
+        followPlayer = false;                               // следовать за игроком
+    }
+    public void ActiveLookAtPlayer()
+    {
+        lookAtPlayer = true;
+    }
 
 
     public void SetDestination(Vector3 destination)
@@ -623,6 +674,15 @@ public class BotAI : Fighter
 
     protected override void Death()
     {
+ /*       if (skeletonKing)
+        {
+            MakeFriendly();
+            currentHealth = maxHealth;
+            eventsDeath.Invoke();                        // ивенты
+            SayText("Хорошо, ты доказал, что достоин второго шанса");
+            return;
+        }*/
+
         base.Death();
 
         //GameManager.instance.enemyCount--;                                                          // -1 к счётчику врагов
@@ -700,7 +760,56 @@ public class BotAI : Fighter
     void AfterDeath()
     {
         agent.enabled = false;                  // выключаем агента
+        if (skeletonKing)
+        {
+            return;
+        }
         Destroy(gameObject, 1f);
+    }
+
+    public void StartRes()
+    {
+        Invoke(nameof(ResAnimator), 7); 
+        Invoke(nameof(Res), 8);
+    }
+
+    // Анимация воскрешения
+    void ResAnimator()  
+    {
+        animatorWeapon.animator.StopPlayback();         // НЕ РАБОТАЕТ
+        animator.SetTrigger("Res");
+    }
+
+    // Воскрешение
+    void Res()
+    {
+        isAlive = true;                             // жив
+        if (capsuleCollider2D)
+            capsuleCollider2D.enabled = true;       // коллайдер включаем
+        currentHealth = maxHealth;                  // здоров
+        agent.enabled = true;                       // выключаем агента
+        if (darkEffect)
+            darkEffect.Play();
+        botAIMeleeWeaponHolder.SelectWeapon();      // достаём оружия
+        botAIRangeWeaponHolder.SelectWeapon();
+        animatorWeapon.animator.enabled = true;     // включаем аниматор оружия
+        if (shadow)
+            shadow.enabled = true;                  // включаем тень
+        //hpBarGO.SetActive(true);                   // включем хп бар
+    }
+
+    public void MakeFriendly()
+    {
+        layerTarget = LayerMask.GetMask("Enemy");                                   // слой поиска цели
+        gameObject.layer = LayerMask.NameToLayer("NPC");                            // слой самого бота
+        layerHit = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");      // слой для оружия        
+    }
+
+    public void MakeEnemyly()
+    {
+        layerTarget = LayerMask.GetMask("Player", "NPC");
+        gameObject.layer = LayerMask.NameToLayer("Enemy");                            // слой самого бота
+        layerHit = LayerMask.GetMask("Player", "NPC", "ObjectsDestroyble", "Default");
     }
 
     void OnDrawGizmosSelected()

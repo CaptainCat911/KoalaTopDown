@@ -11,9 +11,11 @@ public class TeleportLevel : MonoBehaviour
     //bool isInRange;                       // в ренже мы или нет    
     GameObject gameObjectToTeleport;        // объект, который нужно телепортировать
 
-    [Header("Временно здесь")]
+    [Header("Настройки РесРума (временно здесь)")]
     public bool teleportFromRes;            // телепорт из ресрума
+    public bool teleportPozor;              // позорный телепорт
     public GameObject doorRes;              // дверь 
+
     AudioSource audioSource;
 
     private void Awake()
@@ -34,8 +36,14 @@ public class TeleportLevel : MonoBehaviour
             // Для ресрума, временно здесь
             if (teleportFromRes)
             {
-                GameManager.instance.playerInResroom = false;                
-                doorRes.GetComponent<Door>().CloseDoor();
+                GameManager.instance.playerInResroom = false;               // вышли из ресрума
+                doorRes.GetComponent<Door>().CloseDoor();                   // закрыли дверь
+                ResRoomManager.instance.ResetMonsterAndChest();           // уничтожили сундук и мостра
+                if (teleportPozor)                                          // если портал позора
+                {
+                    GameManager.instance.pozorCount++;                      // + к позору
+                    TextUI.instance.pozorGo.SetActive(true);                // включаем UI позора
+                }
             }
 
 

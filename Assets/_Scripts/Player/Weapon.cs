@@ -62,9 +62,11 @@ public class Weapon : MonoBehaviour
     public AudioSource audioSource;         // основной звук
     public AudioSource audioSourceTail;     // "хвост"
 
+    [Header("ƒл€ сообщений")]
+    float cooldownMessage = 1f;             // перезард€ка атаки
+    float lastMessage;                      // врем€ последнего удара (дл€ перезар€дки удара)
+
     Vector3 originPosition;
-
-
 
     public bool debug;
 
@@ -214,9 +216,16 @@ public class Weapon : MonoBehaviour
                 }
             }
         }
-        
+
+        // —ообщение, что закончились патроны
+        if (weaponHolder.fireStart && ammoWeapons[weaponIndexForAmmo].allAmmo <= 0 && Time.fixedTime - lastMessage > cooldownMessage)
+        {
+            GameManager.instance.CreateFloatingMessage("Ќет патронов", Color.white, GameManager.instance.player.transform.position);
+            lastMessage = Time.fixedTime;
+        }
+
         // ≈сли закончились патроны
-        if (!weaponHolder.fireStart)        // если не готовы стрел€ть или закончились патроны
+        if (!weaponHolder.fireStart || ammoWeapons[weaponIndexForAmmo].allAmmo <= 0)        // если не готовы стрел€ть или закончились патроны
         {
             currentDelay = weaponClass.delayFire;
 
@@ -233,15 +242,14 @@ public class Weapon : MonoBehaviour
 
         if (Time.time >= nextTimeToFire)     // если начинаем стрел€ть и кд готово
         {
-            if (ammoWeapons[weaponIndexForAmmo].allAmmo <= 0)
-            {
-                GameManager.instance.CreateFloatingMessage("Ќет патронов", Color.white, GameManager.instance.player.transform.position);
+/*            if (ammoWeapons[weaponIndexForAmmo].allAmmo <= 0)
+            {                
                 if (startParticles)
                     startParticles.Stop();
                 if (effectParticles)
                     effectParticles.Stop();
                 return;
-            }
+            }*/
 
             transform.localPosition = new Vector3(transform.localPosition.x - weaponClass.effectBackFire, transform.localPosition.y, transform.localPosition.z);    // отдача (эффект)
 
