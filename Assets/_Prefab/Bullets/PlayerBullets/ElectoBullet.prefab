@@ -266,15 +266,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4679c321acafe48b5ab91030711ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  isPlayerBullet: 0
   damage: 0
   pushForce: 0
   enemyToDamageCount: 0
   enemyDamaged: 0
-  isPlayerBullet: 0
-  expEffect: {fileID: 0}
   layerExplousion:
     serializedVersion: 2
     m_Bits: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  portalBullet: 0
+  audioExplousion: {fileID: 0}
+  audioProjectile: {fileID: 0}
   expRadius: 3
   withSplit: 0
   prefabFireBall: 0
@@ -284,6 +289,9 @@ MonoBehaviour:
   pushForceSplitProjectile: 0
   splitProjectileSpeed: 0
   withTimer: 0
-  timeToExpl: 0
+  timeToExpl: 2
   cameraAmplitudeShake: 3
   cameraTimedeShake: 0.1
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 0

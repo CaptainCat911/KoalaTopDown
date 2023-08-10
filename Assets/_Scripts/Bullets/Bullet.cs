@@ -16,6 +16,9 @@ public class Bullet : MonoBehaviour
     public GameObject expEffect;
     public GameObject sparksEffect;
 
+    [Header("ѕортальна€ пушка")]
+    public bool portalBullet;           // портальный патрон    
+
     [Header("јудио")]
     public GameObject audioExplousion;
     public AudioProjectile audioProjectile;
@@ -46,6 +49,9 @@ public class Bullet : MonoBehaviour
             Destroy(sound, 1f);
         }
 
-        Destroy(gameObject);                                                                        // уничтожаем пулю
+        if (portalBullet)
+            Destroy(gameObject, 0.15f);
+        else
+            Destroy(gameObject);                                                                        // уничтожаем пулю
     }
 }

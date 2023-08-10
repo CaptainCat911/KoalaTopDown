@@ -22,6 +22,7 @@ public class EnemyThinker : MonoBehaviour
 
 
     [Header("Поведение")]
+    public float distanceFromStartMain;             // дистанция от стартовой позиции до бота
     //public bool patrolingRandomPosition;
     public float cooldownChange;                    // перезардяка смены позиции
     public float distancePatrol;                    // дистанция для патрулирования
@@ -31,10 +32,11 @@ public class EnemyThinker : MonoBehaviour
     [Header("Для короля скелетов")] 
     public bool withSpell;                          // со спелом
     public float cooldownSpell;                     // кд спелов
-    float lastSpell;    
-    int iSpell = 1;                                     // счетчик
+    float lastSpell;                                // для кд
+    int iSpell = 1;                                 // счетчик
 
     // Для НПС
+    int iChase = 1;                                 // для преследования
     public Transform goToPosition;
     [HideInInspector] public Transform[] positionsPoints;
     [HideInInspector] public int i = 0;
@@ -185,10 +187,24 @@ public class EnemyThinker : MonoBehaviour
             else
             {
                 botAI.Chase();                          // преследуем и аттакуем
-            }            
+            }
+
+            if (botAI.chaseLeght <= 0)
+                return;
+
+            distanceFromStartMain = Vector3.Distance(botAI.startPosition, botAI.transform.position);  // считаем дистанцию от стартовой позиции до следующей позиции
+            if (distanceFromStartMain > botAI.chaseLeght)
+            {                
+                botAI.ResetTarget();                            // сбрасываем цель
+                SetNeutralBotAI();                              // делаем бота нейтральным
+                Invoke(nameof(ResetNeutralBotAI), 2);           // через .. сек делаем обратно обычным
+                iChase++;
+                if (iChase >= 5)
+                    iChase = 0;
+                Debug.Log(botAI.chaseLeght);
+                //botAI.SetDestination(botAI.startPosition);      // возвращаемся в стартовую позицию   
+            }
         }
-
-
 
         if (sayTriggerText && !isFindTarget)
         {
@@ -214,9 +230,19 @@ public class EnemyThinker : MonoBehaviour
         }*/
     }
 
+    void SetNeutralBotAI()
+    {
+        if (iChase <= 3)
+            botAI.chaseLeght += 2f;     // добавляем длину преследования (чтобы не бегал туда сюдаа)
+        botAI.SetNeutral(true);
+    }
 
-
-
+    void ResetNeutralBotAI()
+    {
+        if (iChase == 4)
+            botAI.chaseLeght -= 6f;     // убавляем длину преследования
+        botAI.SetNeutral(false);
+    }
 
 
     public void GoToPosition(int positionNumber)

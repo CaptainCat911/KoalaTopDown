@@ -424,7 +424,9 @@ MonoBehaviour:
   isEnemy: 1
   isArenaEnemy: 0
   isArenaBoss: 0
+  skeletonKing: 0
   triggerLenght: 5
+  chaseLeght: 15
   distanceToChangeTarget: 6
   target: {fileID: 0}
   layerTarget:
@@ -448,6 +450,7 @@ MonoBehaviour:
   distanceToAttack: 1.25
   distanceToTarget: 0
   nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 1899818089229980536, guid: 3a176fcfaaadc3840b627bc129e5fb49, type: 3}
   stayOnGround: 1
   noPatrol: 0
@@ -455,12 +458,16 @@ MonoBehaviour:
   followPlayer: 0
   destinationPoint: {fileID: 0}
   noTriggerAgro: 0
-  events:
+  eventsStart:
+    m_PersistentCalls:
+      m_Calls: []
+  eventsDeath:
     m_PersistentCalls:
       m_Calls: []
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
   darkEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -468,6 +475,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   friendTarget: {fileID: 0}
+  lookAtPlayer: 0
   fastDeathAnim: 0
   timeForDeath: 1
   debug: 0
@@ -475,6 +483,7 @@ MonoBehaviour:
   withChat: 0
   audioEnemy: {fileID: 2034278034211725524}
   withAudioChat: 0
+  pozor: 0
 --- !u!114 &7770423111574753340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,10 +498,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
   cooldownChangeTarget: 4
+  distanceFromStartMain: 0
   cooldownChange: 4
   distancePatrol: 2
   maxDistancePatrol: 4
   lastChange: 0
+  withSpell: 0
+  cooldownSpell: 0
   goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0

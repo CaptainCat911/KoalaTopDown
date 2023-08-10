@@ -117,6 +117,7 @@ MonoBehaviour:
     m_Bits: 0
   expEffect: {fileID: 0}
   sparksEffect: {fileID: 4947641790296222230, guid: b4239e6ea3ede944e9b5476b3cca0e03, type: 3}
+  portalBullet: 0
   audioExplousion: {fileID: 0}
   audioProjectile: {fileID: 0}
   layerRayCastTarget:
@@ -126,7 +127,7 @@ MonoBehaviour:
   damageBurn: 8
   cooldownBurn: 0.5
   durationBurn: 2
-  timeToExpl: 1
+  timeToExpl: 2
 --- !u!96 &6680086522174144134
 TrailRenderer:
   serializedVersion: 2

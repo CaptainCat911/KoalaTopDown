@@ -277,6 +277,7 @@ MonoBehaviour:
     m_Bits: 4225
   expEffect: {fileID: 5727708654878073701, guid: 6a6fbace441d3eb49ac7ef30e92363cd, type: 3}
   sparksEffect: {fileID: 0}
+  portalBullet: 0
   audioExplousion: {fileID: 0}
   audioProjectile: {fileID: 0}
   expRadius: 2
@@ -288,7 +289,7 @@ MonoBehaviour:
   pushForceSplitProjectile: 0
   splitProjectileSpeed: 0
   withTimer: 0
-  timeToExpl: 0
+  timeToExpl: 2
   cameraAmplitudeShake: 1
   cameraTimedeShake: 0.1
   layerRayCastTarget:

@@ -30,12 +30,15 @@ public class BotAI : Fighter
     public bool isArenaBoss;                                // босс для арены
     //public bool pozorSkeleton;                              // для позора
     public bool skeletonKing;                               // король скелетов
-
+    public bool skeletonResble;                             // бот возрождаается
+    //public bool reaper;
 
     //public bool isFollow;                                   // следовать
 
     [Header("Параметры тригера")]
     public float triggerLenght;                             // дистанция тригера
+    float startTriigerLenght;                               // запоминаем стартовую дистанцию тригера
+    public float chaseLeght;                                // дальность преследования 
     public float distanceToChangeTarget = 3f;               // дистанция при которой бот будет менять цель, если целей больше 1
     [HideInInspector] public GameObject target;             // цель
     [HideInInspector] public LayerMask layerTarget;         // слой для поиска 
@@ -45,8 +48,6 @@ public class BotAI : Fighter
     [HideInInspector] public bool targetVisible;            // видим мы цель или нет
     [HideInInspector] public bool closeToTarget;            // можно атаковать (текущей атакой)
     [HideInInspector] public bool targetInRange;            // можно атаковать (общее)
-
-    //public float chaseLeght;                                // дальность преследования (пока не используется)   
 
     [Header("Тип атаки бота")]
     public bool meleeAttackType;                            // устанавливаем тип атаки мили
@@ -63,7 +64,6 @@ public class BotAI : Fighter
     [Header("Предмет")]
     public bool noHealBox;
     public GameObject itemToSpawn;
-
 
     //public bool switchMelee;
 
@@ -172,7 +172,8 @@ public class BotAI : Fighter
     public override void Start()
     {
         base.Start();
-        startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
+        startTriigerLenght = triggerLenght;                                                                 // стартовая длинна тригера
 
         agent.updateRotation = false;           // для навмеш2д
         agent.updateUpAxis = false;             //
@@ -187,6 +188,9 @@ public class BotAI : Fighter
 
         if (makeLeft)
             Invoke(nameof(MakeLeft), 0.5f);     // повернуть налево
+
+/*        if (reaper)
+            target = GameManager.instance.player.gameObject;*/
     }
 
     public override void Update()
@@ -516,7 +520,9 @@ public class BotAI : Fighter
         chasing = false;                    // преследование отключено            
         targetVisible = false;              // цель не видима
         closeToTarget = false;              // далеко от цели
-        agent.ResetPath();                  // сбрасываем путь
+        //agent.ResetPath();                  // сбрасываем путь
+        agent.SetDestination(startPosition);
+        triggerLenght = startTriigerLenght;
         animator.SetFloat("Speed", 0);      // сбрасываем анимацию бега
     }
 
@@ -547,6 +553,11 @@ public class BotAI : Fighter
     {
         ChatBubble.Clear(gameObject);
         ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 4f);
+    }
+
+    public void PoliceSayChat()
+    {
+        SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);                      // выдаём рандомну фразу
     }
 
 
@@ -760,17 +771,30 @@ public class BotAI : Fighter
     void AfterDeath()
     {
         agent.enabled = false;                  // выключаем агента
-        if (skeletonKing)
+
+        if (skeletonResble)                     // если возрождающийся скелет
+        {
+            StartResSkeleton();                 // запускаем возрождение
+        }
+
+        if (skeletonKing || skeletonResble)     // если возрождающийся скелет
         {
             return;
         }
+
         Destroy(gameObject, 1f);
+    }
+
+    public void StartResSkeleton()
+    {
+        Invoke(nameof(ResAnimator), 2);
+        Invoke(nameof(Res), 2.6f);
     }
 
     public void StartRes()
     {
         Invoke(nameof(ResAnimator), 7); 
-        Invoke(nameof(Res), 8);
+        Invoke(nameof(Res), 7.6f);
     }
 
     // Анимация воскрешения

@@ -1154,7 +1154,8 @@ MonoBehaviour:
   ammoRangeWeapon: {fileID: 1845840935776198181}
   bombName: {fileID: 1845840936483686186}
   ammoBomb: {fileID: 1845840936300148411}
-  pozorCount: {fileID: 0}
+  pozorGo: {fileID: 8936283482188894230}
+  pozorCount: {fileID: 2451340623402823318}
   arenaEnemyKilledCount: {fileID: 1845840935128808087}
   arenaBossKilledCount: {fileID: 1845840937088945023}
 --- !u!1 &1845840935371873425
@@ -13314,7 +13315,7 @@ GameObject:
   - component: {fileID: 5321081495731416904}
   - component: {fileID: 2451340623402823318}
   m_Layer: 5
-  m_Name: TextGold
+  m_Name: TextPozor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13394,7 +13395,7 @@ GameObject:
   - component: {fileID: 8540459703577963717}
   - component: {fileID: 1152539750290464073}
   m_Layer: 5
-  m_Name: ImageGold
+  m_Name: ImagePozor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
