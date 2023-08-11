@@ -279,7 +279,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1598857050350358110}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.3
+  m_Radius: 0.35
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -330,6 +330,7 @@ MonoBehaviour:
   isArenaEnemy: 0
   isArenaBoss: 0
   skeletonKing: 0
+  skeletonResble: 0
   triggerLenght: 5
   chaseLeght: 15
   distanceToChangeTarget: 3
@@ -369,6 +370,8 @@ MonoBehaviour:
   eventsDeath:
     m_PersistentCalls:
       m_Calls: []
+  fastDeathAnim: 0
+  timeForDeath: 1
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
   darkEffect: {fileID: 0}
@@ -381,8 +384,6 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   lookAtPlayer: 0
-  fastDeathAnim: 0
-  timeForDeath: 1
   debug: 0
   bubbleTexts: []
   withChat: 0
@@ -407,9 +408,11 @@ MonoBehaviour:
   cooldownChange: 4
   distancePatrol: 2
   maxDistancePatrol: 4
-  lastChange: 0
   withSpell: 0
   cooldownSpell: 0
+  spellChance_1: 0
+  spellChance_2: 0
+  spellChance_3: 0
   goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0

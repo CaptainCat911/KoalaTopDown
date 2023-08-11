@@ -256,10 +256,11 @@ MonoBehaviour:
     m_Bits: 20545
   expEffect: {fileID: 7845441016114820387, guid: 2b6d17c4c74f584428431454946bf0b7, type: 3}
   sparksEffect: {fileID: 0}
+  portalBullet: 0
   audioExplousion: {fileID: 4209454454700283240, guid: 8fb15a9debeb36d42881e2e0be56953b, type: 3}
   audioProjectile: {fileID: 0}
   expRadius: 1
-  withSplit: 1
+  withSplit: 0
   prefabFireBall: 0
   splitTimes: 6
   splitRecoil: 30
@@ -345,7 +346,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.34082586, b: 0, a: 0.49019608}
+      key0: {r: 1, g: 0, b: 0.010103226, a: 0.49019608}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

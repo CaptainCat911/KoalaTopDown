@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: -591391920909804142}
   - component: {fileID: -5125645208778790399}
   m_Layer: 7
-  m_Name: King_Skeleton_1
+  m_Name: King_Skeleton_LvL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
   isAlive: 1
   isImmortal: 0
   currentHealth: 0
-  maxHealth: 800
+  maxHealth: 1000
   noAgro: 0
   isGoodPerson: 0
   bossHP: 0
@@ -281,9 +281,10 @@ MonoBehaviour:
   isEnemy: 1
   isArenaEnemy: 0
   isArenaBoss: 0
-  pozorSkeleton: 0
   skeletonKing: 1
+  skeletonResble: 0
   triggerLenght: 7
+  chaseLeght: 0
   distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
@@ -301,7 +302,7 @@ MonoBehaviour:
   rangeAttackType: 0
   twoWeapons: 0
   defaultRangeToTarget: 0
-  distanceToAttackMelee: 1.5
+  distanceToAttackMelee: 1.6
   distanceToAttackRange: 4
   pivotSpeedKoef: 1
   distanceToAttack: 1.25
@@ -321,6 +322,8 @@ MonoBehaviour:
   eventsDeath:
     m_PersistentCalls:
       m_Calls: []
+  fastDeathAnim: 0
+  timeForDeath: 1
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
   darkEffect: {fileID: 0}
@@ -333,8 +336,6 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   lookAtPlayer: 0
-  fastDeathAnim: 0
-  timeForDeath: 1
   debug: 0
   bubbleTexts: []
   withChat: 0
@@ -355,18 +356,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
   cooldownChangeTarget: 4
+  distanceFromStartMain: 0
   cooldownChange: 4
   distancePatrol: 0
   maxDistancePatrol: 0
-  lastChange: 0
   withSpell: 1
-  cooldownSpell: 5
+  cooldownSpell: 8
+  spellChance_1: 0
+  spellChance_2: 100
+  spellChance_3: 0
   goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0
   textTrigger: 
-  debug: 1
+  debug: 0
 --- !u!114 &2330813782090931808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +415,7 @@ MonoBehaviour:
   - {x: 0.21554695, y: -0.44935936, z: 0}
   m_ShapePathHash: -1788856732
   m_Mesh: {fileID: 0}
-  m_InstanceId: 5535122
+  m_InstanceId: 2081000
 --- !u!82 &-5125645208778790399
 AudioSource:
   m_ObjectHideFlags: 0

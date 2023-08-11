@@ -375,7 +375,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7988882509738133971}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.3
+  m_Radius: 0.4
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -409,6 +409,8 @@ MonoBehaviour:
   noAgro: 0
   isGoodPerson: 0
   bossHP: 0
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -423,7 +425,10 @@ MonoBehaviour:
   isEnemy: 1
   isArenaEnemy: 0
   isArenaBoss: 0
+  skeletonKing: 0
+  skeletonResble: 0
   triggerLenght: 5
+  chaseLeght: 0
   distanceToChangeTarget: 6
   target: {fileID: 0}
   layerTarget:
@@ -447,6 +452,7 @@ MonoBehaviour:
   distanceToAttack: 1.25
   distanceToTarget: 0
   nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 1899818089229980536, guid: 79efcd3c0b9efcb4193a19687f85539d, type: 3}
   stayOnGround: 1
   noPatrol: 0
@@ -454,12 +460,18 @@ MonoBehaviour:
   followPlayer: 0
   destinationPoint: {fileID: 0}
   noTriggerAgro: 0
-  events:
+  eventsStart:
     m_PersistentCalls:
       m_Calls: []
+  eventsDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  fastDeathAnim: 0
+  timeForDeath: 1
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
   darkEffect: {fileID: 4905584941002646251}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -467,13 +479,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   friendTarget: {fileID: 0}
-  fastDeathAnim: 0
-  timeForDeath: 1
+  lookAtPlayer: 0
   debug: 0
   bubbleTexts: []
   withChat: 0
   audioEnemy: {fileID: 4672877221075846721}
   withAudioChat: 0
+  pozor: 0
 --- !u!114 &8230684762079994649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,10 +500,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
   cooldownChangeTarget: 4
+  distanceFromStartMain: 0
   cooldownChange: 4
   distancePatrol: 2
   maxDistancePatrol: 4
-  lastChange: 0
+  withSpell: 0
+  cooldownSpell: 0
+  spellChance_1: 0
+  spellChance_2: 0
+  spellChance_3: 0
   goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
@@ -514,6 +531,7 @@ MonoBehaviour:
   lightGo2D: {fileID: 7887576347359552196}
   canBurn: 1
   slow: 0.2
+  stopBurn: 0
 --- !u!114 &3397013406516351012
 MonoBehaviour:
   m_ObjectHideFlags: 0

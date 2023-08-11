@@ -82,8 +82,11 @@ public class BotAI : Fighter
     [Header("Ивенты при старте")]
     public UnityEvent eventsStart;                  // ивенты при старте
 
-    [Header("Ивенты при смерти")]
+    [Header("Параметры при смерти")]
     public UnityEvent eventsDeath;                  // ивенты
+    public bool fastDeathAnim;
+    public float timeForDeath = 2.5f;
+    int deathCount;
 
     [Header("Анимации и эффекты")]
     public GameObject deathEffect;                  // эффект (потом сделать его в аниматоре (или  нет))
@@ -109,8 +112,7 @@ public class BotAI : Fighter
     public bool lookAtPlayer;
 
 
-    public bool fastDeathAnim;
-    public float timeForDeath = 2.5f;
+
 
     // Дебаг
     public bool debug;
@@ -623,7 +625,7 @@ public class BotAI : Fighter
             if (coll.gameObject.TryGetComponent<BotAI>(out BotAI enemy))        // (потом переделать на скрипт Enemy)
             {
                 if (!enemy.noTriggerAgro)
-                    enemy.triggerLenght = 25;                                       // (потом поменять на таргет = плеер)          
+                    enemy.triggerLenght = 30;                                       // (потом поменять на таргет = плеер)          
             }
             collidersHits = null;
         }
@@ -777,6 +779,8 @@ public class BotAI : Fighter
             StartResSkeleton();                 // запускаем возрождение
         }
 
+        deathCount++;
+
         if (skeletonKing || skeletonResble)     // если возрождающийся скелет
         {
             return;
@@ -800,7 +804,9 @@ public class BotAI : Fighter
     // Анимация воскрешения
     void ResAnimator()  
     {
-        animatorWeapon.animator.StopPlayback();         // НЕ РАБОТАЕТ
+        //animatorWeapon.animator.StopPlayback();         // НЕ РАБОТАЕТ
+        animatorWeapon.ResetAllParam();
+        animatorWeapon.animator.Play("Base Layer.NullState", 0, 0.0f);
         animator.SetTrigger("Res");
     }
 

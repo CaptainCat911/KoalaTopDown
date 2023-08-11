@@ -129,7 +129,19 @@ public class BotAIAnimator : MonoBehaviour
         botAi.botAIMeleeWeaponHolder.currentWeapon.GetComponent<Animator>().SetTrigger("StartEffect");
     } 
 
-
+    // Ресет всех параметров
+    public void ResetAllParam() 
+    {
+        botAi.nowAttacking = false;
+        if (botAIMeleeWeaponHolder.currentWeapon)
+        {
+            botAIMeleeWeaponHolder.currentWeapon.LaserOn(0);       // лазер атака
+            botAIMeleeWeaponHolder.currentWeapon.GravityOn(0);     // гравитация атака
+            botAIMeleeWeaponHolder.currentWeapon.TrailOn(0);       // треил оружия (для мили оружия)
+        }
+        botAi.PivotZero(0);            // отключение вращения пивота за целью
+        botAi.pivotSpeedKoef = 1;
+    }
 
 
     // Для перехода на другую сцену

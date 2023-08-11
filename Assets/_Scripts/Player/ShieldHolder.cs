@@ -30,6 +30,11 @@ public class ShieldHolder : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.isPlayerEnactive)
+        {
+            return;
+        }
+
         // Временно вращаем щит тут
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                        // положение мыши                  
         Vector3 aimDirection = mousePosition - transform.position;                                  // угол между положением мыши и pivot оружия          

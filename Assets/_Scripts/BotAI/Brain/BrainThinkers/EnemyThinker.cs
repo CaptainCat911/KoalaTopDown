@@ -25,15 +25,22 @@ public class EnemyThinker : MonoBehaviour
     public float distanceFromStartMain;             // дистанция от стартовой позиции до бота
     //public bool patrolingRandomPosition;
     public float cooldownChange;                    // перезардяка смены позиции
+    float lastChange;                               // время последней смены позиции
     public float distancePatrol;                    // дистанция для патрулирования
     public float maxDistancePatrol;                 // максимальная дистанция от стартовой позиции
-    [HideInInspector] public float lastChange;      // время последней смены позиции
+    // Для чейс дистанции
+    float cooldownChase = 0.5f;                     // перезардяка проверки дистанции преследования
+    float lastChase;                                // время последней проверки
 
     [Header("Для короля скелетов")] 
     public bool withSpell;                          // со спелом
     public float cooldownSpell;                     // кд спелов
+    public int spellChance_1;
+    public int spellChance_2;
+    public int spellChance_3;
     float lastSpell;                                // для кд
     int iSpell = 1;                                 // счетчик
+    int iNumberSpell;                               // чтобы пропустить 1-й спелл
 
     // Для НПС
     int iChase = 1;                                 // для преследования
@@ -69,8 +76,12 @@ public class EnemyThinker : MonoBehaviour
     private void FixedUpdate()
     {
         // Если бот нейтрален
-        if (botAI.isNeutral || !botAI.isAlive)                        
+        if (botAI.isNeutral || !botAI.isAlive)
+        {
+            if (iNumberSpell > 0)               // сброс счетчика способности
+                iNumberSpell = 0;
             return;
+        }                        
 
         // Сбрасываем всякие штуки, если цели нет
         if (isFindTarget && !botAI.target)
@@ -158,26 +169,43 @@ public class EnemyThinker : MonoBehaviour
                 botAI.chasing = true;                   // преследование включено
                 isFindTarget = true;
             }
-        }   
+        }
 
         if (botAI.chasing && botAI.target)
         {
             if (withSpell)
             {
-                if (Time.time - lastSpell > cooldownSpell && !botAI.nowAttacking)
+                if (Time.time - lastSpell > cooldownSpell && !botAI.nowAttacking && distanceToTarget <= 10)      // когда готово кд и не атакует и дистанция до цели меньше 10
                 {
-                    lastSpell = Time.time;              // присваиваем время атаки
-                    // Spell                    
-                    int randomSpell = Random.Range(0, 101);
+                    lastSpell = Time.time;                      // присваиваем время атаки
 
-                    if (randomSpell < 40)
+                    iNumberSpell++;
+                    if (iNumberSpell == 1)                      // пропускаем 1-й спелл, чтобы не кастовал его сразу в начале боя
+                        return;
+
+                    // Выбираем спелл
+                    if (ProbabilityCheck(spellChance_1))
+                    {
                         iSpell = 1;
-                    if (randomSpell >= 40 && randomSpell < 80)
+                    }                    
+                    if (ProbabilityCheck(spellChance_2))
+                    {
                         iSpell = 2;
-                    if ( randomSpell >= 80)
+                    }
+                    if (ProbabilityCheck(spellChance_3))
+                    {
                         iSpell = 3;
+                    }
 
-                    botAI.botAIMeleeWeaponHolder.currentWeapon.AttackNoCd(iSpell);
+                    /*                    int randomSpell = Random.Range(0, 101);     // выбираем рандомно способность
+                                        if (randomSpell < 40)
+                                            iSpell = 1;
+                                        if (randomSpell >= 40 && randomSpell < 80)
+                                            iSpell = 2;
+                                        if (randomSpell >= 80)
+                                            iSpell = 3;*/
+
+                    botAI.botAIMeleeWeaponHolder.currentWeapon.AttackNoCd(iSpell);    // запускаем способность  
                 }
                 else
                 {
@@ -192,18 +220,23 @@ public class EnemyThinker : MonoBehaviour
             if (botAI.chaseLeght <= 0)
                 return;
 
-            distanceFromStartMain = Vector3.Distance(botAI.startPosition, botAI.transform.position);  // считаем дистанцию от стартовой позиции до следующей позиции
-            if (distanceFromStartMain > botAI.chaseLeght)
-            {                
-                botAI.ResetTarget();                            // сбрасываем цель
-                SetNeutralBotAI();                              // делаем бота нейтральным
-                Invoke(nameof(ResetNeutralBotAI), 2);           // через .. сек делаем обратно обычным
-                iChase++;
-                if (iChase >= 5)
-                    iChase = 0;
-                Debug.Log(botAI.chaseLeght);
-                //botAI.SetDestination(botAI.startPosition);      // возвращаемся в стартовую позицию   
-            }
+            if (Time.time - lastChase > cooldownChase)
+            {
+                distanceFromStartMain = Vector3.Distance(botAI.startPosition, botAI.transform.position);  // считаем дистанцию от стартовой позиции до следующей позиции
+                if (distanceFromStartMain > botAI.chaseLeght)
+                {
+                    botAI.ResetTarget();                            // сбрасываем цель
+                    SetNeutralBotAI();                              // делаем бота нейтральным
+                    Invoke(nameof(ResetNeutralBotAI), 2);           // через .. сек делаем обратно обычным
+                    iChase++;
+                    if (iChase >= 5)
+                        iChase = 0;
+                    Debug.Log(botAI.chaseLeght);
+                    //botAI.SetDestination(botAI.startPosition);      // возвращаемся в стартовую позицию   
+                }
+            }        
+
+
         }
 
         if (sayTriggerText && !isFindTarget)
@@ -315,6 +348,15 @@ public class EnemyThinker : MonoBehaviour
 
         if (distanceFromStart > maxDistancePatrol)
             botAI.SetDestination(botAI.startPosition);      // возвращаемся в стартовую позицию        
+    }
+
+    bool ProbabilityCheck(int chance)
+    {
+        float random = Random.Range(0, 101);
+        if (random < chance)
+            return true;
+        else
+            return false;
     }
 
     void MakeFriendly()
