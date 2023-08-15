@@ -23,7 +23,7 @@ public class ShopAmmo : MonoBehaviour
     // Устанавливаем текст для автомата патронов
     public void SetTextWeapon()
     {
-        if (GameManager.instance.player.weaponHolder.currentWeapon)
+        if (GameManager.instance.player.weaponHolder.currentWeapon && !GameManager.instance.player.weaponHolder.meleeWeapon)
         {
             int index = GameManager.instance.GetCurrentWeaponIndex();
             textMeshName.text = ammoPack.ammoWeapons[index].name;
