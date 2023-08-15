@@ -328,7 +328,7 @@ MonoBehaviour:
   trail: {fileID: 3786651681873589342}
   hitShield: 0
   bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
-  damageRange: 6
+  damageRange: 5
   pushForceRange: 10
   projctleSpeed: 4
   bulletPrefabBig: {fileID: 0}
@@ -345,6 +345,7 @@ MonoBehaviour:
   splitRecoil: 20
   laserDamage: 1
   laserForce: 0.2
+  laserCooldown: 0
   laserStart: 0
   damageBurn: 1
   cooldownBurn: 0.5

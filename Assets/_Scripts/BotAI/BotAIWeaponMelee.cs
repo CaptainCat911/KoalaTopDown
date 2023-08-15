@@ -53,6 +53,8 @@ public class BotAIWeaponMelee : MonoBehaviour
     [Header("Параметры лазера")]
     public int laserDamage;                         // урон взрыва
     public float laserForce;                        // сила толчка взрыва 
+    public float laserCooldown;                     // перезардяка лазера
+    float laserLastAttack;                          // время последнего удара
     [HideInInspector] public bool laserStart;       // начало лазерной атаки
     public int damageBurn;
     public float cooldownBurn;
@@ -115,13 +117,17 @@ public class BotAIWeaponMelee : MonoBehaviour
     {
         if (laserStart)
         {
-            LaserAttack();
+            if (Time.time - laserLastAttack > laserCooldown)            // если готовы атаковать и кд готово
+            {
+                laserLastAttack = Time.time;
+                LaserAttack();
+            }
         }
         if (gravityStart)
         {
             if (Time.time - gravityLastAttack > gravityCooldown)            // если готовы атаковать и кд готово
             {
-                gravityLastAttack = Time.time;                             // присваиваем время атаки
+                gravityLastAttack = Time.time;                              // присваиваем время атаки
                 GravityAttack();
             }
         }

@@ -5214,6 +5214,7 @@ MonoBehaviour:
   lightGo2D: {fileID: 5224957035285640728}
   canBurn: 1
   slow: 0.2
+  stopBurn: 0
 --- !u!114 &1571569491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5248,6 +5249,8 @@ MonoBehaviour:
   noAgro: 0
   isGoodPerson: 0
   bossHP: 1
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -5262,7 +5265,10 @@ MonoBehaviour:
   isEnemy: 1
   isArenaEnemy: 0
   isArenaBoss: 0
+  skeletonKing: 0
+  skeletonResble: 0
   triggerLenght: 7
+  chaseLeght: 0
   distanceToChangeTarget: 20
   target: {fileID: 0}
   layerTarget:
@@ -5286,6 +5292,7 @@ MonoBehaviour:
   distanceToAttack: 0
   distanceToTarget: 0
   nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 0}
   stayOnGround: 1
   noPatrol: 0
@@ -5293,11 +5300,18 @@ MonoBehaviour:
   followPlayer: 0
   destinationPoint: {fileID: 0}
   noTriggerAgro: 0
-  events:
+  eventsStart:
     m_PersistentCalls:
       m_Calls: []
+  eventsDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  fastDeathAnim: 1
+  timeForDeath: 2.5
   deathEffect: {fileID: 5727708654878073701, guid: bfac2c014c6cedc41b5e1725ea8393e2, type: 3}
   deathCameraShake: 10
+  darkEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -5305,13 +5319,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   friendTarget: {fileID: 0}
-  fastDeathAnim: 1
-  timeForDeath: 2.5
+  lookAtPlayer: 0
   debug: 0
   bubbleTexts: []
   withChat: 0
   audioEnemy: {fileID: 0}
   withAudioChat: 0
+  pozor: 0
   attackingNow: 0
   mainBoss: 0
   shadowBoss: 0
@@ -5361,7 +5375,7 @@ MonoBehaviour:
   - {x: 0.29544067, y: -1.1014938, z: 0}
   m_ShapePathHash: 452262439
   m_Mesh: {fileID: 0}
-  m_InstanceId: 4525782
+  m_InstanceId: 348362
 --- !u!1001 &1398136394425982676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5490,11 +5504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714915020998434831, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: damage
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5714915020998434831, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: damageRangeBig
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5714915020998434831, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: teleports.Array.size

@@ -11,8 +11,8 @@ public class Chest : ItemPickUp
     bool isOpened;
 
     [Header("Магический сундук")]
-    public bool magicChest;
-    public GameObject prefab;
+    public bool magicChest;                         // сундук магический
+    public GameObject prefab;                       // префаб всего сундука
     public ParticleSystem particleEffect;
     public GameObject startEffect;
     public GameObject endEffect;

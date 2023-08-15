@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c2c5b2b95b7674d8abaf7f2363c4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   pushForce: 10
   timeToActive: 1
   animators:
@@ -165,6 +165,7 @@ MonoBehaviour:
   - {fileID: 8087972443296814640}
   - {fileID: 8087972442961095568}
   - {fileID: 8087972443348894961}
+  isSpikeActive: 0
   isSpikeWork: 1
   cooldown: 2
   layerHit:

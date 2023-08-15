@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioClip[] tracks;
-    public float trackVolume;
-    public float speedTrackChange;
-    public float delayTrackChange = 1;
+    public AudioClip[] tracks;              // список треков
+    public bool noStartTrack;               // без стартового трека
+    public float trackVolume;               // громкость треков
+    public float speedTrackChange;          // скорость смены
+    public float delayTrackChange = 1;      // задержка перед сменой
     AudioSource audioSource;
     bool volumeMinus;
     bool volumePlus;
@@ -19,6 +20,8 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        if (noStartTrack)
+            return;
         SetNewTrack(0);
     }
         
@@ -34,7 +37,6 @@ public class AudioManager : MonoBehaviour
                 return;
             audioSource.volume += speedTrackChange;                // уменьшаем громкость
         }
-
     }
 
     public void SetNewTrack(int number)
@@ -54,5 +56,10 @@ public class AudioManager : MonoBehaviour
 
         yield return new WaitForSeconds(delayTrackChange);
         volumePlus = false;
+    }
+
+    public void StopTrack()
+    {
+        volumeMinus = true;
     }
 }
