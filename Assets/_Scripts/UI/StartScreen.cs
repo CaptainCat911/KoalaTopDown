@@ -12,8 +12,6 @@ public class StartScreen : MonoBehaviour
     public GameObject kontrakt;                 // страница контракта
     public GameObject loading;                  // картинка загрузки
 
-
-
     public void StartNextScene()
     {
         animator.SetTrigger("Start");
@@ -27,6 +25,14 @@ public class StartScreen : MonoBehaviour
         kontrakt.SetActive(false);
         loading.SetActive(true);
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену
+        SceneManager.LoadScene(sceneName);              // загружаем сцену
+    }
+    public void SetSceneStart(int number)
+    {
+        //GameManager.instance.SaveState();
+        //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];        
+        loading.SetActive(true);
+        string sceneName = sceneNames[number];          // выбираем сцену
         SceneManager.LoadScene(sceneName);              // загружаем сцену
     }
 }

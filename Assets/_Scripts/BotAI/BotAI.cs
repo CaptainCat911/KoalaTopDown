@@ -717,7 +717,7 @@ public class BotAI : Fighter
         if (!noHealBox)
         {
             int random = Random.Range(0, 101);
-            if (random >= 97)
+            if (random >= 95)
                 Instantiate(GameAssets.instance.healBox, transform.position, Quaternion.identity);          // создаем аптечку
         }
 

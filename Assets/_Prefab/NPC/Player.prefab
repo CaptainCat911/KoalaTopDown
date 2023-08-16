@@ -1108,7 +1108,7 @@ MonoBehaviour:
   isAlive: 1
   isImmortal: 0
   currentHealth: 0
-  maxHealth: 1000
+  maxHealth: 100
   noAgro: 0
   isGoodPerson: 1
   bossHP: 0
@@ -1142,16 +1142,16 @@ MonoBehaviour:
     m_Bits: 4225
   blinkTrail: {fileID: 3137378571337029651}
   antiBugCircle: {fileID: 3137378572170672601}
-  bootsMod: 1
+  bootsMod: 0
   bootsSpeed: 15
-  bootsEnergy: 1000000
+  bootsEnergy: 100
   minusEnergy: 50
   plusEnergy: 20
   flashMod: 0
   flashSpeed: 0
   shield: {fileID: 3137378571217417185}
-  withShield: 1
-  withGoldMagnet: 1
+  withShield: 0
+  withGoldMagnet: 0
   speedMagnet: 8
   audioPlayer: {fileID: 5624496065309943650}
   needFlip: 0
@@ -1918,10 +1918,6 @@ MonoBehaviour:
   weaponHolder: {fileID: 3137378571984717913}
   weapons:
   - {fileID: 5674012138522298798, guid: 8cce8d8d676c2874090d0cf951d47c82, type: 3}
-  - {fileID: 1272269816416803160, guid: 0dc62181a0d5e704ebfe824aa9109212, type: 3}
-  - {fileID: 5674012138522298798, guid: 4a7146f7e79d4314bbf8b18167e19c0a, type: 3}
-  - {fileID: 5674012138522298798, guid: 313d0908708360d42a9a979b090ea907, type: 3}
-  - {fileID: 5674012138522298798, guid: 4bfa25c1a0c2a064993342c856398821, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   rangeWeapon: 1
@@ -1973,16 +1969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolderMelee: {fileID: 3137378571777031426}
   weapons:
-  - {fileID: 2496722168628502743, guid: fc436987fb33d434ba3b1a1237f7eb43, type: 3}
-  - {fileID: 2496722168628502743, guid: e980ad862cc0986478deeb0a6df7bd60, type: 3}
-  - {fileID: 2496722168628502743, guid: 1c28be433ee20cf47aa630506e416977, type: 3}
-  - {fileID: 2496722168628502743, guid: 63ea0bcbe42143c4a9ee31184431194a, type: 3}
-  - {fileID: 6020096225121009833, guid: 6b8ae5e41153ea64b9a398e92d9c991f, type: 3}
-  - {fileID: 2496722168628502743, guid: 9081bf87110607c46a86f5a4fcd28bff, type: 3}
-  - {fileID: 2496722168628502743, guid: 9955cc4c20a52e34fbf429f2caa22d3b, type: 3}
-  - {fileID: 2496722168628502743, guid: e4c28e4b5a53b084c98fe0896dfe00ee, type: 3}
-  - {fileID: 2496722168628502743, guid: 4a434330d06f85945a2abbbade00d556, type: 3}
-  - {fileID: 2496722168628502743, guid: 0448485bdcb054f4f979ed1c9fba7a29, type: 3}
+  - {fileID: 3016861489659110144, guid: 0534d7bf46d38c1459fc898d54c9ab08, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -2377,9 +2364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ebdd7551e53b54aa4443475ea31ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 2496722168628502743, guid: f41474dc2d6c4a141ac53ac939031fc0, type: 3}
-  - {fileID: 2496722168628502743, guid: 47fc0e0dd33eba2428e479dc6c4571cc, type: 3}
+  weapons: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

@@ -42,6 +42,9 @@ public class ArenaManager : MonoBehaviour
     [Header("Белый экран")]
     public bool noStartWhiteScreen;
     public Animator whiteScreenAnimator;
+    //public GameObject loadingImage;
+
+    public PauseHelp pozorHelp;
 
 
 
@@ -250,12 +253,22 @@ public class ArenaManager : MonoBehaviour
         GameManager.instance.player.MiniLightOn(status);
     }
 
+    // Щит ключа для 3-го лвл
     public void ShieldKeyOff()
     {
         ghostKilled++;
         if (ghostKilled >= 3)
         {
             forceShield.SetActive(false);
+        }
+    }
+
+    public void PozorOn()
+    {
+        if (!GameManager.instance.pozored)
+        {
+            GameManager.instance.pozored = true;                // опозорен
+            pozorHelp.StartHelpPause();
         }
     }
 }

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public int[] keys;                          // ключи
     public int battery;                         // батареи
     public int pozorCount;                      // счетчик позора
+    [HideInInspector] public bool pozored;      // опозорен
 
     [Header("”правление светом")]
     public bool lightDark;
@@ -281,7 +282,8 @@ public class GameManager : MonoBehaviour
         //GameManager.instance.SaveState();
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену
-        SceneManager.LoadScene(sceneName);              // загружаем сцену        
+        SceneManager.LoadScene(sceneName);              // загружаем сцену
+        
         /*if (sceneNumber == 4)
         {
             arenaLvl = true;

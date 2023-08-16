@@ -38,14 +38,13 @@ public class TeleportLevel : MonoBehaviour
             {
                 GameManager.instance.playerInResroom = false;               // вышли из ресрума
                 doorRes.GetComponent<Door>().CloseDoor();                   // закрыли дверь
-                ResRoomManager.instance.ResetMonsterAndChest();           // уничтожили сундук и мостра
+                ResRoomManager.instance.ResetMonsterAndChest();             // уничтожили сундук и мостра
                 if (teleportPozor)                                          // если портал позора
                 {
                     GameManager.instance.pozorCount++;                      // + к позору
                     TextUI.instance.pozorGo.SetActive(true);                // включаем UI позора
                 }
             }
-
 
             //isInRange = true;
             gameObjectToTeleport = player.gameObject;
