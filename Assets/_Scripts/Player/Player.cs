@@ -524,7 +524,7 @@ public class Player : Fighter
     public void SayText(string text)
     {
         ChatBubble.Clear(gameObject);
-        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 3f);
+        ChatBubble.Create(transform, new Vector3(0.2f, 0.2f), text, 4f);
     }
 
 
@@ -573,7 +573,8 @@ public class Player : Fighter
         {
             ResRoomManager.instance.SpawnMonsterAndChest();
             ResRoomManager.instance.deathPos.position = transform.position;
-            GameManager.instance.playerInResroom = true;
+            if (!ArenaManager.instance.arenaLevel)
+                GameManager.instance.playerInResroom = true;
             StartCoroutine(AfterDeath());
         }
         else

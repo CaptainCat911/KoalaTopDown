@@ -67,6 +67,8 @@ public class Door : MonoBehaviour
         shadow2D.enabled = true;                            // добавляем тень
         if(effect)
             effect.Play();
+        if (audioSource)
+            audioSource.Play();
         //GetComponent<NavMeshObstacle>().enabled = true;
         isOpened = false;                                    // дверь открыта
     }
