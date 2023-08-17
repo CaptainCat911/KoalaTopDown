@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2363293952648459334}
   - component: {fileID: 1339705786717506207}
   m_Layer: 6
-  m_Name: 11
+  m_Name: 11.Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   weaponClass: {fileID: 11400000, guid: a03c367c12f5a1047b2896429f6d97dc, type: 2}
   firePoint: {fileID: 6932623333518079817}
   pivot: {fileID: 5263069249925988804}
-  weaponIndexForAmmo: 0
+  weaponIndexForAmmo: 11
   ammo: 0
   weaponName: 
   fireRate: 15

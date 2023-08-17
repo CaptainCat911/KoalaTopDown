@@ -87,12 +87,19 @@ public class EnemySpawner : MonoBehaviour
         BotAI bot = enemyPref.GetComponentInChildren<BotAI>();
 
         bot.triggerLenght = chaseDistance;                              // устанавливаем дистанцию триггера
+
+        if (bossSpawner)
+        {
+            bot.chaseLeght = 0;                         // убираем дистанцию преследования
+        }
+
         if (arenaSpawner)
         {
             bot.isArenaEnemy = true;                    // бот для арены
             bot.chaseLeght = 0;                         // убираем дистанцию преследования
             ArenaManager.instance.arenaEnemyCount++;    // + счетчик врагов на арене
         }
+
         if (arenaBossSpawner)
         {
             bot.isArenaBoss = true;

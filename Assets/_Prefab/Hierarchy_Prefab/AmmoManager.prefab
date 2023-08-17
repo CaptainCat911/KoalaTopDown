@@ -79,7 +79,7 @@ MonoBehaviour:
   - name: "\u0411\u0430\u0437\u0443\u043A\u0430"
     weapon: {fileID: 6020096225121009833, guid: 6b8ae5e41153ea64b9a398e92d9c991f, type: 3}
     goldPriseWeapon: 3000
-    goldPriseAmmo: 100
+    goldPriseAmmo: 150
     ammoInReload: 1
     allAmmo: 15
   - name: "\u0410\u041A-47"
@@ -114,10 +114,10 @@ MonoBehaviour:
     allAmmo: 500
   - name: "\u041B\u0430\u0437\u0435\u0440"
     weapon: {fileID: 2496722168628502743, guid: f72778c9939c47e4097a5bcb65cc3d48, type: 3}
-    goldPriseWeapon: 0
-    goldPriseAmmo: 0
-    ammoInReload: 0
-    allAmmo: 2000
+    goldPriseWeapon: 10000
+    goldPriseAmmo: 200
+    ammoInReload: 200
+    allAmmo: 20000
   - name: "\u0422\u044F\u0436\u0435\u043B\u044B\u0439 \u043F\u0443\u043B\u0435\u043C\u0435\u0442"
     weapon: {fileID: 2496722168628502743, guid: e2a3be42c7660324e8c9e9ce737e4364, type: 3}
     goldPriseWeapon: 0
@@ -166,18 +166,18 @@ MonoBehaviour:
     goldPriseAmmo: 0
     ammoInReload: 0
     allAmmo: 0
-  - name: 
-    weapon: {fileID: 0}
+  - name: "\u041F\u0440\u043E\u0442\u043E\u043D\u043E\u0432\u0430\u044F \u043F\u0443\u0448\u043A\u0430"
+    weapon: {fileID: 2496722168628502743, guid: 0448485bdcb054f4f979ed1c9fba7a29, type: 3}
     goldPriseWeapon: 5000
     goldPriseAmmo: 40
     ammoInReload: 100
     allAmmo: 1000000
-  - name: 
-    weapon: {fileID: 0}
+  - name: "\u0411\u0430\u0441\u0441 \u041F\u0443\u0448\u043A\u0430"
+    weapon: {fileID: 6020096225121009833, guid: 9062c275b2227ec4cbdec05d36550de6, type: 3}
     goldPriseWeapon: 0
     goldPriseAmmo: 0
     ammoInReload: 0
-    allAmmo: 0
+    allAmmo: 9999
   - name: 
     weapon: {fileID: 0}
     goldPriseWeapon: 0
