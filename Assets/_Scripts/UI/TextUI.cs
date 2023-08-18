@@ -5,6 +5,8 @@ public class TextUI : MonoBehaviour
 {
     public static TextUI instance;          // инстанс
 
+    //public bool startScreen;
+
     Player player;                  // ссылка на игрока
     public Text hp;                 // кол-во хп
     public Text shield;             // щит
@@ -23,6 +25,8 @@ public class TextUI : MonoBehaviour
 
     public Text arenaEnemyKilledCount;      // врагов убито
     public Text arenaBossKilledCount;       // босов убито
+
+    public GameObject menu;
 
     private void Awake()
     {
@@ -91,5 +95,33 @@ public class TextUI : MonoBehaviour
             arenaEnemyKilledCount.text = ArenaManager.instance.arenaEnemyKilled.ToString("0");
             arenaBossKilledCount.text = ArenaManager.instance.arenaBossKilled.ToString("0");
         }        
+    }
+
+    // ƒл€ меню
+    
+    public void ContinueGameButton()                // продолжить игру
+    {
+        GameManager.instance.ContinueGame();
+    }
+
+    public void GoToMainMenuButton()                // выйти в главное меню
+    {
+        GameManager.instance.NextScene(0);
+    }
+
+    public void ExitGameButton()                    // выйти в виндоус
+    {
+        Application.Quit();
+        Debug.Log("Exit!");
+    }
+
+    public void ShowMenu(bool status)               // показать или скрыть меню
+    {
+        menu.SetActive(status);
+    }
+
+    public void Music(bool status)                  // вкл/выкл музыки
+    {
+        AudioManager.instance.StartStopTrack(status);
     }
 }

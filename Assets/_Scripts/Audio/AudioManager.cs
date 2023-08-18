@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager instance;         // инстанс
+
     public AudioClip[] tracks;              // список треков
     public bool noStartTrack;               // без стартового трека
     public float trackVolume;               // громкость треков
@@ -15,6 +17,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -61,5 +64,13 @@ public class AudioManager : MonoBehaviour
     public void StopTrack()
     {
         volumeMinus = true;
+    }
+
+    public void StartStopTrack(bool status)
+    {
+        if (status)
+            audioSource.Play();
+        else
+            audioSource.Stop();
     }
 }

@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
+    public bool startScreen;
     
     public string[] sceneNames;                 // все сцены
 
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isPlayerEnactive;             // активен игрок или нет
     [HideInInspector] public bool cameraOnPlayer;               // управление камерой
     [HideInInspector] public bool dialogeStart;                 // диалог начался
+    [HideInInspector] public bool helpOn;                       // подсказка активна
     [HideInInspector] public bool playerInResroom;              // игрок в комнате воскрешения
     [HideInInspector] public bool playerAtTarget;               // игрок дошёл до места старта диалога
 
@@ -51,6 +53,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (startScreen)
+        {
+            instance = null;
+            Destroy(gameObject);
+            return;
+        }
+
         if (instance != null)
         {
             Destroy(gameObject);
@@ -76,18 +85,16 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !dialogeStart && !helpOn)
         {
             if (!paused)
             {
-                Time.timeScale = 0f;
-                paused = true;
+                StopGame();
                 //Debug.Log("Pause!");
             }
             else
             {
-                Time.timeScale = 1f;
-                paused = false;
+                ContinueGame();
             }
         }
 
@@ -139,7 +146,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
             //NextScene(4);
-        }
+        }     
 
             
 
@@ -157,7 +164,21 @@ public class GameManager : MonoBehaviour
             magazine.SetActive(openMagazine);
         }*/
 
+    public void StopGame()
+    {
+        Time.timeScale = 0f;
+        isPlayerEnactive = true;
+        TextUI.instance.ShowMenu(true);
+        paused = true;
+    }
 
+    public void ContinueGame()
+    {
+        Time.timeScale = 1f;
+        isPlayerEnactive = false;
+        TextUI.instance.ShowMenu(false);
+        paused = false;
+    }
 
 
 
@@ -281,9 +302,20 @@ public class GameManager : MonoBehaviour
     {
         //GameManager.instance.SaveState();
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
+
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену
+        if (sceneNumber == 0)                           // если сцена 0 (главное меню) - уничтожаем 
+        {
+            Destroy(gameObject);
+            Destroy(ammoManager.gameObject);
+            Destroy(player.gameObject);
+        }
+
+        if (paused)
+            ContinueGame();
+
         SceneManager.LoadScene(sceneName);              // загружаем сцену
-        
+
         /*if (sceneNumber == 4)
         {
             arenaLvl = true;
@@ -292,11 +324,22 @@ public class GameManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)                              // выполняем при загрузке сцены
     {
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;   // перемещаем игрока на точку спауна
+        GameObject spawnPoint = GameObject.Find("SpawnPoint");
+        if (spawnPoint && player)
+        {
+            player.transform.position = spawnPoint.transform.position;                  // перемещаем игрока на точку спауна
+        }
+        
         player.isImmortal = false;                                                      // убираем бессмертие
         keys[0] = 0;                                                                    // сбрасываем ключи
         keys[1] = 0;
-        if (!ArenaManager.instance.noStartWhiteScreen)
-            ArenaManager.instance.whiteScreenAnimator.SetTrigger("StartScreen");
+
+        if (ArenaManager.instance)
+        {
+            if (!ArenaManager.instance.noStartWhiteScreen)
+                ArenaManager.instance.whiteScreenAnimator.SetTrigger("StartScreen");
+            else
+                ArenaManager.instance.whiteScreenAnimator.SetTrigger("StartScreenNormal");
+        }
     }
 }

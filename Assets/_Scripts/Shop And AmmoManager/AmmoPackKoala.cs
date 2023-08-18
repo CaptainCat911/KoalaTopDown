@@ -28,17 +28,19 @@ public class AmmoPackKoala : MonoBehaviour
     }
 
     // ѕатроны
-    public void BuyAmmo(int index)                  
+    public bool BuyAmmo(int index)                  
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseAmmo)          // если золота больше чем стоимость оружи€
         {
             GameManager.instance.gold -= ammoWeapons[index].goldPriseAmmo;          // вычитаем из золота стоимость оружи€
             ammoWeapons[index].allAmmo += ammoWeapons[index].ammoInReload;          // добавл€ем во все патроны кол-во патронов в обойме
             CreateMessage("+ " + ammoWeapons[index].ammoInReload + " боеприпасов");
+            return true;
         }
         else
         {
-            CreateMessage("Ќедостаточно золота!");            
+            CreateMessage("Ќедостаточно золота!");
+            return false;
         }
     }
 
@@ -143,17 +145,19 @@ public class AmmoPackKoala : MonoBehaviour
         }
     }
 
-    public void BuyAmmoBomb(int index)
+    public bool BuyAmmoBomb(int index)
     {
         if (GameManager.instance.gold >= ammoBombs[index].goldPriseAmmo)            // если золота больше чем стоимость оружи€
         {
             GameManager.instance.gold -= ammoBombs[index].goldPriseAmmo;            // вычитаем из золота стоимость оружи€             
             ammoBombs[index].allAmmo += ammoBombs[index].ammoInReload; ;
             CreateMessage("+ " + ammoBombs[index].ammoInReload + " бомба");
+            return true;
         }
         else
         {
             CreateMessage("Ќедостаточно золота!");
+            return false;
         }
     }
 

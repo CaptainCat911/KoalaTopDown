@@ -21,6 +21,7 @@ public class PauseHelp : MonoBehaviour
 
     public void StartHelpPause()
     {
+        GameManager.instance.helpOn = true;
         GameManager.instance.isPlayerEnactive = true;
         helpOn = true;
         animator.SetTrigger("HelpOn");
@@ -34,5 +35,6 @@ public class PauseHelp : MonoBehaviour
         helpOn = false;
         GameManager.instance.playerAtTarget = false;
         GameManager.instance.isPlayerEnactive = false;
+        GameManager.instance.helpOn = false;
     }
 }

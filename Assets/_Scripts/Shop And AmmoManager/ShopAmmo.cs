@@ -36,19 +36,19 @@ public class ShopAmmo : MonoBehaviour
             textMeshAmmo.text = "-";
             textMeshGold.text = "-";
         }
-
     }
+
     // Покупка патронов
     public void BuyAmmoCurrentWeapon()
     {
-        if (GameManager.instance.player.weaponHolder.currentWeapon)
+        if (GameManager.instance.player.weaponHolder.currentWeapon && !GameManager.instance.player.weaponHolder.meleeWeapon)
         {
             int index = GameManager.instance.GetCurrentWeaponIndex();       // находим индекс
-            ammoPack.BuyAmmo(index);                                        // покупаем оружие по индексу
-            audioSource.Play();
+
+            if (ammoPack.BuyAmmo(index))                                    // покупаем оружие по индексу
+                audioSource.Play();
         }
     }
-
 
     // Устанавливаем текст для автомата бомб
     public void SetTextBomb()
@@ -67,14 +67,16 @@ public class ShopAmmo : MonoBehaviour
             textMeshGold.text = "-";
         }
     }
+
     // Покупка бомб
     public void BuyAmmoCurrentBomb()
     {
         if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
         {
             int index = GameManager.instance.GetCurrentBombIndex();         // находим индекс
-            ammoPack.BuyAmmoBomb(index);                                    // покупаем оружие по индексу
-            audioSource.Play();
+
+            if (ammoPack.BuyAmmoBomb(index))                                // покупаем оружие по индексу
+                audioSource.Play();
         }                                  
     }
 }

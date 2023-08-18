@@ -235,12 +235,10 @@ public class ArenaManager : MonoBehaviour
         whiteScreenAnimator.SetTrigger("EndScreen");
     }
 
-
     public void SayTextPlayer(string text)
     {
         GameManager.instance.player.SayText(text);
     }
-
 
     // Свет для 3-го лвл
     public void LightOff(bool status)
@@ -268,7 +266,7 @@ public class ArenaManager : MonoBehaviour
         if (!GameManager.instance.pozored)
         {
             GameManager.instance.pozored = true;                // опозорен
-            pozorHelp.StartHelpPause();
+            pozorHelp.StartHelpPause();                         // запускаем подсказку для позора
         }
     }
 }

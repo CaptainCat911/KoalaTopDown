@@ -11,6 +11,12 @@ public class StartScreen : MonoBehaviour
     public Animator animator;                   // аниматор подписи
     public GameObject kontrakt;                 // страница контракта
     public GameObject loading;                  // картинка загрузки
+    public Animator screenAnimator;
+
+    private void Start()
+    {
+        screenAnimator.SetTrigger("StartScreenNormal");
+    }
 
     public void StartNextScene()
     {
