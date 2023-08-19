@@ -648,6 +648,7 @@ public class Player : Fighter
     {
         isAlive = true;
         currentHealth = maxHealth;
+        TextUI.instance.UpdateHealthText(false, true);
         GameManager.instance.isPlayerEnactive = false;
         GameManager.instance.cameraOnPlayer = false;        
         capsuleCollider2D.enabled = true;
