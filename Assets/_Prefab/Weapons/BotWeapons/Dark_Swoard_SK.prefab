@@ -328,7 +328,7 @@ MonoBehaviour:
   radius: 0.7
   trail: {fileID: 3786651681873589342}
   hitShield: 0
-  bulletPrefab: {fileID: 2609019957272575851, guid: 362df400113c58d40a186a98a330add2, type: 3}
+  bulletPrefab: {fileID: 2609019957272575851, guid: 52ad1bae112f623499f468c4c1a88c5c, type: 3}
   damageRange: 5
   pushForceRange: 10
   projctleSpeed: 4
@@ -342,10 +342,11 @@ MonoBehaviour:
   explousionRadius: 4
   enemySpawners: []
   spawnTimes: 0
-  splitTimes: 8
+  splitTimes: 9
   splitRecoil: 20
   laserDamage: 0
   laserForce: 0
+  laserCooldown: 0
   laserStart: 0
   damageBurn: 0
   cooldownBurn: 0

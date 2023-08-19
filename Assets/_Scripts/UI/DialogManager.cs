@@ -71,6 +71,7 @@ public class DialogManager : MonoBehaviour
         startEvent = true;                                                      // ивент начат        
         dialogeNumber = numberDialog;                                           // номер диалога
         GameManager.instance.isPlayerEnactive = true;                           // отключаем управление игроком
+        TextUI.instance.CursorVisibleOnOff(true);
         GameManager.instance.EnemyResetAndNeutral(true);                        // сбрасываем ботов
         BlackTapes(true);                                                       // черные полосы
         GameManager.instance.cameraOnPlayer = true;                             // камера на игрока
@@ -125,6 +126,7 @@ public class DialogManager : MonoBehaviour
             BlackTapes(false);                                  // убираем черные полосы
             GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
+            TextUI.instance.CursorVisibleOnOff(false);
             GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
             interactAction.Invoke();                            // вызываем ивент (если есть)
             GameManager.instance.dialogeStart = false;
@@ -143,6 +145,7 @@ public class DialogManager : MonoBehaviour
         BlackTapes(false);                                  // убираем черные полосы
         GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
         GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
+        TextUI.instance.CursorVisibleOnOff(false);
         GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
         interactAction.Invoke();                            // вызываем ивент (если есть)
         GameManager.instance.dialogeStart = false;

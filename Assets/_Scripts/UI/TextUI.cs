@@ -6,9 +6,13 @@ public class TextUI : MonoBehaviour
     public static TextUI instance;          // инстанс
 
     //public bool startScreen;
-
+    [Header("UI")]
     Player player;                  // ссылка на игрока
     public Text hp;                 // кол-во хп
+    public Animator animatorHp;
+    public string takeDamageAnimation;
+    public string takeHealAnimation;
+
     public Text shield;             // щит
     public Text bootsEnedgy;        // энергия ботинок
     public Text gold;               // кол-во золота
@@ -26,22 +30,46 @@ public class TextUI : MonoBehaviour
     public Text arenaEnemyKilledCount;      // врагов убито
     public Text arenaBossKilledCount;       // босов убито
 
-    public GameObject menu;
+    public GameObject menu;         // меню
+
+    [Header("Курсор")]
+    //public GameObject cursor;
+    //bool cursorVisible;
+
+    public Texture2D cursorTexture;
+    public Texture2D cursorTextureCrosshair;
+    public CursorMode cursorMode = CursorMode.Auto;
+    //public Vector2 hotSpot = Vector2.zero;
+
+    void OnMouseEnter()
+    {
+        
+    }
 
     private void Awake()
     {
         instance = this;
+        player = GameManager.instance.player;
     }
 
     void Start()
     {
-        player = GameManager.instance.player;
+        UpdateHealthText(false, false);
     }
-   
+
+    private void Update()
+    {
+/*        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursor.transform.position = cursorPos;*/
+
+/*        if (!cursorVisible)
+            Cursor.visible = false;*/
+    }
+
     void FixedUpdate()                                                   // (потом изменить вывод сообщений)
     {
         // HP
-        hp.text = player.currentHealth.ToString("0");
+        //hp.text = player.currentHealth.ToString("0");
 
         // Щит
         if (player.shield.shieldOn)
@@ -97,31 +125,112 @@ public class TextUI : MonoBehaviour
         }        
     }
 
+
+
+    public void UpdateHealthText(bool dmg, bool withAnim)
+    {
+        hp.text = player.currentHealth.ToString("0");           // обновляем текст
+
+        if (withAnim)
+        {
+            if (dmg)
+            {
+                animatorHp.Play(takeDamageAnimation, 0, 0.0f);      // анимация UI получения урона
+            }
+            else
+            {
+                animatorHp.Play(takeHealAnimation, 0, 0.0f);
+            }
+        }
+        
+        // когда мало хп
+        if (player.currentHealth <= 25)
+        {
+            animatorHp.SetBool("Low_HP", true);
+        }
+        else
+        {
+            animatorHp.SetBool("Low_HP", false);
+        }
+    }
+
+
+
     // Для меню
-    
-    public void ContinueGameButton()                // продолжить игру
+    // продолжить игру
+    public void ContinueGameButton()                
     {
         GameManager.instance.ContinueGame();
     }
 
-    public void GoToMainMenuButton()                // выйти в главное меню
+    // выйти в главное меню
+    public void GoToMainMenuButton()                
     {
         GameManager.instance.NextScene(0);
     }
 
-    public void ExitGameButton()                    // выйти в виндоус
+    // выйти в виндоус
+    public void ExitGameButton()                    
     {
         Application.Quit();
         Debug.Log("Exit!");
     }
 
-    public void ShowMenu(bool status)               // показать или скрыть меню
+    // показать или скрыть меню
+    public void ShowMenu(bool status)               
     {
         menu.SetActive(status);
     }
 
-    public void Music(bool status)                  // вкл/выкл музыки
+    // вкл/выкл музыки
+    public void Music(bool status)                  
     {
         AudioManager.instance.StartStopTrack(status);
+    }
+
+    // вкл/выкл отображения урона
+    public void ShowDamage(bool status)
+    {
+        GameManager.instance.showDamage = status;
+    }
+
+
+
+
+    // Курсор
+    public void CursorVisibleOnOff(bool status)
+    {
+        /*        if (status)
+                {
+                    cursorVisible = true;
+                    Cursor.visible = true;
+                    cursor.SetActive(false);
+                }
+                if (!status)
+                {
+                    cursorVisible = false;
+                    //Cursor.visible = false;
+                    cursor.SetActive(true);
+                }*/
+
+        if (status)
+        {
+            Texture2D texture2D = cursorTexture;
+            Vector2 hotspot = Vector2.zero;
+            ChangeCursor(texture2D, hotspot);
+
+        }
+        if (!status)
+        {
+            Texture2D texture2D = cursorTextureCrosshair;
+            Vector2 hotspot = new Vector2(texture2D.width / 2, texture2D.height / 2);
+            ChangeCursor(texture2D, hotspot);
+        }
+    }
+
+    void ChangeCursor(Texture2D cursorType, Vector2 hotspot)
+    {
+        
+        Cursor.SetCursor(cursorType, hotspot, cursorMode);
     }
 }

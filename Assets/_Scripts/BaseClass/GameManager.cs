@@ -7,7 +7,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
-    public bool startScreen;
+    public bool startScreen;                    // для стартскрина
+    public bool showDamage;                     // показывать урон
     
     public string[] sceneNames;                 // все сцены
 
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        //TextUI.instance.CursorVisibleOnOff(false);
     }
 
     public void Update()
@@ -169,6 +170,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         isPlayerEnactive = true;
         TextUI.instance.ShowMenu(true);
+        TextUI.instance.CursorVisibleOnOff(true);
         paused = true;
     }
 
@@ -177,6 +179,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         isPlayerEnactive = false;
         TextUI.instance.ShowMenu(false);
+        TextUI.instance.CursorVisibleOnOff(false);
         paused = false;
     }
 
@@ -213,7 +216,9 @@ public class GameManager : MonoBehaviour
 
     public void CreateFloatingMessage(string message, Color color, Vector2 position)
     {
-        int floatType = Random.Range(0, 3);
+        int floatType = 0;
+        if (color == Color.green || color == Color.yellow)                       // если это хп или золото, делаем рандомный поворот (потом сделать по нормальному)
+            floatType = Random.Range(0, 3);
         GameObject textPrefab = Instantiate(GameAssets.instance.floatingMessage, position, Quaternion.identity);
         textPrefab.GetComponentInChildren<TextMeshPro>().text = message;
         textPrefab.GetComponentInChildren<TextMeshPro>().color = color;

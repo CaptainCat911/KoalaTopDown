@@ -103,8 +103,8 @@ MonoBehaviour:
   - name: "\u041C\u0438\u043D\u0438\u0433\u0430\u043D"
     weapon: {fileID: 2496722168628502743, guid: 4a434330d06f85945a2abbbade00d556, type: 3}
     goldPriseWeapon: 6000
-    goldPriseAmmo: 150
-    ammoInReload: 50
+    goldPriseAmmo: 300
+    ammoInReload: 100
     allAmmo: 500
   - name: "\u041F\u043B\u0430\u0437\u043C\u0430\u0433\u0430\u043D"
     weapon: {fileID: 2496722168628502743, guid: bd1d80e85ec7e434b9078e677b4b2a34, type: 3}
@@ -540,8 +540,7 @@ MonoBehaviour:
     goldPriseAmmo: 100
     ammoInReload: 1
     allAmmo: 10
-  - name: "\u0417\u0430\u0436\u0438\u0433\u0430\u0442\u0435\u043B\u044C\u043D\u0430\u044F
-      \u0431\u043E\u043C\u0431\u0430"
+  - name: "\u041E\u0433\u043D\u0435\u043D\u043D\u0430\u044F"
     weapon: {fileID: 2496722168628502743, guid: 47fc0e0dd33eba2428e479dc6c4571cc, type: 3}
     goldPriseWeapon: 1300
     goldPriseAmmo: 130

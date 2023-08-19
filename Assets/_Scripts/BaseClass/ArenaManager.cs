@@ -160,13 +160,13 @@ public class ArenaManager : MonoBehaviour
             if (i == 5)
             {
                 arenaBossStart = true;          // запускаем спаун боссов
-                arenaMaxEnemys = 30;
+                //arenaMaxEnemys = 30;
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
             }
             if (i == 6)
             {
-                arenaMaxBosses = 2;             // максимум боссов на арене
+                //arenaMaxBosses = 2;             // максимум боссов на арене
                 bossSpawner.cooldown = 45;      // кд боссов на арене
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
@@ -174,7 +174,7 @@ public class ArenaManager : MonoBehaviour
             }
             if (i == 7)
             {
-                arenaMaxBosses = 3;             // максимум боссов на арене
+                //arenaMaxBosses = 3;             // максимум боссов на арене
                 bossSpawner.cooldown = 30;      // кд боссов на арене
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();                

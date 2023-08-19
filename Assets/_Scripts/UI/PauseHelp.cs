@@ -23,6 +23,7 @@ public class PauseHelp : MonoBehaviour
     {
         GameManager.instance.helpOn = true;
         GameManager.instance.isPlayerEnactive = true;
+        TextUI.instance.CursorVisibleOnOff(true);
         helpOn = true;
         animator.SetTrigger("HelpOn");
         //helps[number].SetActive(true);
@@ -35,6 +36,7 @@ public class PauseHelp : MonoBehaviour
         helpOn = false;
         GameManager.instance.playerAtTarget = false;
         GameManager.instance.isPlayerEnactive = false;
+        TextUI.instance.CursorVisibleOnOff(false);
         GameManager.instance.helpOn = false;
     }
 }

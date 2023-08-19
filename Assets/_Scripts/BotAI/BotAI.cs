@@ -582,8 +582,6 @@ public class BotAI : Fighter
             botAIMeleeWeaponHolder.currentWeapon.Attack(type);
     }
 
-
-
     public void ForceBackFire(Vector3 forceDirection, float forceBack)
     {
         Vector2 vec2 = (transform.position - forceDirection).normalized;        // направление отдачи нормализированное
@@ -717,7 +715,7 @@ public class BotAI : Fighter
         if (!noHealBox)
         {
             int random = Random.Range(0, 101);
-            if (random >= 95)
+            if (random >= 96)
                 Instantiate(GameAssets.instance.healBox, transform.position, Quaternion.identity);          // создаем аптечку
         }
 

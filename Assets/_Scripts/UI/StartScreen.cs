@@ -41,4 +41,9 @@ public class StartScreen : MonoBehaviour
         string sceneName = sceneNames[number];          // выбираем сцену
         SceneManager.LoadScene(sceneName);              // загружаем сцену
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     public float cooldown = 1f;             // перезарядка спауна
     float randomCd;                         // рандом для кд
     private float lastSpawn;
-    public int enemysHowMuch;               // сколько врагов нужено
+    public int enemysHowMuch;               // сколько врагов нужно
     int enemyCount;
     public GameObject spawnEffect;          // эффект спавна
     public bool bossSpawner;                // спавнер для босса

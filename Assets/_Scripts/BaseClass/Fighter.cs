@@ -15,6 +15,7 @@ public class Fighter : MonoBehaviour
     public int maxHealth;
     public bool noAgro;
     GameObject floatinText;                 // текст чата
+    public bool player;
     public bool isGoodPerson;               // игрок или нпс (для отображения урона)
     public bool bossHP;                     // хп босса (ссылаемся на гуи)
 
@@ -78,6 +79,7 @@ public class Fighter : MonoBehaviour
             {
                 lastHealMinus = Time.time;
                 currentHealth -= 1;
+                TextUI.instance.UpdateHealthText(false, false);
             }
         }
     }
@@ -89,32 +91,33 @@ public class Fighter : MonoBehaviour
         if (!isAlive)
             return;
 
-
-
 /*        if (withTimeNoDamage && Time.time - lastNoDamage > timeNoDamage)          // 
         {
             //Debug.Log("Attack!");
             lastNoDamage = Time.time;
         }*/
 
-        rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);
+        rb2D.AddForce(vec2 * pushForce, ForceMode2D.Impulse);       // толчек
 
-        if (dmg == 0)
+        if (dmg == 0)                                               // если урон 0 - не отображаем
             return;
 
         if (hpBarOn)
         {
             if (currentHealth == maxHealth)
-                hpBarGO.SetActive(true);
+                hpBarGO.SetActive(true);                            // включаем хп бар при получении урона
         }
 
         currentHealth -= dmg;
-        if (isGoodPerson)
-            ShowDamageOrHeal("-" + dmg.ToString(), true);
-        else
-            ShowDamageOrHeal(dmg.ToString(), true);
 
-
+        // создаем циферки урона
+        if (GameManager.instance.showDamage)
+        {
+            if (isGoodPerson)
+                ShowDamageOrHeal("-" + dmg.ToString(), true);
+            else
+                ShowDamageOrHeal(dmg.ToString(), true);
+        }
 
         //Death
         if (currentHealth <= 0)
@@ -129,7 +132,12 @@ public class Fighter : MonoBehaviour
         }
 
         if (hpBarOn)
-            hpBar.SetHealth(currentHealth);
+            hpBar.SetHealth(currentHealth);             // записываем кол-во хп
+
+        if (player)
+        {
+            TextUI.instance.UpdateHealthText(true, true);
+        }
     }
 
 
@@ -141,9 +149,17 @@ public class Fighter : MonoBehaviour
             return;*/
 
         currentHealth += healingAmount;
-/*        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;*/
-        ShowDamageOrHeal("+" + healingAmount.ToString() + " hp", false);
+
+        /*        if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;*/
+        //ShowDamageOrHeal("+" + healingAmount.ToString() + " hp", false);
+        
+        GameManager.instance.CreateFloatingMessage("+ " + healingAmount + " hp", Color.green, transform.position);              // создаём сообщение о лечении
+
+        if (player)
+        {
+            TextUI.instance.UpdateHealthText(false, true);
+        }
 
         //GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 30, 1.5f);
         //GameManager.instance.OnHitpointChange();

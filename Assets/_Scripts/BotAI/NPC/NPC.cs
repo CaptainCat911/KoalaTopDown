@@ -125,6 +125,15 @@ public class NPC : BotAI
                     spawnReady = false;
                 }
             }
+
+            // Четвертая фаза
+            if (currentHealth <= maxHealth * 0.05f)
+            {
+                foreach (EnemySpawner enemySpawner in enemySpawners)
+                {
+                    enemySpawner.enemysHowMuch = 0;
+                }
+            }
         }
 
         base.Update();
