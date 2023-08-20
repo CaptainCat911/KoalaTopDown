@@ -350,8 +350,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: {fileID: 7680541747725796785}
+  lightGo2D: {fileID: 0}
   canBurn: 1
   slow: 0.2
+  stopBurn: 0
 --- !u!114 &3852394254727309817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,8 +386,11 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 10000
   noAgro: 0
+  player: 0
   isGoodPerson: 0
   bossHP: 1
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -400,7 +405,10 @@ MonoBehaviour:
   isEnemy: 1
   isArenaEnemy: 0
   isArenaBoss: 0
+  skeletonKing: 0
+  skeletonResble: 0
   triggerLenght: 30
+  chaseLeght: 0
   distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
@@ -423,6 +431,8 @@ MonoBehaviour:
   pivotSpeedKoef: 1
   distanceToAttack: 0
   distanceToTarget: 0
+  nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 0}
   stayOnGround: 1
   noPatrol: 0
@@ -430,47 +440,19 @@ MonoBehaviour:
   followPlayer: 0
   destinationPoint: {fileID: 0}
   noTriggerAgro: 0
-  events:
+  eventsStart:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Rendering.Universal.Light2D, Unity.RenderPipelines.Universal.Runtime
-        m_MethodName: set_pointLightOuterRadius
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 8
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  deathEffect: {fileID: 5727708654878073701, guid: bfac2c014c6cedc41b5e1725ea8393e2, type: 3}
+      m_Calls: []
+  eventsDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  withBigExplousion: 0
+  fastDeathAnim: 1
+  timeForDeath: 2.5
+  deathEffect: {fileID: 5727708654878073701, guid: 748a93b3ecd89c34dae988f1a282d98c, type: 3}
   deathCameraShake: 10
+  darkEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -478,13 +460,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   friendTarget: {fileID: 0}
-  fastDeathAnim: 1
-  timeForDeath: 2.5
+  lookAtPlayer: 0
   debug: 0
   bubbleTexts: []
   withChat: 0
   audioEnemy: {fileID: 4372641650694578414}
   withAudioChat: 0
+  pozor: 0
   attackingNow: 0
   mainBoss: 0
   shadowBoss: 1

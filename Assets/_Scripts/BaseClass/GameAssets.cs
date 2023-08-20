@@ -24,6 +24,7 @@ public class GameAssets : MonoBehaviour
     public GameObject floatingMessage;
 
     [Header("Ёффекты")]
+    public GameObject bigDarkExpliusion;
     public GameObject explousionRedEffect;
     public GameObject explousionBlue;
     public GameObject explousionGravity;

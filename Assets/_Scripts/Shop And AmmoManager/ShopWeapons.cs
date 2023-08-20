@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class ShopWeapons : MonoBehaviour
 {
+    AmmoPackKoala ammoPack;             // ссылка на аммопак (тут и оружие и бомбы и покупка этого всего)
+    AudioSource audioSource;
+
     public ShopWeaponControl[] rangeWeapons;
     public ShopWeaponControl[] meleeWeapons;
     public ShopWeaponControl[] bombsWeapons;
-/*    public TextMeshPro[] m_textsRange;
-    public TextMeshPro[] m_textsMelee;
-    public TextMeshPro[] m_textsBomb;*/
-    AmmoPackKoala ammoPack;             // ссылка на аммопак (тут и оружие и бомбы и покупка этого всего)
-    AudioSource audioSource;
+
+    public PauseHelp helpPause;         // подсказка
+
+    /*    public TextMeshPro[] m_textsRange;
+        public TextMeshPro[] m_textsMelee;
+        public TextMeshPro[] m_textsBomb;*/
 
     private void Awake()
     {
@@ -64,10 +68,16 @@ public class ShopWeapons : MonoBehaviour
 
     public void ShopBuyBombWeapon(int index)
     {
-        if (ammoPack.BuyBomb(index))
+        if (ammoPack.BuyBomb(index))                // если смогли купитьт бомбу
         {
-            bombsWeapons[index].WeaponBuyed();
-            MakeSound();
+            bombsWeapons[index].WeaponBuyed();      // для текста ("Куплено!")
+            MakeSound();                            // звук
+
+            if (!GameManager.instance.bombHelped)
+            {
+                helpPause.StartHelpPause();
+                GameManager.instance.bombHelped = true;
+            }            
         }
     }
 

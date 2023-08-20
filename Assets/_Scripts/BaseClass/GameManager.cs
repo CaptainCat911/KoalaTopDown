@@ -34,7 +34,10 @@ public class GameManager : MonoBehaviour
     public int[] keys;                          // ключи
     public int battery;                         // батареи
     public int pozorCount;                      // счетчик позора
+
+    [Header("События между сценами")]
     [HideInInspector] public bool pozored;      // опозорен
+    [HideInInspector] public bool bombHelped;   // показали подсказку для бомбы
 
     [Header("Управление светом")]
     public bool lightDark;

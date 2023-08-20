@@ -84,6 +84,7 @@ public class BotAI : Fighter
 
     [Header("Параметры при смерти")]
     public UnityEvent eventsDeath;                  // ивенты
+    public bool withBigExplousion;                  // с большим хлопком
     public bool fastDeathAnim;
     public float timeForDeath = 2.5f;
     int deathCount;
@@ -739,6 +740,35 @@ public class BotAI : Fighter
 
         eventsDeath.Invoke();                        // ивенты
 
+
+        if (withBigExplousion)
+        {
+            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 25, LayerMask.GetMask("Enemy"));     // создаем круг в позиции объекта с радиусом
+            foreach (Collider2D coll in collidersHits)
+            {
+                if (coll == null)
+                {
+                    continue;
+                }
+
+                if (coll.gameObject.TryGetComponent<Fighter>(out Fighter fighter))
+                {
+
+                    Vector2 vec2 = (coll.transform.position - transform.position).normalized;
+                    fighter.TakeDamage(1000, vec2, 60);
+                }
+                collidersHits = null;
+            }
+
+            GameObject effect = Instantiate(GameAssets.instance.bigDarkExpliusion, transform.position, Quaternion.identity);  // создаем эффект убийства
+            Destroy(effect, 1);
+
+            CMCameraShake.Instance.ShakeCamera(5, 0.3f);            // тряска камеры            
+        }
+
+
+
+
         if (!fastDeathAnim)
             Invoke("AfterDeath", timeForDeath);         // 0.8f
         else
@@ -754,6 +784,12 @@ public class BotAI : Fighter
 
         if (darkEffect)
             darkEffect.Stop();
+
+
+
+
+
+
 
         // Для арены
         if (isArenaEnemy)

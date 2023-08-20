@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
             portalAnimator.SetTrigger("Open");
             Invoke("SpawnEnemy", 2f);
         }
-        if (arenaBossSpawner && active && Time.time - lastSpawn > cooldown)
+        if (arenaBossSpawner && active && Time.time - lastSpawn > cooldown && ArenaManager.instance.arenaSpawnStarted)
         {
             lastSpawn = Time.time;
             portalAnimator.SetTrigger("Open");
@@ -103,7 +103,10 @@ public class EnemySpawner : MonoBehaviour
         if (arenaBossSpawner)
         {
             bot.isArenaBoss = true;
+            bot.isArenaEnemy = true;                    // бот для арены
+            bot.chaseLeght = 0;                         // убираем дистанцию преследования
             ArenaManager.instance.arenaBossCount++;
+            ArenaManager.instance.arenaEnemyCount++;    // + счетчик врагов на арене
         }
         if (noItem)
         {

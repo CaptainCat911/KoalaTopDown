@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PauseHelp : MonoBehaviour
 {
-    //public GameObject[] helps;
+    public GameObject[] helps;
+    int i;
     Animator animator;
     bool helpOn;
 
@@ -27,6 +28,13 @@ public class PauseHelp : MonoBehaviour
         helpOn = true;
         animator.SetTrigger("HelpOn");
         //helps[number].SetActive(true);
+    }
+
+    public void NextHelp()
+    {
+        helps[i].SetActive(false);
+        i++;
+        helps[i].SetActive(true);
     }
 
     public void HideHelpPause()

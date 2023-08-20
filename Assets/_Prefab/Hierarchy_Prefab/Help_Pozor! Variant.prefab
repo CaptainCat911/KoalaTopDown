@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5086394186948800040, guid: fd2a44bda32e38a4780066b9367b5be5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8386d54a9090b604089970b5274c850b, type: 3}
     - target: {fileID: 6323804660944050984, guid: fd2a44bda32e38a4780066b9367b5be5, type: 3}
       propertyPath: m_text
       value: "\u041F\u043E\u0437\u043E\u0440!"
@@ -80,6 +84,10 @@ PrefabInstance:
     - target: {fileID: 6323804661832015012, guid: fd2a44bda32e38a4780066b9367b5be5, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323804661832015012, guid: fd2a44bda32e38a4780066b9367b5be5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideHelpPause
       objectReference: {fileID: 0}
     - target: {fileID: 6323804661832015015, guid: fd2a44bda32e38a4780066b9367b5be5, type: 3}
       propertyPath: m_LocalScale.x
