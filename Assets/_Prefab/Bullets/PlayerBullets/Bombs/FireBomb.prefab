@@ -311,6 +311,7 @@ MonoBehaviour:
     m_Bits: 4225
   expEffect: {fileID: 7845441016114820387, guid: 45267ad79d37b7140a9b52e8d0b4e7b6, type: 3}
   sparksEffect: {fileID: 0}
+  portalBullet: 0
   audioExplousion: {fileID: 4209454454700283240, guid: 0acb4cb5b15dd384db5b9ff8f0c7a537, type: 3}
   audioProjectile: {fileID: 0}
   expRadius: 4
@@ -446,7 +447,7 @@ Transform:
   m_GameObject: {fileID: 6674889618573583036}
   m_LocalRotation: {x: -0, y: -0, z: -0.2588186, w: 0.965926}
   m_LocalPosition: {x: 9.477481e-10, y: 0.025, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2085243733580016274}
