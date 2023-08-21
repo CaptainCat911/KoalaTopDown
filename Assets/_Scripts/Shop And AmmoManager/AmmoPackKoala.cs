@@ -197,7 +197,14 @@ public class AmmoPackKoala : MonoBehaviour
         }
         CreateMessage(ammoMeleeWeapons[index].name + " !");  
     }
+    // Поднять бомбу
+    public void TakeBomb(int index)
+    {
+        player.bombWeaponHolder.weapons.Add(ammoBombs[index].weapon);                       // добавляем оружие в список оружий
+        player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока                                                                                               
 
+        CreateMessage(ammoBombs[index].name + " !");
+    }
 
 
     void CreateMessage(string text)

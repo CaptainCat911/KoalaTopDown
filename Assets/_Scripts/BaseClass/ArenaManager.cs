@@ -44,6 +44,8 @@ public class ArenaManager : MonoBehaviour
     public Animator whiteScreenAnimator;
     //public GameObject loadingImage;
 
+    [Header("Подсказки")]
+    public int dialogeNumberForResroom;
     public PauseHelp pozorHelp;
 
 
@@ -261,6 +263,17 @@ public class ArenaManager : MonoBehaviour
         }
     }
 
+    // Диалог для ресрума
+    public void ResroomOn()
+    {
+        if (!GameManager.instance.resroomed)
+        {
+            GameManager.instance.resroomed = true;              // 
+            DialogManager.instance.StartEvent(dialogeNumberForResroom);                        // запускаем подсказку для позора
+        }
+    }
+
+    // Подсказка для позора
     public void PozorOn()
     {
         if (!GameManager.instance.pozored)

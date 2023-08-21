@@ -88,41 +88,38 @@ public class WeaponHolder : MonoBehaviour
                 fireStart = false;                  
         }
 
-        // —мена оружи€ ренж или мили
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+        // ¬ыбор оружи€ мили
+        if (meleeWeapon)
         {
-            HideWeapons();                          // пр€чем огнестрел
-            weaponHolderMelee.SelectWeapon();       // достаЄм мили
-            meleeWeapon = true;                     // оружие мили
-            weaponHolderMelee.rangeWeapon = false; 
+            int previousWeaponMelee = weaponHolderMelee.selectedWeapon;                                // присваиваем переменной индекс оружи€
+
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Alpha1))                        // управление колЄсиком (дл€ правого холдера)
+            {
+                if (weaponHolderMelee.selectedWeapon >= weaponHolderMelee.transform.childCount - 1)                 // сбрасываем в 0 индекс, если индекс равен кол-ву объекто в иерархии WeaponHolder - 1(?)
+                    weaponHolderMelee.selectedWeapon = 0;
+                else
+                    weaponHolderMelee.selectedWeapon++;
+            }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)                        // управление колЄсиком (дл€ левого холдера)
+            {
+                if (weaponHolderMelee.selectedWeapon <= 0)
+                    weaponHolderMelee.selectedWeapon = weaponHolderMelee.transform.childCount - 1;
+                else
+                    weaponHolderMelee.selectedWeapon--;
+            }
+            if (previousWeaponMelee != weaponHolderMelee.selectedWeapon)               // если индекс оружи€ изменилс€ - вызываем функцию
+            {
+                weaponHolderMelee.SelectWeapon();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SelectWeapon();                         // достаЄм огнестрел
-            weaponHolderMelee.HideWeapons();        // пр€чем мили
-            meleeWeapon = false;                
-            weaponHolderMelee.rangeWeapon = true;   // оружие ренж
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SwapWeapon();
-        }
-
-
-/*        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            stopAiming = !stopAiming;           // дл€ дебага, убираем поворот оружи€
-        }*/
-
-
 
         // ¬ыбор оружи€
         if (!meleeWeapon)
         {
             int previousWeapon = selectedWeapon;                                // присваиваем переменной индекс оружи€
 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)                        // управление колЄсиком (дл€ правого холдера)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Alpha2))                        // управление колЄсиком (дл€ правого холдера)
             {
                 if (selectedWeapon >= transform.childCount - 1)                 // сбрасываем в 0 индекс, если индекс равен кол-ву объекто в иерархии WeaponHolder - 1(?)
                     selectedWeapon = 0;
@@ -142,6 +139,39 @@ public class WeaponHolder : MonoBehaviour
                 SelectWeapon();
             }
         }
+
+
+
+        // —мена оружи€ ренж или мили
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            HideWeapons();                          // пр€чем огнестрел
+            weaponHolderMelee.SelectWeapon();       // достаЄм мили
+            meleeWeapon = true;                     // оружие мили
+            weaponHolderMelee.rangeWeapon = false; 
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weaponHolderMelee.HideWeapons();        // пр€чем мили
+            SelectWeapon();                         // достаЄм огнестрел
+            meleeWeapon = false;                
+            weaponHolderMelee.rangeWeapon = true;   // оружие ренж
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SwapWeapon();
+        }
+
+
+/*        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            stopAiming = !stopAiming;           // дл€ дебага, убираем поворот оружи€
+        }*/
+
+
+
+
 
         /*        if (Input.GetKeyDown(KeyCode.Alpha1))
                 {

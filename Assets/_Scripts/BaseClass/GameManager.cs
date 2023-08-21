@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public int pozorCount;                      // счетчик позора
 
     [Header("События между сценами")]
+    [HideInInspector] public bool resroomed;    // побывал в комнате воскрешения
     [HideInInspector] public bool pozored;      // опозорен
     [HideInInspector] public bool bombHelped;   // показали подсказку для бомбы
 

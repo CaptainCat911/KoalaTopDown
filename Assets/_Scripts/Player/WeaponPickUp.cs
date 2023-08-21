@@ -6,11 +6,16 @@ public class WeaponPickUp : ItemPickUp
 {
     [Header("Тип оружия")]
     public bool isRange;
+    public bool isBomb;
     public int weaponIndex;
 
     public void TakeWeapon()
     {
-        if (isRange)
+        if (isBomb)
+        {
+            GameManager.instance.ammoManager.TakeBomb(weaponIndex);
+        }        
+        else if (isRange)
         {
             GameManager.instance.ammoManager.TakeRangeWeapon(weaponIndex);
         }

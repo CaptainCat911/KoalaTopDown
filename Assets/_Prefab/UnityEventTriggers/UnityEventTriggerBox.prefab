@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 10
   m_Name: UnityEventTriggerBox
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a498b85afb59f6f47b3c433a67e92ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNPCTrigger: 0
+  isEnemyTrigger: 0
   isSingleTrigger: 1
   interactAction:
     m_PersistentCalls:
