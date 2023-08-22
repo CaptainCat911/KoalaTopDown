@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton_Warrior_Pref_Pozor Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 465093172257707243, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3388712515100989919, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
       propertyPath: weapons.Array.size
       value: 0
@@ -65,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242737286144102811, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
       propertyPath: m_InstanceId
-      value: -1053652
+      value: -259294
       objectReference: {fileID: 0}
     - target: {fileID: 5637256032745511710, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -73,6 +77,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5637256032745511710, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117127307911679843, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7947169363518287869, guid: a3719e9f0908376408392975b7d0d17f, type: 3}
