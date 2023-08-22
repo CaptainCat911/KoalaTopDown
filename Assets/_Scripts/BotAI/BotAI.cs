@@ -178,9 +178,12 @@ public class BotAI : Fighter
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
         startTriigerLenght = triggerLenght;                                                                 // стартовая длинна тригера
 
-        agent.updateRotation = false;           // для навмеш2д
-        agent.updateUpAxis = false;             //
-        agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
+        if (!pozor)
+        {
+            agent.updateRotation = false;           // для навмеш2д
+            agent.updateUpAxis = false;             //
+            agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
+        }
 
         eventsStart.Invoke();                   // запускаем ивент
 
