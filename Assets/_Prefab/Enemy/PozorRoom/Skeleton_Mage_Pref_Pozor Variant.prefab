@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972999511914447392, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
       propertyPath: m_InstanceId
-      value: -261994
+      value: -1008808
       objectReference: {fileID: 0}
     - target: {fileID: 3443589905989328194, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
       propertyPath: noPatrol
@@ -179,7 +179,8 @@ PrefabInstance:
       propertyPath: weapons.Array.size
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 842472770116661901, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4bd8cf5a376e8154fbcfc49e2c0102ee, type: 3}
 --- !u!114 &2904440036261299875 stripped
 MonoBehaviour:

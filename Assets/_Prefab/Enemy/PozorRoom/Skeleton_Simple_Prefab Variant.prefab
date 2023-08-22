@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 20973576498005530, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
       propertyPath: m_InstanceId
-      value: -245260
+      value: -1005410
       objectReference: {fileID: 0}
     - target: {fileID: 287261273441164414, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
       propertyPath: weapons.Array.size
@@ -175,5 +175,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3614181865363430999, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ef990152865c0bb46952b85a5232a4b0, type: 3}

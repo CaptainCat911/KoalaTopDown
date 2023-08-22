@@ -268,8 +268,8 @@ public class ArenaManager : MonoBehaviour
     {
         if (!GameManager.instance.resroomed)
         {
-            GameManager.instance.resroomed = true;              // 
-            DialogManager.instance.StartEvent(dialogeNumberForResroom);                        // запускаем подсказку для позора
+            GameManager.instance.resroomed = true;              
+            DialogManager.instance.StartEvent(dialogeNumberForResroom);         // запускаем диалог
         }
     }
 

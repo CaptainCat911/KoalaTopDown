@@ -11,7 +11,9 @@ public class ShopWeapons : MonoBehaviour
     public ShopWeaponControl[] meleeWeapons;
     public ShopWeaponControl[] bombsWeapons;
 
-    public PauseHelp helpPause;         // подсказка
+    public PauseHelp helpPauseBuyWeapon;        // подсказка при покупке оружия
+    public PauseHelp helpPauseBuyBomb;          // подсказка при покупке бомбы
+    public PauseHelp helpPauseBuyBomb_2;        // подсказка при покупке бомбы (для смены типа бомбы)
 
     /*    public TextMeshPro[] m_textsRange;
         public TextMeshPro[] m_textsMelee;
@@ -48,12 +50,19 @@ public class ShopWeapons : MonoBehaviour
         }
     }
 
+    // Покупка оружия
     public void ShopBuyRangeWeapon(int index)
     {
         if (ammoPack.BuyRangeWeapon(index))
         {
             rangeWeapons[index].WeaponBuyed();
             MakeSound();
+
+            if (!GameManager.instance.weaponHelped)
+            {
+                helpPauseBuyWeapon.StartHelpPause();              // подсказка для смены оружия
+                GameManager.instance.weaponHelped = true;
+            }            
         }
     }
 
@@ -63,6 +72,12 @@ public class ShopWeapons : MonoBehaviour
         {
             meleeWeapons[index].WeaponBuyed();
             MakeSound();
+
+            if (!GameManager.instance.weaponHelped)
+            {
+                helpPauseBuyWeapon.StartHelpPause();              // подсказка для смены оружия
+                GameManager.instance.weaponHelped = true;
+            }
         }
     }
 
@@ -75,9 +90,14 @@ public class ShopWeapons : MonoBehaviour
 
             if (!GameManager.instance.bombHelped)
             {
-                helpPause.StartHelpPause();
+                helpPauseBuyBomb.StartHelpPause();              // подсказка для броска бомбы
                 GameManager.instance.bombHelped = true;
-            }            
+            }
+            else if (!GameManager.instance.bombHelped_2)
+            {
+                helpPauseBuyBomb_2.StartHelpPause();            // подсказка для смены бомбы
+                GameManager.instance.bombHelped_2 = true;
+            }
         }
     }
 

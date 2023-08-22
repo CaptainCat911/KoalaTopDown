@@ -160,7 +160,8 @@ public class BotAI : Fighter
             MakeFriendly();
         }
 
-        maxSpeed = agent.speed;
+        if (!pozor)
+            maxSpeed = agent.speed;
 
         //MakeLeft();
 
@@ -233,44 +234,48 @@ public class BotAI : Fighter
                 pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, Quaternion.Euler(0, 0, 180), Time.fixedDeltaTime * 15);   // делаем Lerp между weaponHoder и нашим углом
         }
 
-        // поворот спрайта (Flip)       
-        if (target && targetVisible)                           // (ещё это дублируется в хитбокспивот)
+        // поворот спрайта (Flip)
+        if (!pozor)
         {
-            if (Mathf.Abs(aimAnglePivot) > 90 && !flipLeft)
+            if (target && targetVisible)                           // (ещё это дублируется в хитбокспивот)
             {
-                FaceTargetLeft();
-                pivot.Flip();
+                if (Mathf.Abs(aimAnglePivot) > 90 && !flipLeft)
+                {
+                    FaceTargetLeft();
+                    pivot.Flip();
+                }
+                if (Mathf.Abs(aimAnglePivot) <= 90 && !flipRight)
+                {
+                    FaceTargetRight();
+                    pivot.Flip();
+                }
             }
-            if (Mathf.Abs(aimAnglePivot) <= 90 && !flipRight)
-            {
-                FaceTargetRight();
-                pivot.Flip();
-            }
-        }
-        else
-        {
-            if (agent.velocity.x < -0.2 && !flipLeft)
-            {
-                FaceTargetLeft();
-                pivot.Flip();
-            }
-            if (agent.velocity.x > 0.2 && !flipRight)
-            {
-                FaceTargetRight();
-                pivot.Flip();
-            }
-        }
-
-        animator.SetFloat("Speed", agent.velocity.magnitude);
-
-        // Замедление
-        if (slowed)
-        {
-            if (agent.speed < maxSpeed)
-                agent.speed += 0.005f;
             else
-                slowed = false;
+            {
+                if (agent.velocity.x < -0.2 && !flipLeft)
+                {
+                    FaceTargetLeft();
+                    pivot.Flip();
+                }
+                if (agent.velocity.x > 0.2 && !flipRight)
+                {
+                    FaceTargetRight();
+                    pivot.Flip();
+                }
+            }
+
+            animator.SetFloat("Speed", agent.velocity.magnitude);
+
+            // Замедление
+            if (slowed)
+            {
+                if (agent.speed < maxSpeed)
+                    agent.speed += 0.005f;
+                else
+                    slowed = false;
+            }
         }
+    
 
         if (friendTarget)
         {

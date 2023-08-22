@@ -38,7 +38,9 @@ public class GameManager : MonoBehaviour
     [Header("События между сценами")]
     [HideInInspector] public bool resroomed;    // побывал в комнате воскрешения
     [HideInInspector] public bool pozored;      // опозорен
+    [HideInInspector] public bool weaponHelped; // показали подсказку для смены оружия
     [HideInInspector] public bool bombHelped;   // показали подсказку для бомбы
+    [HideInInspector] public bool bombHelped_2; // показали подсказку 2 для бомбы
 
     [Header("Управление светом")]
     public bool lightDark;
