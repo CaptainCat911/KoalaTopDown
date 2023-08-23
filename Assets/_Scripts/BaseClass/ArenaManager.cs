@@ -124,11 +124,77 @@ public class ArenaManager : MonoBehaviour
         }
 
 
-        // Установка сложности по таймеру
-        if (time >= timer[i] && !timerDone[i])
+        /*        // Установка сложности по таймеру
+                if (time >= timer[i] && !timerDone[i])
+                {
+                    if (i == 0)
+                    {
+                        ArenaAddNewEnemy(0);
+                        ArenaAddNewEnemy(0);
+                        arenaMaxEnemys = 15;
+                        waveSpawners[0].MakeWave();
+                    }
+                    if (i == 1)
+                    {
+                        ArenaAddNewEnemy(1);
+                        ArenaAddNewEnemy(1);
+                        arenaMaxEnemys = 20;
+                        waveSpawners[3].MakeWave();
+                        ArenaSpawnersSetCooldown(12);
+                    }
+                    if (i == 2)
+                    {
+                        ArenaAddNewEnemy(2);
+                        arenaMaxEnemys = 20;
+                        waveSpawners[1].MakeWave();
+                    }
+                    if (i == 3)
+                    {
+                        ArenaAddNewEnemy(3);
+                        arenaMaxEnemys = 25;            // максимум врагов на арене
+                        waveSpawners[2].MakeWave();     // вызываем волну скелетов (5 шт)                
+                        ArenaSpawnersSetCooldown(8);    // устанавливаем кд спаунеров                
+                    }
+                    if (i == 4)
+                    {
+                        arenaMaxEnemys = 0;
+                    }
+                    if (i == 5)
+                    {
+                        arenaBossStart = true;          // запускаем спаун боссов
+                        //arenaMaxEnemys = 30;
+                        waveSpawners[0].MakeWave();
+                        waveSpawners[3].MakeWave();
+                    }
+                    if (i == 6)
+                    {
+                        //arenaMaxBosses = 2;             // максимум боссов на арене
+                        bossSpawner.cooldown = 45;      // кд боссов на арене
+                        waveSpawners[0].MakeWave();
+                        waveSpawners[3].MakeWave();
+                        ArenaSpawnersSetCooldown(4);
+                    }
+                    if (i == 7)
+                    {
+                        //arenaMaxBosses = 3;             // максимум боссов на арене
+                        bossSpawner.cooldown = 30;      // кд боссов на арене
+                        waveSpawners[0].MakeWave();
+                        waveSpawners[3].MakeWave();                
+                    }
+
+                    timerDone[i] = true;                // событие выполнено
+                    if (i >= 7)
+                        return;
+                    i++;
+                }*/
+
+        // Установка сложности по убийству скелетов
+        if (arenaEnemyKilled >= timer[i] && !timerDone[i])
         {
             if (i == 0)
             {
+                ArenaAddNewEnemy(0);            // вариоры
+                ArenaAddNewEnemy(0);
                 ArenaAddNewEnemy(0);
                 ArenaAddNewEnemy(0);
                 arenaMaxEnemys = 15;
@@ -136,7 +202,7 @@ public class ArenaManager : MonoBehaviour
             }
             if (i == 1)
             {
-                ArenaAddNewEnemy(1);
+                ArenaAddNewEnemy(1);            // маги
                 ArenaAddNewEnemy(1);
                 arenaMaxEnemys = 20;
                 waveSpawners[3].MakeWave();
@@ -144,49 +210,52 @@ public class ArenaManager : MonoBehaviour
             }
             if (i == 2)
             {
-                ArenaAddNewEnemy(2);
+                ArenaAddNewEnemy(2);            // большие вариоры
                 arenaMaxEnemys = 20;
                 waveSpawners[1].MakeWave();
             }
             if (i == 3)
             {
-                ArenaAddNewEnemy(3);
+                ArenaAddNewEnemy(3);            // большие маги
                 arenaMaxEnemys = 25;            // максимум врагов на арене
                 waveSpawners[2].MakeWave();     // вызываем волну скелетов (5 шт)                
                 ArenaSpawnersSetCooldown(8);    // устанавливаем кд спаунеров                
             }
             if (i == 4)
             {
-                arenaMaxEnemys = 0;
-            }
-            if (i == 5)
-            {
                 arenaBossStart = true;          // запускаем спаун боссов
-                //arenaMaxEnemys = 30;
+                bossSpawner.cooldown = 120;     // кд боссов на арене
+                arenaMaxEnemys = 25;
+                arenaMaxBosses = 1;
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
             }
-            if (i == 6)
+            if (i == 5)
             {
-                //arenaMaxBosses = 2;             // максимум боссов на арене
-                bossSpawner.cooldown = 45;      // кд боссов на арене
+                arenaMaxEnemys = 25;
+                arenaMaxBosses = 2;             // максимум боссов на арене
+                bossSpawner.cooldown = 90;      // кд боссов на арене
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
                 ArenaSpawnersSetCooldown(4);
             }
-            if (i == 7)
+            if (i == 6)
             {
-                //arenaMaxBosses = 3;             // максимум боссов на арене
-                bossSpawner.cooldown = 30;      // кд боссов на арене
+                arenaMaxEnemys = 25;
+                arenaMaxBosses = 3;             // максимум боссов на арене
+                bossSpawner.cooldown = 60;      // кд боссов на арене
                 waveSpawners[0].MakeWave();
-                waveSpawners[3].MakeWave();                
+                waveSpawners[3].MakeWave();
             }
 
             timerDone[i] = true;                // событие выполнено
-            if (i >= 7)
+            if (i >= 6)
                 return;
             i++;
+            Debug.Log(i);
         }
+
+
 
         // Спаун оружия от кол-ва убитых врагов
         if (arenaEnemyKilled >= countForWeapon[j] && !weaponSpawned[j])
@@ -206,7 +275,7 @@ public class ArenaManager : MonoBehaviour
             return;
 
         time += 0.02f;
-        Debug.Log(time);
+        //Debug.Log(time);
     }
 
     void ArenaAddNewEnemy(int number)

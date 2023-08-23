@@ -174,11 +174,11 @@ public class Player : Fighter
             Vskritsya();
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+/*        if (Input.GetKeyDown(KeyCode.V))
         {
             noAim = !noAim;
             Debug.Log(noAim);
-        }
+        }*/
         
 
         if (bootsMod)

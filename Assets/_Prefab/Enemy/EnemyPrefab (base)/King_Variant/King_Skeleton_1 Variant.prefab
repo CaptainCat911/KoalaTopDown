@@ -13,20 +13,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -591391920909804142, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: m_InstanceId
-      value: -2320238
+      value: -2003154
       objectReference: {fileID: 0}
     - target: {fileID: 802629281138358728, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: m_Name
       value: King_Skeleton_1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2313645642471710270, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
+      propertyPath: makeLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313645642471710270, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: maxHealth
       value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2313645642471710270, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
+      propertyPath: darkEffect
+      value: 
+      objectReference: {fileID: 4506133165820709856}
+    - target: {fileID: 2313645642471710270, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: itemToSpawn
       value: 
       objectReference: {fileID: 1899818089229980536, guid: e1e17e4741f169e41bd84856bc195f90, type: 3}
+    - target: {fileID: 2313645642471710270, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
+      propertyPath: skeletonKing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2313645642471710270, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: withBigExplousion
       value: 1
@@ -133,3 +145,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
+--- !u!198 &4506133165820709856 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1858656089152909806, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
+  m_PrefabInstance: {fileID: 2828900348390472206}
+  m_PrefabAsset: {fileID: 0}

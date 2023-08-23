@@ -821,7 +821,7 @@ public class BotAI : Fighter
             StartResSkeleton();                 // запускаем возрождение
         }
 
-        deathCount++;
+        deathCount++;                           // для способностей короля скелетов
 
         if (skeletonKing || skeletonResble)     // если возрождающийся скелет
         {

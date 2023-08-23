@@ -62,7 +62,7 @@ public class BombWeaponHolder : MonoBehaviour
 
         int previousWeapon = selectedWeapon;                    // присваиваем переменной индекс оружия
 
-        if (Input.GetKeyDown(KeyCode.V))                        // смена бомбы
+        if (Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Z))         // смена бомбы
         {
             if (selectedWeapon >= transform.childCount - 1)     // сбрасываем в 0 индекс, если индекс равен кол-ву объекто в иерархии WeaponHolder - 1(?)
                 selectedWeapon = 0;
