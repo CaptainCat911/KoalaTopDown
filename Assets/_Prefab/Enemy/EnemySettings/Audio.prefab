@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3915513114130647446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.08926829, y: 0.32518995, z: -0.001197921}
   m_LocalScale: {x: 1.1111112, y: 1.1111112, z: 1.1111112}
   m_ConstrainProportionsScale: 0
@@ -45,10 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipsDeath:
-  - {fileID: 8300000, guid: 62240ce538a84744bb99fdff6284f4dd, type: 3}
+  - {fileID: 8300000, guid: 4c8b24511171f514e9a4d7494d9ee6c1, type: 3}
+  - {fileID: 8300000, guid: 71b8662cd744d074db8be58906b2e9b8, type: 3}
+  - {fileID: 8300000, guid: 55f93af6afa05a2459242b6da14ba53f, type: 3}
   audioClipsTaunt:
-  - {fileID: 8300000, guid: 9aeabd838a26f3d45ad5fb79d041492f, type: 3}
-  - {fileID: 8300000, guid: 716097fdbeecab14b86b0eb3b6de027e, type: 3}
+  - {fileID: 8300000, guid: e350d707b86f8d54d9e5253db200c7f0, type: 3}
   - {fileID: 8300000, guid: 827b9a03db0a6a64dabb71db3c5ef965, type: 3}
+  - {fileID: 8300000, guid: 1d085d3db5db2784d805e828246f2fc7, type: 3}
   - {fileID: 8300000, guid: 7907846604ae4f749bb07125ca4031da, type: 3}
   - {fileID: 8300000, guid: a319fa54f319d2b4cbf43990be7a5ea6, type: 3}
+  - {fileID: 8300000, guid: 9aeabd838a26f3d45ad5fb79d041492f, type: 3}
+  - {fileID: 8300000, guid: 716097fdbeecab14b86b0eb3b6de027e, type: 3}
+  - {fileID: 8300000, guid: 3c495b8f2b6eb224c81554e519b60056, type: 3}
