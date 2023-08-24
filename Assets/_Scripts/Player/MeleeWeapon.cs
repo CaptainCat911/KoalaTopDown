@@ -15,6 +15,7 @@ public class MeleeWeapon : MonoBehaviour
     public bool spear;
     public bool hummer;
     public bool katana;
+    public bool greatSwoard;
 
     [Header("Параметры оружия")]
     public Transform hitBox;                        // положение хитбокса
@@ -87,7 +88,9 @@ public class MeleeWeapon : MonoBehaviour
             if (hummer)
                 animator.SetTrigger("HitHummer");            
             if (katana)
-                animator.SetTrigger("HitKatana");
+                animator.SetTrigger("HitKatana"); 
+            if (greatSwoard)
+                animator.SetTrigger("HitGreatSwoard");
 
             if (audioWeapon)
             {

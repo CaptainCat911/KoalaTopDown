@@ -5247,6 +5247,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 15000
   noAgro: 0
+  player: 0
   isGoodPerson: 0
   bossHP: 1
   withTimeNoDamage: 0
@@ -5267,9 +5268,9 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
-  triggerLenght: 7
+  triggerLenght: 15
   chaseLeght: 0
-  distanceToChangeTarget: 20
+  distanceToChangeTarget: 10
   target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
@@ -5306,6 +5307,7 @@ MonoBehaviour:
   eventsDeath:
     m_PersistentCalls:
       m_Calls: []
+  withBigExplousion: 0
   fastDeathAnim: 1
   timeForDeath: 2.5
   deathEffect: {fileID: 5727708654878073701, guid: bfac2c014c6cedc41b5e1725ea8393e2, type: 3}
@@ -5375,7 +5377,7 @@ MonoBehaviour:
   - {x: 0.29544067, y: -1.1014938, z: 0}
   m_ShapePathHash: 452262439
   m_Mesh: {fileID: 0}
-  m_InstanceId: 262542
+  m_InstanceId: 4143332
 --- !u!1001 &1398136394425982676
 PrefabInstance:
   m_ObjectHideFlags: 0

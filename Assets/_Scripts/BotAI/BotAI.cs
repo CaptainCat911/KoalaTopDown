@@ -202,8 +202,8 @@ public class BotAI : Fighter
 
     public override void Update()
     {
-/*        if (debug)
-            Debug.Log(distanceToAttack);*/
+        if (debug)
+            Debug.Log(startTriigerLenght);
 
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();

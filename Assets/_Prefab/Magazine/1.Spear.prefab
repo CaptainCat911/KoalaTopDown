@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f6c280aa3acdd41b05baf13977d671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withArrow: 0
+  withArrow: 1
   withButton: 1
   interactAction:
     m_PersistentCalls:
@@ -1081,6 +1081,10 @@ PrefabInstance:
     - target: {fileID: 3237850732736583337, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611481666550757540, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7161621782547731301, guid: e8a09d50e0ff3c44ca6f33a0379cf56d, type: 3}
       propertyPath: m_LocalScale.x

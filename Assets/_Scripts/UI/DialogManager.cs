@@ -71,7 +71,8 @@ public class DialogManager : MonoBehaviour
         startEvent = true;                                                      // ивент начат        
         dialogeNumber = numberDialog;                                           // номер диалога
         GameManager.instance.isPlayerEnactive = true;                           // отключаем управление игроком
-        TextUI.instance.CursorVisibleOnOff(true);
+        GameManager.instance.player.isImmortal = true;                          // игрок бессмертен
+        TextUI.instance.CursorVisibleOnOff(true);                               // переключаем прицел на курсор
         GameManager.instance.EnemyResetAndNeutral(true);                        // сбрасываем ботов
         BlackTapes(true);                                                       // черные полосы
         GameManager.instance.cameraOnPlayer = true;                             // камера на игрока
@@ -125,6 +126,7 @@ public class DialogManager : MonoBehaviour
             npcImage.SetActive(false);          
             BlackTapes(false);                                  // убираем черные полосы
             GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
+            GameManager.instance.player.isImmortal = false;     // игрок не бессмертен
             GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
             TextUI.instance.CursorVisibleOnOff(false);
             GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
@@ -144,8 +146,9 @@ public class DialogManager : MonoBehaviour
         npcImage.SetActive(false);
         BlackTapes(false);                                  // убираем черные полосы
         GameManager.instance.cameraOnPlayer = false;        // отпускаем камеру
+        GameManager.instance.player.isImmortal = false;     // игрок не бессмертен
         GameManager.instance.isPlayerEnactive = false;      // включаем управление игроком
-        TextUI.instance.CursorVisibleOnOff(false);
+        TextUI.instance.CursorVisibleOnOff(false);          // меняем курсор на прицел
         GameManager.instance.EnemyResetAndNeutral(false);   // включаем ботов
         interactAction.Invoke();                            // вызываем ивент (если есть)
         GameManager.instance.dialogeStart = false;

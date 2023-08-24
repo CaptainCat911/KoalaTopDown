@@ -6,6 +6,7 @@ public class Shield : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     Color originColor;
+    AudioSource audioSource;
 
     // Для флипа игрока
     [HideInInspector] public bool needFlip;             // нужен флип (для игрока и оружия)    
@@ -21,6 +22,7 @@ public class Shield : MonoBehaviour
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originColor = spriteRenderer.color;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class Shield : MonoBehaviour
     {
         ColorRed(0.15f);                         // делаем спрайт красным
         effectParticles.Play();
+        audioSource.Play();
     }
 
 

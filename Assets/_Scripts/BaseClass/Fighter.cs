@@ -10,7 +10,7 @@ public class Fighter : MonoBehaviour
 
     [Header("Параметры")]
     public bool isAlive = true;             // жив здоров
-    public bool isImmortal;
+    public bool isImmortal;                 // бессмертен (хп не опускаются ниже 1)
     public int currentHealth;
     public int maxHealth;
     public bool noAgro;
