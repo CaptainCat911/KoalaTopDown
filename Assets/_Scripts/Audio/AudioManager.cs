@@ -47,6 +47,11 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(SetNewTrackCoroutine(number));
     }
 
+    public void SetTrackNumber(int number)
+    {
+        audioSource.clip = tracks[number];              // меняем трек
+    }
+
     IEnumerator SetNewTrackCoroutine(int number)
     {        
         volumeMinus = true;                             // уменьшаем громкость           
@@ -60,10 +65,17 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(delayTrackChange);
         volumePlus = false;
     }
-
-    public void StopTrack()
+    public void StopVolumeTrack()
     {
+
         volumeMinus = true;
+    }
+
+    public void StartVolumeTrack()
+    {
+/*        if (GameManager.instance.musicOff)
+            return;*/
+        volumePlus = true;
     }
 
     public void StartStopTrack(bool status)

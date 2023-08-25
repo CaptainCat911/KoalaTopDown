@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool helpOn;                       // подсказка активна
     [HideInInspector] public bool playerInResroom;              // игрок в комнате воскрешения
     [HideInInspector] public bool playerAtTarget;               // игрок дошёл до места старта диалога
+    [HideInInspector] public bool musicOff;                     // музыка
 
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;                    // клавиша для действия

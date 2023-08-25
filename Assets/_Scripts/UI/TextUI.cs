@@ -186,6 +186,7 @@ public class TextUI : MonoBehaviour
     public void Music(bool status)                  
     {
         AudioManager.instance.StartStopTrack(status);
+        GameManager.instance.musicOff = !status;
     }
 
     // вкл/выкл отображения урона

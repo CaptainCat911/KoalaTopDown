@@ -36,7 +36,10 @@ public class Shield : MonoBehaviour
     {
         ColorRed(0.15f);                         // делаем спрайт красным
         effectParticles.Play();
-        audioSource.Play();
+        
+        float audioPitch = Random.Range(0.8f, 1.2f);                            // рандомный питч
+        audioSource.pitch = audioPitch;                                         // устанавливаем питч        
+        audioSource.Play();                                                     // воспроизводим        
     }
 
 

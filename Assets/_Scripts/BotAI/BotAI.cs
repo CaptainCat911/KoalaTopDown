@@ -27,10 +27,11 @@ public class BotAI : Fighter
     public bool isFriendly;                                 // союзный бот
     public bool isEnemy;                                    // несоюзный бот
     public bool isArenaEnemy;                               // бот для арены
-    public bool isArenaBoss;                                // босс для арены
-    //public bool pozorSkeleton;                              // для позора
+    public bool isArenaBoss;                                // босс для арены    
     public bool skeletonKing;                               // король скелетов
     public bool skeletonResble;                             // бот возрождаается
+    public int resTimes;                                    // сколько раз возрождаться
+    int resCount;
     //public bool reaper;
 
     //public bool isFollow;                                   // следовать
@@ -159,9 +160,8 @@ public class BotAI : Fighter
         {
             MakeFriendly();
         }
-
-        if (!pozor)
-            maxSpeed = agent.speed;
+        
+        maxSpeed = agent.speed;
 
         //MakeLeft();
 
@@ -179,13 +179,10 @@ public class BotAI : Fighter
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
         startTriigerLenght = triggerLenght;                                                                 // стартовая длинна тригера
 
-        if (!pozor)
-        {
-            agent.updateRotation = false;           // для навмеш2д
-            agent.updateUpAxis = false;             //
-            agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
-        }
-
+        agent.updateRotation = false;           // для навмеш2д
+        agent.updateUpAxis = false;             //
+        agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
+        
         eventsStart.Invoke();                   // запускаем ивент
 
         if (meleeAttackType)
@@ -202,8 +199,8 @@ public class BotAI : Fighter
 
     public override void Update()
     {
-        if (debug)
-            Debug.Log(startTriigerLenght);
+/*        if (debug)
+            Debug.Log(startTriigerLenght);*/
 
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();
@@ -478,7 +475,7 @@ public class BotAI : Fighter
 
         if (debug)
         {
-            Debug.Log(nowAttacking);            
+            //Debug.Log(nowAttacking);            
         }            
 
         distanceToTarget = Vector3.Distance(transform.position, target.transform.position);     // считаем дистанцию до цели
@@ -718,15 +715,20 @@ public class BotAI : Fighter
         hpBarGO.SetActive(false);                   // убираем хп бар
         agent.ResetPath();                          // сбрасываем путь        
 
-        if (itemToSpawn)
-            Instantiate(itemToSpawn, transform.position, Quaternion.identity);          // создаем предмет
-
-        if (!noHealBox)
+        if (resCount == resTimes)
         {
-            int random = Random.Range(0, 101);
-            if (random >= 96)
-                Instantiate(GameAssets.instance.healBox, transform.position, Quaternion.identity);          // создаем аптечку
+            if (itemToSpawn)
+                Instantiate(itemToSpawn, transform.position, Quaternion.identity);          // создаем предмет
+
+            if (!noHealBox)
+            {
+                int random = Random.Range(0, 101);
+                if (random >= 96)
+                    Instantiate(GameAssets.instance.healBox, transform.position, Quaternion.identity);          // создаем аптечку
+            }
         }
+
+ 
 
         botAIMeleeWeaponHolder.HideWeapons();       // прячем оружия
         botAIRangeWeaponHolder.HideWeapons();
@@ -796,19 +798,19 @@ public class BotAI : Fighter
 
 
 
-
-
-
         // Для арены
-        if (isArenaEnemy)
+        if (resCount == resTimes)
         {
-            ArenaManager.instance.arenaEnemyCount--;
-            ArenaManager.instance.arenaEnemyKilled++;
-        }
-        if (isArenaBoss)
-        {
-            ArenaManager.instance.arenaBossCount--;
-            ArenaManager.instance.arenaBossKilled++;
+            if (isArenaEnemy)
+            {
+                ArenaManager.instance.arenaEnemyCount--;
+                ArenaManager.instance.arenaEnemyKilled++;
+            }
+            if (isArenaBoss)
+            {
+                ArenaManager.instance.arenaBossCount--;
+                ArenaManager.instance.arenaBossKilled++;
+            }
         }
     }
 
@@ -816,16 +818,33 @@ public class BotAI : Fighter
     {
         agent.enabled = false;                  // выключаем агента
 
-        if (skeletonResble)                     // если возрождающийся скелет
+/*        if (skeletonResble)                     // если возрождающийся скелет
         {
             StartResSkeleton();                 // запускаем возрождение
-        }
+        }*/
 
         deathCount++;                           // для способностей короля скелетов
 
+
+
         if (skeletonKing || skeletonResble)     // если возрождающийся скелет
         {
-            return;
+            if (skeletonResble && resCount < resTimes)
+            {
+                resCount++;
+                Invoke(nameof(StartResSkeleton), 0);
+                return;
+            }
+            else
+            {
+                //animator.ResetTrigger("Res");
+            }
+
+            if (skeletonKing)
+            {
+                return;
+            }
+            
         }
 
         Destroy(gameObject, 1f);
@@ -833,6 +852,8 @@ public class BotAI : Fighter
 
     public void StartResSkeleton()
     {
+/*        if (debug)
+            Debug.Log("Res!");*/
         Invoke(nameof(ResAnimator), 2);
         Invoke(nameof(Res), 2.6f);
     }
