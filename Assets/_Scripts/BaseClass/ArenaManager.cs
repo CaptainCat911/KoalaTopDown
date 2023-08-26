@@ -60,6 +60,11 @@ public class ArenaManager : MonoBehaviour
         events[number].Invoke();
     }
 
+    public void NextScene(int number)
+    {
+        GameManager.instance.NextScene(number);
+    }
+
 
 
     private void Update()

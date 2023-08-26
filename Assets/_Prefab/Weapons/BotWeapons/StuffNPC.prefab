@@ -522,7 +522,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 4
+  m_PointLightOuterRadius: 0.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -623,7 +623,7 @@ PrefabInstance:
     - target: {fileID: 3732860134766024854, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6f6dda70f2febba459c81deea90bab4f, type: 2}
+      objectReference: {fileID: 2100000, guid: 99866d03bbf082b4794c9996ecf1930e, type: 2}
     - target: {fileID: 6387294908302005416, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_Name
       value: FireLightsBossStafff
