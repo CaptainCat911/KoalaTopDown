@@ -72,13 +72,13 @@ public class ArenaManager : MonoBehaviour
         if (!arenaLevel)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Y))
+/*        if (Input.GetKeyDown(KeyCode.Y))
         {
             waveSpawners[0].MakeWave();
             waveSpawners[1].MakeWave();
             waveSpawners[2].MakeWave();
             waveSpawners[3].MakeWave();
-        }
+        }*/
 
         ArenaUpdate();              // апдейт арены, остановка спауна если слишком много врагов   
     }
