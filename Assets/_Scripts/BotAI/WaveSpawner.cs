@@ -13,4 +13,24 @@ public class WaveSpawner : MonoBehaviour
             enemySpawner.WaveSpawnEnemy();
         }
     }
+
+    public void SetNewEnemy(int number)
+    {
+        if (number == 0)
+        {
+            foreach (EnemySpawner enemySpawner in waveSpawner)
+            {
+                enemySpawner.AddNewEnemy(0);
+                enemySpawner.RemoveNewEnemy(0);
+            }
+        }
+        if (number == 1)
+        {
+            foreach (EnemySpawner enemySpawner in waveSpawner)
+            {
+                enemySpawner.AddNewEnemy(1);
+                enemySpawner.RemoveNewEnemy(0);
+            }
+        }
+    }
 }

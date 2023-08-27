@@ -216,48 +216,99 @@ public class ArenaManager : MonoBehaviour
             if (i == 2)
             {
                 ArenaAddNewEnemy(2);            // большие вариоры
-                arenaMaxEnemys = 20;
+                arenaMaxEnemys = 25;
                 waveSpawners[1].MakeWave();
+                waveSpawners[2].MakeWave();
             }
             if (i == 3)
             {
                 ArenaAddNewEnemy(3);            // большие маги
                 arenaMaxEnemys = 25;            // максимум врагов на арене
-                waveSpawners[2].MakeWave();     // вызываем волну скелетов (5 шт)                
+                waveSpawners[0].MakeWave();     // вызываем волну скелетов (5 шт)                
+                waveSpawners[3].MakeWave();     // вызываем волну скелетов (5 шт)                
                 ArenaSpawnersSetCooldown(8);    // устанавливаем кд спаунеров                
             }
             if (i == 4)
             {
                 arenaBossStart = true;          // запускаем спаун боссов
-                bossSpawner.cooldown = 120;     // кд боссов на арене
+                //bossSpawner.cooldown = 120;     // кд боссов на арене (установил на самом спавнере)
                 arenaMaxEnemys = 25;
                 arenaMaxBosses = 1;
-                waveSpawners[0].MakeWave();
-                waveSpawners[3].MakeWave();
+                waveSpawners[1].MakeWave();
+                waveSpawners[2].MakeWave();
+                //Debug.Log("i == 4!");
             }
             if (i == 5)
             {
+                waveSpawners[0].SetNewEnemy(0); // варриоры в вейв спавнерах
+                waveSpawners[1].SetNewEnemy(0);
+                waveSpawners[2].SetNewEnemy(0);
+                waveSpawners[3].SetNewEnemy(0);
+
                 arenaMaxEnemys = 25;
                 arenaMaxBosses = 2;             // максимум боссов на арене
                 bossSpawner.cooldown = 90;      // кд боссов на арене
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
                 ArenaSpawnersSetCooldown(4);
+                //Debug.Log("i == 5!");
             }
             if (i == 6)
             {
                 arenaMaxEnemys = 25;
                 arenaMaxBosses = 3;             // максимум боссов на арене
                 bossSpawner.cooldown = 60;      // кд боссов на арене
+                waveSpawners[1].MakeWave();
+                waveSpawners[2].MakeWave();
+                //Debug.Log("i == 6!");
+            }
+            if (i == 7)
+            {
+                ArenaAddNewEnemy(2);
+                arenaMaxEnemys = 25;
+                arenaMaxBosses = 3;             // максимум боссов на арене
+                bossSpawner.cooldown = 60;      // кд боссов на арене
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
             }
+            if (i == 8)
+            {
+                waveSpawners[0].SetNewEnemy(1); // минибоссы варриоры в вейв спавнерах
+                waveSpawners[1].SetNewEnemy(1);
+                waveSpawners[2].SetNewEnemy(1);
+                waveSpawners[3].SetNewEnemy(1);
+
+                ArenaAddNewEnemy(3);
+                arenaMaxEnemys = 25;
+                arenaMaxBosses = 3;             // максимум боссов на арене
+                bossSpawner.cooldown = 60;      // кд боссов на арене
+                waveSpawners[1].MakeWave();
+                waveSpawners[2].MakeWave();
+            }
+            if (i == 9)
+            {                
+                arenaMaxEnemys = 25;
+                arenaMaxBosses = 3;             // максимум боссов на арене
+                bossSpawner.cooldown = 30;      // кд боссов на арене
+                waveSpawners[0].MakeWave();
+                waveSpawners[3].MakeWave();
+            }
+/*            if (i == 10)
+            {
+                arenaMaxEnemys = 0;
+                arenaMaxBosses = 0;
+                StartMegaBoss();
+            }*/
+
+            // тут ещё темного босса добавить
 
             timerDone[i] = true;                // событие выполнено
-            if (i >= 6)
+            if (i >= 9)
+            {                
                 return;
+            }
             i++;
-            Debug.Log(i);
+            //Debug.Log(i);
         }
 
 
@@ -273,6 +324,14 @@ public class ArenaManager : MonoBehaviour
             j++;
         }
     }
+
+
+    void StartMegaBoss()
+    {
+
+    }
+
+
 
     void ArenaTimer()
     {

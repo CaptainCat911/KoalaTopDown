@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     public int enemysHowMuch;               // сколько врагов нужно
     int enemyCount;
     public GameObject spawnEffect;          // эффект спавна
+    public bool arenaMegaBossSpawner;       // спавнер для мегабосса
     public bool bossSpawner;                // спавнер для босса
     public bool arenaSpawner;               // спавнер для арены
     public bool arenaBossSpawner;           // спавнер боссов для арены
@@ -58,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
             portalAnimator.SetTrigger("Open");
             Invoke("SpawnEnemy", 2f);
         }
-        if (arenaBossSpawner && active && Time.time - lastSpawn > cooldown && ArenaManager.instance.arenaSpawnStarted)
+        if (arenaBossSpawner && active && Time.time - lastSpawn > cooldown)
         {
             lastSpawn = Time.time;
             portalAnimator.SetTrigger("Open");
@@ -137,6 +138,10 @@ public class EnemySpawner : MonoBehaviour
         prefabEnemies.Add(prefabEnemiesToAdd[number]);
     }
 
+    public void RemoveNewEnemy(int number)
+    {
+        prefabEnemies.Remove(prefabEnemies[number]);
+    }
 
     public void ActivateSpawner()
     {
