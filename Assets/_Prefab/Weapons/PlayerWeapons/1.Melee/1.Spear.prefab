@@ -149,7 +149,7 @@ Transform:
   - {fileID: 7753724072104305833}
   - {fileID: 5298824491185778675}
   - {fileID: 2341561970740137367}
-  - {fileID: 2770080187041634706}
+  - {fileID: 4394491633805558955}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -199,7 +199,7 @@ MonoBehaviour:
   sparksEffect: {fileID: 4947641790296222230, guid: fcad45e546605e2488b90122adc9cc95, type: 3}
   cameraAmplitudeShake: 1.5
   cameraTimedeShake: 0.1
-  audioWeapon: {fileID: 2008149025219488186}
+  audioWeapon: {fileID: 3898233957009069211}
 --- !u!82 &8832533608458271543
 AudioSource:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &3367509955067993841
+--- !u!1 &4695787242566204461
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,8 +304,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2770080187041634706}
-  - component: {fileID: 2008149025219488186}
+  - component: {fileID: 4394491633805558955}
+  - component: {fileID: 3898233957009069211}
   m_Layer: 0
   m_Name: AudioWeaponMelee
   m_TagString: Untagged
@@ -313,13 +313,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2770080187041634706
+--- !u!4 &4394491633805558955
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3367509955067993841}
+  m_GameObject: {fileID: 4695787242566204461}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.06740001, y: 0.12054995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -328,19 +328,19 @@ Transform:
   m_Father: {fileID: 5449055597014660997}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2008149025219488186
+--- !u!114 &3898233957009069211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3367509955067993841}
+  m_GameObject: {fileID: 4695787242566204461}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c55317a66f74c548a11ed98277b8ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitStart: {fileID: 8300000, guid: 568feaa1fa5cc7f4fa01e46859c26fac, type: 3}
+  hitStart: {fileID: 8300000, guid: ac3dd2fc5b0387349a8f14dc5419001e, type: 3}
   hitDone: {fileID: 8300000, guid: 744a7714c04d6cb4f9be9760d78dcb10, type: 3}
   hitRange: {fileID: 0}
   hitRangeBig: {fileID: 0}

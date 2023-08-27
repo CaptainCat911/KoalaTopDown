@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2900107557687944627
+--- !u!1 &63630832883831526
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7407991954954631372}
-  - component: {fileID: 6659536945098382418}
+  - component: {fileID: 3039914526847276378}
+  - component: {fileID: 6973157183310874079}
   m_Layer: 0
   m_Name: AudioWeaponMelee
   m_TagString: Untagged
@@ -17,34 +17,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7407991954954631372
+--- !u!4 &3039914526847276378
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2900107557687944627}
+  m_GameObject: {fileID: 63630832883831526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.073599994, y: 0.16954994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479659406406739827}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6659536945098382418
+--- !u!114 &6973157183310874079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2900107557687944627}
+  m_GameObject: {fileID: 63630832883831526}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c55317a66f74c548a11ed98277b8ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitStart: {fileID: 8300000, guid: 568feaa1fa5cc7f4fa01e46859c26fac, type: 3}
+  hitStart: {fileID: 8300000, guid: ac3dd2fc5b0387349a8f14dc5419001e, type: 3}
   hitDone: {fileID: 8300000, guid: 744a7714c04d6cb4f9be9760d78dcb10, type: 3}
   hitRange: {fileID: 0}
   hitRangeBig: {fileID: 0}
@@ -357,7 +357,7 @@ Transform:
   - {fileID: 3786651681873589343}
   - {fileID: 1630045362412420869}
   - {fileID: 9180807084577283425}
-  - {fileID: 7407991954954631372}
+  - {fileID: 3039914526847276378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -407,7 +407,7 @@ MonoBehaviour:
   sparksEffect: {fileID: 4947641790296222230, guid: fcad45e546605e2488b90122adc9cc95, type: 3}
   cameraAmplitudeShake: 2
   cameraTimedeShake: 0.1
-  audioWeapon: {fileID: 6659536945098382418}
+  audioWeapon: {fileID: 6973157183310874079}
 --- !u!82 &4231325358905541964
 AudioSource:
   m_ObjectHideFlags: 0
