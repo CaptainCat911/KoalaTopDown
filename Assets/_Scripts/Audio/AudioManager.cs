@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;         // инстанс
+    public static AudioManager instance;    // инстанс
 
     public AudioClip[] tracks;              // список треков
     public bool noStartTrack;               // без стартового трека
@@ -44,6 +44,8 @@ public class AudioManager : MonoBehaviour
 
     public void SetNewTrack(int number)
     {
+/*        if (GameManager.instance.musicOff && number != 0)
+            return;*/
         StartCoroutine(SetNewTrackCoroutine(number));
     }
 
@@ -67,7 +69,6 @@ public class AudioManager : MonoBehaviour
     }
     public void StopVolumeTrack()
     {
-
         volumeMinus = true;
     }
 

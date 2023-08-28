@@ -219,6 +219,7 @@ public class ArenaManager : MonoBehaviour
                 arenaMaxEnemys = 25;
                 waveSpawners[1].MakeWave();
                 waveSpawners[2].MakeWave();
+                ArenaSpawnersSetCooldown(8);    // устанавливаем кд спаунеров                
             }
             if (i == 3)
             {
@@ -226,7 +227,6 @@ public class ArenaManager : MonoBehaviour
                 arenaMaxEnemys = 25;            // максимум врагов на арене
                 waveSpawners[0].MakeWave();     // вызываем волну скелетов (5 шт)                
                 waveSpawners[3].MakeWave();     // вызываем волну скелетов (5 шт)                
-                ArenaSpawnersSetCooldown(8);    // устанавливаем кд спаунеров                
             }
             if (i == 4)
             {

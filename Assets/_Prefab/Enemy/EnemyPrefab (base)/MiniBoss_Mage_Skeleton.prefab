@@ -319,7 +319,7 @@ Animator:
   m_GameObject: {fileID: 7988882509738133971}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b7f78e8d7d596549a693e3198efcf52, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1619abc255bd9a442bf6712cfd1a2e64, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 400
   noAgro: 0
+  player: 0
   isGoodPerson: 0
   bossHP: 0
   withTimeNoDamage: 0
@@ -427,6 +428,7 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  resTimes: 0
   triggerLenght: 5
   chaseLeght: 0
   distanceToChangeTarget: 6
@@ -466,6 +468,7 @@ MonoBehaviour:
   eventsDeath:
     m_PersistentCalls:
       m_Calls: []
+  withBigExplousion: 0
   fastDeathAnim: 0
   timeForDeath: 0.8
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
@@ -559,7 +562,7 @@ MonoBehaviour:
   - {x: 0.23772039, y: -0.44298273, z: 0}
   m_ShapePathHash: 1051907940
   m_Mesh: {fileID: 0}
-  m_InstanceId: 1221394
+  m_InstanceId: 169424
 --- !u!82 &7011570700869610142
 AudioSource:
   m_ObjectHideFlags: 0

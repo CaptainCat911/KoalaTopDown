@@ -7,6 +7,8 @@ public class ShopWeapons : MonoBehaviour
     AmmoPackKoala ammoPack;             // ссылка на аммопак (тут и оружие и бомбы и покупка этого всего)
     AudioSource audioSource;
 
+    public bool level1_Shop;
+
     public ShopWeaponControl[] rangeWeapons;
     public ShopWeaponControl[] meleeWeapons;
     public ShopWeaponControl[] bombsWeapons;
@@ -73,7 +75,7 @@ public class ShopWeapons : MonoBehaviour
             meleeWeapons[index].WeaponBuyed();
             MakeSound();
 
-            if (!GameManager.instance.weaponHelped)
+            if (!GameManager.instance.weaponHelped && level1_Shop)
             {
                 helpPauseBuyWeapon.StartHelpPause();              // подсказка для смены оружия
                 GameManager.instance.weaponHelped = true;

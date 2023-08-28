@@ -368,6 +368,7 @@ MonoBehaviour:
     m_Bits: 20545
   expEffect: {fileID: 5727708654878073701, guid: 190bc6ec9b6aab145ac41fc9a4d5a45a, type: 3}
   sparksEffect: {fileID: 0}
+  portalBullet: 0
   audioExplousion: {fileID: 760357764623903322}
   audioProjectile: {fileID: 0}
   expRadius: 0.5
@@ -520,6 +521,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2085243733580016274}
     m_Modifications:
+    - target: {fileID: 2815301663927568301, guid: f290096b05cfffd4b81f65493d55f633, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b3f676fe7b41044495a2964396b8ba3, type: 3}
+    - target: {fileID: 2815301663927568301, guid: f290096b05cfffd4b81f65493d55f633, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4209454454700283240, guid: f290096b05cfffd4b81f65493d55f633, type: 3}
       propertyPath: m_Name
       value: ExplFireballPrefAudio

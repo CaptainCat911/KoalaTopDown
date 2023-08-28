@@ -278,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479659406406739827}
   - component: {fileID: 5542338318132308821}
+  - component: {fileID: 416817191683349951}
   m_Layer: 14
   m_Name: Big_Swoard_Knight
   m_TagString: Untagged
@@ -301,6 +302,7 @@ Transform:
   - {fileID: 3786651681873589343}
   - {fileID: 1630045362412420869}
   - {fileID: 7694846568029670375}
+  - {fileID: 591858954290200358}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,20 +328,26 @@ MonoBehaviour:
   pushForce: 5
   radius: 0.6
   trail: {fileID: 3786651681873589342}
+  hitShield: 0
+  bulletPrefab: {fileID: 0}
   damageRange: 0
   pushForceRange: 0
   projctleSpeed: 4
+  bulletPrefabBig: {fileID: 0}
   damageRangeBig: 0
   pushForceRangeBig: 0
   projctleSpeedBig: 0
+  withSplit: 0
   explousionDamage: 0
   explousionForce: 0
   explousionRadius: 0
   enemySpawners: []
+  spawnTimes: 0
   splitTimes: 0
   splitRecoil: 0
   laserDamage: 0
   laserForce: 0
+  laserCooldown: 0
   laserStart: 0
   damageBurn: 0
   cooldownBurn: 0
@@ -350,8 +358,115 @@ MonoBehaviour:
   gravityRadius: 0
   gravityDistanceToDamage: 0
   gravityCooldown: 0
-  gravityEffectParticles: {fileID: 0}
   gravityStart: 0
+  gravityEffectParticles: {fileID: 0}
+  effectExplGravity: {fileID: 0}
+  teleports: []
+  teleportForceRadius: 0
+  teleportInForce: 0
+  teleportOutForce: 0
+  sceneNumberStuff: 0
+  layerRayCastTarget:
+    serializedVersion: 2
+    m_Bits: 0
+  audioSource: {fileID: 0}
+  audioWeapon: {fileID: 6701829328131741940}
+--- !u!82 &416817191683349951
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674012138522298798}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6604417298802685298
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,3 +582,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8816935133980802967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 591858954290200358}
+  - component: {fileID: 6701829328131741940}
+  m_Layer: 0
+  m_Name: AudioWeaponMelee
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &591858954290200358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816935133980802967}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.073599994, y: 0.16954994, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1479659406406739827}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6701829328131741940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816935133980802967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c55317a66f74c548a11ed98277b8ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitStart: {fileID: 8300000, guid: ac3dd2fc5b0387349a8f14dc5419001e, type: 3}
+  hitDone: {fileID: 8300000, guid: 744a7714c04d6cb4f9be9760d78dcb10, type: 3}
+  hitRange: {fileID: 0}
+  hitRangeBig: {fileID: 0}
+  hitSpawn: {fileID: 0}
+  hitExplousion: {fileID: 0}
+  hitLaser: {fileID: 0}
+  hitGravity: {fileID: 0}
+  hitMultiRange: {fileID: 0}
+  hitTeleport: {fileID: 0}
+  hitTimeReverce: {fileID: 0}

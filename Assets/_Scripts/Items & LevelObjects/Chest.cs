@@ -6,7 +6,8 @@ public class Chest : ItemPickUp
 {
     BoxCollider2D boxCollider2d;
     Animator animator;
-    AudioSource audioSource;
+    public AudioSource audioSourceOpen;
+    public AudioSource audioSourceBlink;
     SpriteRenderer spriteRenderer;
     bool isOpened;
 
@@ -29,7 +30,7 @@ public class Chest : ItemPickUp
         base.Awake();
         boxCollider2d = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -40,6 +41,9 @@ public class Chest : ItemPickUp
         {
             GameObject effect = Instantiate(startEffect, transform.position, Quaternion.identity);          // создаем эффект 
             Destroy(effect, 1);
+
+            if (audioSourceBlink)
+                audioSourceBlink.Play();
         }
     }
 
@@ -67,8 +71,8 @@ public class Chest : ItemPickUp
         boxCollider2d.enabled = false;
         isOpened = true;
 
-        if (audioSource)                    // звук
-            audioSource.Play();
+        if (audioSourceOpen)                    // звук
+            audioSourceOpen.Play();
 
         animator.SetTrigger("OpenChest");
 

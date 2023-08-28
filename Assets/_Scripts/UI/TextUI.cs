@@ -30,15 +30,17 @@ public class TextUI : MonoBehaviour
     public Text arenaEnemyKilledCount;      // врагов убито
     public Text arenaBossKilledCount;       // босов убито
 
-    public GameObject menu;         // меню
+    public GameObject menu;             // меню
+    public GameObject buttonMusicOn;    // меню
+    public GameObject buttonMusicOff;   // меню
 
     [Header("Курсор")]
+    public Texture2D cursorTexture;                 // курсор
+    public Texture2D cursorTextureCrosshair;        // прицел
+    public CursorMode cursorMode = CursorMode.Auto;
+
     //public GameObject cursor;
     //bool cursorVisible;
-
-    public Texture2D cursorTexture;
-    public Texture2D cursorTextureCrosshair;
-    public CursorMode cursorMode = CursorMode.Auto;
     //public Vector2 hotSpot = Vector2.zero;
 
     void OnMouseEnter()
@@ -54,7 +56,18 @@ public class TextUI : MonoBehaviour
 
     void Start()
     {
-        UpdateHealthText(false, false);
+        UpdateHealthText(false, false);             // одновляем хп при старте
+
+        if (GameManager.instance.pozorCount > 0)    // вкл метки позора, если они есть
+        {
+            pozorGo.SetActive(true);
+        }
+
+        if (GameManager.instance.musicOff)
+        {
+            buttonMusicOn.SetActive(false);
+            buttonMusicOff.SetActive(true);
+        }
     }
 
     private void Update()

@@ -571,8 +571,8 @@ public class Player : Fighter
         // Для ресрума
         if (!GameManager.instance.playerInResroom)
         {
-            ResRoomManager.instance.SpawnMonsterAndChest();
-            ResRoomManager.instance.deathPos.position = transform.position;
+            ResRoomManager.instance.SpawnMonsterAndChest();                     // спавним монстра и сундук
+            ResRoomManager.instance.deathPos.position = transform.position;     // позиция несчастного случая
             if (!ArenaManager.instance.arenaLevel)
                 GameManager.instance.playerInResroom = true;
             StartCoroutine(AfterDeath());

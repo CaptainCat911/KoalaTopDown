@@ -284,6 +284,7 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 1
   skeletonResble: 0
+  resTimes: 0
   triggerLenght: 7
   chaseLeght: 0
   distanceToChangeTarget: 3
@@ -323,7 +324,7 @@ MonoBehaviour:
   eventsDeath:
     m_PersistentCalls:
       m_Calls: []
-  withBigExplousion: 0
+  withBigExplousion: 1
   fastDeathAnim: 0
   timeForDeath: 1
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
@@ -417,7 +418,7 @@ MonoBehaviour:
   - {x: 0.21554695, y: -0.44935936, z: 0}
   m_ShapePathHash: -1788856732
   m_Mesh: {fileID: 0}
-  m_InstanceId: 2252216
+  m_InstanceId: 3920240
 --- !u!82 &-5125645208778790399
 AudioSource:
   m_ObjectHideFlags: 0

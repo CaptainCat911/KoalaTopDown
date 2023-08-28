@@ -19,29 +19,30 @@ public class GameManager : MonoBehaviour
     //public Dialog dialog;                       // диалог менеджер    
 
     [Header("Управление игрой")]    
-    [HideInInspector] public bool isPlayerEnactive;             // активен игрок или нет
-    [HideInInspector] public bool cameraOnPlayer;               // управление камерой
-    [HideInInspector] public bool dialogeStart;                 // диалог начался
-    [HideInInspector] public bool helpOn;                       // подсказка активна
-    [HideInInspector] public bool playerInResroom;              // игрок в комнате воскрешения
-    [HideInInspector] public bool playerAtTarget;               // игрок дошёл до места старта диалога
-    [HideInInspector] public bool musicOff;                     // музыка
+    [HideInInspector] public bool isPlayerEnactive;     // активен игрок или нет
+    [HideInInspector] public bool cameraOnPlayer;       // управление камерой
+    [HideInInspector] public bool dialogeStart;         // диалог начался
+    [HideInInspector] public bool helpOn;               // подсказка активна
+    [HideInInspector] public bool playerInResroom;      // игрок в комнате воскрешения
+    [HideInInspector] public bool playerAtTarget;       // игрок дошёл до места старта диалога
+    [HideInInspector] public bool musicOff;             // музыка
+    //[HideInInspector] public string currentScene;       // действуящая сцена
 
     [Header("Клавиша взаимодействия")]
-    public KeyCode keyToUse;                    // клавиша для действия
+    public KeyCode keyToUse;            // клавиша для действия
 
     [Header("Предметы")]
-    public int gold;                            // золото
-    public int[] keys;                          // ключи
-    public int battery;                         // батареи
-    public int pozorCount;                      // счетчик позора
+    public int gold;                    // золото
+    public int[] keys;                  // ключи
+    public int battery;                 // батареи
+    public int pozorCount;              // счетчик позора
 
     [Header("События между сценами")]
-    [HideInInspector] public bool resroomed;    // побывал в комнате воскрешения
-    [HideInInspector] public bool pozored;      // опозорен
-    [HideInInspector] public bool weaponHelped; // показали подсказку для смены оружия
-    [HideInInspector] public bool bombHelped;   // показали подсказку для бомбы
-    [HideInInspector] public bool bombHelped_2; // показали подсказку 2 для бомбы
+    [HideInInspector] public bool resroomed;            // побывал в комнате воскрешения
+    [HideInInspector] public bool pozored;              // опозорен
+    [HideInInspector] public bool weaponHelped;         // показали подсказку для смены оружия
+    [HideInInspector] public bool bombHelped;           // показали подсказку для бомбы
+    [HideInInspector] public bool bombHelped_2;         // показали подсказку 2 для бомбы
 
     [Header("Управление светом")]
     public bool lightDark;
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //TextUI.instance.CursorVisibleOnOff(false);
+        Debug.Log(weaponHelped);
     }
 
     public void Update()
@@ -322,6 +324,11 @@ public class GameManager : MonoBehaviour
             Destroy(ammoManager.gameObject);
             Destroy(player.gameObject);
         }
+/*        if (sceneNumber > 1)                            // если не стартовая сцена и не первая - подсказки показаны
+        {
+            weaponHelped = true;
+            bombHelped = true;
+        }*/
 
         if (paused)
             ContinueGame();

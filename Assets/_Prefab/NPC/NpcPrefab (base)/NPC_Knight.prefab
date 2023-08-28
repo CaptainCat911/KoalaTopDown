@@ -235,11 +235,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
   maxHealth: 500
   noAgro: 0
+  player: 0
+  isGoodPerson: 0
   bossHP: 0
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -252,7 +258,13 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 1
   isEnemy: 0
+  isArenaEnemy: 0
+  isArenaBoss: 0
+  skeletonKing: 0
+  skeletonResble: 0
+  resTimes: 0
   triggerLenght: 7
+  chaseLeght: 0
   distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
@@ -275,13 +287,28 @@ MonoBehaviour:
   pivotSpeedKoef: 1
   distanceToAttack: 0
   distanceToTarget: 0
+  nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 0}
   stayOnGround: 0
+  noPatrol: 0
   goTo: 0
   followPlayer: 1
   destinationPoint: {fileID: 0}
-  deathEffect: {fileID: 0}
+  noTriggerAgro: 0
+  eventsStart:
+    m_PersistentCalls:
+      m_Calls: []
+  eventsDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  withBigExplousion: 0
+  fastDeathAnim: 1
+  timeForDeath: 2.5
+  deathEffect: {fileID: 7845441016114820387, guid: df1d8e040ec39f94a94e5891cc534aec, type: 3}
   deathCameraShake: 0
+  darkEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -289,11 +316,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   friendTarget: {fileID: 0}
-  fastDeathAnim: 0
+  lookAtPlayer: 0
   debug: 0
+  bubbleTexts: []
+  withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
+  pozor: 0
   attackingNow: 0
+  mainBoss: 0
+  shadowBoss: 0
   immortalBoss: 0
   cooldownAttack: 0
+  lowHp: 0
   rangeAttackChance: 100
   rangeAttackDistance: 0
   multiAttackChance: 0
@@ -311,6 +346,9 @@ MonoBehaviour:
     \u0434\u0435\u0440\u0435\u0432\u043D\u0438 \u043D\u0435\u0434\u0430\u043B\u0435\u043A\u043E
     \u043E\u0442\u0441\u044E\u0434\u0430"
   - "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u043C\u0441\u044F \u0436\u0435 \u0432\u043C\u0435\u0441\u0442\u0435!"
+  shadowTeleports: []
+  waitShadowTeleport: {fileID: 0}
+  enemySpawners: []
 --- !u!114 &6297625147953556815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,14 +363,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
   cooldownChangeTarget: 4.3
+  distanceFromStartMain: 0
   cooldownChange: 2
   distancePatrol: 2
   maxDistancePatrol: 4
-  lastChange: 0
+  withSpell: 0
+  cooldownSpell: 0
+  spellChance_1: 0
+  spellChance_2: 0
+  spellChance_3: 0
+  goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0
-  letsGo: 0
   textTrigger: 
   debug: 0
 --- !u!114 &5591558384223989063
@@ -348,8 +391,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: {fileID: 4126359360349115324}
+  lightGo2D: {fileID: 0}
   canBurn: 1
   slow: 0.2
+  stopBurn: 0
 --- !u!1 &7953966440881097881
 GameObject:
   m_ObjectHideFlags: 0
