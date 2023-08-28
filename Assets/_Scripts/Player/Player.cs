@@ -171,7 +171,7 @@ public class Player : Fighter
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Vskritsya();
+            //Vskritsya();
         }
 
 /*        if (Input.GetKeyDown(KeyCode.V))
