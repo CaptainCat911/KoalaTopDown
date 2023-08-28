@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Замедление времени
-        if (Input.GetKeyDown(KeyCode.T))
+/*        if (Input.GetKeyDown(KeyCode.T))
         {
             if (!slowed)
             {
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
                 slowed = false;
             }
-        }        
+        } */       
 
 
         // Чат игрока
