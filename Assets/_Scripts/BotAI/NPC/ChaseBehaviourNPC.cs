@@ -40,7 +40,7 @@ public class ChaseBehaviourNPC : StateMachineBehaviour
         }
 
         // ТУТ ПЕРЕДЕЛАТЬ
-        if (boss.lowHp && boss.mainBoss)
+        if (boss.lowHp && boss.mainBoss && !GameManager.instance.playerInResroom && GameManager.instance.player.isAlive)
         {
             //boss.SayText("Тебе никогда не победить");
             boss.distanceToAttack = 30;

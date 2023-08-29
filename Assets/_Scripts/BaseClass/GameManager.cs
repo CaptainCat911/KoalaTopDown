@@ -341,16 +341,17 @@ public class GameManager : MonoBehaviour
         }*/
     }
 
-    public void OnSceneLoaded(Scene s, LoadSceneMode mode)                              // выполняем при загрузке сцены
+    public void OnSceneLoaded(Scene s, LoadSceneMode mode)                  // выполняем при загрузке сцены
     {
         GameObject spawnPoint = GameObject.Find("SpawnPoint");
         if (spawnPoint && player)
         {
-            player.transform.position = spawnPoint.transform.position;                  // перемещаем игрока на точку спауна
+            player.transform.position = spawnPoint.transform.position;      // перемещаем игрока на точку спауна
         }
         
-        player.isImmortal = false;                                                      // убираем бессмертие
-        keys[0] = 0;                                                                    // сбрасываем ключи
+        player.isImmortal = false;              // убираем бессмертие
+        playerInResroom = false;                // вышли из ресрума (из-за возможного бага)
+        keys[0] = 0;                            // сбрасываем ключи
         keys[1] = 0;
 
         if (ArenaManager.instance)

@@ -562,7 +562,7 @@ MonoBehaviour:
   - {x: 0.23772039, y: -0.44298273, z: 0}
   m_ShapePathHash: 1051907940
   m_Mesh: {fileID: 0}
-  m_InstanceId: 169424
+  m_InstanceId: 665042
 --- !u!82 &7011570700869610142
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1108,6 +1108,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7674643776501177201, guid: f455a6fe7649f3445802070e811fa112, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177202, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1117,28 +1121,32 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
+      propertyPath: gradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: gradient.key0.b
-      value: 0.6415094
+      value: 0.07450981
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: gradient.key0.g
-      value: 0
+      value: 0.011764706
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: gradient.key0.r
-      value: 0.34975055
+      value: 0.5568628
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: gradient.key1.b
-      value: 0.5943396
+      value: 0.07450981
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: gradient.key1.g
-      value: 0.0028034954
+      value: 0.011764706
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776501177203, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: gradient.key1.r
-      value: 0.33757004
+      value: 0.5568628
       objectReference: {fileID: 0}
     - target: {fileID: 7674643776515131864, guid: f455a6fe7649f3445802070e811fa112, type: 3}
       propertyPath: m_Layer
