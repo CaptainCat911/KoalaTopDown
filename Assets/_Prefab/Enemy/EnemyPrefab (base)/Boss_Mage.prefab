@@ -5268,6 +5268,7 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  resTimes: 0
   triggerLenght: 15
   chaseLeght: 0
   distanceToChangeTarget: 10
@@ -5499,6 +5500,14 @@ PrefabInstance:
     - target: {fileID: 1479659406406739827, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786651681049121957, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Size.x
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786651681049121957, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 5674012138522298798, guid: 96004abb888d08944a80a297a823b8eb, type: 3}
       propertyPath: m_Name
