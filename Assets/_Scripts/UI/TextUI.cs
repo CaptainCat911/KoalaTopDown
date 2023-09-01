@@ -208,6 +208,11 @@ public class TextUI : MonoBehaviour
         GameManager.instance.showDamage = status;
     }
 
+    // вкл/выкл тряску экрана
+    public void ScreenShake(bool status)
+    {
+        GameManager.instance.screenShakeOff = status;
+    }
 
 
 
