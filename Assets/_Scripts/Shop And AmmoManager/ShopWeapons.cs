@@ -60,7 +60,7 @@ public class ShopWeapons : MonoBehaviour
             rangeWeapons[index].WeaponBuyed();
             MakeSound();
 
-            if (!GameManager.instance.weaponHelped)
+            if (!GameManager.instance.weaponHelped && level1_Shop)
             {
                 helpPauseBuyWeapon.StartHelpPause();              // подсказка для смены оружия
                 GameManager.instance.weaponHelped = true;

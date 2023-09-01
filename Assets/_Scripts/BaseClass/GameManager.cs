@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //TextUI.instance.CursorVisibleOnOff(false);
-        Debug.Log(weaponHelped);
+        //Debug.Log(weaponHelped);
     }
 
     public void Update()
