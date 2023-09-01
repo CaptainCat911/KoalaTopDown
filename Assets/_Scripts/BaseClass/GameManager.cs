@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool playerInResroom;      // игрок в комнате воскрешени€
     [HideInInspector] public bool playerAtTarget;       // игрок дошЄл до места старта диалога
     [HideInInspector] public bool musicOff;             // музыка
+    [HideInInspector] public bool screenShakeOff;       // тр€ска экрана
     //[HideInInspector] public string currentScene;       // действу€ща€ сцена
 
     [Header(" лавиша взаимодействи€")]

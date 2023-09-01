@@ -19,6 +19,8 @@ public class CMCameraShake : MonoBehaviour
 
     public void ShakeCamera(float intensity, float time)
     {
+        if (GameManager.instance.screenShakeOff)
+            return;
         CinemachineBasicMultiChannelPerlin cmBasic = cmVirtCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cmBasic.m_AmplitudeGain = intensity;    // амплитуда тряски
         shakeTimer = time;                      // время тряски
