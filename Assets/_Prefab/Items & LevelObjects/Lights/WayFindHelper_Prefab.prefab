@@ -271,16 +271,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: FindWayHelp
       objectReference: {fileID: 0}
+    - target: {fileID: 6387294908302005416, guid: 2cde87d7ab8736d4bb06c84ca975a01c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cde87d7ab8736d4bb06c84ca975a01c, type: 3}
+--- !u!1 &2711455211506779847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6387294908302005416, guid: 2cde87d7ab8736d4bb06c84ca975a01c, type: 3}
+  m_PrefabInstance: {fileID: 9008673453263213167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6201787806981664913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3104125698818925310, guid: 2cde87d7ab8736d4bb06c84ca975a01c, type: 3}
-  m_PrefabInstance: {fileID: 9008673453263213167}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8380101500237743894 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 669106893643142521, guid: 2cde87d7ab8736d4bb06c84ca975a01c, type: 3}
   m_PrefabInstance: {fileID: 9008673453263213167}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9008673454637740282
@@ -301,18 +305,18 @@ PrefabInstance:
     - target: {fileID: 956439014551784615, guid: 4b3501f71eef5584f9c3068b86ec1706, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8380101500237743894}
+      objectReference: {fileID: 2711455211506779847}
     - target: {fileID: 956439014551784615, guid: 4b3501f71eef5584f9c3068b86ec1706, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 956439014551784615, guid: 4b3501f71eef5584f9c3068b86ec1706, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 956439014551784615, guid: 4b3501f71eef5584f9c3068b86ec1706, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.ParticleSystem, UnityEngine
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 956439014551784615, guid: 4b3501f71eef5584f9c3068b86ec1706, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument

@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
         if (status)
         {
             player.noAgro = true;
-            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 20);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
+            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 30);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
             foreach (Collider2D coll in collidersHits)
             {
                 if (coll == null)

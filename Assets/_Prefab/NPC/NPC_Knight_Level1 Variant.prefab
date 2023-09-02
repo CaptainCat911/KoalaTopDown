@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818694411222979288, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_Name
-      value: NPC_Knight
+      value: NPC_Knight_Level1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6166287768865320013, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_Layer
@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8504479325347438871, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
@@ -168,4 +168,4 @@ MonoBehaviour:
   - {x: 0.1303711, y: -0.39762878, z: 0}
   m_ShapePathHash: 1877715221
   m_Mesh: {fileID: 0}
-  m_InstanceId: -509324
+  m_InstanceId: 1304832

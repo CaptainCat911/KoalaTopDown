@@ -35,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6498243267547989570}
+  - {fileID: 6261176522193226959}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,7 +134,7 @@ MonoBehaviour:
   openedDoor: 0
   doorTypeNumber: 0
   openedDoorSprite: {fileID: -108658796, guid: 70653bbcd72b62a4ba00a8866df5fc9c, type: 3}
-  effect: {fileID: 0}
+  effect: {fileID: 8410786848079215432}
 --- !u!114 &-4175345087308813358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ MonoBehaviour:
   - {x: 1.2575302, y: -0.8192787, z: 0}
   m_ShapePathHash: -1141433401
   m_Mesh: {fileID: 0}
-  m_InstanceId: 1223822
+  m_InstanceId: 3140248
 --- !u!82 &-4652987207985736763
 AudioSource:
   m_ObjectHideFlags: 0
@@ -353,6 +354,73 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &4103922934632494275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6362724801498859922}
+    m_Modifications:
+    - target: {fileID: 2134725967678869082, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_Name
+      value: WhiteDoorKeyLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.225
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+--- !u!4 &6261176522193226959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7930903771248261132, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+  m_PrefabInstance: {fileID: 4103922934632494275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8410786848079215432 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5498066358485700491, guid: ad4ce75a6e49afb4db14cf32b22306b4, type: 3}
+  m_PrefabInstance: {fileID: 4103922934632494275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6362724800852069213
 PrefabInstance:
   m_ObjectHideFlags: 0
