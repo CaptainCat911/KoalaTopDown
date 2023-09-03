@@ -169,17 +169,26 @@ public class Player : Fighter
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.O) && Input.GetKey(KeyCode.LeftShift))
         {
-            //Vskritsya();
+            blink = true;
+            blinkWithExplousion = true;
+            bootsMod = true;
+            bootsEnergy = 10000;
+
         }
 
-/*        if (Input.GetKeyDown(KeyCode.V))
-        {
-            noAim = !noAim;
-            Debug.Log(noAim);
-        }*/
-        
+        /*        if (Input.GetKeyDown(KeyCode.K))
+                {
+                    Vskritsya();
+                }*/
+
+        /*        if (Input.GetKeyDown(KeyCode.V))
+                {
+                    noAim = !noAim;
+                    Debug.Log(noAim);
+                }*/
+
 
         if (bootsMod)
         {

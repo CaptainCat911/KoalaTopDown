@@ -231,7 +231,7 @@ public class EnemyThinker : MonoBehaviour
                     iChase++;
                     if (iChase >= 5)
                         iChase = 0;
-                    Debug.Log(botAI.chaseLeght);
+                    //Debug.Log(botAI.chaseLeght);
                     //botAI.SetDestination(botAI.startPosition);      // возвращаемся в стартовую позицию   
                 }
             }        

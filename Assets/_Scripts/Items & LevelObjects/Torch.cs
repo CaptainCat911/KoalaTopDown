@@ -5,6 +5,7 @@ using UnityEngine.U2D;
 using UnityEngine.Serialization;
 using UnityEngine.Scripting.APIUpdating;
 using System;
+using UnityEngine.Rendering.Universal;
 
 public class Torch : MonoBehaviour
 {
@@ -12,11 +13,16 @@ public class Torch : MonoBehaviour
     bool lightIsDark;
     bool lightIsOff;
     public bool svecha;
+
+    Light2D light2D;
+/*    [HideInInspector] public Color color;
+    [HideInInspector] public float intensity;*/
     
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        light2D = GetComponentInChildren<Light2D>();
     }
 
     void Start()
@@ -61,5 +67,13 @@ public class Torch : MonoBehaviour
     {
         lightIsOff = status;
         animator.SetBool("LightOff", status);
+    }
+
+    public void SetColorTorch(Color color, float intensity)
+    {
+        //Debug.Log("!");
+        light2D.color = color;
+        light2D.intensity = intensity;
+        //Debug.Log(light2D.intensity);
     }
 }

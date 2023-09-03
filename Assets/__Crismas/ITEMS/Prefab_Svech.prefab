@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cceb5b6548cc74886296ebd4a259ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  svecha: 0
 --- !u!1 &2866261496882158201
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,6 +5101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5929634715793325383}
+  - component: {fileID: 776396021369193761}
   m_Layer: 0
   m_Name: Prefab_Svech
   m_TagString: Untagged
@@ -5124,6 +5126,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776396021369193761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929634715793325386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d32c3d798777a9469fb7c618e2a6c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  withChat: 0
+  withChatAudio: 0
+  noPatrol: 0
+  noTriggerAgro: 0
+  turnLeft: 0
+  changeLight: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  intensity: 0
 --- !u!1 &9059891835315676177
 GameObject:
   m_ObjectHideFlags: 0
