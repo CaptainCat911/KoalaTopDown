@@ -214,6 +214,13 @@ public class TextUI : MonoBehaviour
         GameManager.instance.screenShakeOff = status;
     }
 
+    // Следующий трек
+    public void NextTrack()
+    {
+        AudioManager.instance.SetNextTrack();
+    }
+
+
 
 
     // Курсор

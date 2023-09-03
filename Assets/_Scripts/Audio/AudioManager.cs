@@ -6,14 +6,20 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;    // инстанс
 
+    AudioSource audioSource;
+    public AudioClip startTikTak;
     public AudioClip[] tracks;              // список треков
+    public AudioClip bossTrack;
+
     public bool noStartTrack;               // без стартового трека
     public float trackVolume;               // громкость треков
     public float speedTrackChange;          // скорость смены
     public float delayTrackChange = 1;      // задержка перед сменой
-    AudioSource audioSource;
     bool volumeMinus;
     bool volumePlus;
+    int i;
+    bool musicGo;
+    bool bossTrackGo;
 
     private void Awake()
     {
@@ -25,47 +31,79 @@ public class AudioManager : MonoBehaviour
     {
         if (noStartTrack)
             return;
-        SetNewTrack(0);
+        SetNewTrack(startTikTak);                           // тик так
     }
         
     void FixedUpdate()
     {
         if (volumeMinus && audioSource.volume >= 0)      
         {
-            audioSource.volume -= speedTrackChange;                // уменьшаем громкость
+            audioSource.volume -= speedTrackChange;         // уменьшаем громкость
         }
         if (volumePlus && audioSource.volume <= 1)
         {
             if (audioSource.volume >= trackVolume)
                 return;
-            audioSource.volume += speedTrackChange;                // уменьшаем громкость
+            audioSource.volume += speedTrackChange;         // уменьшаем громкость
+        }
+
+        if (!audioSource.isPlaying && musicGo)
+        {
+            Debug.Log("NextTrackUpdate");
+            musicGo = false;
+            SetNextTrack();
         }
     }
 
-    public void SetNewTrack(int number)
+
+    public void SetNextTrack()
+    {
+        if (bossTrackGo)
+            return;
+        SetNewTrack(tracks[i]);     // выбираем трек из плейлиста
+        i++;                        // + счетчик
+        if (i >= tracks.Length)
+        {
+            i = 0;
+        }
+    }
+
+    public void SetBossTrack()
+    {
+        SetNewTrack(bossTrack);
+        bossTrackGo = true;
+        audioSource.loop = true;
+    }
+
+
+    public void SetNewTrack(AudioClip track)                // выбрать новый трек
     {
 /*        if (GameManager.instance.musicOff && number != 0)
             return;*/
-        StartCoroutine(SetNewTrackCoroutine(number));
+        StartCoroutine(SetNewTrackCoroutine(track));        // запускаем коротину
     }
+    IEnumerator SetNewTrackCoroutine(AudioClip track)       // коротина
+    {
+        volumeMinus = true;                                 // уменьшаем громкость           
+        yield return new WaitForSeconds(delayTrackChange);  // ждем 
+        volumeMinus = false;
+        audioSource.clip = track;                           // меняем трек
+        audioSource.Play();
+        musicGo = true;                                     // пошла музыка (для смены трека)
+        volumePlus = true;                                  // увеличиваем громкость
+        yield return new WaitForSeconds(delayTrackChange);
+        volumePlus = false;
+    }
+
+
+
+
+
+
 
     public void SetTrackNumber(int number)
     {
         audioSource.clip = tracks[number];              // меняем трек
-    }
-
-    IEnumerator SetNewTrackCoroutine(int number)
-    {        
-        volumeMinus = true;                             // уменьшаем громкость           
-        yield return new WaitForSeconds(delayTrackChange);            // ждем 
-
-        volumeMinus = false;
-        audioSource.clip = tracks[number];              // меняем трек
-        audioSource.Play();
-        volumePlus = true;                              // увеличиваем громкость
-
-        yield return new WaitForSeconds(delayTrackChange);
-        volumePlus = false;
     }
     public void StopVolumeTrack()
     {
@@ -82,8 +120,14 @@ public class AudioManager : MonoBehaviour
     public void StartStopTrack(bool status)
     {
         if (status)
+        {
+            musicGo = true;
             audioSource.Play();
+        }
         else
+        {
+            musicGo = false;
             audioSource.Stop();
+        }
     }
 }
