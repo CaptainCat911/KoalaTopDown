@@ -116,6 +116,10 @@ public class Weapon : MonoBehaviour
     {        
         currentDelay = weaponClass.delayFire;
     }
+    private void OnDisable()
+    {
+        soundStarted = false;               
+    }
 
     private void Update()
     {
