@@ -346,11 +346,15 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
   maxHealth: 30000
   noAgro: 0
+  player: 0
   isGoodPerson: 0
   bossHP: 0
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -363,8 +367,14 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 1
   isEnemy: 0
+  isArenaEnemy: 0
+  isArenaBoss: 0
+  skeletonKing: 0
+  skeletonResble: 0
+  resTimes: 0
   triggerLenght: 7
-  distanceToChangeTarget: 2
+  chaseLeght: 0
+  distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
     serializedVersion: 2
@@ -386,6 +396,8 @@ MonoBehaviour:
   pivotSpeedKoef: 1
   distanceToAttack: 0
   distanceToTarget: 0
+  nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 4689769345750624077, guid: 74191566ad7ce7942bb47b1308716d80, type: 3}
   stayOnGround: 1
   noPatrol: 0
@@ -393,11 +405,19 @@ MonoBehaviour:
   followPlayer: 0
   destinationPoint: {fileID: 0}
   noTriggerAgro: 0
-  events:
+  eventsStart:
     m_PersistentCalls:
       m_Calls: []
+  eventsDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  withBigExplousion: 0
+  fastDeathAnim: 0
+  timeForDeath: 2.5
   deathEffect: {fileID: 5727708654878073701, guid: d47a9e735c129d24c8bb269bb235dcc8, type: 3}
   deathCameraShake: 0
+  darkEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -405,12 +425,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   friendTarget: {fileID: 0}
-  fastDeathAnim: 0
+  lookAtPlayer: 0
   debug: 0
   bubbleTexts: []
   withChat: 0
   audioEnemy: {fileID: 0}
   withAudioChat: 0
+  pozor: 0
   attackingNow: 0
   mainBoss: 0
   shadowBoss: 0
