@@ -37,6 +37,7 @@ public class WeaponHolder : MonoBehaviour
             i++;
         }
         SelectWeapon();                                 // выбираем оружие
+        Invoke(nameof(SwapWeapon), 0.1f);
     }
 
     private void Update()

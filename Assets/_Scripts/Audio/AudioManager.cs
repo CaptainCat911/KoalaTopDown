@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
         if (noStartTrack)
             return;
         SetNewTrack(startTikTak);                           // тик так
+        audioSource.loop = true;
     }
         
     void FixedUpdate()
@@ -58,9 +59,10 @@ public class AudioManager : MonoBehaviour
 
     public void SetNextTrack()
     {
-        if (bossTrackGo)
+        if (bossTrackGo)            // если играет трек босса возвраащааемся
             return;
         SetNewTrack(tracks[i]);     // выбираем трек из плейлиста
+        audioSource.loop = false;
         i++;                        // + счетчик
         if (i >= tracks.Length)
         {
