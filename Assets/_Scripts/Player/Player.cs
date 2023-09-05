@@ -85,7 +85,8 @@ public class Player : Fighter
     [Header("Чат-таунт")]
     public string[] chatTexts;
 
-    public bool noAim;                 // для дебага
+    public bool noAim;                  // для дебага
+    public bool cheatOn;                // читы для дебага
 
 
 
@@ -171,17 +172,19 @@ public class Player : Fighter
 
         if (Input.GetKeyDown(KeyCode.O) && Input.GetKey(KeyCode.LeftShift))
         {
+            cheatOn = true;
             blink = true;
             blinkWithExplousion = true;
+            blinkOutDamage = 1000;
             bootsMod = true;
             bootsEnergy = 10000;
-
+            GameManager.instance.gold = 100000;
         }
 
-        /*        if (Input.GetKeyDown(KeyCode.K))
-                {
-                    Vskritsya();
-                }*/
+        if (Input.GetKeyDown(KeyCode.K) && cheatOn)
+        {
+            Vskritsya();
+        }
 
         /*        if (Input.GetKeyDown(KeyCode.V))
                 {

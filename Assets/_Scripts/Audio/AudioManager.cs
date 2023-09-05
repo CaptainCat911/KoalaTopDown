@@ -37,6 +37,9 @@ public class AudioManager : MonoBehaviour
         
     void FixedUpdate()
     {
+/*        if (Application.isFocused)
+            Debug.Log("Focused!");*/
+
         if (volumeMinus && audioSource.volume >= 0)      
         {
             audioSource.volume -= speedTrackChange;         // уменьшаем громкость
@@ -48,8 +51,9 @@ public class AudioManager : MonoBehaviour
             audioSource.volume += speedTrackChange;         // уменьшаем громкость
         }
 
-        if (!audioSource.isPlaying && musicGo)
+        if (!audioSource.isPlaying && musicGo && Application.isFocused)
         {
+            //if (!Application.isFocused)
             Debug.Log("NextTrackUpdate");
             musicGo = false;
             SetNextTrack();
