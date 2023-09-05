@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip startTikTak;
     public AudioClip[] tracks;              // список треков
-    public AudioClip bossTrack;
+    public AudioClip[] bossTrack;
 
     public bool noStartTrack;               // без стартового трека
     public float trackVolume;               // громкость треков
@@ -74,11 +74,17 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void SetBossTrack()
+    public void SetBossTrack(int number)
     {
-        SetNewTrack(bossTrack);
+        SetNewTrack(bossTrack[number]);
         bossTrackGo = true;
         audioSource.loop = true;
+    }
+    public void UnSetBossTrack()
+    {
+        bossTrackGo = false;
+        audioSource.loop = false;
+        SetNextTrack();
     }
 
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using YG;
 //using UnityEngine.AI;
 
 
@@ -176,6 +177,7 @@ public class Player : Fighter
             blink = true;
             blinkWithExplousion = true;
             blinkOutDamage = 1000;
+            blinkRate = 4;
             bootsMod = true;
             bootsEnergy = 10000;
             GameManager.instance.gold = 100000;
@@ -658,6 +660,7 @@ public class Player : Fighter
 
     void Resurrection()
     {
+        YandexGame.FullscreenShow();
         isAlive = true;
         currentHealth = maxHealth;
         TextUI.instance.UpdateHealthText(false, true);

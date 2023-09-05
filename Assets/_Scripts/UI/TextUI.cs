@@ -139,7 +139,7 @@ public class TextUI : MonoBehaviour
     }
 
 
-
+    // Обновление хп бара
     public void UpdateHealthText(bool dmg, bool withAnim)
     {
         hp.text = player.currentHealth.ToString("0");           // обновляем текст
@@ -255,8 +255,7 @@ public class TextUI : MonoBehaviour
     }
 
     void ChangeCursor(Texture2D cursorType, Vector2 hotspot)
-    {
-        
+    {        
         Cursor.SetCursor(cursorType, hotspot, cursorMode);
     }
 }

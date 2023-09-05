@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using YG;
 
 public class DialogManager : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog()
     {
+        YandexGame.FullscreenShow();
         goInteractAction.Invoke();          // ивент при старте диалога
         skipButton.SetActive(true);         // включаем кнопку пропуска диалога
         StartCoroutine(Type(0.5f));         // запускаем печать букв

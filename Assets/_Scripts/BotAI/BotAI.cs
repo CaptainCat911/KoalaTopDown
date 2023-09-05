@@ -888,6 +888,11 @@ public class BotAI : Fighter
         animatorWeapon.animator.enabled = true;     // включаем аниматор оружия
         if (shadow)
             shadow.enabled = true;                  // включаем тень
+        if (ignitable)
+        {
+            //Debug.Log("Ign!");    
+            ignitable.stopBurn = false;             // возвращаем горение
+        }
         //hpBarGO.SetActive(true);                   // включем хп бар
     }
 
