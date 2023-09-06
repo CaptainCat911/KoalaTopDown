@@ -581,7 +581,6 @@ public class Player : Fighter
             ArenaManager.instance.ArenaStartStop(false);
         }
 
-
         // Для ресрума
         if (!GameManager.instance.playerInResroom)
         {

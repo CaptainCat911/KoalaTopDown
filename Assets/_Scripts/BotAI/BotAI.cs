@@ -162,6 +162,9 @@ public class BotAI : Fighter
         }
         
         maxSpeed = agent.speed;
+        agent.updateRotation = false;           // для навмеш2д
+        agent.updateUpAxis = false;             //
+        agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
 
         //MakeLeft();
 
@@ -179,9 +182,9 @@ public class BotAI : Fighter
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
         startTriigerLenght = triggerLenght;                                                                 // стартовая длинна тригера
 
-        agent.updateRotation = false;           // для навмеш2д
+/*        agent.updateRotation = false;           // для навмеш2д
         agent.updateUpAxis = false;             //
-        agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
+        agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть*/
         
         eventsStart.Invoke();                   // запускаем ивент
 
@@ -200,7 +203,19 @@ public class BotAI : Fighter
     public override void Update()
     {
 /*        if (debug)
-            Debug.Log(startTriigerLenght);*/
+            Debug.Log(agent.updateRotation);*/
+
+        /*        if (agent.updateRotation || agent.updateUpAxis)
+                {
+                    agent.updateRotation = false;           // для навмеш2д
+                    agent.updateUpAxis = false;             //
+                }*/
+
+/*        if (Input.GetKeyDown(KeyCode.H))
+        {
+            agent.updateRotation = false;           // для навмеш2д
+            agent.updateUpAxis = false;             //
+        }*/
 
         // Выбор цвета при получении урона и его сброс
         SetColorTimer();

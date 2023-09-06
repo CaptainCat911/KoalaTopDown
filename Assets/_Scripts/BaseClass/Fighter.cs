@@ -124,11 +124,14 @@ public class Fighter : MonoBehaviour
         {
             if (isImmortal)
             {
-                currentHealth = 1;
-                return;
+                Debug.Log("Immortal!");
+                currentHealth = 1;               
             }
-            currentHealth = 0;                
-            Death();
+            else
+            {
+                currentHealth = 0;
+                Death();
+            }
         }
 
         if (hpBarOn)

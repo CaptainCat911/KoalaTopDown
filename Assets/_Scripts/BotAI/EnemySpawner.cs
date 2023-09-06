@@ -38,11 +38,12 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (!arenaSpawner && !arenaBossSpawner && active && Time.time - (lastSpawn + randomCd) > cooldown && enemyCount < enemysHowMuch)
+        if (!arenaSpawner && !arenaBossSpawner && active && Time.time - (lastSpawn) > cooldown && enemyCount < enemysHowMuch)
         {
             lastSpawn = Time.time;
             portalAnimator.SetTrigger("Open");
             Invoke("SpawnEnemy", 2f);
+            enemyCount++;
 
 
             /*            float dist = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
@@ -119,8 +120,8 @@ public class EnemySpawner : MonoBehaviour
             enemyPref.GetComponentInChildren<BotAI>().target = GameManager.instance.player.gameObject;
             enemyPref.GetComponentInChildren<BotAI>().chasing = true;
         }*/
-        if (!arenaSpawner)
-            enemyCount++;
+/*        if (!arenaSpawner)
+            enemyCount++;*/
 
         if (portalAnimator)
             portalAnimator.SetTrigger("Close");
