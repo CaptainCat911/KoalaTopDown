@@ -89,7 +89,8 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog()
     {
-        YandexGame.FullscreenShow();
+        if (GameManager.instance.forYG)
+            YandexGame.FullscreenShow();
         goInteractAction.Invoke();          // ивент при старте диалога
         skipButton.SetActive(true);         // включаем кнопку пропуска диалога
         StartCoroutine(Type(0.5f));         // запускаем печать букв

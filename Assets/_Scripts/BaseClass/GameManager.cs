@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
+    public bool forYG;                          // для яндекс игр
     public bool startScreen;                    // для стартскрина
     public bool showDamage;                     // показывать урон
     
