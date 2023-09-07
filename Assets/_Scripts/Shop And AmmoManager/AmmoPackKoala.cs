@@ -50,8 +50,8 @@ public class AmmoPackKoala : MonoBehaviour
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            if (GameManager.instance.player.weaponHolder.meleeWeapon)
-                GameManager.instance.player.weaponHolder.SwapWeapon();                  // переключаемся на это оружие
+            if (player.weaponHolder.meleeWeapon)
+                player.weaponHolder.SwapWeapon();                  // переключаемся на это оружие
 
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
 
@@ -63,6 +63,9 @@ public class AmmoPackKoala : MonoBehaviour
                 player.weaponHolder.selectedWeapon = player.weaponHolder.weapons.Count - 1;
                 player.weaponHolder.SelectWeapon();                                     // выбрать оружие 
             }
+
+            player.rangeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
+
             CreateMessage(ammoWeapons[index].name + " Куплено!");
             return true;
         }
@@ -178,6 +181,9 @@ public class AmmoPackKoala : MonoBehaviour
             player.weaponHolder.selectedWeapon = player.weaponHolder.weapons.Count - 1;
             player.weaponHolder.SelectWeapon();                                     // выбрать оружие 
         }
+
+        player.rangeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
+
         CreateMessage(ammoWeapons[index].name + " !");
 
     }

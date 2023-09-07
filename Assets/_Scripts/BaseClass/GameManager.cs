@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool playerAtTarget;       // игрок дошёл до места старта диалога
     [HideInInspector] public bool musicOff;             // музыка
     [HideInInspector] public bool screenShakeOff;       // тряска экрана
-    //[HideInInspector] public string currentScene;       // действуящая сцена
+    [HideInInspector] public string currentSceneName; // действуящая сцена
+    //[HideInInspector] public bool loadData;             // загрузить сохранение
+
 
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;            // клавиша для действия
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
         }
         
         instance = this;                                // присваем instance (?) этому обьекту и по ивенту загрузки запускаем функцию загрузки
-        SceneManager.sceneLoaded += OnSceneLoaded;      // при загрузке сцены выполнится это += функция
+        SceneManager.sceneLoaded += OnSceneLoaded;      // при загрузке сцены выполнится эта += функция
     }
 
     private void Start()
@@ -97,6 +99,11 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ClearPrefs();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && !dialogeStart && !helpOn)
         {
             if (!paused)
@@ -318,8 +325,8 @@ public class GameManager : MonoBehaviour
     {
         //GameManager.instance.SaveState();
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
-
-        string sceneName = sceneNames[sceneNumber];     // выбираем сцену
+        
+        string sceneName = sceneNames[sceneNumber];     // выбираем сцену       
         if (sceneNumber == 0)                           // если сцена 0 (главное меню) - уничтожаем 
         {
             Destroy(gameObject);
@@ -362,6 +369,44 @@ public class GameManager : MonoBehaviour
                 ArenaManager.instance.whiteScreenAnimator.SetTrigger("StartScreen");
             else
                 ArenaManager.instance.whiteScreenAnimator.SetTrigger("StartScreenNormal");
+        }        
+
+        // Загрузка
+        if (PlayerPrefs.GetInt("LoadPlayerData") == 1)              // если надо загрузить пар-ры
+        {
+            for (int i = 0; i < PlayerPrefs.GetInt("PlayerRangeWeaponCount"); i++)              // для кол-ва ренж оружия
+            {
+                ammoManager.TakeRangeWeapon(PlayerPrefs.GetInt("PlayerRangeWeapon" + i));       // даём оружие по индексу
+            }
+/*            for (int weaponRangeIndexAmmo = 0; weaponRangeIndexAmmo < PlayerPrefs.GetInt("PlayerRangeWeaponCount"); weaponRangeIndexAmmo++)     // для кол-ва ренж оружия
+            {
+                ammoManager.ammoWeapons[weaponRangeIndexAmmo].allAmmo = PlayerPrefs.GetInt("PlayerRangeWeaponAmmo" + weaponRangeIndexAmmo);        // даём оружие по индексу
+            }*/
+
+            player.currentHealth = PlayerPrefs.GetInt("PlayerCurrentHp");       // хп
+            PlayerPrefs.SetInt("LoadPlayerData", 0);                            // для отключения загрузки пар-ов игрока
+            //Debug.Log("Loaded" + PlayerPrefs.GetInt("PlayerRangeWeaponCount"));
         }
+
+        // Сохранение
+        PlayerPrefs.SetInt("GameContinue", 1);                          // сделали сохранение
+        currentSceneName = SceneManager.GetActiveScene().name;          // находим название текущей сцены
+        PlayerPrefs.SetString("SceneName", currentSceneName);           // сохраняем его
+        PlayerPrefs.SetInt("PlayerCurrentHp", player.currentHealth);    // сохраняем хп игрока
+        PlayerPrefs.SetInt("PlayerRangeWeaponCount", player.rangeWeaponsIndex.Count);       // всего ренж оружия
+        foreach (int i in player.rangeWeaponsIndex)                     // сохраняем ренж оружия
+        {
+            PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
+        }
+        //Debug.Log("rangeWeaponsIndex" + "= " + player.rangeWeaponsIndex.Count);
+/*        foreach (int weaponRangeIndexAmmo in player.rangeWeaponsIndex)  // патроны для ренж оружия
+        {
+            PlayerPrefs.SetInt("PlayerRangeWeaponAmmo" + weaponRangeIndexAmmo, ammoManager.ammoWeapons[weaponRangeIndexAmmo].allAmmo);   // сохраняем индекс для каждого оружия
+        }   */     
+    }
+
+    void ClearPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

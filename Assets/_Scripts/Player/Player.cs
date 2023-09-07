@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using YG;
 //using UnityEngine.AI;
 
@@ -86,8 +87,10 @@ public class Player : Fighter
     [Header("Чат-таунт")]
     public string[] chatTexts;
 
-    public bool noAim;                  // для дебага
-    public bool cheatOn;                // читы для дебага
+    public bool noAim;                      // для дебага
+    public bool cheatOn;                    // читы для дебага
+
+    public List<int> rangeWeaponsIndex;     // купленное оружие "в индексах"
 
 
 

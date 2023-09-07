@@ -37,7 +37,7 @@ public class WeaponHolder : MonoBehaviour
             i++;
         }
         SelectWeapon();                                 // выбираем оружие
-        Invoke(nameof(SwapWeapon), 0.1f);
+        Invoke(nameof(SwapWeapon), 0.1f);               // чтобы при первой загрузке в руках было мили оружие
     }
 
     private void Update()
