@@ -201,6 +201,9 @@ MonoBehaviour:
   noPatrol: 1
   noTriggerAgro: 1
   turnLeft: 0
+  changeLight: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  intensity: 0
 --- !u!1001 &3693319472050485489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,14 +282,14 @@ PrefabInstance:
     - target: {fileID: 5237709510988062438, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: audioClipsDeath.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 6fae2c5a7c900b24da928683ffc77d17, type: 3}
+      objectReference: {fileID: 8300000, guid: fdf75178e3e0e78469801f76992a4a6a, type: 3}
     - target: {fileID: 7964817913752860295, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7964817913752860295, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: m_InstanceId
-      value: -786808
+      value: -1255768
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
