@@ -25,14 +25,14 @@ public class WeaponHolderMelee : MonoBehaviour
 
     void Start()
     {
-        int i = 0;
+/*        int i = 0;
         foreach (GameObject weapon in weapons)
         {
             BuyWeapon(i);
             i++;
         }
         //SelectWeapon();
-        HideWeapons();                      // пр€чем оружие
+        HideWeapons();                      // пр€чем оружие*/
     }
 
     private void Update()

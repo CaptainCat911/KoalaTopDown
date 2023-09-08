@@ -50,8 +50,8 @@ public class AmmoPackKoala : MonoBehaviour
     {
         if (GameManager.instance.gold >= ammoWeapons[index].goldPriseWeapon)            // если золота больше чем стоимость оружия
         {
-            if (GameManager.instance.player.weaponHolder.meleeWeapon)
-                GameManager.instance.player.weaponHolder.SwapWeapon();                  // переключаемся на это оружие
+            if (player.weaponHolder.meleeWeapon)
+                player.weaponHolder.SwapWeapon();                  // переключаемся на это оружие
 
             GameManager.instance.gold -= ammoWeapons[index].goldPriseWeapon;            // вычитаем из золота стоимость оружия
 
@@ -63,6 +63,9 @@ public class AmmoPackKoala : MonoBehaviour
                 player.weaponHolder.selectedWeapon = player.weaponHolder.weapons.Count - 1;
                 player.weaponHolder.SelectWeapon();                                     // выбрать оружие 
             }
+
+            player.rangeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
+
             CreateMessage(ammoWeapons[index].name + " Куплено!");
             return true;
         }
@@ -107,6 +110,9 @@ public class AmmoPackKoala : MonoBehaviour
                 player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
                 player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
             }
+
+            player.meleeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
+
             CreateMessage(ammoMeleeWeapons[index].name + " Куплено!");
 
             return true;
@@ -135,6 +141,9 @@ public class AmmoPackKoala : MonoBehaviour
 
             player.bombWeaponHolder.selectedWeapon = player.bombWeaponHolder.weapons.Count - 1;
             player.bombWeaponHolder.SelectWeapon();                                         // выбрать оружие 
+
+            player.bombsIndex.Add(index);                // добавляем оружие "в индексе"
+
             CreateMessage(ammoBombs[index].name + " Куплено!");
             return true;
         }
@@ -178,6 +187,9 @@ public class AmmoPackKoala : MonoBehaviour
             player.weaponHolder.selectedWeapon = player.weaponHolder.weapons.Count - 1;
             player.weaponHolder.SelectWeapon();                                     // выбрать оружие 
         }
+
+        player.rangeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
+
         CreateMessage(ammoWeapons[index].name + " !");
 
     }
@@ -195,13 +207,18 @@ public class AmmoPackKoala : MonoBehaviour
             player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
             player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
         }
+
+        player.meleeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
+
         CreateMessage(ammoMeleeWeapons[index].name + " !");  
     }
     // Поднять бомбу
     public void TakeBomb(int index)
     {
         player.bombWeaponHolder.weapons.Add(ammoBombs[index].weapon);                       // добавляем оружие в список оружий
-        player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока                                                                                               
+        player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока
+
+        player.bombsIndex.Add(index);                // добавляем оружие "в индексе"
 
         CreateMessage(ammoBombs[index].name + " !");
     }
