@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;         // инстанс
     public bool forYG;                          // для яндекс игр
     public bool startScreen;                    // для стартскрина
-    public bool showDamage;                     // показывать урон
-    
+    public bool showDamage;                     // показывать урон    
     public string[] sceneNames;                 // все сцены
 
     [Header("Ссылки")]
@@ -28,8 +27,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool playerAtTarget;       // игрок дошёл до места старта диалога
     [HideInInspector] public bool musicOff;             // музыка
     [HideInInspector] public bool screenShakeOff;       // тряска экрана
-    [HideInInspector] public string currentSceneName; // действуящая сцена
-    //[HideInInspector] public bool loadData;             // загрузить сохранение
+    [HideInInspector] public string currentSceneName;   // действуящая сцена
+    [HideInInspector] public bool firstLevel;           // первый уровень
 
 
     [Header("Клавиша взаимодействия")]
@@ -73,6 +72,11 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (PlayerPrefs.GetInt("GameContinue") == 0)
+        {
+            firstLevel = true;
+        }
+
         if (instance != null)
         {
             Destroy(gameObject);
@@ -93,8 +97,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //TextUI.instance.CursorVisibleOnOff(false);
-        //Debug.Log(weaponHelped);
+        if (firstLevel)
+        {
+            //Debug.Log("Weapons!");
+            ammoManager.TakeMeleeWeapon(0);
+            ammoManager.TakeRangeWeapon(0);
+        }
     }
 
     public void Update()
@@ -103,6 +111,22 @@ public class GameManager : MonoBehaviour
         {
             ClearPrefs();
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            for (int i = 0; i < player.rangeWeaponsIndex.Count; i++)                      // сохраняем ренж оружия
+            {
+                PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
+                Debug.Log(i);
+            }           
+            
+            Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 0));
+            Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 1));
+            Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 2));
+            //Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 3));
+        }
+
+
 
         if (Input.GetKeyDown(KeyCode.Escape) && !dialogeStart && !helpOn)
         {
@@ -374,35 +398,81 @@ public class GameManager : MonoBehaviour
         // Загрузка
         if (PlayerPrefs.GetInt("LoadPlayerData") == 1)              // если надо загрузить пар-ры
         {
+            player.currentHealth = PlayerPrefs.GetInt("PlayerCurrentHp");       // хп
+            gold = PlayerPrefs.GetInt("PlayerGold");                            // золото
+            pozorCount = PlayerPrefs.GetInt("PlayerPozorCount");                // метки позора
+
+            // Ренж оружие
             for (int i = 0; i < PlayerPrefs.GetInt("PlayerRangeWeaponCount"); i++)              // для кол-ва ренж оружия
             {
                 ammoManager.TakeRangeWeapon(PlayerPrefs.GetInt("PlayerRangeWeapon" + i));       // даём оружие по индексу
+                ammoManager.ammoWeapons[PlayerPrefs.GetInt("PlayerRangeWeapon" + i)].allAmmo = PlayerPrefs.GetInt("PlayerRangeWeaponAmmo" + i);               
             }
-/*            for (int weaponRangeIndexAmmo = 0; weaponRangeIndexAmmo < PlayerPrefs.GetInt("PlayerRangeWeaponCount"); weaponRangeIndexAmmo++)     // для кол-ва ренж оружия
+
+            // Мили оружие
+            for (int i = 0; i < PlayerPrefs.GetInt("PlayerMeleeWeaponCount"); i++)              // для кол-ва ренж оружия
             {
-                ammoManager.ammoWeapons[weaponRangeIndexAmmo].allAmmo = PlayerPrefs.GetInt("PlayerRangeWeaponAmmo" + weaponRangeIndexAmmo);        // даём оружие по индексу
-            }*/
+                ammoManager.TakeMeleeWeapon(PlayerPrefs.GetInt("PlayerMeleeWeapon" + i));       // даём оружие по индексу                
+            }
 
-            player.currentHealth = PlayerPrefs.GetInt("PlayerCurrentHp");       // хп
-            PlayerPrefs.SetInt("LoadPlayerData", 0);                            // для отключения загрузки пар-ов игрока
-            //Debug.Log("Loaded" + PlayerPrefs.GetInt("PlayerRangeWeaponCount"));
+            // Бомбы
+            for (int i = 0; i < PlayerPrefs.GetInt("PlayerBombCount"); i++)              // для кол-ва ренж оружия
+            {
+                ammoManager.TakeBomb(PlayerPrefs.GetInt("PlayerBomb" + i));       // даём оружие по индексу
+                ammoManager.ammoBombs[PlayerPrefs.GetInt("PlayerBomb" + i)].allAmmo = PlayerPrefs.GetInt("PlayerBombAmmo" + i);
+            }
+
+            // Снаряжение
+            if (PlayerPrefs.GetInt("PlayerShield") == 1)
+                player.withShield = true;                           // щит
+
+            if (PlayerPrefs.GetInt("PlayerMagnet") == 1)
+                player.withGoldMagnet = true;                       // магнит для монеток
+
+            PlayerPrefs.SetInt("LoadPlayerData", 0);                            // для отключения загрузки пар-ов игрока            
         }
-
         // Сохранение
-        PlayerPrefs.SetInt("GameContinue", 1);                          // сделали сохранение
-        currentSceneName = SceneManager.GetActiveScene().name;          // находим название текущей сцены
-        PlayerPrefs.SetString("SceneName", currentSceneName);           // сохраняем его
-        PlayerPrefs.SetInt("PlayerCurrentHp", player.currentHealth);    // сохраняем хп игрока
-        PlayerPrefs.SetInt("PlayerRangeWeaponCount", player.rangeWeaponsIndex.Count);       // всего ренж оружия
-        foreach (int i in player.rangeWeaponsIndex)                     // сохраняем ренж оружия
-        {
-            PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
+        else
+        {            
+            currentSceneName = SceneManager.GetActiveScene().name;          // находим название текущей сцены
+            PlayerPrefs.SetString("SceneName", currentSceneName);           // сохраняем его
+            PlayerPrefs.SetInt("PlayerCurrentHp", player.currentHealth);    // сохраняем хп игрока
+            PlayerPrefs.SetInt("PlayerGold", gold);                         // сохраняем золото
+            PlayerPrefs.SetInt("PlayerPozorCount", pozorCount);             // сохраняем метки позора
+
+            // Ренж оружие
+            PlayerPrefs.SetInt("PlayerRangeWeaponCount", player.rangeWeaponsIndex.Count);   // всего ренж оружия
+            for (int i = 0; i < player.rangeWeaponsIndex.Count; i++)                      // сохраняем ренж оружия
+            {
+                PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
+                PlayerPrefs.SetInt("PlayerRangeWeaponAmmo" + i, ammoManager.ammoWeapons[player.rangeWeaponsIndex[i]].allAmmo);   // сохраняем индекс для каждого оружия
+            }
+
+            // Мили оружие
+            PlayerPrefs.SetInt("PlayerMeleeWeaponCount", player.meleeWeaponsIndex.Count);   // всего мили оружия
+            for (int i = 0; i < player.meleeWeaponsIndex.Count; i++)                        // сохраняем мили оружия
+            {
+                PlayerPrefs.SetInt("PlayerMeleeWeapon" + i, player.meleeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия                
+            }
+
+            // Бомбы
+            PlayerPrefs.SetInt("PlayerBombCount", player.bombsIndex.Count);             // всего видов бомб
+            for (int i = 0; i < player.bombsIndex.Count; i++)                           // сохраняем бомбы
+            {
+                PlayerPrefs.SetInt("PlayerBomb" + i, player.bombsIndex[i]);   // сохраняем индекс для каждого оружия
+                PlayerPrefs.SetInt("PlayerBombAmmo" + i, ammoManager.ammoBombs[player.bombsIndex[i]].allAmmo);   // сохраняем индекс для каждого оружия
+            }
+            
+            // Снаряжение
+            if (player.withShield)
+                PlayerPrefs.SetInt("PlayerShield", 1);             // щит
+
+            if (player.withGoldMagnet)
+                PlayerPrefs.SetInt("PlayerMagnet", 1);             // магнит для монеток
+
+
+            PlayerPrefs.SetInt("GameContinue", 1);                          // сделали сохранение
         }
-        //Debug.Log("rangeWeaponsIndex" + "= " + player.rangeWeaponsIndex.Count);
-/*        foreach (int weaponRangeIndexAmmo in player.rangeWeaponsIndex)  // патроны для ренж оружия
-        {
-            PlayerPrefs.SetInt("PlayerRangeWeaponAmmo" + weaponRangeIndexAmmo, ammoManager.ammoWeapons[weaponRangeIndexAmmo].allAmmo);   // сохраняем индекс для каждого оружия
-        }   */     
     }
 
     void ClearPrefs()

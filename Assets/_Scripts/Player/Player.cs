@@ -91,6 +91,8 @@ public class Player : Fighter
     public bool cheatOn;                    // читы для дебага
 
     public List<int> rangeWeaponsIndex;     // купленное оружие "в индексах"
+    public List<int> meleeWeaponsIndex;     // купленное оружие "в индексах"
+    public List<int> bombsIndex;            // купленное оружие "в индексах"
 
 
 
@@ -662,7 +664,8 @@ public class Player : Fighter
 
     void Resurrection()
     {
-        YandexGame.FullscreenShow();
+        if (GameManager.instance.forYG)
+            YandexGame.FullscreenShow();
         isAlive = true;
         currentHealth = maxHealth;
         TextUI.instance.UpdateHealthText(false, true);

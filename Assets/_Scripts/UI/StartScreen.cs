@@ -16,7 +16,7 @@ public class StartScreen : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(PlayerPrefs.GetString("SceneName"));
+        //Debug.Log(PlayerPrefs.GetString("SceneName"));
 
         if (PlayerPrefs.GetInt("GameContinue") == 1)        // если есть сохранение
         {

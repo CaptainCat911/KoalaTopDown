@@ -1164,6 +1164,7 @@ MonoBehaviour:
   - "\u041F\u043E\u043B\u0443\u0447\u0430\u0439, \u043D\u0435\u0447\u0438\u0441\u0442\u044C!"
   noAim: 0
   cheatOn: 0
+  rangeWeaponsIndex: 
 --- !u!114 &3137378571337029650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2015,8 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHolder: {fileID: 3137378571984717913}
-  weapons:
-  - {fileID: 5674012138522298798, guid: 8cce8d8d676c2874090d0cf951d47c82, type: 3}
+  weapons: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   rangeWeapon: 1
@@ -2067,8 +2067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHolderMelee: {fileID: 3137378571777031426}
-  weapons:
-  - {fileID: 3016861489659110144, guid: 0534d7bf46d38c1459fc898d54c9ab08, type: 3}
+  weapons: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

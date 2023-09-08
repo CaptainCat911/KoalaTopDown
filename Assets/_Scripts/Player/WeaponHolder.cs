@@ -30,14 +30,15 @@ public class WeaponHolder : MonoBehaviour
 
     void Start()
     {
-        int i = 0;
+/*        int i = 0;
         foreach (GameObject weapon in weapons)          // покупаем все оружия из списка оружий при старте
-        {            
+        {
             BuyWeapon(i);
             i++;
         }
-        SelectWeapon();                                 // выбираем оружие
-        Invoke(nameof(SwapWeapon), 0.1f);               // чтобы при первой загрузке в руках было мили оружие
+        SelectWeapon();                                 // выбираем оружие*/
+        if (GameManager.instance.firstLevel)
+            Invoke(nameof(SwapWeapon), 0.1f);               // чтобы при первой загрузке в руках было мили оружие
     }
 
     private void Update()

@@ -110,6 +110,9 @@ public class AmmoPackKoala : MonoBehaviour
                 player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
                 player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
             }
+
+            player.meleeWeaponsIndex.Add(index);                // добавл€ем оружие "в индексе"
+
             CreateMessage(ammoMeleeWeapons[index].name + "  уплено!");
 
             return true;
@@ -138,6 +141,9 @@ public class AmmoPackKoala : MonoBehaviour
 
             player.bombWeaponHolder.selectedWeapon = player.bombWeaponHolder.weapons.Count - 1;
             player.bombWeaponHolder.SelectWeapon();                                         // выбрать оружие 
+
+            player.bombsIndex.Add(index);                // добавл€ем оружие "в индексе"
+
             CreateMessage(ammoBombs[index].name + "  уплено!");
             return true;
         }
@@ -201,13 +207,18 @@ public class AmmoPackKoala : MonoBehaviour
             player.weaponHolderMelee.selectedWeapon = player.weaponHolderMelee.weapons.Count - 1;
             player.weaponHolderMelee.SelectWeapon();                                        // выбрать оружие 
         }
+
+        player.meleeWeaponsIndex.Add(index);                // добавл€ем оружие "в индексе"
+
         CreateMessage(ammoMeleeWeapons[index].name + " !");  
     }
     // ѕодн€ть бомбу
     public void TakeBomb(int index)
     {
         player.bombWeaponHolder.weapons.Add(ammoBombs[index].weapon);                       // добавл€ем оружие в список оружий
-        player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока                                                                                               
+        player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока
+
+        player.bombsIndex.Add(index);                // добавл€ем оружие "в индексе"
 
         CreateMessage(ammoBombs[index].name + " !");
     }
