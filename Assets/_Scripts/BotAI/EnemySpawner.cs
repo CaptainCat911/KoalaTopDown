@@ -24,6 +24,9 @@ public class EnemySpawner : MonoBehaviour
     public bool arenaSpawner;               // спавнер для арены
     public bool arenaBossSpawner;           // спавнер боссов для арены
     public bool noItem;                     // спаун без предмета  
+    public bool withItem;
+    public GameObject itemToSpawn;
+    public int resTimes;
 
     [Header("Портал")]
     public Animator portalAnimator;
@@ -113,6 +116,17 @@ public class EnemySpawner : MonoBehaviour
         if (noItem)
         {
             bot.itemToSpawn = null;
+        }
+
+        if (withItem)
+        {
+            bot.itemToSpawn = itemToSpawn;
+        }
+
+        if (resTimes > 0)
+        {
+            bot.skeletonResble = true;
+            bot.resTimes = resTimes;
         }
 
 /*        if (chasePlayer)

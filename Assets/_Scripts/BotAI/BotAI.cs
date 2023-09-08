@@ -86,6 +86,7 @@ public class BotAI : Fighter
     [Header("Параметры при смерти")]
     public UnityEvent eventsDeath;                  // ивенты
     public bool withBigExplousion;                  // с большим хлопком
+    public int damageBigExplousion;                 // урон хлопка
     public bool fastDeathAnim;
     public float timeForDeath = 2.5f;
     int deathCount;
@@ -93,7 +94,8 @@ public class BotAI : Fighter
     [Header("Анимации и эффекты")]
     public GameObject deathEffect;                  // эффект (потом сделать его в аниматоре (или  нет))
     public float deathCameraShake;                  // мощность тряски камеры при убийстве
-    public ParticleSystem darkEffect;
+    public ParticleSystem darkEffect;               // эффект тьмы
+    public ParticleSystem resMagicEffect;           // эффект магии времени
     public bool makeLeft;                           // повернуть налево
     [HideInInspector] public float aimAnglePivot;   // угол поворота хитбокспивота
     [HideInInspector] public bool flipLeft;         // для флипа
@@ -181,6 +183,8 @@ public class BotAI : Fighter
         base.Start();
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
         startTriigerLenght = triggerLenght;                                                                 // стартовая длинна тригера
+        if (skeletonResble && resTimes > 0 && resMagicEffect)
+            resMagicEffect.Play();
 
 /*        agent.updateRotation = false;           // для навмеш2д
         agent.updateUpAxis = false;             //
@@ -780,7 +784,7 @@ public class BotAI : Fighter
                 {
 
                     Vector2 vec2 = (coll.transform.position - transform.position).normalized;
-                    fighter.TakeDamage(1000, vec2, 60);
+                    fighter.TakeDamage(damageBigExplousion, vec2, 60);
                 }
                 collidersHits = null;
             }
@@ -809,6 +813,8 @@ public class BotAI : Fighter
 
         if (darkEffect)
             darkEffect.Stop();
+        if (resMagicEffect)
+            resMagicEffect.Stop();
 
 
 
@@ -898,6 +904,8 @@ public class BotAI : Fighter
         agent.enabled = true;                       // выключаем агента
         if (darkEffect)
             darkEffect.Play();
+        if (resMagicEffect && resTimes > resCount)
+            resMagicEffect.Play();
         botAIMeleeWeaponHolder.SelectWeapon();      // достаём оружия
         botAIRangeWeaponHolder.SelectWeapon();
         animatorWeapon.animator.enabled = true;     // включаем аниматор оружия

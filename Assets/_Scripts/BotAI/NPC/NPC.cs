@@ -8,6 +8,7 @@ public class NPC : BotAI
     [HideInInspector] public bool attackingNow;     // сейчас атакует
     public bool mainBoss;                           // для возвращения во времени
     public bool shadowBoss;
+    public bool arenaShadowBoss;
     public bool immortalBoss;                       // бессмертный
     public float cooldownAttack;                    // кд атаки
     public bool lowHp;                              // мало хп
@@ -47,6 +48,16 @@ public class NPC : BotAI
 
     public EnemySpawner[] enemySpawners;
     bool spawnReady;
+
+    public override void Start()
+    {
+        base.Start();
+        if (arenaShadowBoss)
+        {
+            isArenaEnemy = true;                        // бот для арены
+            ArenaManager.instance.arenaEnemyCount++;    // + счетчик врагов на арене
+        }
+    }
 
 
     public override void Update()
@@ -132,6 +143,25 @@ public class NPC : BotAI
                 foreach (EnemySpawner enemySpawner in enemySpawners)
                 {
                     enemySpawner.enemysHowMuch = 0;
+                }
+            }
+        }
+
+        // Теневой босс для арены
+        if (arenaShadowBoss)
+        {
+            // Первая фаза
+            if (currentHealth > maxHealth * 0.2f)
+            {
+                if (currentHealth < maxHealth * i)          // если здоровье падает на 10%
+                {
+                    i -= 0.1f;
+                    shadowTeleportReady = true;
+                }
+                if (shadowTeleportReady)                    // телепортируем
+                {
+                    agent.Warp(new Vector3(transform.position.x + Random.Range(-20, 20), transform.position.y + Random.Range(-20, 20), transform.position.z));
+                    shadowTeleportReady = false;
                 }
             }
         }

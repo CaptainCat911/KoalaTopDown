@@ -253,6 +253,7 @@ Transform:
   - {fileID: 4517405616399478594}
   - {fileID: 411050182781165039}
   - {fileID: 5256520830164271114}
+  - {fileID: 3210001965676910923}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -406,6 +407,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 70
   noAgro: 0
+  player: 0
   isGoodPerson: 0
   bossHP: 0
   withTimeNoDamage: 0
@@ -426,6 +428,7 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  resTimes: 0
   triggerLenght: 5
   chaseLeght: 15
   distanceToChangeTarget: 6
@@ -465,11 +468,14 @@ MonoBehaviour:
   eventsDeath:
     m_PersistentCalls:
       m_Calls: []
+  withBigExplousion: 0
+  damageBigExplousion: 0
   fastDeathAnim: 0
   timeForDeath: 0.8
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
   darkEffect: {fileID: 0}
+  resMagicEffect: {fileID: 1067637932516732620}
   makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
@@ -558,7 +564,7 @@ MonoBehaviour:
   - {x: 0.23772039, y: -0.44298273, z: 0}
   m_ShapePathHash: 1051907940
   m_Mesh: {fileID: 0}
-  m_InstanceId: 3772932
+  m_InstanceId: 2208008
 --- !u!82 &4916127209122395305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -655,6 +661,85 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &547229306828962741
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8830276275074482441}
+    m_Modifications:
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387294908302005416, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_Name
+      value: ResMagicEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387294908302005416, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+--- !u!198 &1067637932516732620 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+  m_PrefabInstance: {fileID: 547229306828962741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3210001965676910923 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+  m_PrefabInstance: {fileID: 547229306828962741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1559685389988072892
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -254,6 +254,7 @@ Transform:
   - {fileID: 2836809204835146855}
   - {fileID: 3243881534445411064}
   - {fileID: 1445859797597316767}
+  - {fileID: 2524659879403632995}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -298,7 +299,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -634651516, guid: 6c160f93b44a8a240afe5dc3a9dfb265, type: 3}
+  m_Sprite: {fileID: 2093317036, guid: 35474f3f37858be438a73dd8f25b6f4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -469,11 +470,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   withBigExplousion: 0
+  damageBigExplousion: 0
   fastDeathAnim: 0
   timeForDeath: 0.8
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
   deathCameraShake: 2
   darkEffect: {fileID: 4905584941002646251}
+  resMagicEffect: {fileID: 95789472114183908}
   makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
@@ -562,7 +565,7 @@ MonoBehaviour:
   - {x: 0.23772039, y: -0.44298273, z: 0}
   m_ShapePathHash: 1051907940
   m_Mesh: {fileID: 0}
-  m_InstanceId: 665042
+  m_InstanceId: 2208636
 --- !u!82 &7011570700869610142
 AudioSource:
   m_ObjectHideFlags: 0
@@ -659,6 +662,85 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &584752344689531805
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7161888840960340524}
+    m_Modifications:
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387294908302005416, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_Name
+      value: ResMagicEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387294908302005416, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+--- !u!198 &95789472114183908 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+  m_PrefabInstance: {fileID: 584752344689531805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2524659879403632995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+  m_PrefabInstance: {fileID: 584752344689531805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &885607212867829401
 PrefabInstance:
   m_ObjectHideFlags: 0

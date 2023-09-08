@@ -407,6 +407,7 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  resTimes: 0
   triggerLenght: 30
   chaseLeght: 0
   distanceToChangeTarget: 5
@@ -470,6 +471,7 @@ MonoBehaviour:
   attackingNow: 0
   mainBoss: 0
   shadowBoss: 1
+  arenaShadowBoss: 0
   immortalBoss: 0
   cooldownAttack: 1
   lowHp: 0
@@ -530,7 +532,7 @@ MonoBehaviour:
   - {x: 0.18598938, y: -0.68125916, z: 0}
   m_ShapePathHash: -571122161
   m_Mesh: {fileID: 0}
-  m_InstanceId: 4143164
+  m_InstanceId: 193894
 --- !u!82 &3677526785694472457
 AudioSource:
   m_ObjectHideFlags: 0

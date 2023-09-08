@@ -14,7 +14,9 @@ public class ArenaManager : MonoBehaviour
     [Header("Настройки арены")]    
     public EnemySpawner[] enemySpawners;                // спавнеры
     public EnemySpawner bossSpawner;                    // босс спавнер
+    public EnemySpawner megaBossSpawner;                // босс спавнер
     public WaveSpawner[] waveSpawners;                  // волновые спавнеры
+    public GameObject shadowBossPrefab;
     public int arenaMaxEnemys;                          // макс кол-во врагов
     public int arenaMaxBosses = 1;                      // макс кол-во боссов
     [HideInInspector] public int arenaEnemyCount;       // врагов на арене
@@ -26,7 +28,7 @@ public class ArenaManager : MonoBehaviour
     public float[] timer;                               // сколько до следующего усиления арены
     public bool[] timerDone;                            // усиление сделано
     int i;                                              // счетчик
-    [HideInInspector] public int arenaEnemyKilled;      // сколько врагов убито
+    public int arenaEnemyKilled;      // сколько врагов убито
     [HideInInspector] public int arenaBossKilled;       // сколько боссов убито
 
     [Header("Оружия")]
@@ -72,13 +74,11 @@ public class ArenaManager : MonoBehaviour
         if (!arenaLevel)
             return;
 
-/*        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            waveSpawners[0].MakeWave();
-            waveSpawners[1].MakeWave();
-            waveSpawners[2].MakeWave();
-            waveSpawners[3].MakeWave();
-        }*/
+            StartResEnemy(2);
+            //StartMegaBoss();
+        }
 
         ArenaUpdate();              // апдейт арены, остановка спауна если слишком много врагов   
     }
@@ -293,17 +293,85 @@ public class ArenaManager : MonoBehaviour
                 waveSpawners[0].MakeWave();
                 waveSpawners[3].MakeWave();
             }
-/*            if (i == 10)
+
+            if (i == 10)
             {
-                arenaMaxEnemys = 0;
-                arenaMaxBosses = 0;
+                Debug.Log("SBoss!");
+                megaBossSpawner.WaveSpawnEnemy();   // создаем шадоу босса
+            }
+
+            if (i == 11)
+            {
+                Debug.Log("ResSkeletons!");
+                StartResEnemy(1);               // возрождаются 1 раз
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(3);            // большие маги
+            }
+            if (i == 12)
+            {
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(3);            // большие маги
+            }
+            if (i == 13)
+            {
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(3);            // большие маги
+            }
+            if (i == 14)
+            {
+                megaBossSpawner.WaveSpawnEnemy();
+                megaBossSpawner.WaveSpawnEnemy();
+            }
+            if (i == 15)
+            {
+                StartResEnemy(2);
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(3);            // большие маги
+            }
+            if (i == 16)
+            {
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(3);            // большие маги
+            }
+            if (i == 17)
+            {
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(3);            // большие маги
+            }
+            if (i == 18)
+            {
+                megaBossSpawner.WaveSpawnEnemy();
+                megaBossSpawner.WaveSpawnEnemy();
+                megaBossSpawner.WaveSpawnEnemy();
+            }
+            if (i == 19)
+            {
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(2);            // большие вариоры
+                ArenaAddNewEnemy(3);            // большие маги
+                ArenaAddNewEnemy(3);            // большие маги
+                ArenaAddNewEnemy(3);            // большие маги
+                ArenaAddNewEnemy(3);            // большие маги
+                ArenaAddNewEnemy(3);            // большие маги
+                ArenaAddNewEnemy(3);            // большие маги
+            }
+            if (i == 20)
+            {
+                StartResEnemy(0);
+                arenaMaxBosses = 0;             
+                arenaMaxEnemys = 30;
                 StartMegaBoss();
-            }*/
+                GameManager.instance.CreateFloatingMessage("Ну всё, шутки в сторону", Color.red, GameManager.instance.player.transform.position);
+            }
 
             // тут ещё темного босса добавить
 
             timerDone[i] = true;                // событие выполнено
-            if (i >= 9)
+            if (i >= timerDone.Length)
             {                
                 return;
             }
@@ -325,10 +393,23 @@ public class ArenaManager : MonoBehaviour
         }
     }
 
+    void StartResEnemy(int i)
+    {
+        foreach (EnemySpawner enemySpawner in enemySpawners)
+        {
+            enemySpawner.resTimes = i;
+        }
+    }
+
 
     void StartMegaBoss()
     {
-
+        foreach (EnemySpawner enemySpawner in enemySpawners)
+        {
+            enemySpawner.noItem = false;
+            enemySpawner.withItem = true;
+            enemySpawner.itemToSpawn = shadowBossPrefab;
+        }
     }
 
 
