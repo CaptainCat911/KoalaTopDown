@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
         bool allRaycastWeapon;                          // рейкастАлл оружие*/
 
     [HideInInspector] public string weaponName;     // название оружия
+    [HideInInspector] public string weaponNameEng;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
     //public int ammo;                                       // патроны    
@@ -75,6 +76,7 @@ public class Weapon : MonoBehaviour
         player = GameManager.instance.player;                           // игрок
         ammoWeapons = GameManager.instance.ammoManager.ammoWeapons;        // оружия
         weaponName = weaponClass.weaponName;                            // имя оружия
+        weaponNameEng = weaponClass.weaponNameEng;                            // имя оружия
         ammo = ammoWeapons[weaponIndexForAmmo].allAmmo;
 
 

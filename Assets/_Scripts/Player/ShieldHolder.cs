@@ -18,12 +18,14 @@ public class ShieldHolder : MonoBehaviour
         if (!player.weaponHolder.meleeWeapon)
         {
             player.weaponHolder.stopHolder = false;
-            player.weaponHolder.currentWeapon.gameObject.SetActive(true);
+            if (player.weaponHolder.currentWeapon)
+                player.weaponHolder.currentWeapon.gameObject.SetActive(true);
         }
         else
         {
             player.weaponHolderMelee.stopHolder = false;
-            player.weaponHolderMelee.currentWeapon.gameObject.SetActive(true);
+            if (player.weaponHolderMelee.currentWeapon)
+                player.weaponHolderMelee.currentWeapon.gameObject.SetActive(true);
         }
     }
 

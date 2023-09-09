@@ -16,6 +16,7 @@ public class BombWeapon : MonoBehaviour
     [Header("Параметры оружия")]
     public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
     [HideInInspector] public string weaponName;     // название оружия
+    [HideInInspector] public string weaponNameEng;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
     //public int ammo;                                // кол-во бомб
@@ -38,6 +39,7 @@ public class BombWeapon : MonoBehaviour
         player = GameManager.instance.player;
         ammoBombs = GameManager.instance.ammoManager.ammoBombs;
         weaponName = weaponClass.weaponName;                                    // имя оружия        
+        weaponNameEng = weaponClass.weaponNameEng;                                    // имя оружия        
 
 /*        layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам
         if (weaponClass.bulletPrefab)

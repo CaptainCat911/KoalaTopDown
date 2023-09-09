@@ -31,8 +31,12 @@ public class TextUI : MonoBehaviour
     public Text arenaBossKilledCount;       // босов убито
 
     public GameObject menu;             // меню
-    public GameObject buttonMusicOn;    // меню
-    public GameObject buttonMusicOff;   // меню
+    public GameObject menuEng;          // меню англ
+    public Animator saving;           // сохранение...
+    public Animator savingEng;        //
+
+    //public GameObject buttonMusicOn;    // управление музыкой
+    //public GameObject buttonMusicOff;   // 
 
     [Header("Курсор")]
     public Texture2D cursorTexture;                 // курсор
@@ -63,11 +67,11 @@ public class TextUI : MonoBehaviour
             pozorGo.SetActive(true);
         }
 
-        if (GameManager.instance.musicOff)
+/*        if (GameManager.instance.musicOff)
         {
             buttonMusicOn.SetActive(false);
             buttonMusicOff.SetActive(true);
-        }
+        }*/
     }
 
     private void Update()
@@ -192,7 +196,10 @@ public class TextUI : MonoBehaviour
     // показать или скрыть меню
     public void ShowMenu(bool status)               
     {
-        menu.SetActive(status);
+        if (LanguageManager.instance.eng)
+            menuEng.SetActive(status);
+        else
+            menu.SetActive(status);
     }
 
     // вкл/выкл музыки
@@ -218,6 +225,15 @@ public class TextUI : MonoBehaviour
     public void NextTrack()
     {
         AudioManager.instance.SetNextTrack();
+    }
+
+    // Сохранение
+    public void Saving()
+    {
+        if (LanguageManager.instance.eng)
+            savingEng.SetTrigger("Saving");
+        else
+            saving.SetTrigger("Saving");
     }
 
 

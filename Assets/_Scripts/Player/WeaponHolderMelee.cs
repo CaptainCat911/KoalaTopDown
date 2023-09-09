@@ -77,7 +77,10 @@ public class WeaponHolderMelee : MonoBehaviour
             {
                 weapon.gameObject.SetActive(true);                                          // активируем оружие в иерархии
                 currentWeapon = weapon.gameObject.GetComponentInChildren<MeleeWeapon>();    // получаем его скрипт
-                weaponHolder.currentWeaponName = currentWeapon.weaponName;                  // получаем имя оружия для ui
+                if (LanguageManager.instance.eng)
+                    weaponHolder.currentWeaponName = currentWeapon.weaponNameEng;                  // получаем имя оружия для ui
+                else
+                    weaponHolder.currentWeaponName = currentWeapon.weaponName;                  // получаем имя оружия для ui
             }
             else
                 weapon.gameObject.SetActive(false);                                     // остальные оружия дезактивируем

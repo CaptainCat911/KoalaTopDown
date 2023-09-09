@@ -222,7 +222,10 @@ public class WeaponHolder : MonoBehaviour
             {
                 weapon.gameObject.SetActive(true);                                      // активируем оружие в иерархии
                 currentWeapon = weapon.gameObject.GetComponentInChildren<Weapon>();     // получаем его скрипт
-                currentWeaponName = currentWeapon.weaponName;                           // получаем имя оружия для ui
+                if (LanguageManager.instance.eng)
+                    currentWeaponName = currentWeapon.weaponNameEng;                           // получаем имя оружия для ui
+                else
+                    currentWeaponName = currentWeapon.weaponName;                           // получаем имя оружия для ui
                 //Debug.Log(currentWeapon.weaponName);
             }
             else

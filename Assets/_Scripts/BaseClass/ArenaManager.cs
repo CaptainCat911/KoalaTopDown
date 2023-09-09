@@ -303,7 +303,7 @@ public class ArenaManager : MonoBehaviour
             if (i == 11)
             {
                 Debug.Log("ResSkeletons!");
-                StartResEnemy(1);               // возрождаются 1 раз
+                //StartResEnemy(1);               // возрождаются 1 раз
                 ArenaAddNewEnemy(2);            // большие вариоры
                 ArenaAddNewEnemy(3);            // большие маги
             }
@@ -324,7 +324,7 @@ public class ArenaManager : MonoBehaviour
             }
             if (i == 15)
             {
-                StartResEnemy(2);
+                //StartResEnemy(2);
                 ArenaAddNewEnemy(2);            // большие вариоры
                 ArenaAddNewEnemy(3);            // большие маги
             }
@@ -365,13 +365,13 @@ public class ArenaManager : MonoBehaviour
                 arenaMaxBosses = 0;             
                 arenaMaxEnemys = 30;
                 StartMegaBoss();
-                GameManager.instance.CreateFloatingMessage("Ну всё, шутки в сторону", Color.red, GameManager.instance.player.transform.position);
+                GameManager.instance.CreateFloatingMessage("Ну всё, шутки в сторону", Color.white, GameManager.instance.player.transform.position);
             }
 
             // тут ещё темного босса добавить
 
             timerDone[i] = true;                // событие выполнено
-            if (i >= timerDone.Length)
+            if (i >= timerDone.Length - 1)
             {                
                 return;
             }
@@ -451,10 +451,25 @@ public class ArenaManager : MonoBehaviour
         whiteScreenAnimator.SetTrigger("EndScreen");
     }
 
+
+
+    // Игрок говорит
+    // Ru версия
     public void SayTextPlayer(string text)
     {
+        if (LanguageManager.instance.eng)
+            return;
         GameManager.instance.player.SayText(text);
     }
+    // Eng версия
+    public void SayTextPlayerEng(string text)
+    {
+        if (!LanguageManager.instance.eng)
+            return;
+        GameManager.instance.player.SayText(text);
+    }
+
+
 
     // Свет для 3-го лвл
     public void LightOff(bool status)

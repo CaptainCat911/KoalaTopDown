@@ -77,8 +77,11 @@ public class DialogManager : MonoBehaviour
         GameManager.instance.EnemyResetAndNeutral(true);                        // сбрасываем ботов
         BlackTapes(true);                                                       // черные полосы
         GameManager.instance.cameraOnPlayer = true;                             // камера на игрока
-
-        sentences = dialogStore[numberDialog].sentences;                        // берем предложения из диалга номер numberDialog
+        
+        if (LanguageManager.instance.eng)
+            sentences = dialogStore[numberDialog].sentencesEng;                 // берем предложения из диалга номер numberDialog (англ)
+        else
+            sentences = dialogStore[numberDialog].sentences;                    // берем предложения из диалга номер numberDialog
         characterName = dialogStore[numberDialog].characterName;                // имя (название) персонажа, который будет говорить
         npcImage = dialogStore[numberDialog].imageNpc;                          // его портрет
         startInteractAction = dialogStore[numberDialog].awakeInteractAction;    // ивент до начала диалога

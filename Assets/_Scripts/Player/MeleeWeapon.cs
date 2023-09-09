@@ -11,6 +11,7 @@ public class MeleeWeapon : MonoBehaviour
     public LayerMask layer;                         // слои для битья
 
     public string weaponName;
+    public string weaponNameEng;
     public bool swoard;
     public bool spear;
     public bool hummer;

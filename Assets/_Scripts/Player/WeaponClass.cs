@@ -15,6 +15,7 @@ public class WeaponClass : ScriptableObject
     }
 
     public string weaponName;
+    public string weaponNameEng;
 
     public WeaponType weaponType;    
     
