@@ -295,7 +295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -135, y: 720}
+  m_AnchoredPosition: {x: -135, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15718137
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7dcdf0b99a55ef4088d2a027f76cd87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85261106dccfeca4086f07e5d80a7462, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -441,7 +441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17752363
@@ -5767,41 +5767,43 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0414\u043E\u0440\u043E\u0433\u043E\u0439, \u041E\u0445\u043E\u0442\u043D\u0438\u043A
-    \u043D\u0430 \u043D\u0435\u0447\u0438\u0441\u0442\u044C! \n\u0412\u0430\u0441
+  m_text: "\u0414\u043E\u0440\u043E\u0433\u043E\u0439 \u041E\u0445\u043E\u0442\u043D\u0438\u043A
+    \u043D\u0430 \u041D\u0435\u0447\u0438\u0441\u0442\u044C,\r\n\u0412\u0430\u0441
     \u0431\u0435\u0441\u043F\u043E\u043A\u043E\u0438\u0442 \u0431\u0443\u0440\u0433\u043E\u043C\u0438\u0441\u0442\u0440
-    \n\u0434\u0435\u0440\u0435\u0432\u043D\u0438 \u0416\u0438\u0440\u043D\u043E\u043F\u0451\u0441\u0435\u043B\u044C\u0441\u043A.
+    \u0434\u0435\u0440\u0435\u0432\u043D\u0438 \u0416\u0438\u0440\u043D\u043E\u043F\u0451\u0441\u0435\u043B\u044C\u0441\u043A.
     \u041D\u0435\u0434\u0430\u043B\u0435\u043A\u043E \u043E\u0442 \u043D\u0430\u0448\u0435\u0433\u043E
-    \u043F\u043E\u0441\u0435\u043B\u0435\u043D\u0438\u044F \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F
+    \u043F\u043E\u0441\u0435\u043B\u0435\u043D\u0438\u044F \u0435\u0441\u0442\u044C
     \u0437\u0430\u0431\u0440\u043E\u0448\u0435\u043D\u043D\u043E\u0435 \u043F\u043E\u0434\u0437\u0435\u043C\u0435\u043B\u044C\u0435,
-    \u0432 \u043A\u043E\u0442\u043E\u0440\u043E\u043C \u043D\u0435\u0434\u0430\u0432\u043D\u043E
-    \u043F\u043E\u0441\u0435\u043B\u0438\u043B\u0438\u0441\u044C \u0437\u043B\u043E\u0431\u043D\u044B\u0435
-    \u0441\u043A\u0435\u043B\u0435\u0442\u044B \u0438 \u0442\u0435\u043F\u0435\u0440\u044C
-    \u043D\u0430\u0448\u0430 \u0441\u043F\u043E\u043A\u043E\u0439\u043D\u0430\u044F
-    \u0436\u0438\u0437\u043D\u044C \u043F\u0440\u0435\u0432\u0440\u0430\u0442\u0438\u043B\u0430\u0441\u044C
-    \u0432 \u0441\u0443\u0449\u0438\u0439 \u043A\u043E\u0448\u043C\u0430\u0440. \u041D\u043E\u0447\u044C\u044E
-    \u0441\u043A\u0435\u043B\u0435\u0442\u044B \u0432\u044B\u0445\u043E\u0434\u044F\u0442
-    \u0438\u0437 \u043F\u043E\u0434\u0437\u0435\u043C\u0435\u043B\u044C\u044F \u0438
-    \u0443\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u044E\u0442 \u0448\u0443\u043C\u043D\u044B\u0435
-    \u043F\u043E\u0441\u0438\u0434\u0435\u043B\u043A\u0438, \u0438\u0437-\u0437\u0430
-    \u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u043D\u0435\u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E
-    \u0437\u0430\u0441\u043D\u0443\u0442\u044C. \u041E\u043D\u0438 \u0432\u044B\u0442\u0430\u043F\u0442\u044B\u0432\u0430\u044E\u0442
-    \u043A\u0443\u043A\u0443\u0440\u0443\u0437\u043D\u044B\u0435 \u043F\u043E\u043B\u044F,
-    \u043A\u0443\u043F\u0430\u044E\u0442\u0441\u044F \u0432 \u043A\u043E\u043B\u043E\u0434\u0446\u0435
-    \u0441 \u0447\u0438\u0441\u0442\u043E\u0439 \u0432\u043E\u0434\u043E\u0439 \u0438
-    \u043F\u0443\u0433\u0430\u044E\u0442 \u043D\u0430\u0448\u0438\u0445 \u043A\u043E\u0440\u043E\u0432.
-    \u041A \u043D\u0430\u043C \u0432 \u0434\u0435\u0440\u0435\u0432\u043D\u044E \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u043B\u0438
-    \u0437\u0430\u0445\u043E\u0434\u0438\u0442\u044C \u0442\u043E\u0440\u0433\u043E\u0432\u0446\u044B,
-    \u043F\u043E\u0442\u043E\u043C\u0443 \u0447\u0442\u043E \u0441\u043A\u0435\u043B\u0435\u0442\u044B
-    \u0433\u0440\u0430\u0431\u044F\u0442 \u0438\u0445 \u043F\u043E \u0434\u043E\u0440\u043E\u0433\u0435.
-    \u0418 \u0437\u0430\u0447\u0435\u043C \u0432\u043E\u043E\u0431\u0449\u0435 \u0441\u043A\u0435\u043B\u0435\u0442\u0430\u043C
-    \u0437\u043E\u043B\u043E\u0442\u043E? \r\n\u0412 \u043E\u0431\u0449\u0435\u043C,
-    \u043F\u043E\u043C\u043E\u0433\u0438\u0442\u0435 \u043D\u0430\u043C \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430.
-    \u041A \u043A\u043E\u043D\u0442\u0440\u0430\u043A\u0442\u0443 \u043F\u0440\u0438\u043B\u0430\u0433\u0430\u0435\u0442\u0441\u044F
-    1000 \u0437\u043E\u043B\u043E\u0442\u0430, \u0435\u0441\u043B\u0438 \u0441\u043E\u0433\u043B\u0430\u0441\u043D\u044B
-    - \u043F\u043E\u0434\u043F\u0438\u0448\u0438\u0442\u0435 \u043A\u043E\u043D\u0442\u0440\u0430\u043A\u0442
-    \u0438 \u043F\u0440\u0438\u0448\u043B\u0438\u0442\u0435 \u043A\u043E\u043F\u0438\u044E.
-    \u0417\u0430\u0440\u0430\u043D\u0435\u0435 \u0412\u0430\u043C \u0431\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u0435\u043D.\r\n"
+    \u0438 \u0441 \u043D\u0435\u0434\u0430\u0432\u043D\u0438\u0445 \u043F\u043E\u0440
+    \u0442\u0430\u043C \u043F\u043E\u0441\u0435\u043B\u0438\u043B\u0438\u0441\u044C
+    \u0437\u043B\u043E\u0431\u043D\u044B\u0435 \u0441\u043A\u0435\u043B\u0435\u0442\u044B.
+    \u041D\u0430\u0448\u0430 \u043C\u0438\u0440\u043D\u0430\u044F \u0436\u0438\u0437\u043D\u044C
+    \u043F\u0440\u0435\u0432\u0440\u0430\u0442\u0438\u043B\u0430\u0441\u044C \u0432
+    \u043A\u043E\u0448\u043C\u0430\u0440. \u041D\u043E\u0447\u044C\u044E \u0441\u043A\u0435\u043B\u0435\u0442\u044B
+    \u0432\u044B\u0445\u043E\u0434\u044F\u0442 \u0438\u0437 \u043F\u043E\u0434\u0437\u0435\u043C\u0435\u043B\u044C\u044F
+    \u0438 \u0443\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u044E\u0442 \u0448\u0443\u043C\u043D\u044B\u0435
+    \u0432\u0435\u0447\u0435\u0440\u0438\u043D\u043A\u0438, \u043B\u0438\u0448\u0430\u044F
+    \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0438 \u0441\u043F\u0430\u0442\u044C.
+    \u041E\u043D\u0438 \u0432\u044B\u0442\u0430\u043F\u0442\u044B\u0432\u0430\u044E\u0442
+    \u043D\u0430\u0448\u0438 \u043A\u0443\u043A\u0443\u0440\u0443\u0437\u043D\u044B\u0435
+    \u043F\u043E\u043B\u044F, \u043A\u0443\u043F\u0430\u044E\u0442\u0441\u044F \u0432
+    \u043A\u043E\u043B\u043E\u0434\u0446\u0435 \u0441 \u0447\u0438\u0441\u0442\u043E\u0439
+    \u0432\u043E\u0434\u043E\u0439 \u0438 \u043F\u0443\u0433\u0430\u044E\u0442 \u043D\u0430\u0448\u0438\u0445
+    \u043A\u043E\u0440\u043E\u0432. \u0422\u043E\u0440\u0433\u043E\u0432\u0446\u044B
+    \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u043B\u0438 \u043F\u0440\u0438\u0435\u0437\u0436\u0430\u0442\u044C
+    \u0432 \u043D\u0430\u0448\u0443 \u0434\u0435\u0440\u0435\u0432\u043D\u044E, \u043F\u043E\u0442\u043E\u043C\u0443
+    \u0447\u0442\u043E \u043F\u043E \u0434\u043E\u0440\u043E\u0433\u0435 \u0438\u0445
+    \u0433\u0440\u0430\u0431\u044F\u0442 \u0441\u043A\u0435\u043B\u0435\u0442\u044B.
+    \u0418 \u0437\u0430\u0447\u0435\u043C \u0441\u043A\u0435\u043B\u0435\u0442\u0430\u043C
+    \u0432\u043E\u043E\u0431\u0449\u0435 \u0437\u043E\u043B\u043E\u0442\u043E?\r\n\n\u0412
+    \u043E\u0431\u0449\u0435\u043C, \u043F\u043E\u043C\u043E\u0433\u0438\u0442\u0435
+    \u043D\u0430\u043C \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430.
+    \u041A \u044D\u0442\u043E\u043C\u0443 \u043A\u043E\u043D\u0442\u0440\u0430\u043A\u0442\u0443
+    \u043F\u0440\u0438\u043B\u0430\u0433\u0430\u0435\u0442\u0441\u044F 1000 \u0437\u043E\u043B\u043E\u0442\u044B\u0445
+    \u043C\u043E\u043D\u0435\u0442. \u0415\u0441\u043B\u0438 \u0432\u044B \u0441\u043E\u0433\u043B\u0430\u0441\u043D\u044B,
+    \u043F\u043E\u0434\u043F\u0438\u0448\u0438\u0442\u0435 \u0434\u043E\u0433\u043E\u0432\u043E\u0440
+    \u0438 \u043E\u0442\u043F\u0440\u0430\u0432\u044C\u0442\u0435 \u043A\u043E\u043F\u0438\u044E.
+    \u042F \u0437\u0430\u0440\u0430\u043D\u0435\u0435 \u0432\u0430\u043C \u0431\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u0435\u043D.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
   m_sharedMaterial: {fileID: -4316541989360191667, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
@@ -5828,8 +5830,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6186,7 +6188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 720}
+  m_AnchoredPosition: {x: 0, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &175794909
@@ -7018,7 +7020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -264.6}
+  m_AnchoredPosition: {x: -1.41, y: -264.6}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &297203785
@@ -7081,7 +7083,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 39
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7668,7 +7670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0411\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u043D\u043E\u0441\u0442\u0438"
+  m_text: Thanks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20f577f5f98d16b498d68c3d414ee371, type: 2}
   m_sharedMaterial: {fileID: 6543199145678261995, guid: 20f577f5f98d16b498d68c3d414ee371, type: 2}
@@ -8186,7 +8188,7 @@ RectTransform:
   m_GameObject: {fileID: 500039523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.37, y: 0.040000003, z: 1}
+  m_LocalScale: {x: 0.369, y: 0.040000003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1404996054}
@@ -8194,8 +8196,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 164.008, y: 7.25}
-  m_SizeDelta: {x: 524.454, y: 302.5}
+  m_AnchoredPosition: {x: 163.04053, y: 7.25}
+  m_SizeDelta: {x: 523.319, y: 302.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500039525
 MonoBehaviour:
@@ -13691,12 +13693,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u041F\u0410\u0421\u0418\u0411\u041E\nSzadi art,\nPenzill,\nHeather
-    Harvey,\n0x72,\nDream Mix,\nanSimUz\n\u0417\u0410 \u041F\u0420\u0415\u0414\u041E\u0421\u0422\u0410\u0412\u041B\u0415\u041D\u041D\u042B\u0415
-    \u0411\u0415\u0421\u041F\u041B\u0410\u0422\u041D\u042B\u0415 \u0410\u0421\u0421\u0415\u0422\u042B.\n\u0410
-    \u0422\u0410\u041A\u0416\u0415 \u0421\u041F\u0410\u0421\u0418\u0411\u041E \u0412\u0421\u0415\u041C
-    \u0414\u0420\u0423\u0417\u042C\u042F\u041C, \u041A\u041E\u0422\u041E\u0420\u042B\u0415
-    \u0422\u0415\u0421\u0422\u0418\u0420\u041E\u0412\u0410\u041B\u0418 \u0418\u0413\u0420\u0423."
+  m_text: 'Szadi art
+
+    Penzill
+
+    Heather Harvey
+
+    0x72
+
+    Dream Mix
+
+    anSimUz'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ee05f8ee5b1174dbf8bc608f4642d5, type: 2}
   m_sharedMaterial: {fileID: -121903471677059638, guid: f5ee05f8ee5b1174dbf8bc608f4642d5, type: 2}
@@ -13723,8 +13730,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 44
+  m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13759,7 +13766,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -380.90994, y: 140.4308, z: -381.66376, w: 215.88177}
+  m_margin: {x: -380.90994, y: 73.368866, z: -381.66376, w: 92.17798}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -14902,7 +14909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 720}
+  m_AnchoredPosition: {x: 0, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &703608511
@@ -15405,7 +15412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -135, y: 720}
+  m_AnchoredPosition: {x: -135, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770103770
@@ -15508,7 +15515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7dcdf0b99a55ef4088d2a027f76cd87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85261106dccfeca4086f07e5d80a7462, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15561,7 +15568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70.00001, y: 313}
+  m_AnchoredPosition: {x: -70.00001, y: 310}
   m_SizeDelta: {x: 788.139, y: 105.236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778098381
@@ -15611,8 +15618,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16988,7 +16995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858118077
@@ -17346,7 +17353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: -308.00006}
+  m_AnchoredPosition: {x: -0.000015258789, y: -310.5}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &901738569
@@ -17369,7 +17376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Episod 1
+  m_text: Episode 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20f577f5f98d16b498d68c3d414ee371, type: 2}
   m_sharedMaterial: {fileID: 6543199145678261995, guid: 20f577f5f98d16b498d68c3d414ee371, type: 2}
@@ -17396,8 +17403,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18434,7 +18441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -135, y: 720}
+  m_AnchoredPosition: {x: -135, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1017104255
@@ -18537,7 +18544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7dcdf0b99a55ef4088d2a027f76cd87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85261106dccfeca4086f07e5d80a7462, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18613,21 +18620,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dear Evil Hunter!
-
-    The burgomaster of the village of Zhirnopeselsk
-    is bothering you. Not far from our settlement there is an abandoned dungeon,
-    in which evil skeletons recently settled, and now our quiet life has turned into
-    a real nightmare. At night, skeletons are taken out of the dungeon and noisy
-    gatherings are held, making it impossible to sleep. They trample corn fields,
-    bathe in clean water wells and scare our cows. Merchants stopped coming to our
-    village because skeletons robbed them along the way. And why do skeletons need
-    gold at all?
-
-    In general, help us, please. The contract comes with 1000 gold,
-    if you agree, sign the contract and send cosmetics. Thank you in advance.
-
-'
+  m_text: "Dear Undead Hunter,\r\nThe village of Fatdogville's burgomaster is reaching
+    out to you. There's an abandoned dungeon not far from our settlement, and recently,
+    ill skeletons have taken up residence there. Our peaceful life has turned into
+    a nightmare. At night, the skeletons emerge from the dungeon and throw noisy
+    parties, making it impossible to sleep. They trample our cornfields, bathe in
+    the clean water well, and frighten our cows. Traders have stopped coming to our
+    village because the skeletons rob them on the way. \nAnd why do skeletons even
+    need gold?\n\nIn summary, please help us. Attached to this contract is 1000 gold
+    coins. If you agree, please sign the contract and send a copy. I am grateful
+    to you in advance.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
   m_sharedMaterial: {fileID: -4316541989360191667, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
@@ -18654,8 +18656,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19777,7 +19779,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430"
+  m_text: back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 79cbc4133f06ba242849876e744c719b, type: 2}
   m_sharedMaterial: {fileID: 8795961149426991524, guid: 79cbc4133f06ba242849876e744c719b, type: 2}
@@ -19912,7 +19914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0411\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u043D\u043E\u0441\u0442\u0438"
+  m_text: "\u0421\u043F\u0430\u0441\u0438\u0431\u043E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20f577f5f98d16b498d68c3d414ee371, type: 2}
   m_sharedMaterial: {fileID: 6543199145678261995, guid: 20f577f5f98d16b498d68c3d414ee371, type: 2}
@@ -20296,7 +20298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 720}
+  m_AnchoredPosition: {x: 0, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177740874
@@ -31115,7 +31117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45, y: 43}
+  m_AnchoredPosition: {x: -45, y: 12.900032}
   m_SizeDelta: {x: 417.435, y: 633.047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1371785328
@@ -31138,28 +31140,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    - The performer undertakes to eradicate evil in the dungeon and
-    clear the dungeon of skeletons.
-
-    - The customer undertakes to pay a preliminary
-    fee of 1000 gold coins upon signing this contract.
-
-    - The Contractor undertakes
-    to hand over all the gold found and all the artifacts found
-
-    in the dungeon
-    for the customer.
-
-    - The customer undertakes to declare the performer a folk
-    hero of the village of Zhirnopeselsk after the successful completion of the contract*.
-
-    -
-    The customer undertakes to pay a reward of 10,000 gold coins upon successful
-    completion of the contract**.
-
-'
+  m_text: "- The Contractor undertakes to eradicate the evil in the dungeon and clear
+    it of skeletons.\r\n- The Client agrees to pay a preliminary reward of 1000 gold
+    coins upon signing this contract.\r\n- The Contractor undertakes to deliver all
+    found gold and artifacts in the dungeon to the Client.\r\n- The Client agrees
+    to declare the Contractor a village hero of Fatdogville upon successful completion
+    of the contract*.\r\n- The Client agrees to pay a reward of 10,000 gold coins
+    upon successful completion of the contract**.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
   m_sharedMaterial: {fileID: -4316541989360191667, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
@@ -31186,15 +31173,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 17
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -31222,7 +31209,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -226.17136, y: -68.32927, z: -119.05493, w: 37.550613}
+  m_margin: {x: -226.17136, y: -90.35976, z: -119.05493, w: 160.93669}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -31718,7 +31705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 720}
+  m_AnchoredPosition: {x: 0, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424921097
@@ -32213,12 +32200,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u041F\u0410\u0421\u0418\u0411\u041E\nSzadi art,\nPenzill,\nHeather
-    Harvey,\n0x72,\nDream Mix,\nanSimUz\n\u0417\u0410 \u041F\u0420\u0415\u0414\u041E\u0421\u0422\u0410\u0412\u041B\u0415\u041D\u041D\u042B\u0415
-    \u0411\u0415\u0421\u041F\u041B\u0410\u0422\u041D\u042B\u0415 \u0410\u0421\u0421\u0415\u0422\u042B.\n\u0410
-    \u0422\u0410\u041A\u0416\u0415 \u0421\u041F\u0410\u0421\u0418\u0411\u041E \u0412\u0421\u0415\u041C
-    \u0414\u0420\u0423\u0417\u042C\u042F\u041C, \u041A\u041E\u0422\u041E\u0420\u042B\u0415
-    \u0422\u0415\u0421\u0422\u0418\u0420\u041E\u0412\u0410\u041B\u0418 \u0418\u0413\u0420\u0423."
+  m_text: 'Szadi art
+
+    Penzill
+
+    Heather Harvey
+
+    0x72
+
+    Dream Mix
+
+    anSimUz'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ee05f8ee5b1174dbf8bc608f4642d5, type: 2}
   m_sharedMaterial: {fileID: -121903471677059638, guid: f5ee05f8ee5b1174dbf8bc608f4642d5, type: 2}
@@ -32245,8 +32237,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 44
+  m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -32281,7 +32273,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -380.90994, y: 140.4308, z: -381.66376, w: 215.88177}
+  m_margin: {x: -380.90994, y: 72.3808, z: -381.66376, w: 88.5063}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -32792,8 +32784,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.5
-  m_fontSizeBase: 22.5
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -32802,7 +32794,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 45
   m_wordSpacing: 0
   m_lineSpacing: 23.81
   m_lineSpacingMax: 0
@@ -38784,7 +38776,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 379, y: 41}
-  m_SizeDelta: {x: 250, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716350727
 MonoBehaviour:
@@ -38807,7 +38799,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.65882355, g: 0.5137255, b: 0.5137255, a: 1}
     m_HighlightedColor: {r: 0.84313726, g: 0.4117647, b: 0.28627452, a: 1}
     m_PressedColor: {r: 0.8235294, g: 0.29803923, b: 0.3882353, a: 1}
     m_SelectedColor: {r: 0.9647059, g: 0.8156863, b: 0.30980393, a: 1}
@@ -39243,7 +39235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: -195}
+  m_AnchoredPosition: {x: -85, y: -221}
   m_SizeDelta: {x: 585.611, y: 258.939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1763562959
@@ -39266,7 +39258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "***Or don\u2019t pay at all."
+  m_text: '*** Or not pay at all'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
   m_sharedMaterial: {fileID: -4316541989360191667, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
@@ -40142,7 +40134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68, y: 293}
+  m_AnchoredPosition: {x: -68, y: 310}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1854771039
@@ -40192,8 +40184,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -40202,7 +40194,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 10
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -40228,7 +40220,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -111.065414, y: 0, z: -77.74585, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -40547,7 +40539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: -148}
+  m_AnchoredPosition: {x: -85, y: -173.99998}
   m_SizeDelta: {x: 585.611, y: 258.939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1897730786
@@ -40570,13 +40562,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*If the performer does not return from the dungeon within 3 days, all
-    valuables and property of the performer will be transferred to the customer.
-
-    **The
-    customer has the right to pay remuneration for 1000 years***.
-
-'
+  m_text: "* In the event that the Contractor does not return from the dungeon within
+    3 days, all the Contractor's valuables and property will be transferred to the
+    Client.\r\n**The Client has the right to pay the reward over the course of 1000
+    years***.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
   m_sharedMaterial: {fileID: -4316541989360191667, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
@@ -40764,7 +40753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68, y: 293}
+  m_AnchoredPosition: {x: -68, y: 310}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919176965
@@ -40814,8 +40803,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -40824,7 +40813,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 10
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -41004,7 +40993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C 4\n(\u0410\u0440\u0435\u043D\u0430)"
+  m_text: "\u0410\u0440\u0435\u043D\u0430\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb1ae2aab4001894f9bc3578e4fef6dd, type: 2}
   m_sharedMaterial: {fileID: 2639937480952109168, guid: bb1ae2aab4001894f9bc3578e4fef6dd, type: 2}
@@ -42061,7 +42050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -135, y: 720}
+  m_AnchoredPosition: {x: -135, y: 700}
   m_SizeDelta: {x: 250, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084400433
@@ -42152,7 +42141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7dcdf0b99a55ef4088d2a027f76cd87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85261106dccfeca4086f07e5d80a7462, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42340,7 +42329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70.00001, y: 313}
+  m_AnchoredPosition: {x: -70.00001, y: 310}
   m_SizeDelta: {x: 788.139, y: 105.236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2089712449
@@ -42363,7 +42352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Conditions of a contract
+  m_text: 'Contract Terms:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
   m_sharedMaterial: {fileID: -4316541989360191667, guid: ba34d36a2e0797f42b0ea5de8da82d8a, type: 2}
@@ -42390,8 +42379,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
