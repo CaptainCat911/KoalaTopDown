@@ -111,24 +111,42 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-/*        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            ClearPrefs();
-        }*/
+            ammoManager.TakeMeleeWeapon(1);
+            ammoManager.TakeMeleeWeapon(2);
+            ammoManager.TakeMeleeWeapon(3);
+            ammoManager.TakeMeleeWeapon(4);
 
-/*        if (Input.GetKeyDown(KeyCode.I))
-        {
-            for (int i = 0; i < player.rangeWeaponsIndex.Count; i++)                      // сохраняем ренж оружия
-            {
-                PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
-                Debug.Log(i);
-            }           
-            
-            Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 0));
-            Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 1));
-            Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 2));
-            //Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 3));
-        }*/
+            ammoManager.TakeRangeWeapon(4);
+            ammoManager.TakeRangeWeapon(5);
+            ammoManager.TakeRangeWeapon(6);
+            ammoManager.TakeRangeWeapon(7);
+            ammoManager.TakeRangeWeapon(8);
+            ammoManager.TakeRangeWeapon(9);
+            //ammoManager.TakeRangeWeapon(10);
+            //ammoManager.TakeRangeWeapon(11);
+
+            ammoManager.TakeBomb(1);
+            ammoManager.TakeBomb(2);
+
+            player.withShield = true;
+            player.withGoldMagnet = true;
+        }
+
+        /*        if (Input.GetKeyDown(KeyCode.I))
+                {
+                    for (int i = 0; i < player.rangeWeaponsIndex.Count; i++)                      // сохраняем ренж оружия
+                    {
+                        PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
+                        Debug.Log(i);
+                    }           
+
+                    Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 0));
+                    Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 1));
+                    Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 2));
+                    //Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 3));
+                }*/
 
 
 

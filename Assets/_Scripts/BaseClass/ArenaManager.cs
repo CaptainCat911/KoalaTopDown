@@ -74,11 +74,11 @@ public class ArenaManager : MonoBehaviour
         if (!arenaLevel)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Y))
+/*        if (Input.GetKeyDown(KeyCode.Y))
         {
             StartResEnemy(2);
             //StartMegaBoss();
-        }
+        }*/
 
         ArenaUpdate();              // апдейт арены, остановка спауна если слишком много врагов   
     }

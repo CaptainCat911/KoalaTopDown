@@ -218,6 +218,9 @@ public class AmmoPackKoala : MonoBehaviour
         player.bombWeaponHolder.weapons.Add(ammoBombs[index].weapon);                       // добавляем оружие в список оружий
         player.bombWeaponHolder.BuyWeapon(player.bombWeaponHolder.weapons.Count - 1);       // создаем его в инвентаре игрока
 
+        player.bombWeaponHolder.selectedWeapon = player.bombWeaponHolder.weapons.Count - 1;
+        player.bombWeaponHolder.SelectWeapon();                                        // выбрать оружие 
+
         player.bombsIndex.Add(index);                // добавляем оружие "в индексе"
 
         CreateMessage(ammoBombs[index].name + " !");

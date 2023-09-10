@@ -30,6 +30,8 @@ public class TextUI : MonoBehaviour
     public Text arenaEnemyKilledCount;      // врагов убито
     public Text arenaBossKilledCount;       // босов убито
 
+    public GameObject bars;             // бары (для отключения UI)
+    bool barsOff;
     public GameObject menu;             // меню
     public GameObject menuEng;          // меню англ
     public Animator saving;           // сохранение...
@@ -76,11 +78,20 @@ public class TextUI : MonoBehaviour
 
     private void Update()
     {
-/*        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        cursor.transform.position = cursorPos;*/
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            barsOff = !barsOff;
+            if (barsOff)
+                bars.SetActive(false);
+            else
+                bars.SetActive(true);
+        }
 
-/*        if (!cursorVisible)
-            Cursor.visible = false;*/
+        /*        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                cursor.transform.position = cursorPos;*/
+
+        /*        if (!cursorVisible)
+                    Cursor.visible = false;*/
     }
 
     void FixedUpdate()                                                   // (потом изменить вывод сообщений)
