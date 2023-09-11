@@ -12,19 +12,49 @@ public class AmmoPackKoala : MonoBehaviour
     public AmmoPackStore[] ammoMeleeWeapons;    // ссылка на мили оружие в инвентаре (название, цена, патроны)
     public AmmoPackStore[] ammoBombs;           // ссылка на бомбы в инвентаре (название, цена, патроны)
 
-/*    [Header("Кнопки для замены")]
-    public GameObject[] buttonsBuyRangeWeapon;
-    public GameObject[] buttonsBuyMeleeWeapon;
-    public GameObject[] buttonsBuyBomb;
+    [Header("Для перевода")]
+    public string ammoRu;
+    public string ammoEng;
+    string ammo;  
+    
+    public string bombRu;
+    public string bombEng;
+    string bomb;  
 
-    public GameObject[] buttonsSellRangeWeapon;
-    public GameObject[] buttonsSellMeleeWeapon;
-    public GameObject[] buttonsSellBomb;*/
+    public string buyedRu;
+    public string buyedEng;
+    string buyed;
+
+
+    /*    [Header("Кнопки для замены")]
+        public GameObject[] buttonsBuyRangeWeapon;
+        public GameObject[] buttonsBuyMeleeWeapon;
+        public GameObject[] buttonsBuyBomb;
+
+        public GameObject[] buttonsSellRangeWeapon;
+        public GameObject[] buttonsSellMeleeWeapon;
+        public GameObject[] buttonsSellBomb;*/
 
 
     private void Awake()
     {
         player = GameManager.instance.player;        
+    }
+
+    private void Start()
+    {
+        if (LanguageManager.instance.eng)
+        {
+            ammo = ammoEng;
+            bomb = bombEng;
+            buyed = buyedEng;
+        }
+        else
+        {
+            ammo = ammoRu;
+            bomb = bombRu;
+            buyed = buyedRu;
+        }
     }
 
     // Патроны
@@ -34,12 +64,12 @@ public class AmmoPackKoala : MonoBehaviour
         {
             GameManager.instance.gold -= ammoWeapons[index].goldPriseAmmo;          // вычитаем из золота стоимость оружия
             ammoWeapons[index].allAmmo += ammoWeapons[index].ammoInReload;          // добавляем во все патроны кол-во патронов в обойме
-            CreateMessage("+ " + ammoWeapons[index].ammoInReload + " боеприпасов");
+            CreateMessage("+ " + ammoWeapons[index].ammoInReload + " " + ammo);
             return true;
         }
         else
         {
-            CreateMessage("Недостаточно золота!");
+            CreateMessageNoGold();
             return false;
         }
     }
@@ -66,12 +96,12 @@ public class AmmoPackKoala : MonoBehaviour
 
             player.rangeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
 
-            CreateMessage(ammoWeapons[index].name + " Куплено!");
+            CreateMessage(ammoWeapons[index].name + " " + buyed);
             return true;
         }
         else
         {
-            CreateMessage("Недостаточно золота!");
+            CreateMessageNoGold();
             return false;
         } 
     }
@@ -113,13 +143,13 @@ public class AmmoPackKoala : MonoBehaviour
 
             player.meleeWeaponsIndex.Add(index);                // добавляем оружие "в индексе"
 
-            CreateMessage(ammoMeleeWeapons[index].name + " Куплено!");
+            CreateMessage(ammoMeleeWeapons[index].name + " " + buyed);
 
             return true;
         }
         else
         {
-            CreateMessage("Недостаточно золота!");
+            CreateMessageNoGold();
             return false;
         }
     }
@@ -144,12 +174,12 @@ public class AmmoPackKoala : MonoBehaviour
 
             player.bombsIndex.Add(index);                // добавляем оружие "в индексе"
 
-            CreateMessage(ammoBombs[index].name + " Куплено!");
+            CreateMessage(ammoBombs[index].name + " " + buyed);
             return true;
         }
         else
         {
-            CreateMessage("Недостаточно золота!");
+            CreateMessageNoGold();
             return false;
         }
     }
@@ -160,12 +190,12 @@ public class AmmoPackKoala : MonoBehaviour
         {
             GameManager.instance.gold -= ammoBombs[index].goldPriseAmmo;            // вычитаем из золота стоимость оружия             
             ammoBombs[index].allAmmo += ammoBombs[index].ammoInReload; ;
-            CreateMessage("+ " + ammoBombs[index].ammoInReload + " бомба");
+            CreateMessage("+ " + ammoBombs[index].ammoInReload + " " + bomb);
             return true;
         }
         else
         {
-            CreateMessage("Недостаточно золота!");
+            CreateMessageNoGold();
             return false;
         }
     }
@@ -230,5 +260,17 @@ public class AmmoPackKoala : MonoBehaviour
     void CreateMessage(string text)
     {
         GameManager.instance.CreateFloatingMessage(text, Color.white, player.transform.position);
+    }
+
+    void CreateMessageNoGold()
+    {
+        if (LanguageManager.instance.eng)
+        {
+            GameManager.instance.CreateFloatingMessage("Not enough gold!", Color.white, player.transform.position);
+        }
+        else
+        {
+            GameManager.instance.CreateFloatingMessage("Недостаточно золота!", Color.white, player.transform.position);
+        }
     }
 }

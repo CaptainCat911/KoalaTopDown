@@ -115,14 +115,9 @@ public class BotAI : Fighter
     public Transform friendTarget;
     public bool lookAtPlayer;
 
-
-
-
-    // Дебаг
-    public bool debug;
-
     [Header("Диалоги (баблчат)")]
     public string[] bubbleTexts;
+    public string[] bubbleTextsEng;
     public bool withChat;               // с чатом
     bool sayedChat;
 
@@ -131,13 +126,8 @@ public class BotAI : Fighter
     public bool withAudioChat;          // с репликой
     bool sayedAudoiChat;
 
-    [Header("Для позора")]
-    public bool pozor;
-    bool startPozorChat;
-    float cooldownPozorChat;             // перезардяка атаки
-    float lastPozorChat;                        // время последнего удара (для перезарядки удара)
-
-
+    // Дебаг
+    public bool debug;
 
     public override void Awake()
     {
@@ -251,46 +241,43 @@ public class BotAI : Fighter
         }
 
         // поворот спрайта (Flip)
-        if (!pozor)
+        if (target && targetVisible)                           // (ещё это дублируется в хитбокспивот)
         {
-            if (target && targetVisible)                           // (ещё это дублируется в хитбокспивот)
+            if (Mathf.Abs(aimAnglePivot) > 90 && !flipLeft)
             {
-                if (Mathf.Abs(aimAnglePivot) > 90 && !flipLeft)
-                {
-                    FaceTargetLeft();
-                    pivot.Flip();
-                }
-                if (Mathf.Abs(aimAnglePivot) <= 90 && !flipRight)
-                {
-                    FaceTargetRight();
-                    pivot.Flip();
-                }
+                FaceTargetLeft();
+                pivot.Flip();
             }
-            else
+            if (Mathf.Abs(aimAnglePivot) <= 90 && !flipRight)
             {
-                if (agent.velocity.x < -0.2 && !flipLeft)
-                {
-                    FaceTargetLeft();
-                    pivot.Flip();
-                }
-                if (agent.velocity.x > 0.2 && !flipRight)
-                {
-                    FaceTargetRight();
-                    pivot.Flip();
-                }
-            }
-
-            animator.SetFloat("Speed", agent.velocity.magnitude);
-
-            // Замедление
-            if (slowed)
-            {
-                if (agent.speed < maxSpeed)
-                    agent.speed += 0.005f;
-                else
-                    slowed = false;
+                FaceTargetRight();
+                pivot.Flip();
             }
         }
+        else
+        {
+            if (agent.velocity.x < -0.2 && !flipLeft)
+            {
+                FaceTargetLeft();
+                pivot.Flip();
+            }
+            if (agent.velocity.x > 0.2 && !flipRight)
+            {
+                FaceTargetRight();
+                pivot.Flip();
+            }
+        }
+
+        animator.SetFloat("Speed", agent.velocity.magnitude);
+
+        // Замедление
+        if (slowed)
+        {
+            if (agent.speed < maxSpeed)
+                agent.speed += 0.005f;
+            else
+                slowed = false;
+        }        
     
 
         if (friendTarget)
@@ -301,28 +288,6 @@ public class BotAI : Fighter
         if (lookAtPlayer)
         {
             LookAt(GameManager.instance.player.transform);
-        }
-
-        // Для скелетов в позорной комнате
-        if (pozor)
-        {
-            float distanceToPlayer = Vector2.Distance(transform.position, GameManager.instance.player.transform.position); 
-            if (distanceToPlayer <= 6)
-            {
-                startPozorChat = true;
-            }
-            else
-            {
-                startPozorChat = false;
-            }
-
-            cooldownPozorChat = Random.Range(4, 7);             // рандомный кд
-
-            if (startPozorChat && withChat && Time.time - lastPozorChat > cooldownPozorChat)    // если игрок рядом и враг с чатом
-            {
-                lastPozorChat = Time.time;
-                SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);                      // выдаём рандомну фразу
-            }
         }
 
 
@@ -382,6 +347,7 @@ public class BotAI : Fighter
             pivot.Flip();
         }
     }
+
 
     public void SwitchAttackType(int type)
     {        
@@ -473,7 +439,15 @@ public class BotAI : Fighter
 
             if (withChat && !sayedChat)             // чат, когда нашли цель
             {
-                SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);
+                if (LanguageManager.instance.eng)
+                {
+                    SayText(bubbleTextsEng[Random.Range(0, bubbleTextsEng.Length)]);
+                }
+                else
+                {
+                    SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);
+                }
+                
                 sayedChat = true;
             }
             if (withAudioChat && !sayedAudoiChat)
@@ -584,10 +558,15 @@ public class BotAI : Fighter
 
     public void PoliceSayChat()
     {
-        SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);                      // выдаём рандомну фразу
+        if (LanguageManager.instance.eng)
+        {
+            SayText(bubbleTextsEng[Random.Range(0, bubbleTextsEng.Length)]);
+        }
+        else
+        {
+            SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);
+        }       
     }
-
-
 
     // Фукция для ивента анимации (потом как-нибудь сделать по нормальному)
     public void AttacHitBox()

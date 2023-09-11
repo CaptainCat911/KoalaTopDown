@@ -17,6 +17,7 @@ public class FakeSkeleton : MonoBehaviour
     float cooldownPozorChat;            // перезардяка атаки
     float lastPozorChat;                // время последнего удара (для перезарядки удара)
     public string[] bubbleTexts;
+    public string[] bubbleTextsEng;
 
     private void Awake()
     {
@@ -68,7 +69,14 @@ public class FakeSkeleton : MonoBehaviour
         if (startPozorChat && withChat && Time.time - lastPozorChat > cooldownPozorChat)    // если игрок рядом и враг с чатом
         {
             lastPozorChat = Time.time;
-            SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);                      // выдаём рандомну фразу
+            if (LanguageManager.instance.eng)
+            {
+                SayText(bubbleTextsEng[Random.Range(0, bubbleTextsEng.Length)]);
+            }
+            else
+            {
+                SayText(bubbleTexts[Random.Range(0, bubbleTexts.Length)]);
+            }
         }
     }
 

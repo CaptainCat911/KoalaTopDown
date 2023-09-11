@@ -32,9 +32,7 @@ public class Gold : ItemPickUp
     public void PickUpGold()
     {
         GameManager.instance.gold += goldValue;                                          // + золото
-        GameManager.instance.CreateFloatingMessage("+ " + goldValue, Color.yellow,
-           GameManager.instance.player.transform.position);                             // создаём сообщение
-
+        GameManager.instance.CreateFloatingMessage("+ " + goldValue, Color.yellow, GameManager.instance.player.transform.position);                             // создаём сообщение
         if (audioPickUp)
         {
             GameObject sound = Instantiate(audioPickUp, transform.position, Quaternion.identity);      // звук взрыва

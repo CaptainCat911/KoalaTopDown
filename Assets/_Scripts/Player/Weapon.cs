@@ -226,7 +226,15 @@ public class Weapon : MonoBehaviour
         // Сообщение, что закончились патроны
         if (weaponHolder.fireStart && ammoWeapons[weaponIndexForAmmo].allAmmo <= 0 && Time.fixedTime - lastMessage > cooldownMessage)
         {
-            GameManager.instance.CreateFloatingMessage("Нет патронов", Color.white, GameManager.instance.player.transform.position);
+            if (LanguageManager.instance.eng)
+            {
+                GameManager.instance.CreateFloatingMessage("No ammo!", Color.white, GameManager.instance.player.transform.position);
+            }
+            else
+            {
+                GameManager.instance.CreateFloatingMessage("Нет патронов!", Color.white, GameManager.instance.player.transform.position);
+            }            
+
             lastMessage = Time.fixedTime;
         }
 
