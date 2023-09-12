@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MiniGun
   m_EditorClassIdentifier: 
   weaponName: "\u041C\u0438\u043D\u0438\u0433\u0430\u043D"
+  weaponNameEng: Minigun
   weaponType: 0
   damage: 12
   fireRate: 20
@@ -31,6 +32,17 @@ MonoBehaviour:
     m_Bits: 0
   splitTimes: 0
   splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
   ignite: 0
   damageBurn: 0
   cooldownBurn: 0

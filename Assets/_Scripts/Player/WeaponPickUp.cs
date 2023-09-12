@@ -29,21 +29,48 @@ public class WeaponPickUp : ItemPickUp
     public void TakeShield()
     {
         GameManager.instance.player.withShield = true;
-        GameManager.instance.CreateFloatingMessage("Щит получен!", Color.white, GameManager.instance.player.transform.position);
+
+        if (LanguageManager.instance.eng)
+        {
+            GameManager.instance.CreateFloatingMessage("Shield!", Color.white, GameManager.instance.player.transform.position);
+        }
+        else
+        {
+            GameManager.instance.CreateFloatingMessage("Щит!", Color.white, GameManager.instance.player.transform.position);
+        }
+        
         Destroy(gameObject);
     }
 
     public void TakeMagnet()
     {
         GameManager.instance.player.withGoldMagnet = true;
-        GameManager.instance.CreateFloatingMessage("Магнит для золота получен!", Color.white, GameManager.instance.player.transform.position);
+
+        if (LanguageManager.instance.eng)
+        {
+            GameManager.instance.CreateFloatingMessage("Gold magnet!", Color.white, GameManager.instance.player.transform.position);
+        }
+        else
+        {
+            GameManager.instance.CreateFloatingMessage("Магнит для золота!", Color.white, GameManager.instance.player.transform.position);
+        }
+
         Destroy(gameObject);
     }
 
     public void TakeBlink()
     {
         GameManager.instance.player.blink = true;
-        GameManager.instance.CreateFloatingMessage("Блинк получен!", Color.white, GameManager.instance.player.transform.position);
+
+        if (LanguageManager.instance.eng)
+        {
+            GameManager.instance.CreateFloatingMessage("Blink!", Color.white, GameManager.instance.player.transform.position);
+        }
+        else
+        {
+            GameManager.instance.CreateFloatingMessage("Блинк!", Color.white, GameManager.instance.player.transform.position);
+        }
+
         Destroy(gameObject);
     }
 }

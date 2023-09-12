@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tompson
   m_EditorClassIdentifier: 
   weaponName: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442 \u0422\u043E\u043C\u043F\u0441\u043E\u043D\u0430"
+  weaponNameEng: Tompson
   weaponType: 0
   damage: 8
   fireRate: 12
@@ -31,6 +32,17 @@ MonoBehaviour:
     m_Bits: 0
   splitTimes: 0
   splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
   ignite: 0
   damageBurn: 0
   cooldownBurn: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShotGun
   m_EditorClassIdentifier: 
   weaponName: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
+  weaponNameEng: Shotgun
   weaponType: 3
   damage: 15
   fireRate: 1.5
@@ -31,6 +32,17 @@ MonoBehaviour:
     m_Bits: 0
   splitTimes: 7
   splitRecoil: 1
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
   ignite: 0
   damageBurn: 0
   cooldownBurn: 0

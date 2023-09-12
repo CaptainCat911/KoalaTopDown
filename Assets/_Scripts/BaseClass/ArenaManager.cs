@@ -461,6 +461,7 @@ public class ArenaManager : MonoBehaviour
             return;
         GameManager.instance.player.SayText(text);
     }
+
     // Eng версия
     public void SayTextPlayerEng(string text)
     {
@@ -469,6 +470,10 @@ public class ArenaManager : MonoBehaviour
         GameManager.instance.player.SayText(text);
     }
 
+    public void PlayerLookAt(Transform transform)
+    {
+        GameManager.instance.player.LookAt(transform);
+    }
 
 
     // Свет для 3-го лвл

@@ -45,6 +45,21 @@ public class AmmoPackKoala : MonoBehaviour
     {
         if (LanguageManager.instance.eng)
         {
+            foreach (AmmoPackStore pack in ammoWeapons)
+            {
+                pack.MakeNameEng();
+            }
+
+            foreach (AmmoPackStore pack in ammoMeleeWeapons)
+            {
+                pack.MakeNameEng();
+            }
+
+            foreach (AmmoPackStore pack in ammoBombs)
+            {
+                pack.MakeNameEng();
+            }
+
             ammo = ammoEng;
             bomb = bombEng;
             buyed = buyedEng;

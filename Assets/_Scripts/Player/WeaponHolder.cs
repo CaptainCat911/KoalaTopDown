@@ -37,8 +37,8 @@ public class WeaponHolder : MonoBehaviour
             i++;
         }
         SelectWeapon();                                 // выбираем оружие*/
-        if (GameManager.instance.firstLevel)
-            Invoke(nameof(SwapWeapon), 0.1f);               // чтобы при первой загрузке в руках было мили оружие
+/*        if (GameManager.instance.firstLevel)
+            Invoke(nameof(SwapWeapon), 0.1f);               // чтобы при первой загрузке в руках было мили оружие*/
     }
 
     private void Update()

@@ -19,7 +19,7 @@ public class ShopWeaponControl : MonoBehaviour
     {
         if (LanguageManager.instance.eng)
         {
-            textWeaponName.text = weaponNameEng;
+            textWeaponName.text = weaponNameEng;        // называем оружие
         }
         else
         {
@@ -33,7 +33,7 @@ public class ShopWeaponControl : MonoBehaviour
 
         if (LanguageManager.instance.eng)
         {
-            sellTextEng.SetActive(true);
+            sellTextEng.SetActive(true);        // текст, что оружие куплено
         }
         else
         {

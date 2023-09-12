@@ -86,6 +86,7 @@ public class Player : Fighter
 
     [Header("Чат-таунт")]
     public string[] chatTexts;
+    public string[] chatTextsEng;
 
     public bool noAim;                      // для дебага
     public bool cheatOn;                    // читы для дебага
@@ -464,6 +465,34 @@ public class Player : Fighter
             animator.SetFloat("Speed", 1);      
         else
             animator.SetFloat("Speed", 0);
+    }
+
+
+
+
+    public void LookAt(Transform friendTarget)
+    {
+        Vector3 targetDirection = friendTarget.transform.position - transform.position;           // угол между целью и pivot оружия          
+        float targetAnglePivot = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;     // находим угол в градусах             
+
+         // Флип спрайта игрока
+        if (Mathf.Abs(targetAnglePivot) > 90 && rightFlip)
+        {
+            needFlip = true;
+            leftFlip = true;
+            rightFlip = false;
+        }
+        if (Mathf.Abs(targetAnglePivot) <= 90 && leftFlip)
+        {
+            needFlip = true;
+            rightFlip = true;
+            leftFlip = false;
+        }
+        if (needFlip)
+        {
+            Flip();
+            hitBoxPivot.Flip();
+        }
     }
 
 

@@ -12,4 +12,9 @@ public class AmmoPackStore
     public int goldPriseAmmo;
     public int ammoInReload;
     public int allAmmo;    
+
+    public void MakeNameEng()
+    {
+        name = nameEng;
+    }
 }

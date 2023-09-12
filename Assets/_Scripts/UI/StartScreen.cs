@@ -16,6 +16,7 @@ public class StartScreen : MonoBehaviour
     public GameObject continueButtonEng;        // кнопка продолжения игры
     public GameObject kontrakt;                 // страница контракта
     public GameObject loading;                  // картинка загрузки
+    public GameObject loadingEng;                  // картинка загрузки
     public Animator screenAnimator;
 
     private void Awake()
@@ -28,11 +29,12 @@ public class StartScreen : MonoBehaviour
     }
 
     private void Start()
-    {      
+    {
         /*        if (eng)
                     menuEng.SetActive(true);
                 else
-                    menuRu.SetActive(true);*/        
+                    menuRu.SetActive(true);*/
+        StartScreenAnimation();
     }
 
     public void StartScreenAnimation()
@@ -78,6 +80,7 @@ public class StartScreen : MonoBehaviour
         string sceneLoad = PlayerPrefs.GetString("SceneName");  // загружаем название сцены из сохранения
         PlayerPrefs.SetInt("LoadPlayerData", 1);                // для загрузки пар-ов игрока
         loading.SetActive(true);                                // пошла загрузка        
+        loadingEng.SetActive(true);                             // пошла загрузка        
         SceneManager.LoadScene(sceneLoad);                      // загружаем сцену
     }
 

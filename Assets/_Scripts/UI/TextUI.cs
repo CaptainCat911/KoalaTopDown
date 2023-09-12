@@ -130,19 +130,18 @@ public class TextUI : MonoBehaviour
         if (GameManager.instance.player.weaponHolder.currentWeapon)
         {
             weaponName.text = GameManager.instance.player.weaponHolder.currentWeaponName;           // название текущего оружия
+
             if (GameManager.instance.player.weaponHolder.meleeWeapon)                               // если оружие мили
                 ammoRangeWeapon.text = "-";                                                         // выводим "-" в баре патронов
             else
-                ammoRangeWeapon.text = GameManager.instance.ammoManager.ammoWeapons[GameManager.instance.
-                    player.weaponHolder.currentWeapon.weaponIndexForAmmo].allAmmo.ToString("0");    // находим кол-во патронов текущего оружия
+                ammoRangeWeapon.text = GameManager.instance.ammoManager.ammoWeapons[GameManager.instance.player.weaponHolder.currentWeapon.weaponIndexForAmmo].allAmmo.ToString("0");    // находим кол-во патронов текущего оружия
         }
 
         // Активная бомба
         if (GameManager.instance.player.bombWeaponHolder.currentWeapon)
         {
             bombName.text = GameManager.instance.player.bombWeaponHolder.currentWeaponName;
-            ammoBomb.text = GameManager.instance.ammoManager.ammoBombs[GameManager.instance.
-                    player.bombWeaponHolder.currentWeapon.weaponIndexForAmmo].allAmmo.ToString("0");       // находим кол-во патронов текущего оружия
+            ammoBomb.text = GameManager.instance.ammoManager.ammoBombs[GameManager.instance.player.bombWeaponHolder.currentWeapon.weaponIndexForAmmo].allAmmo.ToString("0");       // находим кол-во патронов текущего оружия
         }
 
         // Арена

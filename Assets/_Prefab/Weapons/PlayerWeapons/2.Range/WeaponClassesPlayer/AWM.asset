@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AWM
   m_EditorClassIdentifier: 
   weaponName: "\u0410\u0412\u041C"
+  weaponNameEng: AWM
   weaponType: 0
   damage: 130
   fireRate: 1.5
@@ -31,6 +32,17 @@ MonoBehaviour:
     m_Bits: 0
   splitTimes: 0
   splitRecoil: 0
+  withExplousion: 0
+  layerExplousion:
+    serializedVersion: 2
+    m_Bits: 0
+  damageExpl: 0
+  radiusExpl: 0
+  pushForceExpl: 0
+  expEffect: {fileID: 0}
+  sparksEffect: {fileID: 0}
+  cameraAmplitudeShake: 3
+  cameraTimedeShake: 0.1
   ignite: 0
   damageBurn: 0
   cooldownBurn: 0

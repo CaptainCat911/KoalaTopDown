@@ -104,9 +104,15 @@ public class GameManager : MonoBehaviour
         {            
             ammoManager.TakeMeleeWeapon(0);
             ammoManager.TakeRangeWeapon(0);
+            Invoke(nameof(SwapWeaponPlayer), 0.1f);
             SaveData();
             firstLevel = false;
         }
+    }
+
+    void SwapWeaponPlayer()
+    {
+        player.weaponHolder.SwapWeapon();
     }
 
     public void Update()
@@ -124,8 +130,6 @@ public class GameManager : MonoBehaviour
             ammoManager.TakeRangeWeapon(7);
             ammoManager.TakeRangeWeapon(8);
             ammoManager.TakeRangeWeapon(9);
-            //ammoManager.TakeRangeWeapon(10);
-            //ammoManager.TakeRangeWeapon(11);
 
             ammoManager.TakeBomb(1);
             ammoManager.TakeBomb(2);
@@ -183,13 +187,27 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             // Делаем чат
-            ChatBubble.Clear(player.gameObject);            
-            while (prevNumber == chatRandom)
+            ChatBubble.Clear(player.gameObject);
+
+            if (LanguageManager.instance.eng)
             {
-                chatRandom = Random.Range(0, player.chatTexts.Length);
+                while (prevNumber == chatRandom)
+                {
+                    chatRandom = Random.Range(0, player.chatTextsEng.Length);
+                }
+                prevNumber = chatRandom;
+                ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), player.chatTextsEng[chatRandom], 2f);
             }
-            prevNumber = chatRandom;            
-            ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), player.chatTexts[chatRandom], 2f);
+            else
+            {
+                while (prevNumber == chatRandom)
+                {
+                    chatRandom = Random.Range(0, player.chatTexts.Length);
+                }
+                prevNumber = chatRandom;
+                ChatBubble.Create(player.transform, new Vector3(0.2f, 0.2f), player.chatTexts[chatRandom], 2f);
+            }
+
             
             // Триггер врагов
             Collider2D[] collidersHits = Physics2D.OverlapCircleAll(player.transform.position, 20);         // создаем круг в позиции игрока с радиусом (возможно стоит добавить слой (сейчас задевает ботов тоже))
