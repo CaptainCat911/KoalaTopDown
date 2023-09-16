@@ -361,11 +361,11 @@ public class ArenaManager : MonoBehaviour
             }
             if (i == 20)
             {
-                StartResEnemy(0);
+                //StartResEnemy(0);
                 arenaMaxBosses = 0;             
-                arenaMaxEnemys = 30;
+                arenaMaxEnemys = 20;
                 StartMegaBoss();
-                GameManager.instance.CreateFloatingMessage("Ну всё, шутки в сторону", Color.white, GameManager.instance.player.transform.position);
+                //GameManager.instance.CreateFloatingMessage("Ну всё, шутки в сторону", Color.white, GameManager.instance.player.transform.position);
             }
 
             // тут ещё темного босса добавить

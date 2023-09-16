@@ -36,6 +36,7 @@ public class NPC : BotAI
 
     [Header("Текст чата")]
     public string[] textToSay;      // текст для диалога
+    public string[] textToSayEng;   // текст для диалога
     int dialogeNumber;              // номер диалога
     bool isTextDone;                // проговорили весь текст
 
@@ -184,7 +185,15 @@ public class NPC : BotAI
         if (!isTextDone)                            // если не проговорили весь текст
         {
             ChatBubble.Clear(gameObject);           // очищаем диалог
-            ChatBubble.Create(transform, new Vector3(0f, 0.2f), textToSay[dialogeNumber], 4f);     // говорим     
+
+            if (LanguageManager.instance.eng)
+            {
+                ChatBubble.Create(transform, new Vector3(0f, 0.2f), textToSayEng[dialogeNumber], 4f);     // говорим  
+            }
+            else
+            {
+                ChatBubble.Create(transform, new Vector3(0f, 0.2f), textToSay[dialogeNumber], 4f);     // говорим  
+            }               
 
             dialogeNumber++;                        // + к номеру диалога
 
