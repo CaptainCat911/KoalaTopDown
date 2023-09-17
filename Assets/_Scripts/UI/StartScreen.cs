@@ -30,11 +30,12 @@ public class StartScreen : MonoBehaviour
 
     private void Start()
     {
+
         /*        if (eng)
                     menuEng.SetActive(true);
                 else
                     menuRu.SetActive(true);*/
-        StartScreenAnimation();
+        //StartScreenAnimation();
     }
 
     public void StartScreenAnimation()
