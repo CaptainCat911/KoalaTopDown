@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: weapons.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2954053475124329250, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3439175739737448509, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -132,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 6659531816541181763, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
       propertyPath: bubbleTexts.Array.data[2]
       value: "\u0412\u043D\u0438\u043C\u0430\u043D\u0438\u0435: \u041A\u043E\u0434
-        11 - \u0432\u044B\u0445\u043E\u0434 \u0437\u0430 \u0442\u0435\u043A\u0441\u0442\u0443\u0440\u044B"
+        11 - \u0432\u044B\u0445\u043E\u0434 \u0437\u0430 \u0442\u0435\u043A\u0441\u0442\u0443\u0440\u044B."
       objectReference: {fileID: 0}
     - target: {fileID: 6659531816541181763, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
       propertyPath: bubbleTexts.Array.data[3]
@@ -143,6 +147,26 @@ PrefabInstance:
       propertyPath: bubbleTexts.Array.data[4]
       value: "\u041D\u0435\u0437\u0430\u043A\u043E\u043D\u043D\u044B\u0439 \u0432\u044B\u0445\u043E\u0434
         \u0437\u0430 \u0442\u0435\u043A\u0441\u0442\u0443\u0440\u044B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659531816541181763, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
+      propertyPath: bubbleTextsEng.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659531816541181763, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
+      propertyPath: bubbleTextsEng.Array.data[0]
+      value: Stop! Texture police!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659531816541181763, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
+      propertyPath: bubbleTextsEng.Array.data[1]
+      value: Get back to textures immediately!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659531816541181763, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
+      propertyPath: bubbleTextsEng.Array.data[2]
+      value: 'Attention: Code 11 - texture overrun.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659531816541181763, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
+      propertyPath: bubbleTextsEng.Array.data[3]
+      value: Return to the playing area immediately!
       objectReference: {fileID: 0}
     - target: {fileID: 8942709564587893664, guid: 3b5fab30a735d0d42ab742dce1f3cdf9, type: 3}
       propertyPath: m_AnchorMax.x

@@ -322,7 +322,7 @@ public class BotAIWeaponMelee : MonoBehaviour
                         if (raycast)
                             FireRayCast();*/
 
-            RangeAttack();
+            RangeAttackForMultiAttack();                            // ренж атака но без звука
 
             // Возвращаем
             if (i % 2 == 1)
@@ -335,6 +335,22 @@ public class BotAIWeaponMelee : MonoBehaviour
         {
             audioSource.clip = audioWeapon.hitMultiRange;                 // звук 
             audioSource.Play();
+        }
+    }
+    void RangeAttackForMultiAttack()
+    {
+        //float randomBulletX = Random.Range(-recoilX, recoilX);                                              // разброс стрельбы
+        //firePoint.Rotate(0, 0, randomBulletX);                                                              // тупо вращаем
+        GameObject bullet = Instantiate(bulletPrefab, hitBox.transform.position, hitBox.transform.rotation);              // создаем префаб снаряда с позицией и поворотом якоря
+        bullet.GetComponent<Bullet>().damage = damageRange;                                                      // присваиваем урон снаряду
+        bullet.GetComponent<Bullet>().pushForce = pushForceRange;                                                // присваиваем силу толчка снаряду
+        bullet.GetComponent<Rigidbody2D>().AddForce(hitBox.transform.right * projctleSpeed, ForceMode2D.Impulse);              // даём импульс        
+        //botAI.ForceBackFire(firePoint.transform.position, forceBackFire);                                   // даём отдачу оружия
+        //firePoint.Rotate(0, 0, -randomBulletX);                                                             // и тупо возвращаем поворот
+        if (botAI.isFriendly)
+        {
+            bullet.layer = LayerMask.NameToLayer("BulletPlayer");       // слой пули
+            bullet.GetComponent<Bullet>().layerExplousion = LayerMask.GetMask("Enemy", "ObjectsDestroyble", "Default");
         }
     }
 
