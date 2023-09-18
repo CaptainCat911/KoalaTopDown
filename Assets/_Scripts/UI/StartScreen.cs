@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour
 {
+    public AudioSource audioSource;             // аудиосорс
+
+    public GameObject startLanguageMenu;        // стартовое меню для языков
+
     public GameObject menuEng;
     public GameObject menuRu;
     public string[] sceneNames;                 // все сцены
@@ -30,12 +34,37 @@ public class StartScreen : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt("Language") == 0)
+        {
+            startLanguageMenu.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("Language") == 1)        // англ
+        {
+            menuEng.SetActive(true);
+            StartMusic();
+            StartScreenAnimation();
+            LanguageManager.instance.MakeEng(true);
+        }
+        if (PlayerPrefs.GetInt("Language") == 2)        // ру
+        {
+            menuRu.SetActive(true);
+            StartMusic();
+            StartScreenAnimation();
+            LanguageManager.instance.MakeEng(false);
+        }
+
 
         /*        if (eng)
                     menuEng.SetActive(true);
                 else
                     menuRu.SetActive(true);*/
         //StartScreenAnimation();
+    }
+    
+
+    public void StartMusic()
+    {
+        audioSource.Play();
     }
 
     public void StartScreenAnimation()
@@ -87,7 +116,12 @@ public class StartScreen : MonoBehaviour
 
     void ClearPrefs()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();                    // стираем сохранения, но запоминаем язык
+        if (LanguageManager.instance.eng)
+            PlayerPrefs.SetInt("Language", 1);      // язык англ
+        else
+            PlayerPrefs.SetInt("Language", 2);      // язык ру
+
     }
 
     public void ExitGame()

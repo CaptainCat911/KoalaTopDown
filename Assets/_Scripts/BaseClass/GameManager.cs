@@ -470,7 +470,7 @@ public class GameManager : MonoBehaviour
 
         // Бомбы
         for (int i = 0; i < PlayerPrefs.GetInt("PlayerBombCount"); i++)              // для кол-ва ренж оружия
-        {
+        {            
             ammoManager.TakeBomb(PlayerPrefs.GetInt("PlayerBomb" + i));       // даём оружие по индексу
             ammoManager.ammoBombs[PlayerPrefs.GetInt("PlayerBomb" + i)].allAmmo = PlayerPrefs.GetInt("PlayerBombAmmo" + i);
         }
@@ -511,7 +511,7 @@ public class GameManager : MonoBehaviour
         // Бомбы
         PlayerPrefs.SetInt("PlayerBombCount", player.bombsIndex.Count);             // всего видов бомб
         for (int i = 0; i < player.bombsIndex.Count; i++)                           // сохраняем бомбы
-        {
+        {            
             PlayerPrefs.SetInt("PlayerBomb" + i, player.bombsIndex[i]);   // сохраняем индекс для каждого оружия
             PlayerPrefs.SetInt("PlayerBombAmmo" + i, ammoManager.ammoBombs[player.bombsIndex[i]].allAmmo);   // сохраняем индекс для каждого оружия
         }

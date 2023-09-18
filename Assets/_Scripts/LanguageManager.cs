@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LanguageManager : MonoBehaviour
 {
@@ -22,5 +23,9 @@ public class LanguageManager : MonoBehaviour
     public void MakeEng(bool status)
     {
         eng = status;
+        if (status)
+            PlayerPrefs.SetInt("Language", 1);      // язык англ
+        else
+            PlayerPrefs.SetInt("Language", 2);      // язык ру
     }
 }
