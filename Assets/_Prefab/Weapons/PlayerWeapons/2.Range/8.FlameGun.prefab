@@ -142,6 +142,7 @@ MonoBehaviour:
   weaponIndexForAmmo: 8
   ammo: 0
   weaponName: 
+  weaponNameEng: 
   fireRate: 15
   nextTimeToFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
@@ -169,7 +170,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b8d2b78f53eef234ab01361f593ba3f7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -265,7 +266,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7f64d2003c37e1a449dd64c833806feb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
