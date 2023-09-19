@@ -7,6 +7,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;         // инстанс
+
+    public bool testBuild;
+
     public bool forYG;                          // для яндекс игр    
     public bool startScreen;                    // для стартскрина
     public bool showDamage;                     // показывать урон    
@@ -117,26 +120,36 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (testBuild)
         {
-            ammoManager.TakeMeleeWeapon(1);
-            ammoManager.TakeMeleeWeapon(2);
-            ammoManager.TakeMeleeWeapon(3);
-            ammoManager.TakeMeleeWeapon(4);
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                ammoManager.TakeMeleeWeapon(1);
+                ammoManager.TakeMeleeWeapon(2);
+                ammoManager.TakeMeleeWeapon(3);
+                ammoManager.TakeMeleeWeapon(4);
 
-            ammoManager.TakeRangeWeapon(4);
-            ammoManager.TakeRangeWeapon(5);
-            ammoManager.TakeRangeWeapon(6);
-            ammoManager.TakeRangeWeapon(7);
-            ammoManager.TakeRangeWeapon(8);
-            ammoManager.TakeRangeWeapon(9);
+                ammoManager.TakeRangeWeapon(4);
+                ammoManager.TakeRangeWeapon(5);
+                ammoManager.TakeRangeWeapon(6);
+                ammoManager.TakeRangeWeapon(7);
+                ammoManager.TakeRangeWeapon(8);
+                ammoManager.TakeRangeWeapon(9);
 
-            ammoManager.TakeBomb(1);
-            ammoManager.TakeBomb(2);
+                ammoManager.TakeBomb(1);
+                ammoManager.TakeBomb(2);
 
-            player.withShield = true;
-            player.withGoldMagnet = true;
+                player.withShield = true;
+                player.withGoldMagnet = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                ClearPrefs();
+            }
         }
+
+
 
         /*        if (Input.GetKeyDown(KeyCode.I))
                 {

@@ -158,6 +158,8 @@ public class BotAI : Fighter
         agent.updateUpAxis = false;             //
         agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть
 
+        startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
+
         //MakeLeft();
 
         //distanceToAttack = defaultRangeToTarget;
@@ -171,7 +173,6 @@ public class BotAI : Fighter
     public override void Start()
     {
         base.Start();
-        startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
         startTriigerLenght = triggerLenght;                                                                 // стартовая длинна тригера
         if (skeletonResble && resTimes > 0 && resMagicEffect)
             resMagicEffect.Play();

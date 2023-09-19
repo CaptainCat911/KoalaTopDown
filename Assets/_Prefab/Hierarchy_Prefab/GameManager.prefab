@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f72ae981ff9d214aa748a69d88a9417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testBuild: 1
+  forYG: 0
   startScreen: 0
   showDamage: 0
   sceneNames:
@@ -63,6 +65,9 @@ MonoBehaviour:
   playerInResroom: 0
   playerAtTarget: 0
   musicOff: 0
+  screenShakeOff: 0
+  currentSceneName: 
+  firstLevel: 0
   keyToUse: 101
   gold: 1000
   keys: 000000000000000000000000

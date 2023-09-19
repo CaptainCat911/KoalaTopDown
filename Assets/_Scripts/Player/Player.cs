@@ -177,22 +177,26 @@ public class Player : Fighter
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.O) && Input.GetKey(KeyCode.LeftShift))
+        if (GameManager.instance.testBuild)
         {
-            cheatOn = true;
-            blink = true;
-            blinkWithExplousion = true;
-            blinkOutDamage = 1000;
-            blinkRate = 4;
-            bootsMod = true;
-            bootsEnergy = 10000;
-            GameManager.instance.gold = 100000;
-        }
+            if (Input.GetKeyDown(KeyCode.O) && Input.GetKey(KeyCode.LeftShift))
+            {
+                cheatOn = true;
+                blink = true;
+                blinkWithExplousion = true;
+                blinkOutDamage = 1000;
+                blinkRate = 4;
+                bootsMod = true;
+                bootsEnergy = 10000;
+                GameManager.instance.gold = 100000;
+            }
 
-        if (Input.GetKeyDown(KeyCode.K) && cheatOn)
-        {
-            Vskritsya();
+            if (Input.GetKeyDown(KeyCode.K) && cheatOn)
+            {
+                Vskritsya();
+            }
         }
+  
 
         /*        if (Input.GetKeyDown(KeyCode.V))
                 {

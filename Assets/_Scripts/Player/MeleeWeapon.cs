@@ -75,6 +75,10 @@ public class MeleeWeapon : MonoBehaviour
         animator = GetComponentInParent<Animator>();        
     }
 
+    private void OnDisable()
+    {
+        trail.emitting = false;
+    }
 
     void Update()
     {

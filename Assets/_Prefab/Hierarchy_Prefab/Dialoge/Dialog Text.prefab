@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7095226281707898265}
   - component: {fileID: 7095226281707898264}
   - component: {fileID: 7095226281707898266}
+  - component: {fileID: 3600693583584063687}
   m_Layer: 5
   m_Name: Dialog Text
   m_TagString: Untagged
@@ -69,8 +70,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f5ee05f8ee5b1174dbf8bc608f4642d5, type: 2}
-  m_sharedMaterial: {fileID: -121903471677059638, guid: f5ee05f8ee5b1174dbf8bc608f4642d5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b632135ad9c4f6c48986c76bd095f7d8, type: 2}
+  m_sharedMaterial: {fileID: 269402728868971353, guid: b632135ad9c4f6c48986c76bd095f7d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -156,3 +157,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3600693583584063687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095226281707898270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed57967c52645d390a89dcf8f61ba73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  SpeedMultiplier: 1
+  CurveScale: 1
