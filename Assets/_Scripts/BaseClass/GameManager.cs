@@ -129,6 +129,9 @@ public class GameManager : MonoBehaviour
                 ammoManager.TakeMeleeWeapon(3);
                 ammoManager.TakeMeleeWeapon(4);
 
+                ammoManager.TakeRangeWeapon(1);
+                ammoManager.TakeRangeWeapon(2);
+                ammoManager.TakeRangeWeapon(3);
                 ammoManager.TakeRangeWeapon(4);
                 ammoManager.TakeRangeWeapon(5);
                 ammoManager.TakeRangeWeapon(6);
