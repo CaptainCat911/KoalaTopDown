@@ -376,7 +376,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.35
-  m_Speed: 2
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -405,7 +405,7 @@ MonoBehaviour:
   isAlive: 1
   isImmortal: 0
   currentHealth: 0
-  maxHealth: 70
+  maxHealth: 100
   noAgro: 0
   player: 0
   isGoodPerson: 0

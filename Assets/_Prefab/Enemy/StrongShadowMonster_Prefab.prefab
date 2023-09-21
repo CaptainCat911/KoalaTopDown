@@ -312,6 +312,9 @@ MonoBehaviour:
   noPatrol: 1
   noTriggerAgro: 0
   turnLeft: 0
+  changeLight: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  intensity: 0
 --- !u!1001 &172864083307572925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -463,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1990683396309506738, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: maxHealth
-      value: 1500
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 1990683396309506738, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: darkEffect
@@ -567,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7964817913752860295, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
       propertyPath: m_InstanceId
-      value: -147414
+      value: -662912
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c6b1af42aabf604f8d3c7c803cdf497, type: 3}
