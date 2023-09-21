@@ -214,7 +214,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.3
-  m_Speed: 2.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -243,7 +243,7 @@ MonoBehaviour:
   isAlive: 1
   isImmortal: 0
   currentHealth: 0
-  maxHealth: 120
+  maxHealth: 170
   noAgro: 0
   player: 0
   isGoodPerson: 0
@@ -307,11 +307,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   withBigExplousion: 0
+  damageBigExplousion: 0
   fastDeathAnim: 0
   timeForDeath: 0.8
   deathEffect: {fileID: 7845441016114820387, guid: 63da8428eacb2d64e834aa5b7bf5e82f, type: 3}
   deathCameraShake: 2
   darkEffect: {fileID: 0}
+  resMagicEffect: {fileID: 0}
   makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
@@ -321,12 +323,12 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   lookAtPlayer: 0
-  debug: 0
   bubbleTexts: []
+  bubbleTextsEng: []
   withChat: 0
   audioEnemy: {fileID: 5237709510988062438}
   withAudioChat: 0
-  pozor: 0
+  debug: 0
 --- !u!114 &7772086055373530415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +401,7 @@ MonoBehaviour:
   - {x: 0.15258026, y: -0.21078491, z: 0}
   m_ShapePathHash: 1012902165
   m_Mesh: {fileID: 0}
-  m_InstanceId: 5702914
+  m_InstanceId: 149110
 --- !u!82 &5984834870589312873
 AudioSource:
   m_ObjectHideFlags: 0
@@ -756,7 +758,7 @@ MonoBehaviour:
   lastAttack: 0
   hitBoxRadius: 0.4
   cooldown: 2
-  damage: 5
+  damage: 7
   pushForce: 5
   bulletPrefab: {fileID: 0}
   effectRangeAttack: {fileID: 0}

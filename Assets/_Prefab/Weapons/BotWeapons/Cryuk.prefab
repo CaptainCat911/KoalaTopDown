@@ -79,6 +79,7 @@ MonoBehaviour:
   splitRecoil: 0
   laserDamage: 0
   laserForce: 0
+  laserCooldown: 0
   laserStart: 0
   damageBurn: 0
   cooldownBurn: 0
@@ -310,7 +311,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8109274316236989163
@@ -360,6 +361,14 @@ MonoBehaviour:
   hitStart: {fileID: 8300000, guid: ac3dd2fc5b0387349a8f14dc5419001e, type: 3}
   hitDone: {fileID: 8300000, guid: 744a7714c04d6cb4f9be9760d78dcb10, type: 3}
   hitRange: {fileID: 0}
+  hitRangeBig: {fileID: 0}
+  hitSpawn: {fileID: 0}
+  hitExplousion: {fileID: 0}
+  hitLaser: {fileID: 0}
+  hitGravity: {fileID: 0}
+  hitMultiRange: {fileID: 0}
+  hitTeleport: {fileID: 0}
+  hitTimeReverce: {fileID: 0}
 --- !u!1 &8566253869399279219
 GameObject:
   m_ObjectHideFlags: 0
