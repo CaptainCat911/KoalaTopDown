@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using UnityEngine.UI;
+using YG;
+
 public class StartScreen : MonoBehaviour
 {
+    public bool forYG;
     public AudioSource audioSource;             // аудиосорс
 
     public GameObject startLanguageMenu;        // стартовое меню для языков
@@ -23,17 +27,48 @@ public class StartScreen : MonoBehaviour
     public GameObject loadingEng;                  // картинка загрузки
     public Animator screenAnimator;
 
+    public Text textTest;
+
+
+
+    // Подписываемся на событие GetDataEvent в OnEnable
+    private void OnEnable()
+    {
+        YandexGame.GetDataEvent += GetLoad;       
+    }
+    // Отписываемся от события GetDataEvent в OnDisable
+    private void OnDisable() 
+    { 
+        YandexGame.GetDataEvent -= GetLoad;         
+    }
+
+
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("GameContinue") == 1)        // если есть сохранение
-        {
-            continueButton.SetActive(true);                 // вкл кнопку продолжить
-            continueButtonEng.SetActive(true);              // вкл кнопку продолжить
-        }
+
     }
 
     private void Start()
     {
+        if (forYG)
+        {
+            if (YandexGame.SDKEnabled == true)
+            {
+                // Если запустился, то выполняем Ваш метод для загрузки
+                GetLoad();
+            }
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("GameContinue") == 1)        // если есть сохранение
+            {
+                continueButton.SetActive(true);                 // вкл кнопку продолжить
+                continueButtonEng.SetActive(true);              // вкл кнопку продолжить
+            }
+        }
+
+
+
         if (PlayerPrefs.GetInt("Language") == 0)
         {
             startLanguageMenu.SetActive(true);
@@ -52,15 +87,30 @@ public class StartScreen : MonoBehaviour
             StartScreenAnimation();
             LanguageManager.instance.MakeEng(false);
         }
-
-
-        /*        if (eng)
-                    menuEng.SetActive(true);
-                else
-                    menuRu.SetActive(true);*/
-        //StartScreenAnimation();
     }
-    
+
+    public void GetLoad()
+    {
+        if (YandexGame.savesData.gameContinue)
+        {
+            continueButton.SetActive(true);                 // вкл кнопку продолжить
+            continueButtonEng.SetActive(true);              // вкл кнопку продолжить
+        }
+        textTest.text = YandexGame.savesData.numberStartScene;
+
+        //textMoney.text = YandexGame.savesData.money.ToString();
+    }
+
+    public void MySave()
+    {
+        // Записываем данные в плагин
+        // Например, мы хотил сохранить количество монет игрока:
+        YandexGame.savesData.numberStartScene = textTest.text;
+
+        // Теперь остаётся сохранить данные
+        YandexGame.SaveProgress();
+    }
+
 
     public void StartMusic()
     {
@@ -87,7 +137,19 @@ public class StartScreen : MonoBehaviour
     {
         //GameManager.instance.SaveState();
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
-        ClearPrefs();                                   // сбрасываем сохранения
+
+        if (forYG)
+        {
+            // сброс сохранений
+            YandexGame.savesData.gameContinue = false;
+        }
+        else
+        {
+            ClearPrefs();                                   // сбрасываем сохранения
+        }
+
+       
+
         kontrakt.SetActive(false);
         loading.SetActive(true);
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену        
@@ -107,11 +169,22 @@ public class StartScreen : MonoBehaviour
     // Продолжить игру
     public void LoadData()
     {
-        string sceneLoad = PlayerPrefs.GetString("SceneName");  // загружаем название сцены из сохранения
-        PlayerPrefs.SetInt("LoadPlayerData", 1);                // для загрузки пар-ов игрока
+        if (forYG)
+        {
+            string sceneLoad = YandexGame.savesData.sceneNameToLoad;
+            YandexGame.savesData.loadPlayerData = true;
+            SceneManager.LoadScene(sceneLoad);                      // загружаем сцену
+        }
+        else
+        {
+            string sceneLoad = PlayerPrefs.GetString("SceneName");  // загружаем название сцены из сохранения
+            PlayerPrefs.SetInt("LoadPlayerData", 1);                // для загрузки пар-ов игрока
+            SceneManager.LoadScene(sceneLoad);                      // загружаем сцену
+        }
+
         loading.SetActive(true);                                // пошла загрузка        
         loadingEng.SetActive(true);                             // пошла загрузка        
-        SceneManager.LoadScene(sceneLoad);                      // загружаем сцену
+        
     }
 
     void ClearPrefs()

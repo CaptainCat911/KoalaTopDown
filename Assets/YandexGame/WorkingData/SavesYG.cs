@@ -18,7 +18,14 @@ namespace YG
 
         // Ваши сохранения
 
-        // ...
+        public string numberStartScene = "4";       // тест
+
+
+        public bool gameContinue;                   // продолжить игру
+        public bool loadPlayerData;                 // загрузить пар-ры игрока
+        
+
+        public string sceneNameToLoad;              // сцена для загрузки
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 
