@@ -186,7 +186,7 @@ public class StartScreen : MonoBehaviour
 
     void ClearPrefs()
     {
-        Debug.Log("Clear!");
+        //Debug.Log("Clear!");
         PlayerPrefs.DeleteAll();                    // стираем сохранения, но запоминаем язык
         if (LanguageManager.instance.eng)
             PlayerPrefs.SetInt("Language", 1);      // язык англ

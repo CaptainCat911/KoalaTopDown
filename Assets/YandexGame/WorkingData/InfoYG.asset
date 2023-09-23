@@ -27,7 +27,7 @@ MonoBehaviour:
   fullscreenAdInterval: 60
   durationOfAdSimulation: 0.5
   testErrorOfRewardedAdsInEditor: 0
-  saveCloud: 1
+  saveCloud: 0
   flush: 0
   localSaveSync: 1
   saveCloudInterval: 5
@@ -286,7 +286,7 @@ MonoBehaviour:
     consumed: 1
   metricaEnable: 0
   metricaCounterID: 0
-  debug: 0
+  debug: 1
   archivingBuild: 1
   logoImageFormat: 1
   backgroundImageFormat: 3

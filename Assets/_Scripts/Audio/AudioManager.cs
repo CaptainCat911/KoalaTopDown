@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] bossTrack;
 
     public bool noStartTrack;               // без стартового трека
+    public bool noReplayTrack;              // без повтора
     public float trackVolume;               // громкость треков
     public float speedTrackChange;          // скорость смены
     public float delayTrackChange = 1;      // задержка перед сменой
@@ -53,7 +54,6 @@ public class AudioManager : MonoBehaviour
 
         if (!audioSource.isPlaying && musicGo && Application.isFocused)
         {
-            //if (!Application.isFocused)
             Debug.Log("NextTrackUpdate");
             musicGo = false;
             SetNextTrack();
@@ -78,6 +78,8 @@ public class AudioManager : MonoBehaviour
     {
         SetNewTrack(bossTrack[number]);
         bossTrackGo = true;
+        if (noReplayTrack)
+            return;
         audioSource.loop = true;
     }
     public void UnSetBossTrack()
@@ -106,10 +108,6 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(delayTrackChange);
         volumePlus = false;
     }
-
-
-
-
 
 
 

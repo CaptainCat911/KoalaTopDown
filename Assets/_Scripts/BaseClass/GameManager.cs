@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool testBuild;
 
     public bool forYG;                          // для яндекс игр    
-    public bool offYG;                          // для яндекс игр    
+    //public bool offYG;                          // для яндекс игр    
     public bool withReklamaYG;                  // для яндекс игр    
     public bool startScreen;                    // для стартскрина
     public bool showDamage;                     // показывать урон    
