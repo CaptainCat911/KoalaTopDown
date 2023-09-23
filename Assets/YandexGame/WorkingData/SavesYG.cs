@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace YG
 {
     [System.Serializable]
@@ -23,9 +24,17 @@ namespace YG
 
         public bool gameContinue;                   // продолжить игру
         public bool loadPlayerData;                 // загрузить пар-ры игрока
-        
+        public string sceneNameToLoad;              // сцена для загрузкиd
 
-        public string sceneNameToLoad;              // сцена для загрузки
+        public int playerCurrentHp;                 // хп
+        public int playerGold;                      // золото
+        public int playerPozorCount;                // метки позора
+
+        public int rangeWeaponsCount;
+        public List<int> rangeWeapons;
+        public List<int> rangeWeaponsAmmo;
+
+
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 

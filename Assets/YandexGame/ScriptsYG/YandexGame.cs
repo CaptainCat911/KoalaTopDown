@@ -104,7 +104,7 @@ namespace YG
 
         private void Awake()
         {
-            if (GameManager.instance && !GameManager.instance.forYG)
+            if (GameManager.instance && GameManager.instance.offYG)
             {
                 gameObject.SetActive(false);
                 return;

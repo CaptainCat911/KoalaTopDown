@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool testBuild;
 
     public bool forYG;                          // для яндекс игр    
+    public bool offYG;                          // для яндекс игр    
+    public bool withReklamaYG;                  // для яндекс игр    
     public bool startScreen;                    // для стартскрина
     public bool showDamage;                     // показывать урон    
     public string[] sceneNames;                 // все сцены
@@ -89,33 +91,39 @@ public class GameManager : MonoBehaviour
         
         instance = this;                                // присваем instance (?) этому обьекту и по ивенту загрузки запускаем функцию загрузки
         SceneManager.sceneLoaded += OnSceneLoaded;      // при загрузке сцены выполнится эта += функция
+
+        if (PlayerPrefs.GetInt("GameContinue") == 0)        // продолжить игру
+        {
+            firstLevel = true;
+            //Debug.Log("FirstLevel!");
+        }
     }
 
 
     // Подписываемся на событие GetDataEvent в OnEnable
     private void OnEnable()
     {
-        YandexGame.GetDataEvent += StartYG;
+        //YandexGame.GetDataEvent += StartYG;
     }
     // Отписываемся от события GetDataEvent в OnDisable
     private void OnDisable()
     {
-        YandexGame.GetDataEvent -= StartYG;
+        //YandexGame.GetDataEvent -= StartYG;
     }
 
     private void Start()
     {
+        //Debug.Log(PlayerPrefs.GetInt("GameContinue"));
+
         // Продолжаем игру или 1-й раз
         if (forYG)
         {
-            StartYG();
+            //StartYG();
         }
         else
         {
-            if (PlayerPrefs.GetInt("GameContinue") == 0)        // продолжить игру
-            {
-                firstLevel = true;
-            }
+            //Debug.Log("No for YG");
+
             if (firstLevel)
             {
                 ammoManager.TakeMeleeWeapon(0);
@@ -129,6 +137,12 @@ public class GameManager : MonoBehaviour
 
     public void StartYG()
     {
+        //Debug.Log("StartYG!");
+        if (!YandexGame.SDKEnabled)
+        {
+            return;
+        }
+
         if (!YandexGame.savesData.gameContinue)
         {
             firstLevel = true;
@@ -138,8 +152,9 @@ public class GameManager : MonoBehaviour
             ammoManager.TakeMeleeWeapon(0);
             ammoManager.TakeRangeWeapon(0);
             Invoke(nameof(SwapWeaponPlayer), 0.1f);
-            SaveDataYG();
+            Invoke(nameof(SaveDataYG), 0.1f);            
             firstLevel = false;
+            //Debug.Log("Weapons!");
         }
 
         // Загрузка
@@ -287,7 +302,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            //NextScene(4);
+            NextScene(2);
         }     
 
             
@@ -491,7 +506,7 @@ public class GameManager : MonoBehaviour
 
         if (forYG)
         {
-            // делаем это в StartYG()
+            StartYG();
         }
         else
         {
@@ -548,16 +563,18 @@ public class GameManager : MonoBehaviour
 
     void LoadDataYG()
     {
-        /*        player.currentHealth = PlayerPrefs.GetInt("PlayerCurrentHp");       // хп
-                gold = PlayerPrefs.GetInt("PlayerGold");                            // золото
-                pozorCount = PlayerPrefs.GetInt("PlayerPozorCount");                // метки позора
+        player.currentHealth = YandexGame.savesData.playerCurrentHp;        // хп
+        gold = YandexGame.savesData.playerGold;                             // золото
+        pozorCount = YandexGame.savesData.playerPozorCount;                 // метки позора
 
-                // Ренж оружие
-                for (int i = 0; i < PlayerPrefs.GetInt("PlayerRangeWeaponCount"); i++)              // для кол-ва ренж оружия
-                {
-                    ammoManager.TakeRangeWeapon(PlayerPrefs.GetInt("PlayerRangeWeapon" + i));       // даём оружие по индексу
-                    ammoManager.ammoWeapons[PlayerPrefs.GetInt("PlayerRangeWeapon" + i)].allAmmo = PlayerPrefs.GetInt("PlayerRangeWeaponAmmo" + i);
-                }
+        // Ренж оружие
+        for (int i = 0; i < YandexGame.savesData.rangeWeaponsCount; i++)            // для кол-ва ренж оружия
+        {
+            ammoManager.TakeRangeWeapon(YandexGame.savesData.rangeWeapons[i]);      // даём оружие по индексу
+            ammoManager.ammoWeapons[YandexGame.savesData.rangeWeapons[i]].allAmmo = YandexGame.savesData.rangeWeaponsAmmo[i];
+        }
+
+        /*      
 
                 // Мили оружие
                 for (int i = 0; i < PlayerPrefs.GetInt("PlayerMeleeWeaponCount"); i++)              // для кол-ва ренж оружия
@@ -632,18 +649,22 @@ public class GameManager : MonoBehaviour
         currentSceneName = SceneManager.GetActiveScene().name;          // находим название текущей сцены
         YandexGame.savesData.sceneNameToLoad = currentSceneName;
 
+        YandexGame.savesData.playerCurrentHp = player.currentHealth;    // сохраняем хп игрока
+        YandexGame.savesData.playerGold = gold;                         // сохраняем золото
+        YandexGame.savesData.playerPozorCount = pozorCount;             // сохраняем метки позора
 
-        /*        PlayerPrefs.SetInt("PlayerCurrentHp", player.currentHealth);    // сохраняем хп игрока
-                PlayerPrefs.SetInt("PlayerGold", gold);                         // сохраняем золото
-                PlayerPrefs.SetInt("PlayerPozorCount", pozorCount);             // сохраняем метки позора
+        // Ренж оружие
+        YandexGame.savesData.rangeWeaponsCount = player.rangeWeaponsIndex.Count;        // всего ренж оружия
+        for (int i = 0; i < player.rangeWeaponsIndex.Count; i++)                        // сохраняем ренж оружия
+        {
+            YandexGame.savesData.rangeWeapons.Add(player.rangeWeaponsIndex[i]);         // сохраняем индекс для каждого оружия
+            YandexGame.savesData.rangeWeaponsAmmo.Add(ammoManager.ammoWeapons[player.rangeWeaponsIndex[i]].allAmmo);   // сохраняем индекс для каждого оружия
+        }
+        Debug.Log(YandexGame.savesData.rangeWeapons[1]);
 
-                // Ренж оружие
-                PlayerPrefs.SetInt("PlayerRangeWeaponCount", player.rangeWeaponsIndex.Count);   // всего ренж оружия
-                for (int i = 0; i < player.rangeWeaponsIndex.Count; i++)                      // сохраняем ренж оружия
-                {
-                    PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
-                    PlayerPrefs.SetInt("PlayerRangeWeaponAmmo" + i, ammoManager.ammoWeapons[player.rangeWeaponsIndex[i]].allAmmo);   // сохраняем индекс для каждого оружия
-                }
+        /*      
+
+
 
                 // Мили оружие
                 PlayerPrefs.SetInt("PlayerMeleeWeaponCount", player.meleeWeaponsIndex.Count);   // всего мили оружия

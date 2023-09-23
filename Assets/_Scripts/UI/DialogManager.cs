@@ -92,7 +92,7 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog()
     {
-        if (GameManager.instance.forYG)
+        if (GameManager.instance.withReklamaYG)
             YandexGame.FullscreenShow();
         goInteractAction.Invoke();          // ивент при старте диалога
         skipButton.SetActive(true);         // включаем кнопку пропуска диалога

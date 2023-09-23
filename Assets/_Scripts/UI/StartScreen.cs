@@ -146,9 +146,7 @@ public class StartScreen : MonoBehaviour
         else
         {
             ClearPrefs();                                   // сбрасываем сохранения
-        }
-
-       
+        }       
 
         kontrakt.SetActive(false);
         loading.SetActive(true);
@@ -183,12 +181,12 @@ public class StartScreen : MonoBehaviour
         }
 
         loading.SetActive(true);                                // пошла загрузка        
-        loadingEng.SetActive(true);                             // пошла загрузка        
-        
+        loadingEng.SetActive(true);                             // пошла загрузка         
     }
 
     void ClearPrefs()
     {
+        Debug.Log("Clear!");
         PlayerPrefs.DeleteAll();                    // стираем сохранения, но запоминаем язык
         if (LanguageManager.instance.eng)
             PlayerPrefs.SetInt("Language", 1);      // язык англ

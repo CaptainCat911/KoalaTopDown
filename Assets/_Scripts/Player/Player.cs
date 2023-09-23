@@ -697,7 +697,7 @@ public class Player : Fighter
 
     void Resurrection()
     {
-        if (GameManager.instance.forYG)
+        if (GameManager.instance.withReklamaYG)
             YandexGame.FullscreenShow();
         isAlive = true;
         currentHealth = maxHealth;
