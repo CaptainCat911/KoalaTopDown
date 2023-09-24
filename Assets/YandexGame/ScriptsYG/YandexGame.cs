@@ -104,12 +104,6 @@ namespace YG
 
         private void Awake()
         {
-/*            if (GameManager.instance && GameManager.instance.offYG)
-            {
-                gameObject.SetActive(false);
-                return;
-            }*/
-
             transform.SetParent(null);
             gameObject.name = "YandexGame";
 
