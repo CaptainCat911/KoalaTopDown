@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void StartYG()
     {
-        //Debug.Log("StartYG!");
+ /*       //Debug.Log("StartYG!");
         if (!YandexGame.SDKEnabled)
         {
             return;
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
             if (firstLevel)
                 return;
             SaveDataYG();
-        }
+        }*/
     }
 
     void SwapWeaponPlayer()
@@ -563,7 +563,7 @@ public class GameManager : MonoBehaviour
 
     void LoadDataYG()
     {
-        player.currentHealth = YandexGame.savesData.playerCurrentHp;        // хп
+/*        player.currentHealth = YandexGame.savesData.playerCurrentHp;        // хп
         gold = YandexGame.savesData.playerGold;                             // золото
         pozorCount = YandexGame.savesData.playerPozorCount;                 // метки позора
 
@@ -574,7 +574,7 @@ public class GameManager : MonoBehaviour
             ammoManager.ammoWeapons[YandexGame.savesData.rangeWeapons[i]].allAmmo = YandexGame.savesData.rangeWeaponsAmmo[i];
         }
 
-        /*      
+        *//*      
 
                 // Мили оружие
                 for (int i = 0; i < PlayerPrefs.GetInt("PlayerMeleeWeaponCount"); i++)              // для кол-ва ренж оружия
@@ -596,9 +596,9 @@ public class GameManager : MonoBehaviour
                 if (PlayerPrefs.GetInt("PlayerMagnet") == 1)
                     player.withGoldMagnet = true;                       // магнит для монеток
 
-                   */
+                   *//*
 
-        YandexGame.savesData.loadPlayerData = false;
+        YandexGame.savesData.loadPlayerData = false;*/
     }
 
     void SaveData()
@@ -646,7 +646,7 @@ public class GameManager : MonoBehaviour
 
     void SaveDataYG()
     {
-        currentSceneName = SceneManager.GetActiveScene().name;          // находим название текущей сцены
+/*        currentSceneName = SceneManager.GetActiveScene().name;          // находим название текущей сцены
         YandexGame.savesData.sceneNameToLoad = currentSceneName;
 
         YandexGame.savesData.playerCurrentHp = player.currentHealth;    // сохраняем хп игрока
@@ -662,7 +662,7 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log(YandexGame.savesData.rangeWeapons[1]);
 
-        /*      
+        *//*      
 
 
 
@@ -688,11 +688,11 @@ public class GameManager : MonoBehaviour
                 if (player.withGoldMagnet)
                     PlayerPrefs.SetInt("PlayerMagnet", 1);          // магнит для монеток                
 
-                TextUI.instance.Saving();                           // полоска сохранения*/
+                TextUI.instance.Saving();                           // полоска сохранения*//*
 
         YandexGame.savesData.gameContinue = true;
 
-        YandexGame.SaveProgress();
+        YandexGame.SaveProgress();*/
     }
 
 

@@ -91,24 +91,22 @@ public class StartScreen : MonoBehaviour
 
     public void GetLoad()
     {
-        if (YandexGame.savesData.gameContinue)
+/*        if (YandexGame.savesData.gameContinue)
         {
             continueButton.SetActive(true);                 // вкл кнопку продолжить
             continueButtonEng.SetActive(true);              // вкл кнопку продолжить
         }
-        textTest.text = YandexGame.savesData.numberStartScene;
-
-        //textMoney.text = YandexGame.savesData.money.ToString();
+        textTest.text = YandexGame.savesData.numberStartScene;  */      
     }
 
     public void MySave()
     {
-        // Записываем данные в плагин
+/*        // Записываем данные в плагин
         // Например, мы хотил сохранить количество монет игрока:
         YandexGame.savesData.numberStartScene = textTest.text;
 
         // Теперь остаётся сохранить данные
-        YandexGame.SaveProgress();
+        YandexGame.SaveProgress();*/
     }
 
 
@@ -141,7 +139,7 @@ public class StartScreen : MonoBehaviour
         if (forYG)
         {
             // сброс сохранений
-            YandexGame.savesData.gameContinue = false;
+            /*YandexGame.savesData.gameContinue = false;*/
         }
         else
         {
@@ -169,9 +167,9 @@ public class StartScreen : MonoBehaviour
     {
         if (forYG)
         {
-            string sceneLoad = YandexGame.savesData.sceneNameToLoad;
+/*            string sceneLoad = YandexGame.savesData.sceneNameToLoad;
             YandexGame.savesData.loadPlayerData = true;
-            SceneManager.LoadScene(sceneLoad);                      // загружаем сцену
+            SceneManager.LoadScene(sceneLoad);                      // загружаем сцену*/
         }
         else
         {
@@ -192,7 +190,6 @@ public class StartScreen : MonoBehaviour
             PlayerPrefs.SetInt("Language", 1);      // язык англ
         else
             PlayerPrefs.SetInt("Language", 2);      // язык ру
-
     }
 
     public void ExitGame()

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipsDeath:
-  - {fileID: 8300000, guid: c401d00c96b512e488d2e3bf5d111509, type: 3}
+  - {fileID: 8300000, guid: fdf75178e3e0e78469801f76992a4a6a, type: 3}
   audioClipsTaunt:
   - {fileID: 8300000, guid: 827b9a03db0a6a64dabb71db3c5ef965, type: 3}
   - {fileID: 8300000, guid: 7907846604ae4f749bb07125ca4031da, type: 3}
@@ -137,7 +137,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1951880316, guid: e2e95a961a687614ebdacb5c91f3e89e, type: 3}
-  m_Color: {r: 0.7137255, g: 1, b: 0.9819815, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -401,7 +401,7 @@ MonoBehaviour:
   - {x: 0.15258026, y: -0.21078491, z: 0}
   m_ShapePathHash: 1012902165
   m_Mesh: {fileID: 0}
-  m_InstanceId: 149110
+  m_InstanceId: -3241754
 --- !u!82 &5984834870589312873
 AudioSource:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
