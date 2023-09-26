@@ -207,6 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 5674012138522298798, guid: 6cb64a020102a0c47a3d0bfcf04926c2, type: 3}
+  weaponsHardCore:
+  - {fileID: 5674012138522298798, guid: 78037b002cf8bf148b2e0886f3f8d403, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -564,7 +566,7 @@ MonoBehaviour:
   - {x: 0.23772039, y: -0.44298273, z: 0}
   m_ShapePathHash: 1051907940
   m_Mesh: {fileID: 0}
-  m_InstanceId: 68748
+  m_InstanceId: 93554
 --- !u!82 &4916127209122395305
 AudioSource:
   m_ObjectHideFlags: 0
