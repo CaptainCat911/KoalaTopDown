@@ -365,7 +365,17 @@ public class ArenaManager : MonoBehaviour
                 arenaMaxBosses = 0;             
                 arenaMaxEnemys = 20;
                 StartMegaBoss();
-                //GameManager.instance.CreateFloatingMessage("Ну всё, шутки в сторону", Color.white, GameManager.instance.player.transform.position);
+
+                GameManager.instance.player.MakeSuperHero();
+                GameManager.instance.pozorCount = 0;
+                if (LanguageManager.instance.eng)
+                {
+                    GameManager.instance.CreateFloatingMessage("SHAME WASHED AWAY!", Color.white, GameManager.instance.player.transform.position);
+                }
+                else
+                {
+                    GameManager.instance.CreateFloatingMessage("ПОЗОР СМЫТ!", Color.white, GameManager.instance.player.transform.position);
+                }
             }
 
             // тут ещё темного босса добавить

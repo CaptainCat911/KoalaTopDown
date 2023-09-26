@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
 public class TeleportLevel : MonoBehaviour
 {
-    //public bool teleportFromShop;
+    public bool teleportToHardCore;         // телепорт в хардкор
+    public int nextSceneNumber;             // название сцены
     public bool teleportToShop;             // телепорт в магазин
     public GameObject exitTeleport;         // второй телепорт      
     public GameObject exit;                 // выход из входного телепорта
@@ -31,8 +32,18 @@ public class TeleportLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+
         if (collision.gameObject.TryGetComponent(out Player player))
         {
+            // телепорт в хардкор уровни
+            if (teleportToHardCore)
+            {
+                GameManager.instance.NextScene(nextSceneNumber);
+                LanguageManager.instance.hardCoreMode = true;
+                return;
+            }
+
             // Для ресрума, временно здесь
             if (teleportFromRes)
             {

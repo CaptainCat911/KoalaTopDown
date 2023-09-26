@@ -160,6 +160,15 @@ public class BotAI : Fighter
 
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);      // стартовая позиция
 
+        if (LanguageManager.instance.hardCoreMode && isEnemy)
+        {
+            maxHealth *= 3;
+            currentHealth = maxHealth;
+            agent.speed += 1f;
+            skeletonResble = true;
+            resTimes += 1;
+        }
+
         //MakeLeft();
 
         //distanceToAttack = defaultRangeToTarget;
@@ -167,20 +176,27 @@ public class BotAI : Fighter
 
     private void OnEnable()
     {
-        
+        if (resMagicEffect)
+        {
+            if (skeletonResble && resTimes > 0)
+                resMagicEffect.Play();
+            else
+                resMagicEffect.Stop();
+        }
     }
 
     public override void Start()
     {
         base.Start();
-        startTriigerLenght = triggerLenght;                                                                 // стартовая длинна тригера
-        if (skeletonResble && resTimes > 0 && resMagicEffect)
-            resMagicEffect.Play();
 
-/*        agent.updateRotation = false;           // для навмеш2д
-        agent.updateUpAxis = false;             //
-        agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть*/
-        
+        startTriigerLenght = triggerLenght;                     // стартовая длинна тригера
+
+
+
+        /*        agent.updateRotation = false;           // для навмеш2д
+                agent.updateUpAxis = false;             //
+                agent.ResetPath();                      // сбрасываем путь, потому что он при старте есть*/
+
         eventsStart.Invoke();                   // запускаем ивент
 
         if (meleeAttackType)

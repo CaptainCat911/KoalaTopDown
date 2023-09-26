@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     //public GameObject gui;                      // гуи
     //public Dialog dialog;                       // диалог менеджер    
 
-    [Header("Управление игрой")]    
+    [Header("Управление игрой")]
     [HideInInspector] public bool isPlayerEnactive;     // активен игрок или нет
     [HideInInspector] public bool cameraOnPlayer;       // управление камерой
     [HideInInspector] public bool dialogeStart;         // диалог начался

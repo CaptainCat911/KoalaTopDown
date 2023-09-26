@@ -384,7 +384,7 @@ MonoBehaviour:
   - {x: 0.11469499, y: -0.43356812, z: 0}
   m_ShapePathHash: 1195901240
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66426
+  m_InstanceId: 966342
 --- !u!82 &8796676852888449190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -527,6 +527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 924279008175971190, guid: 33553362417e5a645a99db12325db495, type: 3}
+  weaponsHardCore:
+  - {fileID: 5674012138522298798, guid: 80b9b5990af42b84289622ebd5b46793, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -704,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_RootOrder

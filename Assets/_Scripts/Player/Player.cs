@@ -83,6 +83,7 @@ public class Player : Fighter
     // Таймер для цветов при уроне
     float timerForColor;        // сколько времени он будет красным
     bool red;                   // красный (-_-)
+    public GameObject effectSuperHero;
 
     [Header("Чат-таунт")]
     public string[] chatTexts;
@@ -161,7 +162,7 @@ public class Player : Fighter
         moveDirection = new Vector2(moveX, moveY).normalized;               // скорость нормализированная 
 
         // Рывок
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextTimeToDash)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.fixedTime >= nextTimeToDash)
         {
             if (blink && !inBlinkSpace)
             {
@@ -266,6 +267,15 @@ public class Player : Fighter
         //rb2D.AddForce(moveDirection * moveSpeed);
         //rb2D.MovePosition(rb2D.position + moveDirection * moveSpeed * Time.deltaTime);                // скорость полная  
         //rb2D.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);        // скорость полная        
+    }
+
+    public void MakeSuperHero()
+    {
+        maxHealth += 1000;
+        currentHealth = maxHealth;
+        moveSpeed += 2;
+        blink = true;
+        effectSuperHero.SetActive(true);
     }
 
 
@@ -697,7 +707,7 @@ public class Player : Fighter
 
     void Resurrection()
     {
-        if (GameManager.instance.withReklamaYG)
+        if (GameManager.instance.withReklamaYG && YandexGame.SDKEnabled)
             YandexGame.FullscreenShow();
         isAlive = true;
         currentHealth = maxHealth;
@@ -708,7 +718,6 @@ public class Player : Fighter
         EnableHolders(true);
         noAgro = false;        
     }
-
 
     // Сбросить ботам цель
     void ResetTargetBots()

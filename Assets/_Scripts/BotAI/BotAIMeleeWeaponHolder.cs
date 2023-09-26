@@ -9,6 +9,7 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
 {
     BotAI botAI;
     public List<GameObject> weapons;                            // список оружий
+    public List<GameObject> weaponsHardCore;                    // список оружий для хардкора
     [HideInInspector] public BotAIWeaponMelee currentWeapon;    // текущее оружие 
     [HideInInspector] public int selectedWeapon = 0;            // индекс оружия (положение в иерархии WeaponHolder)
     [HideInInspector] public bool fireStart;            // начать стрельбу
@@ -18,6 +19,11 @@ public class BotAIMeleeWeaponHolder : MonoBehaviour
     private void Awake()
     {
         botAI = GetComponentInParent<BotAI>();
+
+        if (LanguageManager.instance.hardCoreMode)
+        {
+            weapons = weaponsHardCore;
+        }
     }
 
     void Start()

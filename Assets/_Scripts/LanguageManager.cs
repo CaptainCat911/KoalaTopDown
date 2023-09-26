@@ -7,7 +7,8 @@ public class LanguageManager : MonoBehaviour
 {
     public static LanguageManager instance;          // инстанс
 
-    public bool eng;
+    [HideInInspector] public bool eng;          // язык
+    public bool hardCoreMode;                   // хардкор мод
 
     private void Awake()
     {
