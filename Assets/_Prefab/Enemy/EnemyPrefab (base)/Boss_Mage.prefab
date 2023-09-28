@@ -5019,6 +5019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  weaponsHardCore: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -5268,7 +5269,12 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  skeletonNotResble: 0
   resTimes: 0
+  healthMulti: 2
+  moveSpeedInc: 2
+  withRes: 0
+  resTimesInc: 0
   triggerLenght: 15
   chaseLeght: 0
   distanceToChangeTarget: 10
@@ -5309,11 +5315,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   withBigExplousion: 0
+  damageBigExplousion: 0
+  radisuBigExplousion: 25
   fastDeathAnim: 1
   timeForDeath: 2.5
   deathEffect: {fileID: 5727708654878073701, guid: bfac2c014c6cedc41b5e1725ea8393e2, type: 3}
   deathCameraShake: 10
   darkEffect: {fileID: 0}
+  resMagicEffect: {fileID: 0}
   makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
@@ -5323,15 +5332,16 @@ MonoBehaviour:
     m_Bits: 0
   friendTarget: {fileID: 0}
   lookAtPlayer: 0
-  debug: 0
   bubbleTexts: []
+  bubbleTextsEng: []
   withChat: 0
   audioEnemy: {fileID: 0}
   withAudioChat: 0
-  pozor: 0
+  debug: 0
   attackingNow: 0
   mainBoss: 0
   shadowBoss: 0
+  arenaShadowBoss: 0
   immortalBoss: 1
   cooldownAttack: 2
   lowHp: 0
@@ -5346,6 +5356,7 @@ MonoBehaviour:
   laserChance: 10
   teleportChance: 20
   textToSay: []
+  textToSayEng: []
   shadowTeleports: []
   waitShadowTeleport: {fileID: 0}
   enemySpawners: []
@@ -5378,7 +5389,7 @@ MonoBehaviour:
   - {x: 0.29544067, y: -1.1014938, z: 0}
   m_ShapePathHash: 452262439
   m_Mesh: {fileID: 0}
-  m_InstanceId: 4143332
+  m_InstanceId: 1531640
 --- !u!1001 &1398136394425982676
 PrefabInstance:
   m_ObjectHideFlags: 0

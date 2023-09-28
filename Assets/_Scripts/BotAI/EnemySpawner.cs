@@ -19,8 +19,9 @@ public class EnemySpawner : MonoBehaviour
     public int enemysHowMuch;               // сколько врагов нужно
     int enemyCount;
     public GameObject spawnEffect;          // эффект спавна
-    public bool arenaMegaBossSpawner;       // спавнер для мегабосса
     public bool bossSpawner;                // спавнер для босса
+    public bool bossSpawnerHardCore;        // спавнер для босса
+    public bool arenaMegaBossSpawner;       // спавнер для мегабосса
     public bool arenaSpawner;               // спавнер для арены
     public bool arenaBossSpawner;           // спавнер боссов для арены
     public bool noItem;                     // спаун без предмета  
@@ -37,6 +38,11 @@ public class EnemySpawner : MonoBehaviour
     {
         randomCd = Random.Range(1, 4);
         lastSpawn = Time.time;
+
+        if (LanguageManager.instance.hardCoreMode && bossSpawnerHardCore)
+        {
+            prefabEnemies = prefabEnemiesToAdd;
+        }
     }
 
     void Update()
@@ -47,13 +53,6 @@ public class EnemySpawner : MonoBehaviour
             portalAnimator.SetTrigger("Open");
             Invoke("SpawnEnemy", 2f);
             enemyCount++;
-
-
-            /*            float dist = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
-                        if (dist > radius)
-                        {
-                            SpawnEnemy();
-                        }*/
         }
 
         // Для арены
@@ -81,6 +80,8 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject effect = Instantiate(spawnEffect, transform.position, Quaternion.identity);      // создаем эффект
         Destroy(effect, 0.5f);                                                                      // уничтожаем эффект через .. сек 
+
+
 
         int ndx = Random.Range(0, prefabEnemies.Count);                // выбираем рандом из массива врагов
         GameObject enemyPref = Instantiate(prefabEnemies[ndx], transform.position, Quaternion.identity);        // создаём префаб

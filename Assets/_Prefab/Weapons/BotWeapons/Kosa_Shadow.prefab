@@ -471,11 +471,15 @@ MonoBehaviour:
   weaponName: "\u041A\u043E\u0441\u0430 \u0442\u0435\u043D\u0435\u0439"
   hitBox: {fileID: 1659115751495550444}
   cooldown: 2.5
-  damage: 10
+  damage: 12
   pushForce: 10
   radius: 0.6
   trail: {fileID: 3825151229547073207}
   hitShield: 1
+  ignite: 0
+  damageBurnMelee: 0
+  cooldownBurnMelee: 0
+  durationBurnMelee: 0
   bulletPrefab: {fileID: 0}
   damageRange: 0
   pushForceRange: 0
@@ -494,6 +498,7 @@ MonoBehaviour:
   splitRecoil: 0
   laserDamage: 0
   laserForce: 0
+  laserCooldown: 0
   laserStart: 0
   damageBurn: 0
   cooldownBurn: 0
@@ -833,7 +838,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1895548169312025050

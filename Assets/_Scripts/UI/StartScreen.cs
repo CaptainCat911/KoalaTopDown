@@ -175,6 +175,16 @@ public class StartScreen : MonoBehaviour
         {
             string sceneLoad = PlayerPrefs.GetString("SceneName");  // загружаем название сцены из сохранения
             PlayerPrefs.SetInt("LoadPlayerData", 1);                // для загрузки пар-ов игрока
+
+            if (PlayerPrefs.GetInt("HardCore") == 1)
+            {
+                LanguageManager.instance.hardCoreMode = true;
+            }
+            else
+            {
+                LanguageManager.instance.hardCoreMode = false;
+            }            
+
             SceneManager.LoadScene(sceneLoad);                      // загружаем сцену
         }
 

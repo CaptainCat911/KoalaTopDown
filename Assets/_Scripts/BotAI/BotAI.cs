@@ -30,9 +30,15 @@ public class BotAI : Fighter
     public bool isArenaBoss;                                // босс для арены    
     public bool skeletonKing;                               // король скелетов
     public bool skeletonResble;                             // бот возрождаается
+    public bool skeletonNotResble;                          // бот не возрождаается
     public int resTimes;                                    // сколько раз возрождаться
     int resCount;
-    //public bool reaper;
+
+    [Header("Хардкор мод")]
+    public int healthMulti = 2;
+    public float moveSpeedInc = 0.5f;
+    public bool withRes = true;
+    public int resTimesInc = 1;
 
     //public bool isFollow;                                   // следовать
 
@@ -87,6 +93,7 @@ public class BotAI : Fighter
     public UnityEvent eventsDeath;                  // ивенты
     public bool withBigExplousion;                  // с большим хлопком
     public int damageBigExplousion;                 // урон хлопка
+    public float radisuBigExplousion = 25;          // урон хлопка
     public bool fastDeathAnim;
     public float timeForDeath = 2.5f;
     int deathCount;
@@ -162,11 +169,13 @@ public class BotAI : Fighter
 
         if (LanguageManager.instance.hardCoreMode && isEnemy)
         {
-            maxHealth *= 3;
+            maxHealth *= healthMulti;
             currentHealth = maxHealth;
-            agent.speed += 1f;
-            skeletonResble = true;
-            resTimes += 1;
+            agent.speed += moveSpeedInc;            
+            skeletonResble = withRes;
+            resTimes += resTimesInc;
+            if (chaseLeght > 0)
+                chaseLeght += 10;
         }
 
         //MakeLeft();
@@ -768,7 +777,7 @@ public class BotAI : Fighter
 
         if (withBigExplousion)
         {
-            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, 25, LayerMask.GetMask("Enemy"));     // создаем круг в позиции объекта с радиусом
+            Collider2D[] collidersHits = Physics2D.OverlapCircleAll(transform.position, radisuBigExplousion, LayerMask.GetMask("Enemy"));     // создаем круг в позиции объекта с радиусом
             foreach (Collider2D coll in collidersHits)
             {
                 if (coll == null)

@@ -526,7 +526,7 @@ public class GameManager : MonoBehaviour
     }
 
     void LoadData()
-    {
+    {        
         player.currentHealth = PlayerPrefs.GetInt("PlayerCurrentHp");       // хп
         gold = PlayerPrefs.GetInt("PlayerGold");                            // золото
         pozorCount = PlayerPrefs.GetInt("PlayerPozorCount");                // метки позора

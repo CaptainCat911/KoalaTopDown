@@ -208,7 +208,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 5674012138522298798, guid: 6cb64a020102a0c47a3d0bfcf04926c2, type: 3}
   weaponsHardCore:
-  - {fileID: 5674012138522298798, guid: 78037b002cf8bf148b2e0886f3f8d403, type: 3}
+  - {fileID: 5674012138522298798, guid: 067f7b3e882f3b9479524284360f6363, type: 3}
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -430,7 +430,12 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  skeletonNotResble: 0
   resTimes: 0
+  healthMulti: 2
+  moveSpeedInc: 0.5
+  withRes: 1
+  resTimesInc: 1
   triggerLenght: 5
   chaseLeght: 15
   distanceToChangeTarget: 6
@@ -472,6 +477,7 @@ MonoBehaviour:
       m_Calls: []
   withBigExplousion: 0
   damageBigExplousion: 0
+  radisuBigExplousion: 25
   fastDeathAnim: 0
   timeForDeath: 0.8
   deathEffect: {fileID: 7845441016114820387, guid: 589cf92f27daa084fbbf475b1eea02bf, type: 3}
@@ -566,7 +572,7 @@ MonoBehaviour:
   - {x: 0.23772039, y: -0.44298273, z: 0}
   m_ShapePathHash: 1051907940
   m_Mesh: {fileID: 0}
-  m_InstanceId: 93554
+  m_InstanceId: 2265864
 --- !u!82 &4916127209122395305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -676,6 +682,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: VelocityModule.x.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: VelocityModule.y.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: VelocityModule.z.minMaxState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
@@ -688,7 +726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.289
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_LocalPosition.z

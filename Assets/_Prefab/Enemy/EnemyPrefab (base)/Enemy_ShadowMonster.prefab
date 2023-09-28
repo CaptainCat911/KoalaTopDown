@@ -266,7 +266,12 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  skeletonNotResble: 0
   resTimes: 0
+  healthMulti: 3
+  moveSpeedInc: 1
+  withRes: 0
+  resTimesInc: 0
   triggerLenght: 6
   chaseLeght: 0
   distanceToChangeTarget: 3
@@ -308,6 +313,7 @@ MonoBehaviour:
       m_Calls: []
   withBigExplousion: 0
   damageBigExplousion: 0
+  radisuBigExplousion: 25
   fastDeathAnim: 0
   timeForDeath: 0.8
   deathEffect: {fileID: 7845441016114820387, guid: 63da8428eacb2d64e834aa5b7bf5e82f, type: 3}
@@ -401,7 +407,7 @@ MonoBehaviour:
   - {x: 0.15258026, y: -0.21078491, z: 0}
   m_ShapePathHash: 1012902165
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3241754
+  m_InstanceId: 1880342
 --- !u!82 &5984834870589312873
 AudioSource:
   m_ObjectHideFlags: 0
@@ -705,6 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  weaponsHardCore: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

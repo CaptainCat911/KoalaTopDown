@@ -32,6 +32,11 @@ public class BotAIHitbox : MonoBehaviour
     {
         botAI = GetComponentInParent<BotAI>();
         pivot = GetComponentInParent<BotAIHitBoxPivot>();
+
+        if (LanguageManager.instance.hardCoreMode)
+        {
+            damage *= 2;
+        }
     }
 
     void Start()

@@ -20,6 +20,18 @@ public class BotAIWeaponMelee : MonoBehaviour
     public TrailRenderer trail;
     public bool hitShield;                          // Пробивает щит
 
+    [Header("Параметры поджога")]
+    public bool ignite;
+    public int damageBurnMelee;
+    public float cooldownBurnMelee;
+    public float durationBurnMelee;
+
+    [Header("Параметры молний")]
+    public bool electro;
+    public int damageElectro;
+    public float pushForceElectro;
+    public float radiusElectro;
+
     [Header("Параметры ренж атаки (слабая)")]
     public GameObject bulletPrefab;                 // префаб снаряда
     public int damageRange;                         // урон ренж
@@ -248,16 +260,53 @@ public class BotAIWeaponMelee : MonoBehaviour
                 if (RayCastToTarget(botAI.transform, coll.transform, distance))     // проверка на щит
                 {
                     fighter.TakeDamage(damage, new Vector2(0, 0), 0);
-                }               
 
-                if (audioWeapon)                    
-                {
-                    audioSource.clip = audioWeapon.hitDone;                 // звук попадания
-                    audioSource.Play();                        
+                    if (ignite)
+                    {
+                        if (fighter.gameObject.TryGetComponent<Ignitable>(out Ignitable ignitable))
+                        {
+                            Debug.Log("Ing!");
+                            ignitable.Ignite(damageBurnMelee, cooldownBurnMelee, durationBurnMelee);
+                        }
+                    }
                 }
             }
+
+            if (electro && collidersHits.Length > 0)
+            {
+                Collider2D[] collidersHitsElectro = Physics2D.OverlapCircleAll(hitBox.position, radiusElectro, layerHit);     // создаем круг в позиции объекта с радиусом
+                foreach (Collider2D collEl in collidersHitsElectro)
+                {
+                    if (collEl == null)
+                    {
+                        continue;
+                    }
+
+                    if (collEl.gameObject.TryGetComponent<Fighter>(out Fighter fighterEl))
+                    {
+                        Vector2 vec2 = (collEl.transform.position - botAI.transform.position).normalized;
+                        fighterEl.TakeDamage(damageElectro, vec2, pushForceElectro);
+                    }
+                }
+
+                GameObject effect = Instantiate(GameAssets.instance.explousionBlue,
+                        hitBox.position, Quaternion.identity);                                      // создаем эффект убийства
+                Destroy(effect, 1);                                                                 // уничтожаем эффект через .. сек
+                                                                                                    //CMCameraShake.Instance.ShakeCamera(cameraAmplitudeShakeElectro, cameraTimedeShakeElectro);        // тряска камеры
+            }
+
+            if (audioWeapon)
+            {
+                audioSource.clip = audioWeapon.hitDone;                 // звук попадания
+                audioSource.Play();
+            }
+
+
+
             collidersHits = null;
-        }        
+        }
+
+
     }
 
     public void RangeAttack()

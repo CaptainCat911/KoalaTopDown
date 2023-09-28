@@ -50,6 +50,25 @@ public class NPC : BotAI
     public EnemySpawner[] enemySpawners;
     bool spawnReady;
 
+    public override void Awake()
+    {
+        base.Awake();
+
+        if (LanguageManager.instance.hardCoreMode && isEnemy)
+        {
+            if (mainBoss)
+            {
+                multiAttackChance = 30;
+                spawnAttackChance = 30;
+                gravityChance = 10;
+                laserChance = 10;
+                teleportChance = 20;
+                cooldownAttack = 1;
+            }
+        }
+    }
+
+
     public override void Start()
     {
         base.Start();

@@ -24,6 +24,10 @@ public class TeleportLevel : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        
+    }
 
     /*    void ActivateTeleport()
         {
@@ -32,8 +36,6 @@ public class TeleportLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if (collision.gameObject.TryGetComponent(out Player player))
         {
             // телепорт в хардкор уровни
@@ -41,6 +43,7 @@ public class TeleportLevel : MonoBehaviour
             {
                 GameManager.instance.NextScene(nextSceneNumber);
                 LanguageManager.instance.hardCoreMode = true;
+                PlayerPrefs.SetInt("HardCore", 1);                  // сохраняем хардкор
                 return;
             }
 

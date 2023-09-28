@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -591391920909804142, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: m_InstanceId
-      value: -6657184
+      value: -534452
       objectReference: {fileID: 0}
     - target: {fileID: 802629281138358728, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: m_Name
@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: eventsDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3145984813421589187, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
+      propertyPath: weaponsHardCore.Array.data[0]
+      value: 
+      objectReference: {fileID: 5674012138522298798, guid: 6d534949108bddb4780f553d89fd6eb8, type: 3}
     - target: {fileID: 7367888658173034818, guid: 5cf359098ec3ef843a47320b8be7b002, type: 3}
       propertyPath: cooldownSpell
       value: 6
