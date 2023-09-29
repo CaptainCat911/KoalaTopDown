@@ -464,19 +464,12 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
-    functionName: StaffExplousion
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.3333334
-    functionName: ExplousionWeaponAttack
+    functionName: CurrentWeaponAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 1.6666666
     functionName: PivotStatus

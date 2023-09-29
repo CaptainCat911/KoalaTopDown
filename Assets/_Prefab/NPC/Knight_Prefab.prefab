@@ -282,6 +282,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8747245623845042315, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: weaponsHardCore.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747245623845042315, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
+      propertyPath: weaponsHardCore.Array.data[0]
+      value: 
+      objectReference: {fileID: 5674012138522298798, guid: dd22f67e89499d440ba651b42b6df163, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5669a97033a804c885cc7f7036dee2, type: 3}
 --- !u!1 &8690835403191701606 stripped
