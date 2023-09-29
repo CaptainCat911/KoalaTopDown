@@ -8,7 +8,7 @@ public class TeleportLevel : MonoBehaviour
     public bool teleportToShop;             // телепорт в магазин
     public GameObject exitTeleport;         // второй телепорт      
     public GameObject exit;                 // выход из входного телепорта
-    //public bool actived;                    // телепорт активирован
+    //public bool actived;                  // телепорт активирован
     //bool isInRange;                       // в ренже мы или нет    
     GameObject gameObjectToTeleport;        // объект, который нужно телепортировать
 
@@ -26,7 +26,10 @@ public class TeleportLevel : MonoBehaviour
 
     private void Start()
     {
-        
+        if (LanguageManager.instance.hardCoreMode && teleportToHardCore)
+        {
+            gameObject.SetActive(false);
+        }   
     }
 
     /*    void ActivateTeleport()
@@ -43,6 +46,7 @@ public class TeleportLevel : MonoBehaviour
             {
                 GameManager.instance.NextScene(nextSceneNumber);
                 LanguageManager.instance.hardCoreMode = true;
+                GameManager.instance.pozorCount = 0;
                 PlayerPrefs.SetInt("HardCore", 1);                  // сохраняем хардкор
                 return;
             }

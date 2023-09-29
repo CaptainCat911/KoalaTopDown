@@ -407,7 +407,12 @@ MonoBehaviour:
   isArenaBoss: 0
   skeletonKing: 0
   skeletonResble: 0
+  skeletonNotResble: 0
   resTimes: 0
+  healthMulti: 2
+  moveSpeedInc: 0.5
+  withRes: 0
+  resTimesInc: 0
   triggerLenght: 30
   chaseLeght: 0
   distanceToChangeTarget: 5
@@ -448,11 +453,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   withBigExplousion: 0
+  damageBigExplousion: 0
+  radisuBigExplousion: 25
   fastDeathAnim: 1
   timeForDeath: 2.5
   deathEffect: {fileID: 5727708654878073701, guid: 748a93b3ecd89c34dae988f1a282d98c, type: 3}
   deathCameraShake: 10
   darkEffect: {fileID: 0}
+  resMagicEffect: {fileID: 0}
   makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
@@ -462,12 +470,12 @@ MonoBehaviour:
     m_Bits: 128
   friendTarget: {fileID: 0}
   lookAtPlayer: 0
-  debug: 0
   bubbleTexts: []
+  bubbleTextsEng: []
   withChat: 0
   audioEnemy: {fileID: 4372641650694578414}
   withAudioChat: 0
-  pozor: 0
+  debug: 0
   attackingNow: 0
   mainBoss: 0
   shadowBoss: 1
@@ -486,6 +494,7 @@ MonoBehaviour:
   laserChance: 0
   teleportChance: 0
   textToSay: []
+  textToSayEng: []
   shadowTeleports:
   - {fileID: 0}
   - {fileID: 0}
@@ -532,7 +541,7 @@ MonoBehaviour:
   - {x: 0.18598938, y: -0.68125916, z: 0}
   m_ShapePathHash: -571122161
   m_Mesh: {fileID: 0}
-  m_InstanceId: 193894
+  m_InstanceId: 78732
 --- !u!82 &3677526785694472457
 AudioSource:
   m_ObjectHideFlags: 0
@@ -675,6 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  weaponsHardCore: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

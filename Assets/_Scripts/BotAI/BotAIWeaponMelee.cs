@@ -265,7 +265,7 @@ public class BotAIWeaponMelee : MonoBehaviour
                     {
                         if (fighter.gameObject.TryGetComponent<Ignitable>(out Ignitable ignitable))
                         {
-                            Debug.Log("Ing!");
+                            //Debug.Log("Ing!");
                             ignitable.Ignite(damageBurnMelee, cooldownBurnMelee, durationBurnMelee);
                         }
                     }

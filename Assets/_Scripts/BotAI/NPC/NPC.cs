@@ -59,8 +59,8 @@ public class NPC : BotAI
             if (mainBoss)
             {
                 multiAttackChance = 30;
-                spawnAttackChance = 30;
-                gravityChance = 10;
+                spawnAttackChance = 20;
+                gravityChance = 7;
                 laserChance = 10;
                 teleportChance = 20;
                 cooldownAttack = 1;

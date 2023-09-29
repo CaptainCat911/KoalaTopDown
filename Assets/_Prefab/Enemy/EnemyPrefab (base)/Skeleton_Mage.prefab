@@ -572,7 +572,7 @@ MonoBehaviour:
   - {x: 0.23772039, y: -0.44298273, z: 0}
   m_ShapePathHash: 1051907940
   m_Mesh: {fileID: 0}
-  m_InstanceId: 2265864
+  m_InstanceId: 257118
 --- !u!82 &4916127209122395305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -681,10 +681,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: ShapeModule.type
       value: 0
       objectReference: {fileID: 0}
@@ -787,10 +783,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8830276275074482441}
     m_Modifications:
-    - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: 7fb12be3a7bb3a547b45a1cd4a94c966, type: 3}
       propertyPath: ShapeModule.m_Scale.x
       value: 0.3

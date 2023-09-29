@@ -390,7 +390,7 @@ MonoBehaviour:
   - {x: 0.11469499, y: -0.43356812, z: 0}
   m_ShapePathHash: 1195901240
   m_Mesh: {fileID: 0}
-  m_InstanceId: 2162648
+  m_InstanceId: 256880
 --- !u!82 &8796676852888449190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -709,10 +709,6 @@ PrefabInstance:
     - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: prewarm
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
-      propertyPath: playOnAwake
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: ShapeModule.type

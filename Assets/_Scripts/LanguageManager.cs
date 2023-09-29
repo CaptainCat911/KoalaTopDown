@@ -29,4 +29,9 @@ public class LanguageManager : MonoBehaviour
         else
             PlayerPrefs.SetInt("Language", 2);      // язык ру
     }
+
+    public void MakeHardCore(bool status)
+    {
+        hardCoreMode = status;
+    }
 }

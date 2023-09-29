@@ -13,7 +13,8 @@ public class SpikeNew : MonoBehaviour
     [HideInInspector] public bool isSpikeActive;        // активны сейчас или нет (не использую, но есть в ивентах аниматора)
 
     public bool isSpikeWork;                // шипы работают постоянно
-    public float cooldown = 3f;             // перезардяка атаки
+    public float cooldown = 2f;             // перезардяка атаки
+    public float cooldownHard = 1f;         // перезардяка атаки для хардкора
     float lastAttack;                       // время последнего удара (для перезарядки удара)
     public LayerMask layerHit;              // слой 
 
@@ -21,6 +22,10 @@ public class SpikeNew : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        if (LanguageManager.instance.hardCoreMode)
+        {
+            cooldown = cooldownHard;
+        }
     }
 
 

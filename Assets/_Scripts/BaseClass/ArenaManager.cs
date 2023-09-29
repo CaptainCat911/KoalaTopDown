@@ -10,6 +10,7 @@ public class ArenaManager : MonoBehaviour
     public bool darkLevel;
     public bool arenaLevel;
     public UnityEvent[] events;                         // ивенты
+    public GameObject hardcoreStuffs;
 
     [Header("Настройки арены")]    
     public EnemySpawner[] enemySpawners;                // спавнеры
@@ -48,13 +49,20 @@ public class ArenaManager : MonoBehaviour
 
     [Header("Подсказки")]
     public int dialogeNumberForResroom;
-    public PauseHelp pozorHelp;
+    public PauseHelp pozorHelp;             // подсказка позора
+    public PauseHelp spacePozorHelp;        // подсказка космического позора
+    bool spacePozored;
 
 
 
     private void Awake()
     {        
         instance = this;
+
+        if (LanguageManager.instance.hardCoreMode)      // если хардкор включен
+        {
+            HardCoreStuffsOn();                         // включаем штуки для хардкора
+        }
     }
 
     public void StartEvent(int number)
@@ -71,6 +79,12 @@ public class ArenaManager : MonoBehaviour
 
     private void Update()
     {
+        if (LanguageManager.instance.hardCoreMode && GameManager.instance.pozorCount >= 10 && !spacePozored)      // для хардкора
+        {
+            spacePozorHelp.StartHelpPause();
+            spacePozored = true;
+        }
+
         if (!arenaLevel)
             return;
 
@@ -486,6 +500,14 @@ public class ArenaManager : MonoBehaviour
     }
 
 
+    // Для хардкора
+    public void HardCoreStuffsOn()
+    {
+        if (hardcoreStuffs)
+            hardcoreStuffs.SetActive(true);
+    }
+
+
     // Свет для 3-го лвл
     public void LightOff(bool status)
     {
@@ -522,8 +544,16 @@ public class ArenaManager : MonoBehaviour
     {
         if (!GameManager.instance.pozored)
         {
-            GameManager.instance.pozored = true;                // опозорен
-            pozorHelp.StartHelpPause();                         // запускаем подсказку для позора
+            GameManager.instance.pozored = true;        // опозорен
+            pozorHelp.StartHelpPause();                 // запускаем подсказку для позора
         }
+    }
+
+    public void ResetHardcoreLevels()
+    {
+        spacePozored = false;
+        GameManager.instance.pozorCount = 0;
+        GameManager.instance.player.currentHealth = GameManager.instance.player.maxHealth;
+        GameManager.instance.NextScene(1);              // отправляем в 1-ю сцену
     }
 }
