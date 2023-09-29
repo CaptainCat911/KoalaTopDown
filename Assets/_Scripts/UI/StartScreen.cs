@@ -173,8 +173,8 @@ public class StartScreen : MonoBehaviour
         }
         else
         {
-            string sceneLoad = PlayerPrefs.GetString("SceneName");  // загружаем название сцены из сохранения
-            PlayerPrefs.SetInt("LoadPlayerData", 1);                // для загрузки пар-ов игрока
+            string sceneLoad = PlayerPrefs.GetString("SceneName");      // загружаем название сцены из сохранения
+            PlayerPrefs.SetInt("LoadPlayerData", 1);                    // для загрузки пар-ов игрока
 
             if (PlayerPrefs.GetInt("HardCore") == 1)
             {
@@ -185,21 +185,27 @@ public class StartScreen : MonoBehaviour
                 LanguageManager.instance.hardCoreMode = false;
             }            
 
-            SceneManager.LoadScene(sceneLoad);                      // загружаем сцену
+            SceneManager.LoadScene(sceneLoad);                          // загружаем сцену
         }
 
-        loading.SetActive(true);                                // пошла загрузка        
-        loadingEng.SetActive(true);                             // пошла загрузка         
+        loading.SetActive(true);                                        // пошла загрузка        
+        loadingEng.SetActive(true);                                     // пошла загрузка         
     }
 
     void ClearPrefs()
     {
         //Debug.Log("Clear!");
         PlayerPrefs.DeleteAll();                    // стираем сохранения, но запоминаем язык
+
         if (LanguageManager.instance.eng)
             PlayerPrefs.SetInt("Language", 1);      // язык англ
         else
             PlayerPrefs.SetInt("Language", 2);      // язык ру
+
+        if (LanguageManager.instance.hardCoreMode)
+            PlayerPrefs.SetInt("HardCore", 1);      // хардкор вкл
+        else
+            PlayerPrefs.SetInt("HardCore", 0);      // хардкор выкл
     }
 
     public void ExitGame()

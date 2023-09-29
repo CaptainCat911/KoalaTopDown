@@ -63,7 +63,9 @@ public class GameManager : MonoBehaviour
 
     // Для паузы
     bool paused;
-    bool slowed; 
+    bool slowed;
+
+    public bool infiniteAmmo;
 
 
     private void Awake()
@@ -206,7 +208,7 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.L))
             {
-                ClearPrefs();
+                infiniteAmmo = !infiniteAmmo;
             }
         }
 

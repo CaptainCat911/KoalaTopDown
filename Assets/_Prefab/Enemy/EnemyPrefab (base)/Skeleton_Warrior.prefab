@@ -475,7 +475,7 @@ MonoBehaviour:
   - {x: 0.1845861, y: -0.39495358, z: 0}
   m_ShapePathHash: -460142334
   m_Mesh: {fileID: 0}
-  m_InstanceId: 255962
+  m_InstanceId: 170820
 --- !u!82 &-6192557447940878457
 AudioSource:
   m_ObjectHideFlags: 0
@@ -693,6 +693,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.19
       objectReference: {fileID: 0}
@@ -711,6 +715,10 @@ PrefabInstance:
     - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: VelocityModule.z.minMaxState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 669106893643142521, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3104125698818925310, guid: a016d86642f074e4d9285f8ea1295bef, type: 3}
       propertyPath: m_RootOrder

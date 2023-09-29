@@ -267,7 +267,8 @@ public class Weapon : MonoBehaviour
 
             transform.localPosition = new Vector3(transform.localPosition.x - weaponClass.effectBackFire, transform.localPosition.y, transform.localPosition.z);    // отдача (эффект)
 
-            ammoWeapons[weaponIndexForAmmo].allAmmo--;                      // - патроны
+            if (!GameManager.instance.infiniteAmmo)
+                ammoWeapons[weaponIndexForAmmo].allAmmo--;                  // - патроны
             nextTimeToFire = Time.time + 1f / weaponClass.fireRate;         // вычисляем кд           
 
             if (((int)weaponClass.weaponType) == 0)
