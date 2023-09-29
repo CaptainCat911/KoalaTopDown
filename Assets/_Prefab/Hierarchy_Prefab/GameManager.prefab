@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testBuild: 1
   forYG: 0
-  withReklamaYG: 0
+  withReklamaYG: 1
   startScreen: 0
   showDamage: 0
   sceneNames:
@@ -81,6 +81,7 @@ MonoBehaviour:
   bombHelped_2: 0
   lightDark: 0
   lightOff: 0
+  infiniteAmmo: 0
 --- !u!114 &2578252551274092102
 MonoBehaviour:
   m_ObjectHideFlags: 0
