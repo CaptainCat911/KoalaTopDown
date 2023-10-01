@@ -210,6 +210,11 @@ public class GameManager : MonoBehaviour
             {
                 infiniteAmmo = !infiniteAmmo;
             }
+
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                NextScene(2);
+            }
         }
 
 
@@ -302,10 +307,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            NextScene(2);
-        }     
+   
 
             
 
