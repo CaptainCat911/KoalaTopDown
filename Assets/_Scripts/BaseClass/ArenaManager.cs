@@ -29,7 +29,7 @@ public class ArenaManager : MonoBehaviour
     public float[] timer;                               // сколько до следующего усиления арены
     public bool[] timerDone;                            // усиление сделано
     int i;                                              // счетчик
-    public int arenaEnemyKilled;      // сколько врагов убито
+    public int arenaEnemyKilled;                        // сколько врагов убито
     [HideInInspector] public int arenaBossKilled;       // сколько боссов убито
 
     [Header("Оружия")]

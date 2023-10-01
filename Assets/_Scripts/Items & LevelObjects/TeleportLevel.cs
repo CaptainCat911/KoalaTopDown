@@ -44,9 +44,10 @@ public class TeleportLevel : MonoBehaviour
             // телепорт в хардкор уровни
             if (teleportToHardCore)
             {
-                GameManager.instance.NextScene(nextSceneNumber);
-                LanguageManager.instance.hardCoreMode = true;
-                GameManager.instance.pozorCount = 0;
+                GameManager.instance.NextScene(nextSceneNumber);    // запускаем след сцену
+                LanguageManager.instance.hardCoreMode = true;       // вкл хардкор
+                ArenaManager.instance.arenaEnemyKilled = 0;         // сбрасываем сколько убито склетов
+                GameManager.instance.pozorCount = 0;                // сбрасываем метки позора
                 PlayerPrefs.SetInt("HardCore", 1);                  // сохран€ем хардкор
                 return;
             }

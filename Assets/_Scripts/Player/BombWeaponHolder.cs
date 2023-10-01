@@ -40,7 +40,7 @@ public class BombWeaponHolder : MonoBehaviour
         }
 
         // Стрельба
-        if (Input.GetKey(KeyCode.G))     //if (Input.GetMouseButton(1))
+        if (Input.GetKey(KeyCode.G) || Input.GetMouseButton(2))
         {
             fireStart = true;               // кидаем бомбу                
         }
