@@ -78,14 +78,18 @@ public class TextUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        if (GameManager.instance.testBuild)
         {
-            barsOff = !barsOff;
-            if (barsOff)
-                bars.SetActive(false);
-            else
-                bars.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                barsOff = !barsOff;
+                if (barsOff)
+                    bars.SetActive(false);
+                else
+                    bars.SetActive(true);
+            }
         }
+
 
         /*        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 cursor.transform.position = cursorPos;*/
