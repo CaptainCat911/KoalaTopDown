@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 using UnityEngine.UI;
 using YG;
 
 public class StartScreen : MonoBehaviour
 {
-    public bool forYG;
+    public bool forYG;                          // дл€ €ндекс игр
     public AudioSource audioSource;             // аудиосорс
+    public Animator screenAnimator;             // аниматор дл€ стартового затемнени€
 
     public GameObject startLanguageMenu;        // стартовое меню дл€ €зыков
 
@@ -24,8 +24,7 @@ public class StartScreen : MonoBehaviour
     public GameObject continueButtonEng;        // кнопка продолжени€ игры
     public GameObject kontrakt;                 // страница контракта
     public GameObject loading;                  // картинка загрузки
-    public GameObject loadingEng;                  // картинка загрузки
-    public Animator screenAnimator;
+    public GameObject loadingEng;               // картинка загрузки
 
     public Text textTest;
 
@@ -60,43 +59,57 @@ public class StartScreen : MonoBehaviour
         }
         else
         {
-            if (PlayerPrefs.GetInt("GameContinue") == 1)        // если есть сохранение
+            if (PlayerPrefs.GetInt("Language") == 0)
             {
-                continueButton.SetActive(true);                 // вкл кнопку продолжить
-                continueButtonEng.SetActive(true);              // вкл кнопку продолжить
+                startLanguageMenu.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("Language") == 1)        // англ
+            {
+                menuEng.SetActive(true);
+                StartMusic();
+                StartScreenAnimation();
+                LanguageManager.instance.MakeEng(true);
+            }
+            if (PlayerPrefs.GetInt("Language") == 2)        // ру
+            {
+                menuRu.SetActive(true);
+                StartMusic();
+                StartScreenAnimation();
+                LanguageManager.instance.MakeEng(false);
             }
         }
 
-
-
-        if (PlayerPrefs.GetInt("Language") == 0)
+        if (PlayerPrefs.GetInt("GameContinue") == 1)        // если есть сохранение
         {
-            startLanguageMenu.SetActive(true);
+            continueButton.SetActive(true);                 // вкл кнопку продолжить
+            continueButtonEng.SetActive(true);              // вкл кнопку продолжить
         }
-        if (PlayerPrefs.GetInt("Language") == 1)        // англ
+    }
+
+    public void GetLoad()
+    {
+        if (YandexGame.EnvironmentData.language == "ru")
+        {
+            //Debug.Log("RU!");
+            menuRu.SetActive(true);
+            StartMusic();
+            StartScreenAnimation();
+            LanguageManager.instance.MakeEng(false);
+        }
+        if (YandexGame.EnvironmentData.language == "en")
         {
             menuEng.SetActive(true);
             StartMusic();
             StartScreenAnimation();
             LanguageManager.instance.MakeEng(true);
         }
-        if (PlayerPrefs.GetInt("Language") == 2)        // ру
-        {
-            menuRu.SetActive(true);
-            StartMusic();
-            StartScreenAnimation();
-            LanguageManager.instance.MakeEng(false);
-        }
-    }
 
-    public void GetLoad()
-    {
 /*        if (YandexGame.savesData.gameContinue)
         {
             continueButton.SetActive(true);                 // вкл кнопку продолжить
             continueButtonEng.SetActive(true);              // вкл кнопку продолжить
         }
-        textTest.text = YandexGame.savesData.numberStartScene;  */      
+        textTest.text = YandexGame.savesData.numberStartScene;  */
     }
 
     public void MySave()
@@ -136,15 +149,15 @@ public class StartScreen : MonoBehaviour
         //GameManager.instance.SaveState();
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
 
-        if (forYG)
-        {
+        //if (forYG)
+        //{
             // сброс сохранений
             /*YandexGame.savesData.gameContinue = false;*/
-        }
-        else
-        {
+        //}
+        //else
+        //{
             ClearPrefs();                                   // сбрасываем сохранени€
-        }       
+        //}       
 
         kontrakt.SetActive(false);
         loading.SetActive(true);
@@ -165,14 +178,14 @@ public class StartScreen : MonoBehaviour
     // ѕродолжить игру
     public void LoadData()
     {
-        if (forYG)
-        {
+        //if (forYG)
+        //{
 /*            string sceneLoad = YandexGame.savesData.sceneNameToLoad;
             YandexGame.savesData.loadPlayerData = true;
             SceneManager.LoadScene(sceneLoad);                      // загружаем сцену*/
-        }
-        else
-        {
+        //}
+       // else
+        //{
             string sceneLoad = PlayerPrefs.GetString("SceneName");      // загружаем название сцены из сохранени€
             PlayerPrefs.SetInt("LoadPlayerData", 1);                    // дл€ загрузки пар-ов игрока
 
@@ -186,7 +199,7 @@ public class StartScreen : MonoBehaviour
             }            
 
             SceneManager.LoadScene(sceneLoad);                          // загружаем сцену
-        }
+        //}
 
         loading.SetActive(true);                                        // пошла загрузка        
         loadingEng.SetActive(true);                                     // пошла загрузка         
