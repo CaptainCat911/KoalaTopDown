@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;         // инстанс
 
     public bool testBuild;
-
+    public bool demoLevel;
     public bool forYG;                          // для яндекс игр    
     //public bool offYG;                          // для яндекс игр    
     public bool withReklamaYG;                  // для яндекс игр    
@@ -126,12 +126,13 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("No for YG");
 
-            if (firstLevel)
+            if (firstLevel || demoLevel)
             {
                 ammoManager.TakeMeleeWeapon(0);
                 ammoManager.TakeRangeWeapon(0);
                 Invoke(nameof(SwapWeaponPlayer), 0.1f);
-                SaveData();               
+                if (!demoLevel)
+                    SaveData();               
                 firstLevel = false;
             }
         }
@@ -436,7 +437,7 @@ public class GameManager : MonoBehaviour
                 if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
                 {
                     botAI.ResetTarget();                                        // сбрасываем цель
-                    botAI.noAgro = true;                                     // делаем нейтральным
+                    botAI.noAgro = true;                                        // делаем нейтральным
                 }
                 collidersHits = null;
             }
@@ -454,7 +455,7 @@ public class GameManager : MonoBehaviour
 
                 if (coll.gameObject.TryGetComponent<BotAI>(out BotAI botAI))
                 {
-                    botAI.noAgro = false;                                     // делаем нейтральным
+                    botAI.noAgro = false;                                     // сбрасывааем нейтральность
                 }
                 collidersHits = null;
             }

@@ -58,11 +58,7 @@ public class StartScreen : MonoBehaviour
             }
         }
         else
-        {
-            if (PlayerPrefs.GetInt("Language") == 0)
-            {
-                startLanguageMenu.SetActive(true);
-            }
+        {            
             if (PlayerPrefs.GetInt("Language") == 1)        // англ
             {
                 menuEng.SetActive(true);
@@ -70,12 +66,16 @@ public class StartScreen : MonoBehaviour
                 StartScreenAnimation();
                 LanguageManager.instance.MakeEng(true);
             }
-            if (PlayerPrefs.GetInt("Language") == 2)        // ру
+            else if (PlayerPrefs.GetInt("Language") == 2)        // ру
             {
                 menuRu.SetActive(true);
                 StartMusic();
                 StartScreenAnimation();
                 LanguageManager.instance.MakeEng(false);
+            }
+            else
+            {                
+                startLanguageMenu.SetActive(true);
             }
         }
 
@@ -144,7 +144,7 @@ public class StartScreen : MonoBehaviour
     }
 
     // Новая игра
-    void NextSceneStart()
+    public void NextSceneStart()
     {
         //GameManager.instance.SaveState();
         //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
@@ -159,8 +159,10 @@ public class StartScreen : MonoBehaviour
             ClearPrefs();                                   // сбрасываем сохранения
         //}       
 
-        kontrakt.SetActive(false);
-        loading.SetActive(true);
+       
+
+        //kontrakt.SetActive(false);
+        //loading.SetActive(true);
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену        
         SceneManager.LoadScene(sceneName);              // загружаем сцену
     }
