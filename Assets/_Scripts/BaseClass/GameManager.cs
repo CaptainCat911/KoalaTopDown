@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;         // инстанс
 
     public bool testBuild;
-    public bool demoLevel;
+    public bool demoLevel;                               
+    public bool forAndroid;                     // для андроида  
     public bool forYG;                          // для яндекс игр    
-    //public bool offYG;                          // для яндекс игр    
-    public bool withReklamaYG;                  // для яндекс игр    
+    public bool withReklamaYG;                  // с рекламой для YG  
     public bool startScreen;                    // для стартскрина
     public bool showDamage;                     // показывать урон    
     public string[] sceneNames;                 // все сцены

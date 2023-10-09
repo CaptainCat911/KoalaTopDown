@@ -61,8 +61,21 @@ public class WeaponHolder : MonoBehaviour
         }
 
         // ѕоворот оружи€
-        if (!stopAiming)
+        if (GameManager.instance.forAndroid)
         {
+            if (player.joystickFire.Direction.magnitude <= 0)
+                return;
+            aimAngle = Mathf.Atan2(player.joystickFire.Direction.y, player.joystickFire.Direction.x) * Mathf.Rad2Deg;                     // находим угол в градусах             
+            Quaternion qua1 = Quaternion.Euler(0, 0, aimAngle);                                         // создаем этот угол в Quaternion
+            transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 100);   // делаем Lerp между weaponHoder и нашим углом
+            //Debug.Log(aimAngle);
+        }
+        else
+        {
+            if (stopAiming)
+            {
+                return;
+            }
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                        // положение мыши                  
             Vector3 aimDirection = mousePosition - transform.position;                                  // угол между положением мыши и pivot оружи€          
             aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;                     // находим угол в градусах             
@@ -75,20 +88,30 @@ public class WeaponHolder : MonoBehaviour
             return;
 
         // —трельба
-        if (Input.GetMouseButton(0))                    // && player.playerWeaponReady
+        if (GameManager.instance.forAndroid)
         {
-            //if (meleeWeapon)                        // если оружие ближнего бо€
-                //attackHitBoxStart = true;           // начинаем атаку хитбоксом
-            //else
+            if (player.joystickFire.Direction.magnitude > 0)            // && player.playerWeaponReady
+            {
                 fireStart = true;                   // стрел€ем
+            }
+            else
+            {
+                fireStart = false;
+            }
         }
         else
         {
-            //if (meleeWeapon)
-                //attackHitBoxStart = false;
-            //else
-                fireStart = false;                  
+            if (Input.GetMouseButton(0))            // && player.playerWeaponReady
+            {
+                fireStart = true;                   // стрел€ем
+            }
+            else
+            {
+                fireStart = false;
+            }
         }
+
+
 
 
         // ¬ыбор оружи€ мили
@@ -194,7 +217,6 @@ public class WeaponHolder : MonoBehaviour
     }
 
     // —мена оружи€
-
     public void SwapWeapon()
     {
         if (meleeWeapon)

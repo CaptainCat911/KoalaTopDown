@@ -15,7 +15,9 @@ public class Player : Fighter
     [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
     [HideInInspector] public BombWeaponHolder bombWeaponHolder;
     [HideInInspector] public ShieldHolder shieldHolder;
-    [HideInInspector] public HitBoxPivot hitBoxPivot;    
+    [HideInInspector] public HitBoxPivot hitBoxPivot;
+    [HideInInspector] public FixedJoystick joystickMove;
+    [HideInInspector] public FixedJoystick joystickFire;
     //[HideInInspector] public bool playerWeaponReady;    // игрок готов (стрелять (это для блинка))
     Ignitable ignitable;
 
@@ -117,6 +119,8 @@ public class Player : Fighter
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
         ignitable = GetComponent<Ignitable>();
         audioSource = GetComponent<AudioSource>();
+        joystickMove = LanguageManager.instance.joystickMove;
+        joystickFire = LanguageManager.instance.joystickFire;
 
         //agent.updateRotation = false;               // для навМеш2д
         //agent.updateUpAxis = false;                 //        
@@ -157,8 +161,20 @@ public class Player : Fighter
         }
 
         // Перемещение и направление
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");        
+        float moveX;
+        float moveY;
+
+        if (GameManager.instance.forAndroid)
+        {
+            moveX = joystickMove.Direction.x;
+            moveY = joystickMove.Direction.y;
+        }
+        else
+        {
+             moveX = Input.GetAxisRaw("Horizontal");
+             moveY = Input.GetAxisRaw("Vertical");
+        }
+
         moveDirection = new Vector2(moveX, moveY).normalized;               // скорость нормализированная 
 
         // Рывок

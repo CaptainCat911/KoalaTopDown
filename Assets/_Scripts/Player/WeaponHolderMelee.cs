@@ -47,19 +47,27 @@ public class WeaponHolderMelee : MonoBehaviour
             return;
 
         // Атака
-        if (Input.GetMouseButton(0))
+        if (GameManager.instance.forAndroid)
         {
-            //if (meleeWeapon)                        // если оружие ближнего боя
+            if (player.joystickFire.Direction.magnitude > 0)            // && player.playerWeaponReady
+            {
                 attackHitBoxStart = true;           // начинаем атаку хитбоксом
-            //else
-                //fireStart = true;                   // стреляем
+            }
+            else
+            {
+                attackHitBoxStart = false;
+            }
         }
         else
         {
-            //if (meleeWeapon)
+            if (Input.GetMouseButton(0))            // && player.playerWeaponReady
+            {
+                attackHitBoxStart = true;           // начинаем атаку хитбоксом
+            }
+            else
+            {
                 attackHitBoxStart = false;
-            //else
-                //fireStart = false;
+            }
         }
     }
 

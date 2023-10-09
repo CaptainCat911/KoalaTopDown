@@ -10,6 +10,9 @@ public class LanguageManager : MonoBehaviour
     [HideInInspector] public bool eng;          // язык
     public bool hardCoreMode;                   // хардкор мод
 
+    public FixedJoystick joystickMove;
+    public FixedJoystick joystickFire;
+
     private void Awake()
     {
         if (instance != null)
@@ -33,5 +36,10 @@ public class LanguageManager : MonoBehaviour
     public void MakeHardCore(bool status)
     {
         hardCoreMode = status;
+    }
+
+    public void SwapWeapons()
+    {
+        GameManager.instance.player.weaponHolder.SwapWeapon();
     }
 }

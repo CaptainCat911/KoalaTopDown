@@ -14,6 +14,14 @@ public class CameraTarget : MonoBehaviour
         cam = Camera.main;
     }
 
+    private void Start()
+    {
+        if (GameManager.instance.forAndroid)
+        {
+            GameManager.instance.cameraOnPlayer = true;
+        }
+    }
+
     void Update()
     {
         if (!GameManager.instance.cameraOnPlayer)       
