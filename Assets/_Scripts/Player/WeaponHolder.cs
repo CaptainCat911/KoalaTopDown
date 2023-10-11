@@ -63,12 +63,13 @@ public class WeaponHolder : MonoBehaviour
         // Поворот оружия
         if (GameManager.instance.forAndroid)
         {
-            if (player.joystickFire.Direction.magnitude <= 0)
-                return;
-            aimAngle = Mathf.Atan2(player.joystickFire.Direction.y, player.joystickFire.Direction.x) * Mathf.Rad2Deg;                     // находим угол в градусах             
-            Quaternion qua1 = Quaternion.Euler(0, 0, aimAngle);                                         // создаем этот угол в Quaternion
-            transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 100);   // делаем Lerp между weaponHoder и нашим углом
-            //Debug.Log(aimAngle);
+            if (player.joystickFire.Direction.magnitude > 0)
+            {
+                aimAngle = Mathf.Atan2(player.joystickFire.Direction.y, player.joystickFire.Direction.x) * Mathf.Rad2Deg;       // находим угол в градусах             
+                Quaternion qua1 = Quaternion.Euler(0, 0, aimAngle);                                                             // создаем этот угол в Quaternion
+                transform.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 100);                      // делаем Lerp между weaponHoder и нашим углом
+                //Debug.Log(aimAngle);
+            }
         }
         else
         {
