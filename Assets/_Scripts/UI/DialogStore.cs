@@ -9,6 +9,7 @@ public class DialogStore
 	public string name;
 	[TextArea(3, 20)]
 	public string[] sentences;              // предложения
+	[TextArea(3, 20)]
 	public string[] sentencesEng;           // предложения для англ версии
 	public string[] characterName;          // имя персонажа, который говорит
 	public GameObject imageNpc;             // портрет нпс, с которым идёт разговор
