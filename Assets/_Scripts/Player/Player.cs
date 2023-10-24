@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using YG;
-//using UnityEngine.AI;
-
 
 public class Player : Fighter
 {
@@ -723,8 +720,6 @@ public class Player : Fighter
 
     void Resurrection()
     {
-        if (GameManager.instance.withReklamaYG && YandexGame.SDKEnabled)
-            YandexGame.FullscreenShow();
         isAlive = true;
         currentHealth = maxHealth;
         TextUI.instance.UpdateHealthText(false, true);

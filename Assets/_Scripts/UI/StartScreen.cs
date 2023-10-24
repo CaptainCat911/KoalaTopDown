@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using YG;
 
 public class StartScreen : MonoBehaviour
 {
@@ -30,17 +29,6 @@ public class StartScreen : MonoBehaviour
 
 
 
-    // Подписываемся на событие GetDataEvent в OnEnable
-    private void OnEnable()
-    {
-        YandexGame.GetDataEvent += GetLoad;       
-    }
-    // Отписываемся от события GetDataEvent в OnDisable
-    private void OnDisable() 
-    { 
-        YandexGame.GetDataEvent -= GetLoad;         
-    }
-
 
     private void Awake()
     {
@@ -48,80 +36,32 @@ public class StartScreen : MonoBehaviour
     }
 
     private void Start()
-    {
-        if (forYG)
-        {
-            if (YandexGame.SDKEnabled == true)
-            {
-                // Если запустился, то выполняем Ваш метод для загрузки
-                GetLoad();
-            }
-        }
-        else
-        {            
-            if (PlayerPrefs.GetInt("Language") == 1)        // англ
-            {
-                menuEng.SetActive(true);
-                StartMusic();
-                StartScreenAnimation();
-                LanguageManager.instance.MakeEng(true);
-            }
-            else if (PlayerPrefs.GetInt("Language") == 2)        // ру
-            {
-                menuRu.SetActive(true);
-                StartMusic();
-                StartScreenAnimation();
-                LanguageManager.instance.MakeEng(false);
-            }
-            else
-            {                
-                startLanguageMenu.SetActive(true);
-            }
-        }
-
-        if (PlayerPrefs.GetInt("GameContinue") == 1)        // если есть сохранение
-        {
-            continueButton.SetActive(true);                 // вкл кнопку продолжить
-            continueButtonEng.SetActive(true);              // вкл кнопку продолжить
-        }
-    }
-
-    public void GetLoad()
-    {
-        if (YandexGame.EnvironmentData.language == "ru")
-        {
-            //Debug.Log("RU!");
-            menuRu.SetActive(true);
-            StartMusic();
-            StartScreenAnimation();
-            LanguageManager.instance.MakeEng(false);
-        }
-        if (YandexGame.EnvironmentData.language == "en")
+    {                    
+        if (PlayerPrefs.GetInt("Language") == 1)        // англ
         {
             menuEng.SetActive(true);
             StartMusic();
             StartScreenAnimation();
             LanguageManager.instance.MakeEng(true);
         }
-
-/*        if (YandexGame.savesData.gameContinue)
+        else if (PlayerPrefs.GetInt("Language") == 2)        // ру
+        {
+            menuRu.SetActive(true);
+            StartMusic();
+            StartScreenAnimation();
+            LanguageManager.instance.MakeEng(false);
+        }
+        else
+        {                
+            startLanguageMenu.SetActive(true);
+        }
+        
+        if (PlayerPrefs.GetInt("GameContinue") == 1)        // если есть сохранение
         {
             continueButton.SetActive(true);                 // вкл кнопку продолжить
             continueButtonEng.SetActive(true);              // вкл кнопку продолжить
         }
-        textTest.text = YandexGame.savesData.numberStartScene;  */
     }
-
-    public void MySave()
-    {
-/*        // Записываем данные в плагин
-        // Например, мы хотил сохранить количество монет игрока:
-        YandexGame.savesData.numberStartScene = textTest.text;
-
-        // Теперь остаётся сохранить данные
-        YandexGame.SaveProgress();*/
-    }
-
 
     public void StartMusic()
     {
