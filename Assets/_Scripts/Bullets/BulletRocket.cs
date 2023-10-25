@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;      // для 2д света
 
 public class BulletRocket : Bullet
 {
     public float expRadius = 3;             // радиус взрыва
+    public Light2D light2DFlash;            // 2д свет флеш
+    Color originFlashColor;
 
     public enum FireBallPreFab
     {
@@ -38,7 +39,21 @@ public class BulletRocket : Bullet
         if (((int)prefabFireBall) == 0)
             prefab = GameAssets.instance.fireBallSmall;
         if (((int)prefabFireBall) == 1)
-            prefab = GameAssets.instance.fireBallBig;
+            prefab = GameAssets.instance.fireBallBig;           
+
+        if (light2DFlash)                                   // если есть свет для флеш
+        {
+            originFlashColor = light2DFlash.color;
+
+            if (GameManager.instance.player.darkPlace)      // если место темное 
+            {
+                light2DFlash.color = originFlashColor;      // ставим оригинальный цвет
+            }
+            else                                            // если светлое место
+            {
+                light2DFlash.color = new Color(originFlashColor.r, originFlashColor.g, originFlashColor.b, 0.2f);   // уменьшаем альфу
+            }
+        }
     }
 
     private void Start()

@@ -192,11 +192,13 @@ public class GameManager : MonoBehaviour
 
                 player.withShield = true;
                 player.withGoldMagnet = true;
+
+                infiniteAmmo = !infiniteAmmo;
             }
 
             if (Input.GetKeyDown(KeyCode.L))
             {
-                infiniteAmmo = !infiniteAmmo;
+                
             }
 
             if (Input.GetKeyDown(KeyCode.N))

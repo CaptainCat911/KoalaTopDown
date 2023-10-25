@@ -170,6 +170,7 @@ MonoBehaviour:
   weaponIndexForAmmo: 5
   ammo: 0
   weaponName: 
+  weaponNameEng: 
   fireRate: 0
   nextTimeToFire: 0
   flashEffectAnimator: {fileID: 6982191634660688761}
@@ -328,7 +329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7278607130313121480
 Transform:
   m_ObjectHideFlags: 0

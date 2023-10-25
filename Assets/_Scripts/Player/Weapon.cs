@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;      // для 2д света
 
 public class Weapon : MonoBehaviour
 {
@@ -10,32 +11,15 @@ public class Weapon : MonoBehaviour
     public Transform pivot;                 // якорь weaponHolder (используется для прицеливания)
     WeaponHolder weaponHolder;              // ссылка на скрипт weaponHolder (для стрельбы)
 
-    //GameObject weaponHolderGO;              // ссылка на объект weaponHolder (для поворота)
-    //Vector3 mousePosition;                  // положение мыши
-
     [Header("Параметры оружия")]
     public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
     [HideInInspector] public int ammo;
-    /*    bool projectileWeapon;                          // оружие со снарядами
-        bool splitProjectileWeapon;                     // дробовики
-        bool rayCastWeapon;                             // рейкаст оружие
-        bool splitRaycastWeapon;                        // мультирейкаст оружие
-        bool allRaycastWeapon;                          // рейкастАлл оружие*/
 
     [HideInInspector] public string weaponName;     // название оружия
     [HideInInspector] public string weaponNameEng;     // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
-    [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)
-    //public int ammo;                                       // патроны    
+    [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)       
     float currentDelay;
-
-    /*    GameObject bulletPrefab;                // префаб снаряда
-        float bulletSpeed;                      // скорость снаряда
-        int damage;                             // урон (возможно нужно сделать на снаряде)
-        float pushForce;                        // сила толчка (возможно нужно сделать на снаряде)
-        float forceBackFire;                    // отдача оружия
-        float recoil;                          // разброс стрельбы
-        LayerMask layerRayCast;                 // слои для рейкастов*/
 
     // Для флипа оружия
     bool needFlip;                          // нужен флип (для правильного отображения оружия)    
@@ -44,6 +28,8 @@ public class Weapon : MonoBehaviour
 
     [Header("Эффекты")]
     public Animator flashEffectAnimator;    // флеш при стрельбе
+    Light2D light2DFlash;                   // 2д свет флеш
+    Color originFlashColor;
     public bool singleFlash;                // одиночный флеш
     bool flashActive;                       // флеш активен (для мультифлеша)
     public LineRenderer lineRenderer;       // линия для лазера (префаб)
@@ -51,6 +37,7 @@ public class Weapon : MonoBehaviour
     public TrailRenderer tracerEffect;      // трасер
     public ParticleSystem effectParticles;  // префаб системы частиц стрельбы
     public ParticleSystem startParticles;   // префаб системы частиц при старте огня
+
 
     [Header("Тряска камеры при выстреле")]
     public float cameraAmplitudeShake = 1f; // амплитуда
@@ -74,13 +61,16 @@ public class Weapon : MonoBehaviour
     void Awake()
     {
         player = GameManager.instance.player;                           // игрок
-        ammoWeapons = GameManager.instance.ammoManager.ammoWeapons;        // оружия
+        ammoWeapons = GameManager.instance.ammoManager.ammoWeapons;     // оружия
         weaponName = weaponClass.weaponName;                            // имя оружия
-        weaponNameEng = weaponClass.weaponNameEng;                            // имя оружия
-        ammo = ammoWeapons[weaponIndexForAmmo].allAmmo;
-
+        weaponNameEng = weaponClass.weaponNameEng;                      // имя оружия на англ
+        ammo = ammoWeapons[weaponIndexForAmmo].allAmmo;                 // патроны
 
         audioSource = GetComponent<AudioSource>();
+
+        light2DFlash = flashEffectAnimator.gameObject.GetComponentInChildren<Light2D>();    // свет флеш
+        if (light2DFlash)
+            originFlashColor = light2DFlash.color;
 
         if (singleShot)
         {
@@ -90,34 +80,31 @@ public class Weapon : MonoBehaviour
         {
             audioSource.loop = true;
         }
-
-
-        
-
-        /*        layerRayCast = weaponClass.layerRayCast;                                       // слои к рейкастам
-                if (weaponClass.bulletPrefab)
-                    bulletPrefab = weaponClass.bulletPrefab;                                  // тип снаряда (если не рейкаст оружие)
-                bulletSpeed = weaponClass.bulletSpeed;                                  // скорость
-                damage = weaponClass.damage;                                            // урон
-                pushForce = weaponClass.pushForce;                                      // сила толчка
-                fireRate = weaponClass.fireRate;                                        // скорострельность
-                forceBackFire = weaponClass.forceBackFire;                              // сила отдачи
-                recoil = weaponClass.recoil;                                           // разброс стрельбы*/
-        //flashEffect = weaponClass.flashEffect;                                  // эффект вспышки при выстреле (флэш) 
     }
 
     private void Start()
     {
         weaponHolder = GetComponentInParent<WeaponHolder>();                    // находим скрипт weaponHolder
         originPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
-        //ammo = GameManager.instance.ammoPack.ammoTompson;
-        //currentDelay = delayFire + Time.time;
     }
 
     private void OnEnable()
     {        
         currentDelay = weaponClass.delayFire;
+
+        if (light2DFlash)                                   // если есть свет для флеш
+        {
+            if (player.darkPlace)                           // если место темное 
+            {
+                light2DFlash.color = originFlashColor;      // ставим оригинальный цвет
+            }
+            else                                            // если светлое место
+            {
+                light2DFlash.color = new Color(originFlashColor.r, originFlashColor.g, originFlashColor.b, 0.2f);   // уменьшаем альфу
+            }
+        }
     }
+
     private void OnDisable()
     {
         soundStarted = false;               
@@ -340,6 +327,12 @@ public class Weapon : MonoBehaviour
         {
             flashEffectAnimator.SetTrigger("Fire");
         }
+    }
+
+    public void SetLightFlash(Color color)
+    {        
+        light2DFlash.color = color;
+        //light2DFlash.intensity = intensity;        
     }
 
     // Флип

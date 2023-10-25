@@ -519,6 +519,11 @@ public class ArenaManager : MonoBehaviour
         GameManager.instance.player.MiniLightOn(status);
     }
 
+    public void SetDarkPlaceLight(bool status)
+    {
+        GameManager.instance.player.darkPlace = status;
+    }
+
     // Щит ключа для 3-го лвл
     public void ShieldKeyOff()
     {

@@ -491,6 +491,9 @@ MonoBehaviour:
   layerTrigger:
     serializedVersion: 2
     m_Bits: 128
+  layerForRaycast:
+    serializedVersion: 2
+    m_Bits: 16777191
   friendTarget: {fileID: 0}
   lookAtPlayer: 0
   bubbleTexts: []

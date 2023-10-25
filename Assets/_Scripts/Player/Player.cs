@@ -21,6 +21,7 @@ public class Player : Fighter
     [Header("Управление светом")]
     public GameObject lightNormal;
     public GameObject lightMini;
+    public bool darkPlace;
 
     [Header("Параметры перемещения")]    
     [HideInInspector] public Vector2 moveDirection;     // вектор для перемещения (направление)
@@ -193,7 +194,7 @@ public class Player : Fighter
 
         if (GameManager.instance.testBuild)
         {
-            if (Input.GetKeyDown(KeyCode.O) && Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 cheatOn = true;
                 blink = true;

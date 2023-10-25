@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2363293952648459334}
   - component: {fileID: 1106157235044219289}
   m_Layer: 6
-  m_Name: 1
+  m_Name: 1.Pistolet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +55,7 @@ MonoBehaviour:
   weaponIndexForAmmo: 1
   ammo: 0
   weaponName: 
+  weaponNameEng: 
   fireRate: 15
   nextTimeToFire: 0
   flashEffectAnimator: {fileID: 2802771401264512540}
@@ -319,6 +320,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8917704073564388495}
     m_Modifications:
+    - target: {fileID: 386025629099991778, guid: cdb5f71daaf8b9b44a2acb415fdbc62e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1676345520989186636, guid: cdb5f71daaf8b9b44a2acb415fdbc62e, type: 3}
       propertyPath: m_RootOrder
       value: 3
