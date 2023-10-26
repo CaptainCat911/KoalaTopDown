@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     public bool testBuild;
     public bool demoLevel;                               
     public bool forAndroid;                     // для андроида  
-    //public bool forYG;                          // для яндекс игр    
-    //public bool withReklamaYG;                  // с рекламой для YG  
     public bool startScreen;                    // для стартскрина
     public bool showDamage;                     // показывать урон    
     public string[] sceneNames;                 // все сцены
@@ -20,8 +18,6 @@ public class GameManager : MonoBehaviour
     [Header("Ссылки")]
     public Player player;                       // ссылка на игрока    
     public AmmoPackKoala ammoManager;           // аммо менеджер   
-    //public GameObject gui;                      // гуи
-    //public Dialog dialog;                       // диалог менеджер    
 
     [Header("Управление игрой")]
     [HideInInspector] public bool isPlayerEnactive;     // активен игрок или нет
@@ -34,7 +30,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool screenShakeOff;       // тряска экрана
     [HideInInspector] public string currentSceneName;   // действуящая сцена
     [HideInInspector] public bool firstLevel;           // первый уровень
-
 
     [Header("Клавиша взаимодействия")]
     public KeyCode keyToUse;            // клавиша для действия
@@ -81,12 +76,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             Destroy(ammoManager.gameObject);
             Destroy(player.gameObject);
-            //Destroy(gui);
-            //Destroy(floatingTextManager.gameObject);
-            //Destroy(hud);
-            //Destroy(menu);
-            //Destroy(eventSys);
-
             return;
         }
         
@@ -96,21 +85,10 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("GameContinue") == 0)        // продолжить игру
         {
             firstLevel = true;
-            //Debug.Log("FirstLevel!");
+            
         }
     }
 
-
-    // Подписываемся на событие GetDataEvent в OnEnable
-    private void OnEnable()
-    {
-        //YandexGame.GetDataEvent += StartYG;
-    }
-    // Отписываемся от события GetDataEvent в OnDisable
-    private void OnDisable()
-    {
-        //YandexGame.GetDataEvent -= StartYG;
-    }
 
     private void Start()
     {
@@ -123,42 +101,6 @@ public class GameManager : MonoBehaviour
                 SaveData();               
             firstLevel = false;            
         }
-    }
-
-    public void StartYG()
-    {
- /*       //Debug.Log("StartYG!");
-        if (!YandexGame.SDKEnabled)
-        {
-            return;
-        }
-
-        if (!YandexGame.savesData.gameContinue)
-        {
-            firstLevel = true;
-        }
-        if (firstLevel)
-        {
-            ammoManager.TakeMeleeWeapon(0);
-            ammoManager.TakeRangeWeapon(0);
-            Invoke(nameof(SwapWeaponPlayer), 0.1f);
-            Invoke(nameof(SaveDataYG), 0.1f);            
-            firstLevel = false;
-            //Debug.Log("Weapons!");
-        }
-
-        // Загрузка
-        if (YandexGame.savesData.loadPlayerData)              // если надо загрузить пар-ры
-        {
-            LoadDataYG();
-        }
-        // Сохранение
-        else
-        {
-            if (firstLevel)
-                return;
-            SaveDataYG();
-        }*/
     }
 
     void SwapWeaponPlayer()
@@ -207,30 +149,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
-
-        /*        if (Input.GetKeyDown(KeyCode.I))
-                {
-                    for (int i = 0; i < player.rangeWeaponsIndex.Count; i++)                      // сохраняем ренж оружия
-                    {
-                        PlayerPrefs.SetInt("PlayerRangeWeapon" + i, player.rangeWeaponsIndex[i]);   // сохраняем индекс для каждого оружия
-                        Debug.Log(i);
-                    }           
-
-                    Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 0));
-                    Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 1));
-                    Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 2));
-                    //Debug.Log(PlayerPrefs.GetInt("PlayerRangeWeapon" + 3));
-                }*/
-
-
-
         if (Input.GetKeyDown(KeyCode.Escape) && !dialogeStart && !helpOn)
         {
             if (!paused)
             {
-                StopGame();
-                //Debug.Log("Pause!");
+                StopGame();                
             }
             else
             {
@@ -296,24 +219,9 @@ public class GameManager : MonoBehaviour
                 collidersHits = null;
             }
         }
-
-   
-
-            
-
-
-        /*        if (Input.GetKeyDown(keyOpenMagazine))
-                {
-                    OpenCloseMagazine();
-                }*/
     }
 
-    /*    public void OpenCloseMagazine()
-        {
-            isPlayerEnactive = !isPlayerEnactive;
-            openMagazine = !openMagazine;
-            magazine.SetActive(openMagazine);
-        }*/
+
 
     public void StopGame()
     {
@@ -333,10 +241,6 @@ public class GameManager : MonoBehaviour
         paused = false;
     }
 
-
-
-
-
     // Ивенты
 
     // 3-й лвл
@@ -349,20 +253,6 @@ public class GameManager : MonoBehaviour
     {
         lightDark = status;
     }  
-
-
-
-
-
-    /*    // Начать ивент диалога
-        public void StartDialog(int number)
-        {
-            dialog.StartEvent(number);
-        }*/
-
-
-
-
 
     public void CreateFloatingMessage(string message, Color color, Vector2 position)
     {
@@ -454,10 +344,7 @@ public class GameManager : MonoBehaviour
 
 
     public void NextScene(int sceneNumber)
-    {
-        //GameManager.instance.SaveState();
-        //string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
-        
+    {        
         string sceneName = sceneNames[sceneNumber];     // выбираем сцену       
         if (sceneNumber == 0)                           // если сцена 0 (главное меню) - уничтожаем 
         {
@@ -465,11 +352,6 @@ public class GameManager : MonoBehaviour
             Destroy(ammoManager.gameObject);
             Destroy(player.gameObject);
         }
-/*        if (sceneNumber > 1)                            // если не стартовая сцена и не первая - подсказки показаны
-        {
-            weaponHelped = true;
-            bombHelped = true;
-        }*/
 
         if (paused)
             ContinueGame();
@@ -503,6 +385,7 @@ public class GameManager : MonoBehaviour
         {
             LoadData();
         }
+
         // Сохранение
         else
         {
