@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  weaponsHardCore: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0
@@ -212,8 +213,8 @@ MonoBehaviour:
   lastAttack: 0
   hitBoxRadius: 0.4
   cooldown: 2
-  damage: 5
-  pushForce: 5
+  damage: 10
+  pushForce: 10
   bulletPrefab: {fileID: 0}
   effectRangeAttack: {fileID: 0}
   bulletSpeed: 0
@@ -348,12 +349,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d86674473949ed943990637cd2a1dc74, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 165cc99fec543654294e1d41bbd64ad0, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1.125}
+  m_Size: {x: 0.71875, y: 0.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -426,7 +427,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.3
-  m_Speed: 1.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -453,11 +454,15 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
   maxHealth: 300
   noAgro: 0
+  player: 0
   isGoodPerson: 0
   bossHP: 0
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -470,7 +475,18 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
-  triggerLenght: 5
+  isArenaEnemy: 0
+  isArenaBoss: 0
+  skeletonKing: 0
+  skeletonResble: 0
+  skeletonNotResble: 0
+  resTimes: 0
+  healthMulti: 2
+  moveSpeedInc: 0.5
+  withRes: 0
+  resTimesInc: 1
+  triggerLenght: 7
+  chaseLeght: 0
   distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
@@ -488,19 +504,36 @@ MonoBehaviour:
   rangeAttackType: 0
   twoWeapons: 0
   defaultRangeToTarget: 0
-  distanceToAttackMelee: 1
-  distanceToAttackRange: 4
+  distanceToAttackMelee: 1.1
+  distanceToAttackRange: 0
   pivotSpeedKoef: 1
-  distanceToAttack: 1
+  distanceToAttack: 3
   distanceToTarget: 0
+  nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   stayOnGround: 1
   noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
+  noTriggerAgro: 0
+  eventsStart:
+    m_PersistentCalls:
+      m_Calls: []
+  eventsDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  withBigExplousion: 0
+  damageBigExplousion: 0
+  radisuBigExplousion: 0
+  fastDeathAnim: 1
+  timeForDeath: 2.5
   deathEffect: {fileID: 7845441016114820387, guid: 63da8428eacb2d64e834aa5b7bf5e82f, type: 3}
   deathCameraShake: 3
+  darkEffect: {fileID: 0}
+  resMagicEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -508,7 +541,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   friendTarget: {fileID: 0}
-  fastDeathAnim: 1
+  lookAtPlayer: 0
+  bubbleTexts: []
+  bubbleTextsEng: []
+  withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
   debug: 0
 --- !u!114 &1024313703
 MonoBehaviour:
@@ -524,15 +562,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
   cooldownChangeTarget: 2
+  distanceFromStartMain: 0
   cooldownChange: 2
   distancePatrol: 2
   maxDistancePatrol: 4
-  lastChange: 0
+  withSpell: 0
+  cooldownSpell: 0
+  spellChance_1: 0
+  spellChance_2: 0
+  spellChance_3: 0
   goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0
-  letsGo: 0
   textTrigger: 
   debug: 0
 --- !u!114 &383730277545646799
@@ -549,19 +591,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
   m_ComponentVersion: 1
-  m_HasRenderer: 0
+  m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
   m_ShapePath:
-  - {x: -0.5, y: -0.5625, z: 0}
-  - {x: -0.5, y: 0.5625, z: 0}
-  - {x: 0.5, y: 0.5625, z: 0}
-  - {x: 0.5, y: -0.5625, z: 0}
-  m_ShapePathHash: 0
+  - {x: -0.1759491, y: -0.43391037, z: 0}
+  - {x: -0.30579376, y: -0.047351837, z: 0}
+  - {x: -0.24796295, y: 0.2898903, z: 0}
+  - {x: -0.012611389, y: 0.3487053, z: 0}
+  - {x: 0.20167542, y: 0.29503632, z: 0}
+  - {x: 0.28057098, y: -0.04220581, z: 0}
+  - {x: 0.13480377, y: -0.4441986, z: 0}
+  m_ShapePathHash: 984668199
   m_Mesh: {fileID: 0}
-  m_InstanceId: -152614
+  m_InstanceId: 319576
 --- !u!1001 &1153241742
 PrefabInstance:
   m_ObjectHideFlags: 0

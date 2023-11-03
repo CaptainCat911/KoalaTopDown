@@ -7,6 +7,7 @@ public class Player : Fighter
     // Ссылки    
     //NavMeshAgent agent;
     [HideInInspector] public Animator animator;
+    public Animator meleeWeaponAnimator;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public WeaponHolder weaponHolder;
     [HideInInspector] public WeaponHolderMelee weaponHolderMelee;
@@ -117,6 +118,7 @@ public class Player : Fighter
         hitBoxPivot = GetComponentInChildren<HitBoxPivot>();
         ignitable = GetComponent<Ignitable>();
         audioSource = GetComponent<AudioSource>();
+
         joystickMove = LanguageManager.instance.joystickMove;
         joystickFire = LanguageManager.instance.joystickFire;
 

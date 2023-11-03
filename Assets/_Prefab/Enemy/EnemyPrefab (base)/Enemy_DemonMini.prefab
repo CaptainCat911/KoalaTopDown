@@ -160,7 +160,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.2
-  m_Speed: 2.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -187,11 +187,15 @@ MonoBehaviour:
   rb2D: {fileID: 2411289485797020914}
   capsuleCollider2D: {fileID: 0}
   isAlive: 1
+  isImmortal: 0
   currentHealth: 0
   maxHealth: 200
   noAgro: 0
+  player: 0
   isGoodPerson: 0
   bossHP: 0
+  withTimeNoDamage: 0
+  timeNoDamage: 0
   hpBarOn: 1
   hpBarGO: {fileID: 0}
   agent: {fileID: 0}
@@ -204,7 +208,18 @@ MonoBehaviour:
   isNeutral: 0
   isFriendly: 0
   isEnemy: 1
+  isArenaEnemy: 0
+  isArenaBoss: 0
+  skeletonKing: 0
+  skeletonResble: 0
+  skeletonNotResble: 0
+  resTimes: 0
+  healthMulti: 2
+  moveSpeedInc: 0.5
+  withRes: 1
+  resTimesInc: 1
   triggerLenght: 5
+  chaseLeght: 0
   distanceToChangeTarget: 3
   target: {fileID: 0}
   layerTarget:
@@ -227,14 +242,31 @@ MonoBehaviour:
   pivotSpeedKoef: 1
   distanceToAttack: 0.8
   distanceToTarget: 0
+  nowAttacking: 0
+  noHealBox: 0
   itemToSpawn: {fileID: 8085739111156745731, guid: bd5bd23e2206ee64a9b6793c98668e24, type: 3}
   stayOnGround: 1
   noPatrol: 0
   goTo: 0
   followPlayer: 0
   destinationPoint: {fileID: 0}
+  noTriggerAgro: 0
+  eventsStart:
+    m_PersistentCalls:
+      m_Calls: []
+  eventsDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  withBigExplousion: 0
+  damageBigExplousion: 0
+  radisuBigExplousion: 25
+  fastDeathAnim: 1
+  timeForDeath: 2.5
   deathEffect: {fileID: 7845441016114820387, guid: cc0d24c4e3ed73e4e8969772c7851414, type: 3}
   deathCameraShake: 2
+  darkEffect: {fileID: 0}
+  resMagicEffect: {fileID: 0}
+  makeLeft: 0
   aimAnglePivot: 0
   flipLeft: 0
   flipRight: 0
@@ -242,7 +274,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   friendTarget: {fileID: 0}
-  fastDeathAnim: 1
+  lookAtPlayer: 0
+  bubbleTexts: []
+  bubbleTextsEng: []
+  withChat: 0
+  audioEnemy: {fileID: 0}
+  withAudioChat: 0
   debug: 0
 --- !u!114 &3140556547057668604
 MonoBehaviour:
@@ -258,15 +295,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botAI: {fileID: 0}
   cooldownChangeTarget: 2
+  distanceFromStartMain: 0
   cooldownChange: 2
   distancePatrol: 2
   maxDistancePatrol: 4
-  lastChange: 0
+  withSpell: 0
+  cooldownSpell: 0
+  spellChance_1: 0
+  spellChance_2: 0
+  spellChance_3: 0
   goToPosition: {fileID: 0}
   positionsPoints: []
   i: 0
   nextPosition: 0
-  letsGo: 0
   textTrigger: 
   debug: 0
 --- !u!114 &6641745157352503211
@@ -283,19 +324,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
   m_ComponentVersion: 1
-  m_HasRenderer: 0
+  m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 1911dbd600000000e9eaaf0e
   m_ShapePath:
-  - {x: -0.25, y: -0.375, z: 0}
-  - {x: -0.25, y: 0.375, z: 0}
-  - {x: 0.25, y: 0.375, z: 0}
-  - {x: 0.25, y: -0.375, z: 0}
-  m_ShapePathHash: 0
+  - {x: -0.12534012, y: -0.36210415, z: 0}
+  - {x: -0.13823599, y: 0.16436782, z: 0}
+  - {x: 0.15543045, y: 0.14287473, z: 0}
+  - {x: 0.12963873, y: -0.36210412, z: 0}
+  m_ShapePathHash: 893070069
   m_Mesh: {fileID: 0}
-  m_InstanceId: -152646
+  m_InstanceId: 420522
 --- !u!1 &3509407596432613556
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  weaponsHardCore: []
   currentWeapon: {fileID: 0}
   selectedWeapon: 0
   fireStart: 0

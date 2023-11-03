@@ -1109,7 +1109,7 @@ MonoBehaviour:
   isAlive: 1
   isImmortal: 0
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 10000
   noAgro: 0
   player: 1
   isGoodPerson: 1
@@ -1119,6 +1119,7 @@ MonoBehaviour:
   hpBarOn: 0
   hpBarGO: {fileID: 0}
   animator: {fileID: 3137378571337029655}
+  meleeWeaponAnimator: {fileID: 3137378571307814403}
   spriteRenderer: {fileID: 3137378571337029658}
   weaponHolder: {fileID: 3137378571984717913}
   weaponHolderMelee: {fileID: 3137378571777031426}
@@ -2498,7 +2499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2602604250415803212
 Transform:
   m_ObjectHideFlags: 0

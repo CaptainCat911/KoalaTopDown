@@ -17,6 +17,7 @@ public class MeleeWeapon : MonoBehaviour
     public bool hummer;
     public bool katana;
     public bool greatSwoard;
+    public bool chainSaw;
 
     [Header("ѕараметры оружи€")]
     public Transform hitBox;                        // положение хитбокса
@@ -50,7 +51,8 @@ public class MeleeWeapon : MonoBehaviour
     //public float cameraAmplitudeShakeElectro;       // амплитуда
     //public float cameraTimedeShakeElectro;          // длительность
 
-    [Header("Ёффекты")]    
+    [Header("Ёффекты")]
+    public Animator effectAnimator;                 // аниматор дл€ эффектов оружи€
     public TrailRenderer trail;                     // треил 
     public GameObject sparksEffect;                 // искры
 
@@ -64,7 +66,7 @@ public class MeleeWeapon : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();        
     }
 
     void Start()
@@ -72,7 +74,7 @@ public class MeleeWeapon : MonoBehaviour
         player = GameManager.instance.player;
         //weaponHolder = GameManager.instance.player.weaponHolder;            // находим скрипт weaponHolder
         weaponHolderMelee = GameManager.instance.player.weaponHolderMelee;      // находим скрипт weaponHolder
-        animator = GetComponentInParent<Animator>();        
+        animator = GameManager.instance.player.meleeWeaponAnimator;        
     }
 
     private void OnDisable()
@@ -96,6 +98,9 @@ public class MeleeWeapon : MonoBehaviour
                 animator.SetTrigger("HitKatana"); 
             if (greatSwoard)
                 animator.SetTrigger("HitGreatSwoard");
+            if (chainSaw)            
+                animator.SetTrigger("HitChainSaw");
+            
 
             if (audioWeapon)
             {
@@ -104,7 +109,19 @@ public class MeleeWeapon : MonoBehaviour
                 audioSource.clip = audioWeapon.hitStart;            // звук взмаха
                 audioSource.Play();                                 
             }
+
+            if (effectAnimator)
+            {
+                effectAnimator.SetTrigger("StartAnimation");
+            }
         }
+/*        else if (!weaponHolderMelee.attackHitBoxStart)
+        {
+            if (chainSaw && animator.GetBool("SawStart"))
+            {
+                animator.SetBool("SawStart", false);
+            }
+        }*/
     }
 
     public void MeleeAttack()
