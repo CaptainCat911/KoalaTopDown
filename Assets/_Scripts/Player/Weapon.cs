@@ -4,19 +4,18 @@ using UnityEngine.Rendering.Universal;      // для 2д света
 public class Weapon : MonoBehaviour
 {
     [Header("Ссылки")]                      // почему-то не отображается
-    Player player;
+    private Player player;
+    private WeaponHolder weaponHolder;      // ссылка на скрипт weaponHolder (для стрельбы)
     AmmoPackStore[] ammoWeapons;
     public WeaponClass weaponClass;         // ссылка на класс оружия
     public Transform firePoint;             // якорь для снарядов
-    public Transform pivot;                 // якорь weaponHolder (используется для прицеливания)
-    WeaponHolder weaponHolder;              // ссылка на скрипт weaponHolder (для стрельбы)
+    //public Transform pivot;                 // якорь weaponHolder (используется для прицеливания)
 
     [Header("Параметры оружия")]
     public int weaponIndexForAmmo;                  // индекс оружия (для патронов)
     [HideInInspector] public int ammo;
-
     [HideInInspector] public string weaponName;     // название оружия
-    [HideInInspector] public string weaponNameEng;     // название оружия
+    [HideInInspector] public string weaponNameEng;  // название оружия
     [HideInInspector] public float fireRate;        // скорострельность оружия (10 - 0,1 выстрелов в секунду)
     [HideInInspector] public float nextTimeToFire;  // для стрельбы (когда стрелять в след раз)       
     float currentDelay;
@@ -37,7 +36,6 @@ public class Weapon : MonoBehaviour
     public TrailRenderer tracerEffect;      // трасер
     public ParticleSystem effectParticles;  // префаб системы частиц стрельбы
     public ParticleSystem startParticles;   // префаб системы частиц при старте огня
-
 
     [Header("Тряска камеры при выстреле")]
     public float cameraAmplitudeShake = 1f; // амплитуда

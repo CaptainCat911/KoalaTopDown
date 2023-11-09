@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (firstLevel || demoLevel)
+/*        if (firstLevel || demoLevel)
         {
             ammoManager.TakeMeleeWeapon(0);
             ammoManager.TakeRangeWeapon(0);
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
             if (!demoLevel)
                 SaveData();               
             firstLevel = false;            
-        }
+        }*/
     }
 
     void SwapWeaponPlayer()
