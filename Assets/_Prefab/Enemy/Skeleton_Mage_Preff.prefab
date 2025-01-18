@@ -47,7 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   withChat: 0
+  withChatAudio: 0
   noPatrol: 0
+  noTriggerAgro: 0
+  turnLeft: 0
+  changeLight: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  intensity: 0
 --- !u!1 &6822670207099480622
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +211,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1538151450151263890}
     m_Modifications:
+    - target: {fileID: 3948477344904913665, guid: d484c4fb0a01ab64a8deabfa987e9090, type: 3}
+      propertyPath: m_InstanceId
+      value: -1034562
+      objectReference: {fileID: 0}
     - target: {fileID: 3998750625213931918, guid: d484c4fb0a01ab64a8deabfa987e9090, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -213,6 +223,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5595715485931628445, guid: d484c4fb0a01ab64a8deabfa987e9090, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0b5cbad634e1f5046b9ff78892ea2473, type: 2}
     - target: {fileID: 8588756845586053878, guid: d484c4fb0a01ab64a8deabfa987e9090, type: 3}
       propertyPath: m_Name
       value: Skeleton_Mage
